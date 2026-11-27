@@ -29,41 +29,43 @@ Act as my outbound copywriter for expansion and new-site triggers. Use Draup for
 
 INPUTS (edit these)
 - Company: [website, e.g. hsbc.com]
-- Persona: [who reads it, e.g. Head of the India technology centre]
-- What I sell: [one line, e.g. managed workplace and IT services for new delivery centres — skip if you ran the start-here prompt]
-- Business function (optional): [default IT, e.g. IT or ER&D (engineering and R&D)]
+- Persona: [reader, e.g. Head of the India technology centre]
+- What I sell: [one line, e.g. managed workplace services for new delivery centres — skip if you ran the start-here prompt]
+- Business function (optional): [default IT, e.g. ER&D]
 - Location (optional): [metro to focus on, e.g. Bengaluru]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull 6 months of centre-setup and expansion news, newest first, 10 items (only [Location] if given). Keep new centres, leases, hubs and capacity growth; drop store openings and partner facilities. Fact-check stated scale. If nothing qualifies, widen to 12 months.
 3. Pull the top 8 locations for [Business function]: approximate headcount, 12-month postings, growth index, tags.
-4. For the chosen location, pull the top 5 workloads in its postings over 12 months, with trend, and up to 3 [Business function] priorities they support (or say none fits).
+4. For the chosen location, pull the top 5 workloads in 12 months of postings, with trend, and up to 3 [Business function] priorities they support (or none).
 5. Pick the announced site with rising postings.
-6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+6. Pull the top 3 executives in [Persona]'s function and pick the likeliest contact.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
-- Email: subject (6 words max) and body (100 words max): the announcement and its date; what the site will do (from postings) as a question; one offer tied to standing it up; one ask.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
+- Email: subject (6 words max), body (100 words max): the announcement and its date; what the site will do (from postings) as a question; one offer tied to standing it up; one ask.
 - LinkedIn note: under 300 characters.
 - Table "Site signals" (newest first): Date | Location | What was announced | Scale stated | Fact check.
 - Table "What they're staffing it for" (top 5): Workload | Postings | Trend | Likely owner.
-- Detail: footprint check (Metro | Approx. headcount | Postings | Growth index | Tag); sources; linked priority; Gaps (what Draup lacked, to ask in discovery).
+- Detail: footprint check (Metro | Approx. headcount | Postings | Growth index | Tag); sources; linked priority; Gaps (to ask in discovery).
 
 RULES
 - Quote announced scale only if Confirmed, as the source states it; never quote Draup headcount in copy.
 - A headquarters move is a relocation, not new demand, unless the source says capacity grows. If the site shows no postings, say so and lower confidence.
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Site headcount is approximate and centre tags can include plants; lean on postings. A "New Site" tag is inferred from postings.
-- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Site headcount and tags are approximate (tags can include plants; "New Site" is inferred from postings); lean on postings.
+- News: [Company] must be the actor; drop look-alikes, sister companies, passing mentions and re-dated stories. Give source and headline.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
 ```
 

@@ -23,15 +23,15 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my AI market analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my AI market analyst. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [Website, e.g. pfizer.com]
-- What I sell: [One line, e.g. enterprise generative AI platform — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. enterprise generative AI platform; skip if saved in setup]
 - Peers (optional): [Up to 4 websites, e.g. lilly.com, abbvie.com; blank = Draup's closest competitors]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+1. Find the company by website (no result: try its name once and show the match score). Confirm it's the parent, not a subsidiary or sister company; if several match, ask me. Use Draup's exact name from then on.
 2. Peers, in one company-list lookup: my websites, or the account's top competitors in its primary industry, keeping the 4 closest in revenue (0.3–3x, editable default), with workforce.
 3. Account deep-dive: "Artificial Intelligence & Data Science" postings (12 months, monthly); AI, Generative AI or Machine Learning priorities (count, latest two with quarter); AI tools newly detected in 12 months (up to 5, no generic tools such as chat assistants or office add-ons); outsourced AI engagements and top 3 providers.
 4. For each peer, pull only AI & Data Science postings with the monthly trend.
@@ -44,7 +44,7 @@ OUTPUT
 - "Peers": Company | AI postings (12 mo) | Per 1,000 employees | Trend | Read (Ahead, Level or Behind). Account first.
 - "Account deep-dive": 4 dated bullets — AI postings and trend, AI priorities, new AI tools, outsourced AI work.
 - "Questions to raise": 3, each naming a peer and a number.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 - Detail: peer workforce figures and "Why this matters for [What I sell]" (2 bullets and one peer-evidence sentence).
 
 RULES
@@ -52,14 +52,15 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
-- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
+- Pull lists 10 at a time; count first when a list could be long; every total applies all my conditions.
 - Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 420 words including tables, then offer more.
 ```
 
 <details>

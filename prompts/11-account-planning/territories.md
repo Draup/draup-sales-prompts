@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Advanced: annual territory planning or when a new rep joins; best run by RevOps or a sales leader. Use plan-propensity-tiering instead to rank a list you already own. | Sales Leader & RevOps | Everyone | 4–6 min | Company directory |
+| Advanced: annual territory planning or when a new rep joins; best run by RevOps or a sales leader. Use "Tier my accounts by fit and timing" instead to rank a list you already own. | Sales Leader & RevOps | Everyone | 4–6 min | Company directory |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -14,7 +14,7 @@
 
 | Placeholder | Example |
 |---|---|
-| `[Vertical]` | Insurance |
+| `[Vertical]` | Insurance, or Multiline Retail |
 | `[Country]` | United States of America |
 | `[Minimum employees]` | 10000 |
 | `[Number of territories]` | 3 |
@@ -26,21 +26,21 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my RevOps territory planner. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my RevOps territory planner. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
-- Vertical: [Draup industry, e.g. Insurance]
-- Country: [HQ country in full, e.g. United States of America]
+- Vertical: [Draup industry or sub-industry, e.g. Insurance, or Multiline Retail]
+- Country: [HQ country in full, e.g. United States of America; default: my territory from setup]
 - Minimum employees: [e.g. 10000]
 - Number of territories: [e.g. 3]
 - Balance on (optional): [Draup-estimated IT spend (default), revenue or account count]
 - Accounts already owned (optional): [Websites to exclude, e.g. metlife.com]
 
 STEPS
-1. Confirm Draup's names for the industry and country.
+1. Confirm Draup's names for the industry (or sub-industry) and country. If a broad industry mixes businesses I don't sell to (e.g. restaurants and cruise lines inside travel), say which and offer a sub-industry.
 2. Count first: companies whose primary industry is [Vertical], HQ in [Country], with [Minimum employees]+ staff. If more than 100, stop and ask me to raise the threshold.
 3. Pull them 10 at a time, largest first by the balance measure: HQ metro, employees, revenue, Draup-estimated IT spend.
-4. Remove accounts already owned (match by website). Remove non-operating holding companies, conglomerates and private-equity or investment firms, and list them. Flag misfiled companies (HQ or description doesn't fit) and possibly inactive ones.
+4. Remove accounts already owned (match by website). Remove non-operating holding companies, conglomerates and private-equity or investment firms, and list them. Merge subsidiaries into parents. Flag misfiled companies (HQ, description or sub-industry doesn't fit what I sell) and possibly inactive ones.
 5. Group accounts by HQ region (e.g. Northeast, Southeast, Central, West; or metros if there are more than 4 territories). Assign whole regions to territories, then move single accounts only if a territory is more than 10% off balance; list every move.
 6. Count companies of the same size and country that have [Vertical] only as a secondary industry; list up to 5 that genuinely operate in it as "Consider adding". Don't assign them.
 
@@ -58,10 +58,11 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+- Pull lists 10 at a time; count first when a list could be long; every total applies all my conditions.
+- Parent companies only; merge subsidiaries and alternate names of one company.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>

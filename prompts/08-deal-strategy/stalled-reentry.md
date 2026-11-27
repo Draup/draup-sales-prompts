@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| A live opportunity has gone quiet for 60+ days, or a prospect said "not now". Use this to restart a stalled or lost deal; use "What changed since [Date]" (signals-change-log) instead for a routine check on a current customer. | Account Executive, Account & Customer Success Manager, Sales Leader & RevOps | Everyone | 4–6 min | Priorities & opportunities, Executives & movement, News signals, Hiring & job postings, Company & financials, Tech stack |
+| A live opportunity has gone quiet for 60+ days, or a prospect said "not now". Use this to restart a stalled or lost deal; use "What changed since [Date]" instead for a routine check on a current customer. | Account Executive, Account & Customer Success Manager, Sales Leader & RevOps | Everyone | 4–6 min | Priorities & opportunities, Executives & movement, News signals, Hiring & job postings, Company & financials, Tech stack |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -30,46 +30,46 @@ Act as my deal-rescue strategist. Use Draup for Sales for every fact. Don't use 
 
 INPUTS (edit these)
 - Company: [website, e.g. starbucks.com]
-- Stalled since: [date it went quiet, e.g. 2026-05-15]
-- Why it stalled: [budget freeze, champion left, priority shifted, lost to competitor, no decision — or your words]
-- Last contact (optional): [name and title, e.g. Jane Doe, VP Supply Chain Systems]
+- Stalled since: [e.g. 2026-05-15]
+- Why it stalled: [budget freeze, champion left, priority shifted, lost to competitor or no decision]
+- Last contact (optional): [e.g. Jane Doe, VP Supply Chain Systems]
 - Competitor (optional): [e.g. Blue Yonder]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-A credible re-entry names a dated change on the buyer's side and shows the blocker has moved; if it still holds, recommend waiting.
+Re-enter only on a dated buyer-side change that moved the blocker; otherwise wait.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Use the function closest to [What I sell]; say which.
-3. Test the stall reason. Budget freeze: latest revenue and EBITDA growth. Champion left: look for [Last contact] in 2 pages (10 per page) of that function's executives. Priority shifted: up to 10 priorities in the function, noting those sourced after [Stalled since]. Lost to competitor: check the whole stack for [Competitor] products. No decision: run all four lightly.
-4. People: the 3 most senior executives in the function by title, plus anyone under 1 year in title.
-5. News since [Stalled since] (up to 12 months): investments, executive moves, vendor selections, layoffs. Review 20+ items; mark the most important from the last 90 days.
-6. Hiring: average monthly postings in the function, 5 full months before [Stalled since] vs the 5 latest.
+3. Test the stall reason. Budget freeze: latest revenue and EBITDA growth. Champion left: look for [Last contact] in 2 pages of the function's executives. Priority shifted: up to 10 function priorities, noting those after [Stalled since]. Lost to competitor: check the whole stack for [Competitor] products (engagements, for a services firm). No decision: run all four lightly.
+4. People: the 3 most senior function executives by title, plus anyone under 1 year in title.
+5. News since [Stalled since] (up to 12 months; say if it's older): investments, executive moves, vendor selections, layoffs; 20+ items, marking the most important from the last 90 days.
+6. Hiring: average monthly function postings, 5 full months before [Stalled since] vs the 5 latest.
 7. Pick the re-entry angle: a dated change tied to a priority.
 
 OUTPUT
 - Bottom line: 2 sentences — Reopen now, Wait until [event or date] or Walk away, with the deciding fact.
-- Recommended next step: a named person (name, full title), the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title), the action this week and the dated why-now (or say none).
 - Table "Stall reason test": Reason | Still true? (Yes, Weaker, Gone, Not in Draup) | Evidence + date.
 - Table "What changed" (up to 6, newest first): Date | Type | What changed | Why it matters.
-- "Re-entry email": 90 words max: open with the dated change, at most one line on history, one low-friction ask.
+- "Re-entry email": 90 words max: the dated change, one line of history, one low-friction ask.
 - Detail: who to re-engage (Name | Full title | In role since) and hiring.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - A reason is "Gone" only with a dated fact after [Stalled since].
-- A [Competitor] product with High usage in the workloads I sell into is Red: reopen only on a new trigger. Medium or newly detected is Amber.
-- Falling hiring with rising investment usually means automation or outsourcing, not a freeze.
-- News and hiring reach back 12 months; if [Stalled since] is older, say so.
+- Rate [Competitor]: Red if a product has High usage in my workloads or a services rival holds 30%+ of active engagements there (reopen only on a new trigger); Amber if Medium, new or 10–29%; else Green.
+- Falling hiring plus rising investment usually means automation or outsourcing, not a freeze.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 420 words above Detail, tables included.
 ```
 
 <details>

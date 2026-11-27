@@ -15,7 +15,7 @@
 | Placeholder | Example |
 |---|---|
 | `[Technology or Role]` | Snowflake (or: Head of Data Platform) |
-| `[Country]` | United States of America |
+| `[Territory (optional)]` | United States of America |
 | `[Vendor to exclude (optional)]` | Snowflake Inc. |
 | `[What I sell]` | data-platform migration services |
 
@@ -28,16 +28,16 @@ Act as my pipeline research analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Technology or Role: [a product, e.g. Snowflake, or a job title, e.g. Head of Data Platform]
-- Country: [in full, e.g. United States of America]
+- Territory (optional): [country in full; default: my territory from setup, e.g. United States of America]
 - Vendor to exclude (optional): [the maker, or my own company, e.g. Snowflake Inc.]
 - What I sell: [one line, e.g. data-platform migration services — skip if you ran the start-here prompt]
 
 STEPS
-1. Resolve the technology (or role) and country to Draup's names; show them.
-2. Technology: filter postings by that product. If the top company has under 30 postings (editable), also run a keyword search and say which you used. Role: list the title variants Draup sees and keep only the same seat (drop recruiter and junior variants).
-3. Pull the top 40 companies by postings in [Country], last 12 months, excluding staffing firms and job boards.
+1. Resolve the technology (or role) and territory to Draup's names; show them.
+2. Technology: filter postings by the product's skill name (e.g. "CrowdStrike Falcon", not "CrowdStrike"); if 0, retry once with the product name. If the top company has under 30 postings (editable), also run a keyword search and say which you used. Role: list the title variants Draup sees and keep only the same seat (drop recruiter and junior variants).
+3. Pull the top 40 companies by postings in [Territory], last 12 months, excluding staffing firms and job boards.
 4. Remove [Vendor to exclude] and its subsidiaries and unnamed rows; record each. Move IT-services and consulting firms to a separate "Partners hiring" list.
-5. Look up the top 10 end employers in one company list by exact name: workforce and primary industry. Work out postings per 1,000 employees.
+5. Merge brands and subsidiaries into parents, then look up the top 10 end employers in one company list by exact name: workforce and primary industry. Work out postings per 1,000 employees.
 6. For the top 3 by postings per 1,000: the most important news item from the last 90 days where the company is the actor. For the #1: its top 3 executives in the function closest to What I sell.
 
 OUTPUT
@@ -49,19 +49,20 @@ OUTPUT
 - Detail: industries driving demand (Industry | Postings | Share %); the "Removed" list with reasons.
 
 RULES
-- Label tables with country, window and filter (product or keyword).
+- Label tables with territory, window and filter (product or keyword).
 - Raw postings reward size: show per-1,000 beside every count; write "n/a" when workforce is missing.
 - A posting count above the company's workforce means a failed match; say so and drop it.
 - Postings are openings, not hires. Professional information only.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
 ```
 
@@ -69,7 +70,7 @@ STANDARD RULES (leave as is)
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step first: which end employers posted most [Technology or Role] jobs in [Country] in 12 months? Top 10 after removing job boards, staffing firms and the vendor, with postings per 1,000 staff and who to call.
+Bottom line and next step first: which end employers posted most [Technology or Role] jobs in [Territory] in 12 months? Top 10 after removing job boards, staffing firms and the vendor, with postings per 1,000 staff and who to call.
 ```
 
 </details>

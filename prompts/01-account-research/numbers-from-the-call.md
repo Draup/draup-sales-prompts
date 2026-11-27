@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Building a business case, a QBR, or an executive email that should use their numbers, not yours. Use "Their leaders' own words" instead when you want quotes on a theme. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Sales Leader & RevOps | Everyone | 2–4 min | Earnings calls & filings |
+| Building a business case, a QBR, or an executive email that should use their numbers, not yours. Use "Their leaders' own words on [Topic]" instead when you want quotes on a theme. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Sales Leader & RevOps | Everyone | 2–4 min | Earnings calls & filings |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -29,7 +29,7 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. store and supply-chain technology modernisation — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. List the earnings-call transcripts, newest first, and open the most recent analyst call. If the newest is a press call, use the latest analyst call and say so.
 3. Note each executive's title from the introductions.
 4. Extract every number an executive states: results, guidance, targets, capital spending, technology investment, site counts, headcount, AI or digital metrics, savings programmes.
@@ -47,15 +47,15 @@ RULES
 - Executives only; skip numbers that appear only in analysts' questions.
 - Keep units and currency as stated ("$5 billion to $6 billion", "about 6%"). Don't round or convert unless I ask.
 - Separate the period a number refers to from the call's quarter. Mark raised or lowered only if the speaker compares with earlier guidance.
-- No transcript: say so and suggest the filing fallback in "Their leaders' own words".
+- No transcript: say so and suggest the filing fallback in "Their leaders' own words on [Topic]".
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. No Chief, EVP, CIO or "Head of" title? Pull the next page of 10 in the function once (there is no title search). Professional information only.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
 ```
 

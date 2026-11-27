@@ -28,39 +28,41 @@ Act as my outbound copywriter for growth-stage and investing accounts. Use Draup
 
 INPUTS (edit these)
 - Company: [website, e.g. databricks.com]
-- Persona: [who reads it, e.g. VP Engineering]
+- Persona: [reader, e.g. VP Engineering]
 - What I sell: [one line, e.g. cloud cost management software — skip if you ran the start-here prompt]
-- Proof point (optional): [a result I may quote, e.g. cut cloud spend for Fabrikam Foods]
+- Proof point (optional): [e.g. cut cloud spend for Fabrikam Foods]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on. Note whether it is public or private.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name. Note public or private.
 2. Pull funding history: the last 3 rounds (date, USD millions, type, lead investors), or say it has none.
 3. Pull 6 months of fundraise-and-investment news, newest first, 10 items. Sort each: Raised, Committed (announced spending), Reported (talks) or Invested in others. Fact-check each amount.
 4. Pull 12 months of job postings by function: top 6 with trend, last 5 full months vs the 5 before.
 5. Pull up to 6 priorities in [Persona]'s function, newest quarter first, and link the newest Raised or Committed event to the hiring and best-fit priority.
-6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+6. Pull the top 3 executives in [Persona]'s function and pick the likeliest contact.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
-- Email: subject (6 words max) and body (100 words max): the event and its date in one clause; the stated use; a question linking it to [Persona]'s priority; one concrete offer; one ask. Use [Proof point] only if given.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
+- Email: subject (6 words max), body (100 words max): the event and its date in one clause; the stated use; a question linking it to [Persona]'s priority; one concrete offer; one ask. [Proof point] only if given.
 - LinkedIn note: 280 characters max.
 - Table "Money events" (newest first): Date | Type | Amount | Stated use | Fact check.
 - Table "Where it is going" (top 6): Function | Postings (12 months) | Last 5 vs prior 5 | Trend.
-- Detail: sources and lead investors; invested-in-others items, one line each; linked priority (source, quarter); Gaps (what Draup lacked, to ask in discovery).
+- Detail: sources and lead investors; invested-in-others items, one line each; linked priority (source, quarter); Gaps (to ask in discovery).
 
 RULES
 - Never congratulate or mention valuation; quote an amount only if Confirmed, as the source states it.
-- Reported or in-talks items are not closed: never write them as done, and prefer a closed event for the hook. If the only events are investments in other companies, write from hiring and priority instead.
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- Reported or in-talks items aren't closed: never write them as done; prefer a closed event for the hook. If the only events are investments in other companies, write from hiring and priority instead.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News: [Company] must be the actor; drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated stories; keep incidents or regulatory items bearing on What I sell. Give source and headline.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
 ```
 

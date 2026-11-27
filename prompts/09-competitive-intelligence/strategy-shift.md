@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| After a rival's earnings call, a big acquisition or a leadership change. Use this for the strategic read; use "What a rival did this quarter" (compete-recent-moves) for a dated list of moves. | Sales Leader & RevOps, Presales & Solutions, Marketing & ABM, Account Executive, Partnerships & Alliances | Everyone | 4–6 min | Earnings calls & filings, Priorities & opportunities, News signals |
+| After a rival's earnings call, a big acquisition or a leadership change. Use this for the strategic read; use "What a rival did this quarter" for a dated list of moves. | Sales Leader & RevOps, Presales & Solutions, Marketing & ABM, Account Executive, Partnerships & Alliances | Everyone | 4–6 min | Earnings calls & filings, Priorities & opportunities, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -33,13 +33,13 @@ INPUTS (edit these)
 - Account to defend or win (optional): [website of a live deal or key customer, e.g. visa.com]
 
 CONTEXT (why this matters)
-A real shift shows three ways: a louder priority on the call, money behind it, people behind it. Read a tech vendor's priorities as product moves.
+A real shift shows on the call, in money and in people. Read a tech vendor's priorities as product moves.
 
 STEPS
-1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Competitor] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. List its earnings-call transcripts; note the latest three with fiscal quarter and release date.
 3. Pull its key priorities grouped by function (up to 3 each, with fiscal quarter). Sort into New in the latest quarter, Repeated, and Older only. Focus on [Area to watch], or else on areas closest to [What I sell].
-4. Search Draup's news for [Competitor], last 6 months: executive appointments and exits, acquisitions, divestments, layoffs. Review at least 20 items; mark the most important from the last 90 days.
+4. Search news for [Competitor], last 6 months (20+ items): executive moves, acquisitions, divestments, layoffs; mark the most important from the last 90 days.
 5. Pull acquisitions in the last 12 months and reconcile with news. Flag announced-but-not-closed deals.
 6. For each theme, link the priority, the money and the people.
 7. If I gave [Account to defend or win], find it by website and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
@@ -51,7 +51,7 @@ OUTPUT
 - Table "Money and people behind it" (up to 8): Date | Move | Size if given | Theme.
 - "Trap question": one discovery question that exposes the rival's integration or execution risk.
 - Detail: calls covered (Fiscal quarter | Release date) and priority shifts (Theme | New, Repeated or Fading | Latest quarter | Example priority).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Keep only acquisitions and leadership items where [Competitor] is the actor and the event is in the window.
@@ -59,13 +59,13 @@ RULES
 - Say where they'll bundle or discount, what new objection to expect, and where they're distracted.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
 - The acquisitions table can miss deals; check 12 months of M&A news too. Divestments come from news only.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>

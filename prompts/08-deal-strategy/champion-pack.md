@@ -30,47 +30,48 @@ Act as my deal coach who writes for champions. Use Draup for Sales for every fac
 INPUTS (edit these)
 - Company: [website, e.g. 3m.com]
 - Champion: [name and title, e.g. Jane Doe, Director Supply Chain Analytics]
-- Decision maker (optional): [title or name, e.g. SVP Global Supply Chain]
-- Competitor or status quo (optional): [e.g. SAP IBP, or spreadsheets]
+- Decision maker (optional): [e.g. SVP Global Supply Chain]
+- Status quo (optional): [e.g. SAP IBP, or spreadsheets]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-Champions lose deals because they can't make the case in their company's language. The pack must read as their argument, short enough to forward.
+The pack must read as the champion's own argument, short enough to forward.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Use the champion's function; say which.
-3. Their words: up to 6 priorities in the function with quarter and outcome lines; mark earnings-call ones.
+3. Their words: up to 6 function priorities with quarter and outcome; mark earnings-call ones.
 4. Money: revenue and EBITDA growth.
-5. Momentum: 12 months of monthly postings in the function (rising, flat or falling).
-6. Recent events, last 90 days: investments, orders, cost actions, leadership moves. Review at least 15 items.
-7. Peer moves: 6 months of industry news where a named peer adopted what [What I sell] provides.
+5. Momentum: 12-month monthly function postings (rising, flat or falling).
+6. Recent events, last 90 days (15+ items): investments, orders, cost actions, leadership moves.
+7. Peer moves: 6 months of industry news where a named peer adopted what I sell.
 8. Check the whole stack for any named status-quo tool's maker.
-9. Decision maker: if I gave none, take the top 3 executives in the function (one page of 10) and pick the likely economic buyer.
+9. Decision maker: if I gave none, pick the likely economic buyer from the top 3 function executives (one page of 10).
 
 OUTPUT
 - Bottom line: 2 sentences — the case the champion can make and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) the champion should route the pack to, the action this week and the dated why-now; if none, say so.
-- "Why now": 3 bullets in the champion's voice, each a dated fact plus implication; lead with an earnings-call priority if one exists.
+- Recommended next step: a named person (name, full title) the champion should route the pack to, the action this week and the dated why-now (or say none).
+- "Why now": 3 bullets, each a dated fact plus implication; lead with an earnings-call priority if any.
 - Table "If they ask…": Who (CFO, CIO, Procurement) | Answer | Fact behind it (dated).
 - "Internal email": 150 words max, champion to decision maker, no vendor name in the first two sentences, a specific ask.
 - "Cost of waiting": 2 bullets tied to stated outcomes.
-- Detail: peer moves (or "No peer proof in Draup"), status-quo usage, "Don't say" (2 unsupported claims).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Detail: peer moves (or "No peer proof in Draup"), status-quo usage, "Don't say" (2 claims).
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
-- Write Why now and the email as "we" and "our", in the buyer's voice. No superlatives about [What I sell].
+- Write Why now and the email in the buyer's voice ("we", "our"); no superlatives about us.
 - Priority outcome lines are Draup summaries, not verbatim quotes.
-- A status-quo tool with High usage in the workloads I sell into is a strong incumbent: frame us as an addition or phased swap, not a rip-out.
+- A status-quo tool at High usage in my workloads is Red: frame us as an addition or phased swap; Medium is Amber; else Green.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 480 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Trust usage strength and last-seen date, not confidence scores or "Generic" rows; a date shared by many rows is a refresh. A rival counts only at High or Medium usage; say you ignored Low. Say "fading", never "dropped".
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 480 words above Detail, tables included.
 ```
 
 <details>

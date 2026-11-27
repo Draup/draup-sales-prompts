@@ -16,6 +16,7 @@
 |---|---|
 | `[Vertical]` | Automotive |
 | `[Audience]` | VP Supply Chain |
+| `[Territory (optional)]` | United States of America |
 | `[What I sell]` | supply-chain planning software |
 
 ## 2. Copy the detailed prompt
@@ -28,19 +29,20 @@ Act as my industry marketing strategist. Use Draup for Sales for every fact.
 INPUTS (edit these)
 - Vertical: [industry, e.g. Automotive]
 - Audience: [the persona, e.g. VP Supply Chain]
+- Territory (optional): [HQ country or region; default: my territory from setup, e.g. United States of America]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 
 STEPS
 1. Resolve the vertical to Draup's name and show it.
-2. Pull the vertical's key priorities. If none come back, use the stated priorities of its 3 largest employers and say so.
-3. Choose the 5 priorities that best fit [What I sell] and [Audience]'s function. Judge by what each describes, since function labels may not match the audience, and explain each choice in one line.
-4. Draup's vertical priorities carry no dates. For each chosen priority, keep the named company examples, then pull the dated priorities of 2–3 of the vertical's largest employers in that function and use those as proof (company, quarter or month).
-5. Market context: the vertical's revenue and R&D growth, and the 3 fastest-growing technologies relevant to [What I sell]; if none qualify, say "Not in Draup" rather than listing generic tools.
-6. For the company behind the strongest proof: its top 3 executives in [Audience]'s function and its most important news item from the last 90 days.
+2. Pull the vertical's key priorities. If none come back, say so in the first line and use the dated priorities of its 2 largest parent employers in [Territory], labelled "company proof, not industry-wide".
+3. Choose the 5 priorities that best fit [What I sell] and [Audience]'s function. Judge by what each describes, not its function label, and explain each choice in one line.
+4. Vertical priorities carry no dates: for each, keep the named company examples and pull the dated priorities of 2–3 of the vertical's largest parent employers in [Territory] in that function and use those as proof (company, quarter or month).
+5. Market context: the vertical's revenue and R&D growth, and the 3 fastest-growing technologies relevant to [What I sell] (none: "Not in Draup", never generic tools).
+6. For the company behind the strongest proof: its top 3 executives in [Audience]'s function and its most important news item from the last 90 days. If it is one of the vertical's 3 largest employers, also name the best-fit mid-size company in one line.
 
 OUTPUT
 - Bottom line: 2 sentences — the industry story and why [What I sell] fits it now.
-- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- Recommended next step: a named person (name, full title), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
 - "Top 5 priorities": # | Priority | Dated proof | Likely owner (title) | Why it matters to [Audience].
 - "5-slide narrative": per slide a title, 3 short bullets and one dated proof point. Slide 1: the market shift. Slides 2–4: the three strongest priorities. Slide 5: why [What I sell] now.
 - "One-line POV": 35 words or fewer.
@@ -52,15 +54,17 @@ RULES
 - Company examples are real public companies; present them as industry evidence, never as our customers.
 - IT spend tracks revenue in Draup; don't use its growth as a trend.
 - If an industry returns zeros, say so, retry with its parent and name it.
+- Name any company driving over a third of a growth figure.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
 ```
 
@@ -96,7 +100,7 @@ Make a version for a CFO audience.
 
 ## Related prompts
 
-- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry scoped to your region: global size and growth beside a regional size from the top 10 buyers, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
 - [3-email sequence for one industry persona](../../prompts/16-content-and-enablement/email-sequence.md): A ready-to-load 3-email sequence for one persona in one industry, each email built on a priority in the persona's function and a dated move by a real company, plus the first account to load with a named contact.
 - [Weekly industry signal digest](../../prompts/04-signals-and-timing/vertical-digest.md): A one-screen digest of the week's material moves in one industry, grouped by theme, with source counts, the accounts worth touching and a named person at the best one.
 

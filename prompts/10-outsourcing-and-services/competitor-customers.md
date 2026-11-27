@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You're building a displacement campaign against one services rival in one industry. Use services-competitor-at-account instead for a single account. | Services, SI & Staffing Seller, Account Executive, SDR / BDR, Sales Leader & RevOps | Services sellers | 2–4 min | Outsourcing deals, Executives & movement, News signals |
+| You're building a displacement campaign against one services rival in one industry. Use "A rival's footprint and your wedge" instead for a single account. | Services, SI & Staffing Seller, Account Executive, SDR / BDR, Sales Leader & RevOps | Services sellers | 2–4 min | Outsourcing deals, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -16,7 +16,7 @@
 |---|---|
 | `[Competitor]` | Capgemini |
 | `[Vertical]` | Life Sciences |
-| `[Country]` | United States of America |
+| `[Country]` | United States of America (default: my territory) |
 | `[Workload (optional)]` | Data Engineering |
 | `[What I sell]` | clinical data and analytics managed services |
 
@@ -30,14 +30,14 @@ Act as my displacement-campaign analyst. Use Draup for Sales for every fact. Don
 INPUTS (edit these)
 - Competitor: [Services firm, e.g. Capgemini]
 - Vertical: [Draup industry, e.g. Life Sciences]
-- Country: [Customer HQ country in full, e.g. United States of America]
+- Country: [Customer HQ country in full, e.g. United States of America; default: my territory from setup]
 - Workload (optional): [e.g. Data Engineering, or a business function I'll map; blank for all]
 - What I sell: [One line, e.g. clinical data and analytics managed services — skip if you ran the start-here prompt]
 
 STEPS
 1. Confirm Draup's spelling of the competitor, industry and country. Use each customer's primary industry so loosely tagged companies don't slip in.
-2. Pull the competitor's customers in that primary industry with HQ in that country (and workload, if given), by engagements. Keep the top 20.
-3. For the top 8, pull each account's provider ranking: total engagements, the competitor's rank and share, and the provider just above or below it.
+2. Pull the competitor's customers in that primary industry with HQ in that country (and workload, if given), by engagements. Merge subsidiaries into parents; keep the top 20.
+3. For the top 8, pull each account's provider ranking (the competitor's rank and the provider just above or below it), and get all 8 accounts' total engagements in one customer lookup; share = competitor engagements ÷ total.
 4. Pull the competitor's top 5 workloads in this industry and country.
 5. People and timing: pick the Best 3 (see OUTPUT). For the first one, pull its top 3 leaders in the business function closest to [What I sell] (full profile titles) and its most important news item from the last 90 days where it is the actor.
 
@@ -46,9 +46,9 @@ OUTPUT
 - Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
 - Headline line: "[Competitor] has N customers and X active engagements in [Vertical], [Country]", plus its top 5 workloads.
 - "Targets" (top 10): Rank | Customer | Engagements with rival | Share of account | Read.
-- Read: Entrenched (#1 or above 30%), Contestable (10–30%), Foothold (below 10%) — editable defaults. Rows 9–20: "not assessed".
-- "Best 3 to target": assessed Contestable or Foothold accounts with the most engagements, one line each with the provider next to the rival.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Read: Red (entrenched: #1 or 30%+), Amber (contestable: #2–3, or 10–29%), Green (foothold: outside the top 3 and under 10%; a light presence) — editable defaults. Rows 9–20: "not assessed".
+- "Best 3 to target": assessed Amber or Green accounts with the most engagements, one line each with the provider next to the rival.
+- Gaps: what Draup lacked; ask in discovery.
 - Detail: rows 11–20 and each top-8 account's total engagements and rank.
 
 RULES
@@ -57,13 +57,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Unless I say otherwise, narrow pulls to the business function closest to What I sell; map a function I give to its 1–3 main workloads and say which.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 420 words including tables.
 ```
 
 <details>
@@ -94,7 +94,7 @@ Write a 3-email displacement sequence for the person in the next step.
 ## Tips for better results
 
 - Use the full country name, e.g. United States of America.
-- A Contestable account is often easier to win than one where the rival is the main partner.
+- An Amber account (the rival is #2–3) is often easier to win than a Red one where it is the main partner.
 
 ## Related prompts
 

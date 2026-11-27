@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" role="img" aria-labelledby="t d">
+  <title id="t">Draup Sales Prompt Library</title>
+  <desc id="d">Ready-to-use prompts for Claude, ChatGPT and Microsoft Copilot, powered by Draup for Sales data.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#041631"/>
+      <stop offset="1" stop-color="#0a2e66"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="320" rx="20" fill="url(#bg)"/>
+  <rect width="1280" height="320" rx="20" fill="url(#grid)"/>
+  <g font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+    <text x="64" y="86" fill="#6dcef9" font-size="20" font-weight="700" letter-spacing="3">DRAUP FOR SALES · PROMPT LIBRARY</text>
+    <text x="64" y="156" fill="#ffffff" font-size="54" font-weight="800">Ask Draup the questions</text>
+    <text x="64" y="218" fill="#ffffff" font-size="54" font-weight="800">that move deals</text>
+    <text x="64" y="266" fill="#cfe1ff" font-size="22">{{N}} detailed prompts · {{PB}} playbooks · for Claude, ChatGPT &amp; Copilot</text>
+  </g>
+  <g transform="translate(940 70)" font-family="-apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="600">
+    <rect x="0" y="0" width="276" height="40" rx="20" fill="#146ef5"/>
+    <text x="138" y="26" fill="#ffffff" text-anchor="middle">Account briefs</text>
+    <rect x="0" y="54" width="276" height="40" rx="20" fill="none" stroke="#6dcef9" stroke-opacity="0.6"/>
+    <text x="138" y="80" fill="#eaf2ff" text-anchor="middle">Buying committees</text>
+    <rect x="0" y="108" width="276" height="40" rx="20" fill="none" stroke="#6dcef9" stroke-opacity="0.6"/>
+    <text x="138" y="134" fill="#eaf2ff" text-anchor="middle">Why-now signals</text>
+    <rect x="0" y="162" width="276" height="40" rx="20" fill="none" stroke="#6dcef9" stroke-opacity="0.6"/>
+    <text x="138" y="188" fill="#eaf2ff" text-anchor="middle">Incumbents &amp; displacement</text>
+  </g>
+</svg>

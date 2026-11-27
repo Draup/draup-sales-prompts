@@ -15,7 +15,7 @@
 | Placeholder | Example |
 |---|---|
 | `[Vertical]` | Insurance |
-| `[Region (optional)]` | North America |
+| `[Territory (optional)]` | United States of America |
 | `[What I sell]` | claims and underwriting data services |
 | `[My competitors (optional)]` | Guidewire, Duck Creek |
 | `[Our position (optional)]` | 4 customers in the vertical, 1 partner |
@@ -25,48 +25,48 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my chief of staff to the sales leader, building board slides. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my chief of staff to the sales leader, building board slides. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Vertical: [Draup industry, e.g. Insurance]
-- Region (optional): [e.g. North America; narrows the account picks — industry totals stay global]
-- What I sell: [one line, e.g. claims and underwriting data services — skip if you ran the start-here prompt]
-- My competitors (optional): [rival products or firms, e.g. Guidewire, Duck Creek — skip if you ran the start-here prompt]
+- Territory (optional): [e.g. United States of America; default: my territory from setup; narrows the account picks — industry totals stay global]
+- What I sell: [one line, e.g. claims and underwriting data services; skip if saved in setup]
+- My competitors (optional): [rival products or firms, e.g. Guidewire, Duck Creek; skip if saved in setup]
 - Our position (optional): [e.g. 4 customers in the vertical, 1 partner]
 
 STEPS
-1. Use Draup's exact industry and region names; map What I sell to its workloads. If the industry returns zeros, try its parent and name it.
+1. Use Draup's exact industry and territory names; map What I sell to its workloads. If the industry returns zeros, try its parent and name it.
 2. Pull the industry's revenue and growth (Draup may give no year; say so).
 3. Pull industry priorities; keep the 3 most relevant to [What I sell] (examples are undated; say so).
-4. Pull the top outsourcing buyers and fastest-growing companies by workforce (each a fixed top 50, worldwide). Keep growers with 1,000+ staff; narrow both to [Region] if given.
-5. Run one 90-day news search in the industry (and region): acquisitions, expansions, partnerships, investments, leadership changes. Review up to 20 items.
-6. Shortlist 12 candidates (two-list companies first) and check them in one company list by exact name, showing only my competitors' products and whether each is active in my workloads. Pick 8: workload-active first, then two-list, then the strongest single reason.
+4. Pull the top outsourcing buyers and fastest-growing companies by workforce (fixed top 50s, worldwide); keep growers with 1,000+ staff, in [Territory].
+5. Run one 90-day news search in the industry and territory (acquisitions, expansions, partnerships, investments, leadership changes); review up to 20 items.
+6. Shortlist 12 candidates (two-list companies first) and check them in one company list by exact name, showing only my competitors' products and whether each is active in my workloads. Pick 8: workload-active first, then two-list, then the strongest single reason. For the top 3 picks, check rival usage (only High or Medium counts); for the rest write "rival listed, usage not checked".
 7. For the top pick, pull its top 3 executives in the function closest to What I sell.
 
 OUTPUT
 - Bottom line: 2 sentences — where we hunt and what it means for [What I sell].
-- Recommended next step: the board ask to make first and its owner; then the first account to open, with a named person (name and title from step 7) and one dated fact. If none is found, say so.
+- Recommended next step: the first board ask and its owner; then the first account, with a named person (step 7) and one dated fact. If none, say so.
 - Slide 1 "[Vertical]: the market": one-sentence headline, revenue and growth, 3 priorities with what each means for us.
 - Slide 2 "Where we hunt next quarter": Account | Why it fits (workloads, rival) | Why now (dated) | Likely owner (title). 8 rows.
-- Slide 3 "What we need": 3 asks (rep, partner, event, budget), each tied to a slide-2 fact and Our position.
+- Slide 3 "What we need": 3 asks, each tied to a slide-2 fact and Our position.
 - Detail: speaker notes (60 words per slide); sources and caveats.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- One-slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+- Gaps: what Draup didn't have, to ask in discovery.
+- One-slide version (only if asked): 5 dated bullets plus 1 table.
 
 RULES
 - Use growth-list companies only from the core business; mark brokers, health groups and agencies.
+- If an industry total is driven by one company (over a third), name it.
 - Why-now counts only if dated in the last 90 days with the company as actor.
-- Industry totals are global Draup estimates; never add them to company figures.
+- Industry totals are global estimates; never add them to company figures.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
-- Map a business function to its 1–3 main Draup workloads (types of work, e.g. Cloud) and say which you used.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables; then offer to continue.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 500 words including tables, then offer more.
 ```
 
 <details>
@@ -106,7 +106,7 @@ Shorten everything to one slide for the board pack.
 
 ## Related prompts
 
-- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry scoped to your region: global size and growth beside a regional size from the top 10 buyers, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
 - [Weekly industry signal digest](../../prompts/04-signals-and-timing/vertical-digest.md): A one-screen digest of the week's material moves in one industry, grouped by theme, with source counts, the accounts worth touching and a named person at the best one.
 - [Spot scale-up and cost-out buyers](../../prompts/06-prospecting-and-lists/growth-and-cost-out.md): Who in a vertical is adding people fast (scale-up buyers) and who is shrinking (cost-out buyers), with merged or closed companies removed and a named person to call first.
 - [Next quarter's target accounts, ranked by triggers](../../prompts/15-sales-leadership-and-revops/pipeline-targets.md): A territory-wide list of accounts ranked by distinct triggers in the last 90 days, activity in the work you sell and rival presence, with one dated why-now each, the person to call at the top account, and the off-list companies acting in your territory.

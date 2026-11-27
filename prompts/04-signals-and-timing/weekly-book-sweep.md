@@ -31,10 +31,10 @@ INPUTS (edit these)
 - Window (optional): [default last 7 days; up to 30 days]
 
 STEPS
-1. Reuse the Draup names saved in my setup. Resolve others by website (exact match, parent company); ask only if none or several match. If I gave more than 10, do the first 10 and offer to continue.
-2. Pull news for all accounts in one feed pull for the window: executive moves (CEO and other C-level changes first), M&A, layoffs, partnerships and vendor deals, expansion, funding and investment, plus incidents or regulatory items that bear on what I sell. If one account fills more than half the results, pull the other accounts separately.
+1. Reuse the Draup names saved in my setup. Resolve others by website (parent company); if one doesn't resolve, retry once by name and show the match and score; ask only if several match. If I gave more than 10, do the first 10 and offer to continue.
+2. Pull news for all accounts in one feed pull for the window: executive moves (CEO and other C-level changes first), M&A, layoffs, partnerships and vendor deals, expansion, funding and investment, plus incidents or regulatory items that bear on what I sell. If one account fills over half the results, pull the others separately.
 3. Apply the noise rule; also drop court dockets, stock-analysis pieces and store-property sales tagged as M&A.
-4. After step 3, for every account with nothing left, check its top-ranked signals and keep items whose event or effective date falls inside the window, even if the story was captured before or after it (e.g. a new CEO who takes over on a date inside the window).
+4. After step 3, for every account with nothing left, check its top-ranked signals and keep items whose event or effective date falls inside the window, even if captured before or after it (e.g. a new CEO taking over inside the window).
 5. Leadership check: before calling any account quiet, confirm steps 2–4 found no CEO or other C-level change announced or effective in the window.
 6. Label subsidiary news "[Subsidiary] ([Account])". Merge repeat coverage and count sources.
 7. Write one "so what" per item for [What I sell] and tag it Act now (this week), Plan (next touch) or Watch.
@@ -42,22 +42,24 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - Table (Act now first, then newest; up to 10): Account | Date | Trigger (with any number) | So what | Action.
 - "Just outside the window": for each quiet account, the nearest material item (date, one line), or "nothing in 90 days".
 - "No material signals" and "Not resolved": account names only.
-- Detail: source and headline, type, source count and likely owner per item; "Dropped" count by reason; Gaps (what Draup lacked, to ask in discovery).
+- Detail: source and headline, type, source count and likely owner per item; "Dropped" count by reason; Gaps (to ask in discovery).
 
 RULES
 - Every item needs an event or effective date inside the window; drop anything you can't date.
 - Don't pull leadership-move histories for every account; if I ask about one, narrow to the workloads I name.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
-- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and re-dated old stories (use the event date). Outages, incidents, breaches and regulatory inquiries count for security, reliability, IT operations or compliance sellers; keep any item that bears directly on What I sell. Give source, headline and link (if any) per item.
+- If sources conflict on a name, date or number, say so and repeat neither as fact; single-source figures are unverified.
+- If an account sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
 ```
 
 <details>

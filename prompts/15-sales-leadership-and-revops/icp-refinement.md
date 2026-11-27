@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Rewriting the ideal customer profile before planning, a new campaign or a territory carve. Use the single-customer look-alike prompt when you start from one account. | Sales Leader & RevOps, Marketing & ABM, Account Executive | Everyone | 4–6 min | Company directory, Company & financials, Outsourcing deals, Hiring & job postings, Executives & movement, News signals |
+| Rewriting the ideal customer profile before planning, a new campaign or a territory carve. Use "Find look-alikes of your best customer" when you start from one account. | Sales Leader & RevOps, Marketing & ABM, Account Executive | Everyone | 4–6 min | Company directory, Company & financials, Outsourcing deals, Hiring & job postings, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -17,28 +17,27 @@
 | `[Best customers]` | progressive.com, allstate.com, travelers.com, thehartford.com, chubb.com |
 | `[What I sell]` | claims-automation software |
 | `[My competitors (optional)]` | Guidewire, Duck Creek |
+| `[Territory (optional)]` | United States of America |
 
 ## 2. Copy the detailed prompt
 
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my go-to-market strategist refining an ideal customer profile. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my go-to-market strategist refining an ideal customer profile. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Best customers: [5–10 websites, e.g. progressive.com, allstate.com, travelers.com, thehartford.com, chubb.com]
-- What I sell: [one line, e.g. claims-automation software — skip if you ran the start-here prompt]
-- My competitors (optional): [rival products or firms, e.g. Guidewire, Duck Creek — skip if you ran the start-here prompt]
-
-CONTEXT (optional)
-Start from what the best customers actually share, then check the definition returns a workable number of new companies: too tight finds only current customers, too loose drowns reps. Some websites resolve to a subsidiary or venture arm.
+- What I sell: [one line, e.g. claims-automation software; skip if saved in setup]
+- My competitors (optional): [rival products or firms, e.g. Guidewire, Duck Creek; skip if saved in setup]
+- Territory (optional): [HQ country or region for look-alikes, e.g. United States of America; default: my territory from setup]
 
 STEPS
-1. Map What I sell to its 1–3 main workloads and say which. Look up all customers by website (exact) in one company list. If a row shows a parent, fund, venture arm or unit, look up the parent and ask me which to use.
+1. Map What I sell to its 1–3 main workloads and say which. Look up all customers by website (exact) in one company list. If a row shows a parent, fund, venture arm or unit, look up the parent and ask me which to use. If a website returns nothing, look it up by name once and show the match and its score.
 2. For each: primary industry, sub-industries, HQ country, workforce, revenue, growth, service providers, hiring %, and whether it's active in my workloads.
 3. Find shared traits: an industry or sub-industry held by 80%+ (editable), HQ countries, workforce and revenue range (rounded), providers at 60%+, workload activity.
-4. Write the look-alike definition, including "active in my workloads" if 80%+ share it. Count matches (names only, up to 100) minus the customers.
-5. Test up to 2 loosenings one at a time (drop the provider, widen the size band, add a neighbouring sub-industry), counted the same way. If I named competitors, test once adding "runs a rival product".
+4. Write the look-alike definition, including "active in my workloads" if 80%+ share it. Count matches in [Territory] if given (names only, up to 100) minus the customers.
+5. Test up to 2 loosenings one at a time (drop the provider, widen the size band, add a neighbouring sub-industry), counted the same way. If I named competitors, test once adding "runs a rival product" (presence only; usage not checked, say so).
 6. Recommend the tightest definition returning 15–100 new companies (editable). Pull its top 10 by revenue in one detail page.
 7. For the first look-alike, pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
 
@@ -48,22 +47,23 @@ OUTPUT
 - "Definitions tested": Version | Conditions | New companies | What it adds or loses.
 - "Recommended ICP": the conditions in plain words for a planning doc, plus 2 traits to qualify by hand.
 - Detail: shared traits (n of N; Strong 80%+, Moderate 60–79%); customer data check; first 10 look-alikes with why each matches.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+- Gaps: what Draup didn't have, to ask in discovery.
+- Slide version (only if asked): 5 dated bullets plus 1 table.
 
 RULES
 - Never count the customers, their subsidiaries or sister companies as look-alikes.
 - Name well-known companies missing for lack of a workforce figure (e.g. large mutuals) and offer to add them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
-- Counts and totals must apply every condition I set; never report one from a check that dropped a condition.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Every count and total applies all my conditions.
 - Size limits drop companies with no workforce figure (often private firms or mutuals); say so.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- Parent companies only; merge subsidiaries and alternate names of one company.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>
@@ -106,7 +106,7 @@ Write the ICP as a one-paragraph brief for SDRs.
 - [Find look-alikes of your best customer](../../prompts/06-prospecting-and-lists/lookalikes.md): Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches, plus who to call first and why now.
 - [Size your ideal-customer list](../../prompts/06-prospecting-and-lists/icp-list.md): The true count of companies matching every filter, distributors set aside, and the 5 accounts to start with, each with who to call and a dated why-now.
 - [Tier my accounts by fit and timing](../../prompts/11-account-planning/propensity-tiering.md): Up to 25 accounts scored 0–100 on fit to what you sell (hiring in your workloads, installed competitors) and timing (news, hiring, growth), tiered A, B or C with a spread you can act on, and the driver behind each score.
-- [Which region gets the next rep](../../prompts/15-sales-leadership-and-revops/territory-potential.md): A ranked comparison of 2–5 regions for one industry — how many sizeable accounts each holds, how many are active in the work you sell, where your rivals already sit, and the revenue at stake — with the region to staff next and the first account to open there.
+- [Which region gets the next rep](../../prompts/15-sales-leadership-and-revops/territory-potential.md): A ranked comparison of 2–5 countries for one industry, or 2–4 industries in one country: how many sizeable accounts each holds, how many are active in the work you sell, where your rivals are really in use, and the revenue at stake, with where to add the next rep and the first account to open.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

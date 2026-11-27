@@ -1,20 +1,20 @@
 <section>
   <h2>What this is</h2>
-  <p>A library of ready-made prompts for Claude and ChatGPT. With <b>Draup for Sales</b> switched on, your assistant pulls live Draup data and turns it into account briefs, buyer maps, target lists, signal alerts and outreach drafts. You fill in a few blanks, and it does the research.</p>
+  <p>A library of ready-made prompts for Claude, ChatGPT and Microsoft 365 Copilot. With <b>Draup for Sales</b> switched on, your assistant pulls live Draup data and turns it into account briefs, buyer maps, target lists, signal alerts and outreach drafts. You fill in a few blanks, and it does the research.</p>
   <div class="qs-grid">
     <div class="box accent"><h3>Good for</h3><ul><li>Preparing for meetings in minutes</li><li>Finding the right buyers and a warm way in</li><li>Knowing <i>why now</i> before you reach out</li><li>Building and sizing target lists</li><li>Mapping incumbent vendors and competitors</li><li>Account plans, risk checks and QBR prep</li></ul></div>
-    <div class="box"><h3>What you need</h3><ul><li>Claude (claude.ai, desktop or mobile) or ChatGPT</li><li>A Draup account with Draup for Sales access</li><li>About two minutes to connect the two</li></ul></div>
+    <div class="box"><h3>What you need</h3><ul><li>Claude, ChatGPT, or Microsoft 365 Copilot / Teams</li><li>A Draup account with Draup for Sales access</li><li>About two minutes to connect the two</li></ul></div>
   </div>
 </section>
 <section>
   <h2>Set up in 3 steps</h2>
   <ol class="steps3">
-    <li><b>Connect Draup.</b> <b>Claude:</b> open <i>claude.ai/directory/draup-for-sales</i> (or Settings → Connectors → Browse connectors), click Connect and sign in with your Draup account. <b>ChatGPT:</b> open Plugins, search “Draup for Sales”, add it and sign in. <b>Microsoft 365 Copilot or Teams:</b> get the Draup for Sales agent from Microsoft Marketplace (your admin may approve it). Other MCP clients: see the Connect guide on GitHub. It is read-only.</li>
+    <li><b>Connect Draup.</b> <b>Claude:</b> open <i>claude.ai/directory/draup-for-sales</i> (or Settings → Connectors → Browse connectors), click Connect and sign in with your Draup account. <b>ChatGPT:</b> open Plugins, search “Draup for Sales”, add it and sign in. <b>Microsoft 365 Copilot or Teams:</b> get the Draup for Sales agent from <a href="{{TEAMS}}">Microsoft Marketplace</a> (your Microsoft 365 admin may need to approve it once). Other MCP clients: see the Connect guide on GitHub. It is read-only.</li>
     <li><b>Tell your AI about you.</b> Paste the start-here prompt (next page) into a new chat, fill in your details and send it. For a permanent setup, paste it into a Claude or ChatGPT Project’s instructions.</li>
     <li><b>Run a prompt.</b> Pick one from this guide or the catalogue, replace the <mark>[bracketed]</mark> parts and send. Then use the follow-ups to go deeper in the same chat.</li>
   </ol>
-  <div class="box accent" style="margin:2mm 0 4mm"><h3>Tip: add the whole library as a skill</h3><p style="margin:0">Let your AI pick the right prompt for you. <b>Claude:</b> download the skill zip from the GitHub page and upload it under Customize → Skills. <b>Claude Code:</b> <code>/plugin marketplace add Draup/draup-sales-prompts</code>, then <code>/plugin install draup-sales@draup-sales-prompts</code>. <b>ChatGPT:</b> upload the one-file library to a Project. Full steps: github.com/Draup/draup-sales-prompts → guides/use-as-a-skill.md</p></div>
-  <h2>Pick your start by role</h2>
+  <div class="box accent" style="margin:2mm 0 4mm"><h3>Tip: add the whole library as a skill</h3><p style="margin:0">Let your AI pick the right prompt for you. <b>Claude:</b> download the skill zip (<a href="{{SKILL_ZIP}}">github.com/Draup/draup-sales-prompts → dist/draup-sales-prompts-skill.zip</a>) and upload it under Customize → Skills. <b>Claude Code:</b> <code>/plugin marketplace add Draup/draup-sales-prompts</code>, then <code>/plugin install draup-sales@draup-sales-prompts</code>. <b>ChatGPT:</b> upload the one-file library to a Project. Full steps: github.com/Draup/draup-sales-prompts → guides/use-as-a-skill.md</p></div>
+  <h2 class="break">Pick your start by role</h2>
   {{ROLE_START}}
 </section>
 <section class="break">
@@ -35,17 +35,13 @@
     <tr><td>Name a business function or workload ("IT", "Supply Chain", "AI &amp; Data Science")</td><td>Big companies have thousands of records; narrowing gives sharper answers</td></tr>
     <tr><td>Ask for top N, a time window and dates</td><td>Keeps answers short and shows you how fresh each fact is</td></tr>
     <tr><td>Use the detailed prompt for anything you will share</td><td>It carries the guardrails: dated facts, "Not in Draup" instead of guesses</td></tr>
-    <tr><td>Keep going in the same chat with follow-ups</td><td>Claude reuses what it already found</td></tr>
+    <tr><td>Keep going in the same chat with follow-ups</td><td>Your assistant reuses what it already found</td></tr>
     <tr><td>Save your solution offering in your Draup profile</td><td>Unlocks Draup opportunities tailored to what you sell</td></tr>
   </table>
   <h3>Before you trust a number</h3>
   {{TRUST}}
-  <h3>Reading the answers</h3>
-  <ul>
-    <li><b>Financials</b> are annual, in the company's reporting currency and fiscal year. Ask for USD when comparing.</li>
-    <li><b>Outsourced headcount</b> is a Draup estimate, not a reported figure.</li>
-    <li><b>Executive and news data</b> is a starting point. Check names and titles before you send anything.</li>
-    <li><b>"Not in Draup"</b> means no data was found, which is not the same as "doesn't exist".</li>
-  </ul>
+  <h3>How competitor tools are rated</h3>
+  <p class="legend"><span style="background:#b42318">Red</span> entrenched: high usage, or 30%+ of the work &nbsp; <span style="background:#b54708">Amber</span> present: medium usage, or 10–29% &nbsp; <span style="background:#067647">Green</span> light or absent: low usage or under 10%, an opening</p>
+  <p><b>"Not in Draup"</b> means no data was found, which is not the same as "doesn't exist".</p>
   <p>Full library, playbooks and role cheat sheets: <b>github.com/Draup/draup-sales-prompts</b></p>
 </section>

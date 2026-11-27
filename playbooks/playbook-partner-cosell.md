@@ -4,15 +4,15 @@
 
 > **Goal:** Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
 
-**For:** Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller · **Time:** 35–45 min · **Steps:** 4
+**For:** Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller · **Time:** About 12 min with quick versions, 35–45 min with detailed · **Steps:** 4
 
 **Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Which providers to partner with or replace
 
-Shows which providers and vendors are already linked to each priority at the account, and whether each is a partner, a competitor or an opening.
+Shows which providers and vendors are linked to each priority at the account, with engagements counted in your function.
 
-**Look for:** Providers already working the priority next to yours, counted in your function, not account-wide. They have access and credibility.
+**Look for:** Providers tagged Partner on a priority next to yours: they already have access and credibility.
 
 Open the full prompt: [Which providers to partner with or replace](../prompts/10-outsourcing-and-services/partner-map.md)
 
@@ -24,9 +24,9 @@ Bottom line and next step (named person, dated why-now) first. For [Company]'s t
 
 ## Step 2. Pick the SI to co-sell with
 
-Shortlists the partners already delivering your workload at the account and skilled in your technology, with the one to call first.
+Ranks the providers that deliver your workload at the account and know your technology. Reuse step 1's provider list; this adds workload depth and technology experience.
 
-**Look for:** Your existing partners ranked first, then the one with the deepest footprint in your workload. That's your co-sell pick.
+**Look for:** The provider it says to call first: deepest in your workload (engagements in that work, not account-wide) with experience in your technology. Even better if step 1 tagged it Partner.
 
 Open the full prompt: [Pick the SI to co-sell with](../prompts/10-outsourcing-and-services/cosell-partner.md)
 
@@ -38,9 +38,9 @@ Bottom line and next step (named person, dated why-now) first. Which providers d
 
 ## Step 3. Profile a services firm, rival or partner
 
-Profiles the partner you picked: top customers, industries, workloads and delivery hubs.
+Profiles the partner you picked: top customers, workloads and delivery hubs.
 
-**Look for:** Overlap with your target list and industry, and delivery locations near the account's sites. That's the evidence for your co-sell ask to the partner.
+**Look for:** Overlap with your target list and industry, and delivery hubs near the account's sites: the evidence for your co-sell ask.
 
 Open the full prompt: [Profile a services firm, rival or partner](../prompts/10-outsourcing-and-services/competitor-profile.md)
 
@@ -52,9 +52,9 @@ Bottom line and next step (named person, dated why-now) first. Profile [Firm] fr
 
 ## Step 4. ABM openers for 10 accounts at once
 
-Writes joint first-touch messages for the shared accounts, using the Co-sell partner input, up to 10 accounts per pass.
+Writes first-touch openers for the shared accounts, up to 10 per pass.
 
-**Look for:** Messages that pair the account's priority with a recent signal, written to the persona, plus one joint note for the strongest account that both teams can send.
+**Look for:** Strong rows (signal ties to the priority) first. For a joint note both teams can send, use the detailed version with the co-sell partner input.
 
 Open the full prompt: [ABM openers for 10 accounts at once](../prompts/16-content-and-enablement/abm-messages.md)
 

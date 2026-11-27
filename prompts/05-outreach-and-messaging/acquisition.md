@@ -28,40 +28,42 @@ Act as my outbound copywriter for post-merger integration. Use Draup for Sales f
 
 INPUTS (edit these)
 - Company: [website, e.g. novartis.com]
-- Persona: [who reads it, e.g. Head of R&D IT]
+- Persona: [reader, e.g. Head of R&D IT]
 - What I sell: [one line, e.g. clinical data integration services — skip if you ran the start-here prompt]
-- Acquired company (optional): [a deal you already know about]
+- Acquired company (optional): [e.g. a deal you already know]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Pull acquisitions from the last 12 months and remove duplicates.
-3. Pull 6 months of M&A news, newest first, 10 items. Keep deals where [Company] or a labelled subsidiary is the buyer; separate company acquisitions from licence or trademark purchases; mark each announced or closed; check the target name matches the text. Fact-check size and close date.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
+2. Pull 12 months of acquisitions, deduplicated.
+3. Pull 6 months of M&A news, newest first, 10 items. Keep deals where [Company] or a labelled subsidiary buys; separate company acquisitions from licence or trademark purchases; mark each announced or closed and check the target name in the text. Fact-check size and close date.
 4. Pull up to 5 priorities whose names mention integration (if fewer than 2, also try "acqui"), with function, source, quarter and linked tools and providers.
 5. Choose the newest closed acquisition with an integration priority near [Persona]'s area (or the one I named, if it qualifies).
-6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+6. Pull the top 3 executives in [Persona]'s function and pick the likeliest contact.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
-- Email: subject (6 words max) and body (100 words max): the deal and close date; the integration task as a question; one concrete offer (a day-100 checklist, a teardown of similar integrations); one ask.
-- Variant (60 words max) for a leader on the acquired side, only if that company is in Draup.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
+- Email: subject (6 words max), body (100 words max): the deal and close date; the integration task as a question; one concrete offer (e.g. a day-100 checklist); one ask.
+- Variant (60 words max) for a leader on the acquired side, only if it is in Draup.
 - Table "Deals" (newest first): Date | Target | Type | Status | Fact check.
 - Table "Integration work they've described": Priority (Draup's words) | Function | Quarter | Likely owner.
-- Detail: size, buyer (group or subsidiary) and source per deal; linked tools or providers; Gaps (what Draup lacked, to ask in discovery).
+- Detail: size, buyer (group or subsidiary) and source per deal; linked tools or providers; Gaps (to ask in discovery).
 
 RULES
 - Never mention write-downs, impairments, failed trials, job cuts or share price in the copy.
 - A licence, asset or trademark purchase is not a company integration; use it only if it creates the work I sell.
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- The acquisitions table can miss deals; if news or priorities name one it lacks, check 12 months of M&A news. Say tools are "linked" to a priority, never "used for".
-- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- The acquisitions table can miss deals; cross-check M&A news. Say tools are "linked" to a priority, never "used for".
+- News: [Company] must be the actor; drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated stories; keep incidents or regulatory items bearing on What I sell. Give source and headline.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
 ```
 

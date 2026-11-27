@@ -15,7 +15,7 @@
 | Placeholder | Example |
 |---|---|
 | `[Technology]` | SAP S/4HANA |
-| `[Country (optional)]` | United States of America |
+| `[Territory (optional)]` | United States of America |
 | `[What I sell]` | SAP staff augmentation |
 
 ## 2. Copy the detailed prompt
@@ -27,14 +27,14 @@ Act as my talent market analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Technology: [skill or product, e.g. SAP S/4HANA]
-- Country (optional): [in full, e.g. United States of America]
+- Territory (optional): [country in full; default: my territory from setup, or "global"; e.g. United States of America]
 - What I sell: [one line, e.g. SAP staff augmentation — skip if you ran the start-here prompt]
 
 STEPS
-1. Resolve the technology, and the country if given, to Draup's names and show them.
+1. Resolve the technology to Draup's skill name (e.g. "CrowdStrike Falcon", not "CrowdStrike") and [Territory] to Draup's name; show them. If postings come back 0, retry once with the product name.
 2. Pull the work-type breakdown of postings for [Technology] over the last 12 months: full-time, contract, part-time, other and no type stated.
 3. Work out each type's share of all postings and of postings that state a type.
-4. Pull the top 15 companies posting for [Technology] in the same window and country, and classify each as end employer, staffing firm or IT services/SI.
+4. Pull the top 15 companies posting for [Technology] in the same window and territory, merge subsidiaries into parents, and classify each as end employer, staffing firm or IT services/SI.
 5. For the top end employer: its top 3 executives in the function that owns [Technology] and its most important news item from the last 90 days.
 
 OUTPUT
@@ -43,22 +43,23 @@ OUTPUT
 - "Split": Work type | Postings | Share of all % | Share of stated-type %. Verdict: "contract-heavy" over 40% of stated, "balanced" at 20–40%, else "full-time-led" (editable).
 - "Who's hiring" (top 10): Company | Postings | Type.
 - Gaps: what Draup didn't have — worth asking in discovery.
-- Detail: header with technology, country (or "global") and exact window; ranks 11–15; 3 bullets on what it means for [What I sell].
+- Detail: header with technology, territory (or "global") and exact window; ranks 11–15; 3 bullets on what it means for [What I sell].
 
 RULES
 - Never count no-type postings as full-time, and always show the no-type share.
-- Use the same window and country for every number; city breakdowns are out of scope.
+- Use the same window and territory for every number; city breakdowns are out of scope.
 - Many staffing or SI firms in the top 15 is another sign of contract-led demand.
 - Postings are openings, not hires.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 

@@ -14,11 +14,11 @@
 
 | Placeholder | Example |
 |---|---|
-| `[Our firm]` | Wipro, or a second rival if your firm isn't in Draup |
+| `[Our firm]` | Wipro (or "not in Draup") |
 | `[Competitor]` | Cognizant |
 | `[Industry]` | Banking & Financial Services |
-| `[Country]` | United States of America |
-| `[Our accounts]` | paste a list (optional) |
+| `[Country]` | United States of America (default: my territory) |
+| `[Our accounts and strengths]` | paste accounts and workloads we lead in (optional) |
 | `[What I sell]` | data engineering and cloud managed services |
 
 ## 2. Copy the detailed prompt
@@ -26,56 +26,54 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my competitive strategist for an IT services firm. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my services competitive strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
-- Our firm: [Draup name of your services firm, e.g. Wipro — or a second rival if yours isn't in Draup]
+- Our firm: [Draup name, e.g. Wipro; or "not in Draup: Infosys" to compare two rivals]
 - Competitor: [services firm, e.g. Cognizant]
 - Industry: [e.g. Banking & Financial Services]
-- Country: [customer HQ country in full, e.g. United States of America]
-- Our accounts (optional): [pasted list, if our firm isn't in Draup]
+- Country: [customer HQ country in full, e.g. United States of America; default: my territory]
+- Our accounts and strengths (optional): [if our firm isn't in Draup: accounts and workloads we lead in]
 - What I sell: [one line, e.g. data engineering and cloud managed services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-Shared accounts are where buyers already compare both firms; exclusive accounts show each fortress; workload mix shows credibility.
+Buyers already compare both firms at shared accounts.
 
 STEPS
 1. Confirm Draup's names for both firms, industry and country.
-2. Pull the provider ranking for [Industry] customers headquartered in [Country] (primary industry only): engagements and rank for both firms, plus the top 10 providers. Drop agencies, staffing and real-estate firms.
-3. Pull the top 20 customers by engagements for each firm, same industry and country.
-4. Match the lists by exact company name: Shared, Ours only, Theirs only. If I pasted Our accounts, use those for our side.
-5. Pull the top 12 workloads by engagements for each firm, same industry and country, and each workload's share of the firm's total. Mark the workloads closest to [What I sell].
-6. For each shared account, note who has more engagements and the gap.
-7. For the top attack account, find it by website, pull its top 3 executives in the function closest to [What I sell] (one page of 10) and its most important news item from the last 90 days.
+2. Pull the provider ranking for [Industry] customers headquartered in [Country] (primary industry): both firms' engagements and rank, plus the top 10. Drop agencies, staffing and real-estate firms.
+3. Pull each firm's top 20 customers (same industry and country) and match by exact name: Shared, Ours only, Theirs only; note each shared account's leader and gap. Pasted Our accounts are our side; if Our firm is "not in Draup" and I pasted none, compare the two named rivals. Merge subsidiaries into parents.
+4. Pull each firm's top 12 workloads, same industry and country, with each one's share of the firm's total; mark mine.
+5. For the top attack account, find it by website (else by name, showing match and score), pull its top 3 executives in the function closest to [What I sell] (one page of 10) and its most important news item from the last 90 days.
 
 OUTPUT
-- Bottom line: 2 sentences — "[Our firm]: N engagements (#rank); [Competitor]: N (#rank)" and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) at the top attack account, the action this week and the dated why-now; if none, say so.
-- Table "Where to attack" (5): Customer | Ours | Theirs | Workload to lead with. Shared accounts where [Competitor] leads by 3x or less (editable default).
-- Table "Workload mix" (top 10): Workload | Ours (share) | Theirs (share) | Edge. No edge called on catch-all workloads.
-- "Where we lead": 3 workloads where our share is 5+ points higher (editable default), my offering's workloads first.
-- Detail: top 10 providers, all shared accounts with gaps, and 5 fortresses each side.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Bottom line: 2 sentences — "[Our firm]: N engagements (#rank); [Competitor]: N (#rank)" and what it means for me.
+- Recommended next step: a named person (name, full title) at the top attack account, the action this week and the dated why-now (or say none).
+- Table "Where to attack" (5): Customer | Ours | Theirs | Workload to lead with: shared accounts where [Competitor] leads by 3x or less (editable default).
+- Table "Workload mix" (top 10): Workload | Ours (share) | Theirs (share) | Edge (none on catch-alls).
+- "Where we lead": up to 3 workloads where our share is 5+ points higher (editable default), mine first; say if none.
+- Our firm not in Draup: label columns by firm name, never "Ours"; retitle "Where to attack" "Where a challenger fits" (shared accounts where the two are close, plus thin workloads); "Where we lead" only from my pasted accounts and strengths, else skip.
+- Detail: top 10 providers, shared accounts with gaps, 5 fortresses each side.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
-- Every count uses both the industry and country conditions; never report a total from a check that dropped one.
-- Count shared accounts on exact names; flag near-matches separately.
-- Leave misclassified customers and either firm's subsidiaries out of Where to attack; if a firm has under 5 customers here, widen to the region.
+- Every count uses both industry and country.
+- Leave misclassified customers and either firm's subsidiaries out of Where to attack; under 5 customers for a firm? Widen to the region.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Active engagements (Draup-derived) are estimates, not contracts; rank providers by them and never quote outsourced headcount.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Compare [Our firm] and [Competitor] in [Industry], [Country]. Lead with who's ahead and a named person at the top shared account to attack. Then the 5 attack accounts, workload mix and 3 workloads where we lead, all on active engagements.
+Compare [Our firm] and [Competitor] in [Industry], [Country]. Lead with who's ahead and a named person at the top shared account to attack. Then 5 attack accounts, workload mix and where we lead, all on active engagements.
 ```
 
 </details>
@@ -99,7 +97,7 @@ Turn Where we lead into a one-page industry point of view.
 ## Tips for better results
 
 - Shared accounts where the rival leads narrowly are usually the fastest share-of-wallet wins.
-- If your firm isn't in Draup, paste your customer list; the overlap still works.
+- If your firm isn't in Draup, write "not in Draup" and paste your accounts and strengths; the answer compares the two rivals and shows where a challenger fits.
 
 ## Related prompts
 

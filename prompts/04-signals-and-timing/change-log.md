@@ -35,34 +35,35 @@ INPUTS (edit these)
 - Business function (optional): [e.g. Supply Chain, IT; blank uses the function closest to what I sell]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Priorities: stated priorities in the function sourced after [Date], with fiscal quarter and workloads.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
+2. Priorities: function priorities sourced after [Date], with fiscal quarter and workloads.
 3. Leadership: hires, exits and promotions since [Date], one workload at a time, with full titles, rows checked and latest move date; then the top 3 executives in the function now.
 4. Technology: products first detected since [Date] in the function, and any competitor product anywhere in the stack; rate each (see rules).
 5. Hiring: average monthly postings in the function before vs after [Date], full months only.
-6. News since [Date]: executive moves, M&A, partnerships, expansion, layoffs, investment plans, and incidents that bear on what I sell.
+6. News since [Date]: executive moves, M&A, partnerships, expansion, layoffs, investment plans, and incidents bearing on what I sell.
 7. Financials: any new fiscal year's revenue growth; check for a divestment before calling a drop a cut.
 
 OUTPUT
 - Bottom line: 2 sentences, starting with the call (lost deal: reopen, wait or watch; current customer: defend, expand or monitor) and the top change.
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- Table "Change log" (highest impact first, at most 10 rows, then offer more): Date | Type | What changed | Impact | Likely owner.
-- Detail: sources; competitor ratings; hiring before and after; Gaps (what Draup lacked, to ask in discovery).
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- Table "Change log" (highest impact first, up to 10 rows, then offer more): Date | Type | What changed | Impact | Likely owner.
+- Detail: sources; competitor ratings; hiring before and after; Gaps (to ask in discovery).
 
 RULES
-- Technology, hiring and news reach back 12 months; if [Date] is older, say so.
+- Technology, hiring and news cover 12 months; if [Date] is older, say so.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Leadership data shows about the 10 latest moves per type and can lag about 3 months. Keep only rows where [Company] is the current employer (for exits, the previous one).
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
-- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
-- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the function closest to What I sell (e.g. IT) and say which; map any function I give to its main workloads and name them.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Leadership moves show about the 10 latest per type and lag about 3 months; keep rows where [Company] is the current employer (previous, for exits).
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and re-dated old stories (use the event date). Outages, incidents, breaches and regulatory inquiries count for security, reliability, IT operations or compliance sellers; keep any item that bears directly on What I sell. Give source, headline and link (if any) per item.
+- If sources conflict on a name, date or number, say so and repeat neither as fact; single-source figures are unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
+- Rating: count a rival only at High or Medium usage (ignore Low or very-low-confidence detections; say so). High in my workloads is Red, Medium Amber, none Green; newly detected (first seen in 12 months) is a separate Amber signal.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
 ```
 
 <details>

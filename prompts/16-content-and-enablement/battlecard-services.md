@@ -31,43 +31,43 @@ INPUTS (edit these)
 - Competitor: [rival services firm's website, e.g. infosys.com]
 - What I sell: [one line, e.g. SAP S/4HANA migration and managed services — skip if you ran the start-here prompt]
 - Vertical (optional): [e.g. Automotive]
+- Territory (optional): [HQ country in full, e.g. Germany; blank uses my saved territory]
 - Where we lose to them (optional): [paste win/loss notes, e.g. lost on offshore price]
 - Proof we can cite (optional): [e.g. halved SAP ticket backlog at Fabrikam Foods]
 
 CONTEXT (optional)
-Whole-firm totals flatter a big rival; the numbers that matter are in my workloads (types of work, e.g. ERP Implementation).
+Whole-firm totals flatter a big rival; what matters is my workloads (e.g. ERP Implementation).
 
 STEPS
-1. Find [Competitor] by website and confirm it is the parent, not a subsidiary or brand; if unclear, ask me. Map What I sell to its 1–3 main workloads and say which.
-2. Pull HQ, workforce, and latest fiscal-year revenue and growth (in USD).
-3. Pull its top 10 customers by active engagements in my workloads (primary industry [Vertical] if given), and the firm-wide top 10 for contrast. Show both counts.
-4. Pull its top 8 workloads overall and its top 3 delivery locations from the firm's summary (the full location list is very long).
+1. Find [Competitor] by website and confirm the parent, not a subsidiary or brand; if unclear, ask me. Map What I sell to its 1–3 main workloads and say which.
+2. Pull HQ, workforce, and latest fiscal-year revenue and growth (USD).
+3. Pull its top 10 parent-company customers by active engagements in my workloads (primary industry [Vertical], HQ in [Territory], if given). Then, in one customer lookup without the provider filter, get those 10 accounts' total engagements in my workloads; share = rival ÷ total: Red 30%+ (entrenched), Amber 10–29%, Green under 10%.
+4. Pull its top 8 workloads and top 3 delivery locations from the firm's summary.
 5. Search 180 days of news on them (deals, acquisitions, leadership); review 30+ items.
-6. Pick the first account to use the card on: a top-10 customer in my workloads where they hold few engagements (3 or fewer, editable default). Pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+6. Pick the first account: the top-10 customer with the most engagements in my workloads where they rate Green or Amber. Pull its top 3 executives in the function closest to What I sell and its top 90-day news item.
 
 OUTPUT
-- Bottom line: 2 sentences — their size and strength in my workloads, and where [What I sell] can win.
-- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none is found, say so.
-- "Where they deliver my work": Customer | Industry | Engagements in my workloads / total. Top 10.
+- Bottom line: 2 sentences — their strength in my workloads and where [What I sell] can win.
+- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none, say so.
+- "Where they deliver my work" (top 10): Customer | Industry | Rival / all engagements in my workloads | Share | Rating. Green = under 10%.
 - "How we win": 3 angles tied to facts above and [Proof we can cite]; one landmine where they're strongest.
-- "Trap questions": 3 discovery questions that surface their weak spots without naming them.
+- "Trap questions": 3 questions that expose their weak spots without naming them.
 - "Objection to expect": their likely claim and a one-line, data-backed reply.
-- Detail: what they win (workload, engagements); delivery hubs; recent moves (date, move, source, why it matters; up to 6); "Where we lose" counters for each pattern in my notes.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: what they win (workload, engagements); delivery hubs; recent moves (up to 6, dated, sourced, why it matters); "Where we lose" counters.
+- Gaps: what Draup lacked, to ask in discovery.
 
 RULES
 - Never build an angle on catch-all workloads (Project/Programs Management, Account Management).
-- Mark the card "Internal use": customer lists are for targeting, not for quoting to clients.
-- Claim no results beyond [Proof we can cite].
+- Mark the card "Internal use" (customer lists are for targeting, not quoting); claim no results beyond [Proof we can cite].
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Engagements are "active engagements (Draup-derived)": activity estimates, not contracts or headcount.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alikes and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. Flag conflicting or single-source figures as unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
 ```
 
@@ -75,7 +75,7 @@ STANDARD RULES (leave as is)
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step first: internal battlecard on [Competitor] for [What I sell] — top customers in my workloads, 180 days of moves, three ways we win, three trap questions, and the first account to use it on.
+Bottom line and next step first: internal battlecard on [Competitor] for [What I sell]: top customers in my workloads rated Red/Amber/Green by its share, 180 days of moves, three ways we win, trap questions, first account.
 ```
 
 </details>
@@ -103,7 +103,7 @@ Show [Competitor]'s engagement trend in my workloads at [Account].
 ## Tips for better results
 
 - Paste your win/loss notes. The 'Where we lose' section is often the part reps use most.
-- Read the 'in my workloads / total' column: a rival with hundreds of engagements firm-wide can be thin in your area.
+- Read the Share column: a rival with hundreds of engagements firm-wide can hold under 10% of an account's work in your area (Green).
 
 ## Related prompts
 

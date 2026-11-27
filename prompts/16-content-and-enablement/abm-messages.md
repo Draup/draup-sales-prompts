@@ -29,43 +29,43 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my ABM copywriter. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
-- Accounts: [websites, up to 10 per pass, e.g. pepsico.com, medtronic.com, 3m.com, fedex.com]
+- Accounts: [websites, up to 10 per pass, e.g. pepsico.com, medtronic.com, fedex.com]
 - Business function: [e.g. Supply Chain]
-- Persona: [the title you're writing to, e.g. VP Supply Chain Planning]
+- Persona: [title, e.g. VP Supply Chain Planning]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 - Proof point (optional): [e.g. cut planning cycle time at Fabrikam Foods]
 - Co-sell partner (optional): [e.g. Tailspin Partners]
 
 CONTEXT (optional)
-Write in the persona's words: a CFO hears cost and risk; a planning VP hears forecast accuracy, service levels and inventory. One dated, relevant signal beats three generic ones.
+A CFO hears cost and risk; a planning VP hears forecast accuracy and inventory. One dated, relevant signal beats three generic ones.
 
 STEPS
-1. Take the first 10 accounts. Resolve them by website in one company lookup and confirm each is the parent, not a subsidiary or brand. List any you can't resolve and carry on.
-2. For each, pull its top 3 [Business function] priorities, newest quarter first, with source and quarter. Keep the best fit for [What I sell].
-3. Pull one news feed for all 10, last 60 days, money-or-change categories only (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check their top-ranked signals inside the 60 days.
-4. Keep one item per account where the account is the actor, preferring one linked to the priority. Customer orders placed with the account count only as context.
-5. Write 2 sentences to [Persona], in their language: the signal and its date; then the link to the priority and the problem [What I sell] solves for that persona, ending in a soft question. Use [Proof point] in at most two messages. With [Co-sell partner], add ONE joint note for the strongest row.
-6. For the first account to send, pull its top 3 executives in [Business function] and pick the closest match to [Persona].
+1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup, showing the match and score; list any that still fail and carry on, never dropping one silently.
+2. For each, pull its top 3 [Business function] priorities (newest first, with source and quarter) and keep the best fit for [What I sell].
+3. Pull one news feed for all 10, last 60 days, money-or-change categories (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check top-ranked signals in the window.
+4. Keep one item per account where the account is the actor, preferring one linked to the priority. Orders placed with the account are context only.
+5. Write 2 sentences to [Persona], in their language: the signal and date; then the priority link and the problem [What I sell] solves for them, ending in a soft question. [Proof point] in at most two messages; with [Co-sell partner], add ONE joint note for the strongest row.
+6. For the first account, pull its top 3 executives in [Business function] and pick the closest match to [Persona].
 
 OUTPUT
 - Bottom line: 2 sentences — how many accounts have a strong hook and which to send first.
-- Recommended next step: who to send first (name and title from step 6), and the dated signal. If none is found, say so.
-- Table: Account | Signal (date) | Priority (quarter) | Message | Strength. Strong first. Strong = signal links to priority; OK = both, unlinked; Weak = priority only.
+- Recommended next step: who to send first (name and title from step 6), and the dated signal; if none, say so.
+- Table: Account | Signal (date) | Priority (quarter) | Strength | Message. Strong first. Strong = signal links to priority; OK = both, unlinked; Weak = priority only.
 - Detail: sources for each row; the joint partner note; "Skipped" (not found or no [Business function] priority).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked, to ask in discovery.
 
 RULES
 - 45 words or fewer per message. No flattery or claims about the reader's own work.
 - No qualifying signal: write from the priority alone, mark Weak. Never invent or re-date a signal.
-- Quote priorities in Draup's words. After 10 accounts, show the table and continue with the next 10 unless I say stop.
+- Quote priorities in Draup's words. After 10 accounts, show the table and continue unless I say stop.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alikes and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. Flag conflicting or single-source figures as unverified.
+- If an account sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
 ```
 

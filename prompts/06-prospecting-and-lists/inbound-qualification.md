@@ -37,36 +37,37 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. store-operations software — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. If it isn't in Draup, say so and stop.
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. No match: retry once by name and show the match score (ask me if under 0.8); still nothing: say so and stop.
 2. Profile: primary vertical, HQ, workforce, revenue and growth, workforce growth %, postings (90 days).
 3. Read the requester: does [Requester title] buy or champion in [Business function], and does [What they asked for] fit what I sell?
-4. Pull news from the last 90 days where [Company] is the actor, and [Business function] postings in the workloads closest to What I sell (last 12 months).
-5. If I've named competitors (here or in my setup), check the whole stack for their products, with usage and first-seen dates.
-6. The top 3 executives in [Business function], including the most senior leader for what I sell (e.g. the CISO for security); if none is senior, widen once to Chief, EVP and CIO titles.
+4. 90-day news where [Company] is the actor, and 12-month [Business function] postings in the workloads closest to What I sell.
+5. Check the whole stack for competitors I named (here or in setup), with usage and first-seen dates.
+6. The top 3 executives in [Business function], including the most senior leader for what I sell (e.g. the CISO for security).
 
 OUTPUT
 - Bottom line: 2 sentences — the verdict and why, for [What I sell].
-- Recommended next step: a one-line reply answering [What they asked for], who else to loop in (name and full title from step 6), and the dated why-now (or "the request itself is the why-now").
+- Recommended next step: a one-line reply answering [What they asked for], who else to loop in (name, full title), and the dated why-now (or "the request itself is the why-now").
 - "Fit": Must-have | Draup value (date) | Meets / Partly / Misses / Unknown.
 - "Why now": up to 3 events (date | headline | so-what), or "none in 90 days tied to what I sell".
 - Gaps: what Draup didn't have — worth asking in discovery.
-- Detail: requester read (decision maker, champion, user, researcher); competitor products found; postings count.
+- Detail: requester read (decision maker, champion, user or researcher); competitor products found; postings count.
 
 RULES
 - The inbound is the intent. Pursue = every must-have met and the requester fits. Pursue now = Pursue plus a material 90-day event tied to [Business function] or what I sell; unrelated news never raises urgency.
 - Nurture = Partly or Unknown on any must-have, or a student, job-seeker, vendor or researcher; list what to verify. Disqualify = misses a must-have.
-- A competitor installed with High or Medium usage, or first seen in the last 12 months: write "likely bake-off or renewal" in the verdict.
+- A competitor installed with High or Medium usage, or first seen in the last 12 months: write "likely bake-off or renewal" in the verdict. Ignore Low or very-low-confidence detections and say so.
 - Flag revenue growth over 20% as likely M&A until checked.
 - Show USD millions using Draup's conversion rate.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 

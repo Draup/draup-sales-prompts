@@ -33,10 +33,10 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. infrastructure managed services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-A proven site is your best reference; the best next site does similar work, is growing for its size and has a reachable leader.
+The best next site does similar work, is growing and has a reachable leader.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Use [Business function], or the one closest to [What I sell]; say which.
 3. Pull key locations for the function limited to capability-centre sites, 15 rows: metro, indicative workforce, 12-month postings, growth index.
 4. Pull key locations for the function across all site types, 15 rows, to add the HQ and other large sites. Merge by metro.
@@ -47,12 +47,12 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — the next site and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) at the next site, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) at the next site, the action this week and the dated why-now (or say none).
 - Table "Next 3 sites": Metro | Overlap | Growth vs median | Local leader (name, title) | Why now (dated).
 - Table "Sites with the function" (up to 10): Metro | Tag | Workforce (indicative) | Postings (12 mo) | Growth index. Highlight [Site we serve].
 - "Reference story": 2 lines on what we deliver at [Site we serve] that maps to the next site's hiring. "Intro path": who at our site could introduce us, and to whom.
 - Detail: what each site is hiring for (Workload | our site | Site 2 | Site 3).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - If rows come back for every function, say the limit didn't apply and keep only that function's rows.
@@ -60,12 +60,12 @@ RULES
 - The growth index is postings divided by workforce, so it runs high for small sites; say so when one tops the list.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
 - Site headcount is indicative only; lean on postings.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 420 words above Detail, tables included.
 ```
 
 <details>

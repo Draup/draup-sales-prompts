@@ -22,15 +22,12 @@ INPUTS (edit these)
 - Region (optional): [e.g. United States of America]
 - What I sell: [one line, e.g. application modernisation and cloud migration services — skip if you ran the start-here prompt]
 
-CONTEXT (why this matters)
-One contact is a single point of failure. A committee map tells you who to open with, who signs, and who might block, so you can multi-thread before the first proposal.
-
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Pull key executives for the function or workload, 10 per page, up to 3 pages, with region only if I gave one.
 3. If a workload returns fewer than 5 people, add the 2 closest workloads and say which. Drop clear title–function mismatches and flag people at subsidiaries or acquired brands.
-4. If no economic buyer (C-level, EVP, "Head of") appears, search once more without the function filter for C-level titles (Chief, EVP, CIO), keep those whose titles fit, and say what you found.
-5. Pull priorities for the same function or workload to match leaders to initiatives.
+4. If no economic buyer (Chief, EVP, CIO or "Head of") appears, pull the next page of 10 in the function once and look for those titles (there is no title search, and the seniority filter is ignored); keep those whose titles fit, and say what you found.
+5. Pull priorities for the same function or workload to match leaders to initiatives; drop any that describe what [Company] sells.
 6. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
@@ -48,11 +45,11 @@ RULES
 - Rank the parent company's own leaders above subsidiary leaders unless the subsidiary is where [What I sell] lands.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. Professional information only.
 - If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
@@ -61,19 +58,19 @@ STANDARD RULES (leave as is)
 ### Quick version
 
 ```text
-Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Widen once to C-level.
+Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Check one more page.
 ```
 
 ### Follow-ups
 
-- Profile the entry-point contact and give me 2 openers.
+- Run "Executive profile and openers" on the entry-point contact and give me 2 openers.
 - Which of these people joined in the last 6 months?
 - Do any of them have past companies that are our customers?
 
 ### Tips
 
 - Use a workload (e.g. Cybersecurity) when your offer is narrow; use a function (e.g. IT) for a broad map.
-- Many top leaders carry no function tag in Draup, which is why the prompt widens once to C-level titles before saying there's no economic buyer.
+- Draup can't search executives by title and ignores the seniority filter, so the prompt checks one more page of the function for Chief, EVP, CIO or Head of titles before saying there's no economic buyer.
 - Opening cold with the economic buyer often fails. Start with the entry point and earn the sponsor meeting.
 
 ## New leaders and warm intro paths
@@ -96,16 +93,13 @@ INPUTS (edit these)
 - Our customers (optional): [e.g. Contoso Retail, Fabrikam Foods]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 
-CONTEXT (why this matters)
-Leaders in their first 90 days set plans and review vendors. The warmest door is often someone who used to work at one of your customers, whether they arrived last month or years ago.
-
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. If I gave a business function, map it to the 1–3 closest Draup workloads and say which.
 3. Pull executive hires and promotions, one workload at a time; keep rows where [Company] is the current employer.
 4. Keep moves from the last 6 months. Leadership data can lag about 3 months: if none fall inside, show the latest moves from the 3 months before, labelled "just outside the window".
 5. Compare each new hire's past companies (whole history, not just the last one) with [Our customers], allowing name variants ("Contoso" = "Contoso Retail Inc.").
-6. If fewer than 3 warm paths, also check current senior leaders in the matching business function (10 per page, up to 3 pages) whose past companies include [Our customers]. Flag any with under 6 months in their title as new.
+6. If fewer than 3 warm paths, also check current senior leaders in the matching business function (10 per page, up to 3 pages; no title search) whose past companies include [Our customers]. Flag any with under 6 months in their title as new.
 7. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
@@ -118,17 +112,17 @@ OUTPUT
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
-- Leave out exits; the customer-alumni prompt covers them.
+- Leave out exits; "Customer alumni now at your targets" covers them.
 - Drop rows that clearly aren't about [Company], such as look-alike company names.
 - If a workload has no moves even in the wider window, say "none found"; don't widen further silently.
 - A warm path means they worked at our customer, not that they bought from us.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- If an input still shows its bracketed example, use my saved context or ask me first.
 - If I give a business function where a workload is needed, map it to the 1–3 closest Draup workloads, say which, then continue.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. Professional information only.
 - Leadership-move data can lag about 3 months; give the latest move date you saw.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
@@ -176,10 +170,10 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. cloud data-platform modernisation services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Pull key executives in [Business function], 10 per page, up to 3 pages.
 3. Compare each person's past companies with [Our customers], [My company] and [Partners], allowing name variants ("Contoso" = "Contoso Retail Inc.").
-4. If fewer than 3 match, check 3 more pages or widen to all functions, and say which.
+4. If fewer than 3 match, check 3 more pages or widen to all functions (there is no name or title search), and say which.
 5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
@@ -197,10 +191,10 @@ RULES
 - If nothing matches, write "No matches in N profiles checked"; don't stretch to near-miss names.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. Professional information only.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
 ```
@@ -225,11 +219,11 @@ Which senior [Business function] leaders at [Company] previously worked at [Our 
 ## Executive profile and openers
 
 - **id:** `people-executive-profile`
-- **What you get:** A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
-- **Use it when:** Before an email, call or meeting with a specific senior person.
+- **What you get:** A short profile of one senior person, found by name or just by title, with time in role, past companies, what they likely own, a competitor check and two openers. If Draup has no one with that title, you're told so up front and given the 3 closest people.
+- **Use it when:** Before an email, call or meeting with a specific senior person, even when you only know their title ("the CISO"). Use "One-page account brief" instead when you need the whole account too.
 - **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager
 - **Time:** 2–4 min
-- **Inputs:** Executive name (e.g. Jane Doe); Company (e.g. target.com); Business function (e.g. IT); What I sell (e.g. AI platform engineering services)
+- **Inputs:** Executive (name or title) (e.g. Jane Doe, or CISO); Company (e.g. target.com); Business function (e.g. IT); Competitor (optional) (e.g. CrowdStrike or Accenture; defaults to your saved competitors); What I sell (e.g. AI platform engineering services)
 
 ### Detailed prompt
 
@@ -237,57 +231,63 @@ Which senior [Business function] leaders at [Company] previously worked at [Our 
 Act as my sales research assistant. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Executive name: [e.g. Jane Doe]
+- Executive: [a name or a title, e.g. Jane Doe, or CISO]
 - Company: [website, e.g. target.com]
 - Business function: [their likely function, e.g. IT]
+- Competitor (optional): [vendor, product or services firm, e.g. CrowdStrike; default: my saved competitors]
 - What I sell: [one line, e.g. AI platform engineering services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. There is no name search: page through key executives in [Business function], 10 per page, up to 50, and stop when you find the name (allow initials and short forms).
-3. If not found, show the top 5 in that function (name, full title) and ask which I mean. Don't guess.
-4. Pull up to 5 recent priorities for their workloads; if none come back, use their business function.
-5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Find the person; there is no name or title search. For a title, first pull the workload closest to it (e.g. Cybersecurity for a CISO). Then page through [Business function], 10 per page, up to 3 pages, and stop at the first match. Allow initials and short forms for names; match titles on the full profile title, not the role tag.
+3. No match: don't guess. Say "[name or title] isn't in Draup", list the 3 closest people (name, full title, why close), build the rest for that role, and ask me to confirm the name from the invite.
+4. Pull up to 5 recent priorities for their workloads; if none, use their business function.
+5. If I named a competitor, check the whole stack for its products; for a services firm, its share of active engagements in those workloads.
+6. Pull the most important news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
-- Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: one person by name and title (usually this executive), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
-- Header: name, full title from the profile, location, LinkedIn.
-- "Profile": Time at company | Time in current title | Budget control | Workloads | Previous employer and title | Past companies.
-- "What they likely own": 2 priorities from their area, each with source and quarter.
-- "Openers": 2 openers (35 words or fewer), each tied to a named priority and [What I sell]; one may mention their previous employer.
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]; if the person isn't in Draup, say so first.
+- Recommended next step: one person by name and title (this executive, else the best of the closest 3), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Header: name, full title, location, LinkedIn. Not found: "Closest in Draup": Name | Full title | Why close.
+- "Profile": Time at company | Time in title | Budget control | Workloads | Previous employer and title | Past companies.
+- "What they likely own": 2 priorities, each with source and quarter.
+- "Competitor check" (if named): product, usage strength, last seen and rating, or "not present at High or Medium".
+- "Openers": 2 (35 words or fewer), each tied to a named priority and [What I sell]; one may mention their previous employer.
 - "One question to ask": open-ended, citing a priority.
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
-- Under 12 months in the current title is a timing signal; mention it.
-- Say if the person belongs to a subsidiary or acquired brand.
-- If not found and likely in Europe or the UK, say the profile may be restricted.
+- Under 12 months in the title is a timing signal; mention it.
+- A deputy, segment or business-unit holder of a title is not the enterprise holder; say which.
+- Not found and likely in Europe or the UK: say the profile may be restricted.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. Professional information only.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
+- Competitor rating: a [Competitor] product at High usage in the workloads I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber. Services rival, by share of the account's active engagements in those workloads: 30%+ Red, 10–29% Amber, under 10% Green.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 380 words including tables, then offer to continue.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Profile [Executive name] at [Company] ([Business function]): bottom line and why reach out now, then full title, time in role, past companies, budget control, 2 openers tied to current priorities and one question.
+Profile [Executive] (name or title) at [Company]: bottom line and why now, full title, time in role, past companies, 2 openers on current priorities, [Competitor] rated Red/Amber/Green. Not in Draup? Say so and show the 3 closest.
 ```
 
 ### Follow-ups
 
 - Write a 90-word email using opener 1.
-- Who does this person likely work with? Map the buying committee around them.
+- Who does this person likely work with? Run "Map the buying committee" around them.
 - What does their previous employer run in my category?
 
 ### Tips
 
+- A title is enough ("CISO", "VP Supply Chain"). If Draup has no one with it, the answer says so in the first line and gives the 3 closest people instead of guessing.
 - Give the function you think they're in. Large companies have thousands of profiles, so the right function makes the search much faster.
 - Openers tied to a named priority often land better than ones tied to the person's career.
 
@@ -311,10 +311,10 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. CRM data quality and automation — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Pull the company's roles that list [Technology] as a skill or tool. Names match exactly and in lower case; if nothing returns, try up to 3 variants (e.g. "salesforce crm", "salesforce sales cloud") and say which worked.
 3. Take the top 10 roles by count, with job family and other tools.
-4. Pull the number of job postings in the last 12 months that mention [Technology], as an activity check.
+4. Pull the number of job postings in the last 12 months naming [Technology] as a skill, as an activity check: use the product's skill name (e.g. "Salesforce Sales Cloud", not "Salesforce"); if 0, retry once with the product name.
 5. Group the 10 roles into 3 buyer personas (e.g. builders, operators, business owners).
 6. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, to name the senior owner to target.
 
@@ -332,13 +332,13 @@ RULES
 - If a company's posting count is larger than its workforce, the company match is wrong; say so and leave it out.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Label anything you infer (buyer role, intent, fit) as "likely".
 - Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. No Chief, EVP, CIO or "Head of" title? Pull the next page of 10 in the function once (there is no title search). Professional information only.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
 ```
 
@@ -379,8 +379,8 @@ INPUTS (edit these)
 - Meeting with (optional): [name or title, e.g. SVP Technology]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Pull the 8 most recent stated priorities in the meeting person's function, or else the function closest to [What I sell].
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the 8 most recent stated priorities in the meeting person's function, or else the function closest to [What I sell]; drop any that describe what [Company] sells.
 3. Pull technology added in the last 12 months (High and Medium usage) in that function; if none, use the function's current High and Medium stack and say so.
 4. Pull hiring workloads trending up over 12 months in that function (ignore partial first and last months).
 5. Pull hires and promotions for the most relevant workload; if only exits come back, note the count and use news instead.
@@ -400,14 +400,14 @@ RULES
 - Each question cites a different fact; if a source has no data, use another and say so.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
 - Leadership-move data can lag about 3 months; give the latest move date you saw.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. No Chief, EVP, CIO or "Head of" title? Pull the next page of 10 in the function once (there is no title search). Professional information only.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 500 words including tables, then offer to continue.
 ```
 
@@ -421,7 +421,7 @@ Discovery prep for [Company]: bottom line and who else to invite, a 2-sentence o
 
 - Write the answers I'd hope to hear and how I'd respond to each.
 - Turn the top 2 questions into a meeting agenda email.
-- Pre-fill MEDDPICC for this deal from the same evidence.
+- Run "Pre-fill MEDDPICC from outside-in data" for this deal from the same evidence.
 
 ### Tips
 
@@ -449,18 +449,18 @@ INPUTS (edit these)
 - Competitor (optional): [e.g. Snowflake or Accenture]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Metrics: latest revenue and growth, and targets or guidance in relevant priorities.
-3. Economic buyer: [Business function] executives, up to 3 pages of 10; keep senior titles with high budget control. If none is C-level, EVP or "Head of", widen once to C-level titles without the function filter.
-4. Pain: the 5 most recent priorities in [Business function], with workloads.
-5. Competition: if [Competitor] sells software, check the whole tech stack for any product it makes, in any area; if a services firm, pull its active engagements here. Then the top incumbents on the pain workloads.
-6. Champion: start with executives under a year in their title from the people already pulled. Only if there are none, check hires and promotions (last 6 months) for the main workload, keeping only people whose current employer is [Company]; say so.
-7. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+3. Economic buyer: [Business function] executives, up to 3 pages of 10; keep senior titles with high budget control. If none is Chief, EVP, CIO or "Head of", pull the next page of 10 once (no title search; the seniority filter is ignored) and say so.
+4. Pain: the 5 most recent priorities in [Business function], with workloads; drop any that describe what [Company] sells.
+5. Competition: for a software competitor, check the whole stack for its products; for a services firm, its share of active engagements in the pain workloads. Then the top incumbents on the pain workloads.
+6. Champion: executives under a year in their title among those already pulled; if none, hires and promotions (last 6 months) in the main workload whose current employer is [Company], and say so.
+7. Pull the most important news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
 - Recommended next step: one person by name and title (from steps 3 or 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
-- "MEDDPICC": Letter | What Draup suggests | Evidence + date | Status (Evidence, Hypothesis, Must discover) | Question to confirm. Rows: Metrics, Economic buyer, Decision criteria, Decision process, Paper process, Identify pain, Champion, Competition (with its Red, Amber or Green rating).
+- "MEDDPICC": Letter | What Draup suggests | Evidence + date | Status (Evidence, Hypothesis, Must discover) | Question to confirm. Rows: Metrics, Economic buyer, Decision criteria, Decision process, Paper process, Identify pain, Champion, Competition (rated Red, Amber or Green).
 - Decision criteria: hypotheses from stack and priorities. Decision and Paper process: "Must discover" (fiscal year end hints timing).
 - Gaps: what Draup didn't have — worth asking in discovery.
 - Detail: incumbent providers on the pain workloads with active engagements.
@@ -470,13 +470,13 @@ RULES
 - Rank providers by engagements yourself; drop recruiters, staffing, agency and research firms; flag subsidiaries.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
-- Leadership-move data can lag about 3 months; give the latest move date you saw.
-- Competitor rating: a [Competitor] product with High usage in the workloads I sell is Red; Medium is Amber; newly detected in the last 12 months is a separate Amber signal.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. Professional information only.
+- Leadership moves lag about 3 months; give the latest move date seen.
+- Competitor rating: a [Competitor] product at High usage in the workloads I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber. Services rival, by share of the account's active engagements in those workloads: 30%+ Red, 10–29% Amber, under 10% Green.
 - Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.

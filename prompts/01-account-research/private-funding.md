@@ -29,7 +29,7 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. security compliance automation — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Pull private funding: total raised and each round's date, type, amount, valuation and lead investors.
 3. Pull the profile (workforce, year founded) and the monthly hiring trend for the last 12 months.
 4. From the first executives page, pick the founder or CEO, the CFO and the leader closest to [What I sell].
@@ -49,14 +49,14 @@ OUTPUT
 RULES
 - Debt and secondary sales are not equity rounds; keep them out of the equity table and the round count.
 - Amounts in $M; write "undisclosed" for missing valuations.
-- No funding returned: say it may be bootstrapped, public or untracked; if public, suggest the account brief.
+- No funding returned: say it may be bootstrapped, public or untracked; if public, suggest "One-page account brief".
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. No Chief, EVP, CIO or "Head of" title? Pull the next page of 10 in the function once (there is no title search). Professional information only.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 380 words including tables, then offer to continue.
 ```
@@ -88,12 +88,12 @@ Compare its hiring with [Competitor]'s.
 
 ## Tips for better results
 
-- Public companies return nothing here. Use the one-page account brief for them.
+- Public companies return nothing here. Use "One-page account brief" for them.
 - A recent large round is often one of the strongest why-now signals for a scale-up.
 
 ## Related prompts
 
-- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, the person you're meeting (or the 3 closest if Draup lacks them), then the priorities in your function, who likely owns them, any competitor in the stack rated Red/Amber/Green and the key numbers.
 - [Openings from their recent acquisitions](../../prompts/01-account-research/acquisitions.md): The top 3 integration openings from the account's acquisitions in the last 3 years, who likely owns each, and an optional read of its strategic investments.
 
 <details>

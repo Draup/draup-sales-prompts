@@ -27,7 +27,7 @@ ABOUT ME (edit these; optional lines can stay blank)
 - My role: [e.g. Enterprise AE, US retail]
 - I sell: [software, services or both]
 - What I sell: [e.g. software: data observability platform | services: application modernisation and cloud migration]
-- Typical deal: [e.g. software: $100K–$400K a year | services: $500K–$3M, 6–12 months]
+- Typical deal: [e.g. software: $100K–$400K a year | services: $500K–$3M]
 - Ideal customer: [e.g. software: 5,000+ employees, a data team | services: retail, $5B+ revenue]
 - Buyers: [e.g. software: VP Data Engineering signs | services: CIO signs]
 - Competitors: [companies or products, e.g. software: Datadog | services: Accenture, in-house teams]
@@ -39,7 +39,7 @@ ABOUT ME (edit these; optional lines can stay blank)
 - My accounts (optional, up to 5; account — sponsor name and title — what we run there — renewal date): [e.g. Fabrikam Foods — Jane Doe, VP Supply Chain Planning — demand planning in 3 regions — 30 Jun 2027]
 
 STEPS (first chat, or when I say "recheck my setup")
-1. Find each competitor, platform, customer and account in Draup by website or exact name; ask only if there is no match or several. Record products with their maker; if a website lands on a subsidiary, use the parent.
+1. Find each competitor, platform, customer and account in Draup by website or exact name (no match: retry once by name and show the score); ask only if still unmatched or several match. Record products with their maker; if a website lands on a subsidiary, use the parent.
 2. Map What I sell to one business function and 2–5 Draup workloads (types of work, e.g. Cloud Computing); drop any that don't fit.
 
 OUTPUT (same time)
@@ -54,18 +54,21 @@ Data rules (leave as is; no need to read)
 - If I give a business function where a workload is needed, map it to the 1–3 closest workloads and say which.
 - Prefer events, people and sites in my Territory; say if none.
 - Platform is a fit signal, not a competitor: say if it's in the stack.
-- Check each account's whole tech stack for my competitors' products: High usage in the workloads I sell is Red, Medium is Amber, newly detected in 12 months is a separate Amber.
-- Use Draup for every fact and date it; label outside knowledge and inferences ("likely"); write "Not in Draup" for gaps.
-- Companies: find by website, confirm the parent, flag subsidiaries; retry an empty name once in Draup's spelling.
-- News: the account must be the actor. Drop noise (outages, stock chatter, charity, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Use Draup for every fact and date it; label inferences "likely"; write "Not in Draup" for gaps. Never use Draup's own customer or user data.
+- Companies: find by website, confirm the parent, flag subsidiaries; if a website doesn't resolve, retry once by name, show the match and score, and never silently drop an account.
+- News: the account must be the actor. Drop noise (outages, stock chatter, charity, political commentary, look-alikes, re-dated stories) unless it bears directly on What I sell. If sources conflict on a name or number, say so and repeat neither; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- People: full profile title, not the seniority label; list everyone sharing a title. Leadership moves can lag about 3 months. Professional information only.
 - Money: annual, millions of reporting currency; IT and R&D spend are modelled; check divestments before calling a drop a cut.
 - Hiring covers 12 months; postings are openings, not hires. Every count applies all my filters.
 - Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount. Priority tools and providers are "linked", not confirmed.
-- If a step returns nothing or something odd, say so and try one fallback; never show a blank template.
+- Services rivals: 30%+ of the account's active engagements in the relevant workloads is Red, 10–29% Amber, under 10% Green.
+- People: full profile title, checked against the function; flag subsidiary or branch staff; C-level profiles whose tenure or past employers don't fit the parent are "verify" and stay out of copy. To widen, pull the next page of 10 in the function once. Moves lag about 3 months. Professional information only.
+- Own products: drop priorities, news and hiring about what the account itself sells; never pitch it its own category.
+- Territory ranking: rank companies across a market within my Territory, parent companies only.
+- Product spellings: search competitor postings by the product's skill name (CrowdStrike Falcon, not CrowdStrike); if 0, retry once with the product name.
+- Rival presence: check the whole stack for my competitors' products; count one only at High or Medium usage (ignore Low, and say so). High in my workloads is Red, Medium Amber, else Green; new in 12 months at High or Medium adds Amber.
+- Empty or odd result: say so and try one fallback; never show a blank template.
 - Open every answer with "Bottom line" and "Recommended next step" (named person and title, dated why-now; say if none); at most 2 short tables up front, the rest under "Detail"; end with "Gaps".
-- Never use Draup's own customer or user data.
 ```
 
 <details>
@@ -90,7 +93,7 @@ Start my weekly routine: what's worth acting on across my named accounts this we
 ```
 
 ```text
-Run the one-page account brief on my top named account.
+Run "One-page account brief" on my top named account.
 ```
 
 ## Tips for better results
@@ -98,11 +101,12 @@ Run the one-page account brief on my top named account.
 - A Project keeps your context across chats, so you never paste the setup again.
 - Make one Project per territory or strategic account if your context differs a lot between them; My accounts holds up to 5.
 - When you change ABOUT ME, ask Claude to "recheck my setup" so names are resolved again.
+- After an update to the library, paste the new data rules over the old block and ask Claude to "recheck my setup".
 
 ## Related prompts
 
 - [Tell your AI about you](../../prompts/00-start-here/about-me.md): Your assistant (Claude or ChatGPT) remembers what you sell, your ideal customer, competitors, territory, the platform you run on and your key accounts, and applies the library's data rules to every later answer.
-- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, the person you're meeting (or the 3 closest if Draup lacks them), then the priorities in your function, who likely owns them, any competitor in the stack rated Red/Amber/Green and the key numbers.
 - [Weekly trigger sweep for my book](../../prompts/04-signals-and-timing/weekly-book-sweep.md): One phone-sized table of the week's real triggers across up to 10 accounts, including any CEO or leadership change that takes effect in the window, plus the nearest item just outside the window for every quiet account.
 
 <details>

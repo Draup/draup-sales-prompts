@@ -24,14 +24,14 @@ INPUTS (edit these)
 - View (optional): [products (default) or vendors]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by its website (exact match; if none, retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company. If several match or it looks wrong, ask me. Use Draup's exact name from then on.
 2. Match my area to Draup's narrowest grouping (sub-category, category or workload) and say which you used. If it returns nothing, try the next broader grouping once.
 3. Pull its products, up to 5 pages: maker, sub-category, usage strength (High, Medium, Low), last seen, countries.
 4. Split them: Active (a usage strength and seen in the last 12 months) and Stale (the rest).
-5. If I named competitors, check the whole stack for their products and rate each (see rules).
+5. If I named competitors, check the whole stack for their products, whatever area they're filed under (record a product with its maker), and rate each (see rules); count one as present only at High or Medium.
 6. If View is vendors, rank makers by Active products: fragmented if no maker holds 25% of them, concentrated if the top 2 hold over 50% (editable defaults).
 7. For up to 3 lesser-known Active products, pull what each does and how many companies use it.
-8. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+8. For the next step, pull the top 3 executives in the function closest to [What I sell] and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
@@ -47,12 +47,12 @@ RULES
 - Skip labels that aren't products; flag products credited to the wrong maker.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
-- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Rating: High usage in the workloads of What I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit [Company], and keep it out of drafted copy. No Chief, EVP, CIO or "Head of" in the top 3? Pull the next page of 10 once (no title search).
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
 ```
 
@@ -64,7 +64,7 @@ Bottom line and next step first (a named owner and a dated why-now). Then what [
 
 ### Follow-ups
 
-- Which of the active products have the most hiring behind them in their job ads?
+- Which of the active products have the most hiring behind them? Search postings by each product's skill name.
 - Show the same view for [another area] so I can see the adjacent stack.
 - Switch to the vendors view and tell me which makers are fading.
 - Draft a 70-word email to the person in the next step, without naming any tool they haven't named in public.
@@ -73,12 +73,12 @@ Bottom line and next step first (a named owner and a dated why-now). Then what [
 
 - Usage strength (High, Medium, Low) tells you how central a tool is. A product with no strength listed is one Draup no longer detects.
 - If your area returns nothing, describe it differently ("data warehouse" rather than "analytics") and the assistant will try Draup's nearest grouping.
-- Put your competitors in the start-here prompt once and every tech prompt rates them for you.
+- Put your competitors in "Tell your AI about you" once and every tech prompt rates them for you.
 
 ## Is a competitor installed?
 
 - **id:** `tech-competitor-installed`
-- **What you get:** A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
+- **What you get:** Whether a named competitor is really installed (High or Medium usage), where it sits, any overlapping product or one the account owns, the priorities that could trigger a switch, and three bullets on how to win.
 - **Use it when:** Before you pitch a replacement, when a deal stalls and you suspect an incumbent, or before you mention a tool in outreach. Use this for one or two named competitors; use "What they run in one tech area" instead for the whole area.
 - **Best for:** Account Executive, Presales & Solutions, Marketing & ABM, SDR / BDR
 - **Time:** 2–4 min
@@ -96,46 +96,49 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. lakehouse data platform — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
-2. Resolve each competitor to its maker (keep a product's name too) and search the whole stack by that maker, up to 5 pages: usage strength, last seen, countries, workloads; rate each product (see rules). For a broad maker (e.g. Google), keep products in [What I sell]'s space and count the rest.
-3. Check whether [Company] makes or owns a product in the same sub-category (its own or acquired brands in its stack). If so, it is more likely consolidating onto its own tool than switching.
-4. Pull the other Active products in the same sub-categories, stated priorities in those workloads (newest first; skip ones about products [Company] sells) and the count of job postings in the last 12 months naming the competitor's products.
-5. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+1. Find [Company] by its website (exact match; if none, retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company. If several match or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Resolve each competitor to its maker (keep the product name) and search the whole stack by that maker, whatever area it's filed under, up to 5 pages: usage strength, last seen, workloads. Rate each product (see rules). For a broad maker (e.g. Google), keep products in [What I sell]'s space and count the rest. A row named only after the maker is weaker evidence than a named product; say which row carries the verdict.
+3. Check whether [Company] makes or owns a product in the same sub-category. If so, it is more likely to consolidate onto its own tool than switch.
+4. Pull the other Active products in the same sub-categories (a second product doing the same job is an overlap) and stated priorities in those workloads, newest first (none: use the function closest to [What I sell]).
+5. Count job postings from the last 12 months naming the competitor's product as a skill, by its skill name (e.g. CrowdStrike Falcon, not CrowdStrike); if 0, read 3 recent postings in the workload for the exact spelling and retry once.
+6. For the next step, pull the top 3 executives in the function closest to [What I sell] and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
-- Bottom line: 2 sentences — the answer and what it means for [What I sell]. If step 3 found a product [Company] owns, say so here.
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]; say here if [Company] owns a rival product.
 - Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- Verdict: "Installed and active", "Installed but fading" or "Not detected in Draup", with the rating and the evidence.
+- Verdict: "Installed and active", "Detected at Low only (not counted)", "Installed but fading" or "Not detected in Draup", with the rating and the evidence.
 - Table "Competitor footprint": Product | Usage strength | Last seen | Workloads | Rating.
-- Table (up to 3), "Switch triggers" for a rival or "Openings" otherwise: Priority | Source and quarter | Likely owner | Why it opens a door for us.
+- Table "Switch triggers" (rival) or "Openings" (otherwise), up to 3: Priority | Source and quarter | Likely owner | Why it opens a door.
+- "How to win" (rival only): 3 bullets, each tied to a fact above: the wedge (overlap, new estate or subsidiary), who to start with, and the proof to bring.
 - Detail: "Who else is in the room" (top 8: Product | Maker | Usage strength | Last seen); hiring evidence (or "none found"); Gaps (what Draup lacked, to ask in discovery).
 
 RULES
-- Frame by Relationship. Displace a rival. Never suggest displacing an adjacent tool; look for integration gaps. A platform we run on is a fit signal. Rate rivals only; for the others write "n/a".
-- "Active" = a usage strength and seen in the last 12 months; otherwise "fading".
-- "Not detected" is not proof they don't use it.
+- Frame by Relationship. Displace a rival. Never suggest displacing an adjacent tool; look for integration gaps. A platform we run on is a fit signal. Rate rivals only; others get "n/a".
+- Active = High or Medium usage, seen in the last 12 months; Low = detected, not counted as present; no usage strength = "fading". "Not detected" is not proof they don't use it.
+- Judge a sub-category by the product, not Draup's label (firewalls can sit under SIEM).
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
-- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- Rating: High usage in the workloads of What I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit [Company], and keep it out of drafted copy. No Chief, EVP, CIO or "Head of" in the top 3? Pull the next page of 10 once (no title search).
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Bottom line and next step first (named owner, dated why-now). Is [Competitor] installed anywhere in [Company]'s stack? Rate it Red, Amber or Green, say if [Company] owns a rival product itself, and treat it as a [Relationship].
+Bottom line and next step first (named owner, dated why-now). Is [Competitor] installed at [Company] at High or Medium usage? Rate it Red/Amber/Green, flag overlaps or a product [Company] owns, then 3 bullets on how to win.
 ```
 
 ### Follow-ups
 
-- Who owns the workloads where [Competitor] sits? Map the buying committee.
+- Run "Map the buying committee" on the workloads where [Competitor] sits.
 - Find 10 more companies in the same industry whose stack includes [Competitor] products.
-- Turn the top switch trigger or opening into a 90-word email to the person in the next step.
+- Turn the "How to win" wedge into a 90-word email to the person in the next step.
 - Run it again with Relationship set to adjacent tool and compare the openings.
 
 ### Tips
@@ -143,6 +146,7 @@ Bottom line and next step first (named owner, dated why-now). Is [Competitor] in
 - Set Relationship when the tool isn't a true rival. Datadog is adjacent for a data-observability seller, and a platform such as Snowflake is something you need in the stack, not something to replace.
 - If the account makes a product in the same category, the verdict says so first: a company that owns its own tool rarely switches to yours.
 - Draup sees tools through public evidence such as job ads. A tool that runs quietly in the background may show as Low or not at all.
+- Hiring counts use the product's skill name ("CrowdStrike Falcon"), not the maker; a maker-name search can return a false 0.
 
 ## What tools they adopted this year
 
@@ -164,13 +168,13 @@ INPUTS (edit these)
 - Competitor (optional): [one or more, e.g. Kinaxis, o9 Solutions — skip if saved in setup]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by its website (exact match; if none, retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company. If several match or it looks wrong, ask me. Use Draup's exact name from then on.
 2. Pull every product first detected at the company in the last 12 months, up to 5 pages, and review them all before narrowing. Note the earliest and latest first-detected dates.
-3. If I named competitors, search the whole stack by each maker; flag any product first detected in this window (newly detected = Amber) and rate older installs too (see rules).
+3. If I named competitors, search the whole stack by each maker; flag any product first detected in this window at High or Medium (Amber) and rate older installs too (see rules); note Low-only detections without counting them.
 4. Drop Low-usage products unless they're in my category or made by a competitor.
 5. Label each: Competes (does what [What I sell] does), Complements (sits next to it or feeds it) or Unrelated.
 6. Look for clusters in Competes and Complements (e.g. several new security tools).
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
@@ -186,12 +190,13 @@ RULES
 - Additions only; don't infer removals. Say how many products you reviewed and dropped.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Trust last-seen date and usage strength. Ignore the confidence score and "Generic" rows. Say "fading", never "dropped".
 - Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Rating: High usage in the workloads of What I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit [Company], and keep it out of drafted copy. No Chief, EVP, CIO or "Head of" in the top 3? Pull the next page of 10 once (no title search).
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
 ```
 
@@ -206,12 +211,12 @@ Bottom line and next step first (named owner, dated why-now). What did Draup fir
 - For the top 3 complementary adoptions, who likely owns them? Find executives in the matching workloads.
 - Which older tools in the same categories look like they are fading?
 - Write a 3-sentence opener that references the strongest new adoption without saying how we know.
-- Check whether the strongest new tool also shows up in their job ads.
+- Check whether the strongest new tool also shows up in their job ads, searching by its skill name.
 
 ### Tips
 
 - A cluster of new tools in one area is often a stronger signal than any single product.
-- List your main competitors in the input (or the start-here prompt) so the assistant checks their whole product range, not just this year's additions.
+- List your main competitors in the input (or in "Tell your AI about you") so the assistant checks their whole product range, not just this year's additions.
 
 ## Fading tools and replacement windows
 
@@ -233,13 +238,13 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. data-platform migration services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by its website (exact match; if none, retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company. If several match or it looks wrong, ask me. Use Draup's exact name from then on.
 2. Pull the products in that area, up to 5 pages, and say which grouping you used.
 3. Group each: Fading (no usage strength, or last seen over 12 months ago); Weakening (Low, last seen 6–12 months ago); Active (High or Medium, seen in the last 90 days); Stable (the rest, counted only). Cut-offs are editable defaults.
 4. For each Fading or Weakening product, find Active products in the same sub-category: the likely successor or a parallel tool.
 5. Pull products first detected in the last 12 months in those sub-categories.
 6. Pull stated priorities in the function closest to [What I sell] about modernisation, migration, consolidation or cost, with source and fiscal quarter.
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
@@ -254,12 +259,13 @@ RULES
 - If nothing is fading, say the area looks stable and lead the next step with a priority instead.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit [Company], and keep it out of drafted copy. No Chief, EVP, CIO or "Head of" in the top 3? Pull the next page of 10 once (no title search).
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
 ```
 
@@ -271,7 +277,7 @@ Bottom line and next step first (named owner, dated why-now). Which [Technology]
 
 ### Follow-ups
 
-- For the top replacement window, who owns that workload? Map the buying committee.
+- For the top replacement window, run "Map the buying committee" on that workload.
 - Show the full active stack in the same sub-categories, so I know what I'd integrate with.
 - Draft a 90-word email to the person in the next step that opens on the migration window without naming the old vendor.
 - Check whether the likely successor also appears in their job ads.
@@ -301,7 +307,7 @@ INPUTS (edit these)
 - Motion (optional): [attach or co-sell (default), or replace]
 
 STEPS
-1. Find [Vendor] by its website (exact match) and confirm it is the parent, not a reseller or regional unit. If none or several match, ask me.
+1. Find [Vendor] by its website (exact match; if none, retry once by name and show the match and its score) and confirm it is the parent, not a reseller or regional unit. If several match, ask me.
 2. Pull the products it builds and how many companies Draup detects using each. Rank by companies, largest first.
 3. For the top 3, pull the category and what each does.
 4. Mark which products [What I sell] attaches to, competes with, or doesn't touch.
@@ -321,11 +327,11 @@ RULES
 - Draup leaves out "Generic" rows. Say if the list looks capped at 20.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Label anything you infer as "likely".
 - If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- People: full profile title; check it fits partners, alliances or channels; flag subsidiary or regional staff. Professional information only (name, title, employer, Draup's profile link); no personal contact details.
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
@@ -337,7 +343,7 @@ Bottom line and next step first (a named person, a dated why-now). What does [Ve
 
 ### Follow-ups
 
-- List companies in [Vertical] headquartered in [Country] whose stack includes [top product], sorted by revenue.
+- List companies in [Vertical] headquartered in my territory whose stack includes [top product] at High or Medium usage, sorted by revenue.
 - Which of my target accounts also run [top product]?
 - Draft a one-paragraph co-sell pitch to the partner leader in the next step.
 - Show the same view for [a second vendor] so I can compare footprints.
@@ -345,13 +351,13 @@ Bottom line and next step first (a named person, a dated why-now). What does [Ve
 ### Tips
 
 - Install-base counts are best for comparing products within one vendor, not for quoting as market share.
-- Pair this with the competitor target-list prompt to turn the biggest product into a named list.
+- Pair this with "Target list: companies running a competitor" to turn the biggest product into a named list.
 
 ## Who's already working each priority
 
 - **id:** `tech-priority-stack-incumbent-map`
 - **What you get:** For each stated priority in one function: the tools and service providers already linked to it, rated where they're your competitors, and whether to displace, co-sell or go greenfield, judged for a software or a services seller.
-- **Use it when:** Use this when you want, priority by priority, which tools and providers are already in place and where to displace, co-sell or go first. Use "Who to partner with vs replace, by priority" instead when you're choosing between named partners, and "Pick a co-sell partner" when you need one integrator for a deal.
+- **Use it when:** Use this when you want, priority by priority, which tools and providers are already in place and where to displace, co-sell or go first. Use "Which providers to partner with or replace" instead when you're choosing between named partners, and "Pick the SI to co-sell with" when you need one integrator for a deal.
 - **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances
 - **Time:** 4–6 min
 - **Inputs:** Company (e.g. target.com); Business function (e.g. Supply Chain); What I sell (e.g. supply-chain planning software); I sell (e.g. software (or services)); Competitor (optional) (e.g. Kinaxis, o9 Solutions)
@@ -369,34 +375,33 @@ INPUTS (edit these)
 - Competitor (optional): [vendors or services firms, e.g. Kinaxis, o9 Solutions]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by its website (exact match; if none, retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company. If several match or it looks wrong, ask me. Use Draup's exact name from then on.
 2. Map [Business function] to its main workloads and name them. Pull stated priorities in the function, newest first; keep up to 8. If none, try the closest function and say so.
 3. For each priority: workloads, source and quarter, up to 6 linked tools, up to 6 linked providers.
 4. Pull the stack once, filtered to the makers of [Competitor] and the linked tools (look up very broad makers such as Microsoft separately). Keep tools with a usage strength seen in 12 months; rate competitor products (see rules).
-5. Count each provider's active engagements in the function's workloads, shown as "in [Business function] / total". Leave staffing, BPO, agency and market-research firms out of the plays.
-6. Tag each priority. Software seller: Displace = a competitor product is active in its workloads; Co-sell = an IT services firm works it. Services seller: Displace = a rival services firm works it; Co-sell = a linked software product needs services. Either: Greenfield = nothing relevant; else Not ours.
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+5. Count each provider's active engagements in the function's workloads (one lookup filtered to those workloads); add the provider's account-wide total only if it came back. Leave staffing, BPO, agency and market-research firms out of the plays.
+6. Tag each priority. Software seller: Displace = a competitor product at High or Medium in its workloads; Co-sell = an IT services firm works it. Services seller: Displace = a rival services firm holds 10%+ of its engagements; Co-sell = a linked software product needs services. Either: Greenfield = nothing relevant; else Not ours.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
 - Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
 - Table (newest first, up to 8): Priority (quarter) | Incumbent tools (rating) | Providers (in function) | Play | Likely owner.
 - "Top 3 plays": priority, incumbent or partner, opening.
-- Detail: linked tools with usage strength and last seen; provider engagement counts (in function / total); Gaps (what Draup lacked, to ask in discovery).
+- Detail: linked tools with usage strength and last seen; provider engagement counts in the function (and account-wide if returned); Gaps (what Draup lacked, to ask in discovery).
 
 RULES
-- Provider counts are "active engagements (Draup-derived)", not contracts; rank providers by them yourself.
+- Provider counts are "active engagements (Draup-derived)", not contracts; rank providers by them yourself and rate rivals by share.
 - If the same integrators appear on every priority, call it weak evidence, not Co-sell everywhere.
-- Tools and providers are linked to a priority by workload, not confirmed on it. Say "linked", never "used for".
+- Tools and providers are linked by workload, not confirmed; say "linked", never "used for".
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Rating: High usage in the workloads of What I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber. Services rival, by share of the account's active engagements in those workloads: 30%+ Red, 10–29% Amber, under 10% Green.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit [Company], and keep it out of drafted copy. No Chief, EVP, CIO or "Head of" in the top 3? Pull the next page of 10 once (no title search).
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 
@@ -422,11 +427,11 @@ Bottom line and next step first (named owner, dated why-now). Map [Company]'s [B
 ## Target list: companies running a competitor
 
 - **id:** `tech-displacement-list`
-- **What you get:** A true count and a ranked list of companies in your industry and country whose stack includes a competitor's products, with usage strength shown, distributors and inactive names flagged, and a named person at the top account.
+- **What you get:** A true count and a ranked list of parent companies in your industry and territory whose stack includes a competitor's products, with usage checked for the top 10 (only High or Medium counted), distributors and inactive names flagged, and a named person at the top account.
 - **Use it when:** Launching a competitive-replacement campaign or building an SDR list.
 - **Best for:** SDR / BDR, Marketing & ABM, Sales Leader & RevOps, Account Executive
 - **Time:** 4–6 min
-- **Inputs:** Competitor (e.g. Snowflake); Vertical (e.g. Retail); Country (e.g. United States of America); Minimum employees (e.g. 5,000); What I sell (e.g. lakehouse data platform)
+- **Inputs:** Competitor (e.g. Snowflake); Vertical (e.g. Retail); Territory (optional) (e.g. United States of America — defaults to your territory from setup); Minimum employees (e.g. 5,000); What I sell (e.g. lakehouse data platform)
 
 ### Detailed prompt
 
@@ -436,53 +441,56 @@ Act as my competitive list-building analyst. Use Draup for Sales for every fact.
 INPUTS (edit these)
 - Competitor: [vendor or product, e.g. Snowflake]
 - Vertical: [industry, e.g. Retail, Life Sciences]
-- Country: [HQ country in full, e.g. United States of America]
+- Territory (optional): [HQ country or region in full, e.g. United States of America; default: my territory from setup]
 - Minimum employees: [e.g. 5,000]
 - What I sell: [one line, e.g. lakehouse data platform — skip if you ran the start-here prompt]
 
 STEPS
-1. Turn my industry and country into Draup's exact names; say which you used. If the industry returns zeros, try its parent industry and name it.
-2. List only companies whose tech stack includes [Competitor] products, showing which ones: primary industry [Vertical], HQ in [Country], at least [Minimum employees] staff, largest revenue first. For a product, filter by its maker and keep rows showing it.
-3. Count by paging this exact list, 10 per page, until a page returns fewer than 10. The total must apply every filter (industry, country, size, technology).
-4. Separately, run the list once without the size limit, companies with no workforce figure first (10 rows), and report how many lack size data (or "10+"). Never mix this into the total.
-5. Show the top 10 with usage strength. Flag distributors, wholesalers and resellers, possibly inactive companies and rows clearly outside the industry, and offer to exclude them.
-6. For the top-ranked company, pull the top 3 executives in the function closest to [What I sell] and its most important news item from the last 90 days.
+1. Turn my industry and territory into Draup's exact names; say which you used. If the industry returns zeros, try its parent industry and name it.
+2. List only companies whose tech stack includes [Competitor] products: primary industry [Vertical], HQ in [Territory], at least [Minimum employees] staff, largest workforce first (sort by total workforce). For a product, filter by its maker and keep rows showing it. Parent companies only: merge subsidiaries and the same company under different names.
+3. Count by paging this exact list, 10 per page, until a page returns fewer than 10. The total must apply every filter. Label it "detected at any usage": the list shows presence, not usage.
+4. For the top 10, check usage with one stack lookup each, filtered to the maker. Count a company as running [Competitor] only at High or Medium; list Low-only rows as "detected, not counted".
+5. Separately, run the list once without the size limit, companies with no workforce figure first (10 rows), and report how many lack size data (or "10+"). Never mix this into the total.
+6. Flag distributors, wholesalers and resellers, possibly inactive companies and rows clearly outside the industry, and offer to exclude them.
+7. For the top-ranked company at High or Medium, pull the top 3 executives in the function closest to [What I sell] and its most important news item from the last 90 days.
 
 OUTPUT
-- Bottom line: 2 sentences — the answer and what it means for [What I sell]. Include the true count.
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]. Include the true count and how many of the top 10 run it at High or Medium.
 - Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
 - Table (top 10): Rank | Company | Workforce | [Competitor] products (usage strength) | Flag.
-- Detail: revenue (USD M, fiscal year) and Opportunity Index for the same rows; the next 5; "Flagged" (Company | Reason); "Missing size data": count; Gaps (what Draup lacked, to ask in discovery).
+- Detail: revenue (USD M, fiscal year) and Opportunity Index for the same rows; the next 5; "Detected at Low only"; "Flagged" (Company | Reason); "Missing size data": count; Gaps (what Draup lacked, to ask in discovery).
 
 RULES
 - Opportunity Index is Draup's own rating of how strong the sales opportunity is (higher is stronger); use it to order, not to quote.
 - Don't rank on IT spend; for many companies it is modelled from revenue.
-- Low usage everywhere means the competitor is present but not central; say so in the bottom line.
+- Low usage everywhere means the competitor is present but not central; say so in the bottom line and don't count those rows.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Use primary industry only. Flag "possibly inactive" (zero postings in 90 days, or no revenue and no workforce).
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Rank within [Territory] only. Use primary industry only. Flag "possibly inactive" (zero postings in 90 days, or no revenue and no workforce).
 - Counts must apply every filter. The quick count ignores technology conditions, so count by paging; stop after 5 pages and report the total so far with a plus.
 - Show USD millions using Draup's conversion rate. If Draup gives no rate, name the rate and date and mark it as outside Draup.
 - Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit the company, and keep it out of drafted copy.
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Bottom line and next step first (named person at the top account, dated why-now). How many [Vertical] companies in [Country] with [Minimum employees]+ staff run [Competitor], counted with every filter? Top 10 with usage strength; flag distributors and inactive names.
+Bottom line and next step first (named person, dated why-now). How many [Vertical] parent companies in [Territory] with [Minimum employees]+ staff run [Competitor]? Top 10 with usage strength; count only High or Medium; flag distributors.
 ```
 
 ### Follow-ups
 
-- Show the next 10 in the same way, distributors excluded.
+- Show the next 10 in the same way, distributors excluded, with usage checked.
 - For the top 5, what stated priorities could justify a switch?
 - Write a 2-sentence opener for each of the top 5, each tied to one dated fact.
 - Re-rank the list by Opportunity Index to find reachable mid-size accounts.
 
 ### Tips
 
-- The total is counted with every filter applied. If it looks small, lower the minimum size or widen the country rather than trusting a bigger unfiltered number.
+- The total is counted with every filter applied and labelled "detected at any usage"; the top 10 are then checked for High or Medium usage. If the list looks small, lower the minimum size or widen the territory.
+- Leave Territory blank to use the one saved in "Tell your AI about you"; without a territory the list ranks the whole world.
 - Retail and consumer lists often include distributors and wholesalers; the flag column lets you drop them before the list goes to SDRs.

@@ -29,48 +29,49 @@ Act as my bid manager. Use Draup for Sales for every fact. Don't use outside kno
 
 INPUTS (edit these)
 - Company: [website, e.g. mastercard.com]
-- RFP scope: [one line from the RFP, e.g. managed data-platform modernisation for payments analytics]
+- RFP scope: [one line, e.g. payments-analytics data-platform modernisation]
 - Area in scope: [1–3 workloads or a function, e.g. Data Engineering, Cloud Computing — or IT]
 - Known bidders (optional): [e.g. Accenture, Infosys]
 - What I sell: [one line, e.g. data-platform modernisation services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-RFPs mirror priorities the buyer already stated, often shaped by an incumbent. An incumbent-heavy RFP with no matching priority is usually column fodder.
+An incumbent-heavy RFP with no matching stated priority is usually column fodder.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
-2. Turn [Area in scope] into 1–3 workloads (types of work, e.g. Data Engineering); if I gave a function, map it and say which.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
+2. Map [Area in scope] to 1–3 workloads; say which.
 3. Evaluation priorities: up to 10 in those workloads (if fewer than 3, widen to the function), with quarter and outcome lines.
-4. Incumbents: engagements and partners in those workloads, then the top 10 providers, minus staffing and agency firms.
-5. Installed tools: the top 10 products in those workloads by usage (High, then Medium), with vendor.
+4. Incumbents: engagements, partners and top 10 providers in those workloads, minus staffing and agencies.
+5. Installed tools: top 10 products in those workloads, High then Medium, with vendor.
 6. Known bidders: engagements in scope (services) or whole-stack check (software).
-7. Panel: executives in those workloads, up to 2 pages of 10.
+7. Panel: one page of 10 executives in those workloads.
 8. News, 12 months: vendor selections, partnerships, technology budgets, leadership changes. Review 20+ items; mark the most important from the last 90 days.
 9. Money: revenue and growth.
 
 OUTPUT
-- Bottom line: 2 sentences — Bid, Bid-to-learn or Qualify-out, and the deciding fact. Bid if 2+ High-weight priorities match and no provider holds over 40% of in-scope engagements (editable default).
-- Recommended next step: a named person (name, full title) from the panel, the action this week and the dated why-now; if none, say so.
+- Bottom line: 2 sentences — Bid, Bid-to-learn or Qualify-out, and the deciding fact. Bid if 2+ High-weight priorities match and no provider is Red (editable default).
+- Recommended next step: a named person (name, full title) from the panel, the action this week and the dated why-now (or say none).
 - Table "Likely evaluation priorities" (up to 6): Priority | Source + quarter | Weight | How to answer it. High weight = from the 2 latest quarters (publication month for news priorities) and on scope.
-- Table "Who is already there" (up to 8): Provider or vendor | Engagements or products | Share in scope | Threat (Incumbent, Contender, Minor).
+- Table "Who is already there" (up to 8): Provider or vendor | Engagements or products | Share in scope | Rating (Red, Amber, Green).
 - "Win themes": 3: theme, their words (dated), our proof, ghosting line.
 - "Q&A questions": 5 that expose gaps or hidden incumbent advantages.
 - Detail: panel (Name | Full title | Linked priority, up to 6), known-bidder footprint, money.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Ghosting lines describe a weakness, never a named rival.
 - Quote any technology budget figure from news.
-- A known bidder's product with High usage in scope is Red (incumbent advantage); Medium is Amber.
+- Rating: Red if a firm holds 30%+ of in-scope active engagements or a product has High usage in scope; Amber if 10–29% or Medium; else Green.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 500 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Active engagements (Draup-derived) are estimates, not contracts; rank providers by them and never quote outsourced headcount.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 500 words above Detail, tables included.
 ```
 
 <details>

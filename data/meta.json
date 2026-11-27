@@ -1,6 +1,6 @@
 {
  "title": "Draup Sales Prompt Library",
- "tagline": "Ready-to-use prompts for Claude and ChatGPT that turn Draup's sales intelligence into account briefs, buyer maps, target lists and outreach.",
+ "tagline": "Ready-to-use prompts for Claude, ChatGPT and Microsoft Copilot that turn Draup's sales intelligence into account briefs, buyer maps, target lists and outreach.",
  "version": "1.2.0",
  "updated": "2026-11-27",
  "repo": "https://github.com/Draup/draup-sales-prompts",
@@ -304,15 +304,15 @@
    "research-precall-snapshot",
    "services-outsourcing-footprint",
    "services-competitor-at-account",
-   "people-buying-committee",
+   "plays-cloud-targets",
    "services-reinsourcing-risk"
   ],
   "PTN": [
+   "partners-recruit-si-shortlist",
+   "partners-sourced-pipeline",
    "services-partner-map",
    "services-cosell-partner",
-   "tech-priority-stack-incumbent-map",
-   "services-competitor-profile",
-   "compete-vertical-head-to-head"
+   "partners-joint-account-plan"
   ]
  },
  "trust_notes": [

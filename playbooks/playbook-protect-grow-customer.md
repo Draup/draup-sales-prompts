@@ -4,15 +4,15 @@
 
 > **Goal:** For an existing customer, see what changed, rate the renewal risk, rebuild any lost relationships, walk into the QBR with a point of view, and leave with a named expansion play.
 
-**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps · **Time:** 45–60 min · **Steps:** 5
+**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps · **Time:** About 15 min with quick versions, 45–60 min with detailed · **Steps:** 5
 
 **Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. What changed since [Date]
 
-Lists everything material that changed at the customer since a date you choose (up to 12 months back).
+Lists what changed at the customer since a date you choose (up to 12 months back).
 
-**Look for:** New leaders, new tools, hiring shifts or restructuring in the areas you serve. The verdict for a customer is defend, expand or monitor.
+**Look for:** New leaders, new tools, hiring shifts or restructuring in the areas you serve, and the verdict: defend, expand or monitor.
 
 Open the full prompt: [What changed since [Date]](../prompts/04-signals-and-timing/change-log.md)
 
@@ -24,9 +24,9 @@ Bottom line first (customer: defend, expand or monitor; lost deal: reopen, wait 
 
 ## Step 2. Renewal risk check (red, amber, green)
 
-Rates renewal and relationship risk Red, Amber or Green with dated evidence, including your sponsor.
+Rates renewal and relationship risk Red, Amber or Green with dated evidence, including your sponsor. Reuse step 1's changes as context; this adds sponsor, exits, layoffs and competitor usage.
 
-**Look for:** Any Red row, and whether your sponsor is still in role. A rival product with High usage in your workloads is Red, Medium is Amber; a newly detected one is Amber until you verify it.
+**Look for:** Any Red row, and whether your sponsor is still in role. A rival product with High usage in your workloads is Red, Medium or newly detected is Amber; Green means nothing found (unverified).
 
 Open the full prompt: [Renewal risk check (red, amber, green)](../prompts/11-account-planning/risk-check.md)
 
@@ -38,9 +38,9 @@ Bottom line and next step (named person, dated why-now) first. Renewal risk on [
 
 ## Step 3. New leaders and warm intro paths
 
-Run it when the risk check shows a new leader or a sponsor change: finds who joined or was promoted in your area and the warm paths to them.
+Run it only if steps 1–2 show a new leader or a sponsor change; reuse those names and add where they came from and the warm paths to them.
 
-**Look for:** Decision-makers you haven't met yet, especially any arriving from one of your customers. Book the introduction before the renewal conversation starts.
+**Look for:** Decision-makers you haven't met, especially any who worked at one of your customers. Book the introduction before the renewal conversation starts.
 
 Open the full prompt: [New leaders and warm intro paths](../prompts/02-buyers-and-stakeholders/new-leaders-warm-paths.md)
 
@@ -52,9 +52,9 @@ New leaders at [Company] in [Workload]: bottom line and who to contact first, th
 
 ## Step 4. QBR prep: talking points and asks
 
-Sets the outcomes you delivered against what changed in your sponsor's function, and produces 3 talking points and 3 asks.
+Sets the outcomes you delivered against what changed in your sponsor's function. Reuse the result from step 1: tell it to use those changes instead of pulling them again, and paste your outcomes.
 
-**Look for:** Talking points that link their newest priority to value you've delivered, and asks that lock in the renewal: executive sponsor, reference, expansion.
+**Look for:** 3 talking points that link a dated change to value you delivered, and 3 asks: expansion, reference, executive sponsor.
 
 Open the full prompt: [QBR prep: talking points and asks](../prompts/11-account-planning/qbr-prep.md)
 
@@ -66,16 +66,16 @@ Lead with 3 talking points, 3 asks and a next step naming a person. QBR for [Com
 
 ## Step 5. Best entry points: expand or new
 
-Turns the account into the five best expansion moves for what you sell, each marked expand or new, with evidence, incumbents and the likely owner.
+Turns the account into the five best expansion moves for what you sell, each marked Expand or New.
 
-**Look for:** The entry point with the strongest dated evidence and the fewest incumbents. Name it as the expansion ask in the QBR, with the owner as your next meeting.
+**Look for:** The entry point with the strongest dated evidence and the fewest incumbents. Make it the expansion ask in the QBR, with its likely owner as your next meeting.
 
 Open the full prompt: [Best entry points: expand or new](../prompts/11-account-planning/entry-points.md)
 
 Quick version:
 
 ```text
-Bottom line and next step (named owner, dated why-now) first. Find the top 5 entry points at [Company] for [What I sell] in [Business function]: initiative, Expand or New (we run [Already deployed]), dated evidence, incumbents, [Competitor] installed, likely owner.
+Bottom line and next step (named owner, dated why-now) first. Top 5 entry points at [Company] for [What I sell] in [Business function or Workload]: initiative, Expand or New (we run [Already deployed]), dated evidence, incumbents, [Competitor] installed, likely owner.
 ```
 
 ## What you finish with

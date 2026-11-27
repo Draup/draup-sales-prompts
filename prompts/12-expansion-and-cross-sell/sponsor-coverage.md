@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before a renewal or expansion, after a reorganisation, or when one sponsor carries the account. Use this for relationship coverage; use "Renewal risk check" (plan-risk-check) for the whole account's risk, including competitors. | Account & Customer Success Manager, Sales Leader & RevOps, Account Executive, Services, SI & Staffing Seller | Everyone | 4–6 min | Executives & movement, News signals |
+| Before a renewal or expansion, after a reorganisation, or when one sponsor carries the account. Use this for relationship coverage; use "Renewal risk check (red, amber, green)" for the whole account's risk, including competitors. | Account & Customer Success Manager, Sales Leader & RevOps, Account Executive, Services, SI & Staffing Seller | Everyone | 4–6 min | Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -38,7 +38,7 @@ CONTEXT (why this matters)
 Accounts are lost when one sponsor leaves or is overruled. Good coverage spans three levels in more than one unit; never guess at people's plans.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Use [Business function], or the one closest to [What I sell]; say which.
 3. Pull senior leaders in the function, 10 per page, up to 3 pages. If fewer than 15 come back, add the top 20 leaders across the company (2 pages) to cover the C-suite.
 4. Match [Our sponsor] and [Who we know] to profiles by name and title; unmatched contacts are "not found in Draup".
@@ -48,25 +48,25 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — sponsor risk and the biggest coverage gap. Add: people checked, pages, contacts matched.
-- Recommended next step: a named person (name, full title) to build a relationship with next, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) to build a relationship with next, the action this week and the dated why-now (or say none).
 - "Sponsor read": one line: title, months in title, risk (High, Medium, Low) and the dated signals behind it.
 - Table "Coverage grid": Level | up to 4 units or regions, each cell Known (who) or Gap (most senior person there).
 - Table "Build next" (3): Person (name, title) | Why (dated fact) | Intro path through someone we know.
 - Detail: likely successors or backups (up to 3, months in title) and leadership changes (Date | Change | Source).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Sponsor risk is internal planning; never put it in customer-facing copy.
 - Function tags can be loose (legal or scientific leaders under IT); drop clear mismatches and say how many.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
 - Leadership data can lag about 3 months; give the latest move date seen.
 - If European executives return none, say profiles there may be restricted.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 420 words above Detail, tables included.
 ```
 
 <details>

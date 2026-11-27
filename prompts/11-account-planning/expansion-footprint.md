@@ -23,15 +23,15 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my account-expansion analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my account-expansion analyst. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [Website, e.g. walmart.com]
 - Business function: [e.g. Supply Chain, IT, ER&D]
-- What I sell: [One line, e.g. warehouse automation software — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. warehouse automation software; skip if saved in setup]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+1. Find the company by website (no result: try its name once and show the match score). Confirm it's the parent, not a subsidiary or sister company; if several match, ask me. Use Draup's exact name from then on.
 2. Pull key locations for [Business function]: metro, country, indicative workforce, 12-month postings, growth index and site tags (HQ, capability centre). Keep the top 10 by postings, plus every capability-centre row.
 3. Infer likely new sites: metros with real postings but little or no workforce. Say they're inferred.
 4. Pull net hiring by metro from talent flow (hires minus exits) and state the months covered.
@@ -42,7 +42,7 @@ OUTPUT
 - Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
 - "Top metros": Metro | Tag | Postings (12 mo) | Growth index | Net hiring (window).
 - "Why this matters for [What I sell]": 3 bullets on where to land or expand and which regional team should own it.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 - Detail: "Capability centres and likely new sites" (Metro | Country | Tag or "inferred new" | Postings) and "Fastest growing" (3 metros with the highest growth index among those with 100+ workforce; editable default).
 
 RULES
@@ -52,13 +52,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
 - Talent-flow data ends about 3 months ago; state the months.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
 - Label inferences (buyer role, intent, fit) "likely".
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 400 words including tables.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

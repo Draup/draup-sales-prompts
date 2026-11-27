@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before you sign, renew or put marketing funds behind a services partner. Use partners-compare-candidates instead to choose between several. | Partnerships & Alliances, Sales Leader & RevOps | Everyone | 2–4 min | Outsourcing deals, Hiring & job postings, Talent flow & locations, News signals, Executives & movement |
+| Before you sign, renew or put marketing funds behind a services partner. Use "Compare candidate partners head to head" instead to choose between several. | Partnerships & Alliances, Sales Leader & RevOps | Everyone | 2–4 min | Outsourcing deals, Hiring & job postings, Talent flow & locations, News signals, Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -24,31 +24,31 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my partner due-diligence analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my partner due-diligence analyst. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Partner: [Website of the services firm, e.g. hcltech.com]
 - Vertical: [Draup industry where we'd work together, e.g. Automotive]
 - Country: [Customer HQ country in full, e.g. Germany]
-- What I sell: [One line, e.g. software-defined vehicle testing platform — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. software-defined vehicle testing platform; skip if saved in setup]
 
 STEPS
 1. Find the partner by website and confirm the parent, not a regional unit.
 2. Pull its customer summary: active customers, engagements and top 3 customers overall.
-3. Pull 12 months of monthly job postings. Compare the average of the last 5 full months with the 5 before. If one month more than doubles the one before and stays there (editable default), call it a "step change" that may reflect wider data coverage, not only demand.
+3. Pull 12 months of monthly postings. A month that more than doubles and stays there is a "step change" (possibly wider data coverage, not demand).
 4. Pull headcount growth over Draup's latest 12-month workforce window (it ends about 3 months ago; say the dates).
 5. Search 12 months of deals, partnerships and M&A news where [Partner] is the actor (review 15+ items, keep up to 8), and pull 12 months of acquisitions; say if the acquisitions list looks incomplete.
 6. For customers with primary industry [Vertical] and HQ in [Country]: pull [Partner]'s top 10 customers by engagements, and its delivery locations (top 8, with the share delivered in [Country]).
-7. People and timing: pull [Partner]'s top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+7. People and timing: page through [Partner]'s Sales & Marketing executives (10 a page, up to 3; no vertical filter, as services firms are tagged IT Services) and keep 3 whose titles name [Vertical], a sector, alliances or partnerships; if none, say so and give the closest title. Then pull its most important news item from the last 90 days (client wins, acquisitions, alliances; rankings and awards aren't a why-now).
 
 OUTPUT
 - Bottom line: 2 sentences — the verdict and what it means for [What I sell].
-- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Recommended next step: a person from step 7 (name and title), what to do, and the dated why-now; if none, say so.
 - "Scorecard": Signal | Evidence (dated) | Score from −1 to +1. Defaults (editable): Hiring +1 above +10%, −1 below −10%, else 0 (a step change scores 0 with a note); Headcount +1 above +3%, −1 below 0%; New client wins in 12 months +1 for 3 or more, −1 for none; Acquisitions +1 if any adds a capability close to [What I sell]; Segment footprint +1 if 5+ customers in the segment have 10+ engagements, −1 if fewer than 2.
 - Verdict: Rising (+2 or more), Steady (−1 to +1), Slowing (−2 or less).
 - "Wins and moves": Date | Event | Counterparty | Why it matters for us.
 - Gaps: what Draup didn't have — worth asking the partner.
-- Detail: "Footprint in [Vertical], [Country]" (Customer | Engagements), delivery hubs (Metro | Engagements | Onshore or offshore, with the onshore share) and "What this means for us" (3 bullets, each tied to a number).
+- Detail: footprint in [Vertical], [Country] (Customer | Engagements); delivery hubs with onshore share; 3 "what this means for us" bullets tied to numbers.
 
 RULES
 - Engagement data lags announcements: if news shows a big new win where engagements are low, say so.
@@ -56,13 +56,12 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
 - Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
-- Talent-flow data ends about 3 months ago; state the months.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>

@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before a weekly or monthly team call, when you need to point reps at the accounts that just changed. Use the weekly book sweep for your own accounts without owners or coaching notes. | Sales Leader & RevOps, Account & Customer Success Manager | Everyone | 4–6 min | News signals, Company directory, Tech stack, Executives & movement |
+| Before a weekly or monthly team call, when you need to point reps at the accounts that just changed. Use "Weekly trigger sweep for my book" for your own accounts without owners or coaching notes. | Sales Leader & RevOps, Account & Customer Success Manager | Everyone | 4–6 min | News signals, Company directory, Tech stack, Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -24,19 +24,16 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my sales manager running a pipeline and coverage review. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my sales manager running a pipeline and coverage review. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Accounts and owners: [up to 15 lines of website – owner, e.g. costco.com – Rep A; fedex.com – Rep B]
-- What I sell: [one line, e.g. observability and IT operations software — skip if you ran the start-here prompt]
-- My competitors (optional): [rival products or firms, e.g. Datadog, Dynatrace — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. observability and IT operations software; skip if saved in setup]
+- My competitors (optional): [rival products or firms, e.g. Datadog, Dynatrace; skip if saved in setup]
 - Window (optional): [default last 30 days; up to 90]
 
-CONTEXT (optional)
-Point each rep at the account that just changed. One big account can fill a combined news feed while others look quiet, and a system outage is a trigger for observability software but noise for most sellers, so tie each item to what I sell.
-
 STEPS
-1. Resolve all accounts by website (exact) in one short lookup; resolve misses one by one and ask if only suggestions return. Keep each owner beside the account.
+1. Resolve all accounts by website (exact) in one short lookup; if a website returns nothing, look it up by name once and show the match and its score; ask if only suggestions return. Never drop an account silently. Keep each owner beside the account.
 2. Pull one news feed for all accounts in the window, material categories only (leadership, acquisitions, partnerships and vendor deals, expansions and new centres, investments, layoffs), 2 pages. If one account fills over a third of items, pull again without it.
 3. For accounts still under 2 items, pull their top-ranked signals and keep items dated inside the window.
 4. Drop noise and items where the account isn't the actor (it advised on, supplied or was merely named in someone else's deal). Merge repeats.
@@ -50,8 +47,8 @@ OUTPUT
 - "This week's 5 actions": Account | Owner | Trigger (what, date) | Strength | Action.
 - "By owner": Owner | Strong | Useful | Quiet accounts | Coaching note.
 - Detail: quiet accounts with their latest item's date; not resolved; rival ratings; coverage flags (3+ Strong for one owner, or a whole book quiet); sources.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+- Gaps: what Draup didn't have, to ask in discovery.
+- Slide version (only if asked): 5 dated bullets plus 1 table.
 
 RULES
 - Every trigger needs a date inside the window; drop anything you can't date.
@@ -59,13 +56,14 @@ RULES
 - Don't pull leadership-move histories for every account.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Rivals count only at High or Medium usage (say how many were Low). Software: High in my workloads Red, Medium or newly detected Amber, else Green. Services, by share of active engagements in my workloads: 30%+ Red, 10–29% Amber, under 10% Green. No "Generic" rows.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

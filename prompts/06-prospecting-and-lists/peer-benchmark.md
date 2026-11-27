@@ -15,7 +15,7 @@
 | Placeholder | Example |
 |---|---|
 | `[Company]` | delta.com |
-| `[Peer websites (optional)]` | united.com, aa.com, southwest.com |
+| `[Peer websites (optional)]` | united.com, aa.com |
 | `[What I sell]` | airline operations analytics platform |
 
 ## 2. Copy the detailed prompt
@@ -27,13 +27,13 @@ Act as my competitive benchmarking analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Company: [account website, e.g. delta.com]
-- Peer websites (optional): [up to 4, e.g. united.com, aa.com, southwest.com]
+- Peer websites (optional): [up to 4, e.g. united.com, aa.com]
 - What I sell: [one line, e.g. airline operations analytics platform — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. Use Draup's exact name from then on.
-2. No peers given? Use Draup's listed competitors and keep the 4 closest in business and size. Look everyone up by website and check each came back.
-3. One company list for everyone: revenue and growth, workforce and growth %, attrition %, postings (90 days), Opportunity Index (Draup's 0–10 account-attractiveness score).
+1. Find [Company] by website (no match: retry once by name and show the match score) and confirm it's the parent, not a subsidiary; ask me if several match.
+2. No peers given? Use Draup's listed competitors and keep the 4 closest in business and size. Look everyone up by website; retry any miss once by name and show the match score, never dropping one silently.
+3. One company list for everyone: revenue and growth, workforce and growth %, attrition %, postings (90 days), Opportunity Index (Draup's 0–10 score).
 4. Postings in the workloads mapped to What I sell, last 12 months, for all companies in one pass; add postings per 1,000 employees. Name the workloads used.
 5. If I've named competitors (here or in my setup), check each company's whole stack for their products, with usage strength and first- and last-seen dates.
 6. Count distinct material news events in the last 90 days for each and keep the most material ("10+" if the first 10 all qualify).
@@ -48,20 +48,20 @@ OUTPUT
 - Detail: the full per-company table (fiscal year beside money); each company's most material event (date, headline, source); competitor products found.
 
 RULES
-- Rate installed competitors: High usage in the workloads I sell into = Red, Medium = Amber; first seen in the last 12 months = Amber (newly detected).
-- Don't compare on IT spend: it is modelled from revenue (about 9% for banks) and adds nothing.
-- Don't compare on Draup's yes/no event flags; count dated events instead.
+- Rate my competitors by usage in the workloads I sell into: High = Red, Medium or first seen in 12 months = Amber, Low or absent = Green (only High or Medium count as installed; say so); services rivals by engagement share: 30%+ Red, 10–29% Amber, under 10% Green.
+- Don't compare on IT spend (modelled from revenue) or Draup's yes/no event flags; count dated events.
 - Show USD millions using Draup's conversion rate.
 - If I ask for a slide: 5 bullets + 1 table.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 

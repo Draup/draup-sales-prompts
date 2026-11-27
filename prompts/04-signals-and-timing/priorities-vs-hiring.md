@@ -31,34 +31,35 @@ INPUTS (edit these)
 - Business function (optional): [e.g. Supply Chain, IT; blank uses the function closest to what I sell]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull the workloads in the stated priorities for the function, ranked by how many priorities involve each. Keep the top 15. If the function has none, say so and don't borrow from others.
 3. Pull hiring by workload for the last 12 months, up to 5 pages: postings and trend. Set frontline workloads (store operations, food and beverage, warehousing) aside unless they relate to what I sell.
 4. Match each priority workload to its hiring; where names differ, use the closest and say so.
 5. Mark each (editable defaults): Backed = top 20 hiring workload or trending up; Partial = 50+ postings but not Backed; Thin = under 50; Silent = none; Not comparable = strategy or governance work that rarely appears in job ads.
 6. For the 3 biggest gaps (most priorities, least hiring), pull the priority names with source and fiscal quarter.
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and [Company]'s top 90-day news item where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - "Build-or-buy gaps" (top 3): priority, source and quarter, hiring numbers, and why [What I sell] could fill it.
 - Table (top 10): Workload | Priorities involving it | Postings (12 months) | Trend | Read.
-- Detail: the remaining workloads; "Already backed" (2–3 workloads they're building in-house, with likely owners); Gaps (what Draup lacked, to ask in discovery).
+- Detail: the remaining workloads; "Already backed" (2–3 workloads they're building in-house, with likely owners); Gaps (to ask in discovery).
 
 RULES
 - Little hiring doesn't prove they will buy; they may already outsource the work. Say so, and suggest checking their outsourcing for those workloads.
 - State the hiring window.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the function closest to What I sell (e.g. IT) and say which; map any function I give to its main workloads and name them.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 380 words including tables; then offer to continue.
 ```
 
 <details>

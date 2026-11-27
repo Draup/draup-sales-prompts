@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Setting coverage for a new fiscal year, rebalancing books between reps, or deciding which accounts get a named AE, a pooled team or a digital motion. Use the propensity-tiering prompt instead when the question is who might buy this quarter. | Sales Leader & RevOps, Account & Customer Success Manager, Account Executive | Everyone | 4–6 min | Company directory, Company & financials, Outsourcing deals, Hiring & job postings, Tech stack, Executives & movement, News signals |
+| Setting coverage for a new fiscal year, rebalancing books between reps, or deciding which accounts get a named AE, a pooled team or a digital motion. Use "Tier my accounts by fit and timing" instead when the question is who might buy this quarter. | Sales Leader & RevOps, Account & Customer Success Manager, Account Executive | Everyone | 4–6 min | Company directory, Company & financials, Outsourcing deals, Hiring & job postings, Tech stack, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -25,45 +25,44 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my sales operations lead designing account coverage. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my sales operations lead designing account coverage. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Accounts: [up to 20 websites, 10 per pass, e.g. boeing.com, airbus.com, rtx.com, l3harris.com]
-- What I sell: [one line, e.g. OT and device security software — skip if you ran the start-here prompt]
-- My competitors (optional): [rival products or firms, e.g. CrowdStrike, Palo Alto Networks — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. OT and device security software; skip if saved in setup]
+- My competitors (optional): [rival products or firms, e.g. CrowdStrike, Palo Alto Networks; skip if saved in setup]
 - Current customers (optional): [websites, e.g. l3harris.com]
 - Reps available (optional): [e.g. 3]
 
 STEPS
-1. Map What I sell to its 1–3 main workloads and say which. Look up the accounts by website (exact), 10 per lookup, showing only my competitors' products. Resolve misses one by one; ask if only suggestions return.
-2. Take revenue and year, revenue growth, hiring %, workforce growth, workforce and rivals present.
+1. Map What I sell to its 1–3 main workloads. Look up the accounts by website, 10 per lookup, showing only my competitors' products. If a website returns nothing, look it up by name once and show the match and its score; ask if only suggestions return. Never drop an account silently.
+2. Take revenue and year, revenue growth, hiring %, workforce growth, workforce and rival products listed (names only, usage unchecked).
 3. Per account, pull 12-month postings in my workloads (keep only those) and work out postings per 1,000 employees.
-4. POTENTIAL 0–50 (editable): workload postings per 1,000 — top third 20, middle 12, else 4; revenue — over $20B 15, $5–20B 10, $1–5B 6, else 2; rival present 10 (current customers: risk flag, 5); Opportunity Index 5.
-5. MOMENTUM 0–50 (editable): revenue growth — over 8% 20, 3–8% 14, 0–3% 8, else 3; hiring % — over 10% 15, 6–10% 10, 3–6% 5, else 1; workforce growth — over 3% 15, 0–3% 10, else 3. Missing value = half points, flagged; revenue moving over 25% in a year = check for a merger or spin-off, score 8.
+4. POTENTIAL 0–50 (editable): workload postings per 1,000 — top third 20, middle 12, else 4; revenue — over $20B 15, $5–20B 10, $1–5B 6, else 2; rival at High or Medium 10, listed but unchecked 5 (check usage for the top 5 by Potential; current customers: risk flag); Opportunity Index 5.
+5. MOMENTUM 0–50 (editable): revenue growth — over 8% 20, 3–8% 14, 0–3% 8, else 3; hiring % — over 10% 15, 6–10% 10, 3–6% 5, else 1; workforce growth — over 3% 15, 0–3% 10, else 3. Missing value = half points, flagged; revenue moving over 25% in a year = possible merger or spin-off, score 8.
 6. Segment (editable): Strategic = Potential 30+ and Momentum 25+; Maintain = Potential 30+ only; Growth = Momentum 25+ only; else Deprioritise. Customers stay at Maintain or above. Over half in one segment? Re-segment by rank (top 30%, next 40%, rest) and say so.
 7. For the top Strategic account, pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
 
 OUTPUT
 - Bottom line: 2 sentences — the shape of the book and what it means for [What I sell].
-- Recommended next step: the coverage decision, its owner and a date; then the first account to open, with a named person (name and title from step 7) and one dated fact. If none is found, say so.
+- Recommended next step: the coverage decision, its owner and a date; then the first account, with a named person (step 7) and one dated fact. If none, say so.
 - "Segments": Account | Segment | Potential | Momentum | Strongest driver. Strategic first.
-- "Coverage model": Strategic = named AE, sponsor, account plan; Growth = pooled AEs; Maintain = AM-led cadence; Deprioritise = digital or partner-led. Counts per tier; flag over 5 Strategic per rep.
+- "Coverage model": Strategic = named AE and account plan; Growth = pooled AEs; Maintain = AM-led; Deprioritise = digital or partner-led. Counts per tier; flag over 5 Strategic per rep.
 - Detail: postings and rivals per account; flags; rubric.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+- Gaps: what Draup didn't have, to ask in discovery.
+- Slide version (only if asked): 5 dated bullets plus 1 table.
 
 RULES
 - Opportunity Index is Draup's own rating; never quote it as a company fact.
 - Flagged accounts reach Strategic only as "Strategic (confirm)".
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
-- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>

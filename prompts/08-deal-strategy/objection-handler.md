@@ -29,46 +29,44 @@ Act as my objection-handling coach. Use Draup for Sales for every fact. Don't us
 
 INPUTS (edit these)
 - Company: [website, e.g. adobe.com]
-- Objections: [not a priority; have a vendor; no budget; build in-house; bad timing — or "all"]
-- Area (optional): [workloads or a function, e.g. Cloud Computing — or IT]
-- Incumbent or competitor (optional): [e.g. Infosys, or Snowflake]
+- Objections: [not a priority, have a vendor, no budget, build in-house, bad timing, or "all"]
+- Area (optional): [workload or function, e.g. Cloud Computing or IT]
+- Incumbent (optional): [e.g. Infosys, or Snowflake]
 - What I sell: [one line, e.g. managed cloud and data modernisation services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-Objections are usually partly true: acknowledge it, add one hard fact from their company, ask a question; if the evidence agrees, re-qualify.
+Most objections are partly true.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Use [Area], or the function closest to [What I sell], as 1–3 workloads; say which.
-3. Pull only what the objections need. Not a priority: up to 6 priorities in the function. Already have a vendor: active engagements and top providers in the workloads; for software, check the whole stack for the incumbent's products. No budget: revenue, EBITDA, Draup-estimated IT spend and split. Build in-house: 12 months of postings in the workloads and any in-house priority. Bad timing: 90 days of news on reorganisations, layoffs, leadership changes and big programmes.
-4. Owner and trigger: the top 3 executives in the function and the most important 90-day news item.
-5. Judge each: Supports, Partly or Undercuts.
-6. Reply: acknowledge, one dated fact, reframe, one question.
+3. Pull per objection. Not a priority: up to 6 function priorities. Already have a vendor: if I sell software, check the whole stack for the incumbent's products and any second product in the same sub-category (overlap is the opening); if services, active engagements and top providers in the workloads. No budget: revenue, EBITDA, IT spend and split. Build in-house: 12-month postings and in-house priorities. Bad timing: 90-day news on reorganisations, layoffs, leaders, big programmes.
+4. Owner and trigger: top 3 function executives and the most important 90-day news item.
+5. Judge each (Supports, Partly, Undercuts) and reply: acknowledge, one fact from the last 12 months (no industry trends), reframe, one question.
 
 OUTPUT
-- Bottom line: 2 sentences — which objections are real, which are cover, and what it means for [What I sell].
-- Recommended next step: a named person (name, full title), the action this week and the dated why-now; if none, say so.
+- Bottom line: 2 sentences — which are real, which are cover, and what that means for me.
+- Recommended next step: a named person (name, full title), the action this week and the dated why-now (or say none).
 - Table "Objection scorecard": Objection | Verdict | Key fact (dated) | Source.
 - Per objection: "Reply" (under 60 words) and "Question back".
-- "If it's real": a re-qualification move (narrower scope, another workload, later date).
-- Detail: vendor table (Provider or product | Engagements or usage | Where thin), money, hiring.
-- Gaps: what Draup didn't have; ask it in discovery.
+- "If it's real": a re-qualification move (narrower scope, a workload where the incumbent has 3 or fewer engagements, later date).
+- Detail: vendors (Provider or product | Engagements or usage | Where thin), money, hiring.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
-- Each reply uses a fact from the last 12 months, never industry trends.
-- A large incumbent isn't a reason to quit: find workloads where it has 3 or fewer engagements. Ignore the company's own products.
-- An incumbent product with High usage in my workloads is Red (the objection is real: position as complement or narrower scope); Medium is Amber.
-- Falling postings undercut "we'll build in-house"; rising ones support it.
+- Rate the incumbent: Red (objection real: complement or narrow scope) if a product has High usage in my workloads or a services firm holds 30%+ of engagements there; Amber if Medium or 10–29%; else Green.
+- Falling postings undercut "build in-house" and favour consolidation for "have a vendor"; rising ones support building.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
-- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Active engagements (Draup-derived) are estimates, not contracts; never quote outsourced headcount.
+- Trust usage strength and last-seen date, not confidence scores or "Generic" rows; a date shared by many rows is a refresh. A rival counts only at High or Medium usage; say you ignored Low.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>

@@ -31,8 +31,8 @@ INPUTS (edit these)
 - Meeting with (optional): [name or title, e.g. SVP Technology]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Pull the 8 most recent stated priorities in the meeting person's function, or else the function closest to [What I sell].
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the 8 most recent stated priorities in the meeting person's function, or else the function closest to [What I sell]; drop any that describe what [Company] sells.
 3. Pull technology added in the last 12 months (High and Medium usage) in that function; if none, use the function's current High and Medium stack and say so.
 4. Pull hiring workloads trending up over 12 months in that function (ignore partial first and last months).
 5. Pull hires and promotions for the most relevant workload; if only exits come back, note the count and use news instead.
@@ -52,14 +52,14 @@ RULES
 - Each question cites a different fact; if a source has no data, use another and say so.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
 - Leadership-move data can lag about 3 months; give the latest move date you saw.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. No Chief, EVP, CIO or "Head of" title? Pull the next page of 10 in the function once (there is no title search). Professional information only.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 500 words including tables, then offer to continue.
 ```
 
@@ -85,7 +85,7 @@ Turn the top 2 questions into a meeting agenda email.
 ```
 
 ```text
-Pre-fill MEDDPICC for this deal from the same evidence.
+Run "Pre-fill MEDDPICC from outside-in data" for this deal from the same evidence.
 ```
 
 ## Tips for better results
@@ -97,7 +97,7 @@ Pre-fill MEDDPICC for this deal from the same evidence.
 
 - [10-minute pre-call snapshot](../../prompts/01-account-research/precall-snapshot.md): Bottom line and who to contact first, then five lobby-length bullets: who they are, what just happened, where hiring in your function is moving, the priority closest to your offer, and one question to ask.
 - [Pre-fill MEDDPICC from outside-in data](../../prompts/02-buyers-and-stakeholders/meddpicc-prefill.md): A MEDDPICC sheet (the deal-qualification checklist) pre-filled with what Draup can show — metrics, buyer candidates, pain, competition rated Red/Amber/Green — and clear 'must discover' flags for the rest.
-- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
+- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A short profile of one senior person, found by name or just by title, with time in role, past companies, what they likely own, a competitor check and two openers. If Draup has no one with that title, you're told so up front and given the 3 closest people.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

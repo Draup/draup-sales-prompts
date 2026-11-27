@@ -29,43 +29,45 @@ INPUTS (edit these)
 - What I sell: [One line, e.g. managed analytics and BI services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Pull the top 10 outsourced workloads with engagements.
-3. Pull in-house postings by workload in one pass (up to 60, monthly); narrowing to one workload mixes in co-tagged roles. Compare the last 5 full months with the 5 before and name the months.
+1. Find the company by its website (no match: retry once by name, show match and score) and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull the top 10 outsourced workloads with engagements, narrowed to the business function closest to [What I sell] (say which); if fewer than 5 remain, add the next largest and mark them "outside my function".
+3. Pull in-house postings by workload in one pass (up to 60, monthly; narrowing to one workload mixes in co-tagged roles). Compare the last 5 full months with the 5 before.
 4. Also list workloads outside that top 10 with postings up over 50% and 50+ in 12 months.
-5. Pull capability-centre sites (company-owned offshore sites, all functions) and 12-month centre setup or expansion news where [Company] is the actor; ignore branches, wealth centres, HQ moves and plants.
-6. Classify each outsourced workload in order: No signal (under 20 postings in 12 months); Re-insourcing risk (up over 20% and a capability centre hiring in that function); Capability gap (up over 20%, no centre); Cost takeout (up 20% or less: rate and vendor pressure).
-7. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+5. Pull capability-centre sites (company-owned offshore sites, all functions) and 12-month centre setup or expansion news; ignore branches, HQ moves and plants.
+6. Classify each workload in order: No signal (under 20 postings in 12 months); Re-insourcing risk (up over 20% with a capability centre hiring in that function); Capability gap (up over 20%, no centre); Cost takeout (up 20% or less).
+7. People and timing: one page of 10 leaders in the function closest to [What I sell]; for IT keep IT, applications, infrastructure, data, CIO or CTO titles; if none fit, widen per the people rule, then to a leader named in news. Add the most important 90-day news item.
 
 OUTPUT
 - Bottom line: 2 sentences — biggest risk and biggest opening for [What I sell].
-- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Recommended next step: a person from step 7 (name and title), what to do, and the dated why-now (or say none).
 - "Workload read": Workload | Engagements | In-house postings (12 mo) | Last 5 vs prior 5 | Read.
 - "Biggest risk" and "Biggest opening": one workload each, with what to pitch.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Detail: "Growing in-house, outside the outsourced top 10" (Workload | Postings | Change | Centre link | Likely meaning) and the capability-centre sites.
+- "Growing in-house in my workloads": up to 3 step-4 rows in the workloads closest to [What I sell], shown here, not under Detail.
+- Gaps: what Draup lacked; ask in discovery.
+- Detail: other step-4 rows (Workload | Postings | Change | Centre link | Likely meaning) and the centre sites.
 
 RULES
-- Thresholds are editable defaults. Catch-all workloads (Project/Programs Management, Account Management): "not assessed".
+- Thresholds are editable defaults. Catch-alls (Project/Programs Management, Account Management): "not assessed".
 - Site headcount is indicative; count each site once.
 - Each Read is a hypothesis, not a fact.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
-- Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Label inferences (buyer role, intent, fit) "likely".
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
+- Postings are openings, not hires; skip partial first and last months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- Label inferences "likely".
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 420 words including tables.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step (named person, dated why-now) first. For [Company]'s top 10 outsourced workloads, compare recent in-house postings with the months before, check capability centres, and label each: re-insourcing risk, capability gap, cost takeout or no signal.
+Bottom line and next step (named person, dated why-now) first. For [Company]'s top 10 outsourced workloads in my function, compare in-house postings over time, check capability centres, and label each: re-insourcing risk, capability gap, cost takeout or no signal.
 ```
 
 </details>

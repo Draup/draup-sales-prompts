@@ -30,48 +30,48 @@ Act as my sales manager running a deal review. Use Draup for Sales for every fac
 
 INPUTS (edit these)
 - Company: [website, e.g. fedex.com]
-- Deal summary: [offer, amount, close date, e.g. AI support services, $2M, close 2026-12-31]
-- Stated pain: [e.g. support costs rising with shipment volume]
-- Forecast category: [the rep's call: Commit, Best case, Pipeline]
+- Deal summary: [e.g. AI support services, $2M, close 2026-12-31]
+- Stated pain: [e.g. support costs rising with volume]
+- Forecast category: [Commit, Best case or Pipeline]
 - Competitor (optional): [e.g. Concentrix]
 - What I sell: [one line, e.g. AI-enabled customer-support services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-When the rep's story and the account's evidence disagree, this shows the manager which questions to ask.
+This shows where the rep's story and the evidence disagree.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
-2. Use the function closest to [What I sell] (e.g. Customer Support & Service) and its 1–3 workloads; say which.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
+2. Use the function closest to [What I sell] and its 1–3 workloads; say which.
 3. Pain: up to 6 priorities in the function that match [Stated pain].
 4. Money: revenue and EBITDA growth.
 5. Activity: postings in the function (last 5 full months vs the 5 before) and active engagements.
-6. People: one page of 10 function executives: the top 3 and anyone under 1 year in title.
-7. Events, last 90 days: layoffs, restructuring, leadership changes, cost programmes, acquisitions, guidance. Review at least 20 items.
-8. Competition: [Competitor] in the whole stack (software) or engagements (services).
+6. People: one page of 10 function executives: top 3 and anyone under 1 year in title.
+7. Events, last 90 days (20+ items): layoffs, restructuring, leadership changes, cost programmes, acquisitions, guidance.
+8. Competition: [Competitor] in the stack (software) or engagements (services).
 9. Score each dimension 0–2 against [Forecast category] and the close date.
 
 OUTPUT
 - Bottom line: 2 sentences — whether the forecast category holds and the recommended category.
-- Recommended next step: a named person (name, full title) at the account to verify the deal with, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) at the account to verify the deal with, the action this week and the dated why-now (or say none).
 - Table "Scorecard": Dimension | Score | Evidence + date | Contradicts the rep? Then Total out of 10 and category: Commit 8–10, Best case 6–7, Pipeline 4–5, Omit 0–3 (editable defaults).
 - "Questions for the rep": 4, tied to weak scores.
 - "Red flags": up to 3.
 - Detail: the numbers behind each score.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
-- Pain 2 = matching priority in the 2 latest quarter labels. Money 2 = growth and no cost action touching the function. Timing 2 = no blocking event before close. People 2 = stable, or a new leader with a mandate. Competition 2 = no strong incumbent; 0 if a [Competitor] product has High usage, or [Competitor] is a top-3 provider by engagements, in my workloads; 1 if Medium, fewer engagements or newly detected. Activity is evidence for Money and Timing, not scored alone.
-- Priorities about products [Company] sells aren't internal pain.
-- Layoffs hurt Money only if they hit the function or signal a freeze. Never raise a score to match the rep.
+- Pain 2 = a matching priority in the 2 latest quarters. Money 2 = growth and no cost action touching the function. Timing 2 = no blocking event before close. People 2 = stable, or a new leader with a mandate. Competition: 0 if [Competitor] is Red (a product at High usage, or 30%+ of active engagements in my workloads), 1 if Amber (Medium, newly detected or 10–29%), 2 if Green (Low-only, under 10% or absent). Activity informs Money and Timing; it isn't scored.
+- Layoffs hurt Money only if they hit the function or signal a freeze. Never score to match the rep.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
 - If I ask for a slide: 5 bullets + 1 table.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 420 words above Detail, tables included.
 ```
 
 <details>

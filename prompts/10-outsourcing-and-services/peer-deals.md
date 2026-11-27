@@ -17,6 +17,7 @@
 | `[Company]` | pfizer.com |
 | `[Workload]` | Software Testing |
 | `[My company (optional)]` | Northwind Data Services |
+| `[What I sell]` | testing and QA managed services |
 
 ## 2. Copy the detailed prompt
 
@@ -29,9 +30,10 @@ INPUTS (edit these)
 - Company: [Website, e.g. pfizer.com]
 - Workload: [Draup workload, e.g. Software Testing; a business function like Quality is fine, I'll map it]
 - My company (optional): [Our services firm as Draup spells it, e.g. Northwind Data Services]
+- What I sell: [One line, e.g. testing and QA managed services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry and HQ country.
+1. Find the company by its website (no match: retry once by name, show match and score) and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry and HQ country.
 2. If I gave a business function, map it to its 1–2 main workloads and say which. Pull engagements in those workloads at other companies with the same primary industry and HQ country. Keep the 10 most recent: month, customer, provider, delivery location, one-line description. If fewer than 5, widen to the industry worldwide and say so.
 3. Merge near-duplicates (same customer, provider and work within a quarter). Drop agencies, staffing firms and investors listed as customers.
 4. If My company is given, pull our engagements in those workloads in the same industry, newest first, as reference candidates.
@@ -42,7 +44,7 @@ OUTPUT
 - Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
 - "Peer engagements": Month | Customer | Provider | What the work was. Newest first.
 - "Proof lines": 3 sentences of 25 words or fewer. Name companies only where I say it's allowed; otherwise describe them by size and industry.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 - Detail: "Who peers use" (providers with counts) and "Our references" (Month | Customer | What the work was), if My company is given.
 
 RULES
@@ -51,13 +53,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Unless I say otherwise, narrow pulls to the business function closest to What I sell; map a function I give to its 1–3 main workloads and say which.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 400 words including tables.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 400 words including tables.
 ```
 
 <details>

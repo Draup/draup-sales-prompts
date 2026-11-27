@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You want accounts with money and momentum, or a growth angle for a campaign. | Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM | Everyone | 2–4 min | Company directory, Company & financials |
+| You want accounts with money and momentum, or a growth angle for a campaign. | Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller | Everyone | 2–4 min | Company directory, Company & financials |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -15,7 +15,7 @@
 | Placeholder | Example |
 |---|---|
 | `[Vertical]` | Retail |
-| `[Country]` | United States of America |
+| `[Territory (optional)]` | United States of America |
 | `[Minimum revenue ($M)]` | 1,000 |
 | `[Minimum employees (optional)]` | 5,000 |
 | `[What I sell]` | e-commerce replatforming services |
@@ -29,14 +29,14 @@ Act as my market research analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [industry, e.g. Retail]
-- Country: [HQ country in full, e.g. United States of America]
+- Territory (optional): [HQ country in full; default: my territory from setup, e.g. United States of America]
 - Minimum revenue ($M): [e.g. 1,000]
 - Minimum employees (optional): [e.g. 5,000]
 - What I sell: [one line, e.g. e-commerce replatforming services — skip if you ran the start-here prompt]
 
 STEPS
-1. Resolve the vertical and country to Draup's names and show them.
-2. List companies with primary vertical [Vertical], HQ in [Country], revenue of at least [Minimum revenue] (and the employee minimum if given). Count them all, then sort by revenue growth and take the top 30.
+1. Resolve the vertical and territory to Draup's names and show them.
+2. List companies with primary vertical [Vertical], HQ in [Territory], revenue of at least [Minimum revenue] (and the employee minimum if given). Count them all, merge subsidiaries into parents, then sort by revenue growth and take the top 30.
 3. Mark "M&A-driven?" when growth tops 20% (check acquisitions and M&A news for up to 5), "check vertical" when the description doesn't fit, "stale year" when the fiscal year lags by over a year.
 4. Set those aside; keep the top 10. Add workforce, workforce growth % and postings (90 days).
 5. For the top 3 "growing and hiring": the most important news item from the last 90 days where the company is the actor. For the #1: its top 3 executives in the function closest to What I sell.
@@ -57,12 +57,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
 ```
 
@@ -70,7 +71,7 @@ STANDARD RULES (leave as is)
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step first: the 10 fastest-growing [Vertical] companies by revenue, HQ in [Country], $[Minimum revenue]M+, with likely M&A jumps set aside, a shortlist also growing headcount, and who to call at the best one.
+Bottom line and next step first: the 10 fastest-growing [Vertical] companies by revenue, HQ in [Territory], $[Minimum revenue]M+, with likely M&A jumps set aside, a shortlist also growing headcount, and who to call at the best one.
 ```
 
 </details>

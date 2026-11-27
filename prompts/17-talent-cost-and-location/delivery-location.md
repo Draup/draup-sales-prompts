@@ -28,14 +28,14 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my location-strategy analyst for services pursuits. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts and the client's existing sites. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my location-strategy analyst for services pursuits. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts and the client's existing sites. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [the client's website, e.g. medtronic.com]
 - Role: [e.g. Cloud Engineer]
 - Country: [in full, e.g. India]
 - Team size: [e.g. 60]
-- What I sell: [one line, e.g. cloud engineering managed services — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. cloud engineering managed services; skip if saved in setup]
 - Weights (optional): [default supply 35%, cost 30%, hiring difficulty 20%, location risk 15% (editable default)]
 
 CONTEXT (optional)
@@ -46,7 +46,7 @@ STEPS
 2. Pull the 10 metros in [Country] with the most talent supply for the role, with 3-year growth, median annual base pay, open postings and hiring difficulty.
 3. Score each 1–10 on supply, cost (cheaper scores higher) and difficulty (easier scores higher).
 4. For the top 3, pull Draup's location profile (cost of living, political stability, rule of law, corporate tax), score risk 1–10, and combine all four scores with the weights.
-5. Find [Company] by website, confirm the parent, and list its sites or capability centres in [Country].
+5. Find [Company] by website, confirm the parent (if the website returns nothing, look it up by name once and show the match and its score), and list its sites or capability centres in [Country].
 6. Pull [Company]'s top 3 executives in the function that owns this work and its most important news item from the last 90 days.
 
 OUTPUT
@@ -55,7 +55,7 @@ OUTPUT
 - Table: Metro | Talent supply | Median pay (local) | Hiring difficulty | Score. Top 5, by score.
 - "Client footprint": [Company]'s sites in [Country] with indicative headcount, or "Not in Draup".
 - Detail: top 3 compared on every metric with periods; 3-year growth and open postings; weights used.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 
 RULES
 - Warn on capacity where [Team size] exceeds 2% of a metro's talent supply (editable default) or open postings are high against supply.
@@ -63,14 +63,14 @@ RULES
 - Rank metros on local pay; no conversion is needed within one country.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
 - Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

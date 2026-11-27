@@ -4,15 +4,15 @@
 
 > **Goal:** Walk into a first meeting knowing the account, the people in the room and the questions that will earn a second meeting.
 
-**For:** Account Executive, SDR / BDR, Presales & Solutions, Services, SI & Staffing Seller · **Time:** 25–35 min · **Steps:** 4
+**For:** Account Executive, SDR / BDR, Presales & Solutions, Services, SI & Staffing Seller · **Time:** About 12 min with quick versions, 25–35 min with detailed · **Steps:** 4
 
 **Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. 10-minute pre-call snapshot
 
-Gives you the 10-minute picture: size, money, current priorities in your function and what just changed.
+Gives you the 10-minute picture: size, two recent events, hiring in your function and its closest priority.
 
-**Look for:** One priority and one dated change you can mention in the first two minutes. Check it's the parent company, not a subsidiary.
+**Look for:** One priority and one dated event you can mention in the first two minutes. Check the company name it used is the parent, not a subsidiary.
 
 Open the full prompt: [10-minute pre-call snapshot](../prompts/01-account-research/precall-snapshot.md)
 
@@ -24,21 +24,21 @@ Call with [Company] in 10 minutes. Bottom line and who to contact first, then fi
 
 ## Step 2. Map the buying committee
 
-Shows who owns the problem and the budget in the function you sell into, including a potential blocker.
+Shows who owns the problem and the budget in the function you sell into. Run it in the same chat so it reuses the company from step 1.
 
-**Look for:** Your entry point (likely champion), the sponsor to reach later (economic buyer) and any potential blocker, by full title. If no C-level or "Head of" name appears, plan to ask who signs.
+**Look for:** The entry point and sponsor it names first, and anyone flagged as subsidiary staff. If no C-level or "Head of" name appears, plan to ask who signs.
 
 Open the full prompt: [Map the buying committee](../prompts/02-buyers-and-stakeholders/buying-committee.md)
 
 Quick version:
 
 ```text
-Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Widen once to C-level.
+Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Check one more page.
 ```
 
 ## Step 3. Discovery questions built on their data
 
-Turns the snapshot into hypothesis-led questions, each tied to a cited fact.
+Turns the facts into hypothesis-led questions. Reuse the result from steps 1 and 2: run it in the same chat so it doesn't pull them again.
 
 **Look for:** The 3 questions you'll definitely ask, and the one that tests whether the priority has budget this year.
 
@@ -54,14 +54,14 @@ Discovery prep for [Company]: bottom line and who else to invite, a 2-sentence o
 
 Optional: run it when a known rival is in the deal. Selling services? Use "Battlecard: beat a rival services firm" instead.
 
-**Look for:** The objection their rep will raise and one trap question you can work into discovery.
+**Look for:** The "how we win" points and any of the 10 end users that are this account's peers. For the objection to expect and trap questions, use the detailed version.
 
 Open the full prompt: [Battlecard: beat a rival software vendor](../prompts/16-content-and-enablement/battlecard-product.md)
 
 Quick version:
 
 ```text
-Bottom line and next step first: battlecard on [Competitor] for [What I sell] — the 10 largest end users running it (no IT services firms) with usage, 180 days of moves, how we win, and the first account to try.
+Bottom line and next step first: battlecard on [Competitor] for [What I sell]: the 10 largest parent end users in my territory running it (no IT services firms), usage, 180 days of moves, how we win, first account.
 ```
 
 ## What you finish with

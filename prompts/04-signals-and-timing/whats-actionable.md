@@ -31,9 +31,9 @@ INPUTS (edit these)
 - Territory (optional): [region I cover, e.g. North America — skip if saved in setup]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull its top-ranked news signals and news feed for the last 90 days; review at least 30 items, or say how many there were.
-3. Apply the noise rule (it depends on what I sell); also drop store closures counted as layoffs. The company must be the actor.
+3. Apply the noise rule; also drop store closures counted as layoffs. The company must be the actor.
 4. Keep executive moves (VP and above), M&A, partnerships, expansion, investment plans, restructuring, regulatory inquiries or fines, and incidents or launches that touch my space. Merge repeat coverage; count independent sources.
 5. Link each trigger to a stated priority in the function closest to [What I sell] only if the text supports it (source, fiscal quarter); else "no direct link".
 6. Rank by relevance to [What I sell], then events in my territory, then recency.
@@ -41,23 +41,24 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell]. Start with Act, Watch or Skip.
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for. Add an opening sentence built on a Confirmed trigger.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for. Add an opening sentence built on a Confirmed trigger.
 - Table "Triggers" (up to 5; if fewer than 3 survive, say so and don't pad): Date | Trigger (with any number) | Why it matters to us | Likely owner (name, title) | Sources (1 = unverified).
-- Detail: per trigger, source and headline (link), linked priority (quarter) and action; "Dropped as noise" count by type, naming any incident and whether it was kept; Gaps (what Draup lacked, to ask in discovery).
+- Detail: per trigger, source and headline (link), linked priority (quarter) and action; "Dropped as noise" count by type, naming any incident and whether it was kept; Gaps (to ask in discovery).
 
 RULES
 - If event and capture dates differ by over 30 days, use the event date and flag it.
 - Never build the opening sentence on a single-source or conflicting fact.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
-- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the function closest to What I sell (e.g. IT) and say which; map any function I give to its main workloads and name them.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and re-dated old stories (use the event date). Outages, incidents, breaches and regulatory inquiries count for security, reliability, IT operations or compliance sellers; keep any item that bears directly on What I sell. Give source, headline and link (if any) per item.
+- If sources conflict on a name, date or number, say so and repeat neither as fact; single-source figures are unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
 ```
 
 <details>
@@ -99,7 +100,7 @@ Which of these triggers has a second source I can quote?
 
 - [Signal-led emails for up to 10 accounts](../../prompts/04-signals-and-timing/signal-to-email.md): For one account or up to 10 per pass: the most relevant recent signal (preferring your territory), the priority it supports, a fact check, and a short opener written in your persona's language that ends in one easy ask.
 - [What changed since [Date]](../../prompts/04-signals-and-timing/change-log.md): A dated log of what changed at an account since a date you choose, ranked by impact on your deal, with competitor tools rated and a clear call: reopen, wait or watch for a lost deal; defend, expand or monitor for a customer.
-- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, the person you're meeting (or the 3 closest if Draup lacks them), then the priorities in your function, who likely owns them, any competitor in the stack rated Red/Amber/Green and the key numbers.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

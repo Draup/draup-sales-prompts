@@ -30,7 +30,7 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my deal-shaping analyst for services pursuits. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my deal-shaping analyst for services pursuits. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Role: [e.g. Data Engineer]
@@ -38,12 +38,9 @@ INPUTS (edit these)
 - Onshore location: [metro or country, e.g. Greater New York City Area, United States]
 - Offshore locations: [up to 3, e.g. Bengaluru Area, India; Kraków, Poland; Mexico City, Mexico]
 - Team size: [FTEs in scope, e.g. 25]
-- What I sell: [one line, e.g. offshore data-engineering delivery — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. offshore data-engineering delivery; skip if saved in setup]
 - Client (optional): [website of the buyer, e.g. pepsico.com]
 - Exchange rate (optional): [your rate to USD per currency, e.g. your finance team's quarterly rate]
-
-CONTEXT (optional)
-A saving built from market pay beats one from your rate card, if you say what it leaves out and show the location can staff the team.
 
 STEPS
 1. Find Draup's standard name for the role. If there's no exact match, show the 3 closest and ask which to use.
@@ -51,30 +48,30 @@ STEPS
 3. Per location, pull annual base pay at [Years of experience]: median, P10, P90, salaries reported, confidence (empty band: use all levels, say so).
 4. With my rates, work out saving per FTE, saving % and team saving in USD against onshore; without rates, show local pay and ask.
 5. For each offshore location, pull talent supply, 3-year growth and hiring difficulty for the role.
-6. If I named a client, pull its top 3 executives in the function that owns this work and its top 90-day news item.
+6. If I named a client, find it by website (parent; name lookup with its score if the website fails) and pull its top 3 executives in the function that owns this work and its top 90-day news item.
 
 OUTPUT
 - Bottom line: 2 sentences — annual base-pay saving for [Team size] FTEs at the best location (or "rates needed"), and whether supply can staff it; say it's base pay, not loaded cost.
-- Recommended next step: who to take it to (name and title from step 6, or the title to find), what to do, and why now (one dated fact). If none is found, say so.
+- Recommended next step: who to take it to (step 6, or the title to find), what to do, and one dated why-now. If none, say so.
 - "Pay": Location | Median USD (or local) | Salaries reported | Saving per FTE | Saving %. Onshore first, then by saving.
 - "Can it scale?": Location | Talent supply | Hiring difficulty | Team as % of supply.
 - Detail: P10–P90 (local), confidence, 3-year supply growth; 3 bullets on what this means for [What I sell].
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 
 RULES
 - The saving excludes transition, attrition and knowledge-transfer cost. Add overhead only with my multiplier.
 - Don't build the bottom line on a location with low confidence or under 50 reported salaries (editable default); flag it.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
 - Show pay in local currency with its code; convert to USD only with my [Exchange rate], and say which rate.
 - Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

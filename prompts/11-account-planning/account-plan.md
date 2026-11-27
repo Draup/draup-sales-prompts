@@ -26,46 +26,47 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my strategic account planner. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my strategic account planner. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [Website, e.g. bmw.com]
-- What I sell: [One line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. supply-chain planning software; skip if saved in setup]
 - Business function: [The function that buys from us, e.g. Supply Chain]
 - Already buy from us (optional): [e.g. demand planning for two regions]
 - Our goal (optional): [e.g. double ARR in 12 months]
 - Competitor (optional): [Up to 3, e.g. Kinaxis, o9 Solutions]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+1. Find the company by website (no result: try its name once and show the match score). Confirm it's the parent, not a subsidiary or sister company; if several match, ask me. Use Draup's exact name from then on.
 2. Snapshot: profile, latest revenue (USD at Draup's rate), Opportunity Index.
 3. Strategy: top 5 [Business function] priorities, newest first, with source, quarter and workloads.
-4. Buying committee: top 8 leaders in [Business function] by title and budget control (up to 3 pages of 10). If no economic buyer (C-level, EVP, "Head of") appears, search once more for Chief, EVP or CIO titles.
-5. Incumbents: products on those workloads (strength, last seen), top providers in the function, and any [Competitor] product anywhere in the stack. Rate [Competitor]: Red for High usage in the workloads I sell into; Amber for Medium usage there or anything newly detected in 12 months; otherwise Green, still listed.
+4. Buying committee: top 8 leaders in [Business function] by title and budget control (up to 3 pages of 10).
+5. Incumbents: products on those workloads (strength, last seen), top providers in the function, and any [Competitor] product anywhere in the stack. Rate [Competitor] by the rivals rule; list Green ones too.
 6. Risks: senior exits in 6 months (by workload; state the latest move date), layoffs in 90 days, [Competitor] products newly detected in 12 months.
-7. Timing: the most important news item from the last 90 days where [Company] is the actor.
+7. Timing: its most important 90-day news item.
 
 OUTPUT
 - Bottom line: 2 sentences — the prize and the first play.
-- Recommended next step: one person from step 4 (name and title), what to do, and why now (the dated item from step 7 or another dated fact). If none turned up, say so.
-- "Expansion plays" (top 3, building on what they buy): Play | Evidence and date | Builds on | Likely owner. A High-usage [Competitor] product in the play's workload makes it a displacement; say so.
+- Recommended next step: one person from step 4 (name and title), what to do, and the dated why-now (step 7 or another dated fact). If none, say so.
+- "Expansion plays" (top 3, building on what they buy): Play | Evidence and date | Builds on | Likely owner; a High-usage [Competitor] product in the workload makes it a displacement.
 - "Buying committee" (top 5): Name | Full title | Budget control | Why they matter.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Detail, each part with its source and date: Snapshot; "Their strategy in their own words" (Priority | Quarter | Workloads); Incumbents (Workload | Products | Providers | [Competitor] rating); Risks (3 dated); 90-day plan toward [Our goal] (two actions per 30 days, owner role each); SWOT only if I ask.
+- Gaps: what Draup didn't have, to ask in discovery.
+- Detail, each dated and sourced: snapshot; strategy (Priority | Quarter | Workloads); incumbents with [Competitor] rating; 3 risks; 90-day plan toward [Our goal] (two actions per 30 days, owner role each). SWOT only if I ask.
 
 RULES
 - In banking and consulting, VP and SVP are mid-level.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Unless I say otherwise, narrow pulls to the function closest to What I sell; map a function to its 1–3 main workloads and say which.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
-- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 500 words including tables.
+- Rivals count only at High or Medium usage (say how many were Low). Software: High in my workloads Red, Medium or newly detected Amber, else Green. Services, by share of active engagements in my workloads: 30%+ Red, 10–29% Amber, under 10% Green. Trust usage and last-seen date, not confidence; no "Generic" rows.
+- Pull lists 10 at a time; count first when a list could be long; every total applies all my conditions.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 500 words including tables, then offer more.
 ```
 
 <details>

@@ -27,7 +27,7 @@ The prompts in this library need **Draup for Sales** switched on in your AI assi
 
 **Make it permanent.** Create a Claude Project (for example "Draup research") and paste the [Claude Project instructions](../prompts/00-start-here/claude-project.md) into it. Every chat in that Project then starts with your context and the library's data rules.
 
-**Built-in prompts.** The connector also ships with a few ready-made prompts, such as a buying-committee map, a why-now timing brief and a displacement playbook. Find them in the **+** menu under Draup for Sales. This library goes further: 90 detailed prompts and 10 playbooks.
+**Built-in prompts.** The connector also ships with a few ready-made prompts, such as a buying-committee map, a why-now timing brief and a displacement playbook. Find them in the **+** menu under Draup for Sales. This library goes much further, with detailed prompts and complete playbooks for every sales job.
 
 > **On a Claude Team or Enterprise plan?** An owner or admin may need to enable the connector for your organisation first. If you can't find it, ask your Claude admin.
 

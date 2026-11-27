@@ -32,16 +32,13 @@ INPUTS (edit these)
 - Our customers (optional): [e.g. Contoso Retail, Fabrikam Foods]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 
-CONTEXT (why this matters)
-Leaders in their first 90 days set plans and review vendors. The warmest door is often someone who used to work at one of your customers, whether they arrived last month or years ago.
-
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. If I gave a business function, map it to the 1–3 closest Draup workloads and say which.
 3. Pull executive hires and promotions, one workload at a time; keep rows where [Company] is the current employer.
 4. Keep moves from the last 6 months. Leadership data can lag about 3 months: if none fall inside, show the latest moves from the 3 months before, labelled "just outside the window".
 5. Compare each new hire's past companies (whole history, not just the last one) with [Our customers], allowing name variants ("Contoso" = "Contoso Retail Inc.").
-6. If fewer than 3 warm paths, also check current senior leaders in the matching business function (10 per page, up to 3 pages) whose past companies include [Our customers]. Flag any with under 6 months in their title as new.
+6. If fewer than 3 warm paths, also check current senior leaders in the matching business function (10 per page, up to 3 pages; no title search) whose past companies include [Our customers]. Flag any with under 6 months in their title as new.
 7. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
@@ -54,17 +51,17 @@ OUTPUT
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
-- Leave out exits; the customer-alumni prompt covers them.
+- Leave out exits; "Customer alumni now at your targets" covers them.
 - Drop rows that clearly aren't about [Company], such as look-alike company names.
 - If a workload has no moves even in the wider window, say "none found"; don't widen further silently.
 - A warm path means they worked at our customer, not that they bought from us.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- If an input still shows its bracketed example, use my saved context or ask me first.
 - If I give a business function where a workload is needed, map it to the 1–3 closest Draup workloads, say which, then continue.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. Professional information only.
 - Leadership-move data can lag about 3 months; give the latest move date you saw.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
@@ -108,7 +105,7 @@ Draft the intro request to our account team at the matched customer.
 ## Related prompts
 
 - [Warm paths among current leaders](../../prompts/02-buyers-and-stakeholders/warm-paths-current-leaders.md): Senior leaders at the account who used to work at your customers, partners or your own company, who on your side to ask for the intro, and why now.
-- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
+- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A short profile of one senior person, found by name or just by title, with time in role, past companies, what they likely own, a competitor check and two openers. If Draup has no one with that title, you're told so up front and given the 3 closest people.
 - [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
 - [Customer alumni now at your targets](../../prompts/11-account-planning/follow-champions.md): Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first.
 

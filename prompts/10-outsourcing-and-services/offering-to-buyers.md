@@ -27,13 +27,13 @@ Act as my go-to-market analyst for a services practice. Use Draup for Sales for 
 
 INPUTS (edit these)
 - What I sell: [One paragraph, e.g. We modernise legacy mainframe and .NET applications to cloud-native, then run them as a managed service.]
-- Country or Vertical: [Required. HQ country in full, e.g. Germany, or a Draup industry, e.g. Banking & Financial Services]
+- Country or Vertical: [Required. HQ country in full, e.g. Germany (default: my territory from setup), or a Draup industry, e.g. Banking & Financial Services]
 - Workload (optional): [If you know the Draup name, e.g. Application Development & Maintenance; skips the mapping]
 
 STEPS
 1. If Workload is given, confirm it and go to step 3. Otherwise map [What I sell] to up to 8 Draup workloads (types of work), each Strong, Partial or Doubtful with a 5-word reason. Automatic mapping can be loose; judge each.
 2. Stop for me to confirm or prune (if I said "don't wait", use Strong only).
-3. Pull the top 20 companies outsourcing the confirmed workloads in [Country or Vertical] (primary industry; HQ country). Remove IT services firms, consultancies, staffing firms, agencies and investors.
+3. Pull the top 20 companies outsourcing the confirmed workloads in [Country or Vertical] (primary industry; HQ country). Remove IT services firms, consultancies, staffing firms, agencies and investors; merge subsidiaries into parents.
 4. Pull the top 10 providers in the same segment, with share.
 5. For the top 10 buyers, pull their top 3 providers in those workloads. Rows 11–20: "not checked".
 6. People and timing: at the top buyer in "Where to play", pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
@@ -42,10 +42,10 @@ OUTPUT
 - "Workload mapping" (shown first, before the list): Workload | Fit | Reason.
 - Bottom line: 2 sentences — segment size and where to start.
 - Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
-- "Target list" (top 10): Rank | Company | Engagements | Main incumbent (share) | Fragmented?
-- Fragmented = no provider above 40% of that buyer's work in these workloads (editable default).
+- "Target list" (top 10): Rank | Company | Engagements | Main incumbent (share, rating) | Fragmented?
+- Fragmented = no provider Red in these workloads (editable default).
 - "Where to play": 3–5 fragmented or broadest buyers, one line each.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 - Detail: rows 11–20 and "Segment providers" (Rank | Provider | Engagements | % of segment).
 
 RULES
@@ -55,12 +55,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- Rate a services rival by its share of the account's active engagements in the relevant workloads: Red 30%+ (entrenched), Amber 10–29%, Green under 10% (light; room to wedge in).
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 450 words including tables.
 ```
 
 <details>

@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| About 90 days before a renewal, or when a deal goes quiet. Use plan-qbr-prep instead the week before a business review, and signals-change-log for a monthly what-changed log. | Account & Customer Success Manager, Account Executive, Sales Leader & RevOps | Everyone | 2–4 min | News signals, Executives & movement, Talent flow & locations, Company & financials, Tech stack |
+| About 90 days before a renewal, or when a deal goes quiet. Use "QBR prep: talking points and asks" instead the week before a business review, and "What changed since [Date]" for a monthly what-changed log. | Account & Customer Success Manager, Account Executive, Sales Leader & RevOps | Everyone | 2–4 min | News signals, Executives & movement, Talent flow & locations, Company & financials, Tech stack |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -16,7 +16,7 @@
 |---|---|
 | `[Company]` | walmart.com |
 | `[Business function]` | Supply Chain |
-| `[Sponsor name and title]` | Jane Doe, VP Supply Chain Systems |
+| `[Sponsor name]` | Jane Doe, VP Supply Chain Systems |
 | `[Competitor]` | Blue Yonder, Manhattan Associates |
 | `[What I sell]` | warehouse automation software |
 
@@ -25,26 +25,26 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my customer-success risk analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my customer-success risk analyst. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [Website, e.g. walmart.com]
 - Business function: [Our sponsor's function, e.g. Supply Chain]
-- Sponsor name and title: [e.g. Jane Doe, VP Supply Chain Systems — a title alone may match several people]
+- Sponsor name: [name and title, e.g. Jane Doe, VP Supply Chain Systems]
 - Competitor: [Products or firms we lose to, e.g. Blue Yonder, Manhattan Associates]
-- What I sell: [One line, e.g. warehouse automation software — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. warehouse automation software; skip if saved in setup]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+1. Find the company by website (no result: try its name once and show the match score). Confirm it's the parent, not a subsidiary or sister company; if several match, ask me. Use Draup's exact name from then on.
 2. Sponsor: look for [Sponsor name] among leaders in [Business function] (up to 3 pages of 10) and in recent exits. Red: left. Amber: title or unit changed. If not found, say "not found in Draup", not "left".
 3. Senior exits in [Business function], 6 months, narrowed by its main workloads. Red: the sponsor's level or above. Amber: other director-plus. State rows checked and the latest move date.
 4. Layoffs, 90 days. Red: touching [Business function] or over 5% of staff. Amber: other. Workforce growth (talent-flow window; state the months): Red below −3%, Amber −3% to 0%. Revenue growth, latest fiscal year: Red below −5% without a divestment, Amber −5% to +2%.
-5. Competitor tools: check the whole tech stack for any product made by [Competitor], whatever area it's filed under. Red: a [Competitor] product with High usage in the same workloads as What I sell. Amber: Medium usage in those workloads, or newly detected in the last 12 months. Low usage or other workloads: list it, rate Green.
+5. Competitor tools: check the whole stack for any product made by [Competitor], whatever area it's filed under. Red: High usage in my workloads. Amber: Medium there, or newly detected in 12 months. Low usage or other workloads: list it, Green. A services firm: 30%+ of active engagements in my workloads Red, 10–29% Amber, under 10% Green.
 6. Negative news, 90 days, where [Company] is the actor. Red: a merger, divestment or restructuring touching [Business function]. Amber: other restructuring or cost-cutting, or a new vendor in our category.
 
 OUTPUT
 - Bottom line: 2 sentences — overall rating and the risk to act on.
-- Recommended next step: the sponsor or another leader from step 2 (name and title), what to do, and why now (the most important dated news item from step 6 or 4); if none turned up, say so.
+- Recommended next step: the sponsor or another leader from step 2 (name and title), what to do, and why now (the most important dated item from step 6 or 4); if none, say so.
 - Table: Risk | Rating | Evidence | Date | Source. One row each: Sponsor, Senior exits, Layoffs, Workforce growth, Revenue growth, Competitor tools, Negative news.
 - "Overall": Red if 2+ Reds, or Red on Sponsor or Competitor tools; Amber if any Red or 2+ Ambers; else Green.
 - "Two actions this month", each tied to a row.
@@ -56,13 +56,12 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
-- Talent-flow data ends about 3 months ago; state the months.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 400 words including tables.
+- Trust usage strength and last-seen date, not confidence or first-seen; ignore "Generic" rows; a rival counts only at High or Medium usage.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

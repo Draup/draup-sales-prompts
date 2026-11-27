@@ -5,11 +5,11 @@ Industry-level numbers, priorities and vendor landscapes for pitches and plannin
 ## One-page vertical market snapshot
 
 - **id:** `market-vertical-snapshot`
-- **What you get:** A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- **What you get:** A one-page view of an industry scoped to your region: global size and growth beside a regional size from the top 10 buyers, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
 - **Use it when:** You are entering a vertical, building a territory plan, or need industry context for a pitch or a leadership review.
 - **Best for:** Sales Leader & RevOps, Marketing & ABM, Account Executive, Services, SI & Staffing Seller
 - **Time:** 4–6 min
-- **Inputs:** Vertical (e.g. Aerospace & Defense); Region (optional) (e.g. Europe, or North America and Europe); What I sell (e.g. PLM and engineering-data software)
+- **Inputs:** Vertical (e.g. Aerospace & Defense); Region (optional) (e.g. Europe, or North America); What I sell (e.g. PLM software)
 
 ### Detailed prompt
 
@@ -18,61 +18,60 @@ Act as my industry analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [industry, e.g. Aerospace & Defense]
-- Region (optional): [e.g. Europe, or North America and Europe]
-- What I sell: [one line, e.g. PLM and engineering-data software — skip if you ran the start-here prompt]
+- Region (optional): [default: my territory from setup; e.g. Europe, or North America]
+- What I sell: [one line, e.g. PLM software — skip if you ran the start-here prompt]
 
 STEPS
-1. Resolve the vertical to Draup's name. A sub-industry (e.g. Airlines) can return zeros: use the parent and say so. Resolve [Region] to Draup's region names (e.g. Western, Northern, Southern and Eastern Europe) and show them.
-2. Pull the vertical's revenue, IT spend and R&D spend for the latest year, with growth. These totals are global even when I give a region.
-3. Pull the vertical's key priorities and pick the 5 most relevant to [What I sell]. Draup gives them no dates, so for the top 2 pull the dated priorities of the 2 largest employers (in [Region] if given) in that function and use those as proof.
-4. Top buyers: list companies with primary vertical [Vertical] (HQ in [Region] if given), largest workforce first, top 10.
-5. Pull growing technologies (fixed top 50); keep up to 5 relevant to [What I sell], or say "none relevant in Draup".
-6. Services sellers only (from my setup or What I sell): top outsourcing vendors (no agencies, staffing, research or merchandising firms) and top 5 workloads, with active engagements (Draup-derived).
-7. For the top buyer most relevant to [What I sell]: its top 3 executives in that function and its most important news item from the last 90 days.
+1. Resolve the vertical (a sub-industry with zeros: use its parent) and [Region] to Draup's names. If the region doesn't resolve, use Draup's nearest values (e.g. "Northern America" = US and Canada) and list their countries.
+2. The vertical's revenue, IT spend and R&D spend, latest year, with growth (global totals).
+3. The vertical's key priorities: pick the 5 that fit [What I sell], with dated proof from the 2 largest employers in [Region] in that function. If there are none, say so first and use those 2 employers' dated priorities, labelled "company proof, not industry-wide".
+4. Top buyers: the 10 largest parents by workforce, primary vertical [Vertical], HQ in [Region], with revenue; count subsidiaries once. Total their revenue as the regional size. Flag any that sell what I sell. Rivals I named: note who runs them at High or Medium usage (ignore Low; say so).
+5. Growing technologies: up to 5 relevant to [What I sell], or "none relevant in Draup".
+6. Services sellers only: top outsourcing vendors (no agencies, staffing or research firms) and top 5 workloads, with active engagements (Draup-derived).
+7. For the best-fit top buyer: its top 3 executives in that function and top 90-day news item. If it is a top-3 giant, also pick the best-fit mid-size buyer.
 
 OUTPUT
-- Bottom line: 2 sentences — the state of [Vertical] and what it means for [What I sell].
-- Recommended next step: a named person (name and full title from step 7), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
-- "The numbers": Metric | Value ($B) | Growth % | Year ("latest, year not given" if omitted). Say the totals are global.
-- "Top priorities": Priority | Dated proof (company, quarter) | Likely owner (title) | Fit (my judgement).
+- Bottom line: 2 sentences — the state of [Vertical] in [Region] and what it means for [What I sell].
+- Recommended next step: a named person (name, full title), the action and a dated why-now; if missing, the title to find. Add the mid-size buyer if picked.
+- "The numbers": Metric | Value ($B) | Growth % | Year: revenue, IT and R&D spend (global; "year not given" if omitted), then the top-10 buyers' revenue in [Region].
+- "Top priorities": Priority | Dated proof (company, quarter) | Likely owner | Fit.
 - Gaps: what Draup didn't have — worth asking in discovery.
-- Detail: top buyers in [Region]; technology gaining ground (Technology | Companies adopting, window not stated); outsourcing (services sellers only); what you excluded.
+- Detail: top buyers (rivals present); growing technologies; outsourcing (services sellers); exclusions.
 
 RULES
-- Draup marks every vertical priority as not tied to a seller, so "Fit" is your judgement; say so.
-- Every vertical list is Draup's fixed top 50, not the whole market; say so once.
-- Flag buyers whose business doesn't fit [Vertical], and sanctioned or state-owned firms where relevant.
-- Vertical IT spend tracks revenue; don't present its growth as a separate trend.
-- Leave generic tools (office suites, browsers, chat assistants, design tools) out of technology lists.
-- If I ask for a slide: 5 bullets + 1 table.
+- Name any company that makes up over a third of a total.
+- "Fit" is judgement (Draup ties no priority to a seller). Vertical lists are a fixed top 50; say so once.
+- Flag off-vertical, sanctioned or state-owned buyers. IT spend tracks revenue, so its growth is no trend.
+- No generic tools (office suites, chat assistants) in technology lists. If I ask for a slide: 5 bullets + 1 table.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Bottom line and next step first: a one-page snapshot of [Vertical] (in [Region] if given): size and growth, the 5 priorities that fit [What I sell] with dated company proof, the top buyers, and who to call first.
+Bottom line and next step first: a one-page snapshot of [Vertical] in [Region]: global size and growth plus the top-10 buyers' regional revenue, the 5 priorities that fit [What I sell] with dated company proof, and who to call first.
 ```
 
 ### Follow-ups
 
 - Turn the top 3 priorities into a 5-slide point of view for [What I sell].
 - Which 10 companies in [Vertical] in [Region] hire most per 1,000 staff right now?
-- Show the outsourcing league table for this vertical (services sellers).
+- Show the outsourcing league table for this vertical in [Region] (services sellers).
 
 ### Tips
 
-- Add a region to scope buyers and proof to your territory; the industry totals stay global.
-- If a section comes back empty, it is usually the industry name. Ask Claude to try the parent industry.
+- Region defaults to your territory; the industry totals stay global, so read the top-10 buyers' revenue as the regional size.
+- If one giant dominates a total (one retailer's R&D, say), the snapshot names it; discount the growth figure accordingly.
 - The Fit column is the assistant's judgement, not a Draup score. Challenge it.
 
 ## Build an industry point of view
@@ -82,7 +81,7 @@ Bottom line and next step first: a one-page snapshot of [Vertical] (in [Region] 
 - **Use it when:** You need a 'why this, why now' story for an industry keynote, campaign or first meeting.
 - **Best for:** Marketing & ABM, Account Executive, Presales & Solutions, Sales Leader & RevOps
 - **Time:** 2–4 min
-- **Inputs:** Vertical (e.g. Automotive); Audience (e.g. VP Supply Chain); What I sell (e.g. supply-chain planning software)
+- **Inputs:** Vertical (e.g. Automotive); Audience (e.g. VP Supply Chain); Territory (optional) (e.g. United States of America); What I sell (e.g. supply-chain planning software)
 
 ### Detailed prompt
 
@@ -92,19 +91,20 @@ Act as my industry marketing strategist. Use Draup for Sales for every fact.
 INPUTS (edit these)
 - Vertical: [industry, e.g. Automotive]
 - Audience: [the persona, e.g. VP Supply Chain]
+- Territory (optional): [HQ country or region; default: my territory from setup, e.g. United States of America]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 
 STEPS
 1. Resolve the vertical to Draup's name and show it.
-2. Pull the vertical's key priorities. If none come back, use the stated priorities of its 3 largest employers and say so.
-3. Choose the 5 priorities that best fit [What I sell] and [Audience]'s function. Judge by what each describes, since function labels may not match the audience, and explain each choice in one line.
-4. Draup's vertical priorities carry no dates. For each chosen priority, keep the named company examples, then pull the dated priorities of 2–3 of the vertical's largest employers in that function and use those as proof (company, quarter or month).
-5. Market context: the vertical's revenue and R&D growth, and the 3 fastest-growing technologies relevant to [What I sell]; if none qualify, say "Not in Draup" rather than listing generic tools.
-6. For the company behind the strongest proof: its top 3 executives in [Audience]'s function and its most important news item from the last 90 days.
+2. Pull the vertical's key priorities. If none come back, say so in the first line and use the dated priorities of its 2 largest parent employers in [Territory], labelled "company proof, not industry-wide".
+3. Choose the 5 priorities that best fit [What I sell] and [Audience]'s function. Judge by what each describes, not its function label, and explain each choice in one line.
+4. Vertical priorities carry no dates: for each, keep the named company examples and pull the dated priorities of 2–3 of the vertical's largest parent employers in [Territory] in that function and use those as proof (company, quarter or month).
+5. Market context: the vertical's revenue and R&D growth, and the 3 fastest-growing technologies relevant to [What I sell] (none: "Not in Draup", never generic tools).
+6. For the company behind the strongest proof: its top 3 executives in [Audience]'s function and its most important news item from the last 90 days. If it is one of the vertical's 3 largest employers, also name the best-fit mid-size company in one line.
 
 OUTPUT
 - Bottom line: 2 sentences — the industry story and why [What I sell] fits it now.
-- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- Recommended next step: a named person (name, full title), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
 - "Top 5 priorities": # | Priority | Dated proof | Likely owner (title) | Why it matters to [Audience].
 - "5-slide narrative": per slide a title, 3 short bullets and one dated proof point. Slide 1: the market shift. Slides 2–4: the three strongest priorities. Slide 5: why [What I sell] now.
 - "One-line POV": 35 words or fewer.
@@ -116,15 +116,17 @@ RULES
 - Company examples are real public companies; present them as industry evidence, never as our customers.
 - IT spend tracks revenue in Draup; don't use its growth as a trend.
 - If an industry returns zeros, say so, retry with its parent and name it.
+- Name any company driving over a third of a growth figure.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
 ```
 
@@ -152,7 +154,7 @@ Bottom line and next step first: pick the 5 [Vertical] priorities that fit [What
 - **Use it when:** You sell IT or business services and need to know who you are up against in an industry.
 - **Best for:** Services, SI & Staffing Seller, Partnerships & Alliances, Sales Leader & RevOps, Marketing & ABM
 - **Time:** 2–4 min
-- **Inputs:** Vertical (e.g. Life Sciences); Workload (optional) (e.g. Application Development & Maintenance); My company (e.g. Northwind Data Services (illustrative)); What I sell (e.g. clinical-data platform services)
+- **Inputs:** Vertical (e.g. Life Sciences); Workload (optional) (e.g. Application Development & Maintenance); Territory (optional) (e.g. United States of America); My company (e.g. Northwind Data Services (illustrative)); What I sell (e.g. clinical-data platform services)
 
 ### Detailed prompt
 
@@ -162,14 +164,15 @@ Act as my services market analyst. Use Draup for Sales for every fact.
 INPUTS (edit these)
 - Vertical: [industry, e.g. Life Sciences]
 - Workload (optional): [a type of work, e.g. Application Development & Maintenance]
+- Territory (optional): [client HQ country or region; default: my territory from setup, e.g. United States of America]
 - My company: [as Draup spells it, e.g. Northwind Data Services (illustrative)]
 - What I sell: [one line, e.g. clinical-data platform services — skip if you ran the start-here prompt]
 
 STEPS
 1. Resolve the vertical to Draup's name and show it.
-2. Pull the vertical's top outsourcing vendors (a fixed top 50). Remove advertising and media agencies, staffing, market-research, merchandising and field-marketing firms; list what you removed. Keep the top 15.
-3. Pull the top 10 outsourced workloads and the top 10 outsourcing buyers.
-4. If I gave a workload, pull the top 10 providers for it among companies whose primary vertical is [Vertical].
+2. With a Territory, rank providers by active engagements at [Vertical] companies HQ'd in [Territory] (top 50; say it is a regional ranking). With none, pull the vertical's fixed global top 50 vendors. Remove advertising and media agencies, staffing, market-research, merchandising and field-marketing firms; list what you removed. Keep the top 15.
+3. Pull the top 10 outsourced workloads and the top 10 outsourcing buyers (in [Territory] if set), merging subsidiaries into parents.
+4. If I gave a workload, pull the top 10 providers for it among companies whose primary vertical is [Vertical] (HQ in [Territory] if set).
 5. Find [My company]'s rank and active engagements, or say "not in the top 50"; if nothing returns, try the short brand name.
 6. For the top buyer where [My company] is absent: its top 3 executives in the function closest to What I sell and its most important news item from the last 90 days.
 
@@ -189,19 +192,20 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Bottom line and next step first: rank the top 10 outsourcing providers in [Vertical] by active engagements, agencies and staffing removed; show where [My company] ranks, the top buyers, and who to call at the best opening.
+Bottom line and next step first: rank the top 10 outsourcing providers in [Vertical] (clients in [Territory]) by active engagements, agencies and staffing removed; show where [My company] ranks, the top buyers, and who to call.
 ```
 
 ### Follow-ups
@@ -214,6 +218,7 @@ Bottom line and next step first: rank the top 10 outsourcing providers in [Verti
 
 - Engagement counts measure breadth of relationship, not revenue.
 - Agencies and staffing firms rank high on raw counts; the prompt removes them so the table shows real services rivals.
+- Set Territory to see who wins work from clients in your region; the global list can rank a different leader first.
 
 ## Find where a vertical's teams sit
 
@@ -255,12 +260,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
@@ -288,7 +294,7 @@ Bottom line and next step first: the top 10 metros for [Vertical] IT teams and f
 - **Use it when:** You want the most active companies in a vertical this year; active hiring often means active budgets.
 - **Best for:** SDR / BDR, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps
 - **Time:** 2–4 min
-- **Inputs:** Vertical (e.g. Life Sciences); What I sell (e.g. talent-acquisition software)
+- **Inputs:** Vertical (e.g. Life Sciences); Territory (optional) (e.g. United States of America); What I sell (e.g. talent-acquisition software)
 
 ### Detailed prompt
 
@@ -297,11 +303,12 @@ Act as my market research analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [industry, e.g. Life Sciences]
+- Territory (optional): [country in full; default: my territory from setup, e.g. United States of America]
 - What I sell: [one line, e.g. talent-acquisition software — skip if you ran the start-here prompt]
 
 STEPS
 1. Resolve the vertical to Draup's name and show it.
-2. Pull Draup's top hiring companies for the vertical (a fixed top 50) and note the time window Draup states.
+2. With a Territory, rank the top 50 employers posting in [Territory] with primary vertical [Vertical], last 12 months, staffing firms and job boards excluded; merge brands and subsidiaries into parents and drop foreign companies' local teams. With none, pull Draup's top hiring companies for the vertical (a fixed top 50) and note its window.
 3. Remove staffing and recruiting firms and job boards; record each.
 4. Look the rest up in one company list by exact name: workforce, primary vertical and postings (90 days). Work out postings per 1,000 employees.
 5. Remove outliers: a posting count above the company's workforce, or an unfamiliar firm posting far more than household names. Rank companies with 1,000+ staff (editable) by postings per 1,000.
@@ -323,19 +330,20 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Bottom line and next step first: the top 10 [Vertical] companies by postings per 1,000 staff (1,000+ employees), staffing firms and outliers removed, 5 hot spots for [What I sell], and who to call at the #1.
+Bottom line and next step first: the top 10 [Vertical] companies in [Territory] by postings per 1,000 staff (1,000+ employees), staffing firms and outliers removed, 5 hot spots for [What I sell], and who to call at the #1.
 ```
 
 ### Follow-ups
@@ -356,7 +364,7 @@ Bottom line and next step first: the top 10 [Vertical] companies by postings per
 - **Use it when:** You sell staffing, staff augmentation or SI services and want to know whether a skill's market buys contractors.
 - **Best for:** Services, SI & Staffing Seller, Partnerships & Alliances, Sales Leader & RevOps
 - **Time:** 1–2 min
-- **Inputs:** Technology (e.g. SAP S/4HANA); Country (optional) (e.g. United States of America); What I sell (e.g. SAP staff augmentation)
+- **Inputs:** Technology (e.g. SAP S/4HANA); Territory (optional) (e.g. United States of America); What I sell (e.g. SAP staff augmentation)
 
 ### Detailed prompt
 
@@ -365,14 +373,14 @@ Act as my talent market analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Technology: [skill or product, e.g. SAP S/4HANA]
-- Country (optional): [in full, e.g. United States of America]
+- Territory (optional): [country in full; default: my territory from setup, or "global"; e.g. United States of America]
 - What I sell: [one line, e.g. SAP staff augmentation — skip if you ran the start-here prompt]
 
 STEPS
-1. Resolve the technology, and the country if given, to Draup's names and show them.
+1. Resolve the technology to Draup's skill name (e.g. "CrowdStrike Falcon", not "CrowdStrike") and [Territory] to Draup's name; show them. If postings come back 0, retry once with the product name.
 2. Pull the work-type breakdown of postings for [Technology] over the last 12 months: full-time, contract, part-time, other and no type stated.
 3. Work out each type's share of all postings and of postings that state a type.
-4. Pull the top 15 companies posting for [Technology] in the same window and country, and classify each as end employer, staffing firm or IT services/SI.
+4. Pull the top 15 companies posting for [Technology] in the same window and territory, merge subsidiaries into parents, and classify each as end employer, staffing firm or IT services/SI.
 5. For the top end employer: its top 3 executives in the function that owns [Technology] and its most important news item from the last 90 days.
 
 OUTPUT
@@ -381,22 +389,23 @@ OUTPUT
 - "Split": Work type | Postings | Share of all % | Share of stated-type %. Verdict: "contract-heavy" over 40% of stated, "balanced" at 20–40%, else "full-time-led" (editable).
 - "Who's hiring" (top 10): Company | Postings | Type.
 - Gaps: what Draup didn't have — worth asking in discovery.
-- Detail: header with technology, country (or "global") and exact window; ranks 11–15; 3 bullets on what it means for [What I sell].
+- Detail: header with technology, territory (or "global") and exact window; ranks 11–15; 3 bullets on what it means for [What I sell].
 
 RULES
 - Never count no-type postings as full-time, and always show the no-type share.
-- Use the same window and country for every number; city breakdowns are out of scope.
+- Use the same window and territory for every number; city breakdowns are out of scope.
 - Many staffing or SI firms in the top 15 is another sign of contract-led demand.
 - Postings are openings, not hires.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
@@ -441,7 +450,7 @@ INPUTS (edit these)
 STEPS
 1. Use full country names as Draup knows them (e.g. "United States of America", not "USA").
 2. Pull Draup's country data for all of them in one go: labour force, unemployment rate, median age, cost-of-living index, inflation, corporate tax rate, political stability, and any other workforce metric Draup returns.
-3. If I named a client: find it by website (confirm the parent), then pull its top 3 executives in IT or global delivery and its most important news item from the last 90 days (centre openings, expansions or cost programmes first).
+3. If I named a client: find it by website (confirm the parent; no match: retry once by name and show the match score), then pull its top 3 executives in IT or global delivery and its most important news item from the last 90 days (centre openings, expansions or cost programmes first).
 
 OUTPUT
 - Bottom line: 2 sentences — how the locations compare and which fits [What I sell] best for this client.
@@ -459,12 +468,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 

@@ -30,7 +30,7 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my pricing analyst for services bids. Use the Draup for Talent connector for pay facts, and the Draup for Sales connector for company facts. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my pricing analyst for services bids. Use the Draup for Talent connector for pay facts, and the Draup for Sales connector for company facts. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Role: [e.g. Java Developer]
@@ -59,7 +59,7 @@ OUTPUT
 - "Rate check": Rate | Markup on median | on P10 | on P90 | Verdict against [Target markup range].
 - "Rate needed at target markup": Low end | High end, per hour.
 - Detail: market pay annual and hourly with salaries reported and confidence; by employer (rank, employer, median pay, salaries reported) with [Competitor] highlighted; 3 bullets — room on price, competitor pay, and a reply to "you're expensive".
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 
 RULES
 - Base pay excludes benefits, bench, overhead and margin. Never present it as a competitor's bill rate.
@@ -67,12 +67,12 @@ RULES
 - Without [Target markup range], show the multiples only; don't call a markup high or low.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
 - Show pay in local currency with its code; convert to USD only with my [Exchange rate], and say which rate.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

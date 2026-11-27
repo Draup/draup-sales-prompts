@@ -4,15 +4,15 @@
 
 > **Goal:** Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
 
-**For:** Services, SI & Staffing Seller, Account Executive, SDR / BDR, Marketing & ABM · **Time:** 45–60 min · **Steps:** 5
+**For:** Services, SI & Staffing Seller, Account Executive, SDR / BDR, Marketing & ABM · **Time:** About 15 min with quick versions, 45–60 min with detailed · **Steps:** 5
 
 **Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. A rival's customers you can win
 
-Lists the accounts where the rival delivers the workload you want to win.
+Lists the accounts where the rival delivers the work you want to win, with its share and rank at the top 8.
 
-**Look for:** Accounts in your territory where the rival's footprint in your workload is small. Those are usually easier to unseat than its strategic accounts.
+**Look for:** The 3 most contestable accounts and the rival's share at each. Under 10% of the account's active engagements (Green) is usually easiest to unseat; 30% or more (Red) is entrenched.
 
 Open the full prompt: [A rival's customers you can win](../prompts/10-outsourcing-and-services/competitor-customers.md)
 
@@ -24,9 +24,9 @@ Bottom line and next step (named buyer, dated why-now) first. Which [Vertical] c
 
 ## Step 2. A rival's footprint and your wedge
 
-Shows, for each shortlisted account, how deep the rival is in your workload and where it's thin.
+For each of the 3 contestable accounts from step 1, shows how deep the rival is and where it's thin. Reuse step 1's share figures; this adds tier, delivery locations and thin workloads.
 
-**Look for:** Wedge workloads where the rival has few active engagements (3 or fewer is an editable default) and that match what you sell. Ignore catch-all workloads such as Project/Programs Management. Drop accounts where the rival leads across the board.
+**Look for:** The 3 thin workloads that match what you sell (ignore catch-alls such as Project/Programs Management). Drop accounts where the rival is #1 with a Strategic tier across the board.
 
 Open the full prompt: [A rival's footprint and your wedge](../prompts/10-outsourcing-and-services/competitor-at-account.md)
 
@@ -40,7 +40,7 @@ Bottom line and next step (named person, dated why-now) first. How big is [Compe
 
 Shows who's already working each of the account's stated priorities.
 
-**Look for:** A priority the incumbent doesn't cover, or covers with dated tools: that's your reason to change.
+**Look for:** A priority tagged Displace or Greenfield in a thin workload from step 2: that's your reason to change.
 
 Open the full prompt: [Who's already working each priority](../prompts/03-tech-stack-and-displacement/priority-stack-incumbent-map.md)
 
@@ -52,9 +52,9 @@ Bottom line and next step first (named owner, dated why-now). Map [Company]'s [B
 
 ## Step 4. Peers' outsourcing deals for social proof
 
-Finds recent outsourcing engagements at the account's peers in your workload, for social proof.
+Finds recent engagements at the account's peers in your workload, for social proof.
 
-**Look for:** One peer move you can cite in the opener. Present it as a public industry move, not as your own customer.
+**Look for:** One of the 3 proof lines you can cite in the opener, as a public industry move, never as your own customer.
 
 Open the full prompt: [Peers' outsourcing deals for social proof](../prompts/10-outsourcing-and-services/peer-deals.md)
 
@@ -68,7 +68,7 @@ Bottom line and next step (named person, dated why-now) first. Find the 10 most 
 
 Times the outreach to something that just happened and writes the opener for each shortlisted account.
 
-**Look for:** A signal from the last 60 days tied to the wedge priority, sent to the named person. If there's none, park the account and revisit next month.
+**Look for:** A fact-checked signal from the last 60 days tied to the wedge priority, sent to the person named in step 2 or 3. No signal? Park the account and revisit next month.
 
 Open the full prompt: [Signal-led emails for up to 10 accounts](../prompts/04-signals-and-timing/signal-to-email.md)
 

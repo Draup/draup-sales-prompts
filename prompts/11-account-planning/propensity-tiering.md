@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Planning a quarter or a territory, or deciding where to spend limited time. Use plan-territories instead to split a whole market between reps. | Account Executive, Sales Leader & RevOps, Account & Customer Success Manager, SDR / BDR | Everyone | 4–6 min | Company directory, Company & financials, Hiring & job postings, News signals, Executives & movement |
+| Planning a quarter or a territory, or deciding where to spend limited time. Use "Carve balanced territories by geography" instead to split a whole market between reps. | Account Executive, Sales Leader & RevOps, Account & Customer Success Manager, SDR / BDR | Everyone | 4–6 min | Company directory, Company & financials, Hiring & job postings, News signals, Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -14,7 +14,7 @@
 
 | Placeholder | Example |
 |---|---|
-| `[Accounts]` | target.com, walmart.com, siemens.com, zebra.com, bmwgroup.com |
+| `[Accounts]` | target.com, merck.com, fedex.com |
 | `[What I sell]` | supply-chain planning software |
 | `[Target revenue band (optional)]` | $5B–$150B |
 | `[Competitor (optional)]` | Kinaxis, o9 Solutions |
@@ -24,51 +24,52 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my territory planning analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my territory planning analyst. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
-- Accounts: [Up to 25 websites, e.g. target.com, walmart.com, siemens.com]
-- What I sell: [One line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Accounts: [Up to 25 websites, e.g. target.com, merck.com, fedex.com]
+- What I sell: [One line, e.g. supply-chain planning software; skip if saved in setup]
 - Target revenue band (optional): [e.g. $5B–$150B]
 - Competitor (optional): [e.g. Kinaxis, o9 Solutions]
 
 STEPS
-1. Look up the accounts by website (exact match), 10 per lookup. Resolve misses one by one; if a website returns a subsidiary, ask. Never match by name.
-2. Take revenue, revenue growth, Opportunity Index (Draup's 0–10 fit score), hiring %, workforce growth and primary industry.
-3. Map [What I sell] to 1–3 Draup workloads and say which. For each account, pull 12-month postings in those workloads (one small lookup each) and rank them within the list.
-4. If I named competitors, check in one list lookup which accounts have their products; for the top 10 by Fit, check usage strength in my workloads.
-5. For the top 10 by Fit, count distinct dated news events from the last 90 days where the company is the actor; an event tied to [What I sell] counts double. Others: "not checked", 8 points.
-6. Score, add up and tier, then apply the re-tier rule.
-7. People and timing: at the top account, pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+1. Look up the accounts by website, 10 per lookup. A website that returns nothing: look it up by name once and show the match score; prefer the parent, and ask if the score is under 0.8 or the match is a subsidiary. Never drop an account silently.
+2. Take revenue, growth, Opportunity Index, hiring %, workforce growth and industry.
+3. Map [What I sell] to 1–3 Draup workloads and say which. For each account, pull 12-month postings in those workloads (one small lookup each) and rank them.
+4. With competitors named, find which accounts list their products (one lookup), then check usage in my workloads for the top 10 by Fit.
+5. For the top 10 by Fit, count distinct dated 90-day news events with the company as actor (tied to [What I sell] counts double). Others: "not checked", 8 points.
+6. Score and tier (re-tier rule, then fit gate).
+7. At the top account, pull the top 3 leaders in the function closest to [What I sell] and its most important 90-day news item.
 
 OUTPUT
 - Bottom line: 2 sentences — the A accounts and what they share.
-- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Recommended next step: a person from step 7 (name and title), what to do, and the dated why-now; if none, say so.
 - Table: Tier | Account | Total (Fit + Timing) | Strongest driver | Weakest driver. By total.
 - One-line reason per A account.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Detail: per-account values (postings in my workloads, competitor usage, news count), "Rubric used", "Data flags" (missing values, websites that resolved to a subsidiary, possibly inactive).
+- Gaps: what Draup didn't have, to ask in discovery.
+- Detail: per-account values (postings, competitor usage, news count), rubric, "Data flags" (missing values, name matches with scores, subsidiaries, possibly inactive, fit-gate caps).
 
 RULES
-- Rubric (editable defaults). FIT 50: relevance 20 (postings in my workloads: list's top third 20, middle 10, else 0); competitor installed 5 (High or Medium in my workloads 5, elsewhere 2, none 0: a displacement play); Opportunity Index 10 (score); revenue in band 10 (in 10, within 2x 5, else 2; 10 if no band); revenue growth 5 (over 5% 5, 0–5% 3). TIMING 50: news 20 (0, 1–2 = 8, 3–5 = 14, 6+ = 20); hiring % 15 (over 10% 15, 5–10% 10, 2–5% 5); workforce growth 15 (over 3% 15, 0–3% 10, −3–0% 5).
-- Leave IT spend out: it's modelled from revenue and doesn't separate accounts.
+- Rubric (editable defaults). FIT 50: relevance 20 (postings in my workloads: list's top third 20, middle 10, else 0); competitor installed 5 (High or Medium in my workloads 5, High or Medium elsewhere 2, Low or none 0: a displacement play); Opportunity Index 10 (score); revenue in band 10 (in 10, within 2x 5, else 2; 10 if no band); revenue growth 5 (over 5% 5, 0–5% 3). TIMING 50: news 20 (0, 1–2 = 8, 3–5 = 14, 6+ = 20); hiring % 15 (over 10% 15, 5–10% 10, 2–5% 5); workforce growth 15 (over 3% 15, 0–3% 10, −3–0% 5).
+- Leave out IT spend (modelled from revenue).
 - Tiers: A 70+, B 50–69, C under 50. If more than half the list lands in one tier, re-tier by rank (top 30% A, next 40% B, rest C) and say so.
-- Missing value = half that item's points, flagged.
+- Fit gate, applied last: Fit under 25 of 50 caps an account at C, whatever its Timing; show "low fit" as its weakest driver.
+- Missing value: half points, flagged.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step (named person, dated why-now) first. Tier [Accounts] for [What I sell]: fit (postings in my workloads, installed [Competitor]) and timing (news, hiring, growth), A/B/C relative to the list, one-line reason each.
+Bottom line and next step (named person, dated why-now) first. Tier [Accounts] for [What I sell] on fit (postings in my workloads, installed [Competitor]) and timing; Fit under 25 caps at C; show any name-matched website's score.
 ```
 
 </details>
@@ -96,8 +97,8 @@ Build a one-page account brief for the top-scoring account.
 ## Tips for better results
 
 - The rubric is in the prompt on purpose. Change the weights to match how your team actually wins.
-- Use websites, not names. Some parents use unusual domains (home.barclays, group.bnpparibas); if a website returns a subsidiary, the assistant will ask.
-- If every account looks like an A, the re-tier rule spreads them by rank so the list is still usable.
+- Use websites, not names. Some parents use unusual domains (home.barclays, group.bnpparibas), and some websites land on a subsidiary; if a website fails, the answer shows the name match and its score so you can check it.
+- The fit gate stops a busy but irrelevant account (lots of news, little hiring in your workloads) from reaching the A or B tier.
 
 ## Related prompts
 

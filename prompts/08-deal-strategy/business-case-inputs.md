@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You need to quantify value for a proposal or CFO conversation. Use this for a new deal's value model; use "Expansion business case from growth units" (expand-business-case) instead to grow an existing customer. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps | Everyone | 4–6 min | Company & financials, Priorities & opportunities, Outsourcing deals, Hiring & job postings |
+| You need to quantify value for a proposal or CFO conversation. Use this for a new deal's value model; use "Expansion business case from growth units" instead to grow an existing customer. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps | Everyone | 4–6 min | Company & financials, Priorities & opportunities, Outsourcing deals, Hiring & job postings |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -29,50 +29,51 @@ Act as my value engineer. Use Draup for Sales for every fact. Don't use outside 
 
 INPUTS (edit these)
 - Company: [website, e.g. medtronic.com]
-- Area affected: [workload or function your offer changes, e.g. Data Engineering, or IT]
+- Area affected: [workload or function, e.g. Data Engineering, or IT]
 - Value levers: [2–3, e.g. cost per pipeline, time to data, vendor consolidation]
 - Our assumptions (optional): [e.g. 20% productivity gain; loaded cost $120K per FTE]
 - What I sell: [one line, e.g. managed data engineering services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-CFOs discount industry averages; a case built on the buyer's own numbers, with every assumption labelled and editable, survives finance review.
+A case built on the buyer's own numbers, every assumption labelled, survives finance review.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
-2. Map [Area affected] to 1–3 workloads (types of work) and its business function; say which.
-3. Money: 3-year revenue, EBITDA, Draup-estimated IT and R&D spend, latest growth and next-year forecast.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
+2. Map [Area affected] to 1–3 workloads and its function; say which.
+3. Money: 3-year revenue, EBITDA, IT and R&D spend, growth and next-year forecast.
 4. IT spend split, latest two years: software on premise, internal staffing, IT outsourcing, hardware.
 5. Workforce: IT and R&D headcount and number of sites.
 6. Outsourcing in the workloads: active engagements and partners.
-7. Hiring in the workloads: 12-month postings and metros; then the 10 latest postings, noting published pay, contract versus full-time, and lines naming partners, cost or speed targets.
-8. Stated targets: up to 5 priorities in the workloads (if none, the function) with outcome lines naming a cost, speed, capacity or risk goal.
-9. Owner and trigger: the top 3 executives in the function (one page of 10) and the most important news item from the last 90 days.
+7. Hiring in the workloads: 12-month postings and metros; in the 10 latest postings, note published pay, contract vs full-time, and partner, cost or speed lines.
+8. Stated targets: up to 5 priorities in the workloads (else the function) with cost, speed, capacity or risk outcomes.
+9. Owner and trigger: the top 3 executives in the function (one page of 10) and the most important 90-day news item.
 10. Worked example: per lever, the formula, inputs from above, [Our assumptions], and a low–high result.
 
 OUTPUT
 - Bottom line: 2 sentences — the size of the prize as a range and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) who owns the biggest lever, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) who owns the biggest lever, the action this week and the dated why-now (or say none).
 - Table "Worked example": Lever | Formula | Low | High (USD millions).
-- Table "Their numbers" (top 8): Metric | Value | Year | Label (Reported, Draup estimate, Model forecast, Our assumption).
+- Table "Their numbers" (top 8): Metric | Value | Year | Label.
 - "What they said they want": up to 3 bullets: priority, quarter, lever.
 - "Assumptions to validate": each of our inputs and who can confirm it (title).
 - Detail: full numbers (IT split, headcount, engagements, postings) and up to 3 risks to the case.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Every number carries one label: Reported, Draup estimate, Model forecast or Our assumption.
-- With no assumptions given, use a marked placeholder ("[X]% gain — your number"); never invent one.
+- No assumptions given? Use a marked placeholder ("[X]% gain — your number").
 - Margin % = EBITDA / revenue, same year. If Draup has no IT split, say so.
 - A priority about building in-house or cutting vendors goes under risks.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- IT spend is Draup-estimated, often modelled from revenue; don't treat its growth as a signal. Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
-- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 480 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- IT spend is Draup-estimated (often modelled from revenue); its growth isn't a signal. Use USD millions at Draup's rate; a forecast over 15% off the latest actual is a model estimate.
+- Active engagements (Draup-derived) are estimates, not contracts; rank providers by them and never quote outsourced headcount.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 480 words above Detail, tables included.
 ```
 
 <details>

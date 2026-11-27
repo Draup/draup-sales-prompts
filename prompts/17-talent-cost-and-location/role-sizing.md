@@ -26,13 +26,13 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my market-sizing analyst for a services practice. Use the Draup for Talent connector for talent-supply facts, and the Draup for Sales connector for company facts. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my market-sizing analyst for a services practice. Use the Draup for Talent connector for talent-supply facts, and the Draup for Sales connector for company facts. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Role: [e.g. SAP FICO Consultant]
 - Countries: [up to 3, in full, e.g. India, Poland, Philippines]
 - Vertical (optional): [limit to people at companies in this industry, e.g. Retail]
-- What I sell: [one line, e.g. SAP finance managed services — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. SAP finance managed services; skip if saved in setup]
 
 CONTEXT (optional)
 A skill pool tells you two things at once: where you can hire to deliver, and which end clients carry big in-house teams that could move to managed services. Services firms holding the same skill are the competitors you'll meet in both deals and hiring.
@@ -50,7 +50,7 @@ OUTPUT
 - "Supply": Country | Talent supply | Likely range | 3-yr growth | Reliability. Largest first.
 - "Who employs them": Employer | Type (End client or Services firm) | People in role. Top 10.
 - Detail: employers 11–15; prospects (end clients with the largest in-house teams); competitors (services firms holding most of this skill); 3 bullets on what this means for [What I sell].
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 
 RULES
 - Show the likely range beside every supply figure; if reliability is poor, say so beside the number.
@@ -58,14 +58,14 @@ RULES
 - If the role returns nothing in a country, write "Not in Draup" for that row; never borrow another country's figure.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
 - Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

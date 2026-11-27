@@ -28,43 +28,45 @@ Act as my strategic account planner. Use Draup for Sales for every fact. Don't u
 INPUTS (edit these)
 - Company: [website, e.g. 3m.com]
 - What I sell: [one line, e.g. supply-chain analytics software — skip if you ran the start-here prompt]
-- Where we are today (optional): [units or regions we serve, e.g. Safety & Industrial, North America — or my saved account notes]
+- Where we are today (optional): [units or regions we serve, e.g. Safety & Industrial, North America]
 
 CONTEXT (why this matters)
-Large customers buy in pieces: units, regions, brands and service centres each have their own leaders and budgets.
+Large customers buy in pieces, each with its own budget.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
-2. Pull the profile (HQ, workforce, industries) and revenue by business unit (share, growth), or say none.
-3. Pull revenue by region for the latest year; compute growth from the two years' amounts.
-4. Pull key locations across all functions, 40 rows. Group by metro: functions present, postings (12 months), site tags (HQ, capability centre). Keep the top 10 metros by postings plus every capability centre.
-5. Pull the top 10 senior leaders (one page) and one page of 10 in the function closest to [What I sell]; note each one's unit or brand from the employer on their profile.
-6. Pull acquisitions in the last 3 years, and the most important news item from the last 90 days where [Company] is the actor.
-7. Mark each unit, region and site Ours (from [Where we are today]), Adjacent (same unit or region) or Open.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
+2. Pull the profile (HQ, workforce, industries) and revenue by business unit (share, growth).
+3. Pull revenue by region, latest year; compute growth from amounts.
+4. Locations: key locations for the function closest to [What I sell] (one row per metro, 15 rows), plus all-function rows limited to HQ Location and to GCC Locations. Group by metro (functions, 12-month postings, tags); keep the HQ, top metros and every capability centre.
+5. Pull one page of top leaders and one page of 10 in the function closest to [What I sell]; note each one's unit or brand from their profile employer.
+6. Pull 3-year acquisitions and the most important 90-day news item where [Company] is the actor.
+7. Mark each unit, region and site Ours ([Where we are today]), Adjacent (same unit or region) or Open.
 
 OUTPUT
-- Bottom line: 2 sentences — where the room to grow is and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) who leads the biggest open area, the action this week and the dated why-now; if none, say so.
+- Bottom line: 2 sentences — where the room to grow is and what it means for me.
+- Recommended next step: a named person (name, full title) who leads the biggest open area, the action this week and the dated why-now (or say none).
 - Table "White space" (top 3): Area | Fact behind it | Who leads it | Status.
-- Table "Where to sell" (up to 10): Unit, region or site | Share or postings | Growth | Status (Ours, Adjacent, Open).
-- "Units and brands in the leadership": up to 5 bullets; flag subsidiaries and brands that may have been sold or spun off.
-- Detail: shape of the account (HQ, workforce, revenue, industries), all units, regions and key sites, acquisitions (Date | Company | Why bought).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Table "Where to sell" (up to 10): Unit, region or site | Share or postings | Growth | Status.
+- "Units and brands in the leadership": up to 5 bullets; flag subsidiaries and possibly sold or spun-off brands.
+- Detail: account shape (HQ, workforce, revenue, industries), all units, regions and sites, acquisitions (Date | Company | Why bought).
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
-- A unit or brand seen only in leaders' profiles is "seen in leadership", not a confirmed business unit.
-- If unit or region revenue is empty, don't infer it from news.
+- A unit seen only in leaders' profiles is "seen in leadership", not confirmed.
+- Empty unit or region revenue: say so; don't infer from news. Two or fewer units: say so and use units and brands seen in leadership as the unit list.
+- Flag acquisition rows whose fields look shifted.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- Use the latest year's regional split; compute growth from amounts and check for divestments before calling a drop a cut.
-- The acquisitions table can miss deals; check 12 months of M&A news too. Divestments come from news only.
-- Site headcount is indicative only; lean on postings.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Check for divestments before calling a regional drop a cut.
+- The acquisitions table can miss deals; check M&A news too.
+- Site headcount is indicative; lean on postings.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>

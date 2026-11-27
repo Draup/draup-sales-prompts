@@ -30,37 +30,36 @@ INPUTS (edit these)
 - Company: [website, e.g. siemens.com]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 - Personas (optional): [three titles, e.g. CFO, Head of Supply Chain IT, SVP Supply Chain Planning; blank and I'll suggest them]
-- Proof point (optional): [a result I may quote, e.g. cut planning cycle time at Fabrikam Foods]
+- Proof point (optional): [e.g. cut planning cycle time at Fabrikam Foods]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull the account's key priorities grouped by function in one pass (up to 3 per function).
 3. Give each persona a distinct priority: Economic buyer (Finance or Management & Strategy), Technical buyer (IT or the function's systems), Champion (the operating function closest to [What I sell]). Use my titles if given.
-4. For each persona's function, pull 5 key executives and pick the likeliest by full profile title; drop titles that don't fit and flag subsidiaries. If no economic buyer appears, search once more for Chief, EVP or CIO titles.
+4. For each persona's function, pull 5 key executives and pick the likeliest by full profile title; drop titles that don't fit and flag subsidiaries. No economic buyer? Widen once as the People rule says. A "verify" C-level profile gets no email: address that thread to the office or hold it.
 5. Pull top-ranked news from the last 90 days; keep one Confirmed item all three threads can use (the account must be the actor).
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for. Start with the champion.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for. Start with the champion.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
 - Per persona: Email 1 (subject 6 words max, body 90 words max) on that persona's priority; Email 2 (day 4, 50 words max) on the shared news item or a second fact; same single ask in both.
 - Table "Thread map": Persona | Name | Full title | Priority (quarter) | Angle in one line.
 - Send plan: champion day 1, technical buyer day 3, economic buyer day 6, and what to do if one replies.
-- Detail: priorities in Draup's words with source; "Roles with no clear person" (titles to look for); Gaps (what Draup lacked, to ask in discovery).
+- Detail: priorities in Draup's words with source; "Roles with no clear person" (titles to look for); Gaps (to ask in discovery).
 
 RULES
 - Never reuse a paragraph across threads. Never write "I've also contacted your colleagues" or CC anyone. Buyer roles are candidates, labelled "likely".
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Use each person's full profile title, not the seniority label. In banking and consulting VP and SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables.
 ```
 

@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You have budget or capacity for one new partner in a segment and need to choose, or justify the choice to your leadership. Use partners-recruit-si-shortlist instead when you don't have names yet. | Partnerships & Alliances, Sales Leader & RevOps | Everyone | 4–6 min | Outsourcing deals, Talent flow & locations, Executives & movement, News signals |
+| You have budget or capacity for one new partner in a segment and need to choose, or justify the choice to your leadership. Use "Which SIs to recruit in an industry" instead when you don't have names yet. | Partnerships & Alliances, Sales Leader & RevOps | Everyone | 4–6 min | Outsourcing deals, Talent flow & locations, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -27,7 +27,7 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my partner-selection analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my partner-selection analyst. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Candidates: [2–3 services firms as Draup spells them, e.g. Cognizant, Capgemini, Wipro]
@@ -36,40 +36,39 @@ INPUTS (edit these)
 - Workload: [e.g. Data Engineering; a business function is fine, I'll map it]
 - Technology: [Our platform or a rival's, e.g. Databricks]
 - Weights (optional): [Editable default: workload depth 30, technology 25, customer breadth 20, onshore delivery 10, momentum 15]
-- What I sell: [One line, e.g. clinical data platform — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. clinical data platform; skip if saved in setup]
 
 STEPS
 1. Confirm Draup's spelling of each candidate; list any sister brand separately, unmerged. If I gave a business function, map it to its 1–2 main workloads.
 2. In one lookup, pull engagements for all candidates among customers with primary industry [Vertical] and HQ in [Country]. Repeat once for [Workload] only, and once for engagements that mention [Technology].
-3. For each candidate, pull its top 5 customers in the segment; compute the share of its segment engagements held by its top 2.
+3. For each candidate, pull its top 5 customers in the segment; compute its top-2 customers' share of its segment engagements.
 4. For each candidate, pull delivery locations for the segment; compute the share delivered in [Country] (onshore).
 5. For each candidate, pull headcount growth over Draup's latest 12-month workforce window.
 6. Score each criterion 0–100 relative to the best candidate (best = 100, others = value ÷ best × 100). For customer breadth, use 100 minus the top-2 share before scaling. Apply the weights and total.
-7. People and timing: pull the pick's top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+7. People and timing: page through the pick's Sales & Marketing executives (10 a page, up to 3; no vertical filter, as services firms are tagged IT Services) and keep 3 whose titles name [Vertical], a sector, alliances, partnerships or [Technology]; if none, say so and give the closest title. Then pull its most important news item from the last 90 days (client wins, acquisitions, alliances; rankings and awards aren't a why-now).
 
 OUTPUT
 - Bottom line: 2 sentences — the pick and what it means for [What I sell].
-- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
-- "Scorecard": Criterion | Weight | one column per candidate showing raw value (score) | then a Total row. Criteria: Workload depth ([Workload] engagements in segment), Technology ([Technology]-related engagements), Customer breadth (top-2 share), Onshore delivery (% in [Country]), Momentum (headcount growth %).
+- Recommended next step: a person from step 7 (name and title), what to do, and the dated why-now; if none, say so.
+- "Scorecard": Criterion | Weight | one column per candidate, raw value (score) | Total row. Criteria: Workload depth ([Workload] engagements in segment), Technology ([Technology]-related engagements), Customer breadth (top-2 share), Onshore delivery (% in [Country]), Momentum (headcount growth %).
 - "Pick": one candidate, 3 reasons tied to numbers.
 - "Risk per candidate": one line each (e.g. concentration, offshore-heavy, thin technology work).
 - Gaps: what Draup didn't have — worth asking each candidate.
 - Detail: "Sensitivity" (does the pick change if the technology weight doubles? who wins then) and "If you can sign two" (the most complementary pair and why).
 
 RULES
-- If a candidate has fewer than 10 engagements in the segment (editable default), mark its share-based scores "insufficient data" and score them 0, saying so.
+- Under 10 segment engagements (editable)? Mark its share-based scores "insufficient data" and score them 0.
 - Say plainly when the pick is driven mainly by scale, and show the runner-up's strongest criterion.
-- Never present the scorecard as Draup's rating; it's your weighted read of Draup data.
+- The scorecard is my weighted read of Draup data, not Draup's rating.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
-- Talent-flow data ends about 3 months ago; state the months.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>

@@ -1,24 +1,48 @@
 ---
 name: draup-sales-prompts
-description: Expert B2B sales research and outreach with Draup for Sales data: account briefs, buyers, why-now signals, competitors, target lists, deals, account plans and emails.
+description: Sales research and outreach with Draup data. Use to prep for calls, find who to contact, check and displace rivals, handle objections, build lists, plan accounts and write emails.
 license: CC-BY-4.0
 ---
 
 # Draup Sales Prompt Library
 
-You help sellers get decision-ready answers from **Draup for Sales** data. This skill contains 166 tested, detailed prompts and 16 playbooks. Each prompt says exactly what to pull, how to narrow it, what to output, and which data cautions apply.
+You help sellers get decision-ready answers from **Draup for Sales** data. This skill contains 166 detailed prompts (159 tested on live Draup data, 7 previews that need the Draup for Talent connector) and 17 playbooks. Each prompt says exactly what to pull, how to narrow it, what to output, and which data cautions apply.
 
 ## How to use this skill
 
 1. **Check that Draup data is available.** The Draup for Sales connector (Claude) or plugin (ChatGPT) must be connected. If it isn't, tell the user how to connect it: Claude https://claude.ai/directory/draup-for-sales · ChatGPT https://chatgpt.com/plugins/plugin_asdk_app_6ad0b735a0d88191b98c333a6fe40ce7 · any other MCP client: https://draup.com/sales/data/model-context-protocol. Don't answer from general knowledge as if it were Draup data.
 2. **Understand the job.** Work out what the user wants to get done (e.g. prepare for a meeting, find buyers, build a list, beat a competitor) and their role if known.
 3. **Pick the prompt.** Open `references/index.md`, choose the single best prompt by its "Use it when" line, then open its category file. For multi-step goals, check `references/playbooks.md`.
-4. **Fill the inputs.** Take inputs from the user's message or earlier context (what they sell, territory, competitors). If a required input is missing, ask one short question. Don't run on example values.
+4. **Fill the inputs.** Take inputs from the user's message or earlier context (what they sell, territory, competitors). If required inputs are missing, ask for them together in one short message (at most two questions). Don't run on example values. If the user names a person or title Draup doesn't have, say so in your first line and show the 3 closest people Draup does have.
 5. **Follow the detailed prompt exactly.** Run its STEPS in order, produce its OUTPUT format, and obey its RULES and STANDARD RULES. Use the quick version only if the user asks for something fast.
 6. **Apply the data rules** in `references/data-rules.md` to every answer: date every fact, say "Not in Draup" instead of guessing, confirm the parent company, flag conflicting or single-source facts.
 7. **Offer the prompt's follow-ups** at the end.
 
 If the user is new, suggest they first tell you about themselves using the **Tell your AI about you** prompt (`setup-about-me` in `references/start-here.md`).
+
+## Common requests and the prompt to use
+
+| The user says | Use | Or |
+|---|---|---|
+| Prep me for a call / meeting with [company or person] | `research-precall-snapshot` (10-minute pre-call snapshot) | `research-account-brief` |
+| Tell me about [company] / account brief | `research-account-brief` (One-page account brief) | `research-swot` |
+| Who should I contact / who owns [area] at [company] | `people-buying-committee` (Map the buying committee) | `people-new-leaders-warm-paths` |
+| Who is [person] / profile an executive | `people-executive-profile` (Executive profile and openers) | `people-discovery-questions` |
+| Why reach out now / what changed at [company] | `signals-whats-actionable` (What's worth acting on now) | `signals-change-log` |
+| Is [competitor] installed at [company]? How do I displace it? | `tech-competitor-installed` (Is a competitor installed?) | `deals-competitive-strategy` |
+| Write an email / opener to [person or company] | `signals-signal-to-email` (Signal-led emails for up to 10 accounts) | `outreach-new-executive` |
+| Cold call script / LinkedIn note / voicemail | `outreach-cold-call` (Cold-call opener, talk track, objections) | `outreach-linkedin-exec` |
+| Handle an objection | `deals-objection-handler` (Answer objections with their own facts) | `deals-champion-pack` |
+| Build or size a target list / ICP | `prospect-icp-list` (Size your ideal-customer list) | `prospect-hiring-led-list` |
+| Which accounts are ready for [what I sell]? | `plays-cloud-targets` (Find accounts ripe for cloud migration) | `plays-data-targets` |
+| Who outsources to whom / incumbent providers | `services-outsourcing-footprint` (Outsourcing footprint and consolidation wedge) | `services-competitor-at-account` |
+| Account plan / QBR / renewal risk | `plan-account-plan` (Draft an account plan) | `plan-risk-check` |
+| Tier my accounts / plan territories | `plan-propensity-tiering` (Tier my accounts by fit and timing) | `leaders-territory-potential` |
+| Industry overview for [vertical] | `market-vertical-snapshot` (One-page vertical market snapshot) | `market-industry-pov` |
+| Which partner should I co-sell with? | `services-cosell-partner` (Pick the SI to co-sell with) | `partners-recruit-si-shortlist` |
+| Weekly news on my accounts | `signals-weekly-book-sweep` (Weekly trigger sweep for my book) | `signals-vertical-digest` |
+
+For anything else, search `references/index.md` by the job the user wants done.
 
 ## What's inside
 

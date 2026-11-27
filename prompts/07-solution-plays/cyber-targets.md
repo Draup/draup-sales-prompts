@@ -2,11 +2,11 @@
 
 # Find accounts ripe for cybersecurity
 
-> **A ranked list of companies in your industry and country most ready to buy cybersecurity, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.**
+> **A ranked list of companies in your industry and territory most ready to buy cybersecurity, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Building a security platform, managed security or security consolidation campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account. | SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM | Everyone | 6–10 min | Hiring & job postings, Outsourcing deals, News signals, Company directory, Tech stack, Priorities & opportunities, Executives & movement |
+| Building a security platform, managed security or security consolidation campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use "Is this account ready for security investment?" instead when you already have one account. | SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller | Everyone | 6–10 min | Hiring & job postings, Outsourcing deals, News signals, Company directory, Tech stack, Priorities & opportunities, Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -15,8 +15,8 @@
 | Placeholder | Example |
 |---|---|
 | `[Industry]` | Hospitals & Healthcare Services |
-| `[Country]` | United States of America |
-| `[What I sell]` | managed detection and response and identity security |
+| `[Territory (optional)]` | United States of America |
+| `[What I sell]` | managed detection and response |
 
 ## 2. Copy the detailed prompt
 
@@ -27,44 +27,43 @@ Act as my cybersecurity target-list analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Industry: [e.g. Hospitals & Healthcare Services]
-- Country: [HQ country in full, e.g. United States of America]
-- What I sell: [one line, e.g. managed detection and response and identity security — skip if you ran the start-here prompt]
+- Territory (optional): [HQ country in full; default: my territory from setup, e.g. United States of America]
+- What I sell: [one line, e.g. managed detection and response — skip if you ran the start-here prompt]
 
 STEPS
-1. Resolve industry and country to Draup's names and say which you used; if empty, try a member company's primary industry.
-2. Hiring: end employers in [Country], primary industry [Industry], posting most in the Cybersecurity workload, 12 months, no staffing firms or job boards; top 20.
-3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in Cybersecurity; top 15.
-4. Incidents: one news search for breaches or ransomware at [Industry] companies in [Country], last 90 days; add up to 3 named companies.
-5. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop security vendors, managed-security providers and IT-services firms, investors, off-industry rows and foreign companies' local teams.
-6. One company-list lookup for the 10 by website: workforce, revenue, providers, and only security tools; note legacy on-premise tools and 3+ overlapping tools in one job (firewall, endpoint, SIEM, identity); work out postings per 1,000 employees.
-7. Top 5 by provisional score: up to 5 priorities each in the Cybersecurity workload; if none, try the Cybersecurity technology area once.
-8. One news search across the top 5 on breaches, regulatory actions, security leadership changes or acquisitions, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
-9. Top 3: 3 executives each in Cybersecurity; no senior owner: widen once to Chief, EVP and CIO titles.
+1. Resolve industry and territory to Draup's names; say which. Industry fails: retry each part (split on "/" or "and"), then a member company's primary industry.
+2. Hiring: top 20 end employers in [Territory], primary industry [Industry], by postings in the Cybersecurity workload, 12 months, no staffing firms or job boards.
+3. Outsourcing: [Industry] companies HQ'd in [Territory] ranked by active engagements in Cybersecurity; top 15.
+4. Incidents: one 90-day news search for breaches or ransomware at [Industry] companies in [Territory]; add up to 3 named.
+5. Long list of 10, both lists first: merge subsidiaries into parents; drop security vendors and service firms, investors, off-industry rows and foreign firms' local teams.
+6. One company-list lookup for the 10 by website: workforce, revenue, providers, security tools only, noting legacy on-premise and 3+ overlapping tools in one job; postings per 1,000 employees.
+7. Top 5 by provisional score: up to 5 Cybersecurity priorities each (none: the Cybersecurity technology area).
+8. One news search across the top 5 on breaches, regulation, security leaders or acquisitions, last 90 days; else each one's most material dated event, labelled indirect.
+9. Top 3: 3 executives each in Cybersecurity.
 
 OUTPUT
 - Bottom line: 2 sentences — who leads and what it means for [What I sell].
-- Recommended next step: the #1 account's person (name, full title; step 9), the action and the dated why-now (step 8); if missing, name the title to find.
-- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
-- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Recommended next step: the #1 account's person (name, full title), the action and the dated why-now; if missing, the title to find.
+- "Ranked targets" (top 10): Rank | Company | Score /10 | Why now (dated) | Who to call (top 3: name, full title, angle).
 - Gaps: what Draup didn't have.
-- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+- Detail: score breakdown with evidence and postings per 1,000; Dropped (company, reason); local teams.
 
-Score (editable): Incident 0–3 (3 = own incident in 90 days; 1 = earlier in 12 months); Hiring 0–3 (thirds by postings per 1,000); Stack 0–2 (legacy on-premise or 3+ overlapping tools); Outsourcing 0–1 (3+ engagements); Priority 0–1.
+Score (editable): Incident 0–3 (3 = own incident in 90 days, 2 = subsidiary incident or regulatory action in 90 days, 1 = earlier in 12 months, 0 = none); Hiring 0–3 (postings per 1,000 by thirds: 3, 2, 1; none 0; under 5,000 staff, at most 2); Stack 0–2 (2 = legacy on-premise and 3+ overlapping tools, 1 = either); Outsourcing 0–1 (3+ engagements); Priority 0–1.
 
 RULES
-- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
-- Use incident facts as published; never speculate on cause, attacker or impact. Openers lead with help or a peer pattern, never the breach.
-- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Rank by score, ties by postings per 1,000, never raw postings or IT spend (no workforce figure: raw postings, say so).
+- Quote incidents as published, no speculation on cause or impact; openers lead with help or a peer pattern, never the breach.
+- Sells it, not buys it: drop companies whose matching priorities or news describe products they sell (security software or managed security); list them under Dropped.
 - Postings are openings, not hires; engagements are Draup estimates.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
 ```
 
@@ -72,7 +71,7 @@ STANDARD RULES (leave as is)
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step first: rank [Industry] companies in [Country] for cybersecurity on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+Bottom line and next step first: rank [Industry] companies in [Territory] for cybersecurity on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
 ```
 
 </details>
@@ -82,7 +81,7 @@ Bottom line and next step first: rank [Industry] companies in [Country] for cybe
 Paste these into the same chat after the first answer.
 
 ```text
-Run the readiness check on the #1 account.
+Run "Is this account ready for security investment?" on the #1 account.
 ```
 
 ```text
@@ -94,7 +93,7 @@ Write a 70-word opener for each of the top 3, each tied to its why-now.
 ```
 
 ```text
-Which of these run a competitor I name? Rate each Red, Amber or Green.
+Which of these use a rival I name? Rate each Red, Amber or Green: software rivals by usage (Low or absent = Green), services rivals by engagement share (30%+ Red, 10–29% Amber, under 10% Green).
 ```
 
 ## Tips for better results
@@ -105,10 +104,10 @@ Which of these run a competitor I name? Rate each Red, Amber or Green.
 
 ## Related prompts
 
-- [Is this account ready for security investment?](../../prompts/07-solution-plays/cyber-readiness.md): A 0–20 readiness score for cybersecurity at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- [Is this account ready for security investment?](../../prompts/07-solution-plays/cyber-readiness.md): A 0–20 readiness score for cybersecurity at one account, with incumbents rated Red, Amber or Green (services rivals by share of engagements), a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
 - [Who in my market just [did X]?](../../prompts/04-signals-and-timing/news-question-templates.md): A clean, dated list of the companies in your industry and country that just did one thing you choose (M&A, layoffs, leadership changes, expansion or new centres, funding, or partnerships), with source counts and a named person at the best account.
-- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
-- [Target list: companies running a competitor](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A true count and a ranked list of companies in your industry and country whose stack includes a competitor's products, with usage strength shown, distributors and inactive names flagged, and a named person at the top account.
+- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): Whether a named competitor is really installed (High or Medium usage), where it sits, any overlapping product or one the account owns, the priorities that could trigger a switch, and three bullets on how to win.
+- [Target list: companies running a competitor](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A true count and a ranked list of parent companies in your industry and territory whose stack includes a competitor's products, with usage checked for the top 10 (only High or Medium counted), distributors and inactive names flagged, and a named person at the top account.
 - [A rival's customers you can win](../../prompts/10-outsourcing-and-services/competitor-customers.md): A ranked list of a rival's customers in your industry and country, how entrenched it is at each, and the 3 to attack first, with a named buyer at the best one.
 
 <details>

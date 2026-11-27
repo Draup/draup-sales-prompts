@@ -35,35 +35,34 @@ INPUTS (edit these)
 - Shared ground (optional): [a real, permitted connection, e.g. we both spoke at the same industry event]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Find the executive: pull key executives in [Business function], 10 per page, up to 3 pages, and match by name or full profile title. If not found, show the 5 closest titles and ask which to use. Record full title, location, function and workloads.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
+2. Find the executive: pull key executives in [Business function], 10 per page, up to 3 pages, and match by name or full profile title. If not found, say so first, show the 5 closest titles and ask which to use. Record full title, location, function and workloads.
 3. Pull up to 6 [Business function] priorities, newest quarter first, and keep the one closest to the executive's remit.
 4. Pull the account's top-ranked news from the last 90 days where [Company] is the actor and keep one item that touches the remit, if any. Fact-check it.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
 - Connection note: 300 characters max including spaces, no pitch, no link; mention [Shared ground] only if I gave it.
-- InMail: subject (6 words max) and body (110 words max): the priority or news as context; a question about their remit; one line on [What I sell]; one ask.
+- InMail: subject (6 words max), body (110 words max): the priority or news as context; a question about their remit; one line on [What I sell]; one ask.
 - After they accept (60 words max): thanks in a few words, one useful resource, no meeting ask.
 - Table "Who": Name | Full title | Location | Workloads | Pages checked.
-- Detail: the hook (priority in Draup's words, source, quarter; news item, date, source); Gaps (what Draup lacked, to ask in discovery).
+- Detail: the hook (priority in Draup's words, source, quarter; news item, date, source); Gaps (to ask in discovery).
 
 RULES
 - Never mention tenure, schools, past employers, skills or anything else from the profile unless it is [Shared ground].
 - If the person can't be found, don't write to a guessed person; ask me.
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Use each person's full profile title, not the seniority label. In banking and consulting VP and SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function (in banking and consulting, VP and SVP are mid-level); flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 380 words including tables.
 ```
 
@@ -103,7 +102,7 @@ Turn the InMail into a 70-word email for the same person.
 
 ## Related prompts
 
-- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
+- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A short profile of one senior person, found by name or just by title, with time in role, past companies, what they likely own, a competitor check and two openers. If Draup has no one with that title, you're told so up front and given the 3 closest people.
 - [Email a newly appointed executive](../../prompts/05-outreach-and-messaging/new-executive.md): The newest senior appointments in your area at one account, checked against a second source, the stated priority that fits the new remit, and a 90-word first-90-days email plus a short follow-up.
 - [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
 - [ABM openers for 10 accounts at once](../../prompts/16-content-and-enablement/abm-messages.md): A table of short openers for up to 10 accounts per pass, each written to your persona in their language and tied to one stated priority and one dated signal from the last 60 days, graded Strong, OK or Weak, with sources and an optional joint partner note.

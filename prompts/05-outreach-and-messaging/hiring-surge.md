@@ -28,38 +28,40 @@ Act as my outbound copywriter for hiring-led triggers. Use Draup for Sales for e
 
 INPUTS (edit these)
 - Company: [website, e.g. delta.com]
-- Persona: [who reads it, e.g. VP Commercial Strategy]
+- Persona: [reader, e.g. VP Commercial Strategy]
 - What I sell: [one line, e.g. sales enablement and CRM services — skip if you ran the start-here prompt]
 - Business function (optional): [e.g. Sales & Marketing]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull 12 months of job postings by function: top 6, each with last 5 full months vs the 5 before and any "Trending Up" label. Use [Business function], else the function closest to [What I sell], else the biggest riser that fits.
 3. In that function, pull the top 5 workloads with trend and the 4 newest postings: title, date, location, work type and a responsibility hinting at a new team or programme.
-4. Pull up to 4 priorities in that function and pick the one the hiring most plausibly supports.
+4. Pull up to 4 priorities in that function and pick the one the hiring best supports.
 5. Label it Surge (over 25% up, editable default), Rising (10 to 25%), Flat, or Seasonal (a one-month spike); write copy only for Surge or Rising.
-6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact. Also pull the most important news item from the last 90 days where [Company] is the actor.
+6. Pull the top 3 executives in [Persona]'s function and pick the likeliest contact. Also pull [Company]'s most important 90-day news item where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
-- Email: subject (6 words max) and body (100 words max): the capability being built, in general terms from public job ads ("building out a media sales team"); a question on ramping it; one offer; one ask.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
+- Email: subject (6 words max), body (100 words max): the capability being built, in general terms from public job ads ("building out a media sales team"); a question on ramping it; one offer; one ask.
 - Table "Functions" (top 6): Function | Postings (12 months) | Last 5 vs prior 5 (%) | Label.
 - Table "What's driving it" (top 5): Workload | Postings | Recent months.
-- Detail: newest roles (Date | Title | Location | Work type | Hint); linked priority (Draup's words, source, quarter); Gaps (what Draup lacked, to ask in discovery).
+- Detail: newest roles (Date | Title | Location | Work type | Hint); linked priority (source, quarter); Gaps (to ask in discovery).
 
 RULES
 - Never quote posting counts or percentages in the copy; describe the team being built.
-- If over half the newest roles are contract, say it may signal staff augmentation. If no function is Surge or Rising, say so and suggest a priority-led message instead.
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- If over half the newest roles are contract, say it may signal staff augmentation. If no function is Surge or Rising, say so and suggest a priority-led message.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables.
 ```
 

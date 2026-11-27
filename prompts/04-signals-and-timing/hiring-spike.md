@@ -31,21 +31,21 @@ INPUTS (edit these)
 - Workload (optional): [a type of work, e.g. Artificial Intelligence & Data Science; blank uses the function closest to what I sell]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull monthly job postings for the last 12 months, company-wide and for the function closest to [What I sell] (or [Workload]); full months only, and say which months you used.
 3. Work out the monthly average and standard deviation, and the last 5 full months against the 5 before.
 4. Verdict on the last 3 full months (editable defaults): Spiking = any month over 2 standard deviations above average; Above normal = their average over 1 above; Slowing = over 1 below; Normal = anything else.
 5. Label a flagged month seasonal if it's an industry peak (e.g. retail holidays), or company-wide if many unrelated workloads rose together.
 6. For each flagged month, list the top 5 workloads against their usual month.
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and [Company]'s top 90-day news item where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - Verdict: one plain-English line (e.g. "Above normal in IT, not seasonal") with the 5-vs-5 change in %, for the function and company-wide.
 - Table (last 6 full months, function view): Month | Postings | Gap from average (standard deviations) | Flag.
 - Table "What drove it" (top 5): Workload | Postings in flagged month | Usual month | Likely owner.
-- Detail: the full 12-month series; the company-wide view; "Why this matters for [What I sell]" (2–3 bullets); Gaps (what Draup lacked, to ask in discovery).
+- Detail: the full 12-month series; the company-wide view; "Why this matters for [What I sell]" (2–3 bullets); Gaps (to ask in discovery).
 
 RULES
 - Standard deviations go in the table; the verdict uses plain words.
@@ -53,12 +53,14 @@ RULES
 - A seasonal frontline spike is rarely a buying signal; say so when it's the driver.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the function closest to What I sell (e.g. IT) and say which; map any function I give to its main workloads and name them.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
 - If one company's posting count is in the millions or above its workforce, the company match failed. Say so and drop it.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 380 words including tables; then offer to continue.
 ```
 
 <details>

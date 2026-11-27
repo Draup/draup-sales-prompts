@@ -31,38 +31,40 @@ INPUTS (edit these)
 - Company: [website, e.g. lowes.com]
 - Persona: [who you're calling, e.g. VP Supply Chain Planning]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
-- Business function (optional): [the persona's function, e.g. Supply Chain; blank uses the one closest to what I sell]
-- Competitor (optional): [company or product, e.g. Blue Yonder]
+- Business function (optional): [e.g. Supply Chain; blank uses the one closest to what I sell]
+- Competitor (optional): [e.g. Blue Yonder]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Pull the account's top-ranked news from the last 90 days and keep the 2 items most relevant to [Business function] where [Company] is the actor. Fact-check each.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
+2. Pull top-ranked 90-day news; keep the 2 items most relevant to [Business function] where [Company] is the actor, fact-checked.
 3. Pull up to 4 [Business function] priorities with source, quarter and linked tools.
-4. If I named a competitor, check the whole stack for products by its maker, whatever area they're filed under: usage strength, last seen and rating.
-5. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact. That person is who I call.
+4. If I named a competitor, check the whole stack for its maker's products in any area: usage, last seen, rating.
+5. Pull the top 3 executives in [Persona]'s function and pick the likeliest contact. That person is who I call.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
 - Opener (25 words max): who you are, the specific public reason for the call, and a permission question.
 - Talk track (150 words max, about 60 seconds): the reason for calling; the problem it creates for someone in [Persona]'s seat, as a question; how [What I sell] helps, in one line; the ask (20 minutes, two time options).
 - Objection replies (40 words max each) to "We already have [tool]", "Not a priority right now" and "Just send me an email": acknowledge, use one account fact, end with a question.
-- Discovery questions: 3, each tied to a priority.
+- Discovery questions: 3, tied to priorities.
 - Table "Reasons to call" (2 or 3, newest first): Date | Fact | Source | Fact check.
-- Detail (prep, not to say): linked tools and competitor products with rating; Gaps (what Draup lacked, to ask in discovery).
+- Detail (prep, not to say): linked tools and rated competitor products; Gaps (to ask in discovery).
 
 RULES
 - Never name an installed tool unless it appears in public job ads or announcements, claim to know internal plans, or invent peer statistics.
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
-- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News: [Company] must be the actor; drop stock chatter, sponsorships, political commentary, look-alikes, sister companies, passing mentions and re-dated stories. Give source and headline.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Rating: count a rival only at High or Medium usage (ignore Low or very-low-confidence detections; say so). High in my workloads is Red, Medium Amber, none Green; newly detected (first seen in 12 months) is a separate Amber signal.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables.
 ```
 

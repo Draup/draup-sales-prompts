@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You've agreed a target close date and want a plan both sides sign up to. Use this once the date is agreed; use "Pick a realistic signature window" (deals-budget-timing) instead to test the date first. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 4–6 min | Company & financials, Earnings calls & filings, Executives & movement, News signals, Priorities & opportunities |
+| You've agreed a target close date and want a plan both sides sign up to. Use this once the date is agreed; use "Pick a realistic signature window" instead to test the date first. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 4–6 min | Company & financials, Earnings calls & filings, Executives & movement, News signals, Priorities & opportunities |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -35,26 +35,26 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. data-platform modernisation services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-Plans that ignore fiscal year-end, freezes, earnings or a new executive mid-plan slip quietly; give every step a buyer owner.
+Plans that ignore the buyer's calendar slip; give every step a buyer owner.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
-2. Use the business function closest to [What I sell] (e.g. IT) and say which.
-3. Fiscal calendar: the latest fiscal year and its end date from Draup's financials; the last 5 earnings calls with fiscal label and release date. Infer fiscal year-end, the next call and quarter-ends in the plan window.
-4. Stakeholders: function executives (one page of 10) and Procurement executives (5); look for technology or indirect procurement and anyone under 1 year in title. Flag subsidiaries.
-5. Events, last 90 days and announced for the window: leadership changes with effective dates, reorganisations, divestments, IPOs or spin-offs, investor events. Review at least 15 items.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
+2. Use the function closest to [What I sell]; say which.
+3. Fiscal calendar: the latest fiscal year and end date from Draup's financials; the last 5 earnings calls (label, release date). Infer year-end, the next call and quarter-ends in the window.
+4. Stakeholders: function executives (one page of 10) and Procurement executives (5): technology or indirect procurement, and anyone under 1 year in title.
+5. Events, last 90 days and announced for the window (15+ items): leadership changes with effective dates, reorganisations, divestments, spin-offs, investor events.
 6. Up to 3 recent priorities in the function to anchor the objective.
-7. Build backwards from [Target close date] using [Steps still needed], or: business case sign-off, security and architecture review, procurement, legal, executive approval, signature, kickoff.
+7. Build backwards from [Target close date] using [Steps still needed], or the default: business case, security review, procurement, legal, executive approval, signature, kickoff.
 
 OUTPUT
 - Bottom line: 2 sentences — Achievable, Tight or Unrealistic, with an alternative date if needed.
-- Recommended next step: a named person (name, full title) to send the draft plan to, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) to send the draft plan to, the action this week and the dated why-now (or say none).
 - Table "Mutual action plan" (up to 8): Step | Target date | Buyer owner and ours | Exit criteria | Calendar note.
 - Table "Buyer calendar" (up to 6): Date | Event (fiscal year-end, quarter-end, earnings call, leadership start) | Effect on the plan.
 - "Objective": one sentence in the buyer's words, tied to a dated priority.
 - "Timeline risks": up to 3, each with the step it threatens and a mitigation.
 - Detail: "Stakeholders" (Name | Full title | Role: approver, reviewer, signer, user | In title since), up to 8.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Never assume a calendar fiscal year; derive it from financials and call dates and say how.
@@ -63,12 +63,13 @@ RULES
 - Don't name subsidiary executives as approvers unless the deal is with that unit. Label future call dates "inferred".
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>

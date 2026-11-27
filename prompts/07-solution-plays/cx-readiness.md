@@ -2,11 +2,11 @@
 
 # Is this account ready for CX change?
 
-> **A 0–20 readiness score for CX and contact-centre change at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.**
+> **A 0–20 readiness score for CX and contact-centre change at one account, with incumbents rated Red, Amber or Green (services rivals by share of engagements), a named owner with a dated why-now, an entry angle and four fact-based discovery questions.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before investing pursuit time in one account for a CX and contact-centre deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts. | Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller | Everyone | 4–6 min | Company & financials, Tech stack, Priorities & opportunities, Hiring & job postings, Outsourcing deals, Executives & movement, News signals |
+| Before investing pursuit time in one account for a CX and contact-centre deal, or ahead of a first meeting. Use "Find accounts ripe for CX change" instead to find accounts. | Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller | Everyone | 4–6 min | Company & financials, Tech stack, Priorities & opportunities, Hiring & job postings, Outsourcing deals, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -17,7 +17,7 @@
 | `[Company]` | verizon.com |
 | `[Workloads (optional)]` | a type of work, default Customer Service & Support, Customer Success |
 | `[Competitor or incumbent (optional)]` | Genesys, or Concentrix |
-| `[What I sell]` | contact-centre modernisation and CX managed services |
+| `[What I sell]` | contact-centre modernisation services |
 
 ## 2. Copy the detailed prompt
 
@@ -30,40 +30,40 @@ INPUTS (edit these)
 - Company: [website, e.g. verizon.com]
 - Workloads (optional): [a type of work, default Customer Service & Support, Customer Success]
 - Competitor or incumbent (optional): [e.g. Genesys, or Concentrix]
-- What I sell: [one line, e.g. contact-centre modernisation and CX managed services — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. contact-centre modernisation services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
-2. Money: latest revenue and growth, Draup-estimated IT spend (direction only) and its split.
-3. Intent: up to 6 priorities in Customer Support & Service, plus up to 3 whose name contains "contact", newest first, with linked tools and providers.
-4. Current state: the stack in category Customer Service Software (if empty, [Workloads]), up to 30 rows; High or Medium usage in 6 months is core.
-5. Capability: Customer Support & Service postings by workload (one big month is a batch, not a trend); last 5 full months vs the 5 before.
-6. Incumbents: providers in [Workloads] ranked by active engagements, top 10; contact-centre operators count. If I named a competitor, check the whole stack for its products, any category.
-7. Owner: executives in Customer Service & Support (customer care, contact-centre or chief customer titles); check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
-8. Why now: the most important 90-day news where [Company] is the actor, on contact centres, customer service, CRM, CX outsourcing, reshoring or vendor choices; if none, widen to 6 months and say so.
+1. Find [Company] by website (no match: retry once by name, show the match score); confirm it's the parent (ask if unsure). If it sells technology or services, drop priorities, news and hiring about its own products.
+2. Money: latest revenue and growth; Draup-estimated IT spend and split (direction only).
+3. Intent: up to 6 Customer Support & Service priorities plus up to 3 named "contact", newest first.
+4. Current state: the stack in category Customer Service Software (if empty, [Workloads]), up to 30 rows; High or Medium usage in 6 months = core.
+5. Capability: Customer Support & Service postings by workload; last 5 full months vs the 5 before.
+6. Incumbents: providers in [Workloads] ranked by active engagements, top 10; contact-centre operators count. Check any rival I named across the whole stack.
+7. Owner: executives in Customer Service & Support; keep customer care or contact-centre titles. If news names a different leader, say so.
+8. Why now: the top 90-day news where [Company] is the actor, on contact centres, CRM, CX outsourcing or reshoring; if none, widen to 6 months and say so.
 
 OUTPUT
 - Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
-- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
-- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need (service-cost or churn priority), Momentum, Change window (old and new contact-centre products both active), Budget (outsourcing share or savings target), Trigger.
-- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
-- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Recommended next step: the owner (name, full title), the action and the dated why-now; if missing, the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need (service-cost or churn priority), Momentum (4 = service postings or programmes rising; 0 = falling), Change window (old and new contact-centre products both active), Budget (savings target), Trigger.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: a services rival by share of active engagements in my workloads (30%+ Red, 10–29% Amber, under 10% Green); a software rival by usage (High Red; Medium or new in 12 months Amber; Low or absent Green; say if Low was ignored).
+- "Entry angle": 2 sentences on one priority and one gap. "Discovery questions": 4, each opening with a dated fact.
 - Gaps: what Draup didn't have.
 - Detail: current state (Tool | Maker | Usage | Last seen | Read).
 
 RULES
-- Low in-house hiring plus large outsourcing reads "buys, doesn't build". Layoffs or reshoring beside AI service programmes are triggers, not disqualifiers.
-- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Low in-house hiring plus large outsourcing reads "buys, doesn't build". Layoffs or reshoring beside AI service programmes are triggers.
+- Competitor absent: analyse who is there. Big company, thin data: say "in-house or thin data", not Early.
 - Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
 ```
 
@@ -104,7 +104,7 @@ Re-score after I tell you what I learned in discovery.
 
 ## Related prompts
 
-- [Find accounts ripe for CX change](../../prompts/07-solution-plays/cx-targets.md): A ranked list of companies in your industry and country most ready to buy CX and contact-centre change, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- [Find accounts ripe for CX change](../../prompts/07-solution-plays/cx-targets.md): A ranked list of companies in your industry and territory most ready to buy CX and contact-centre change, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
 - [What they run in one tech area](../../prompts/03-tech-stack-and-displacement/stack-category.md): What they run in one area, ranked by how central each tool is, with your competitors rated Red, Amber or Green, stale tools set aside and a named person to call.
 - [A rival's footprint and your wedge](../../prompts/10-outsourcing-and-services/competitor-at-account.md): How deep a rival services firm is at the account (or, if it's absent, who really is), how it delivers, and the workloads where it's weakest: your wedge, with a named buyer and a dated why-now.
 - [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.

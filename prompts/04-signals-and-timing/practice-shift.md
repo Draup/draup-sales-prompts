@@ -31,34 +31,35 @@ INPUTS (edit these)
 - Business function (optional): [e.g. IT or ER&D (engineering and R&D); blank uses the function closest to what I sell]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull the skills in the company's job postings over the last 12 months in the function: the top 50 plus those trending up. Keep named software tools only.
 3. For each tool, compare average postings per month in the last 5 full months with the 5 before. Set aside one-off spikes (one month over half the total).
 4. Pull the installed stack for the makers of the top 15 tools: usage strength, last seen, and whether first detected in the last 12 months. For very broad makers (Google, Microsoft, Amazon), also narrow by category. Say which tools you couldn't find.
 5. Group each tool (editable defaults): New = 5 or fewer a month before, 20+ (or 5x) after; Building = rising in job ads but Low, absent or new in the stack; Core = in job ads and High or Medium in the stack; Coasting = High in the stack, under 5 postings in 12 months.
 6. For the top 3 New or Building tools, pull 2 recent postings each: title, date, location.
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and [Company]'s top 90-day news item where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - Table (top 10, by recent volume): Tool | Avg/month, prior 5 | Avg/month, last 5 | In stack (strength) | Group.
 - "What it signals": 3 bullets on the practice change, and the opening for [What I sell] with its likely owner.
-- Detail: makers, first-detected flags and sample titles; rows 11–20; Gaps (what Draup lacked, to ask in discovery).
+- Detail: makers, first-detected flags and sample titles; rows 11–20; Gaps (to ask in discovery).
 
 RULES
 - Job-ad mentions measure hiring demand, not licences or spend; say so once.
 - If nothing is New, say so and lead with Building.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the function closest to What I sell (e.g. IT) and say which; map any function I give to its main workloads and name them.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
 - If one company's posting count is in the millions or above its workforce, the company match failed. Say so and drop it.
 - Trust last-seen date and usage strength. Ignore the confidence score and "Generic" rows. Say "fading", never "dropped".
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
 ```
 
 <details>

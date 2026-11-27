@@ -15,6 +15,7 @@
 | Placeholder | Example |
 |---|---|
 | `[Vertical]` | Life Sciences |
+| `[Territory (optional)]` | United States of America |
 | `[What I sell]` | talent-acquisition software |
 
 ## 2. Copy the detailed prompt
@@ -26,11 +27,12 @@ Act as my market research analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [industry, e.g. Life Sciences]
+- Territory (optional): [country in full; default: my territory from setup, e.g. United States of America]
 - What I sell: [one line, e.g. talent-acquisition software — skip if you ran the start-here prompt]
 
 STEPS
 1. Resolve the vertical to Draup's name and show it.
-2. Pull Draup's top hiring companies for the vertical (a fixed top 50) and note the time window Draup states.
+2. With a Territory, rank the top 50 employers posting in [Territory] with primary vertical [Vertical], last 12 months, staffing firms and job boards excluded; merge brands and subsidiaries into parents and drop foreign companies' local teams. With none, pull Draup's top hiring companies for the vertical (a fixed top 50) and note its window.
 3. Remove staffing and recruiting firms and job boards; record each.
 4. Look the rest up in one company list by exact name: workforce, primary vertical and postings (90 days). Work out postings per 1,000 employees.
 5. Remove outliers: a posting count above the company's workforce, or an unfamiliar firm posting far more than household names. Rank companies with 1,000+ staff (editable) by postings per 1,000.
@@ -52,12 +54,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
@@ -65,7 +68,7 @@ STANDARD RULES (leave as is)
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step first: the top 10 [Vertical] companies by postings per 1,000 staff (1,000+ employees), staffing firms and outliers removed, 5 hot spots for [What I sell], and who to call at the #1.
+Bottom line and next step first: the top 10 [Vertical] companies in [Territory] by postings per 1,000 staff (1,000+ employees), staffing firms and outliers removed, 5 hot spots for [What I sell], and who to call at the #1.
 ```
 
 </details>
@@ -94,13 +97,13 @@ Draft a hiring-themed opener for the #1 hot spot.
 ## Related prompts
 
 - [Who's hiring for a tech or role](../../prompts/06-prospecting-and-lists/hiring-led-list.md): The end employers posting most for a technology or buyer role, cleaned of job boards and staffing firms, with hiring per 1,000 staff, who to call and a dated why-now.
-- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry scoped to your region: global size and growth beside a regional size from the top 10 buyers, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
 - [Are they hiring more than usual?](../../prompts/04-signals-and-timing/hiring-spike.md): A plain-English verdict on whether job postings in the function you sell into are running above or below normal, which workloads drive it, whether it's seasonal, and who to call.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`extract_entities`, `ecosystem_get_vertical_organization_top_top_hiring_accounts`, `get_universe_companies_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
+`extract_entities`, `ecosystem_get_vertical_organization_top_top_hiring_accounts`, `talent_demand_top_companies_v3`, `get_universe_companies_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `market-hiring-leaders`.
 

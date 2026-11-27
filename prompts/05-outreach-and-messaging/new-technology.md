@@ -31,39 +31,38 @@ INPUTS (edit these)
 - Company: [website, e.g. intel.com]
 - Technology or competitor: [product or vendor, e.g. Databricks]
 - Play: [complement, displace or integrate]
-- Persona: [who reads it, e.g. Director of Data Engineering]
+- Persona: [reader, e.g. Director of Data Engineering]
 - What I sell: [one line, e.g. data observability software — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Check the whole stack for products by [Technology or competitor]: category, usage strength, first and last evidence. Mark each Active (seen in 6 months) or Fading, and New if first seen in 12 months; rate competitors.
-3. If [Company] makes or owns a product in the same category, say a displace play is unlikely.
-4. Pull the 3 newest job postings naming the tool (title, date, what the team does with it) and the 12-month count.
-5. Pull up to 3 priorities in the tool's workload and judge the [Play] opening: complement (Active, central), displace (Low or Fading), integrate (New, and priorities mention connecting systems).
-6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact. Also pull the most important news item from the last 90 days where [Company] is the actor.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
+2. Check the stack for [Technology or competitor] products by maker, in any area (name the category for broad makers like Microsoft): category, usage, first and last evidence. Mark each Active (seen in 6 months) or Fading, and New if first seen in 12 months; rate rivals.
+3. If [Company] makes a product in the same category, say a displace play is unlikely; drop priorities, news and hiring about its own products.
+4. Count 12 months of postings naming the tool as a skill (product skill name, e.g. CrowdStrike Falcon, not CrowdStrike; if 0, retry once with the plain product name) and read the 3 newest (title, date, what the team does).
+5. Pull up to 3 priorities in the tool's workload and judge the [Play] opening: complement (Active, central), displace (Fading or Low), integrate (New, with priorities about connecting systems).
+6. Pull the top 3 executives in [Persona]'s function and pick the likeliest contact. Also pull [Company]'s most important 90-day news item where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - Verdict: the [Play] opening as Strong, Moderate or Weak, with one reason.
-- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
-- Email: subject (6 words max) and body (100 words max): the team or programme from the job ads; a question tied to the priority; one offer for [Play]; one ask. Name the tool only if it appears in their public job ads.
+- "Check before sending" (directly above the copy): single-source or disputed facts the copy leans on and any "verify" profile, with what to check; or "none".
+- Email: subject (6 words max), body (100 words max): the team or programme from the job ads; a question tied to the priority; one offer for [Play]; one ask. Name the tool only if their public job ads do.
 - Table "In the stack": Product | Usage strength | Last seen | Status | Rating.
-- Detail: job ads with the 12-month count; linked priority (Draup's words, source, quarter); Gaps (what Draup lacked, to ask in discovery).
+- Detail: job ads with the 12-month count; linked priority (source, quarter); Gaps (to ask in discovery).
 
 RULES
 - "First seen" is Draup's first public evidence, not a contract date; never write "you just bought".
-- Never disparage the tool or its maker. If it isn't in the stack or job ads, say so and stop before writing.
-- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+- Never disparage the tool or maker. Not in the stack or job ads? Say so and stop before writing.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources, never Draup or how you found them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Search by maker, whatever area products are filed under; for very broad makers (Microsoft, Google, Amazon), also name the category.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
-- If [Company] sells technology itself, skip priorities about products it sells.
-- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Rating: count a rival only at High or Medium usage (ignore Low or very-low-confidence detections; say so). High in my workloads is Red, Medium Amber, none Green; New is a separate Amber signal.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
 - Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables.
 ```
 
@@ -104,7 +103,7 @@ Run the competitor check for a second vendor in the same category.
 
 ## Related prompts
 
-- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
+- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): Whether a named competitor is really installed (High or Medium usage), where it sits, any overlapping product or one the account owns, the priorities that could trigger a switch, and three bullets on how to win.
 - [What tools they adopted this year](../../prompts/03-tech-stack-and-displacement/recent-adoptions.md): The tools first detected at the account in the last 12 months, labelled as competing with, complementing or unrelated to what you sell, with any new competitor product flagged Amber first and a named person to call.
 - [Which tools their job ads are building](../../prompts/04-signals-and-timing/practice-shift.md): The software tools in the account's job ads, matched against its installed stack and sorted into New, Building, Core and Coasting, so you see where people and budget are moving before it hits the press, with a named person to call.
 - [Battlecard: beat a rival software vendor](../../prompts/16-content-and-enablement/battlecard-product.md): A one-page internal battlecard on a rival software vendor: its most-used products, the largest end-user companies running them with usage strength, recent moves, how to beat it, the objection to expect and the first account to use the card on.

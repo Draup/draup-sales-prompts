@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Use this when you have one to 10 named accounts and want each email anchored on that account's own recent event. Use "ABM messages for a target list" instead for a longer campaign list, a fixed theme or a joint partner note. | SDR / BDR, Account Executive, Marketing & ABM | Everyone | 4–6 min | News signals, Priorities & opportunities, Executives & movement |
+| Use this when you have one to 10 named accounts and want each email anchored on that account's own recent event. Use "ABM openers for 10 accounts at once" instead for a longer campaign list, a fixed theme or a joint partner note. | SDR / BDR, Account Executive, Marketing & ABM | Everyone | 4–6 min | News signals, Priorities & opportunities, Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -31,38 +31,40 @@ Act as my outbound copywriter and researcher. Use Draup for Sales for every fact
 INPUTS (edit these)
 - Accounts: [one website, or up to 10, e.g. bmw.com, target.com]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
-- Persona: [who reads it, e.g. VP Supply Chain]
+- Persona: [reader, e.g. VP Supply Chain]
 - Territory (optional): [region I cover, e.g. North America]
 - Contact name (optional): [e.g. Jane Doe]
-- Proof point (optional): [a result I may quote, e.g. cut forecast error for Contoso Retail]
+- Proof point (optional): [e.g. cut forecast error for Contoso Retail]
 
 STEPS
-1. Find each account by website (exact match, parent company); ask if none or several match. Do up to 10 per pass: after each 5, show the table and continue unless I say stop.
+1. Find each account by website (parent company). If one doesn't resolve, retry once by name and show the match and score; ask if several match. Never drop an account silently. Up to 10 per pass: after each 5, show the table and continue unless I say stop.
 2. Pull 60 days of news for all accounts in one feed pull: deals, expansion, executive moves, M&A, investment plans, and incidents that bear on what I sell. If one account fills over half the results, pull the quiet ones separately. The account must be the actor.
-3. Per account, pick the signal most relevant to [What I sell], the persona and my territory; prefer events in my territory and say if there are none.
-4. Fact-check it (Confirmed, Single source or Conflicting) and pick the persona's stated priority that best fits, with source and fiscal quarter.
+3. Per account, pick the signal most relevant to [What I sell] and the persona, preferring events in my territory (say if none).
+4. Fact-check it and pick the persona's best-fit stated priority (source, fiscal quarter).
 5. For one account, or a list's strongest row, pull the top 3 executives in the persona's function and name the best match.
-6. Write each message in [Persona]'s language and goals.
+6. Write in [Persona]'s language and goals.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
-- "Check before sending": each message leaning on a single-source or conflicting fact, and what to verify (or "none").
-- One account: signal (date, source, fact check), priority, Subject (7 words max) and opener (70 words max): the signal, the priority as a question, one easy ask. Use contact name and proof point only if given.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
+- "Check before sending": each message leaning on a single-source or conflicting fact or a "verify" profile, and what to check (or "none").
+- One account: signal (date, source, fact check), priority, Subject (7 words max) and opener (70 words max): the signal, the priority as a question, one easy ask. Contact name and proof point only if given.
 - Several accounts: Account | Signal (date; in territory?) | Fact check | Message (2 sentences, 45 words max, ending in the ask).
-- Detail: source and headline per account; priority used; priority-only openers where no signal qualified; "Not found" accounts; Gaps (what Draup lacked, to ask in discovery).
+- Detail: source and headline per account; priority used; priority-only openers where no signal qualified; "Not found" accounts; Gaps (to ask in discovery).
 
 RULES
 - Quote only Confirmed numbers, exactly as the source states them. Keep fiscal quarters out of the copy.
 - Pose the signal–priority link as a question; no flattery, "I noticed", hype or exclamation marks.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
-- Fact check before copy: tag each fact used Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting. Keep single-source numbers and disputed names or dates out of the copy; if a message still leans on one, put "Check before sending: [fact], [why]" directly above it.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and re-dated old stories (use the event date). Outages, incidents, breaches and regulatory inquiries count for security, reliability, IT operations or compliance sellers; keep any item that bears directly on What I sell. Give source, headline and link (if any) per item.
+- Fact check before copy: tag each fact Confirmed (company announcement, filing or 2+ sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of copy.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
+- If an account sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
 ```
 
 <details>

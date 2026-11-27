@@ -27,24 +27,21 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my staffing and managed-services strategist. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts and the account's job postings. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my staffing and managed-services strategist. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts and the account's job postings. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company (optional): [the account's website, e.g. fedex.com]
 - Roles: [up to 5, e.g. Salesforce Developer, Data Engineer, SAP FICO Consultant]
 - Location: [metro or country, e.g. Memphis, Tennessee Area, United States]
-- What I sell: [one line, e.g. Salesforce and data staff augmentation — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. Salesforce and data staff augmentation; skip if saved in setup]
 - Exchange rate (optional): [your rate to USD for each local currency, e.g. the rate your finance team uses this quarter]
-
-CONTEXT (optional)
-A staffing pitch lands when the client already feels the pain: roles that are scarce in their city and that they keep re-posting. Easy-to-hire roles are a weak opener; lead with the scarce ones and expand from there.
 
 STEPS
 1. Find Draup's standard name for each role. If there's no exact match, show the 3 closest and ask which to use.
 2. Match the place to Draup's name (metros look like "Bengaluru Area, India"). If it doesn't match, show the closest and ask.
 3. For each role in [Location], pull hiring difficulty (higher means harder to hire), talent supply, 3-year supply growth, open postings and median annual base pay.
 4. Classify each: Hard (difficulty in the top third of roles checked, or postings outpacing supply; editable default), Moderate or Easy.
-5. If [Company] is given, find it by website (parent, not a subsidiary) and count its postings per role in the last 6 months, noting repeats or long-open ones. Then pull its top 3 executives in the function that owns these roles (often IT or HR talent acquisition) and its most important news item from the last 90 days.
+5. If [Company] is given, find it by website (parent, not a subsidiary; if the website returns nothing, look it up by name once and show the score) and count its postings per role in the last 6 months, noting repeats or long-open ones. Then pull its top 3 executives in the function that owns these roles (often IT or HR talent acquisition) and its most important news item from the last 90 days.
 
 OUTPUT
 - Bottom line: 2 sentences — which role is hardest to hire and what that means for [What I sell].
@@ -52,7 +49,7 @@ OUTPUT
 - Table: Role | Hiring difficulty | Talent supply | Open postings | Verdict. Hardest first.
 - "The pitch": one line per Hard role on how [What I sell] removes the hiring problem.
 - Detail: median pay (local) and 3-year growth per role; "Account demand" (role, postings in 6 months, repeats or long-open).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 
 RULES
 - Explain the hiring-difficulty score in one plain line the first time it appears.
@@ -60,15 +57,15 @@ RULES
 - Postings are openings, not hires.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
 - Show pay in local currency with its code; convert to USD only with my [Exchange rate], and say which rate.
 - Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

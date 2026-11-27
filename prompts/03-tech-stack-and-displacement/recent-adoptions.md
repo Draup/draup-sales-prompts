@@ -31,13 +31,13 @@ INPUTS (edit these)
 - Competitor (optional): [one or more, e.g. Kinaxis, o9 Solutions — skip if saved in setup]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by its website (exact match; if none, retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company. If several match or it looks wrong, ask me. Use Draup's exact name from then on.
 2. Pull every product first detected at the company in the last 12 months, up to 5 pages, and review them all before narrowing. Note the earliest and latest first-detected dates.
-3. If I named competitors, search the whole stack by each maker; flag any product first detected in this window (newly detected = Amber) and rate older installs too (see rules).
+3. If I named competitors, search the whole stack by each maker; flag any product first detected in this window at High or Medium (Amber) and rate older installs too (see rules); note Low-only detections without counting them.
 4. Drop Low-usage products unless they're in my category or made by a competitor.
 5. Label each: Competes (does what [What I sell] does), Complements (sits next to it or feeds it) or Unrelated.
 6. Look for clusters in Competes and Complements (e.g. several new security tools).
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
@@ -53,12 +53,13 @@ RULES
 - Additions only; don't infer removals. Say how many products you reviewed and dropped.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Trust last-seen date and usage strength. Ignore the confidence score and "Generic" rows. Say "fading", never "dropped".
 - Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Rating: High usage in the workloads of What I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit [Company], and keep it out of drafted copy. No Chief, EVP, CIO or "Head of" in the top 3? Pull the next page of 10 once (no title search).
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
 ```
 
@@ -88,13 +89,13 @@ Write a 3-sentence opener that references the strongest new adoption without say
 ```
 
 ```text
-Check whether the strongest new tool also shows up in their job ads.
+Check whether the strongest new tool also shows up in their job ads, searching by its skill name.
 ```
 
 ## Tips for better results
 
 - A cluster of new tools in one area is often a stronger signal than any single product.
-- List your main competitors in the input (or the start-here prompt) so the assistant checks their whole product range, not just this year's additions.
+- List your main competitors in the input (or in "Tell your AI about you") so the assistant checks their whole product range, not just this year's additions.
 
 ## Related prompts
 

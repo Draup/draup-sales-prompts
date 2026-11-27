@@ -2,11 +2,11 @@
 
 # Is this account ready for ERP modernisation?
 
-> **A 0–20 readiness score for ERP modernisation at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.**
+> **A 0–20 readiness score for ERP modernisation at one account, with incumbents rated Red, Amber or Green (services rivals by share of engagements), a named owner with a dated why-now, an entry angle and four fact-based discovery questions.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before investing pursuit time in one account for a S/4HANA, Oracle Cloud ERP or other ERP deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Account & Customer Success Manager | Everyone | 4–6 min | Company & financials, Tech stack, Hiring & job postings, Outsourcing deals, Priorities & opportunities, Executives & movement, News signals |
+| Before investing pursuit time in one account for an S/4HANA, Oracle Cloud ERP or other ERP deal, or ahead of a first meeting. Use "Find accounts ripe for ERP modernisation" instead to find accounts. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Account & Customer Success Manager | Everyone | 4–6 min | Company & financials, Tech stack, Hiring & job postings, Outsourcing deals, Priorities & opportunities, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -33,37 +33,37 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. SAP S/4HANA migration and AMS services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+1. Find [Company] by website (no match: retry once by name, show the match score); confirm it's the parent (ask if unsure). If it sells technology or services, drop priorities, news and hiring about its own products.
 2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
-3. Intent: up to 6 priorities in Finance & Accounting and IT, each marked direct (ERP named) or indirect (carve-out, integration, shared services, productivity programme), newest first, with linked tools and providers.
-4. Current state: ERP products from the main ERP makers (SAP, Oracle, Infor, Microsoft, Epicor) and [Target platform]'s maker, 30 per page and at most 2 pages, with usage and last seen; group by vendor.
-5. Capability: postings naming [Target platform] versus postings naming the main legacy ERP, 12 months: say which one hiring points to; last 5 full months vs the 5 before.
-6. Incumbents: providers ranked by engagements at [Company] involving ERP or [Target platform], top 10, no agencies or facilities firms. If I named a competitor, check the whole stack for its products, any category.
-7. Owner: executives in IT, then Finance & Accounting; keep ERP, applications, finance-systems, CIO or CFO titles; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
-8. Why now: the most important 90-day news where [Company] is the actor, on ERP, acquisitions, divestments, separations, productivity programmes or finance transformation; if none, widen to 6 months and say so.
+3. Intent: up to 6 Finance & Accounting and IT priorities, marked direct (ERP named) or indirect (carve-out, integration, shared services), newest first.
+4. Current state: ERP products from the main makers (SAP, Oracle, Infor, Microsoft, Epicor) and [Target platform]'s maker, up to 60 rows, with usage and last seen, by vendor.
+5. Capability: postings for [Target platform] (Draup's skill name; if 0, retry with the product name) vs the main legacy ERP, 12 months: which way hiring points; last 5 full months vs the 5 before.
+6. Incumbents: providers ranked by engagements at [Company] involving ERP or [Target platform], top 10, no agencies. Check any rival I named across the whole stack.
+7. Owner: executives in IT, then Finance & Accounting; keep ERP, CIO or CFO titles. If news names a different leader, say so.
+8. Why now: the top 90-day news where [Company] is the actor, on ERP, acquisitions, divestments, separations or finance transformation; if none, widen to 6 months and say so.
 
 OUTPUT
 - Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
-- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- Recommended next step: the owner (name, full title), the action and the dated why-now; if missing, the title to find.
 - "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Platform intent, Legacy exposure, Trigger (direct or indirect), Partner pattern, Owner clarity.
-- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
-- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: a services rival by share of active engagements in my workloads (30%+ Red, 10–29% Amber, under 10% Green); a software rival by usage (High Red; Medium or new in 12 months Amber; Low or absent Green; say if Low was ignored).
+- "Entry angle": 2 sentences on one priority and one gap. "Discovery questions": 4, each opening with a dated fact.
 - Gaps: what Draup didn't have.
 - Detail: ERP landscape (Vendor | Products, usage, last seen | Read).
 
 RULES
 - High legacy usage with legacy hiring far above [Target platform] hiring is "maintaining", not "migrating": score Platform intent low.
-- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Competitor absent: analyse who is there. Big company, thin data: say "in-house or thin data", not Early.
 - Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
 ```
 
@@ -104,7 +104,7 @@ Re-score after I tell you what I learned in discovery.
 
 ## Related prompts
 
-- [Find accounts ripe for ERP modernisation](../../prompts/07-solution-plays/erp-targets.md): A ranked list of companies in your industry and country most ready to buy ERP modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- [Find accounts ripe for ERP modernisation](../../prompts/07-solution-plays/erp-targets.md): A ranked list of companies in your industry and territory most ready to buy ERP modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
 - [What they run in one tech area](../../prompts/03-tech-stack-and-displacement/stack-category.md): What they run in one area, ranked by how central each tool is, with your competitors rated Red, Amber or Green, stale tools set aside and a named person to call.
 - [Fading tools and replacement windows](../../prompts/03-tech-stack-and-displacement/fading-stack.md): The tools that have gone quiet in one area, what seems to be taking their place, and the 3 best-timed replacement windows, each with a dated reason and a named person to call.
 - [Openings from their recent acquisitions](../../prompts/01-account-research/acquisitions.md): The top 3 integration openings from the account's acquisitions in the last 3 years, who likely owns each, and an optional read of its strategic investments.

@@ -29,11 +29,11 @@ Act as my competitive and alliances analyst for services deals. Use Draup for Sa
 INPUTS (edit these)
 - Firm: [Services firm, e.g. Cognizant]
 - Rival or partner: [e.g. Rival]
-- Vertical or Country: [Required. Draup industry, e.g. Life Sciences, or customer HQ country in full]
+- Vertical or Country: [Required. Draup industry, e.g. Life Sciences, or customer HQ country in full (default: my territory from setup)]
 - What I sell: [One line, e.g. clinical data management and testing services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find the firm by website or name; confirm Draup's spelling and that it's the parent. If a sister brand also matches, list it separately.
+1. Find the firm by website or name (show the match and score); confirm Draup's spelling and that it's the parent. If a sister brand also matches, list it separately.
 2. Pull its customer summary: active customers, engagements, main industries.
 3. Pull its top 10 customers and top 10 workloads by engagements, overall and within [Vertical or Country].
 4. Pull its delivery locations, always limited to [Vertical or Country]. Keep the top 10 metros and group them onshore (customers' country), nearshore (same region) or offshore.
@@ -45,7 +45,7 @@ OUTPUT
 - Header line: [Firm] | active customers | engagements | top 3 industries.
 - "Top customers": Rank | Customer | Engagements overall | In segment.
 - Rival: "How to out-position [Firm]" — 3 angles tied to facts (thin where we lead, offshore-heavy, few big logos). Partner: "Where to team" — 3 angles tied to facts (workloads it lacks that we cover, shared customers, complementary hubs).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 - Detail: "Workloads" (Workload | Overall | In segment) and "Delivery hubs" (Metro | Country | Engagements | Onshore/Nearshore/Offshore, plus the % split).
 
 RULES
@@ -55,12 +55,12 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 430 words including tables.
 ```
 
 <details>

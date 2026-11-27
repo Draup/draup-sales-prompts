@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Setting next quarter's pipeline-generation targets for SDRs and AEs in one territory, or planning a campaign wave. Use "Board slides: where we hunt next quarter" to present the plan, and "Which accounts each rep works this week" for named books. | Sales Leader & RevOps, SDR / BDR, Account Executive, Marketing & ABM | Everyone | 6–10 min | Company directory, News signals, Hiring & job postings, Tech stack, Executives & movement |
+| Setting next quarter's pipeline-generation targets for SDRs and AEs in one territory, or planning a campaign wave. Use "Board slides: where we hunt next quarter" to present the plan, and "Which accounts each rep works this week" for named books. | Sales Leader & RevOps, SDR / BDR, Account Executive, Marketing & ABM | Everyone | 8–12 min | Company directory, News signals, Hiring & job postings, Tech stack, Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -15,7 +15,7 @@
 | Placeholder | Example |
 |---|---|
 | `[Vertical]` | Automotive |
-| `[Country]` | Germany |
+| `[Territory (optional)]` | Germany |
 | `[Minimum employees]` | 5,000 |
 | `[What I sell]` | software-defined-vehicle engineering services |
 | `[My competitors (optional)]` | Capgemini Engineering, Bertrandt |
@@ -26,55 +26,52 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my pipeline-generation strategist for a territory. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my pipeline strategist for a territory. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Vertical: [Draup industry, e.g. Automotive]
-- Country: [HQ country in full, e.g. Germany]
+- Territory (optional): [HQ country in full, e.g. Germany; default: my territory from setup]
 - Minimum employees: [e.g. 5,000]
-- What I sell: [one line, e.g. software-defined-vehicle engineering services — skip if you ran the start-here prompt]
-- My competitors (optional): [rival products or firms, e.g. Capgemini Engineering, Bertrandt — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. software-defined-vehicle engineering services; skip if saved in setup]
+- My competitors (optional): [rival products or firms, e.g. Capgemini Engineering, Bertrandt; skip if saved in setup]
 - Accounts to exclude (optional): [websites in active deals, e.g. bmwgroup.com]
 
 STEPS
-1. Use Draup's exact industry and country names; map What I sell to its workloads.
-2. List the territory: primary industry [Vertical], HQ in [Country], [Minimum employees]+ staff (names only, up to 50, by revenue). Repeat once adding "active in my workloads" and mark those. Remove exclusions.
-3. Run three 90-day news searches in [Vertical] and [Country]: (a) leadership changes; (b) expansions and investments; (c) partnerships, vendor selections, acquisitions and divestments.
-4. Keep items where a listed company is the actor and the event concerns [Country]; merge repeats. Off-list companies' real events go to "Acting in the territory".
-5. For the 10 accounts with the most trigger types, pull full rows in one lookup by exact name, showing only my competitors' products: hiring %, 90-day postings, rivals present.
-6. Score (editable): each trigger type 20 (max 60); workload-active 20; rival present 10; hiring % over 8% adds 10. Act this month 60+, Next quarter 30–59, Watch under 30. If over half share a tag, re-tag by rank (top 30%, next 40%, rest) and say so.
-7. For the top account, pull its top 3 executives in the function closest to What I sell.
+1. Use Draup's exact names; map What I sell to its workloads.
+2. List the territory: primary industry [Vertical], HQ in [Territory], [Minimum employees]+ staff (names only, up to 50, by revenue), then again adding "active in my workloads"; mark those and remove exclusions.
+3. For the top 20 workload-active accounts by revenue, run one 90-day news search per account, filtered to its Draup name, with a broad question ("[Account] leadership changes, expansions, partnerships, acquisitions"); do 10, then offer the next 10. Then one search across [Vertical] and [Territory] for off-list actors; if one company fills over half, rerun without it.
+4. Keep items where the account is the actor and the event concerns [Territory]; drop look-alike tags (e.g. "target company" in someone else's deal); merge repeats; off-list actors go to "Acting in the territory".
+5. For the 10 accounts with most trigger types, pull full rows by exact name with only my competitors' products: hiring %, 90-day postings. For the top 5, check rival usage (only High or Medium counts; say how many were Low).
+6. Score (editable): each trigger type 20 (max 60); workload-active 20; rival at High or Medium 10, listed but unchecked 5; hiring % over 8% adds 10. Act this month 60+, Next quarter 30–59, Watch under 30. If over half share a tag, re-tag by rank (top 30%, next 40%, rest) and say so.
+7. For the top account, pull its top 3 executives in the function closest to What I sell. If it's a mega-cap, also name the best mid-size account.
 
 OUTPUT
-- Bottom line: 2 sentences — how many accounts to work now and what it means for [What I sell].
-- Recommended next step: who to contact first (name and title from step 7), what to do, and the dated trigger. If none is found, say so.
+- Bottom line: 2 sentences — accounts per tag and what it means for [What I sell].
+- Recommended next step: who to contact first (step 7), what to do, and the dated trigger. If none, say so.
 - "Target list" (top 10): Account | Triggers (type, date) | In my workloads / rival | Tag | Why now.
-- "Targets for next quarter": counts per tag; a split by rep or SDR if I give team size.
-- Detail: acting in the territory; accounts with no triggers; dropped items by reason; likely owner title per account.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+- Detail: acting in the territory; searched accounts with no triggers (beyond the top 20 write "not searched"); dropped items; likely owner title; a split by rep if I give team size.
+- Gaps: what Draup didn't have, to ask in discovery.
+- Slide version (only if asked): 5 dated bullets plus 1 table.
 
 RULES
-- Job cuts, plant restructuring or a site sale are triggers only for cost-out, transformation or services offers; say which.
-- Board appointments and regional sales hires count only if the role is in my buying area.
+- Job cuts, restructuring or site sales trigger only cost-out, transformation or services offers.
+- Board and regional sales appointments count only in my buying area.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Size limits drop companies with no workforce figure (often private firms or mutuals); say so.
-- Counts and totals must apply every condition I set; never report one from a check that dropped a condition.
-- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- Size limits drop companies with no workforce figure; say so.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step first: rank [Vertical] accounts in [Country] ([Minimum employees]+ staff) by distinct 90-day triggers, activity in my workloads and rival presence, with a dated why-now each for [What I sell].
+Bottom line and next step first: for the top 20 workload-active [Vertical] accounts in [Territory] ([Minimum employees]+ staff), search 90-day news per account, rank by distinct triggers and rival usage, with a dated why-now each for [What I sell].
 ```
 
 </details>
@@ -102,8 +99,8 @@ Rerun with only partnership and vendor-selection news.
 ## Tips for better results
 
 - Accounts with two different trigger types are usually worth more than one account with five articles on the same story.
+- Territories over 100 accounts: rank by workload activity first, then check news for the top 20; one territory-wide search lets one big name crowd out everyone else.
 - The "Acting in the territory" list often holds the best surprises: foreign companies building local sites and private groups your size limit missed.
-- Rerun it in the last two weeks of each quarter to refresh targets.
 
 ## Related prompts
 
@@ -115,7 +112,7 @@ Rerun with only partnership and vendor-selection news.
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`extract_entities`, `get_universe_companies_v3`, `get_signal_news_v3`, `accounts_executives_key_executives_v3`
+`extract_entities`, `get_universe_companies_v3`, `get_signal_news_v3`, `get_account_tech_stack_products_v3`, `accounts_executives_key_executives_v3`
 
 Status: **tested live**. Prompt id: `leaders-pipeline-targets`.
 

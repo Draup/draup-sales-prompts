@@ -33,15 +33,15 @@ INPUTS (edit these)
 - Account to defend or win (optional): [website of a live deal or key customer, e.g. visa.com]
 
 CONTEXT (why this matters)
-A rival protects its biggest, fastest-growing lines and discounts where revenue is small or shrinking. Draup holds no list prices, so mix, growth and install base are proxies; say so.
+A rival protects its big, growing lines and discounts where revenue is small or shrinking; mix and install base are proxies.
 
 STEPS
-1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Competitor] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Pull the latest fiscal-year revenue, EBITDA and R&D spend with growth, and the next-year forecast.
-3. Pull revenue by business unit (share and growth). If Draup has none, say so and rely on step 5.
-4. Pull revenue by region for the latest year; compute growth from the two years' amounts.
-5. Mix proxy. Software: its top 10 products by number of companies using them. Services: its customer summary and top 12 workloads by engagements, marking those closest to [What I sell].
-6. Classify each unit, region, product or workload: Core (large and growing), Cash (large, flat or falling), Bet (small, fast growing), Exposed (small and shrinking). Large = 15%+ share; growing = above company growth (editable defaults).
+3. Pull revenue by business unit (share, growth); if none, say so and rely on step 5.
+4. Pull revenue by region, latest year; compute growth from amounts.
+5. Mix proxy. Software: top 10 products by companies using them. Services: customer summary and top 12 workloads by engagements, marking those closest to [What I sell].
+6. Classify each row: Core (large, growing), Cash (large, flat or falling), Bet (small, fast growing), Exposed (small, shrinking). Large = 15%+ share; growing = above company growth (editable defaults).
 7. Dated trigger: [Competitor]'s most important news item from the last 90 days.
 8. If I gave [Account to defend or win], find it by website and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
 
@@ -50,24 +50,24 @@ OUTPUT
 - Recommended next step: a named person (name, full title) at [Account to defend or win], the action this week, and [Competitor]'s dated move as the why-now; with no account given, name the role to brief.
 - Table "Where they make money" (up to 10): Unit, region, product or workload | Share or size | Growth | Class. Highlight [Region I sell in].
 - Table "Headline numbers": Metric | Latest FY | Growth | Forecast.
-- "Defend vs exposed": 3 bullets each, tied to rows above; then a 2-sentence pricing read, labelled as inference.
+- "Defend vs exposed": 3 bullets each, tied to rows above; then a 2-sentence pricing read labelled inference.
 - Detail: full unit, region and mix tables.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
-- Product counts are install base, not revenue.
-- Never state the rival's prices, discounts or product margins; Draup doesn't hold them.
+- Product counts are install base, not revenue. Never state the rival's prices, discounts or margins.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- IT spend is Draup-estimated, often modelled from revenue; don't treat its growth as a signal. Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
-- Use the latest year's regional split; compute growth from amounts and check for divestments before calling a drop a cut.
-- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
+- Check for divestments before calling a regional drop a cut.
+- Active engagements (Draup-derived) are estimates, not contracts; rank providers by them and never quote outsourced headcount.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
 - If I ask for a slide: 5 bullets + 1 table.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 420 words above Detail, tables included.
 ```
 
 <details>

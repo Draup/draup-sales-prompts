@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before proposing an expansion to an existing customer's sponsor or your own deal desk. Use this to grow an existing customer; use "Business-case inputs from their numbers" (deals-business-case-inputs) instead for a new deal's value model. | Account & Customer Success Manager, Account Executive, Sales Leader & RevOps, Services, SI & Staffing Seller | Everyone | 4–6 min | Company & financials, Priorities & opportunities, Hiring & job postings |
+| Before proposing an expansion to an existing customer's sponsor or your own deal desk. Use this to grow an existing customer; use "Business-case inputs from their numbers" instead for a new deal's value model. | Account & Customer Success Manager, Account Executive, Sales Leader & RevOps, Services, SI & Staffing Seller | Everyone | 4–6 min | Company & financials, Priorities & opportunities, Hiring & job postings |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -33,41 +33,42 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. industrial IoT analytics software and services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-Expansion cases ride the customer's own growth story: where growth is, what leadership committed to, why our proof de-risks it.
+Expansion cases ride the customer's own growth story.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Pull latest revenue, EBITDA, R&D and IT spend with growth, and forecasts.
 3. Pull revenue by business unit and by region; name the fastest-growing unit and region (or say Draup has no unit split).
 4. Pull key priorities grouped by function; keep those supporting [Expansion idea] or the growth unit, with quarter and stated targets.
 5. Pull the Draup-estimated IT spend split (software, internal staffing, IT outsourcing, hardware) for the latest two years.
 6. Pull workloads (types of work) trending up in hiring (12 months) linked to [Expansion idea].
 7. Owner and trigger: the top 3 executives in the function closest to [Expansion idea] (one page of 10) and the most important news item from the last 90 days.
-8. Size a range: the relevant IT-spend category scaled by the growth unit's revenue share, against [Current footprint].
+8. Size a range: the relevant IT-spend category scaled by the growth unit's revenue share, vs [Current footprint].
 
 OUTPUT
 - Bottom line: 2 sentences — the size of the opportunity and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) who owns the expansion area, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) who owns the expansion area, the action this week and the dated why-now (or say none).
 - Table "Growth story" (up to 8): Unit, region or metric | Share or value | Growth | Year.
 - Table "Spend pool": Category | Latest | Prior year | Note; then the sized range with the maths shown.
 - "What leadership committed to" (priority, quarter, fit), "Why us" (3 bullets) and "Risks" (up to 3, dated).
 - "Executive summary": 150 words max, for our sponsor to forward.
 - Detail: hiring behind it and full financials.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - The sized range is not their budget; show the formula.
-- If hiring looks thin for the company's size, say so and lean on priorities.
+- Thin hiring for its size? Say so; lean on priorities.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- IT spend is Draup-estimated, often modelled from revenue; don't treat its growth as a signal. Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
-- Use the latest year's regional split; compute growth from amounts and check for divestments before calling a drop a cut.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 500 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- IT spend is Draup-estimated (often modelled from revenue); its growth isn't a signal. A forecast over 15% off the latest actual is a model estimate.
+- Compute regional growth from amounts; check for divestments before calling a drop a cut.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 500 words above Detail, tables included.
 ```
 
 <details>

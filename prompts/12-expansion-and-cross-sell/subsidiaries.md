@@ -34,7 +34,7 @@ CONTEXT (why this matters)
 An integrating acquisition is bought for centrally by the parent; a standalone subsidiary has its own leaders and budget and sells like a new logo.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Pull acquisitions in [Window]: date, company, intent, size, and whether Draup holds it as a company.
 3. Search Draup's M&A news for [Company], last 12 months, for deals the table misses and any divestments; mark the most important item from the last 90 days.
 4. Pull talent flow by company (20 rows, largest movement first). Rows marked as its own subsidiaries are subsidiaries; large one-way flows from an acquired company into [Company] suggest staff moving onto the parent.
@@ -44,12 +44,12 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — the best target and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) at the target or the parent's integration lead, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) at the target or the parent's integration lead, the action this week and the dated why-now (or say none).
 - Table "Target check" (top 3): Company | Workforce | Own postings (12 mo) | Rating | Who to approach.
 - Table "Acquisitions" (up to 10, newest first): Date | Company | Size or "undisclosed" | In Draup?
 - "Expansion plays": per target, the angle for [What I sell] and the timing. "Leave alone": divested or spun-off units, dated.
 - Detail: deals from news missing from the table; subsidiaries in talent flow (Company | Moving to parent | Moving back | Read).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - A subsidiary with zero own postings is likely folded into the parent's hiring; don't call it inactive.
@@ -57,14 +57,14 @@ RULES
 - Keep deal sizes as reported; if table and news disagree, show both.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
 - The acquisitions table can miss deals; check 12 months of M&A news too. Divestments come from news only.
 - Talent flow ends about 3 months ago and the last month undercounts exits; state the months.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
 - Label anything you infer as "likely".
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>

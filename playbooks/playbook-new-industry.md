@@ -4,29 +4,29 @@
 
 > **Goal:** Learn a new industry fast, brief the team on its language and buyers, build a first account list, and launch outbound with a point of view.
 
-**For:** Marketing & ABM, Sales Leader & RevOps, SDR / BDR, Account Executive · **Time:** 45–60 min · **Steps:** 5
+**For:** Marketing & ABM, Sales Leader & RevOps, SDR / BDR, Account Executive · **Time:** About 15 min with quick versions, 45–60 min with detailed · **Steps:** 5
 
 **Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. One-page vertical market snapshot
 
-Gives a one-page view of the industry: size and growth, top priorities, technologies gaining ground and, for services sellers, who outsources what.
+Gives a one-page view of the industry: size and growth, priorities with dated company proof and the top buyers.
 
-**Look for:** The 2–3 priorities closest to what you sell. Industry totals are global and IT spend is modelled; if the industry returns zeros, check which parent industry Claude used.
+**Look for:** The 2–3 priorities closest to what you sell. Industry totals are global; if the industry returned zeros, check which parent industry it used.
 
 Open the full prompt: [One-page vertical market snapshot](../prompts/14-industry-intelligence/vertical-snapshot.md)
 
 Quick version:
 
 ```text
-Bottom line and next step first: a one-page snapshot of [Vertical] (in [Region] if given): size and growth, the 5 priorities that fit [What I sell] with dated company proof, the top buyers, and who to call first.
+Bottom line and next step first: a one-page snapshot of [Vertical] in [Region]: global size and growth plus the top-10 buyers' regional revenue, the 5 priorities that fit [What I sell] with dated company proof, and who to call first.
 ```
 
 ## Step 2. Brief reps on a new industry
 
-Turns the industry into a rep brief: the words to use, who buys and how the function is organised at one reference account, and where your rivals already sit.
+Turns the industry into a rep brief: the words to use, who buys at one reference account and where your rivals sit. Reuse the priorities from step 1 if they're in this chat.
 
-**Look for:** The buyer titles at the reference account and the 10 terms your reps must use on the first call.
+**Look for:** The buyer titles at the reference account and the 10 terms your reps must use. If it says Draup has no industry priorities, the funding table is company proof, not industry-wide.
 
 Open the full prompt: [Brief reps on a new industry](../prompts/15-sales-leadership-and-revops/vertical-enablement.md)
 
@@ -38,23 +38,23 @@ Bottom line and next step first: brief my reps on [Vertical] for [What I sell] �
 
 ## Step 3. Size your ideal-customer list
 
-Builds and sizes the target list in the industry from location, size and technology.
+Builds and sizes the target list in the industry.
 
-**Look for:** A first list of 25 accounts in the right primary industry, with the count applying every condition.
+**Look for:** A count that applies every filter, with distributors set aside, and the 5 accounts to start with.
 
 Open the full prompt: [Size your ideal-customer list](../prompts/06-prospecting-and-lists/icp-list.md)
 
 Quick version:
 
 ```text
-Bottom line first: how many [Vertical] companies HQ'd in [Country] with [Minimum employees]+ staff (running [Technology]) match every filter, distributors set aside. Then the 5 to start with, each with a dated why-now, and who to call first.
+Bottom line first: how many [Vertical] companies HQ'd in [Territory] with [Minimum employees]+ staff (running [Technology]) match every filter, distributors set aside. Then the 5 to start with, each with a dated why-now, and who to call first.
 ```
 
 ## Step 4. Build an industry point of view
 
-Turns the industry's priorities into a point of view with dated company proof.
+Turns the industry's priorities into a point of view with dated company proof. Reuse the priorities from steps 1–2 instead of pulling them again.
 
-**Look for:** One sentence you'd say to any executive in the industry, backed by a dated company example.
+**Look for:** The 35-word POV you'd say to any executive in the industry, backed by a dated company example.
 
 Open the full prompt: [Build an industry point of view](../prompts/14-industry-intelligence/industry-pov.md)
 
@@ -66,9 +66,9 @@ Bottom line and next step first: pick the 5 [Vertical] priorities that fit [What
 
 ## Step 5. 3-email sequence for one industry persona
 
-Writes a 3-email sequence for your main persona, built on those priorities, and names the first account to load.
+Writes a 3-email sequence for your main persona on those priorities, and names the first account to load.
 
-**Look for:** Emails that open with a real, dated industry move, never presented as your customer, and a named contact at the first account.
+**Look for:** Emails that open with a real, dated industry move, never presented as your customer, and the first account to load.
 
 Open the full prompt: [3-email sequence for one industry persona](../prompts/16-content-and-enablement/email-sequence.md)
 

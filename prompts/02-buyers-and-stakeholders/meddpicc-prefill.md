@@ -33,18 +33,18 @@ INPUTS (edit these)
 - Competitor (optional): [e.g. Snowflake or Accenture]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Metrics: latest revenue and growth, and targets or guidance in relevant priorities.
-3. Economic buyer: [Business function] executives, up to 3 pages of 10; keep senior titles with high budget control. If none is C-level, EVP or "Head of", widen once to C-level titles without the function filter.
-4. Pain: the 5 most recent priorities in [Business function], with workloads.
-5. Competition: if [Competitor] sells software, check the whole tech stack for any product it makes, in any area; if a services firm, pull its active engagements here. Then the top incumbents on the pain workloads.
-6. Champion: start with executives under a year in their title from the people already pulled. Only if there are none, check hires and promotions (last 6 months) for the main workload, keeping only people whose current employer is [Company]; say so.
-7. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+3. Economic buyer: [Business function] executives, up to 3 pages of 10; keep senior titles with high budget control. If none is Chief, EVP, CIO or "Head of", pull the next page of 10 once (no title search; the seniority filter is ignored) and say so.
+4. Pain: the 5 most recent priorities in [Business function], with workloads; drop any that describe what [Company] sells.
+5. Competition: for a software competitor, check the whole stack for its products; for a services firm, its share of active engagements in the pain workloads. Then the top incumbents on the pain workloads.
+6. Champion: executives under a year in their title among those already pulled; if none, hires and promotions (last 6 months) in the main workload whose current employer is [Company], and say so.
+7. Pull the most important news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
 - Recommended next step: one person by name and title (from steps 3 or 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
-- "MEDDPICC": Letter | What Draup suggests | Evidence + date | Status (Evidence, Hypothesis, Must discover) | Question to confirm. Rows: Metrics, Economic buyer, Decision criteria, Decision process, Paper process, Identify pain, Champion, Competition (with its Red, Amber or Green rating).
+- "MEDDPICC": Letter | What Draup suggests | Evidence + date | Status (Evidence, Hypothesis, Must discover) | Question to confirm. Rows: Metrics, Economic buyer, Decision criteria, Decision process, Paper process, Identify pain, Champion, Competition (rated Red, Amber or Green).
 - Decision criteria: hypotheses from stack and priorities. Decision and Paper process: "Must discover" (fiscal year end hints timing).
 - Gaps: what Draup didn't have — worth asking in discovery.
 - Detail: incumbent providers on the pain workloads with active engagements.
@@ -54,13 +54,13 @@ RULES
 - Rank providers by engagements yourself; drop recruiters, staffing, agency and research firms; flag subsidiaries.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
-- Leadership-move data can lag about 3 months; give the latest move date you saw.
-- Competitor rating: a [Competitor] product with High usage in the workloads I sell is Red; Medium is Amber; newly detected in the last 12 months is a separate Amber signal.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. Professional information only.
+- Leadership moves lag about 3 months; give the latest move date seen.
+- Competitor rating: a [Competitor] product at High usage in the workloads I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber. Services rival, by share of the account's active engagements in those workloads: 30%+ Red, 10–29% Amber, under 10% Green.
 - Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
@@ -101,7 +101,7 @@ Show [Competitor]'s footprint at this account in detail.
 - [Discovery questions built on their data](../../prompts/02-buyers-and-stakeholders/discovery-questions.md): An opening insight and eight discovery questions, each built on a dated fact about the account, with the hypothesis behind it and what a good answer tells you.
 - [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
 - [Account SWOT, outside-in](../../prompts/01-account-research/swot.md): A SWOT of the account built only from dated Draup evidence, ending with where your offer fits and the named person to take it to.
-- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
+- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): Whether a named competitor is really installed (High or Medium usage), where it sits, any overlapping product or one the account owns, the priorities that could trigger a switch, and three bullets on how to win.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

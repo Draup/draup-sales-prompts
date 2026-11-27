@@ -32,7 +32,7 @@ Find who to contact and why now, then write outreach that references real facts.
 
 | Prompt | What you get | Time |
 |---|---|---|
-| [One-page account brief](../prompts/01-account-research/account-brief.md) | Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers. | 2–4 min |
+| [One-page account brief](../prompts/01-account-research/account-brief.md) | Bottom line and a named person to call with a dated why-now, the person you're meeting (or the 3 closest if Draup lacks them), then the priorities in your function, who likely owns them, any competitor in the stack rated Red/Amber/Green and the key numbers. | 2–4 min |
 | [10-minute pre-call snapshot](../prompts/01-account-research/precall-snapshot.md) | Bottom line and who to contact first, then five lobby-length bullets: who they are, what just happened, where hiring in your function is moving, the priority closest to your offer, and one question to ask. | 1–2 min |
 | [Private company funding and who signs](../prompts/01-account-research/private-funding.md) | How much a private company has raised, its last round and valuation, whether it is in growth mode, and who signs, by name. | 1–2 min |
 
@@ -43,15 +43,15 @@ Find who to contact and why now, then write outreach that references real facts.
 | [Map the buying committee](../prompts/02-buyers-and-stakeholders/buying-committee.md) | Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload. | 2–4 min |
 | [New leaders and warm intro paths](../prompts/02-buyers-and-stakeholders/new-leaders-warm-paths.md) | Leaders who joined or were promoted recently in your area, where they came from, and current leaders who used to work at your customers, so you know who to congratulate and who can introduce you. | 2–4 min |
 | [Warm paths among current leaders](../prompts/02-buyers-and-stakeholders/warm-paths-current-leaders.md) | Senior leaders at the account who used to work at your customers, partners or your own company, who on your side to ask for the intro, and why now. | 2–4 min |
-| [Executive profile and openers](../prompts/02-buyers-and-stakeholders/executive-profile.md) | A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now. | 2–4 min |
+| [Executive profile and openers](../prompts/02-buyers-and-stakeholders/executive-profile.md) | A short profile of one senior person, found by name or just by title, with time in role, past companies, what they likely own, a competitor check and two openers. If Draup has no one with that title, you're told so up front and given the 3 closest people. | 2–4 min |
 
 ### Tech stack and displacement
 
 | Prompt | What you get | Time |
 |---|---|---|
-| [Is a competitor installed?](../prompts/03-tech-stack-and-displacement/competitor-installed.md) | A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call. | 2–4 min |
+| [Is a competitor installed?](../prompts/03-tech-stack-and-displacement/competitor-installed.md) | Whether a named competitor is really installed (High or Medium usage), where it sits, any overlapping product or one the account owns, the priorities that could trigger a switch, and three bullets on how to win. | 2–4 min |
 | [What tools they adopted this year](../prompts/03-tech-stack-and-displacement/recent-adoptions.md) | The tools first detected at the account in the last 12 months, labelled as competing with, complementing or unrelated to what you sell, with any new competitor product flagged Amber first and a named person to call. | 2–4 min |
-| [Target list: companies running a competitor](../prompts/03-tech-stack-and-displacement/displacement-list.md) | A true count and a ranked list of companies in your industry and country whose stack includes a competitor's products, with usage strength shown, distributors and inactive names flagged, and a named person at the top account. | 4–6 min |
+| [Target list: companies running a competitor](../prompts/03-tech-stack-and-displacement/displacement-list.md) | A true count and a ranked list of parent companies in your industry and territory whose stack includes a competitor's products, with usage checked for the top 10 (only High or Medium counted), distributors and inactive names flagged, and a named person at the top account. | 4–6 min |
 
 ### Signals and timing
 
@@ -101,17 +101,17 @@ Find who to contact and why now, then write outreach that references real facts.
 
 | Prompt | What you get | Time |
 |---|---|---|
-| [Find accounts ripe for cloud migration](../prompts/07-solution-plays/cloud-targets.md) | A ranked list of companies in your industry and country most ready to buy cloud migration, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for data platforms](../prompts/07-solution-plays/data-targets.md) | A ranked list of companies in your industry and country most ready to buy data-platform modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for ERP modernisation](../prompts/07-solution-plays/erp-targets.md) | A ranked list of companies in your industry and country most ready to buy ERP modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for cybersecurity](../prompts/07-solution-plays/cyber-targets.md) | A ranked list of companies in your industry and country most ready to buy cybersecurity, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for generative AI](../prompts/07-solution-plays/genai-targets.md) | A ranked list of companies in your industry and country most ready to buy generative AI, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for CX change](../prompts/07-solution-plays/cx-targets.md) | A ranked list of companies in your industry and country most ready to buy CX and contact-centre change, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for supply chain tech](../prompts/07-solution-plays/scm-targets.md) | A ranked list of companies in your industry and country most ready to buy supply chain planning and logistics tech, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for HR tech](../prompts/07-solution-plays/hcm-targets.md) | A ranked list of companies in your industry and country most ready to buy HR technology and HCM, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for AMS deals](../prompts/07-solution-plays/ams-targets.md) | A ranked list of companies in your industry and country most ready to buy AMS and IT managed services, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for ER&D services](../prompts/07-solution-plays/erd-targets.md) | A ranked list of companies in your industry and country most ready to buy engineering and R&D services, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
-| [Find accounts ripe for testing services](../prompts/07-solution-plays/qe-targets.md) | A ranked list of companies in your industry and country most ready to buy quality engineering and testing, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for cloud migration](../prompts/07-solution-plays/cloud-targets.md) | A ranked list of companies in your industry and territory most ready to buy cloud migration, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for data platforms](../prompts/07-solution-plays/data-targets.md) | A ranked list of companies in your industry and territory most ready to buy data-platform modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for ERP modernisation](../prompts/07-solution-plays/erp-targets.md) | A ranked list of companies in your industry and territory most ready to buy ERP modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for cybersecurity](../prompts/07-solution-plays/cyber-targets.md) | A ranked list of companies in your industry and territory most ready to buy cybersecurity, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for generative AI](../prompts/07-solution-plays/genai-targets.md) | A ranked list of companies in your industry and territory most ready to buy generative AI, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for CX change](../prompts/07-solution-plays/cx-targets.md) | A ranked list of companies in your industry and territory most ready to buy CX and contact-centre change, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for supply chain tech](../prompts/07-solution-plays/scm-targets.md) | A ranked list of companies in your industry and territory most ready to buy supply chain planning and logistics tech, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for HR tech](../prompts/07-solution-plays/hcm-targets.md) | A ranked list of companies in your industry and territory most ready to buy HR technology and HCM, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for AMS deals](../prompts/07-solution-plays/ams-targets.md) | A ranked list of companies in your industry and territory most ready to buy AMS and IT managed services, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for ER&D services](../prompts/07-solution-plays/erd-targets.md) | A ranked list of companies in your industry and territory most ready to buy engineering and R&D services, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
+| [Find accounts ripe for QE services](../prompts/07-solution-plays/qe-targets.md) | A ranked list of companies in your industry and territory most ready to buy quality engineering and testing, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now. | 6–10 min |
 
 ### Competitive intelligence
 
@@ -155,7 +155,7 @@ Find who to contact and why now, then write outreach that references real facts.
 
 | Prompt | What you get | Time |
 |---|---|---|
-| [Next quarter's target accounts, ranked by triggers](../prompts/15-sales-leadership-and-revops/pipeline-targets.md) | A territory-wide list of accounts ranked by distinct triggers in the last 90 days, activity in the work you sell and rival presence, with one dated why-now each, the person to call at the top account, and the off-list companies acting in your territory. | 6–10 min |
+| [Next quarter's target accounts, ranked by triggers](../prompts/15-sales-leadership-and-revops/pipeline-targets.md) | A territory-wide list of accounts ranked by distinct triggers in the last 90 days, activity in the work you sell and rival presence, with one dated why-now each, the person to call at the top account, and the off-list companies acting in your territory. | 8–12 min |
 | [Brief reps on a new industry](../prompts/15-sales-leadership-and-revops/vertical-enablement.md) | A rep-ready brief on an industry you're entering: the words to use, what it funds in your function, who buys and how the function is organised at a lead account, where your rivals already sit, the services firms you'll meet and 5 discovery questions. | 4–6 min |
 
 ### Content and enablement
@@ -182,6 +182,7 @@ Find who to contact and why now, then write outreach that references real facts.
 - [**Build a quarter's pipeline for one solution**](../playbooks/playbook-solution-play.md): Go from one solution area (for example cloud migration, data, ERP, security or HR tech) to a scored target list, qualified accounts with a named buyer, the incumbents to work around, and timed first touches that cite each account's own evidence.
 - [**A week of trigger-based outreach**](../playbooks/playbook-trigger-outreach-week.md): Turn one week of real account triggers into timely, multi-channel outreach: every message tied to a dated public fact, routed to the right person, with a call and voicemail behind each email and a clean re-open for stalled deals.
 - [**Take accounts from a rival software vendor**](../playbooks/playbook-competitive-takeout.md): Pick a rival, understand where it's heading, find the accounts where its product is weakest, and open those accounts with a timely, evidence-based message.
+- [**Run an ABM campaign for 10–20 accounts**](../playbooks/playbook-abm-campaign.md): Pick 10–20 target accounts, tier them, write each one a personalised opener from its own priorities and signals, multithread the top accounts, nurture the rest and refresh the list every week.
 
 Prefer paper? [Download the SDR / BDR cheat sheet (PDF)](../pdf/roles/sdr-bdr.pdf).
 

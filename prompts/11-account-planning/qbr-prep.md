@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| The week before a quarterly or executive business review. Use plan-risk-check instead about 90 days before renewal, and signals-change-log for a monthly what-changed log. | Account & Customer Success Manager, Account Executive, Sales Leader & RevOps | Everyone | 4–6 min | Company & financials, Priorities & opportunities, Executives & movement, Hiring & job postings, News signals |
+| The week before a quarterly or executive business review. Use "Renewal risk check (red, amber, green)" instead about 90 days before renewal, and "What changed since [Date]" for a monthly what-changed log. | Account & Customer Success Manager, Account Executive, Sales Leader & RevOps | Everyone | 4–6 min | Company & financials, Priorities & opportunities, Executives & movement, Hiring & job postings, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -26,31 +26,30 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my customer-success and QBR analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my customer-success and QBR analyst. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [Website, e.g. walmart.com]
 - Review period (optional): [e.g. 1 Aug 2026 – 31 Oct 2026; blank = last full calendar quarter]
 - Business function: [Our sponsor's function, e.g. Supply Chain]
-- What I sell: [One line, e.g. warehouse automation software, live in 40 distribution centres — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. warehouse automation software, live in 40 distribution centres; skip if saved in setup]
 - Outcomes we delivered: [Paste this period's results, e.g. uptime 99.9%, picking time down 12%]
 - Competitor (optional): [e.g. Blue Yonder]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Priorities in [Business function] dated in [Review period] (10 at a time), with workloads; if none, the 3 most recent, marked as earlier.
+1. Find the company by website (no result: try its name once and show the match score). Confirm it's the parent, not a subsidiary or sister company; if several match, ask me. Use Draup's exact name from then on.
+2. Priorities in [Business function] dated in [Review period], with workloads; if none, the 3 most recent, marked as earlier.
 3. Leadership: director-plus moves in [Review period], one step-2 workload per pull; keep only people whose current or previous employer is [Company]. If nothing falls in the period, say so and give the latest move date.
 4. Hiring: monthly postings in [Business function] in [Review period] versus the same-length period before; top 3 [Business function] workloads trending up.
 5. News in [Review period] where [Company] is the actor: deals, expansion, M&A, layoffs, restructuring.
-6. Competitor check: any [Competitor] product in the stack in our workloads, with usage and last seen; flag anything newly detected in the period.
+6. Competitor check: [Competitor] products in our workloads with usage and last seen (count only High or Medium); flag any newly detected in the period.
 7. People: the top 3 leaders in [Business function] (full profile titles).
 8. Financials: latest fiscal-year revenue and growth (USD at Draup's rate).
 
 OUTPUT
 - Bottom line: 2 sentences — the biggest change and what it means for renewal or expansion.
 - Recommended next step: one person from step 7 or the sponsor (name and title), what to do before the meeting, and why now (a dated item from steps 2–5). If none turned up, say so.
-- "3 talking points": each links a dated change to [Outcomes we delivered].
-- "3 asks": expansion (tied to a priority), reference or case study, executive sponsor.
+- "3 talking points", each linking a dated change to [Outcomes we delivered]; "3 asks": expansion (tied to a priority), reference, executive sponsor.
 - "What changed" (up to 8 rows): Date | Type | What changed | Why it matters.
 - Gaps: what Draup didn't have — worth asking in the meeting.
 - Detail: leadership moves (Name | Move | Full title | Month), hiring numbers, competitor check, financials.
@@ -61,14 +60,14 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
-- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- Trust usage strength and last-seen date, not confidence or first-seen; ignore "Generic" rows; a rival counts only at High or Medium usage.
 - Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>

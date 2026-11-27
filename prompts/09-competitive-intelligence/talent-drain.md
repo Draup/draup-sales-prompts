@@ -31,39 +31,38 @@ INPUTS (edit these)
 - Region (optional): [country or metro, e.g. United States]
 
 CONTEXT (why this matters)
-A rival losing people faster than it hires, or to its own clients, is under delivery pressure; flows are directional, not total headcount.
+A rival losing people faster than it hires, or to its clients, is under delivery pressure.
 
 STEPS
-1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
-2. Pull talent flow by company, sorted by people lost, 25 rows ([Region] only if given). Remove its own subsidiaries, "Self Employed" and blank employers.
-3. If the region result looks almost the same as global, say the region may not have applied and show global.
+1. Find [Competitor] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
+2. Pull talent flow by company, by people lost, 25 rows ([Region] if given). Remove its subsidiaries, "Self Employed" and blanks.
+3. If the region result looks almost the same as global, say the region may not have applied and show global; if its top row is under 25 people, say the region is too thin and show global.
 4. Split rows into Rival vendors (services firms, software vendors, consultancies) and End clients (companies that buy from [Competitor]). Net flow = hired from minus lost to.
 5. Pull the monthly workforce trend (hires, exits, net, total) for the same window.
-6. Search Draup's news for [Competitor] leadership moves and layoffs in the last 6 months; mark the most important from the last 90 days.
-7. For the top end client absorbing staff (or else the top end client in the list), find it by name and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
+6. Search news for [Competitor] leadership moves and layoffs (6 months); mark the most important from the last 90 days.
+7. For the top end client absorbing staff (or else the top end client in the list), find it by name and pull its top 3 executives in the function closest to [What I sell] (one page of 10) and its most important news item from the last 90 days where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the pressure on [Competitor] and what it means for [What I sell]. Add the window: "Talent flow for [months], [region or global]".
-- Recommended next step: a named person (name, full title) at the most exposed end client, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) at the most exposed end client, the action this week and the dated why-now (or say none).
 - Table "Loses people to" (top 10): Company | Type (rival vendor, end client) | Lost | Hired from | Net.
 - Table "Monthly trend" (last 6 full months): Month | Hires | Exits | Net; then one line on direction.
 - "Clients absorbing their staff": end clients with 50+ people lost to and few hired back (editable default), each with a likely read (insourcing, rebadging, new captive).
 - "Leadership changes" (6 months, up to 5) and "How to use this": 3 bullets.
 - Detail: net winners against them (top 3) and the full monthly trend with workforce.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Counts are people moves Draup observed in the window, not total headcount or attrition rates.
-- Never tell a client that [Competitor] is losing staff on their account; use it to shape questions.
+- Never tell a client that [Competitor] is losing staff on their account; use it to shape questions. Label inferences "likely".
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
 - Talent flow ends about 3 months ago and the last month undercounts exits; state the months.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Label anything you infer as "likely".
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 420 words above Detail, tables included.
 ```
 
 <details>
@@ -94,7 +93,7 @@ Write 3 discovery questions on delivery continuity I can ask the named executive
 ## Tips for better results
 
 - End clients high in the lose-to list are often your best displacement targets.
-- Pair this with "A competitor's footprint at an account" (services-competitor-at-account) for the client it flags.
+- Pair this with "A rival's footprint and your wedge" for the client it flags.
 
 ## Related prompts
 

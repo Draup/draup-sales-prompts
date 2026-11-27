@@ -31,7 +31,7 @@ INPUTS (edit these)
 - Motion (optional): [attach or co-sell (default), or replace]
 
 STEPS
-1. Find [Vendor] by its website (exact match) and confirm it is the parent, not a reseller or regional unit. If none or several match, ask me.
+1. Find [Vendor] by its website (exact match; if none, retry once by name and show the match and its score) and confirm it is the parent, not a reseller or regional unit. If several match, ask me.
 2. Pull the products it builds and how many companies Draup detects using each. Rank by companies, largest first.
 3. For the top 3, pull the category and what each does.
 4. Mark which products [What I sell] attaches to, competes with, or doesn't touch.
@@ -51,11 +51,11 @@ RULES
 - Draup leaves out "Generic" rows. Say if the list looks capped at 20.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Label anything you infer as "likely".
 - If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- People: full profile title; check it fits partners, alliances or channels; flag subsidiary or regional staff. Professional information only (name, title, employer, Draup's profile link); no personal contact details.
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
@@ -73,7 +73,7 @@ Bottom line and next step first (a named person, a dated why-now). What does [Ve
 Paste these into the same chat after the first answer.
 
 ```text
-List companies in [Vertical] headquartered in [Country] whose stack includes [top product], sorted by revenue.
+List companies in [Vertical] headquartered in my territory whose stack includes [top product] at High or Medium usage, sorted by revenue.
 ```
 
 ```text
@@ -91,11 +91,11 @@ Show the same view for [a second vendor] so I can compare footprints.
 ## Tips for better results
 
 - Install-base counts are best for comparing products within one vendor, not for quoting as market share.
-- Pair this with the competitor target-list prompt to turn the biggest product into a named list.
+- Pair this with "Target list: companies running a competitor" to turn the biggest product into a named list.
 
 ## Related prompts
 
-- [Target list: companies running a competitor](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A true count and a ranked list of companies in your industry and country whose stack includes a competitor's products, with usage strength shown, distributors and inactive names flagged, and a named person at the top account.
+- [Target list: companies running a competitor](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A true count and a ranked list of parent companies in your industry and territory whose stack includes a competitor's products, with usage checked for the top 10 (only High or Medium counted), distributors and inactive names flagged, and a named person at the top account.
 - [Which providers to partner with or replace](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it with their engagements in that function, and whether to partner, displace or walk through an open door.
 - [Battlecard: beat a rival software vendor](../../prompts/16-content-and-enablement/battlecard-product.md): A one-page internal battlecard on a rival software vendor: its most-used products, the largest end-user companies running them with usage strength, recent moves, how to beat it, the objection to expect and the first account to use the card on.
 

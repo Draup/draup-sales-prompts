@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Use this when you want, priority by priority, which tools and providers are already in place and where to displace, co-sell or go first. Use "Who to partner with vs replace, by priority" instead when you're choosing between named partners, and "Pick a co-sell partner" when you need one integrator for a deal. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances | Everyone | 4–6 min | Priorities & opportunities, Tech stack, Outsourcing deals, Executives & movement, News signals |
+| Use this when you want, priority by priority, which tools and providers are already in place and where to displace, co-sell or go first. Use "Which providers to partner with or replace" instead when you're choosing between named partners, and "Pick the SI to co-sell with" when you need one integrator for a deal. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances | Everyone | 4–6 min | Priorities & opportunities, Tech stack, Outsourcing deals, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -35,34 +35,33 @@ INPUTS (edit these)
 - Competitor (optional): [vendors or services firms, e.g. Kinaxis, o9 Solutions]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by its website (exact match; if none, retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company. If several match or it looks wrong, ask me. Use Draup's exact name from then on.
 2. Map [Business function] to its main workloads and name them. Pull stated priorities in the function, newest first; keep up to 8. If none, try the closest function and say so.
 3. For each priority: workloads, source and quarter, up to 6 linked tools, up to 6 linked providers.
 4. Pull the stack once, filtered to the makers of [Competitor] and the linked tools (look up very broad makers such as Microsoft separately). Keep tools with a usage strength seen in 12 months; rate competitor products (see rules).
-5. Count each provider's active engagements in the function's workloads, shown as "in [Business function] / total". Leave staffing, BPO, agency and market-research firms out of the plays.
-6. Tag each priority. Software seller: Displace = a competitor product is active in its workloads; Co-sell = an IT services firm works it. Services seller: Displace = a rival services firm works it; Co-sell = a linked software product needs services. Either: Greenfield = nothing relevant; else Not ours.
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+5. Count each provider's active engagements in the function's workloads (one lookup filtered to those workloads); add the provider's account-wide total only if it came back. Leave staffing, BPO, agency and market-research firms out of the plays.
+6. Tag each priority. Software seller: Displace = a competitor product at High or Medium in its workloads; Co-sell = an IT services firm works it. Services seller: Displace = a rival services firm holds 10%+ of its engagements; Co-sell = a linked software product needs services. Either: Greenfield = nothing relevant; else Not ours.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
 - Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
 - Table (newest first, up to 8): Priority (quarter) | Incumbent tools (rating) | Providers (in function) | Play | Likely owner.
 - "Top 3 plays": priority, incumbent or partner, opening.
-- Detail: linked tools with usage strength and last seen; provider engagement counts (in function / total); Gaps (what Draup lacked, to ask in discovery).
+- Detail: linked tools with usage strength and last seen; provider engagement counts in the function (and account-wide if returned); Gaps (what Draup lacked, to ask in discovery).
 
 RULES
-- Provider counts are "active engagements (Draup-derived)", not contracts; rank providers by them yourself.
+- Provider counts are "active engagements (Draup-derived)", not contracts; rank providers by them yourself and rate rivals by share.
 - If the same integrators appear on every priority, call it weak evidence, not Co-sell everywhere.
-- Tools and providers are linked to a priority by workload, not confirmed on it. Say "linked", never "used for".
+- Tools and providers are linked by workload, not confirmed; say "linked", never "used for".
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
-- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
-- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Rating: High usage in the workloads of What I sell = Red, Medium = Amber, Low or undetected = Green (not counted as present; say so). New in 12 months at High or Medium adds a separate Amber. Services rival, by share of the account's active engagements in those workloads: 30%+ Red, 10–29% Amber, under 10% Green.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- People: full profile title; check it fits the function; flag subsidiary or branch staff; mark a C-level profile "verify" if its tenure or past employers don't fit [Company], and keep it out of drafted copy. No Chief, EVP, CIO or "Head of" in the top 3? Pull the next page of 10 once (no title search).
 - Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 
@@ -105,7 +104,7 @@ Compare the top two providers head to head in [Business function].
 
 - [Which providers to partner with or replace](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it with their engagements in that function, and whether to partner, displace or walk through an open door.
 - [Pick the SI to co-sell with](../../prompts/10-outsourcing-and-services/cosell-partner.md): A shortlist of service partners already delivering your workload at the account — counted within that workload, not account-wide — and experienced with your technology, with the one to call first.
-- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
+- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): Whether a named competitor is really installed (High or Medium usage), where it sits, any overlapping product or one the account owns, the priorities that could trigger a switch, and three bullets on how to win.
 - [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
 
 <details>

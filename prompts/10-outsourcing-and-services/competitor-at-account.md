@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You're planning a displacement or second-vendor play at an account a rival already serves. Use services-outsourcing-footprint instead when you don't know who's there yet. | Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances | Services sellers | 2–4 min | Outsourcing deals, Executives & movement, News signals |
+| You're planning a displacement or second-vendor play at an account a rival already serves. Use "Outsourcing footprint and consolidation wedge" instead when you don't know who's there yet. | Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances | Services sellers | 2–4 min | Outsourcing deals, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -23,7 +23,7 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my competitive-intelligence analyst for IT services deals. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my services competitive analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Company: [Website, e.g. pfizer.com]
@@ -31,35 +31,36 @@ INPUTS (edit these)
 - What I sell: [One line, e.g. application modernisation and managed cloud services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Pull the account's active engagements and top 10 providers, for the whole account and for the business function closest to [What I sell] (e.g. IT), leaving out agencies and staffing firms. Confirm the competitor's Draup spelling.
-3. Pull the competitor's engagement detail at the account: engagements, relationship tier, workloads, client and delivery locations.
-4. If it has 2 engagements or fewer here (editable default), say so, show the top 5 IT and services providers, and run steps 3 and 5 on the largest one instead. If the account runs its own capability centre or has fewer than 20 IT-services engagements, flag that the work may be in-house.
-5. Pull the account's workload counts and the analysed provider's workload counts at the account. Then check who holds each of at most 5 workloads: wedges matching [What I sell] plus the provider's top 2, skipping catch-alls.
-6. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+1. Find the company by its website (no match: retry once by name, show match and score) and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull active engagements and top 10 providers for the whole account and the function closest to [What I sell], without agencies and staffing firms. Confirm the competitor's Draup spelling.
+3. Pull the competitor's engagement detail: engagements, tier, workloads, client and delivery locations.
+4. If it has 2 engagements or fewer here (editable default), say so and run steps 3 and 5 on the largest provider instead. Under 20 IT-services engagements or an own capability centre? Flag the work may be in-house.
+5. Pull the account's and the analysed provider's workload counts; check who holds up to 5 non-catch-all workloads: wedges matching [What I sell] plus the provider's top 2.
+6. People and timing: the top 3 leaders in the function closest to [What I sell] and the most important 90-day news item where [Company] is the actor.
 
 OUTPUT
-- Bottom line: 2 sentences — how entrenched [Competitor] (or the largest provider, if the rival is absent) is, and where [What I sell] gets in.
-- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
-- Verdict line: "[Provider] is #N at [Company] with X active engagements (Y in [function]); tier: …".
-- "Wedge workloads" (up to 3): Workload | Its engagements | Who else holds it | Why it's a wedge. Workloads matching [What I sell] where the analysed provider has 3 engagements or fewer (editable default) or an operational or limited tier.
-- "Top providers": Rank | Provider | Engagements | % of account total | In [function]. Highlight the analysed provider.
-- Gaps: what Draup didn't have — worth asking in discovery.
-- Detail: the provider's footprint by workload; its onshore, nearshore and offshore delivery share.
+- Bottom line: 2 sentences — the rating of [Competitor] (or the largest provider, if absent) and where I get in.
+- Recommended next step: a person from step 6 (name and title), what to do, and the dated why-now (or say none).
+- Verdict line: "[Provider] is #N at [Company] with X active engagements (Y in [function]); tier: …; rating: Red, Amber or Green" (by share of active engagements in my workloads).
+- "Wedge workloads" (up to 3): Workload | Its engagements | Who else holds it | Why it's a wedge. Workloads matching [What I sell] where the provider has 3 or fewer engagements (editable default) or an operational or limited tier.
+- "Top providers": Rank | Provider | Engagements | % of account | In [function]; highlight the analysed provider.
+- Gaps: what Draup lacked; ask in discovery.
+- Detail: the provider's footprint by workload and its onshore/nearshore/offshore share.
 
 RULES
-- Tiers: strategic = broad, long-standing; operational = defined services; specialist = niche; limited = a few small engagements. Operational and limited are easiest to unseat.
-- Show catch-all workloads (Project/Programs Management, Account Management) but never recommend them.
+- Tiers: strategic (broad, long-standing), operational (defined services), specialist (niche), limited (a few small engagements); operational and limited are easiest to unseat.
+- Never recommend catch-all workloads (Project/Programs Management, Account Management).
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Unless I say otherwise, narrow pulls to the business function closest to What I sell; map a function I give to its 1–3 main workloads and say which.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- Rate a services rival by its share of the account's active engagements in the relevant workloads: Red 30%+ (entrenched), Amber 10–29%, Green under 10% (light; room to wedge in).
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 420 words including tables.
 ```
 
 <details>

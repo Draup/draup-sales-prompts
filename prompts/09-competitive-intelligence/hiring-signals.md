@@ -33,10 +33,10 @@ INPUTS (edit these)
 - Account to defend or win (optional): [website of a live deal or key customer, e.g. visa.com]
 
 CONTEXT (why this matters)
-Companies hire 6–12 months ahead of launches. The signal is change, not volume; skills spiking in lockstep or on every posting are tagging artefacts.
+Companies hire 6–12 months ahead of launches; the signal is change, not volume.
 
 STEPS
-1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Competitor] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Pull hiring by workload (12 months, global, top 15) with monthly trends. Compare the last 5 full months with the 5 before: Rising (+25% or more, editable default), Steady or Falling. Draw no conclusions from catch-all workloads (Account Management, Project/Programs Management).
 3. Pull the top 20 skills within [Focus area], or else the workloads closest to [What I sell], with trends; flag Rising skills.
 4. Pull job titles trending up (12 months); if fewer than 3, use the rising workloads.
@@ -52,7 +52,7 @@ OUTPUT
 - Table "Where hiring is moving" (top 10): Workload | Postings (12 mo) | Last 5 vs prior 5 | Read.
 - "Talk track": 2 bullets for my team (50 words max).
 - Detail: rising skills and titles (kept or dropped as artefact) and proof postings (Date | Title | Location | quote).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - A signal needs two kinds of evidence (e.g. a rising skill plus a posting naming the offer); otherwise label it "weak".
@@ -60,11 +60,11 @@ RULES
 - Under 300 postings in 12 months is a small sample; keep conclusions tentative.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>

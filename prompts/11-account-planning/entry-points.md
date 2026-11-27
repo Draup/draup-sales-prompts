@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You know the account (often an existing customer) and need a concrete next deal to work on. Use plan-account-plan instead for a full plan. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 2–4 min | Priorities & opportunities, Executives & movement, News signals |
+| You know the account (often an existing customer) and need a concrete next deal to work on. Use "Draft an account plan" instead for a full plan. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 2–4 min | Priorities & opportunities, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -25,21 +25,21 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my pursuit strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my pursuit strategist. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [Website, e.g. bmw.com]
 - Business function or Workload: [e.g. Supply Chain or Demand Management]
-- What I sell: [One line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. supply-chain planning software; skip if saved in setup]
 - Already deployed (optional): [What we already run there, e.g. demand planning in Europe; blank for a prospect]
 - Competitor (optional): [e.g. Kinaxis, o9 Solutions]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Map [Business function or Workload] to the 1–2 workloads closest to [What I sell] and say which. Pull Draup's potential initiatives for the account, always narrowed to those workloads (if nothing comes back, to the function; never unlimited).
+1. Find the company by website (no result: try its name once and show the match score). Confirm it's the parent, not a subsidiary or sister company; if several match, ask me. Use Draup's exact name from then on.
+2. Map [Business function or Workload] to the 1–2 workloads closest to [What I sell] and say which. Pull the account's potential initiatives narrowed to them (if empty, to the function; never unlimited).
 3. Drop initiatives unrelated to [What I sell], templates that don't fit the account's industry and, if it sells technology, initiatives about its own products. Mark any initiative we already serve (from Already deployed) "Expand", the rest "New". Rank by fit, then by how recent the evidence is.
 4. For the top 5, note the initiative, its evidence (source and date), incumbent tech, and only providers that plausibly deliver this work.
-5. Check the whole tech stack for [Competitor] products in the same workloads. Rate [Competitor]: Red for High usage in the workloads I sell into; Amber for Medium usage there or anything newly detected in 12 months; otherwise Green, still listed.
+5. Check the whole tech stack for [Competitor] products in the same workloads. Rate [Competitor]: Red for High usage in my workloads; Amber for Medium there or newly detected in 12 months; otherwise Green, still listed. A services firm: 30%+ of active engagements in my workloads Red, 10–29% Amber, under 10% Green.
 6. Pull leaders in the same function (10 per page, up to 3 pages) and match up to 2 per entry point by workload or title.
 7. Timing: the most important news item from the last 90 days where [Company] is the actor.
 
@@ -49,29 +49,28 @@ OUTPUT
 - "Entry points": # | Initiative (Expand or New) | Evidence and date | Incumbents (tech; providers) | Likely owner.
 - "Competitor in these workloads": Product | Maker | Usage | Last seen | Rating. Write "none found" if empty.
 - "Lead with": the single best entry point and why, in two sentences.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 - Detail: "Dropped as unrelated" in one line, so I can bring any back.
 
 RULES
 - Owners are matched by function and workload, not confirmed; label them "likely".
-- Providers here are linked to the initiative, not confirmed: say "linked" and leave out firms that clearly don't do this work (publishers, architects, recyclers).
+- Providers are linked, not confirmed: say "linked" and leave out firms that don't do this work (publishers, architects).
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- If [Company] sells technology, drop priorities and tools about its own products.
-- Label inferences (buyer role, intent, fit) "likely".
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Trust usage strength and last-seen date, not confidence or first-seen; ignore "Generic" rows; a rival counts only at High or Medium usage.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 430 words including tables, then offer more.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step (named owner, dated why-now) first. Find the top 5 entry points at [Company] for [What I sell] in [Business function]: initiative, Expand or New (we run [Already deployed]), dated evidence, incumbents, [Competitor] installed, likely owner.
+Bottom line and next step (named owner, dated why-now) first. Top 5 entry points at [Company] for [What I sell] in [Business function or Workload]: initiative, Expand or New (we run [Already deployed]), dated evidence, incumbents, [Competitor] installed, likely owner.
 ```
 
 </details>

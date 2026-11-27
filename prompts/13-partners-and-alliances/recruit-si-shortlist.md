@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You're building or refreshing a partner programme for an industry and need to know which SIs actually have the practice. Use partners-compare-candidates instead when you already have 2–3 names. | Partnerships & Alliances, Sales Leader & RevOps, Marketing & ABM | Software sellers | 4–6 min | Outsourcing deals, Executives & movement, News signals |
+| You're building or refreshing a partner programme for an industry and need to know which SIs actually have the practice. Use "Compare candidate partners head to head" instead when you already have 2–3 names. | Partnerships & Alliances, Sales Leader & RevOps, Marketing & ABM | Software sellers | 4–6 min | Outsourcing deals, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -17,7 +17,7 @@
 | `[Vertical]` | Insurance |
 | `[Workload]` | Data Engineering |
 | `[Technology]` | Snowflake |
-| `[Customer HQ country (optional)]` | United States of America |
+| `[Territory (optional)]` | United States of America |
 | `[Our current partners (optional)]` | Tailspin Partners |
 | `[What I sell]` | data observability software for insurers |
 
@@ -26,54 +26,54 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my partner-programme strategist recruiting systems integrators (SIs). Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my partner-programme strategist recruiting systems integrators (SIs). Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Vertical: [Draup industry, e.g. Insurance]
 - Workload: [The type of work my product serves, e.g. Data Engineering; a business function is fine, I'll map it]
 - Technology: [Our platform or a rival's, as Draup names it, e.g. Snowflake]
-- Customer HQ country (optional): [In full, e.g. United States of America; blank for worldwide]
+- Territory (optional): [Customer HQ country in full, e.g. United States of America; default: my territory from setup; say "worldwide" for all]
 - Our current partners (optional): [e.g. Tailspin Partners]
-- What I sell: [One line, e.g. data observability software for insurers — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. data observability software for insurers; skip if saved in setup]
 
 STEPS
-1. Turn the industry, workload, technology and country into Draup's exact names; if I gave a business function, map it to its 1–2 main workloads. Say which you used.
-2. Rank providers by engagements for customers whose primary industry is [Vertical] (HQ in [Customer HQ country] if given) in [Workload]. Keep the top 15. Remove agencies, staffing firms and customers' captive units, and list them.
-3. Rank providers again for the same industry and country by engagements that mention [Technology], top 15. Then count all engagements in the industry that mention [Technology], so you can show each provider's share.
-4. Pick 3 candidates that rank high in both lists, current partners first if they appear. For each, pull its top 5 customers for [Technology] work in the industry (one lookup each).
-5. For the same 3, pull delivery locations for [Workload] in the industry (one lookup each). Keep the top 5 metros and group them onshore (customers' country), nearshore or offshore.
-6. People and timing: pull the recruit-first SI's top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+1. Use Draup's exact names; map a business function to its 1–2 main workloads. Say which you used.
+2. Rank providers by [Workload] engagements for customers in [Vertical] (HQ in [Territory]); keep the top 15, removing and listing agencies, staffing firms and captives.
+3. Rank providers again for the same industry and territory by engagements that mention [Technology], top 15. Then count all industry engagements mentioning [Technology], for each provider's share.
+4. Pick 3 candidates high in both lists, current partners first. Pull each one's top 5 customers for [Technology] work in the industry.
+5. For the same 3, pull delivery locations for [Workload] in the industry. Keep the top 5 metros, grouped onshore (customers' country), nearshore or offshore; onshore share = onshore engagements ÷ all 5.
+6. People and timing: page through the recruit-first SI's Sales & Marketing executives (10 a page, up to 3; no vertical filter, as services firms are tagged IT Services) and keep 3 whose titles name [Vertical], a sector, alliances, partnerships or [Technology]; if none, say so and give the closest title. Then pull its most important news item from the last 90 days (client wins, acquisitions, alliances; rankings and awards aren't a why-now).
 
 OUTPUT
-- Bottom line: 2 sentences — the SI to recruit first and what it means for [What I sell].
-- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Bottom line: 2 sentences — the SI to recruit first and why.
+- Recommended next step: a person from step 6 (name and title), what to do, and the dated why-now; if none, say so.
 - "Shortlist" (top 10): Rank | Provider (current partners marked) | [Workload] engagements | [Technology]-related engagements (share of industry total) | Verdict.
-- Verdict: Recruit first (top 10 in both lists), Practice partner (strong in the workload, little [Technology]), Technology specialist (strong in [Technology], thin in the workload) or Watch.
+- Verdict: Recruit first (top 10 in both lists and 3+ [Technology]-related engagements), Practice partner (strong in the workload, little [Technology]), Technology specialist (strong in [Technology], thin in the workload) or Watch.
 - "Top 3 profiles": Provider | Top customers for [Technology] | Single-account depth? | Top delivery hubs | Onshore share.
-- Gaps: what Draup didn't have — worth asking in the first partner call.
+- Gaps: what Draup didn't have — ask in the first partner call.
 - Detail: "Shared customers" (customers that appear for 2+ of the top 3) and "Removed" (Provider | Reason).
 
 RULES
-- Flag "single-account depth" when one customer holds more than half of a provider's [Technology]-related engagements (editable default); never make it "Recruit first" on that basis alone.
-- Call technology matches "[Technology]-related", never a certified practice.
-- If [Technology] returns fewer than 20 engagements (editable default), retry with the vendor's name, then drop the country; say which worked.
-- Mark delivery metros that don't fit the provider's footprint "check location".
+- Flag "single-account depth" when one customer holds over half a provider's [Technology]-related engagements; never "Recruit first" on that alone.
+- Say "[Technology]-related", never "certified".
+- Under 20 [Technology] engagements (editable)? Retry with the vendor's name, then drop the country; say which worked.
+- Mark delivery metros that don't fit the provider "check location".
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 450 words including tables, then offer more.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step (named SI leader, dated why-now) first. Which providers have the most [Workload] engagements in [Vertical], and the most mentioning [Technology]? Shortlist the top 10, profile the best 3 and pick one to recruit first.
+Bottom line and next step (named SI leader, dated why-now) first. Which providers lead [Workload] in [Vertical] in [Territory], and which have [Technology]-related work? Top 10; Recruit first needs both lists and 3+ [Technology] engagements.
 ```
 
 </details>
@@ -98,6 +98,7 @@ For [Provider], which of its [Vertical] customers don't run [Technology] yet? Th
 
 - Rank on the technology list as well as the workload list: a firm that is huge in the workload but rarely touches your technology needs heavy enablement.
 - Mid-size specialists often show up high in the technology list. They can be easier to win as partners than the largest firms.
+- SI executives are tagged IT Services, not by industry, so the answer finds industry and alliance leaders by their titles; if none show up, ask the SI for its industry lead.
 
 ## Related prompts
 

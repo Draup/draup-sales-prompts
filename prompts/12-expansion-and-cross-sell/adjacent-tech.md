@@ -28,44 +28,45 @@ Act as my cross-sell strategist for a software account team. Use Draup for Sales
 
 INPUTS (edit these)
 - Company: [website, e.g. visa.com]
-- What we already sell them: [product or category, e.g. our data integration platform — or my saved account notes]
-- Adjacent areas (optional): [1–3 software categories, e.g. Data Governance Software, Data Quality Software; if blank, pick the 2–3 next to what we sell]
+- What we already sell them: [e.g. our data integration platform]
+- Adjacent areas (optional): [1–3 software categories, e.g. Data Governance Software; blank = the 2–3 next to what we sell]
 - What I sell: [one line, e.g. data governance and quality platform — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-The easiest expansion is next door to a working install, if the area is open rather than locked by a strong incumbent.
+Expand next door to a working install, where no strong incumbent locks the area.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Confirm our install: check the stack for that product or maker (strength, last seen); if not detected, say so.
-3. Pull the stack in [Adjacent areas], up to 40 rows each; if a category returns nothing, retry the closest Draup category and say which worked.
-4. Grade each tool: Active (High or Medium, seen in 90 days), Thin (Low, seen in 90 days), Fading (no strength, or last seen over 90 days ago). Drop obvious misfilings.
-5. Pull up to 5 priorities in the adjacent areas' workloads; keep only those actually about the area.
+3. Pull the stack in [Adjacent areas], up to 40 rows each; if one returns nothing, retry the closest Draup category and say which.
+4. Rate each tool: Red (High) or Amber (Medium) if seen in 90 days; Green if Low, or "fading" (no strength, or last seen over 90 days ago). Drop obvious misfilings.
+5. Pull up to 5 priorities in the adjacent workloads; keep those about the area.
 6. Pull the top 15 job-ad skills for the matching workload (12 months).
-7. Owner and trigger: from one page of 10 executives in the matching workload or function, the 3 whose title or skills best fit the adjacent area; and the most important news item from the last 90 days.
-8. Build up to 3 plays: Replace (fading or thin incumbent), Consolidate (3+ overlapping tools) or Complement (strong incumbent).
+7. Owner and trigger: from one page of 10 executives in the matching workload or function, the 3 best-fitting titles; and the most important 90-day news item.
+8. Build up to 3 plays: Replace (Green incumbent), Consolidate (3+ overlapping tools) or Complement (Red incumbent).
 
 OUTPUT
-- Bottom line: 2 sentences — open or locked, and the best play for [What I sell].
-- Recommended next step: a named person (name, full title) who owns the adjacent area, the action this week and the dated why-now; if none, say so.
+- Bottom line: 2 sentences — open or locked, and the best play for us.
+- Recommended next step: a named person (name, full title) who owns the adjacent area, the action this week and the dated why-now (or say none).
 - Table "Cross-sell plays" (up to 3): Play | Target tools | Evidence (dated) | Opening line (25 words max).
-- Table "Adjacent landscape" (top 10): Product | Maker | Strength, last seen | Grade.
-- One line on our install, and "Incumbents to respect": coexist or compete.
+- Table "Adjacent landscape" (top 10): Product | Maker | Strength, last seen | Rating.
+- One line on our install; "Incumbents to respect": coexist or compete.
 - Detail: the full landscape and why-now evidence (priorities, skills).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
-- An incumbent with High usage there is Red (locked: complement it); Medium is Amber.
-- A product first seen in 12 months and already Medium or High is a fresh choice; complement it.
+- Red means locked: complement it. Low-only tools don't count as an incumbent; say so.
+- A product first seen in 12 months and already Medium or High is a fresh choice: complement it.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Trust usage strength and last-seen date, not confidence scores or "Generic" rows; a date shared by many rows is a refresh. A rival counts only at High or Medium usage; say you ignored Low. Say "fading", never "dropped".
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 420 words above Detail, tables included.
 ```
 
 <details>

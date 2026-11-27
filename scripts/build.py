@@ -21,6 +21,22 @@ CATS = {c["id"]: c for c in META["categories"]}
 ROLES = META["roles"]
 LAYERS = META["data"]
 BY_ID = {p["id"]: p for p in PROMPTS}
+
+
+def _deid(text, own):
+    def sub(m):
+        pid = m.group(0).strip("`")
+        if pid in BY_ID and pid != own:
+            return "\u201c" + BY_ID[pid]["title"] + "\u201d"
+        return m.group(0)
+    return re.sub(r"`?\b(?:" + "|".join(sorted({p["category"] for p in PROMPTS}, key=len, reverse=True)) + r")-[a-z0-9-]+\b`?", sub, text)
+
+
+for _p in PROMPTS:
+    for _k in ("when", "outcome"):
+        _p[_k] = _deid(_p[_k], _p["id"])
+    _p["tips"] = [_deid(t, _p["id"]) for t in _p.get("tips", [])]
+    _p["followups"] = [_deid(t, _p["id"]) for t in _p.get("followups", [])]
 REQUIRED = ["id", "category", "title", "outcome", "when", "roles", "data", "time", "inputs", "quick", "prompt", "followups", "tips", "tools", "status"]
 TECH_WORDS = re.compile(r"\b(v3|payload|api|json|mcp__|response_data|get_[a-z_]+)\b", re.I)
 
@@ -67,6 +83,13 @@ def validate():
         for r in p.get("related", []):
             if r not in BY_ID:
                 errs.append(f"{p['id']}: related id '{r}' not found")
+    for code, ids in META.get("role_start", {}).items():
+        for i in ids:
+            if i not in BY_ID:
+                errs.append(f"role_start {code}: '{i}' not found")
+    for i in META.get("featured", []):
+        if i not in BY_ID:
+            errs.append(f"featured: '{i}' not found")
     for pb in PLAYBOOKS:
         for s in pb.get("steps", []):
             if s.get("prompt_id") not in BY_ID:
@@ -242,7 +265,13 @@ def badge(label, msg, color, url=None, logo=None):
     return f'<a href="{url}">{tag}</a>' if url else tag
 
 
+def banner():
+    tpl = (ROOT / "templates" / "banner.svg").read_text(encoding="utf-8")
+    (ROOT / "assets" / "banner.svg").write_text(tpl.replace("{{N}}", str(len(PROMPTS))).replace("{{PB}}", str(len(PLAYBOOKS))), encoding="utf-8")
+
+
 def readme():
+    banner()
     n = len(PROMPTS)
     tested = sum(p["status"] == "tested" for p in PROMPTS)
     L = ['<p align="center"><img src="assets/banner.svg" alt="Draup Sales Prompt Library: ask Draup the questions that move deals" width="100%"></p>', ""]
@@ -252,7 +281,7 @@ def readme():
         badge("Microsoft 365 Copilot & Teams", "Draup for Sales agent", "4B53BC", LK.get("teams")),
         badge("prompts", str(n), "0b7476"), badge("playbooks", str(len(PLAYBOOKS)), "0b7476"),
         badge("license", "CC BY 4.0", "555", "LICENSE")]) + "</p>", ""]
-    L += [f'<p align="center"><b>{META["tagline"]}</b></p>', ""]
+    L += [f'<p align="center"><b>{META["tagline"]}</b></p>', "", f'<p align="center"><a href="{META["pages"]}"><b>Open the interactive library &rarr;</b></a></p>', ""]
     L += ['<p align="center">' + " · ".join([
         f'<a href="{LK.get("claude")}"><b>Add to Claude</b></a>', f'<a href="{LK.get("chatgpt")}"><b>Add to ChatGPT</b></a>', f'<a href="{LK.get("teams")}"><b>Add to Teams &amp; Copilot</b></a>', '<a href="guides/use-as-a-skill.md">Use as a skill</a>',
         '<a href="guides/connect.md#option-3-any-mcp-client-custom-connector">Other MCP clients</a>',
@@ -324,7 +353,7 @@ def readme():
           "How to read each data type: [Data guide](guides/data-guide.md) · Terms explained: [Glossary](guides/glossary.md) · Connection details: [Draup's MCP documentation](" + LK.get("mcp_docs", "") + ")", ""]
     L += ["## Good to know", "",
           "- **Your access applies.** Draup for Sales is read-only and shows what your Draup subscription covers.",
-          "- **Before you trust a number:** " + " ".join(META.get("trust_notes", [])),
+          "- **Before you trust a number:**"] + [f"  - {t}" for t in META.get("trust_notes", [])] + [
           "- **Keep customer data private.** Don't paste confidential CRM or customer data into prompts unless your company's AI policy allows it.",
           "- **Tested in Claude.** The prompts were tested in Claude and written in plain language so they work with the ChatGPT plugin too.", ""]
     L += ["## Help and contributing", "",
@@ -387,17 +416,27 @@ def pre(s):
     return f"<pre>{t}</pre>"
 
 
+ROLE_PRIMARY = {"AE": ["research", "people", "signals", "deals", "tech"], "SDR": ["signals", "outreach", "prospect", "people"],
+                "AM": ["plan", "expand", "signals", "people"], "LEAD": ["leaders", "market", "plan", "prospect"],
+                "MKT": ["content", "outreach", "market", "compete", "prospect"], "SE": ["tech", "plays", "research", "deals"],
+                "SVC": ["services", "plays", "compete", "research", "people"], "PTN": ["partners", "services", "compete"]}
+
+
+def online(p):
+    return f"{META['pages']}#p-{p['id']}"
+
+
 def print_doc(title, body, sub=""):
     return f"""<!doctype html><html><head><meta charset="utf-8"><title>{h(title)}</title><style>{PRINT_CSS}</style></head><body>
-<header class="cover"><div class="eyebrow">Draup Sales Prompt Library</div><h1>{h(title)}</h1><p>{h(sub)}</p><p class="ver">Version {META['version']} · {META['updated']} · {h(META['repo'])}</p></header>
+<header class="cover"><div class="eyebrow">Draup Sales Prompt Library</div><h1>{h(title)}</h1><p>{h(sub)}</p><p class="ver">Version {META['version']} · {META['updated']} · <a href="{META['pages']}">{h(META['pages'])}</a></p></header>
 {body}</body></html>"""
 
 
 def print_prompt(p, full=True):
-    b = [f"<article class='prompt'><h3>{h(p['title'])}</h3><p class='outcome'>{h(p['outcome'])}</p>",
-         f"<p class='meta'><b>Use it when:</b> {h(p['when'])} <b>Best for:</b> {h(roles_txt(p))} <b>Time:</b> {h(p['time'])}</p>"]
+    b = [f"<article class='prompt' id='p-{p['id']}'><h3>{h(p['title'])}</h3><p class='outcome'>{h(p['outcome'])}</p>",
+         f"<p class='meta'><b>Use it when:</b> {h(p['when'])} <b>Best for:</b> {h(roles_txt(p))} <b>Time:</b> {h(p['time'])} <b>Online:</b> <a href='{online(p)}'>open and copy</a></p>"]
     if p["status"] == "schema-only":
-        b.append("<p class='note'>Needs the Draup for Talent connector. Documented, not live-tested.</p>")
+        b.append("<p class='note'>Preview: needs the Draup for Talent connector. Documented, not live-tested.</p>")
     if full:
         b.append("<h4>Detailed prompt</h4>" + pre(p["prompt"]))
         b.append("<h4>Quick version</h4>" + pre(p["quick"]))
@@ -411,56 +450,76 @@ def print_prompt(p, full=True):
     return "".join(b)
 
 
+SETUP_BOX = """<div class='box accent'><h3>Set up once (5 minutes)</h3><ol class='tight'>
+<li><b>Connect Draup:</b> Claude: claude.ai/directory/draup-for-sales · ChatGPT: Plugins, search "Draup for Sales" · Microsoft 365 Copilot &amp; Teams: get the Draup for Sales agent from Microsoft Marketplace.</li>
+<li><b>Tell your AI about you:</b> paste the "Tell your AI about you" prompt from the library once per chat.</li>
+<li><b>Run a prompt:</b> copy the detailed version from <a href='{pages}'>the interactive library</a> (link on each prompt below), fill the [brackets], send.</li></ol></div>"""
+
+
 def print_html():
     out = ROOT / "build" / "print"
     out.mkdir(parents=True, exist_ok=True)
+    used = [c for c in META["categories"] if in_cat(c["id"])]
     # catalogue
-    body = ["<section class='toc'><h2>Contents</h2><ol>" + "".join(f"<li>{h(c['name'])} <span>({len(in_cat(c['id']))})</span></li>" for c in META["categories"] if in_cat(c["id"])) + "</ol></section>"]
-    for c in META["categories"]:
+    toc = "<section class='toc'><h2>Contents</h2><ol>" + "".join(
+        f"<li><a href='#cat-{c['id']}'>{h(c['name'])}</a> <span>({len(in_cat(c['id']))})</span></li>" for c in used) + "</ol>"
+    toc += f"<p class='desc'>Each prompt links to its page in the <a href='{META['pages']}'>interactive library</a>, where you can copy it in one click.</p></section>"
+    body = [toc]
+    for c in used:
         ps = in_cat(c["id"])
-        if not ps:
-            continue
-        body.append(f"<section class='cat'><h2>{h(c['name'])}</h2><p class='desc'>{h(c['desc'])}</p>" + "".join(print_prompt(p) for p in ps) + "</section>")
-    (out / "catalogue.html").write_text(encoding="utf-8", data=print_doc("Full prompt catalogue", "".join(body), f"{len(PROMPTS)} detailed prompts for Claude with the Draup for Sales connector."))
+        label = " (Preview: not live-tested)" if all(p["status"] == "schema-only" for p in ps) else ""
+        body.append(f"<section class='cat' id='cat-{c['id']}'><h2>{h(c['name'])}{label}</h2><p class='desc'>{h(c['desc'])}</p>"
+                    + "<ul class='mini'>" + "".join(f"<li><a href='#p-{p['id']}'>{h(p['title'])}</a></li>" for p in ps) + "</ul>"
+                    + "".join(print_prompt(p) for p in ps) + "</section>")
+    (out / "catalogue.html").write_text(encoding="utf-8", data=print_doc("Full prompt catalogue", "".join(body), f"{len(PROMPTS)} detailed prompts for Claude, ChatGPT and Microsoft 365 Copilot with Draup for Sales."))
     # playbooks
     if PLAYBOOKS:
-        pb_body = []
+        idx = "<section class='toc'><h2>Playbooks in this guide</h2><table><tr><th>Playbook</th><th>For</th><th>Time</th></tr>" + "".join(
+            f"<tr><td><a href='#pb-{pb['id']}'>{h(pb['title'])}</a></td><td>{h(', '.join(ROLES[r]['name'] for r in pb.get('for', []) if r in ROLES))}</td><td>{h(pb.get('time',''))}</td></tr>" for pb in PLAYBOOKS) + "</table>"
+        idx += "<p class='desc'>Run the steps in one chat so each answer builds on the last. Quick versions are printed here; open each step's detailed version online for the full output.</p></section>"
+        pb_body = [idx]
         for pb in PLAYBOOKS:
-            steps = "".join(f"<li><b>{h(BY_ID[s['prompt_id']]['title'])}</b>: {h(s.get('why',''))}<br><i>Look for:</i> {h(s.get('what_to_look_for',''))}{pre(BY_ID[s['prompt_id']]['quick'])}</li>" for s in pb["steps"])
-            pb_body.append(f"<section class='pb'><h2>{h(pb['title'])}</h2><p class='desc'>{h(pb['goal'])}</p><p class='meta'><b>For:</b> {h(', '.join(ROLES[r]['name'] for r in pb.get('for', []) if r in ROLES))} <b>Time:</b> {h(pb.get('time',''))}</p><ol class='steps'>{steps}</ol><p><b>You finish with:</b> {h(pb.get('finish',''))}</p></section>")
+            steps = "".join(
+                f"<li><b>{h(BY_ID[s['prompt_id']]['title'])}</b> · <a href='{online(BY_ID[s['prompt_id']])}'>detailed version</a><br>{h(s.get('why',''))}<br><i>Look for:</i> {h(s.get('what_to_look_for',''))}{pre(BY_ID[s['prompt_id']]['quick'])}</li>"
+                for s in pb["steps"])
+            pb_body.append(f"<section class='pb' id='pb-{pb['id']}'><h2>{h(pb['title'])}</h2><p class='desc'>{h(pb['goal'])}</p><p class='meta'><b>For:</b> {h(', '.join(ROLES[r]['name'] for r in pb.get('for', []) if r in ROLES))} <b>Time:</b> {h(pb.get('time',''))}</p><ol class='steps'>{steps}</ol><p><b>You finish with:</b> {h(pb.get('finish',''))}</p></section>")
         (out / "playbooks.html").write_text(encoding="utf-8", data=print_doc("Playbooks", "".join(pb_body), "Step-by-step sales workflows that chain several prompts."))
-    # role sheets
+    # role sheets: compact
     (out / "roles").mkdir(exist_ok=True)
     for code, r in ROLES.items():
         ps = [p for p in PROMPTS if code in p["roles"] and p["category"] != "setup"]
         starters = [BY_ID[i] for i in META.get("role_start", {}).get(code, []) if i in BY_ID]
         sid = {p["id"] for p in starters}
-        parts = ["<section><h2>Start with these 5</h2>"]
-        parts += [f"<div class='q big'><h3>{n}. {h(p['title'])} <span class='t'>{h(p['time'])}</span></h3><p class='outcome'>{h(p['outcome'])}</p>{pre(p['quick'])}</div>" for n, p in enumerate(starters, 1)]
-        if META.get("trust_notes"):
-            parts.append("<div class='box accent'><h3>Before you trust a number</h3><ul>" + "".join(f"<li>{h(t)}</li>" for t in META["trust_notes"]) + "</ul></div>")
+        parts = [SETUP_BOX.format(pages=META["pages"]), "<section><h2>Start with these 5</h2>"]
+        parts += [f"<div class='q big'><h3>{n}. {h(p['title'])} <span class='t'>{h(p['time'])}</span> · <a href='{online(p)}'>open online</a></h3><p class='outcome'>{h(p['outcome'])}</p>{pre(p['quick'])}</div>" for n, p in enumerate(starters, 1)]
         parts.append("</section>")
-        for c in META["categories"]:
+        prim = ROLE_PRIMARY.get(code, [])
+        order = [CATS[cid] for cid in prim if cid in CATS and in_cat(cid)]
+        rest = len([p for p in ps if p["category"] not in prim and p["id"] not in sid])
+        parts.append("<section class='grp'><h2>More prompts for your role</h2><p class='desc'>Open any prompt online to copy its detailed version.</p>")
+        for c in order:
             cps = [p for p in ps if p["category"] == c["id"] and p["id"] not in sid]
             if not cps:
                 continue
-            parts.append(f"<section class='grp'><h2>{h(c['name'])}</h2>")
-            for p in cps:
-                tag = " <span class='tag'>Preview: Talent connector</span>" if p["status"] == "schema-only" else ""
-                parts.append(f"<div class='q'><h3>{h(p['title'])} <span class='t'>{h(p['time'])}</span>{tag}</h3>{pre(p['quick'])}</div>")
-            parts.append("</section>")
-        body = "".join(parts)
-        (out / "roles" / f"{r['slug']}.html").write_text(encoding="utf-8", data=print_doc(f"Cheat sheet: {r['name']}", body, r["desc"] + " Quick versions; full prompts are in the catalogue."))
+            rows = "".join(f"<tr><td><a href='{online(p)}'>{h(p['title'])}</a>{' <span class=\"tag\">Preview</span>' if p['status'] == 'schema-only' else ''}</td><td>{h(p['outcome'])}</td><td class='nowrap'>{h(p['time'])}</td></tr>" for p in cps)
+            parts.append(f"<h3 class='grp-h'>{h(c['name'])}</h3><table class='compact'>{rows}</table>")
+        if rest:
+            parts.append(f"<p class='desc'>Plus {rest} more prompts tagged for your role in other sales jobs: see the <a href='{META['pages']}#role-{r['slug']}'>interactive library filtered to your role</a> or the full catalogue PDF.</p>")
+        parts.append("</section>")
+        if META.get("trust_notes"):
+            parts.append("<div class='box'><h3>Before you trust a number</h3><ul>" + "".join(f"<li>{h(t)}</li>" for t in META["trust_notes"]) + "</ul></div>")
+        (out / "roles" / f"{r['slug']}.html").write_text(encoding="utf-8", data=print_doc(f"Cheat sheet: {r['name']}", "".join(parts), r["desc"]))
     # quick start
     qs = (ROOT / "templates" / "quick-start.html").read_text(encoding="utf-8") if (ROOT / "templates" / "quick-start.html").exists() else ""
     if qs:
-        top = "".join(f"<div class='q'><h3>{h(p['title'])} <span class='t'>{h(p['time'])}</span></h3><p class='outcome'>{h(p['outcome'])}</p>{pre(p['quick'])}</div>" for p in featured()[:12])
-        rows = "".join(f"<tr><td><b>{h(r['name'])}</b></td><td>" + " · ".join(h(BY_ID[i]['title']) for i in META.get('role_start', {}).get(code, [])[:3] if i in BY_ID) + "</td></tr>" for code, r in ROLES.items())
+        top = "".join(f"<div class='q'><h3>{h(p['title'])} <span class='t'>{h(p['time'])}</span></h3><p class='outcome'>{h(p['outcome'])}</p>{pre(p['quick'])}<p class='lnk'><a href='{online(p)}'>Detailed version online</a></p></div>" for p in featured()[:12])
+        rows = "".join(f"<tr><td><b>{h(r['name'])}</b></td><td>" + " · ".join(f"<a href='{online(BY_ID[i])}'>{h(BY_ID[i]['title'])}</a>" for i in META.get('role_start', {}).get(code, [])[:3] if i in BY_ID) + "</td></tr>" for code, r in ROLES.items())
         role_tbl = f"<table><tr><th>Your role</th><th>Start with</th></tr>{rows}</table>"
         trust = "<ul>" + "".join(f"<li>{h(t)}</li>" for t in META.get("trust_notes", [])) + "</ul>"
         qs = (qs.replace("{{START_PROMPT}}", pre(START["prompt"]) if START else "").replace("{{TOP_PROMPTS}}", top)
-                .replace("{{ROLE_START}}", role_tbl).replace("{{TRUST}}", trust))
-        (out / "quick-start.html").write_text(encoding="utf-8", data=print_doc("Quick-start guide", qs, "Get useful answers from Draup in Claude in five minutes."))
+                .replace("{{ROLE_START}}", role_tbl).replace("{{TRUST}}", trust).replace("{{PAGES}}", META["pages"])
+                .replace("{{SKILL_ZIP}}", META.get("links", {}).get("skill_zip", "")).replace("{{TEAMS}}", META.get("links", {}).get("teams", "")))
+        (out / "quick-start.html").write_text(encoding="utf-8", data=print_doc("Quick-start guide", qs, "Useful answers from Draup in Claude, ChatGPT or Microsoft 365 Copilot, in five minutes."))
 
 
 def clean():

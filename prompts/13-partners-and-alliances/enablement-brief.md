@@ -26,14 +26,14 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my partner enablement lead. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my partner enablement lead. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Partner: [Services firm as Draup spells it, e.g. Infosys]
 - Vertical: [Draup industry, e.g. Banking & Financial Services]
 - Platform: [The technology our product runs on or with, as Draup names its maker, e.g. Snowflake]
 - Competitor: [Rival maker, e.g. Databricks]
-- What I sell: [One line, e.g. data observability for Snowflake — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. data observability for Snowflake; skip if saved in setup]
 - Proof point (optional): [e.g. cut data-incident time 40% at a mid-size retailer]
 
 STEPS
@@ -41,35 +41,35 @@ STEPS
 2. Pull the partner's customer summary: active customers, engagements and top customers overall.
 3. Pull the partner's top 10 workloads and top 10 customers in primary industry [Vertical].
 4. Pull the partner's [Vertical] customers ranked by engagements that mention [Platform] (top 10): its practice evidence.
-5. Using the short company view, list the partner's [Vertical] customers whose stack includes [Platform] products (10, by revenue), then those of them with no [Competitor] products (10). Never match by name.
-6. Match the lists: a customer from step 3 or 4 that also appears in step 5 is a warm start.
-7. People and timing: pull [Partner]'s top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+5. List the partner's [Vertical] customers whose stack includes [Platform] products (10, by revenue), then those of them with no [Competitor] products (10).
+6. A customer in step 3 or 4 that also appears in step 5 is a warm start.
+7. People and timing: page through [Partner]'s Sales & Marketing executives (10 a page, up to 3; no vertical filter, as services firms are tagged IT Services) and keep 3 whose titles name [Vertical], a sector, alliances, partnerships or [Platform]; if none, say so and give the closest title. Then pull its most important news item from the last 90 days (client wins, acquisitions, alliances; rankings and awards aren't a why-now).
 
 OUTPUT
-(Written to the partner's sellers, in the second person.)
+(Written to the partner's sellers, as "you".)
 - Bottom line: 2 sentences — where [What I sell] fits their [Vertical] practice and the first 3 customers to raise it with.
-- Recommended next step: a person from step 7 (name and title), what to do (for me, the partner manager), and why now (the dated news item or another dated fact); if none turned up, say so.
+- Recommended next step: a person from step 7 (name and title), what I (the partner manager) do, and the dated why-now; if none, say so.
 - "Where to start" (up to 10): Customer | Your engagements in [Vertical] | Your [Platform]-related engagements | Stack: [Platform] only, both, or not seen | Play.
 - Play: Expand (you already do [Platform] work there), Land ([Platform] present, no [Competitor], little [Platform] work by you), Coexist (both makers present: position alongside).
 - "5 qualification questions": Question | What a good answer sounds like.
 - Gaps: what Draup didn't have — worth confirming with the partner.
-- Detail: "Why this fits your practice" (3 bullets tied to their workload numbers); "Joint value proposition" (60 words or fewer, using [Proof point] once); "3 objection handlers" (Objection | Response under 40 words | Proof); "How to bring us in" (a routing line with placeholders for our partner manager).
+- Detail: why this fits your practice (3 bullets on their workload numbers); joint value proposition (60 words, [Proof point] once); 3 objection handlers (Objection | Response under 40 words | Proof); how to bring us in (routing line).
 
 RULES
-- Platform presence is public evidence; tell sellers to confirm it before quoting it.
-- Never imply a customer told us anything; these are outside-in facts.
-- Leave catch-all workloads (e.g. Project/Programs Management) out of "Why this fits".
-- If [Platform]-related engagements are fewer than 10 (editable default), say the partner's practice is early and lead with Land plays.
-- Check our Draup licence before sharing Draup data outside the company; the partner-facing version can drop engagement counts.
+- Platform presence is public evidence; confirm before quoting.
+- These are outside-in facts; never imply a customer told us.
+- Leave catch-all workloads out of "Why this fits".
+- Under 10 [Platform]-related engagements (editable)? Call the practice early and lead with Land plays.
+- Check our Draup licence before sharing Draup data outside the company.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
-- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 500 words including tables.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
+- Trust usage strength and last-seen date, not confidence or first-seen; ignore "Generic" rows; a rival counts only at High or Medium usage.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 500 words including tables, then offer more.
 ```
 
 <details>

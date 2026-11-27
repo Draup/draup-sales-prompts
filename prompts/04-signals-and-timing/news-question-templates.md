@@ -31,7 +31,7 @@ Act as my market-news researcher. Use Draup for Sales for every fact. Don't use 
 INPUTS (edit these)
 - Event type: [one of M&A; layoffs; leadership change; expansion or new centres; funding; partnership — e.g. expansion or new centres]
 - Vertical: [industry, e.g. Banking & Financial Services]
-- Country: [in full, e.g. India]
+- Country: [in full, e.g. India; blank uses my saved territory]
 - What I sell: [one line, e.g. cloud migration services — skip if you ran the start-here prompt]
 - Window (optional): [default 90 days; up to 12 months]
 - Theme (optional): [for partnerships, e.g. cloud migration]
@@ -41,27 +41,28 @@ STEPS
 2. Search Draup news first with "Which [Vertical] companies in [Country] [Event type] in the last [Window]?" (main source; up to 20 results, often without links). Then page the news feed for the same filters to add links and catch misses. Review at least 30 items in total.
 3. Apply the noise rule. Keep only items where the named company is the actor, the event happened in [Country], and the company really is in [Vertical].
 4. By type: M&A: Acquisition, Merger or Divestiture, and Announced or Completed. Layoffs: store and branch closures listed separately; headcount only if stated. Leadership: C-level and VP, at the new employer. Expansion: add Type (capability centre, tech centre, office); leave out factories, stores, branches and wealth centres. Funding: no donations or grants. Partnerships: no sponsorships or marketing tie-ins.
-5. Merge repeat coverage, keeping the earliest date and counting sources.
+5. Merge repeat coverage (earliest date, source count) and merge subsidiaries into their parents.
 6. For the most relevant company, pull the top 3 executives in the function closest to [What I sell].
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - Table (top 10, newest first): Date | Company | What happened (with any number) | Sources (count).
 - "Pattern": 3 bullets, and why it matters for [What I sell]; name the 3 companies to approach first.
-- Detail: rows 11–20; source and headline (link if available) and type for every row; "Excluded" count by reason; Gaps (what Draup lacked, to ask in discovery).
+- Detail: rows 11–20; source and headline (link if available) and type for every row; "Excluded" count by reason; Gaps (to ask in discovery).
 
 RULES
 - Search results come back by relevance, not date; sort by date yourself.
 - One event type per run.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
-- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and re-dated old stories (use the event date). Outages, incidents, breaches and regulatory inquiries count for security, reliability, IT operations or compliance sellers; keep any item that bears directly on What I sell. Give source, headline and link (if any) per item.
+- If sources conflict on a name, date or number, say so and repeat neither as fact; single-source figures are unverified.
 - Hiring, new-technology and news data cover the last 12 months; if my window is longer, say what was covered.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 420 words including tables, then offer to continue.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables; then offer to continue.
 ```
 
 <details>

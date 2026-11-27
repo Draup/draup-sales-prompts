@@ -4,15 +4,15 @@
 
 > **Goal:** When a named rival is in your deal, size how entrenched it is, line up the people and the arguments, arm your champion, and close on a plan the buyer has agreed.
 
-**For:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps · **Time:** 45–60 min · **Steps:** 5
+**For:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps · **Time:** About 15 min with quick versions, 45–60 min with detailed · **Steps:** 5
 
 **Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Win plan against a rival
 
-Shows the rival's footprint at this account, how much the buyer's job ads lean on it, its likely pitch and your wedge.
+Shows the rival's footprint at this account, its likely pitch and your wedge.
 
-**Look for:** The verdict (Entrenched, Present, Light) and the 3 landmine questions. If the rival is Entrenched across the whole workload, consider narrowing scope to your wedge.
+**Look for:** The Red, Amber or Green rating (Green = not detected or Low usage; for a services rival, under 10% of active engagements) and the 3 landmine questions. Red across the whole workload? Narrow scope to your wedge.
 
 Open the full prompt: [Win plan against a rival](../prompts/08-deal-strategy/competitive-strategy.md)
 
@@ -24,23 +24,23 @@ Quick version:
 
 ## Step 2. Map the buying committee
 
-Maps who buys, influences or could block in the deal's function, so you know who the rival's sponsor is and who is still open.
+Maps who buys, influences or could block in the deal's function.
 
-**Look for:** Anyone leaning to the rival, an economic buyer you haven't met, and a potential blocker. Go by full titles, not seniority labels.
+**Look for:** Anyone leaning to the rival, an economic buyer you haven't met, and subsidiary staff to discount. Go by full titles, not seniority labels.
 
 Open the full prompt: [Map the buying committee](../prompts/02-buyers-and-stakeholders/buying-committee.md)
 
 Quick version:
 
 ```text
-Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Widen once to C-level.
+Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Check one more page.
 ```
 
 ## Step 3. Answer objections with their own facts
 
-Prepares evidence-backed answers to the pushback a rival's champion will feed the buyer, such as "we already have a vendor".
+Prepares evidence-backed answers to the pushback a rival's champion will feed the buyer.
 
-**Look for:** Any objection the evidence Supports: change scope or timing there rather than arguing.
+**Look for:** Objections it marks real, not cover: change scope or timing there rather than arguing.
 
 Open the full prompt: [Answer objections with their own facts](../prompts/08-deal-strategy/objection-handler.md)
 
@@ -52,9 +52,9 @@ Answer these objections at [Company] with dated Draup facts: [Objections]. Lead 
 
 ## Step 4. Arm your champion to sell internally
 
-Gives your champion a forwardable case in their own company's language, with answers for finance, IT and procurement.
+Gives your champion a forwardable case in their own company's language.
 
-**Look for:** Why-now facts from earnings-call priorities, and the internal email draft your champion is comfortable sending.
+**Look for:** The 3 dated why-now facts and the 150-word internal email your champion is comfortable sending.
 
 Open the full prompt: [Arm your champion to sell internally](../prompts/08-deal-strategy/champion-pack.md)
 
@@ -68,7 +68,7 @@ Champion pack for [Champion] at [Company]. Lead with the case and the named deci
 
 Locks the path to signature into the buyer's own calendar before the rival can slow it down.
 
-**Look for:** Leadership changes or fiscal dates inside the plan window, and whether the close date comes back Achievable.
+**Look for:** Whether the close date comes back Achievable, Tight or Unrealistic, and calendar events that could shift dates.
 
 Open the full prompt: [Mutual action plan on their calendar](../prompts/08-deal-strategy/mutual-action-plan.md)
 

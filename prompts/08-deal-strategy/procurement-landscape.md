@@ -33,10 +33,10 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. application management services — skip if you ran the start-here prompt]
 
 CONTEXT (why this matters)
-Fragmented providers under a cost programme mean consolidation and rate pressure; a concentrated base means an incumbent to dislodge. Find the technology procurement lead, not direct materials.
+Fragmented providers under a cost programme mean consolidation; a concentrated base means an incumbent to dislodge.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Map [Work in scope] to 1–3 workloads (types of work) and say which.
 3. Whole account: active engagements and partners.
 4. In scope: active engagements and partners in those workloads, then the top 10 providers; compute the top-3 share.
@@ -47,12 +47,12 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — the stance to expect (Consolidate, Cost-down, Competitive re-bid or Strategic partner) and what it means for [What I sell].
-- Recommended next step: a named person (name, full title) in procurement, or the business owner if none, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title) in procurement, or the business owner if none, the action this week and the dated why-now (or say none).
 - Table "Provider landscape" (top 10 in scope): Rank | Provider | Active engagements | Share. Then the top-3 share and a label: Concentrated over 50%, Fragmented under 30% (editable defaults), else Mixed.
 - Table "Pressure on procurement" (up to 5): Date | Programme or event | Figure | Source.
 - "What they'll ask for" (rate card, outcome pricing, transition plan, savings commitment) and "How to prepare": 3 moves.
 - Detail: whole-account context, procurement tools, software vendors, "Procurement contacts" (Name | Full title | Unit | IT/indirect or direct materials).
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Exclude advertising, media, PR, staffing and market-research firms when the deal is IT or services work, and say so.
@@ -60,12 +60,13 @@ RULES
 - If no IT, indirect or technology procurement lead appears, say so rather than naming a direct-materials buyer.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- Active engagements (Draup-derived) are estimates, not contracts; rank providers by them and never quote outsourced headcount.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 450 words above Detail, tables included.
 ```
 
 <details>

@@ -29,7 +29,7 @@ INPUTS (edit these)
 - What I sell: [One line, e.g. cloud infrastructure managed services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry.
+1. Find the company by its website (no match: retry once by name, show match and score) and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry.
 2. Pull the account's top 50 outsourced workloads with engagements, and each one's share of that total.
 3. Pull the industry's top 50 outsourced workloads and shares the same way. If it returns zeros, try the parent industry and name it.
 4. For the industry's top 20, compute an index: account share ÷ industry share. Under 0.5 = under-indexed; over 2.0 = over-indexed (editable defaults).
@@ -41,7 +41,7 @@ OUTPUT
 - Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
 - "Workload mix" (top 10 by industry share): Workload | Account share | Industry share | Index | Read.
 - "Under-indexed": up to 3 matching [What I sell], each as a question ("peers outsource this more; is it in-house?"). "Over-indexed": up to 3 that may suit consolidation or rate pressure.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 - Detail: rows 11–20 of the mix and "Providers" (Industry rank | Provider | At the account? engagements or No).
 
 RULES
@@ -50,12 +50,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 420 words including tables.
 ```
 
 <details>

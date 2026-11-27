@@ -29,7 +29,7 @@ INPUTS (edit these)
 - What I sell: [One line, e.g. GCC build-operate-transfer and talent services in India — skip if you ran the start-here prompt]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+1. Find the company by its website (no match: retry once by name, show match and score) and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
 2. Pull sites Draup tags as global capability centres (GCCs), all functions: metro, country, indicative size, functions hiring, 12-month postings, growth index. Count each site once; drop sites hiring mainly in manufacturing (likely plants).
 3. Pull IT and R&D footprint summaries. Take likely new sites only from news naming a new centre or office; Draup's "New Site" tag can also mark established sites.
 4. Pull centre setup and expansion news (12 months) where [Company] is the actor.
@@ -42,7 +42,7 @@ OUTPUT
 - "Centres": Metro | Country | Functions hiring | Postings (12 mo) | Indicative size. By postings.
 - "Maturity" (editable defaults): Nascent = 1–2 centre metros, one main function; Scaling = 3–5 metros or several fast-growing functions; Mature = 6+ metros, several functions, average or slower growth.
 - "Recommended play": build-operate-transfer or centre-as-a-service (nascent or new site), centre-of-excellence expansion (scaling), managed services (mature), or not a centre account, and why.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 - Detail: "Likely new sites (from news)" (Metro | Date | What opened), IT and R&D footprint, and "Peers" (Company | Centre locations).
 
 RULES
@@ -51,12 +51,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
 - Label inferences (buyer role, intent, fit) "likely".
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 430 words including tables.
 ```
 
 <details>

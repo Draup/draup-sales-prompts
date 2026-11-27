@@ -20,50 +20,50 @@ INPUTS (edit these)
 - Competitor: [rival services firm's website, e.g. infosys.com]
 - What I sell: [one line, e.g. SAP S/4HANA migration and managed services — skip if you ran the start-here prompt]
 - Vertical (optional): [e.g. Automotive]
+- Territory (optional): [HQ country in full, e.g. Germany; blank uses my saved territory]
 - Where we lose to them (optional): [paste win/loss notes, e.g. lost on offshore price]
 - Proof we can cite (optional): [e.g. halved SAP ticket backlog at Fabrikam Foods]
 
 CONTEXT (optional)
-Whole-firm totals flatter a big rival; the numbers that matter are in my workloads (types of work, e.g. ERP Implementation).
+Whole-firm totals flatter a big rival; what matters is my workloads (e.g. ERP Implementation).
 
 STEPS
-1. Find [Competitor] by website and confirm it is the parent, not a subsidiary or brand; if unclear, ask me. Map What I sell to its 1–3 main workloads and say which.
-2. Pull HQ, workforce, and latest fiscal-year revenue and growth (in USD).
-3. Pull its top 10 customers by active engagements in my workloads (primary industry [Vertical] if given), and the firm-wide top 10 for contrast. Show both counts.
-4. Pull its top 8 workloads overall and its top 3 delivery locations from the firm's summary (the full location list is very long).
+1. Find [Competitor] by website and confirm the parent, not a subsidiary or brand; if unclear, ask me. Map What I sell to its 1–3 main workloads and say which.
+2. Pull HQ, workforce, and latest fiscal-year revenue and growth (USD).
+3. Pull its top 10 parent-company customers by active engagements in my workloads (primary industry [Vertical], HQ in [Territory], if given). Then, in one customer lookup without the provider filter, get those 10 accounts' total engagements in my workloads; share = rival ÷ total: Red 30%+ (entrenched), Amber 10–29%, Green under 10%.
+4. Pull its top 8 workloads and top 3 delivery locations from the firm's summary.
 5. Search 180 days of news on them (deals, acquisitions, leadership); review 30+ items.
-6. Pick the first account to use the card on: a top-10 customer in my workloads where they hold few engagements (3 or fewer, editable default). Pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+6. Pick the first account: the top-10 customer with the most engagements in my workloads where they rate Green or Amber. Pull its top 3 executives in the function closest to What I sell and its top 90-day news item.
 
 OUTPUT
-- Bottom line: 2 sentences — their size and strength in my workloads, and where [What I sell] can win.
-- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none is found, say so.
-- "Where they deliver my work": Customer | Industry | Engagements in my workloads / total. Top 10.
+- Bottom line: 2 sentences — their strength in my workloads and where [What I sell] can win.
+- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none, say so.
+- "Where they deliver my work" (top 10): Customer | Industry | Rival / all engagements in my workloads | Share | Rating. Green = under 10%.
 - "How we win": 3 angles tied to facts above and [Proof we can cite]; one landmine where they're strongest.
-- "Trap questions": 3 discovery questions that surface their weak spots without naming them.
+- "Trap questions": 3 questions that expose their weak spots without naming them.
 - "Objection to expect": their likely claim and a one-line, data-backed reply.
-- Detail: what they win (workload, engagements); delivery hubs; recent moves (date, move, source, why it matters; up to 6); "Where we lose" counters for each pattern in my notes.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: what they win (workload, engagements); delivery hubs; recent moves (up to 6, dated, sourced, why it matters); "Where we lose" counters.
+- Gaps: what Draup lacked, to ask in discovery.
 
 RULES
 - Never build an angle on catch-all workloads (Project/Programs Management, Account Management).
-- Mark the card "Internal use": customer lists are for targeting, not for quoting to clients.
-- Claim no results beyond [Proof we can cite].
+- Mark the card "Internal use" (customer lists are for targeting, not quoting); claim no results beyond [Proof we can cite].
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Engagements are "active engagements (Draup-derived)": activity estimates, not contracts or headcount.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alikes and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. Flag conflicting or single-source figures as unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Bottom line and next step first: internal battlecard on [Competitor] for [What I sell] — top customers in my workloads, 180 days of moves, three ways we win, three trap questions, and the first account to use it on.
+Bottom line and next step first: internal battlecard on [Competitor] for [What I sell]: top customers in my workloads rated Red/Amber/Green by its share, 180 days of moves, three ways we win, trap questions, first account.
 ```
 
 ### Follow-ups
@@ -76,7 +76,7 @@ Bottom line and next step first: internal battlecard on [Competitor] for [What I
 ### Tips
 
 - Paste your win/loss notes. The 'Where we lose' section is often the part reps use most.
-- Read the 'in my workloads / total' column: a rival with hundreds of engagements firm-wide can be thin in your area.
+- Read the Share column: a rival with hundreds of engagements firm-wide can hold under 10% of an account's work in your area (Green).
 
 ## Battlecard: beat a rival software vendor
 
@@ -96,50 +96,50 @@ INPUTS (edit these)
 - Competitor: [rival vendor's website or product, e.g. datadoghq.com or Datadog]
 - What I sell: [one line, e.g. observability and IT operations software — skip if you ran the start-here prompt]
 - Vertical (optional): [e.g. Retail]
+- Territory (optional): [HQ country in full, e.g. United States of America; blank uses my saved territory, or ask]
 - Where we lose to them (optional): [paste win/loss notes, e.g. lost on bundled pricing]
-- Proof we can cite (optional): [e.g. Fabrikam Foods cut alert noise by half in one quarter]
+- Proof we can cite (optional): [e.g. Fabrikam Foods halved alert noise]
 
 CONTEXT (optional)
-IT services firms and consultancies show up as big "users" because they implement or resell the rival; they're its partners, not targets. What matters is large end users, with usage strength showing whether the product is core or fading.
+Implementers and resellers look like big users; they're partners, not targets.
 
 STEPS
 1. Find [Competitor] by website and confirm the parent. If I named a product, use its maker. If unclear, ask me.
-2. Pull HQ, workforce, revenue and growth (USD), and their top 5 products by install count.
-3. In one list, pull the 10 largest companies by total workforce whose stack includes [Competitor] products, in primary industry [Vertical] if given. Exclude IT services, consulting and outsourcing firms (likely implementers or resellers) and say how many. Flag subsidiaries and holding companies.
-4. For the top 5, check the whole stack for any [Competitor] product, whatever area it's filed under, with usage and last-seen date. Low, or not seen in 6 months, is "fading".
-5. Search 180 days of news on them (launches, acquisitions, partnerships, leadership); review 30+ items.
-6. Pick the first account to use the card on: the largest Amber or fading install. Pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+2. Pull HQ, workforce, revenue and growth (USD), and top 5 products by installs.
+3. In one short company list (Opportunities view, sorted by total_workforce, never employee_count), pull the 10 largest parent companies running [Competitor] products, in primary industry [Vertical] and HQ in [Territory]. Exclude IT services, consulting and outsourcing firms and say how many. Merge subsidiaries into parents; flag holding companies.
+4. For the top 5, check the whole stack for any [Competitor] product in any area (usage, last seen). Count installs only at High or Medium; Low or unseen for 6 months is "fading" (not counted); ignore very-low-confidence detections and say so.
+5. Search 180 days of their news (launches, acquisitions, partnerships, leadership); review 30+ items.
+6. First account: the largest Amber or fading install in [Territory] whose top executives sit at the parent, not a branch or subsidiary. Pull its top 3 executives in the function closest to What I sell and its top 90-day news item.
 
 OUTPUT
 - Bottom line: 2 sentences — how entrenched they are and where [What I sell] can win.
-- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none is found, say so.
+- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none, say so.
 - "Where they're installed": Company | Industry | Workforce | Main product | Usage rating. Rows 6–10: "usage not checked".
 - "How we win": 3 angles tied to facts above and [Proof we can cite]; one landmine.
-- "Trap questions": 3 discovery questions that surface their weak spots without naming them.
-- "Objection to expect": their likely claim and a one-line reply.
+- "Trap questions": 3 questions that expose their weak spots without naming them.
+- "Objection to expect": their likely claim and a reply.
 - Detail: top products by install count; excluded implementers; recent moves (up to 6, dated, sourced); "Where we lose" counters.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked, to ask in discovery.
 
 RULES
 - Mark the card "Internal use". Claim no results beyond [Proof we can cite].
-- No install in [Vertical]? Say so and show neighbouring industries.
+- No install in [Vertical] or [Territory]? Say so and show neighbouring industries or regions.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Trust last-seen date and usage strength, not first-seen dates. Say "fading", never "dropped".
-- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Trust last-seen date and usage, not first-seen dates; say "fading", never "dropped".
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)"; ignore "Generic" rows.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alikes and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. Flag conflicting or single-source figures as unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
 ```
 
 ### Quick version
 
 ```text
-Bottom line and next step first: battlecard on [Competitor] for [What I sell] — the 10 largest end users running it (no IT services firms) with usage, 180 days of moves, how we win, and the first account to try.
+Bottom line and next step first: battlecard on [Competitor] for [What I sell]: the 10 largest parent end users in my territory running it (no IT services firms), usage, 180 days of moves, how we win, first account.
 ```
 
 ### Follow-ups
@@ -153,6 +153,7 @@ Bottom line and next step first: battlecard on [Competitor] for [What I sell] �
 
 - If your rival is a product inside a bigger company (a cloud database, say), name the product. Claude records the maker and checks every product it makes.
 - Usage strength and last-seen date matter more than the install count: Medium or fading installs are where switching conversations start.
+- Set a Territory (or save one in setup). Without it the list ranks the world's largest companies, so the first account can be one you can't sell to.
 
 ## ABM openers for 10 accounts at once
 
@@ -169,43 +170,43 @@ Bottom line and next step first: battlecard on [Competitor] for [What I sell] �
 Act as my ABM copywriter. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
-- Accounts: [websites, up to 10 per pass, e.g. pepsico.com, medtronic.com, 3m.com, fedex.com]
+- Accounts: [websites, up to 10 per pass, e.g. pepsico.com, medtronic.com, fedex.com]
 - Business function: [e.g. Supply Chain]
-- Persona: [the title you're writing to, e.g. VP Supply Chain Planning]
+- Persona: [title, e.g. VP Supply Chain Planning]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 - Proof point (optional): [e.g. cut planning cycle time at Fabrikam Foods]
 - Co-sell partner (optional): [e.g. Tailspin Partners]
 
 CONTEXT (optional)
-Write in the persona's words: a CFO hears cost and risk; a planning VP hears forecast accuracy, service levels and inventory. One dated, relevant signal beats three generic ones.
+A CFO hears cost and risk; a planning VP hears forecast accuracy and inventory. One dated, relevant signal beats three generic ones.
 
 STEPS
-1. Take the first 10 accounts. Resolve them by website in one company lookup and confirm each is the parent, not a subsidiary or brand. List any you can't resolve and carry on.
-2. For each, pull its top 3 [Business function] priorities, newest quarter first, with source and quarter. Keep the best fit for [What I sell].
-3. Pull one news feed for all 10, last 60 days, money-or-change categories only (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check their top-ranked signals inside the 60 days.
-4. Keep one item per account where the account is the actor, preferring one linked to the priority. Customer orders placed with the account count only as context.
-5. Write 2 sentences to [Persona], in their language: the signal and its date; then the link to the priority and the problem [What I sell] solves for that persona, ending in a soft question. Use [Proof point] in at most two messages. With [Co-sell partner], add ONE joint note for the strongest row.
-6. For the first account to send, pull its top 3 executives in [Business function] and pick the closest match to [Persona].
+1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup, showing the match and score; list any that still fail and carry on, never dropping one silently.
+2. For each, pull its top 3 [Business function] priorities (newest first, with source and quarter) and keep the best fit for [What I sell].
+3. Pull one news feed for all 10, last 60 days, money-or-change categories (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check top-ranked signals in the window.
+4. Keep one item per account where the account is the actor, preferring one linked to the priority. Orders placed with the account are context only.
+5. Write 2 sentences to [Persona], in their language: the signal and date; then the priority link and the problem [What I sell] solves for them, ending in a soft question. [Proof point] in at most two messages; with [Co-sell partner], add ONE joint note for the strongest row.
+6. For the first account, pull its top 3 executives in [Business function] and pick the closest match to [Persona].
 
 OUTPUT
 - Bottom line: 2 sentences — how many accounts have a strong hook and which to send first.
-- Recommended next step: who to send first (name and title from step 6), and the dated signal. If none is found, say so.
-- Table: Account | Signal (date) | Priority (quarter) | Message | Strength. Strong first. Strong = signal links to priority; OK = both, unlinked; Weak = priority only.
+- Recommended next step: who to send first (name and title from step 6), and the dated signal; if none, say so.
+- Table: Account | Signal (date) | Priority (quarter) | Strength | Message. Strong first. Strong = signal links to priority; OK = both, unlinked; Weak = priority only.
 - Detail: sources for each row; the joint partner note; "Skipped" (not found or no [Business function] priority).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked, to ask in discovery.
 
 RULES
 - 45 words or fewer per message. No flattery or claims about the reader's own work.
 - No qualifying signal: write from the priority alone, mark Weak. Never invent or re-date a signal.
-- Quote priorities in Draup's words. After 10 accounts, show the table and continue with the next 10 unless I say stop.
+- Quote priorities in Draup's words. After 10 accounts, show the table and continue unless I say stop.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alikes and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. Flag conflicting or single-source figures as unverified.
+- If an account sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
 ```
 
@@ -246,28 +247,29 @@ INPUTS (edit these)
 - Vertical: [industry, e.g. Automotive]
 - Persona: [title, e.g. Head of Supply Chain Planning]
 - Business function: [the persona's function, e.g. Supply Chain]
+- Territory (optional): [HQ country or region, e.g. Germany; blank uses my saved territory]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 - Proof point (optional): [e.g. cut forecast error at Fabrikam Foods]
 
 CONTEXT (optional)
-A sequence lands when every email is about the persona's own problem and carries proof that a peer is acting on it. Industry priorities give the themes, but they come undated; the proof has to come from named companies with dates.
+A sequence lands when every email is about the persona's own problem and carries proof that a peer is acting on it. Industry priorities give themes but no dates; proof must come from named, dated companies.
 
 STEPS
 1. Match [Vertical] to Draup's industry name and map [Business function] to its 1–3 main workloads; say which. If the industry returns zeros, say so and try the parent industry, naming it.
 2. Pull the industry's priorities and judge fit from each priority's text.
 3. Pick the 3 closest to [Business function] and [What I sell]. If no priority sits in the function, use the nearest (for Supply Chain: Manufacturing, Procurement, Management & Strategy) and say so.
-4. For each, find one named company in [Vertical] acting on it in the last 180 days: first the priority's own examples; if they carry no date, pull the dated [Business function] priorities of 2–3 of the industry's largest employers, then Draup's industry news (search first, then the feed for links). The company must be the actor.
-5. Name the first account to load: the company behind the strongest dated example (or the largest employer if none). Pull its top 3 executives in [Business function] and pick the closest match to [Persona].
+4. For each, find one named company in [Vertical] acting on it in the last 180 days: first the priority's own examples; if they carry no date, pull the dated [Business function] priorities of 2–3 of the industry's largest parent employers in [Territory] (company list sorted by total workforce), then industry news (search, then the feed for links). The company must be the actor.
+5. Name the first account to load: the company behind the strongest dated example (or the largest in [Territory] if none). Pull its top 3 executives in [Business function] and pick the closest match to [Persona].
 
 OUTPUT
 - Bottom line: 2 sentences — the persona's top industry pressure and the angle the sequence takes.
-- Recommended next step: the first account to load, who to send it to (name and title from step 5), and the dated example. If none is found, say so.
+- Recommended next step: the first account to load, who to send it to (name and title from step 5), and the dated example. If none, say so.
 - Email 1 (day 1): subject (7 words max) and body on priority 1.
 - Email 2 (day 4): priority 2, using [Proof point] if given.
 - Email 3 (day 9): priority 3, a short close-the-loop note.
 - Each body: company example, the problem, one sentence on how [What I sell] helps, one low-effort call to action.
 - Detail: "Priorities used": Priority | Why it fits the persona | Company example (month, year, source).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked, to ask in discovery.
 
 RULES
 - 120 words or fewer per body. Plain language, no hype, no emoji.
@@ -275,13 +277,12 @@ RULES
 - No example found: write on the priority alone and flag it. Claim no results beyond [Proof point].
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
-- Map a business function to its 1–3 main Draup workloads (types of work, e.g. Cloud) and say which you used.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alikes and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. Flag conflicting or single-source figures as unverified.
+- Never return a blank table: say what came back empty and use the fallback.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff. To widen, pull the next page of 10 in the function once and look for Chief, EVP, CIO or 'Head of' titles. A C-level profile whose tenure or past employers don't fit the parent is "verify": keep them out of copy.
 - Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables; then offer to continue.
 ```
 
@@ -345,8 +346,8 @@ RULES
 - One metric at a time; offer the next.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. If the help centre has nothing, say so; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Phone-first: open with Bottom line and Recommended next step. Keep to about 200 words plus the links.
 ```
 

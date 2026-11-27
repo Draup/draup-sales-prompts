@@ -29,7 +29,7 @@ Act as my industry news editor. Use Draup for Sales for every fact. Don't use ou
 INPUTS (edit these)
 - Vertical: [industry, e.g. Insurance, Life Sciences]
 - What I sell: [one line, e.g. claims automation software — skip if you ran the start-here prompt]
-- Country (optional): [in full, e.g. United Kingdom]
+- Country (optional): [in full, e.g. United Kingdom; blank uses my saved territory]
 - Window (optional): [default last 7 days; up to 30 days]
 
 STEPS
@@ -38,27 +38,28 @@ STEPS
 3. Check each company really belongs to the industry; tags can leak to similar names or unrelated events.
 4. Apply the noise rule; also drop board-nominee filings and minor marketing deals. The named company must be the actor, and if I gave a country, the event must happen there.
 5. Keep regional-unit news (e.g. a country CEO change at a global insurer) but name the unit. Merge repeat coverage and count sources.
-6. Rank by relevance to [What I sell], then company size; keep the top 10. For the top 3 companies, attach one fitting stated priority with fiscal quarter.
+6. Rank parent companies by relevance to [What I sell], then size; keep the top 10. For the top 3 companies, attach one fitting stated priority with fiscal quarter.
 7. For the best account to touch, pull the top 3 executives in the function closest to [What I sell].
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - Table (up to 10): Date | Company (unit) | What happened (with any number) | Why it matters for [What I sell] | Sources (count).
 - "Accounts to touch": 3–5, each with reason, linked priority and likely owner.
-- Detail: "Themes" (2–3 patterns citing the rows behind each); region, type and source and headline per row; "Dropped" count by reason; Gaps (what Draup lacked, to ask in discovery).
+- Detail: "Themes" (2–3 patterns citing the rows behind each); region, type and source and headline per row; "Dropped" count by reason; Gaps (to ask in discovery).
 
 RULES
 - Keep amounts in the reported currency; convert to USD in brackets only if I ask, using Draup's rate.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
-- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and re-dated old stories (use the event date). Outages, incidents, breaches and regulatory inquiries count for security, reliability, IT operations or compliance sellers; keep any item that bears directly on What I sell. Give source, headline and link (if any) per item.
+- If sources conflict on a name, date or number, say so and repeat neither as fact; single-source figures are unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 420 words including tables, then offer to continue.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables; then offer to continue.
 ```
 
 <details>
@@ -99,7 +100,7 @@ Which of this week's companies run my competitors' products?
 
 - [Weekly trigger sweep for my book](../../prompts/04-signals-and-timing/weekly-book-sweep.md): One phone-sized table of the week's real triggers across up to 10 accounts, including any CEO or leadership change that takes effect in the window, plus the nearest item just outside the window for every quiet account.
 - [Who in my market just [did X]?](../../prompts/04-signals-and-timing/news-question-templates.md): A clean, dated list of the companies in your industry and country that just did one thing you choose (M&A, layoffs, leadership changes, expansion or new centres, funding, or partnerships), with source counts and a named person at the best account.
-- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry scoped to your region: global size and growth beside a regional size from the top 10 buyers, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

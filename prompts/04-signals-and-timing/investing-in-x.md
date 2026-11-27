@@ -31,33 +31,35 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. AI developer-productivity platform — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website and confirm the parent, not a subsidiary, brand or sister company. If it doesn't resolve, retry once by name; show the match and score. Use Draup's exact name.
 2. Pull the skills and workloads in the company's job postings over the last 12 months, trending up first, and pick those related to my theme using Draup's exact names. Broad labels ("Generative AI") may match nothing; specific ones ("AI-Assisted Development") usually do.
 3. For each: 12-month postings and average per month in the last 5 full months against the 5 before. Flag one-off spikes (one month over half the total). Read declining skills' monthly numbers before trusting the label.
 4. Pull 3 recent postings for the strongest skill: title, date, location, key responsibilities.
 5. Pull the headcount trend for the matching job family (e.g. software developers): a year before the latest month against the latest month.
 6. Pull stated priorities that mention the theme, with source and fiscal quarter.
-7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] and [Company]'s top 90-day news item where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell]. Start with the verdict: Yes (rising hiring, growing headcount and a stated priority), Early (rising hiring only) or No.
-- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Recommended next step: who (name and full title), what to do and why now (one dated fact); if neither, say so and name the title to look for.
 - Table (top 8): Skill | 12-month postings | Avg/month, prior 5 | Avg/month, last 5 | Note.
 - "Talking points": 3, each with a number and its date.
-- Detail: proof postings (Title | Date | Location | What the role does); headcount (job family, then and now, % change, months covered); stated priorities (name, source, quarter, likely owner); Gaps (what Draup lacked, to ask in discovery).
+- Detail: proof postings (Title | Date | Location | What the role does); headcount (job family, then and now, % change, months covered); stated priorities (name, source, quarter, likely owner); Gaps (to ask in discovery).
 
 RULES
 - "Rising" = the last 5 full months beat the 5 before by more than 20% (editable default).
 - Salaries are often missing from postings; don't estimate them.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Talent-flow data ends about 3 months ago; state the months covered.
 - If one company's posting count is in the millions or above its workforce, the company match failed. Say so and drop it.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own products before choosing an angle.
+- People (professional information only): check each full title against the function; flag subsidiary or branch staff and mark any C-level profile whose tenure or past employers don't fit the parent "verify" (kept out of copy).
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
 ```
 
 <details>

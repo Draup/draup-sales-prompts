@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You sell software and want a systems integrator (SI) already inside the account to open or speed up a deal. Use services-partner-map instead when you want the partner-or-displace play for every priority, and partners-joint-account-plan once you've picked the partner. | Partnerships & Alliances, Account Executive, Presales & Solutions | Software sellers | 2–4 min | Outsourcing deals, Tech stack, Executives & movement, News signals |
+| You sell software and want a systems integrator (SI) already inside the account to open or speed up a deal. Use "Which providers to partner with or replace" instead when you want the partner-or-displace play for every priority, and "Joint account plan with a partner" once you've picked the partner. | Partnerships & Alliances, Account Executive, Presales & Solutions | Software sellers | 2–4 min | Outsourcing deals, Tech stack, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -35,7 +35,7 @@ INPUTS (edit these)
 - Our current partners (optional): [e.g. Tailspin Partners]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry.
+1. Find the company by its website (no match: retry once by name, show match and score) and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry.
 2. If I gave a business function, map it to the 1–3 workloads closest to [What I sell] and say which.
 3. Pull the top 10 providers in those workloads at the account, leaving out agencies and staffing firms, and each one's total engagements at the account. Show "in workload / total".
 4. For the top 5 (plus current partners in the top 10), pull relationship tier and delivery locations.
@@ -45,12 +45,12 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — the partner to call first and why.
-- Recommended next step: a person from step 7 (name and title), what to do (with or through the partner), and why now (the dated news item or another dated fact); if none turned up, say so.
+- Recommended next step: a person from step 7 (name and title), what to do (with or through the partner), and the dated why-now (or say none).
 - "Shortlist": Partner (current partners marked) | In workload / total | Tier | [Technology] engagements in industry | Verdict.
 - Verdict: Lead co-sell (here in the workload and [Technology]-skilled), Access partner (here, little [Technology]), Skills partner ([Technology]-skilled, not here) or Skip. Current partners first.
 - "Call first": one partner, three reasons tied to numbers.
 - "Is [Technology] already there?": installed (strength, last seen) or not seen — expand or land.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - If [Technology] returns nothing, retry with the vendor or product family name and say which worked.
@@ -59,13 +59,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts; never quote outsourced headcount.
 - Rank providers by engagements yourself.
 - Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- People: full profile titles and professional information only, checked against the function; flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? List them and ask. Leadership data lags about 3 months.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each), reference tables under "Detail"; about 420 words including tables.
 ```
 
 <details>
@@ -102,7 +102,7 @@ Build a joint account plan for [Company] with [Partner].
 
 - [Which providers to partner with or replace](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it with their engagements in that function, and whether to partner, displace or walk through an open door.
 - [Profile a services firm, rival or partner](../../prompts/10-outsourcing-and-services/competitor-profile.md): A services firm's size, top customers, workloads and delivery hubs in your segment, ending in how to out-position it (rival) or where to team with it (partner), and a named person to act on.
-- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
+- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): Whether a named competitor is really installed (High or Medium usage), where it sits, any overlapping product or one the account owns, the priorities that could trigger a switch, and three bullets on how to win.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

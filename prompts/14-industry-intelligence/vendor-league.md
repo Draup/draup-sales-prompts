@@ -16,6 +16,7 @@
 |---|---|
 | `[Vertical]` | Life Sciences |
 | `[Workload (optional)]` | Application Development & Maintenance |
+| `[Territory (optional)]` | United States of America |
 | `[My company]` | Northwind Data Services (illustrative) |
 | `[What I sell]` | clinical-data platform services |
 
@@ -29,14 +30,15 @@ Act as my services market analyst. Use Draup for Sales for every fact.
 INPUTS (edit these)
 - Vertical: [industry, e.g. Life Sciences]
 - Workload (optional): [a type of work, e.g. Application Development & Maintenance]
+- Territory (optional): [client HQ country or region; default: my territory from setup, e.g. United States of America]
 - My company: [as Draup spells it, e.g. Northwind Data Services (illustrative)]
 - What I sell: [one line, e.g. clinical-data platform services — skip if you ran the start-here prompt]
 
 STEPS
 1. Resolve the vertical to Draup's name and show it.
-2. Pull the vertical's top outsourcing vendors (a fixed top 50). Remove advertising and media agencies, staffing, market-research, merchandising and field-marketing firms; list what you removed. Keep the top 15.
-3. Pull the top 10 outsourced workloads and the top 10 outsourcing buyers.
-4. If I gave a workload, pull the top 10 providers for it among companies whose primary vertical is [Vertical].
+2. With a Territory, rank providers by active engagements at [Vertical] companies HQ'd in [Territory] (top 50; say it is a regional ranking). With none, pull the vertical's fixed global top 50 vendors. Remove advertising and media agencies, staffing, market-research, merchandising and field-marketing firms; list what you removed. Keep the top 15.
+3. Pull the top 10 outsourced workloads and the top 10 outsourcing buyers (in [Territory] if set), merging subsidiaries into parents.
+4. If I gave a workload, pull the top 10 providers for it among companies whose primary vertical is [Vertical] (HQ in [Territory] if set).
 5. Find [My company]'s rank and active engagements, or say "not in the top 50"; if nothing returns, try the short brand name.
 6. For the top buyer where [My company] is absent: its top 3 executives in the function closest to What I sell and its most important news item from the last 90 days.
 
@@ -56,12 +58,13 @@ RULES
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
 - News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
 - If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - Counts apply every filter I set.
+- People: check titles against the function; flag subsidiary or branch staff; mark C-level profiles whose tenure or past employers don't fit "verify" and keep them out of drafted copy. No senior owner: pull the next page of 10 in the function once and look for Chief, EVP, CIO or "Head of" titles.
 - At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
 ```
 
@@ -69,7 +72,7 @@ STANDARD RULES (leave as is)
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Bottom line and next step first: rank the top 10 outsourcing providers in [Vertical] by active engagements, agencies and staffing removed; show where [My company] ranks, the top buyers, and who to call at the best opening.
+Bottom line and next step first: rank the top 10 outsourcing providers in [Vertical] (clients in [Territory]) by active engagements, agencies and staffing removed; show where [My company] ranks, the top buyers, and who to call.
 ```
 
 </details>
@@ -94,10 +97,11 @@ Which buyers have no top-5 provider in [Workload]?
 
 - Engagement counts measure breadth of relationship, not revenue.
 - Agencies and staffing firms rank high on raw counts; the prompt removes them so the table shows real services rivals.
+- Set Territory to see who wins work from clients in your region; the global list can rank a different leader first.
 
 ## Related prompts
 
-- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry scoped to your region: global size and growth beside a regional size from the top 10 buyers, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
 - [A rival's customers you can win](../../prompts/10-outsourcing-and-services/competitor-customers.md): A ranked list of a rival's customers in your industry and country, how entrenched it is at each, and the 3 to attack first, with a named buyer at the best one.
 - [How their vendor mix compares with peers](../../prompts/10-outsourcing-and-services/vendor-mix-benchmark.md): Where the account outsources more or less than its industry, which leading industry providers it doesn't use yet, and who to raise it with.
 

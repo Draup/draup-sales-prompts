@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Quarterly in your top accounts, or when you need a reason to reach a new part of a customer. Use this to widen into functions you don't cover; use "New leaders and warm paths" (people-new-leaders-warm-paths) instead for warm intros in the function you already sell to. | Account & Customer Success Manager, Account Executive, SDR / BDR, Sales Leader & RevOps | Everyone | 2–4 min | Executives & movement, News signals, Priorities & opportunities |
+| Quarterly in your top accounts, or when you need a reason to reach a new part of a customer. Use this to widen into functions you don't cover; use "New leaders and warm intro paths" instead for warm intros in the function you already sell to. | Account & Customer Success Manager, Account Executive, SDR / BDR, Sales Leader & RevOps | Everyone | 2–4 min | Executives & movement, News signals, Priorities & opportunities |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -34,7 +34,7 @@ CONTEXT (why this matters)
 New leaders review vendors and set priorities in their first year; in a customer, one in an uncovered function is the cleanest way in.
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+1. Find [Company] by website (no match: retry once by name, show match and score) and confirm the parent, not a subsidiary; if unsure, ask me.
 2. Pull senior leaders in [Functions we don't cover], 10 per page, up to 3 pages. Keep Director and above by full title with 18 months or less in their current title (editable default).
 3. Search Draup's news for executive appointments, departures and interim roles at [Company] in the last 6 months; keep only items where [Company] is the employer, and mark the most important from the last 90 days.
 4. Pull up to 3 priorities per uncovered function (latest fiscal quarters first) and match each new leader to the closest by function and title.
@@ -42,12 +42,12 @@ STEPS
 
 OUTPUT
 - Bottom line: 2 sentences — the best new budget holder and what it means for [What I sell]. Add: people checked, pages, people kept.
-- Recommended next step: a named person (name, full title), the top new leader, the action this week and the dated why-now; if none, say so.
+- Recommended next step: a named person (name, full title), the top new leader, the action this week and the dated why-now (or say none).
 - Table "New budget holders" (up to 10): Name | Full title | Function | Months in title | Linked priority (quarter).
 - "First-90-days angles": top 3 leaders, 2 lines each, tied to [What I sell] and to proof from the part of [Company] we serve.
 - "Announced changes" (6 months): Date | Change (appointment, exit, interim) | Role | Source.
 - Detail: each leader's unit (flag subsidiaries), location and budget control; functions with no new leader.
-- Gaps: what Draup didn't have; ask it in discovery.
+- Gaps: what Draup lacked; ask in discovery.
 
 RULES
 - Interim leaders and announced searches mean decisions may wait; say so next to the person.
@@ -55,14 +55,15 @@ RULES
 - Board appointments are not budget holders.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me.
-- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
-- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date and source every fact (headline for news); gaps are "Not in Draup", never filled from memory.
+- People: pick by full profile title, not rank; check it fits the function (Draup names: IT, Sales & Marketing); flag subsidiary or branch staff. No C-level, EVP or "Head of"? Pull the next page of 10 in the function once for Chief, EVP, CIO or "Head of" titles. Mark "verify" any C-level profile whose tenure or past employers don't fit the parent; keep it out of drafted copy. Several share a title? Ask. No personal contact details.
 - Leadership data can lag about 3 months; give the latest move date seen.
 - If European executives return none, say profiles there may be restricted.
-- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
-- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 400 words, tables included; Detail and Gaps follow or are offered.
+- News: a question search plus the company feed (deals, M&A, executive moves, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories unless they bear on What I sell. Conflicting names or numbers: say so, repeat neither; single-source figures are unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- If [Company] sells technology or services, drop priorities, news and hiring about its own offerings before choosing an angle; never pitch it its own category.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows); about 400 words above Detail, tables included.
 ```
 
 <details>

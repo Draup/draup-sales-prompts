@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| After you've picked a co-sell partner for an account and need a shared plan before the joint kickoff call. Use services-cosell-partner instead if you haven't picked the partner yet. | Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller, Presales & Solutions | Everyone | 4–6 min | Outsourcing deals, Priorities & opportunities, Tech stack, Executives & movement, News signals |
+| After you've picked a co-sell partner for an account and need a shared plan before the joint kickoff call. Use "Pick the SI to co-sell with" instead if you haven't picked the partner yet. | Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller, Presales & Solutions | Everyone | 4–6 min | Outsourcing deals, Priorities & opportunities, Tech stack, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -26,7 +26,7 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my alliance manager. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my alliance manager. Use Draup for Sales for every fact. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [Website, e.g. allianz.com]
@@ -34,41 +34,40 @@ INPUTS (edit these)
 - Our technology: [Our product or its maker as Draup names it, e.g. Snowflake]
 - Competitor (optional): [Rival maker, e.g. Databricks]
 - Business function: [Where the buyers sit, e.g. IT]
-- What I sell: [One line, e.g. data quality and observability software — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. data quality and observability software; skip if saved in setup]
 
 STEPS
-1. Find the company by its website and confirm it's the parent, not a subsidiary. Use Draup's exact name from then on.
+1. Find the company by its website and confirm it's the parent, not a subsidiary. No result: try its name once and show the match score. Use Draup's exact name from then on.
 2. Pull the account's top 10 providers, once limited to [Business function] and once for the whole account; note [Partner]'s rank and engagements in each.
 3. Pull [Partner]'s engagement detail at the account (workloads, tier, locations) and its engagements per workload. Pick up to 3 joint workloads closest to [What I sell], skipping catch-alls.
-4. Pull priorities in the joint workloads, newest first; keep the 5 most relevant with source and quarter, noting whether [Partner] or our tools are linked.
-5. Check the whole tech stack for products made by [Our technology] and [Competitor], whatever area they're filed under: usage strength and last seen. Rate [Competitor]: Red for High usage in the workloads I sell into; Amber for Medium usage there or anything newly detected in 12 months; otherwise Green, still listed.
-6. Pull 10 leaders in [Business function]; keep up to 4, preferring group-level people, and label each person's unit.
-7. Timing: from the last 90 days of news, keep at most 2 reasons to act now (skip the account's own product launches).
+4. Pull priorities in the joint workloads, newest first; keep the 5 most relevant (source, quarter, whether [Partner] or our tools are linked).
+5. Check the whole tech stack for products made by [Our technology] and [Competitor], whatever area they're filed under: usage strength and last seen. Count only High or Medium usage. Rate [Competitor]: Red for High usage in my workloads; Amber for Medium there or newly detected in 12 months; otherwise Green, still listed.
+6. Pull 10 leaders in [Business function]; keep up to 4, group-level first, with each one's unit.
+7. Timing: up to 2 reasons to act from the last 90 days of news.
 
 OUTPUT
 - Bottom line: 2 sentences — the joint play and why it beats either firm alone.
 - Recommended next step: one person from step 6 (name and title), who opens (us or [Partner]), and why now (a step-7 item). If none turned up, say so.
 - "Joint workloads": Workload | [Partner] engagements | Linked priorities | [Our technology] status | [Competitor] rating.
-- "90-day plan": Days | Action | Our owner (role) | [Partner] owner (role) | Done when — for days 1–30 (align, access), 31–60 (discovery, proof) and 61–90 (joint proposal).
+- "90-day plan": Days | Action | Our owner | [Partner] owner | Done when, for days 1–30 (access), 31–60 (discovery, proof), 61–90 (joint proposal).
 - Gaps: what Draup didn't have — worth asking the partner.
-- Detail: "Partner position" (rank and engagements in function and total, tier, locations); "Priorities to pitch together" (Priority | Quarter | [Partner] linked? | Joint play | Likely owner); "People" (Name | Full title | Unit | Who opens).
+- Detail: partner position (rank and engagements in function and total, tier, locations); priorities to pitch together (Priority | Quarter | [Partner] linked? | Likely owner); people (Name | Full title | Unit | Who opens).
 
 RULES
-- If [Partner] has fewer than 3 engagements in the joint workloads (editable default), call the plan partner-light and name the best-placed provider in those workloads.
+- Under 3 [Partner] engagements in the joint workloads (editable)? Call the plan partner-light and name the best-placed provider.
 - A strategic-tier partner protects its scope: position [What I sell] as speeding its delivery.
-- If [Competitor] is rated Red, plan for a bake-off or a coexist position and say which.
-- Links between priorities and tools or providers are by workload: say "linked", never "used for".
+- [Competitor] Red? Plan a bake-off or coexist position; say which.
+- Priority links to tools or providers are by workload: say "linked".
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me first.
-- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
-- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
-- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
-- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
-- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
-- If [Company] sells technology, drop priorities and tools about its own products.
-- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 480 words including tables.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- If an account sells technology or services, drop priorities, news and hiring about what it sells; never pitch it its own category.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 480 words including tables, then offer more.
 ```
 
 <details>

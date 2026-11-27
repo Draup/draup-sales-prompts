@@ -26,19 +26,19 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my services-pursuit analyst. Use the Draup for Talent connector for layoff data, and the Draup for Sales connector for company facts, executives and news. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my services-pursuit analyst. Use the Draup for Talent connector for layoff data, and the Draup for Sales connector for company facts, executives and news. No outside knowledge unless I ask, labelled.
 
 INPUTS (edit these)
 - Company: [website, e.g. 3m.com]
 - Location (optional): [country or metro, e.g. United States of America]
 - Roles of interest (optional): [e.g. software engineer, QA]
-- What I sell: [one line, e.g. managed engineering services — skip if you ran the start-here prompt]
+- What I sell: [one line, e.g. managed engineering services; skip if saved in setup]
 
 CONTEXT (optional)
 Cuts in one function plus hiring in another often mean work is moving, not disappearing; that's the services opening. Buyers react badly to outreach that leads with job losses, so the message must be about the business problem.
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary or a similarly named firm. If unclear, ask me.
+1. Find [Company] by website and confirm it is the parent, not a subsidiary or a similarly named firm. If the website returns nothing, look it up by name once and show the match and its score. If unclear, ask me.
 2. Pull the layoffs Draup records at [Company] in the last 12 months, in [Location] if given, grouped by month.
 3. Break the same records down by job title (top 10) and location (top 10). Show any roles of interest separately.
 4. Map the top titles to business functions (IT, engineering, customer service, finance) and name the functions with the deepest cuts.
@@ -51,7 +51,7 @@ OUTPUT
 - "Roles affected": Job title | Count | Function. Top 10.
 - "Possible outsourcing trigger": 3 bullets on whether work looks outsourced, consolidated or automated, and what [What I sell] could take on. Mark each "likely".
 - Detail: by month; by location (top 10); skills now more available in the market, for your delivery hiring plans; news used.
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have, to ask in discovery.
 
 RULES
 - Counts come from profiles Draup holds with a layoff date: a sample that shows the pattern, not the official total. Say so.
@@ -59,13 +59,13 @@ RULES
 - Keep any outreach about the business problem, not the layoffs.
 
 STANDARD RULES (leave as is)
-- If an input still shows its example, use my saved context or ask me first.
-- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
-- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
-- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
-- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
-- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+- News: the company must be the actor; drop stock chatter, politics, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories; keep anything bearing on What I sell. Conflicting sources: say so; single-source figures are unverified.
+- People: full profile titles that fit the function; flag subsidiary or branch staff and mark C-level profiles that don't fit the parent (tenure, past employers) "verify", out of copy. No economic buyer? Check the next page of 10 for Chief, EVP, CIO or "Head of". Data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback.
+- Phone-first: bottom line and next step first; up front at most 2 tables (5 columns, 10 rows), the rest under "Detail"; about 400 words including tables, then offer more.
 ```
 
 <details>

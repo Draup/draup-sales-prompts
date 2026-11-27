@@ -6,7 +6,7 @@
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You have a call in 10 minutes. Use the one-page account brief instead when you have 30 minutes or need the numbers and a competitor check. | Account Executive, SDR / BDR, Account & Customer Success Manager, Presales & Solutions | Everyone | 1–2 min | Company & financials, News signals, Hiring & job postings, Priorities & opportunities |
+| You have a call in 10 minutes, including when you only know who you're meeting by title. Use "One-page account brief" instead when you have 30 minutes or need the numbers and a competitor check. | Account Executive, SDR / BDR, Account & Customer Success Manager, Presales & Solutions | Everyone | 1–2 min | Company & financials, News signals, Hiring & job postings, Priorities & opportunities |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -16,7 +16,7 @@
 |---|---|
 | `[Company]` | medtronic.com |
 | `[What I sell]` | application modernisation and cloud migration services |
-| `[Meeting with (optional)]` | VP Global IT, or a name |
+| `[Meeting with (optional)]` | a name or a title, e.g. CISO or VP Global IT |
 
 ## 2. Copy the detailed prompt
 
@@ -28,23 +28,20 @@ Act as my pre-call research assistant. Use Draup for Sales for every fact.
 INPUTS (edit these)
 - Company: [website, e.g. medtronic.com]
 - What I sell: [one line, e.g. application modernisation and cloud migration services — skip if you ran the start-here prompt]
-- Meeting with (optional): [name or title, e.g. VP Global IT]
-
-CONTEXT (why this matters)
-Ten minutes is enough for one good opener. Company-wide hiring at a large firm is dominated by store, plant or care roles, so this prompt looks only at the function you sell into.
+- Meeting with (optional): [name or title, e.g. CISO or VP Global IT]
 
 STEPS
-1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+1. Find [Company] by website (no match: retry once by name; show the match and score) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Pull the profile: what they do, workforce, latest revenue and its fiscal year.
 3. Pull the top news from the last 90 days where [Company] is the actor.
-4. Pull the top 3 workloads (types of work, e.g. Cloud Computing) trending up in hiring (12 months), by postings, in the business function closest to [What I sell] (e.g. IT); if none is rising there, show that function's top 3 by postings with their trend.
-5. Pull stated priorities for the function closest to [What I sell] and pick the one closest to [What I sell], preferring the function of the person I'm meeting.
-6. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role), and look there for the person I'm meeting.
+4. Pull the top 3 workloads (types of work) trending up in 12-month hiring in the business function closest to [What I sell] (e.g. IT); if none is rising, show that function's top 3 by postings with their trend.
+5. Pull stated priorities for that function and pick the one closest to [What I sell], preferring the function of the person I'm meeting.
+6. Pull the top 3 executives in that function (full title, time in role). If I named who I'm meeting, find them: the workload closest to their title, then the function's next page once, matching full profile titles. Not found: say so in the Bottom line and list the 3 closest.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
 - Recommended next step: one person by name and title (from step 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
-- If I named who I'm meeting: one priority they likely own, and their time in role if step 6 found them.
+- If I named who I'm meeting: a priority they likely own and their time in role, or "Not in Draup" and the 3 closest (name, full title).
 - Then exactly 5 bullets, 25 words or fewer each:
   1. What they do and their size (workforce, revenue, fiscal year).
   2. The 2 most important events from the last 90 days, each dated.
@@ -55,17 +52,16 @@ OUTPUT
 
 RULES
 - If fewer than 2 real events exist, say so; don't pad.
-- If the website match isn't exact or lands on a subsidiary, say which company you used.
-- Executive function tags are loose: skip anyone whose title clearly sits outside the function (e.g. a business-unit president).
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- If an input still shows its bracketed example, use my saved context or ask me first.
 - Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If [Company] sells technology or services, drop priorities, news and hiring about what it sells before choosing an angle; never pitch it its own product category.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling and say which worked.
 - If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
-- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- People: full profile title, not the seniority label; check it fits the function; flag subsidiary or branch staff; list everyone sharing a title (VP and SVP are mid-level in banks and consultancies). Mark C-level profiles whose tenure or past employers don't fit [Company] "verify" and keep them out of drafted copy. No Chief, EVP, CIO or "Head of" title? Pull the next page of 10 in the function once (there is no title search). Professional information only.
 - Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 350 words including tables, then offer to continue.
 ```
 
@@ -100,14 +96,14 @@ Show company-wide hiring too, so I can see where the overall headcount is going.
 
 ## Tips for better results
 
-- Name who you're meeting. Claude picks the priority in their function and checks their time in role.
-- If you have 30 minutes rather than 10, run the one-page account brief instead.
+- Name who you're meeting, even just the title ("CISO"). Claude picks the priority in their function, checks their time in role, and says plainly if Draup has no one with that title.
+- If you have 30 minutes rather than 10, run "One-page account brief" instead.
 
 ## Related prompts
 
-- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, the person you're meeting (or the 3 closest if Draup lacks them), then the priorities in your function, who likely owns them, any competitor in the stack rated Red/Amber/Green and the key numbers.
 - [Discovery questions built on their data](../../prompts/02-buyers-and-stakeholders/discovery-questions.md): An opening insight and eight discovery questions, each built on a dated fact about the account, with the hypothesis behind it and what a good answer tells you.
-- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
+- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A short profile of one senior person, found by name or just by title, with time in role, past companies, what they likely own, a competitor check and two openers. If Draup has no one with that title, you're told so up front and given the 3 closest people.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
