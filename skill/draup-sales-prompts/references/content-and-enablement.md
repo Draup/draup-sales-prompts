@@ -106,8 +106,8 @@ Implementers and resellers look like big users; they're partners, not targets.
 STEPS
 1. Find [Competitor] by website and confirm the parent. If I named a product, use its maker. If unclear, ask me.
 2. Pull HQ, workforce, revenue and growth (USD), and top 5 products by installs.
-3. In one short company list (Opportunities view, sorted by total_workforce, never employee_count), pull the 10 largest parent companies running [Competitor] products, in primary industry [Vertical] and HQ in [Territory]. Exclude IT services, consulting and outsourcing firms and say how many. Merge subsidiaries into parents; flag holding companies.
-4. For the top 5, check the whole stack for any [Competitor] product in any area (usage, last seen). Count installs only at High or Medium; Low or unseen for 6 months is "fading" (not counted); ignore very-low-confidence detections and say so.
+3. In one short company list (default view, sorted by total_workforce, never employee_count), pull the 10 largest parent companies running [Competitor] products, in primary industry [Vertical] and HQ in [Territory]. Exclude IT services, consulting and outsourcing firms and say how many. Merge subsidiaries into parents; flag holding companies.
+4. For the top 5, check the whole stack for any [Competitor] product in any area (usage, last seen). Count installs only at High or Medium on a named product; Low but seen in the last 6 months is "light"; not seen for 6 months is "fading"; if only the Generic row is High, say "present, product not identified".
 5. Search 180 days of their news (launches, acquisitions, partnerships, leadership); review 30+ items.
 6. First account: the largest Amber or fading install in [Territory] whose top executives sit at the parent, not a branch or subsidiary. Pull its top 3 executives in the function closest to What I sell and its top 90-day news item.
 
@@ -181,7 +181,7 @@ CONTEXT (optional)
 A CFO hears cost and risk; a planning VP hears forecast accuracy and inventory. One dated, relevant signal beats three generic ones.
 
 STEPS
-1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup, showing the match and score; list any that still fail and carry on, never dropping one silently.
+1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup using the group or legal name (e.g. "Expedia Group", not "Expedia"), showing the match and score; list any that still fail and carry on, never dropping one silently.
 2. For each, pull its top 3 [Business function] priorities (newest first, with source and quarter) and keep the best fit for [What I sell].
 3. Pull one news feed for all 10, last 60 days, money-or-change categories (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check top-ranked signals in the window.
 4. Keep one item per account where the account is the actor, preferring one linked to the priority. Orders placed with the account are context only.

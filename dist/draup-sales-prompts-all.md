@@ -31,7 +31,8 @@ If the user is new, suggest they first tell you about themselves using the **Tel
 | Why reach out now / what changed at [company] | `signals-whats-actionable` (What's worth acting on now) | `signals-change-log` |
 | Is [competitor] installed at [company]? How do I displace it? | `tech-competitor-installed` (Is a competitor installed?) | `deals-competitive-strategy` |
 | Write an email / opener to [person or company] | `signals-signal-to-email` (Signal-led emails for up to 10 accounts) | `outreach-new-executive` |
-| Cold call script / LinkedIn note / voicemail | `outreach-cold-call` (Cold-call opener, talk track, objections) | `outreach-linkedin-exec` |
+| LinkedIn note or InMail to [person] | `outreach-linkedin-exec` (LinkedIn note and InMail to an executive) | `outreach-new-executive` |
+| Cold call script / voicemail | `outreach-cold-call` (Cold-call opener, talk track, objections) | `outreach-linkedin-exec` |
 | Handle an objection | `deals-objection-handler` (Answer objections with their own facts) | `deals-champion-pack` |
 | Build or size a target list / ICP | `prospect-icp-list` (Size your ideal-customer list) | `prospect-hiring-led-list` |
 | Which accounts are ready for [what I sell]? | `plays-cloud-targets` (Find accounts ripe for cloud migration) | `plays-data-targets` |
@@ -4683,7 +4684,7 @@ STEPS
 2. Hiring: top 20 end employers in [Territory], primary industry [Industry], by postings in Cloud Computing and Infrastructure Management System, 12 months, no staffing firms or job boards.
 3. Outsourcing: [Industry] companies HQ'd in [Territory] ranked by active engagements in those workloads plus Legacy Modernization and Data Centre Management; top 15.
 4. Long list of 10, both lists first: merge subsidiaries into parents; drop cloud providers, IT resellers and services firms, investors, off-industry rows and foreign firms' local teams.
-5. One company-list lookup for the 10 by website: workforce, revenue, providers, cloud and infrastructure tools only; postings per 1,000 employees.
+5. Two company-list lookups of 5 by website: workforce, revenue, providers, cloud and infrastructure tools only; postings per 1,000 employees.
 6. Top 5 by provisional score: up to 5 priorities each in those four workloads, newest first; count only those naming infrastructure, cloud, data centre, platform or core-system modernisation.
 7. One news search across the top 5 on modernisation, cloud, data-centre or infrastructure deals, last 90 days; else each one's most material dated event, labelled indirect.
 8. Top 3: 3 executives each in Cloud Computing or Infrastructure Management System.
@@ -10352,6 +10353,7 @@ OUTPUT
 
 RULES
 - Name any company that makes up over a third of a total.
+- If a vertical total looks implausible (e.g. R&D under 0.1% of revenue), show it as "Draup figure, unverified".
 - "Fit" is judgement (Draup ties no priority to a seller). Vertical lists are a fixed top 50; say so once.
 - Flag off-vertical, sanctioned or state-owned buyers. IT spend tracks revenue, so its growth is no trend.
 - No generic tools (office suites, chat assistants) in technology lists. If I ask for a slide: 5 bullets + 1 table.
@@ -11130,7 +11132,7 @@ INPUTS (edit these)
 STEPS
 1. Use Draup's exact names; map What I sell to its workloads.
 2. List the territory: primary industry [Vertical], HQ in [Territory], [Minimum employees]+ staff (names only, up to 50, by revenue), then again adding "active in my workloads"; mark those and remove exclusions.
-3. For the top 20 workload-active accounts by revenue, run one 90-day news search per account, filtered to its Draup name, with a broad question ("[Account] leadership changes, expansions, partnerships, acquisitions"); do 10, then offer the next 10. Then one search across [Vertical] and [Territory] for off-list actors; if one company fills over half, rerun without it.
+3. For the top 20 workload-active accounts by revenue, pull one 90-day news feed for the first 10 by their Draup names; if one account fills over half, pull again without it; then offer the next 10. Then one search across [Vertical] and [Territory] for off-list actors; if one company fills over half, rerun without it.
 4. Keep items where the account is the actor and the event concerns [Territory]; drop look-alike tags (e.g. "target company" in someone else's deal); merge repeats; off-list actors go to "Acting in the territory".
 5. For the 10 accounts with most trigger types, pull full rows by exact name with only my competitors' products: hiring %, 90-day postings. For the top 5, check rival usage (only High or Medium counts; say how many were Low).
 6. Score (editable): each trigger type 20 (max 60); workload-active 20; rival at High or Medium 10, listed but unchecked 5; hiring % over 8% adds 10. Act this month 60+, Next quarter 30–59, Watch under 30. If over half share a tag, re-tag by rank (top 30%, next 40%, rest) and say so.
@@ -11504,8 +11506,8 @@ Implementers and resellers look like big users; they're partners, not targets.
 STEPS
 1. Find [Competitor] by website and confirm the parent. If I named a product, use its maker. If unclear, ask me.
 2. Pull HQ, workforce, revenue and growth (USD), and top 5 products by installs.
-3. In one short company list (Opportunities view, sorted by total_workforce, never employee_count), pull the 10 largest parent companies running [Competitor] products, in primary industry [Vertical] and HQ in [Territory]. Exclude IT services, consulting and outsourcing firms and say how many. Merge subsidiaries into parents; flag holding companies.
-4. For the top 5, check the whole stack for any [Competitor] product in any area (usage, last seen). Count installs only at High or Medium; Low or unseen for 6 months is "fading" (not counted); ignore very-low-confidence detections and say so.
+3. In one short company list (default view, sorted by total_workforce, never employee_count), pull the 10 largest parent companies running [Competitor] products, in primary industry [Vertical] and HQ in [Territory]. Exclude IT services, consulting and outsourcing firms and say how many. Merge subsidiaries into parents; flag holding companies.
+4. For the top 5, check the whole stack for any [Competitor] product in any area (usage, last seen). Count installs only at High or Medium on a named product; Low but seen in the last 6 months is "light"; not seen for 6 months is "fading"; if only the Generic row is High, say "present, product not identified".
 5. Search 180 days of their news (launches, acquisitions, partnerships, leadership); review 30+ items.
 6. First account: the largest Amber or fading install in [Territory] whose top executives sit at the parent, not a branch or subsidiary. Pull its top 3 executives in the function closest to What I sell and its top 90-day news item.
 
@@ -11579,7 +11581,7 @@ CONTEXT (optional)
 A CFO hears cost and risk; a planning VP hears forecast accuracy and inventory. One dated, relevant signal beats three generic ones.
 
 STEPS
-1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup, showing the match and score; list any that still fail and carry on, never dropping one silently.
+1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup using the group or legal name (e.g. "Expedia Group", not "Expedia"), showing the match and score; list any that still fail and carry on, never dropping one silently.
 2. For each, pull its top 3 [Business function] priorities (newest first, with source and quarter) and keep the best fit for [What I sell].
 3. Pull one news feed for all 10, last 60 days, money-or-change categories (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check top-ranked signals in the window.
 4. Keep one item per account where the account is the actor, preferring one linked to the priority. Orders placed with the account are context only.

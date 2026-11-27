@@ -40,6 +40,7 @@ OUTPUT
 
 RULES
 - Name any company that makes up over a third of a total.
+- If a vertical total looks implausible (e.g. R&D under 0.1% of revenue), show it as "Draup figure, unverified".
 - "Fit" is judgement (Draup ties no priority to a seller). Vertical lists are a fixed top 50; say so once.
 - Flag off-vertical, sanctioned or state-owned buyers. IT spend tracks revenue, so its growth is no trend.
 - No generic tools (office suites, chat assistants) in technology lists. If I ask for a slide: 5 bullets + 1 table.

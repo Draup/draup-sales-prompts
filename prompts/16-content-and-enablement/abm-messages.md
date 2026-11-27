@@ -40,7 +40,7 @@ CONTEXT (optional)
 A CFO hears cost and risk; a planning VP hears forecast accuracy and inventory. One dated, relevant signal beats three generic ones.
 
 STEPS
-1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup, showing the match and score; list any that still fail and carry on, never dropping one silently.
+1. Take the first 10 accounts and resolve them by website in one company lookup, confirming each parent (not a subsidiary or brand). Retry any that don't resolve with one name lookup using the group or legal name (e.g. "Expedia Group", not "Expedia"), showing the match and score; list any that still fail and carry on, never dropping one silently.
 2. For each, pull its top 3 [Business function] priorities (newest first, with source and quarter) and keep the best fit for [What I sell].
 3. Pull one news feed for all 10, last 60 days, money-or-change categories (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check top-ranked signals in the window.
 4. Keep one item per account where the account is the actor, preferring one linked to the priority. Orders placed with the account are context only.

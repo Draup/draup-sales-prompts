@@ -26,7 +26,7 @@ STEPS
 2. Hiring: top 20 end employers in [Territory], primary industry [Industry], by postings in Cloud Computing and Infrastructure Management System, 12 months, no staffing firms or job boards.
 3. Outsourcing: [Industry] companies HQ'd in [Territory] ranked by active engagements in those workloads plus Legacy Modernization and Data Centre Management; top 15.
 4. Long list of 10, both lists first: merge subsidiaries into parents; drop cloud providers, IT resellers and services firms, investors, off-industry rows and foreign firms' local teams.
-5. One company-list lookup for the 10 by website: workforce, revenue, providers, cloud and infrastructure tools only; postings per 1,000 employees.
+5. Two company-list lookups of 5 by website: workforce, revenue, providers, cloud and infrastructure tools only; postings per 1,000 employees.
 6. Top 5 by provisional score: up to 5 priorities each in those four workloads, newest first; count only those naming infrastructure, cloud, data centre, platform or core-system modernisation.
 7. One news search across the top 5 on modernisation, cloud, data-centre or infrastructure deals, last 90 days; else each one's most material dated event, labelled indirect.
 8. Top 3: 3 executives each in Cloud Computing or Infrastructure Management System.

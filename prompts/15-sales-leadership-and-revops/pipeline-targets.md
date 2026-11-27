@@ -39,7 +39,7 @@ INPUTS (edit these)
 STEPS
 1. Use Draup's exact names; map What I sell to its workloads.
 2. List the territory: primary industry [Vertical], HQ in [Territory], [Minimum employees]+ staff (names only, up to 50, by revenue), then again adding "active in my workloads"; mark those and remove exclusions.
-3. For the top 20 workload-active accounts by revenue, run one 90-day news search per account, filtered to its Draup name, with a broad question ("[Account] leadership changes, expansions, partnerships, acquisitions"); do 10, then offer the next 10. Then one search across [Vertical] and [Territory] for off-list actors; if one company fills over half, rerun without it.
+3. For the top 20 workload-active accounts by revenue, pull one 90-day news feed for the first 10 by their Draup names; if one account fills over half, pull again without it; then offer the next 10. Then one search across [Vertical] and [Territory] for off-list actors; if one company fills over half, rerun without it.
 4. Keep items where the account is the actor and the event concerns [Territory]; drop look-alike tags (e.g. "target company" in someone else's deal); merge repeats; off-list actors go to "Acting in the territory".
 5. For the 10 accounts with most trigger types, pull full rows by exact name with only my competitors' products: hiring %, 90-day postings. For the top 5, check rival usage (only High or Medium counts; say how many were Low).
 6. Score (editable): each trigger type 20 (max 60); workload-active 20; rival at High or Medium 10, listed but unchecked 5; hiring % over 8% adds 10. Act this month 60+, Next quarter 30–59, Watch under 30. If over half share a tag, re-tag by rank (top 30%, next 40%, rest) and say so.
@@ -112,7 +112,7 @@ Rerun with only partnership and vendor-selection news.
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`extract_entities`, `get_universe_companies_v3`, `get_signal_news_v3`, `get_account_tech_stack_products_v3`, `accounts_executives_key_executives_v3`
+`extract_entities`, `get_universe_companies_v3`, `get_signal_news_v3`, `get_account_tech_stack_products_v3`, `accounts_executives_key_executives_v3`, `build_news_filters_v3`, `get_news_feed_v3`
 
 Status: **tested live**. Prompt id: `leaders-pipeline-targets`.
 

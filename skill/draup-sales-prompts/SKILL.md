@@ -31,7 +31,8 @@ If the user is new, suggest they first tell you about themselves using the **Tel
 | Why reach out now / what changed at [company] | `signals-whats-actionable` (What's worth acting on now) | `signals-change-log` |
 | Is [competitor] installed at [company]? How do I displace it? | `tech-competitor-installed` (Is a competitor installed?) | `deals-competitive-strategy` |
 | Write an email / opener to [person or company] | `signals-signal-to-email` (Signal-led emails for up to 10 accounts) | `outreach-new-executive` |
-| Cold call script / LinkedIn note / voicemail | `outreach-cold-call` (Cold-call opener, talk track, objections) | `outreach-linkedin-exec` |
+| LinkedIn note or InMail to [person] | `outreach-linkedin-exec` (LinkedIn note and InMail to an executive) | `outreach-new-executive` |
+| Cold call script / voicemail | `outreach-cold-call` (Cold-call opener, talk track, objections) | `outreach-linkedin-exec` |
 | Handle an objection | `deals-objection-handler` (Answer objections with their own facts) | `deals-champion-pack` |
 | Build or size a target list / ICP | `prospect-icp-list` (Size your ideal-customer list) | `prospect-hiring-led-list` |
 | Which accounts are ready for [what I sell]? | `plays-cloud-targets` (Find accounts ripe for cloud migration) | `plays-data-targets` |

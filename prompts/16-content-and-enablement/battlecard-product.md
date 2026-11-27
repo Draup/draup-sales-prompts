@@ -41,8 +41,8 @@ Implementers and resellers look like big users; they're partners, not targets.
 STEPS
 1. Find [Competitor] by website and confirm the parent. If I named a product, use its maker. If unclear, ask me.
 2. Pull HQ, workforce, revenue and growth (USD), and top 5 products by installs.
-3. In one short company list (Opportunities view, sorted by total_workforce, never employee_count), pull the 10 largest parent companies running [Competitor] products, in primary industry [Vertical] and HQ in [Territory]. Exclude IT services, consulting and outsourcing firms and say how many. Merge subsidiaries into parents; flag holding companies.
-4. For the top 5, check the whole stack for any [Competitor] product in any area (usage, last seen). Count installs only at High or Medium; Low or unseen for 6 months is "fading" (not counted); ignore very-low-confidence detections and say so.
+3. In one short company list (default view, sorted by total_workforce, never employee_count), pull the 10 largest parent companies running [Competitor] products, in primary industry [Vertical] and HQ in [Territory]. Exclude IT services, consulting and outsourcing firms and say how many. Merge subsidiaries into parents; flag holding companies.
+4. For the top 5, check the whole stack for any [Competitor] product in any area (usage, last seen). Count installs only at High or Medium on a named product; Low but seen in the last 6 months is "light"; not seen for 6 months is "fading"; if only the Generic row is High, say "present, product not identified".
 5. Search 180 days of their news (launches, acquisitions, partnerships, leadership); review 30+ items.
 6. First account: the largest Amber or fading install in [Territory] whose top executives sit at the parent, not a branch or subsidiary. Pull its top 3 executives in the function closest to What I sell and its top 90-day news item.
 
