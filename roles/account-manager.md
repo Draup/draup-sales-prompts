@@ -47,32 +47,32 @@ Grow and protect existing accounts: risk checks, expansion, QBRs.
 
 | Prompt | What you get |
 |---|---|
-| [Benchmark an account against peers](../prompts/05-prospecting-and-lists/peer-benchmark.md) | One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions. |
+| [Benchmark an account against peers](../prompts/06-prospecting-and-lists/peer-benchmark.md) | One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions. |
 
 ## Outsourcing and services deals
 
 | Prompt | What you get |
 |---|---|
-| [Is work coming back in-house? (re-insourcing risk)](../prompts/06-outsourcing-and-services/reinsourcing-risk.md) | For each outsourced workload, whether the account is building the same skills in-house, plus fast-growing in-house teams outside its outsourced list: cost takeout, capability gap or re-insourcing risk. |
+| [Is work coming back in-house? (re-insourcing risk)](../prompts/10-outsourcing-and-services/reinsourcing-risk.md) | For each outsourced workload, whether the account is building the same skills in-house, plus fast-growing in-house teams outside its outsourced list: cost takeout, capability gap or re-insourcing risk. |
 
 ## Account planning and expansion
 
 | Prompt | What you get |
 |---|---|
-| [Draft an account plan](../prompts/08-account-planning-and-expansion/account-plan.md) | An account plan in eight parts: snapshot, their strategy in their own words, buying committee, incumbents, ranked expansion plays, risks and a 90-day plan, plus an optional short SWOT. |
-| [Entry points and whitespace](../prompts/08-account-planning-and-expansion/entry-points.md) | The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner. |
-| [Where they're building teams](../prompts/08-account-planning-and-expansion/expansion-footprint.md) | The metros where the account is adding people in one function, with GCCs and likely new sites called out and net hiring over a stated window. |
-| [Renewal risk check (RAG)](../prompts/08-account-planning-and-expansion/risk-check.md) | A Red/Amber/Green risk table for one customer, including your sponsor's status, with dated evidence, an overall rating and two actions. |
-| [Talent rivals: who they lose people to](../prompts/08-account-planning-and-expansion/talent-competitors.md) | The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, and credible peers to benchmark against. |
-| [Customer alumni on the move](../prompts/08-account-planning-and-expansion/follow-champions.md) | Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first. |
-| [QBR prep](../prompts/08-account-planning-and-expansion/qbr-prep.md) | What changed at the customer during the review period, set against the outcomes you delivered, with three talking points and three asks. |
-| [Tier my accounts by propensity to buy](../prompts/08-account-planning-and-expansion/propensity-tiering.md) | Up to 25 accounts scored 0–100 on an editable Fit (0–50) and Timing (0–50) rubric, tiered A, B or C and placed on a fit-versus-timing grid, with the driver behind each score. |
+| [Draft an account plan](../prompts/11-account-planning/account-plan.md) | An account plan in eight parts: snapshot, their strategy in their own words, buying committee, incumbents, ranked expansion plays, risks and a 90-day plan, plus an optional short SWOT. |
+| [Entry points and whitespace](../prompts/11-account-planning/entry-points.md) | The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner. |
+| [Where they're building teams](../prompts/11-account-planning/expansion-footprint.md) | The metros where the account is adding people in one function, with GCCs and likely new sites called out and net hiring over a stated window. |
+| [Renewal risk check (RAG)](../prompts/11-account-planning/risk-check.md) | A Red/Amber/Green risk table for one customer, including your sponsor's status, with dated evidence, an overall rating and two actions. |
+| [Talent rivals: who they lose people to](../prompts/11-account-planning/talent-competitors.md) | The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, and credible peers to benchmark against. |
+| [Customer alumni on the move](../prompts/11-account-planning/follow-champions.md) | Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first. |
+| [QBR prep](../prompts/11-account-planning/qbr-prep.md) | What changed at the customer during the review period, set against the outcomes you delivered, with three talking points and three asks. |
+| [Tier my accounts by propensity to buy](../prompts/11-account-planning/propensity-tiering.md) | Up to 25 accounts scored 0–100 on an editable Fit (0–50) and Timing (0–50) rubric, tiered A, B or C and placed on a fit-versus-timing grid, with the driver behind each score. |
 
 ## Content and enablement
 
 | Prompt | What you get |
 |---|---|
-| ["How does Draup know this?"](../prompts/09-content-and-enablement/how-draup-knows.md) | A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link. |
+| ["How does Draup know this?"](../prompts/16-content-and-enablement/how-draup-knows.md) | A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link. |
 
 ## Playbooks for you
 

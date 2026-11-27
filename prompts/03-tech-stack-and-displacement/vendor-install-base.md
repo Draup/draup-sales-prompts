@@ -88,8 +88,8 @@ Draft a one-paragraph co-sell pitch to the vendor's partner team.
 ## Related prompts
 
 - [Displacement target list](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A sized, revenue-ranked list of companies in your industry and country whose stack includes a competitor's products, confirmed in the same pass, with likely-inactive and misfiled names set aside.
-- [Who to partner with vs replace, by priority](../../prompts/06-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it, and whether to partner, displace or walk into an open door.
-- [Battlecard: rival software vendor](../../prompts/09-content-and-enablement/battlecard-product.md): A one-page internal battlecard on a rival software vendor: its most-used products, the largest companies running them, recent moves, how to beat it and the objection to expect.
+- [Who to partner with vs replace, by priority](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it, and whether to partner, displace or walk into an open door.
+- [Battlecard: rival software vendor](../../prompts/16-content-and-enablement/battlecard-product.md): A one-page internal battlecard on a rival software vendor: its most-used products, the largest companies running them, recent moves, how to beat it and the objection to expect.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

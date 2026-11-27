@@ -1,4 +1,5 @@
 Draup Sales Prompt Library
+Copyright (c) 2026 Draup, Inc.
 
 Prompts, guides and documentation in this repository are licensed under the
 Creative Commons Attribution 4.0 International License (see LICENSE).
@@ -17,3 +18,25 @@ This project is not affiliated with or endorsed by Anthropic or OpenAI.
 Company names that appear as examples are used for illustration only. Names
 used for "your" firm, customers and partners (such as Northwind, Contoso and
 Fabrikam) are fictional.
+
+How to credit this work
+-----------------------
+If you share or adapt these prompts, keep this credit (CC BY 4.0 requires it):
+
+  "Based on the Draup Sales Prompt Library by Draup, Inc.
+   (https://github.com/Draup/draup-sales-prompts), licensed CC BY 4.0."
+
+Say whether you changed anything. Don't imply that Draup endorses your version.
+
+Draup data
+----------
+These licenses cover the prompt text, guides and code only. Data returned by
+Draup for Sales (company, executive, deal and other records) belongs to Draup
+and its licensors, is governed by your Draup agreement, and is not licensed
+for redistribution by this repository.
+
+No warranty
+-----------
+The prompts, guides and code are provided "as is", without warranty of any
+kind, as set out in LICENSE and LICENSE-CODE. Check AI-generated answers before
+relying on them.

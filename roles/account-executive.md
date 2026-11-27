@@ -68,75 +68,75 @@ Win new logos: research, buyers, timing and a sharp first meeting.
 
 | Prompt | What you get |
 |---|---|
-| [Build and size an ICP list](../prompts/05-prospecting-and-lists/icp-list.md) | The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5. |
-| [Who's hiring for a tech or role](../prompts/05-prospecting-and-lists/hiring-led-list.md) | The end employers posting the most jobs for a technology or buyer role, cleaned of job boards and staffing firms, with who to call and the industries driving demand. |
-| [Look-alikes of a best customer](../prompts/05-prospecting-and-lists/lookalikes.md) | Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches and who to call. |
-| [Benchmark an account against peers](../prompts/05-prospecting-and-lists/peer-benchmark.md) | One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions. |
-| [Sell into a customer's competitors](../prompts/05-prospecting-and-lists/competitor-set.md) | Your customer's real competitors, ranked by Draup's Opportunity Index score, with what happened at each in the last 90 days, a reference angle and who to call. |
-| [Fastest revenue growers in my ICP](../prompts/05-prospecting-and-lists/revenue-growth-screen.md) | The fastest-growing companies by revenue in your segment, with M&A-driven jumps set aside and a shortlist growing both revenue and headcount. |
-| [Growing and shrinking companies: scale vs cost-out buyers](../prompts/05-prospecting-and-lists/growth-and-cost-out.md) | Who in a vertical is adding people fast (scale-up buyers) and who is shrinking (cost-out buyers), with merged or closed companies removed and who to call. |
-| [Startups with real momentum](../prompts/05-prospecting-and-lists/startups.md) | The startups in a vertical that Draup scores for momentum, with what they do, funding, hiring and who to contact. |
-| [Biggest logos in my territory](../prompts/05-prospecting-and-lists/territory-logos.md) | The largest employers in a vertical in one metro, by Draup-estimated local headcount, with global capability centres (GCCs) called out and who to call. |
-| [Is this inbound account worth it?](../prompts/05-prospecting-and-lists/inbound-qualification.md) | A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan. |
+| [Build and size an ICP list](../prompts/06-prospecting-and-lists/icp-list.md) | The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5. |
+| [Who's hiring for a tech or role](../prompts/06-prospecting-and-lists/hiring-led-list.md) | The end employers posting the most jobs for a technology or buyer role, cleaned of job boards and staffing firms, with who to call and the industries driving demand. |
+| [Look-alikes of a best customer](../prompts/06-prospecting-and-lists/lookalikes.md) | Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches and who to call. |
+| [Benchmark an account against peers](../prompts/06-prospecting-and-lists/peer-benchmark.md) | One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions. |
+| [Sell into a customer's competitors](../prompts/06-prospecting-and-lists/competitor-set.md) | Your customer's real competitors, ranked by Draup's Opportunity Index score, with what happened at each in the last 90 days, a reference angle and who to call. |
+| [Fastest revenue growers in my ICP](../prompts/06-prospecting-and-lists/revenue-growth-screen.md) | The fastest-growing companies by revenue in your segment, with M&A-driven jumps set aside and a shortlist growing both revenue and headcount. |
+| [Growing and shrinking companies: scale vs cost-out buyers](../prompts/06-prospecting-and-lists/growth-and-cost-out.md) | Who in a vertical is adding people fast (scale-up buyers) and who is shrinking (cost-out buyers), with merged or closed companies removed and who to call. |
+| [Startups with real momentum](../prompts/06-prospecting-and-lists/startups.md) | The startups in a vertical that Draup scores for momentum, with what they do, funding, hiring and who to contact. |
+| [Biggest logos in my territory](../prompts/06-prospecting-and-lists/territory-logos.md) | The largest employers in a vertical in one metro, by Draup-estimated local headcount, with global capability centres (GCCs) called out and who to call. |
+| [Is this inbound account worth it?](../prompts/06-prospecting-and-lists/inbound-qualification.md) | A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan. |
 
 ## Outsourcing and services deals
 
 | Prompt | What you get |
 |---|---|
-| [Outsourcing footprint and incumbents](../prompts/06-outsourcing-and-services/outsourcing-footprint.md) | How much the account outsources, to whom, how concentrated its provider base is, and which workloads are ripe for vendor consolidation. |
-| [A competitor's footprint at an account](../prompts/06-outsourcing-and-services/competitor-at-account.md) | How deep a rival services firm is at the account, how it delivers, and the workloads where it is weakest: your wedge. |
-| [Competitor's customers in my vertical](../prompts/06-outsourcing-and-services/competitor-customers.md) | A ranked list of a rival's customers in your vertical and country, with how entrenched it is at each: your displacement targets. |
-| [Peer deals for social proof](../prompts/06-outsourcing-and-services/peer-deals.md) | Recent outsourcing engagements at the prospect's peers in the workload you sell, plus ready-to-use proof lines. |
-| [Profile a services firm (rival or partner)](../prompts/06-outsourcing-and-services/competitor-profile.md) | A services firm's size, top customers, workloads and delivery hubs in your segment, ending in how to out-position it (rival) or where to team with it (partner). |
-| [Who to partner with vs replace, by priority](../prompts/06-outsourcing-and-services/partner-map.md) | For each priority in one function, the providers and tech vendors linked to it, and whether to partner, displace or walk into an open door. |
-| [Is work coming back in-house? (re-insourcing risk)](../prompts/06-outsourcing-and-services/reinsourcing-risk.md) | For each outsourced workload, whether the account is building the same skills in-house, plus fast-growing in-house teams outside its outsourced list: cost takeout, capability gap or re-insourcing risk. |
-| [Global capability centres (GCCs) and the services play](../prompts/06-outsourcing-and-services/gcc-opportunity.md) | The account's global capability centres (company-owned offshore or captive sites): where, which functions, how fast they hire, likely new sites, and whether build-operate-transfer (BOT), centre-of-excellence (CoE) expansion or managed services fits. |
-| [Vendor mix vs the vertical](../prompts/06-outsourcing-and-services/vendor-mix-benchmark.md) | Where the account outsources more or less than its industry, and which leading industry providers it doesn't use yet. |
-| [Pick a co-sell partner](../prompts/06-outsourcing-and-services/cosell-partner.md) | A shortlist of service partners already delivering your workload at the account and experienced with your technology, with the one to call first. |
-
-## Industry and market intelligence
-
-| Prompt | What you get |
-|---|---|
-| [One-page vertical market snapshot](../prompts/07-vertical-intelligence/vertical-snapshot.md) | A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom. |
-| [Industry point of view for a pitch](../prompts/07-vertical-intelligence/industry-pov.md) | The 5 industry priorities that matter most for what you sell, each with dated company proof and a likely owner, turned into a 5-slide narrative and a one-line POV. |
-| [Top hiring companies in a vertical](../prompts/07-vertical-intelligence/hiring-leaders.md) | The real end employers posting the most jobs in an industry, with outliers and recruiters removed, hiring intensity shown and who to call. |
-| [Compare countries for delivery](../prompts/07-vertical-intelligence/country-compare.md) | A side-by-side country comparison on labour force, unemployment, cost of living, inflation, tax and stability, with takeaways and questions for the client. |
+| [Outsourcing footprint and incumbents](../prompts/10-outsourcing-and-services/outsourcing-footprint.md) | How much the account outsources, to whom, how concentrated its provider base is, and which workloads are ripe for vendor consolidation. |
+| [A competitor's footprint at an account](../prompts/10-outsourcing-and-services/competitor-at-account.md) | How deep a rival services firm is at the account, how it delivers, and the workloads where it is weakest: your wedge. |
+| [Competitor's customers in my vertical](../prompts/10-outsourcing-and-services/competitor-customers.md) | A ranked list of a rival's customers in your vertical and country, with how entrenched it is at each: your displacement targets. |
+| [Peer deals for social proof](../prompts/10-outsourcing-and-services/peer-deals.md) | Recent outsourcing engagements at the prospect's peers in the workload you sell, plus ready-to-use proof lines. |
+| [Profile a services firm (rival or partner)](../prompts/10-outsourcing-and-services/competitor-profile.md) | A services firm's size, top customers, workloads and delivery hubs in your segment, ending in how to out-position it (rival) or where to team with it (partner). |
+| [Who to partner with vs replace, by priority](../prompts/10-outsourcing-and-services/partner-map.md) | For each priority in one function, the providers and tech vendors linked to it, and whether to partner, displace or walk into an open door. |
+| [Is work coming back in-house? (re-insourcing risk)](../prompts/10-outsourcing-and-services/reinsourcing-risk.md) | For each outsourced workload, whether the account is building the same skills in-house, plus fast-growing in-house teams outside its outsourced list: cost takeout, capability gap or re-insourcing risk. |
+| [Global capability centres (GCCs) and the services play](../prompts/10-outsourcing-and-services/gcc-opportunity.md) | The account's global capability centres (company-owned offshore or captive sites): where, which functions, how fast they hire, likely new sites, and whether build-operate-transfer (BOT), centre-of-excellence (CoE) expansion or managed services fits. |
+| [Vendor mix vs the vertical](../prompts/10-outsourcing-and-services/vendor-mix-benchmark.md) | Where the account outsources more or less than its industry, and which leading industry providers it doesn't use yet. |
+| [Pick a co-sell partner](../prompts/10-outsourcing-and-services/cosell-partner.md) | A shortlist of service partners already delivering your workload at the account and experienced with your technology, with the one to call first. |
 
 ## Account planning and expansion
 
 | Prompt | What you get |
 |---|---|
-| [Draft an account plan](../prompts/08-account-planning-and-expansion/account-plan.md) | An account plan in eight parts: snapshot, their strategy in their own words, buying committee, incumbents, ranked expansion plays, risks and a 90-day plan, plus an optional short SWOT. |
-| [Entry points and whitespace](../prompts/08-account-planning-and-expansion/entry-points.md) | The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner. |
-| [Where they're building teams](../prompts/08-account-planning-and-expansion/expansion-footprint.md) | The metros where the account is adding people in one function, with GCCs and likely new sites called out and net hiring over a stated window. |
-| [Renewal risk check (RAG)](../prompts/08-account-planning-and-expansion/risk-check.md) | A Red/Amber/Green risk table for one customer, including your sponsor's status, with dated evidence, an overall rating and two actions. |
-| [Talent rivals: who they lose people to](../prompts/08-account-planning-and-expansion/talent-competitors.md) | The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, and credible peers to benchmark against. |
-| [Customer alumni on the move](../prompts/08-account-planning-and-expansion/follow-champions.md) | Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first. |
-| [QBR prep](../prompts/08-account-planning-and-expansion/qbr-prep.md) | What changed at the customer during the review period, set against the outcomes you delivered, with three talking points and three asks. |
-| [Tier my accounts by propensity to buy](../prompts/08-account-planning-and-expansion/propensity-tiering.md) | Up to 25 accounts scored 0–100 on an editable Fit (0–50) and Timing (0–50) rubric, tiered A, B or C and placed on a fit-versus-timing grid, with the driver behind each score. |
-| [CXO pursuit brief](../prompts/08-account-planning-and-expansion/cxo-pursuit-brief.md) | A one-page pursuit brief for a C-level meeting: money context, the 3 workloads to lead with, the buyers, incumbents, an evidence check and a 90-day plan. |
-| [AI readiness vs peers](../prompts/08-account-planning-and-expansion/ai-readiness.md) | A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers. |
+| [Draft an account plan](../prompts/11-account-planning/account-plan.md) | An account plan in eight parts: snapshot, their strategy in their own words, buying committee, incumbents, ranked expansion plays, risks and a 90-day plan, plus an optional short SWOT. |
+| [Entry points and whitespace](../prompts/11-account-planning/entry-points.md) | The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner. |
+| [Where they're building teams](../prompts/11-account-planning/expansion-footprint.md) | The metros where the account is adding people in one function, with GCCs and likely new sites called out and net hiring over a stated window. |
+| [Renewal risk check (RAG)](../prompts/11-account-planning/risk-check.md) | A Red/Amber/Green risk table for one customer, including your sponsor's status, with dated evidence, an overall rating and two actions. |
+| [Talent rivals: who they lose people to](../prompts/11-account-planning/talent-competitors.md) | The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, and credible peers to benchmark against. |
+| [Customer alumni on the move](../prompts/11-account-planning/follow-champions.md) | Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first. |
+| [QBR prep](../prompts/11-account-planning/qbr-prep.md) | What changed at the customer during the review period, set against the outcomes you delivered, with three talking points and three asks. |
+| [Tier my accounts by propensity to buy](../prompts/11-account-planning/propensity-tiering.md) | Up to 25 accounts scored 0–100 on an editable Fit (0–50) and Timing (0–50) rubric, tiered A, B or C and placed on a fit-versus-timing grid, with the driver behind each score. |
+| [CXO pursuit brief](../prompts/11-account-planning/cxo-pursuit-brief.md) | A one-page pursuit brief for a C-level meeting: money context, the 3 workloads to lead with, the buyers, incumbents, an evidence check and a 90-day plan. |
+| [AI readiness vs peers](../prompts/11-account-planning/ai-readiness.md) | A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers. |
+
+## Industry and market intelligence
+
+| Prompt | What you get |
+|---|---|
+| [One-page vertical market snapshot](../prompts/14-industry-intelligence/vertical-snapshot.md) | A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom. |
+| [Industry point of view for a pitch](../prompts/14-industry-intelligence/industry-pov.md) | The 5 industry priorities that matter most for what you sell, each with dated company proof and a likely owner, turned into a 5-slide narrative and a one-line POV. |
+| [Top hiring companies in a vertical](../prompts/14-industry-intelligence/hiring-leaders.md) | The real end employers posting the most jobs in an industry, with outliers and recruiters removed, hiring intensity shown and who to call. |
+| [Compare countries for delivery](../prompts/14-industry-intelligence/country-compare.md) | A side-by-side country comparison on labour force, unemployment, cost of living, inflation, tax and stability, with takeaways and questions for the client. |
 
 ## Content and enablement
 
 | Prompt | What you get |
 |---|---|
-| [Battlecard: rival services firm](../prompts/09-content-and-enablement/battlecard-services.md) | A one-page internal battlecard on a rival services firm: where it delivers, what it wins, recent moves, how to beat it, trap questions and the objection to expect. |
-| [Battlecard: rival software vendor](../prompts/09-content-and-enablement/battlecard-product.md) | A one-page internal battlecard on a rival software vendor: its most-used products, the largest companies running them, recent moves, how to beat it and the objection to expect. |
-| [ABM messages for a target list](../prompts/09-content-and-enablement/abm-messages.md) | A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle. |
-| [Industry email sequence](../prompts/09-content-and-enablement/email-sequence.md) | A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example. |
-| ["How does Draup know this?"](../prompts/09-content-and-enablement/how-draup-knows.md) | A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link. |
+| [Battlecard: rival services firm](../prompts/16-content-and-enablement/battlecard-services.md) | A one-page internal battlecard on a rival services firm: where it delivers, what it wins, recent moves, how to beat it, trap questions and the objection to expect. |
+| [Battlecard: rival software vendor](../prompts/16-content-and-enablement/battlecard-product.md) | A one-page internal battlecard on a rival software vendor: its most-used products, the largest companies running them, recent moves, how to beat it and the objection to expect. |
+| [ABM messages for a target list](../prompts/16-content-and-enablement/abm-messages.md) | A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle. |
+| [Industry email sequence](../prompts/16-content-and-enablement/email-sequence.md) | A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example. |
+| ["How does Draup know this?"](../prompts/16-content-and-enablement/how-draup-knows.md) | A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link. |
 
 ## Talent cost and location
 
 | Prompt | What you get |
 |---|---|
-| [Offshore cost case (base-pay gap)](../prompts/10-talent-cost-and-location/offshoring-cost-case.md) | A per-FTE and team-level base-pay gap for moving a role offshore, with the talent supply and hiring difficulty to show the team can be staffed. |
-| [Hard-to-hire roles: staffing pitch](../prompts/10-talent-cost-and-location/hard-to-hire.md) | Which of an account's roles are hardest to hire in its key location, with supply, demand and pay, turned into a staffing or managed-services pitch. |
-| [Layoffs: outsourcing trigger](../prompts/10-talent-cost-and-location/layoff-pool.md) | Where and in which roles a company has cut jobs in the last 12 months, read as a possible outsourcing trigger, plus which skills are now more available in the market. |
-| [Pay benchmark and rate-card check](../prompts/10-talent-cost-and-location/pay-benchmark.md) | Market pay for a role by employer, including named competitors, the markup a proposed or quoted rate implies, and the rate you'd need at your target markup. |
-| [Employer-brand gaps for an RPO pitch](../prompts/10-talent-cost-and-location/employer-brand.md) | How a company scores as an employer against its hiring rivals, its three weakest areas from employee reviews, and RPO or employer-branding angles. |
+| [Offshore cost case (base-pay gap)](../prompts/17-talent-cost-and-location/offshoring-cost-case.md) | A per-FTE and team-level base-pay gap for moving a role offshore, with the talent supply and hiring difficulty to show the team can be staffed. |
+| [Hard-to-hire roles: staffing pitch](../prompts/17-talent-cost-and-location/hard-to-hire.md) | Which of an account's roles are hardest to hire in its key location, with supply, demand and pay, turned into a staffing or managed-services pitch. |
+| [Layoffs: outsourcing trigger](../prompts/17-talent-cost-and-location/layoff-pool.md) | Where and in which roles a company has cut jobs in the last 12 months, read as a possible outsourcing trigger, plus which skills are now more available in the market. |
+| [Pay benchmark and rate-card check](../prompts/17-talent-cost-and-location/pay-benchmark.md) | Market pay for a role by employer, including named competitors, the markup a proposed or quoted rate implies, and the rate you'd need at your target markup. |
+| [Employer-brand gaps for an RPO pitch](../prompts/17-talent-cost-and-location/employer-brand.md) | How a company scores as an employer against its hiring rivals, its three weakest areas from employee reviews, and RPO or employer-branding angles. |
 
 ## Playbooks for you
 

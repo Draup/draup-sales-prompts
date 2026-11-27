@@ -14,7 +14,7 @@ Shows who the account outsources to, for which workloads, and how concentrated i
 
 **Look for:** Workloads with many small providers (a consolidation play) or one dominant incumbent (a displacement or second-vendor play). Ignore catch-all workloads.
 
-Open the full prompt: [Outsourcing footprint and incumbents](../prompts/06-outsourcing-and-services/outsourcing-footprint.md)
+Open the full prompt: [Outsourcing footprint and incumbents](../prompts/10-outsourcing-and-services/outsourcing-footprint.md)
 
 Quick version:
 
@@ -28,7 +28,7 @@ Maps the account's company-owned offshore centres: where, how big, which functio
 
 **Look for:** Whether the GCC footprint is expanding, flat or shrinking, and which functions sit there. That points to optimisation, centre-of-excellence expansion or a build-operate-transfer play. Treat site headcount as indicative.
 
-Open the full prompt: [Global capability centres (GCCs) and the services play](../prompts/06-outsourcing-and-services/gcc-opportunity.md)
+Open the full prompt: [Global capability centres (GCCs) and the services play](../prompts/10-outsourcing-and-services/gcc-opportunity.md)
 
 Quick version:
 
@@ -42,7 +42,7 @@ Checks whether the account is building in-house what it used to outsource.
 
 **Look for:** Outsourced workloads where the account is now hiring heavily or opening sites. Position augmentation or transition support there, not pure outsourcing.
 
-Open the full prompt: [Is work coming back in-house? (re-insourcing risk)](../prompts/06-outsourcing-and-services/reinsourcing-risk.md)
+Open the full prompt: [Is work coming back in-house? (re-insourcing risk)](../prompts/10-outsourcing-and-services/reinsourcing-risk.md)
 
 Quick version:
 
@@ -56,7 +56,7 @@ Shows how deep the #1 incumbent is and where it's thin.
 
 **Look for:** The wedge workloads you'll lead with, and the incumbent's strongest areas to avoid.
 
-Open the full prompt: [A competitor's footprint at an account](../prompts/06-outsourcing-and-services/competitor-at-account.md)
+Open the full prompt: [A competitor's footprint at an account](../prompts/10-outsourcing-and-services/competitor-at-account.md)
 
 Quick version:
 
@@ -70,7 +70,7 @@ Pulls it together into a go/no-go brief for the executive pursuit.
 
 **Look for:** The top 3 workloads to lead with, the named buyer for each, and a 90-day plan you can commit to.
 
-Open the full prompt: [CXO pursuit brief](../prompts/08-account-planning-and-expansion/cxo-pursuit-brief.md)
+Open the full prompt: [CXO pursuit brief](../prompts/11-account-planning/cxo-pursuit-brief.md)
 
 Quick version:
 

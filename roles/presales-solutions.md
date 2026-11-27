@@ -52,43 +52,43 @@ Understand architecture, priorities and incumbents before the technical conversa
 
 | Prompt | What you get |
 |---|---|
-| [Benchmark an account against peers](../prompts/05-prospecting-and-lists/peer-benchmark.md) | One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions. |
+| [Benchmark an account against peers](../prompts/06-prospecting-and-lists/peer-benchmark.md) | One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions. |
 
 ## Outsourcing and services deals
 
 | Prompt | What you get |
 |---|---|
-| [Pick a co-sell partner](../prompts/06-outsourcing-and-services/cosell-partner.md) | A shortlist of service partners already delivering your workload at the account and experienced with your technology, with the one to call first. |
-
-## Industry and market intelligence
-
-| Prompt | What you get |
-|---|---|
-| [Industry point of view for a pitch](../prompts/07-vertical-intelligence/industry-pov.md) | The 5 industry priorities that matter most for what you sell, each with dated company proof and a likely owner, turned into a 5-slide narrative and a one-line POV. |
+| [Pick a co-sell partner](../prompts/10-outsourcing-and-services/cosell-partner.md) | A shortlist of service partners already delivering your workload at the account and experienced with your technology, with the one to call first. |
 
 ## Account planning and expansion
 
 | Prompt | What you get |
 |---|---|
-| [Entry points and whitespace](../prompts/08-account-planning-and-expansion/entry-points.md) | The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner. |
-| [CXO pursuit brief](../prompts/08-account-planning-and-expansion/cxo-pursuit-brief.md) | A one-page pursuit brief for a C-level meeting: money context, the 3 workloads to lead with, the buyers, incumbents, an evidence check and a 90-day plan. |
-| [AI readiness vs peers](../prompts/08-account-planning-and-expansion/ai-readiness.md) | A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers. |
+| [Entry points and whitespace](../prompts/11-account-planning/entry-points.md) | The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner. |
+| [CXO pursuit brief](../prompts/11-account-planning/cxo-pursuit-brief.md) | A one-page pursuit brief for a C-level meeting: money context, the 3 workloads to lead with, the buyers, incumbents, an evidence check and a 90-day plan. |
+| [AI readiness vs peers](../prompts/11-account-planning/ai-readiness.md) | A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers. |
+
+## Industry and market intelligence
+
+| Prompt | What you get |
+|---|---|
+| [Industry point of view for a pitch](../prompts/14-industry-intelligence/industry-pov.md) | The 5 industry priorities that matter most for what you sell, each with dated company proof and a likely owner, turned into a 5-slide narrative and a one-line POV. |
 
 ## Content and enablement
 
 | Prompt | What you get |
 |---|---|
-| [Battlecard: rival services firm](../prompts/09-content-and-enablement/battlecard-services.md) | A one-page internal battlecard on a rival services firm: where it delivers, what it wins, recent moves, how to beat it, trap questions and the objection to expect. |
-| [Battlecard: rival software vendor](../prompts/09-content-and-enablement/battlecard-product.md) | A one-page internal battlecard on a rival software vendor: its most-used products, the largest companies running them, recent moves, how to beat it and the objection to expect. |
-| ["How does Draup know this?"](../prompts/09-content-and-enablement/how-draup-knows.md) | A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link. |
+| [Battlecard: rival services firm](../prompts/16-content-and-enablement/battlecard-services.md) | A one-page internal battlecard on a rival services firm: where it delivers, what it wins, recent moves, how to beat it, trap questions and the objection to expect. |
+| [Battlecard: rival software vendor](../prompts/16-content-and-enablement/battlecard-product.md) | A one-page internal battlecard on a rival software vendor: its most-used products, the largest companies running them, recent moves, how to beat it and the objection to expect. |
+| ["How does Draup know this?"](../prompts/16-content-and-enablement/how-draup-knows.md) | A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link. |
 
 ## Talent cost and location
 
 | Prompt | What you get |
 |---|---|
-| [Offshore cost case (base-pay gap)](../prompts/10-talent-cost-and-location/offshoring-cost-case.md) | A per-FTE and team-level base-pay gap for moving a role offshore, with the talent supply and hiring difficulty to show the team can be staffed. |
-| [Where to put a delivery team](../prompts/10-talent-cost-and-location/delivery-location.md) | A ranked shortlist of metros in one country for a delivery team, scored on talent supply, cost, hiring difficulty and location risk with editable weights, plus the client's existing footprint. |
-| [Pay benchmark and rate-card check](../prompts/10-talent-cost-and-location/pay-benchmark.md) | Market pay for a role by employer, including named competitors, the markup a proposed or quoted rate implies, and the rate you'd need at your target markup. |
+| [Offshore cost case (base-pay gap)](../prompts/17-talent-cost-and-location/offshoring-cost-case.md) | A per-FTE and team-level base-pay gap for moving a role offshore, with the talent supply and hiring difficulty to show the team can be staffed. |
+| [Where to put a delivery team](../prompts/17-talent-cost-and-location/delivery-location.md) | A ranked shortlist of metros in one country for a delivery team, scored on talent supply, cost, hiring difficulty and location risk with editable weights, plus the client's existing footprint. |
+| [Pay benchmark and rate-card check](../prompts/17-talent-cost-and-location/pay-benchmark.md) | Market pay for a role by employer, including named competitors, the markup a proposed or quoted rate implies, and the rate you'd need at your target markup. |
 
 ## Playbooks for you
 

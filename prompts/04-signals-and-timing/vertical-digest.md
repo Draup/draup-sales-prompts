@@ -95,7 +95,7 @@ Run the same digest for the last 30 days and show which themes are growing.
 
 - [Weekly trigger sweep for my book](../../prompts/04-signals-and-timing/weekly-book-sweep.md): One table of the week's real triggers across up to 10 accounts, each with a so-what and an action, plus a clean list of accounts with nothing new.
 - [Who in my market just [did X]?](../../prompts/04-signals-and-timing/news-question-templates.md): A clean, dated table of the companies in your industry and country that just did one thing you choose: M&A, layoffs, leadership changes, expansion or new centres, funding, or partnerships.
-- [One-page vertical market snapshot](../../prompts/07-vertical-intelligence/vertical-snapshot.md): A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

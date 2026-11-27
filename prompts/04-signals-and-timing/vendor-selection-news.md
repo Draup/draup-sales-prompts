@@ -99,7 +99,7 @@ Write a 3-sentence peer-proof email using our most recent win for 5 lookalike ac
 
 - [Who in my market just [did X]?](../../prompts/04-signals-and-timing/news-question-templates.md): A clean, dated table of the companies in your industry and country that just did one thing you choose: M&A, layoffs, leadership changes, expansion or new centres, funding, or partnerships.
 - [Displacement target list](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A sized, revenue-ranked list of companies in your industry and country whose stack includes a competitor's products, confirmed in the same pass, with likely-inactive and misfiled names set aside.
-- [Peer deals for social proof](../../prompts/06-outsourcing-and-services/peer-deals.md): Recent outsourcing engagements at the prospect's peers in the workload you sell, plus ready-to-use proof lines.
+- [Peer deals for social proof](../../prompts/10-outsourcing-and-services/peer-deals.md): Recent outsourcing engagements at the prospect's peers in the workload you sell, plus ready-to-use proof lines.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

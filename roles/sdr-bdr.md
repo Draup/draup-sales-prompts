@@ -49,49 +49,49 @@ Find who to contact and why now, then write outreach that references real facts.
 
 | Prompt | What you get |
 |---|---|
-| [Build and size an ICP list](../prompts/05-prospecting-and-lists/icp-list.md) | The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5. |
-| [Who's hiring for a tech or role](../prompts/05-prospecting-and-lists/hiring-led-list.md) | The end employers posting the most jobs for a technology or buyer role, cleaned of job boards and staffing firms, with who to call and the industries driving demand. |
-| [Look-alikes of a best customer](../prompts/05-prospecting-and-lists/lookalikes.md) | Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches and who to call. |
-| [Sell into a customer's competitors](../prompts/05-prospecting-and-lists/competitor-set.md) | Your customer's real competitors, ranked by Draup's Opportunity Index score, with what happened at each in the last 90 days, a reference angle and who to call. |
-| [Fastest revenue growers in my ICP](../prompts/05-prospecting-and-lists/revenue-growth-screen.md) | The fastest-growing companies by revenue in your segment, with M&A-driven jumps set aside and a shortlist growing both revenue and headcount. |
-| [Growing and shrinking companies: scale vs cost-out buyers](../prompts/05-prospecting-and-lists/growth-and-cost-out.md) | Who in a vertical is adding people fast (scale-up buyers) and who is shrinking (cost-out buyers), with merged or closed companies removed and who to call. |
-| [Startups with real momentum](../prompts/05-prospecting-and-lists/startups.md) | The startups in a vertical that Draup scores for momentum, with what they do, funding, hiring and who to contact. |
-| [Biggest logos in my territory](../prompts/05-prospecting-and-lists/territory-logos.md) | The largest employers in a vertical in one metro, by Draup-estimated local headcount, with global capability centres (GCCs) called out and who to call. |
-| [Is this inbound account worth it?](../prompts/05-prospecting-and-lists/inbound-qualification.md) | A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan. |
+| [Build and size an ICP list](../prompts/06-prospecting-and-lists/icp-list.md) | The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5. |
+| [Who's hiring for a tech or role](../prompts/06-prospecting-and-lists/hiring-led-list.md) | The end employers posting the most jobs for a technology or buyer role, cleaned of job boards and staffing firms, with who to call and the industries driving demand. |
+| [Look-alikes of a best customer](../prompts/06-prospecting-and-lists/lookalikes.md) | Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches and who to call. |
+| [Sell into a customer's competitors](../prompts/06-prospecting-and-lists/competitor-set.md) | Your customer's real competitors, ranked by Draup's Opportunity Index score, with what happened at each in the last 90 days, a reference angle and who to call. |
+| [Fastest revenue growers in my ICP](../prompts/06-prospecting-and-lists/revenue-growth-screen.md) | The fastest-growing companies by revenue in your segment, with M&A-driven jumps set aside and a shortlist growing both revenue and headcount. |
+| [Growing and shrinking companies: scale vs cost-out buyers](../prompts/06-prospecting-and-lists/growth-and-cost-out.md) | Who in a vertical is adding people fast (scale-up buyers) and who is shrinking (cost-out buyers), with merged or closed companies removed and who to call. |
+| [Startups with real momentum](../prompts/06-prospecting-and-lists/startups.md) | The startups in a vertical that Draup scores for momentum, with what they do, funding, hiring and who to contact. |
+| [Biggest logos in my territory](../prompts/06-prospecting-and-lists/territory-logos.md) | The largest employers in a vertical in one metro, by Draup-estimated local headcount, with global capability centres (GCCs) called out and who to call. |
+| [Is this inbound account worth it?](../prompts/06-prospecting-and-lists/inbound-qualification.md) | A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan. |
 
 ## Outsourcing and services deals
 
 | Prompt | What you get |
 |---|---|
-| [Competitor's customers in my vertical](../prompts/06-outsourcing-and-services/competitor-customers.md) | A ranked list of a rival's customers in your vertical and country, with how entrenched it is at each: your displacement targets. |
-| [Map my offering to buyers](../prompts/06-outsourcing-and-services/offering-to-buyers.md) | Your offering mapped to Draup workloads you approve, then the 20 companies in your territory that outsource them most, with their incumbents and where the provider mix is fragmented. |
-
-## Industry and market intelligence
-
-| Prompt | What you get |
-|---|---|
-| [Top hiring companies in a vertical](../prompts/07-vertical-intelligence/hiring-leaders.md) | The real end employers posting the most jobs in an industry, with outliers and recruiters removed, hiring intensity shown and who to call. |
+| [Competitor's customers in my vertical](../prompts/10-outsourcing-and-services/competitor-customers.md) | A ranked list of a rival's customers in your vertical and country, with how entrenched it is at each: your displacement targets. |
+| [Map my offering to buyers](../prompts/10-outsourcing-and-services/offering-to-buyers.md) | Your offering mapped to Draup workloads you approve, then the 20 companies in your territory that outsource them most, with their incumbents and where the provider mix is fragmented. |
 
 ## Account planning and expansion
 
 | Prompt | What you get |
 |---|---|
-| [Customer alumni on the move](../prompts/08-account-planning-and-expansion/follow-champions.md) | Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first. |
-| [Tier my accounts by propensity to buy](../prompts/08-account-planning-and-expansion/propensity-tiering.md) | Up to 25 accounts scored 0–100 on an editable Fit (0–50) and Timing (0–50) rubric, tiered A, B or C and placed on a fit-versus-timing grid, with the driver behind each score. |
+| [Customer alumni on the move](../prompts/11-account-planning/follow-champions.md) | Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first. |
+| [Tier my accounts by propensity to buy](../prompts/11-account-planning/propensity-tiering.md) | Up to 25 accounts scored 0–100 on an editable Fit (0–50) and Timing (0–50) rubric, tiered A, B or C and placed on a fit-versus-timing grid, with the driver behind each score. |
+
+## Industry and market intelligence
+
+| Prompt | What you get |
+|---|---|
+| [Top hiring companies in a vertical](../prompts/14-industry-intelligence/hiring-leaders.md) | The real end employers posting the most jobs in an industry, with outliers and recruiters removed, hiring intensity shown and who to call. |
 
 ## Content and enablement
 
 | Prompt | What you get |
 |---|---|
-| [ABM messages for a target list](../prompts/09-content-and-enablement/abm-messages.md) | A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle. |
-| [Industry email sequence](../prompts/09-content-and-enablement/email-sequence.md) | A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example. |
+| [ABM messages for a target list](../prompts/16-content-and-enablement/abm-messages.md) | A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle. |
+| [Industry email sequence](../prompts/16-content-and-enablement/email-sequence.md) | A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example. |
 
 ## Talent cost and location
 
 | Prompt | What you get |
 |---|---|
-| [Hard-to-hire roles: staffing pitch](../prompts/10-talent-cost-and-location/hard-to-hire.md) | Which of an account's roles are hardest to hire in its key location, with supply, demand and pay, turned into a staffing or managed-services pitch. |
-| [Layoffs: outsourcing trigger](../prompts/10-talent-cost-and-location/layoff-pool.md) | Where and in which roles a company has cut jobs in the last 12 months, read as a possible outsourcing trigger, plus which skills are now more available in the market. |
+| [Hard-to-hire roles: staffing pitch](../prompts/17-talent-cost-and-location/hard-to-hire.md) | Which of an account's roles are hardest to hire in its key location, with supply, demand and pay, turned into a staffing or managed-services pitch. |
+| [Layoffs: outsourcing trigger](../prompts/17-talent-cost-and-location/layoff-pool.md) | Where and in which roles a company has cut jobs in the last 12 months, read as a possible outsourcing trigger, plus which skills are now more available in the market. |
 
 ## Playbooks for you
 

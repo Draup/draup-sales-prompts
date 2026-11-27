@@ -98,7 +98,7 @@ Write a 2-sentence opener for each of the top 5 based on the news.
 
 - [Who just picked a vendor](../../prompts/04-signals-and-timing/vendor-selection-news.md): A dated list of companies in your industry that just selected, deployed or replaced a vendor in your category: competitor wins to watch, peer proof, and the implementation partners involved.
 - [Weekly industry signal digest](../../prompts/04-signals-and-timing/vertical-digest.md): A one-screen digest of the week's material moves in one industry, grouped by theme, with the accounts worth touching.
-- [Global capability centres (GCCs) and the services play](../../prompts/06-outsourcing-and-services/gcc-opportunity.md): The account's global capability centres (company-owned offshore or captive sites): where, which functions, how fast they hire, likely new sites, and whether build-operate-transfer (BOT), centre-of-excellence (CoE) expansion or managed services fits.
+- [Global capability centres (GCCs) and the services play](../../prompts/10-outsourcing-and-services/gcc-opportunity.md): The account's global capability centres (company-owned offshore or captive sites): where, which functions, how fast they hire, likely new sites, and whether build-operate-transfer (BOT), centre-of-excellence (CoE) expansion or managed services fits.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

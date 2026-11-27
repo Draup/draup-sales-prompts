@@ -96,8 +96,8 @@ Run the next 5 accounts in the same way.
 ## Related prompts
 
 - [What's worth acting on now](../../prompts/04-signals-and-timing/whats-actionable.md): Up to 5 real triggers from the last 90 days, each tied to a stated priority, a likely owner and a suggested action, with the noise stripped out.
-- [ABM messages for a target list](../../prompts/09-content-and-enablement/abm-messages.md): A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle.
-- [Industry email sequence](../../prompts/09-content-and-enablement/email-sequence.md): A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example.
+- [ABM messages for a target list](../../prompts/16-content-and-enablement/abm-messages.md): A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle.
+- [Industry email sequence](../../prompts/16-content-and-enablement/email-sequence.md): A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>

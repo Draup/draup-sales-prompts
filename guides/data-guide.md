@@ -42,7 +42,7 @@ Used by 21 prompts, for example: [10-minute pre-call snapshot](../prompts/01-acc
 
 Hiring, attrition and net change by month, company and metro; key locations with HQ, GCC and new-site flags.
 
-Used by 8 prompts, for example: [Account SWOT, outside-in](../prompts/01-account-research/swot.md), [Are they really investing in X?](../prompts/04-signals-and-timing/investing-in-x.md), [Is work coming back in-house? (re-insourcing risk)](../prompts/06-outsourcing-and-services/reinsourcing-risk.md), [Global capability centres (GCCs) and the services play](../prompts/06-outsourcing-and-services/gcc-opportunity.md).
+Used by 8 prompts, for example: [Account SWOT, outside-in](../prompts/01-account-research/swot.md), [Are they really investing in X?](../prompts/04-signals-and-timing/investing-in-x.md), [Is work coming back in-house? (re-insourcing risk)](../prompts/10-outsourcing-and-services/reinsourcing-risk.md), [Global capability centres (GCCs) and the services play](../prompts/10-outsourcing-and-services/gcc-opportunity.md).
 
 ## News signals
 
@@ -54,25 +54,25 @@ Used by 27 prompts, for example: [10-minute pre-call snapshot](../prompts/01-acc
 
 Customer-to-provider engagements: who outsources which workloads to whom, relationship tier, delivery locations.
 
-Used by 18 prompts, for example: [Pre-fill MEDDPICC from outside-in data](../prompts/02-buyers-and-stakeholders/meddpicc-prefill.md), [Who's already working each priority](../prompts/03-tech-stack-and-displacement/priority-stack-incumbent-map.md), [Outsourcing footprint and incumbents](../prompts/06-outsourcing-and-services/outsourcing-footprint.md), [A competitor's footprint at an account](../prompts/06-outsourcing-and-services/competitor-at-account.md).
+Used by 18 prompts, for example: [Pre-fill MEDDPICC from outside-in data](../prompts/02-buyers-and-stakeholders/meddpicc-prefill.md), [Who's already working each priority](../prompts/03-tech-stack-and-displacement/priority-stack-incumbent-map.md), [Outsourcing footprint and incumbents](../prompts/10-outsourcing-and-services/outsourcing-footprint.md), [A competitor's footprint at an account](../prompts/10-outsourcing-and-services/competitor-at-account.md).
 
 ## Industry ecosystem
 
 Industry revenue, IT and R&D spend, priorities, fast-growing tech, top vendors and outsourcers, growing and shrinking companies, startups, talent hubs.
 
-Used by 12 prompts, for example: [Which region should own this account](../prompts/01-account-research/buying-center.md), [Growing and shrinking companies: scale vs cost-out buyers](../prompts/05-prospecting-and-lists/growth-and-cost-out.md), [Startups with real momentum](../prompts/05-prospecting-and-lists/startups.md), [Biggest logos in my territory](../prompts/05-prospecting-and-lists/territory-logos.md).
+Used by 12 prompts, for example: [Which region should own this account](../prompts/01-account-research/buying-center.md), [Growing and shrinking companies: scale vs cost-out buyers](../prompts/06-prospecting-and-lists/growth-and-cost-out.md), [Startups with real momentum](../prompts/06-prospecting-and-lists/startups.md), [Biggest logos in my territory](../prompts/06-prospecting-and-lists/territory-logos.md).
 
 ## Company directory
 
 List building and market sizing by industry, HQ, size, technology, service providers and outsourced workloads.
 
-Used by 13 prompts, for example: [Displacement target list](../prompts/03-tech-stack-and-displacement/displacement-list.md), [Build and size an ICP list](../prompts/05-prospecting-and-lists/icp-list.md), [Look-alikes of a best customer](../prompts/05-prospecting-and-lists/lookalikes.md), [Benchmark an account against peers](../prompts/05-prospecting-and-lists/peer-benchmark.md).
+Used by 13 prompts, for example: [Displacement target list](../prompts/03-tech-stack-and-displacement/displacement-list.md), [Build and size an ICP list](../prompts/06-prospecting-and-lists/icp-list.md), [Look-alikes of a best customer](../prompts/06-prospecting-and-lists/lookalikes.md), [Benchmark an account against peers](../prompts/06-prospecting-and-lists/peer-benchmark.md).
 
 ## Talent cost & supply
 
 Base pay by role and city, talent pool size and growth, hiring difficulty, layoffs, employer brand (Draup for Talent connector).
 
-Used by 7 prompts, for example: [Offshore cost case (base-pay gap)](../prompts/10-talent-cost-and-location/offshoring-cost-case.md), [Where to put a delivery team](../prompts/10-talent-cost-and-location/delivery-location.md), [Hard-to-hire roles: staffing pitch](../prompts/10-talent-cost-and-location/hard-to-hire.md), [Layoffs: outsourcing trigger](../prompts/10-talent-cost-and-location/layoff-pool.md).
+Used by 7 prompts, for example: [Offshore cost case (base-pay gap)](../prompts/17-talent-cost-and-location/offshoring-cost-case.md), [Where to put a delivery team](../prompts/17-talent-cost-and-location/delivery-location.md), [Hard-to-hire roles: staffing pitch](../prompts/17-talent-cost-and-location/hard-to-hire.md), [Layoffs: outsourcing trigger](../prompts/17-talent-cost-and-location/layoff-pool.md).
 
 ## Reading the data well
 

@@ -14,7 +14,7 @@ Builds and counts the list from industry, location, size and technology.
 
 **Look for:** A list sized realistically for your team's capacity. Check companies are in the right primary industry and flag any that look inactive.
 
-Open the full prompt: [Build and size an ICP list](../prompts/05-prospecting-and-lists/icp-list.md)
+Open the full prompt: [Build and size an ICP list](../prompts/06-prospecting-and-lists/icp-list.md)
 
 Quick version:
 
@@ -28,7 +28,7 @@ Finds the fastest revenue growers in the segment, with acquisition-driven jumps 
 
 **Look for:** Organic growers to move up the list; growth that comes from an acquisition needs a different story.
 
-Open the full prompt: [Fastest revenue growers in my ICP](../prompts/05-prospecting-and-lists/revenue-growth-screen.md)
+Open the full prompt: [Fastest revenue growers in my ICP](../prompts/06-prospecting-and-lists/revenue-growth-screen.md)
 
 Quick version:
 
@@ -42,7 +42,7 @@ Scores up to 25 accounts on an editable Fit + Timing rubric and splits them into
 
 **Look for:** That the rubric weights match how you actually win. Adjust them, re-run, and agree the top tier with the team.
 
-Open the full prompt: [Tier my accounts by propensity to buy](../prompts/08-account-planning-and-expansion/propensity-tiering.md)
+Open the full prompt: [Tier my accounts by propensity to buy](../prompts/11-account-planning/propensity-tiering.md)
 
 Quick version:
 
@@ -56,7 +56,7 @@ Gives the top-tier accounts a personalised first touch, 5 accounts per pass.
 
 **Look for:** Strong rows (signal linked to priority) go to SDRs this week; Weak rows go to a nurture track.
 
-Open the full prompt: [ABM messages for a target list](../prompts/09-content-and-enablement/abm-messages.md)
+Open the full prompt: [ABM messages for a target list](../prompts/16-content-and-enablement/abm-messages.md)
 
 Quick version:
 

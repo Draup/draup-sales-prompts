@@ -28,7 +28,7 @@ Rates renewal and relationship risk Red/Amber/Green with dated evidence, includi
 
 **Look for:** Any Red row, and whether your sponsor is still in role. A newly detected competitor tool is Amber until you verify it.
 
-Open the full prompt: [Renewal risk check (RAG)](../prompts/08-account-planning-and-expansion/risk-check.md)
+Open the full prompt: [Renewal risk check (RAG)](../prompts/11-account-planning/risk-check.md)
 
 Quick version:
 
@@ -56,7 +56,7 @@ Combines the outcomes you delivered with what changed, into talking points and 3
 
 **Look for:** Proof of value tied to their newest priority, and the asks that lock in the renewal (executive sponsor, reference, expansion).
 
-Open the full prompt: [QBR prep](../prompts/08-account-planning-and-expansion/qbr-prep.md)
+Open the full prompt: [QBR prep](../prompts/11-account-planning/qbr-prep.md)
 
 Quick version:
 

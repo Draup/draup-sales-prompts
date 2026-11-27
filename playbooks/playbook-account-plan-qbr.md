@@ -14,7 +14,7 @@ Lays out priorities, buyers, installed tech, providers and an optional SWOT.
 
 **Look for:** The 2–3 growth areas with the strongest evidence. Mark any section Draup couldn't fill as a discovery item for the QBR.
 
-Open the full prompt: [Draft an account plan](../prompts/08-account-planning-and-expansion/account-plan.md)
+Open the full prompt: [Draft an account plan](../prompts/11-account-planning/account-plan.md)
 
 Quick version:
 
@@ -28,7 +28,7 @@ Turns the plan into the five best ways in for what you sell, each with evidence,
 
 **Look for:** One or two entry points you can name as an expansion ask in the QBR.
 
-Open the full prompt: [Entry points and whitespace](../prompts/08-account-planning-and-expansion/entry-points.md)
+Open the full prompt: [Entry points and whitespace](../prompts/11-account-planning/entry-points.md)
 
 Quick version:
 
@@ -42,7 +42,7 @@ Rates renewal and relationship risk Red/Amber/Green with dated evidence, includi
 
 **Look for:** Any Red row, especially exits in your sponsor's function or layoffs. A newly detected competitor tool is Amber: verify it before treating it as a threat. Each Red or Amber row needs an owner before the QBR.
 
-Open the full prompt: [Renewal risk check (RAG)](../prompts/08-account-planning-and-expansion/risk-check.md)
+Open the full prompt: [Renewal risk check (RAG)](../prompts/11-account-planning/risk-check.md)
 
 Quick version:
 
@@ -56,7 +56,7 @@ Combines the outcomes you delivered with what changed at the customer, and produ
 
 **Look for:** Talking points that link their newest priority to value you've delivered, and the 3 asks (expansion, reference, executive sponsor).
 
-Open the full prompt: [QBR prep](../prompts/08-account-planning-and-expansion/qbr-prep.md)
+Open the full prompt: [QBR prep](../prompts/11-account-planning/qbr-prep.md)
 
 Quick version:
 

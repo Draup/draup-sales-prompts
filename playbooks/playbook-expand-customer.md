@@ -14,7 +14,7 @@ Shows the metros where the customer is adding people in one function, with new s
 
 **Look for:** Locations or functions growing fastest. New sites are inferred from postings, so confirm them in conversation.
 
-Open the full prompt: [Where they're building teams](../prompts/08-account-planning-and-expansion/expansion-footprint.md)
+Open the full prompt: [Where they're building teams](../prompts/11-account-planning/expansion-footprint.md)
 
 Quick version:
 
@@ -28,7 +28,7 @@ Ranks the five best ways in for what you sell, each with evidence, incumbents an
 
 **Look for:** The entry point with the strongest evidence and the fewest incumbents. That's your next deal.
 
-Open the full prompt: [Entry points and whitespace](../prompts/08-account-planning-and-expansion/entry-points.md)
+Open the full prompt: [Entry points and whitespace](../prompts/11-account-planning/entry-points.md)
 
 Quick version:
 

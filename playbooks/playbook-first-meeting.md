@@ -56,7 +56,7 @@ Optional: run it when a known rival is in the deal. Selling services? Use “Bat
 
 **Look for:** The objection their rep will raise and one trap question you can work into discovery.
 
-Open the full prompt: [Battlecard: rival software vendor](../prompts/09-content-and-enablement/battlecard-product.md)
+Open the full prompt: [Battlecard: rival software vendor](../prompts/16-content-and-enablement/battlecard-product.md)
 
 Quick version:
 

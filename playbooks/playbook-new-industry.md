@@ -14,7 +14,7 @@ Gives a one-page view of the industry: spend and growth, top priorities, technol
 
 **Look for:** The 2–3 priorities closest to what you sell. If the industry returns zeros, Claude tries the parent industry; check which one it used.
 
-Open the full prompt: [One-page vertical market snapshot](../prompts/07-vertical-intelligence/vertical-snapshot.md)
+Open the full prompt: [One-page vertical market snapshot](../prompts/14-industry-intelligence/vertical-snapshot.md)
 
 Quick version:
 
@@ -28,7 +28,7 @@ Shows who really wins outsourcing work in the industry, plus the top workloads a
 
 **Look for:** The firms you'll meet most often, and buyers that use many providers: often the easiest way in.
 
-Open the full prompt: [Vertical vendor league table](../prompts/07-vertical-intelligence/vendor-league.md)
+Open the full prompt: [Vertical vendor league table](../prompts/14-industry-intelligence/vendor-league.md)
 
 Quick version:
 
@@ -42,7 +42,7 @@ Builds and sizes the target list in the industry from location, size and technol
 
 **Look for:** A first list of 25 accounts in the right primary industry, sized for your team.
 
-Open the full prompt: [Build and size an ICP list](../prompts/05-prospecting-and-lists/icp-list.md)
+Open the full prompt: [Build and size an ICP list](../prompts/06-prospecting-and-lists/icp-list.md)
 
 Quick version:
 
@@ -56,7 +56,7 @@ Turns the industry's priorities into a point of view with company examples.
 
 **Look for:** One sentence you'd say to any executive in the industry, backed by a dated company example.
 
-Open the full prompt: [Industry point of view for a pitch](../prompts/07-vertical-intelligence/industry-pov.md)
+Open the full prompt: [Industry point of view for a pitch](../prompts/14-industry-intelligence/industry-pov.md)
 
 Quick version:
 
@@ -70,7 +70,7 @@ Writes a 3-email sequence for your main persona, built on those priorities.
 
 **Look for:** Emails that open with a real, dated industry move and never present it as your customer.
 
-Open the full prompt: [Industry email sequence](../prompts/09-content-and-enablement/email-sequence.md)
+Open the full prompt: [Industry email sequence](../prompts/16-content-and-enablement/email-sequence.md)
 
 Quick version:
 

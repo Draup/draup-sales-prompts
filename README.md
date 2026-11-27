@@ -54,10 +54,10 @@ flowchart LR
 | [Signal-to-email (one or a few accounts)](prompts/04-signals-and-timing/signal-to-email.md) | For one account or up to 5 per pass: the freshest relevant signal, the priority it supports, and a short, sourced opener for your persona that ends in one low-friction ask. | 4–6 min |
 | [Hypothesis-led discovery questions](prompts/02-buyers-and-stakeholders/discovery-questions.md) | An opening insight and eight discovery questions, each built on a dated fact about the account, with the hypothesis behind it and what a good answer tells you. | 2–4 min |
 | [Is a competitor installed?](prompts/03-tech-stack-and-displacement/competitor-installed.md) | A clear verdict on whether a rival's products are live anywhere in the account's stack, how central they are, who else is in the room and which stated priorities could justify a switch. | 2–4 min |
-| [Build and size an ICP list](prompts/05-prospecting-and-lists/icp-list.md) | The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5. | 4–6 min |
-| [Is this inbound account worth it?](prompts/05-prospecting-and-lists/inbound-qualification.md) | A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan. | 1–2 min |
-| [Draft an account plan](prompts/08-account-planning-and-expansion/account-plan.md) | An account plan in eight parts: snapshot, their strategy in their own words, buying committee, incumbents, ranked expansion plays, risks and a 90-day plan, plus an optional short SWOT. | 6–10 min |
-| [Outsourcing footprint and incumbents](prompts/06-outsourcing-and-services/outsourcing-footprint.md) | How much the account outsources, to whom, how concentrated its provider base is, and which workloads are ripe for vendor consolidation. | 2–4 min |
+| [Build and size an ICP list](prompts/06-prospecting-and-lists/icp-list.md) | The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5. | 4–6 min |
+| [Is this inbound account worth it?](prompts/06-prospecting-and-lists/inbound-qualification.md) | A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan. | 1–2 min |
+| [Draft an account plan](prompts/11-account-planning/account-plan.md) | An account plan in eight parts: snapshot, their strategy in their own words, buying committee, incumbents, ranked expansion plays, risks and a 90-day plan, plus an optional short SWOT. | 6–10 min |
+| [Outsourcing footprint and incumbents](prompts/10-outsourcing-and-services/outsourcing-footprint.md) | How much the account outsources, to whom, how concentrated its provider base is, and which workloads are ripe for vendor consolidation. | 2–4 min |
 | [Weekly trigger sweep for my book](prompts/04-signals-and-timing/weekly-book-sweep.md) | One table of the week's real triggers across up to 10 accounts, each with a so-what and an action, plus a clean list of accounts with nothing new. | 4–6 min |
 
 ## Find prompts by role
@@ -77,17 +77,17 @@ flowchart LR
 
 | Sales job | What it covers | Prompts |
 |---|---|---|
-| [**Start here**](prompts/00-start-here/README.md) | Tell Claude who you are and what you sell, once. Every other prompt gets sharper. | 2 |
+| [**Start here**](prompts/00-start-here/README.md) | Tell your AI who you are and what you sell, once. Every other prompt gets sharper. | 2 |
 | [**Account research**](prompts/01-account-research/README.md) | Know the account before you call: size, money, priorities, filings and earnings calls. | 12 |
 | [**Buyers and stakeholders**](prompts/02-buyers-and-stakeholders/README.md) | Find the people who own the problem and the budget, and a warm way in. | 7 |
 | [**Tech stack and displacement**](prompts/03-tech-stack-and-displacement/README.md) | See what they run, what's new, what's fading, and where a competitor is installed. | 7 |
 | [**Signals and timing**](prompts/04-signals-and-timing/README.md) | Reach out when something just changed: hiring spikes, leadership moves, news, new tools. | 11 |
-| [**Prospecting and target lists**](prompts/05-prospecting-and-lists/README.md) | Build, size and qualify target lists from firmographics, tech, hiring and growth. | 10 |
-| [**Outsourcing and services deals**](prompts/06-outsourcing-and-services/README.md) | For IT services, consulting and staffing sellers: incumbents, share of wallet, GCCs and wedges. | 11 |
-| [**Industry and market intelligence**](prompts/07-vertical-intelligence/README.md) | Industry-level numbers, priorities and vendor landscapes for pitches and planning. | 7 |
-| [**Account planning and expansion**](prompts/08-account-planning-and-expansion/README.md) | Account plans, entry points, risk checks, QBR prep and territory tiering. | 11 |
-| [**Content and enablement**](prompts/09-content-and-enablement/README.md) | Turn Draup data into battlecards, ABM messages and email sequences. | 5 |
-| [**Talent cost and location**](prompts/10-talent-cost-and-location/README.md) | Cost-arbitrage, location and hiring-difficulty cases for services pursuits. Uses the Draup for Talent connector. | 7 |
+| [**Prospecting and target lists**](prompts/06-prospecting-and-lists/README.md) | Build, size and qualify target lists from firmographics, tech, hiring and growth. | 10 |
+| [**Outsourcing and services deals**](prompts/10-outsourcing-and-services/README.md) | For IT services, consulting and staffing sellers: incumbents, share of wallet, GCCs and wedges. | 11 |
+| [**Account planning and expansion**](prompts/11-account-planning/README.md) | Account plans, entry points, risk checks, QBR prep and territory tiering. | 11 |
+| [**Industry and market intelligence**](prompts/14-industry-intelligence/README.md) | Industry-level numbers, priorities and vendor landscapes for pitches and planning. | 7 |
+| [**Content and enablement**](prompts/16-content-and-enablement/README.md) | Turn Draup data into battlecards, ABM messages and email sequences. | 5 |
+| [**Talent cost and location**](prompts/17-talent-cost-and-location/README.md) | Cost-arbitrage, location and hiring-difficulty cases for services pursuits. Uses the Draup for Talent connector. | 7 |
 
 ## Playbooks: complete workflows
 
@@ -163,6 +163,8 @@ How to read each data type: [Data guide](guides/data-guide.md) · Terms explaine
 
 ## License
 
-Prompts and guides: [Creative Commons Attribution 4.0](LICENSE). Code: [MIT](LICENSE-CODE). "Draup" is a trademark of Draup, Inc.; "Claude" is a trademark of Anthropic and "ChatGPT" of OpenAI. These licenses grant no trademark rights (see [NOTICE](NOTICE)).
+Prompts and guides: [Creative Commons Attribution 4.0](LICENSE). Code: [MIT](LICENSE-CODE). "Draup" is a trademark of Draup, Inc.; "Claude" is a trademark of Anthropic and "ChatGPT" of OpenAI. These licenses grant no trademark rights.
+
+Free to use, share and adapt, including at work, as long as you credit *"Draup Sales Prompt Library by Draup, Inc."* and link back here. Data returned by Draup for Sales stays governed by your Draup agreement. Details: [NOTICE](NOTICE).
 
 *Version 1.1.0 · updated 2026-11-27*

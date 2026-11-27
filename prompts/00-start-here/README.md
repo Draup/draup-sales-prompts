@@ -2,7 +2,7 @@
 
 # Start here
 
-Tell Claude who you are and what you sell, once. Every other prompt gets sharper.
+Tell your AI who you are and what you sell, once. Every other prompt gets sharper.
 
 2 prompts. Open one for its detailed prompt, quick version and follow-ups.
 

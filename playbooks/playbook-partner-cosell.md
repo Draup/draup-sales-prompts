@@ -14,7 +14,7 @@ Shows which providers and vendors are already linked to each priority at the acc
 
 **Look for:** Providers already working the priority next to yours. They have access and credibility.
 
-Open the full prompt: [Who to partner with vs replace, by priority](../prompts/06-outsourcing-and-services/partner-map.md)
+Open the full prompt: [Who to partner with vs replace, by priority](../prompts/10-outsourcing-and-services/partner-map.md)
 
 Quick version:
 
@@ -28,7 +28,7 @@ Shortlists the partners already delivering your workload at the account and skil
 
 **Look for:** Your existing partners ranked first, then the one with the deepest footprint in your workload. That's your co-sell pick.
 
-Open the full prompt: [Pick a co-sell partner](../prompts/06-outsourcing-and-services/cosell-partner.md)
+Open the full prompt: [Pick a co-sell partner](../prompts/10-outsourcing-and-services/cosell-partner.md)
 
 Quick version:
 
@@ -42,7 +42,7 @@ Profiles the partner you picked: top customers, industries, workloads and delive
 
 **Look for:** Overlap with your target list and industry, and delivery locations near the account's sites. That's the evidence for your co-sell ask to the partner.
 
-Open the full prompt: [Profile a services firm (rival or partner)](../prompts/06-outsourcing-and-services/competitor-profile.md)
+Open the full prompt: [Profile a services firm (rival or partner)](../prompts/10-outsourcing-and-services/competitor-profile.md)
 
 Quick version:
 
@@ -56,7 +56,7 @@ Writes joint first-touch messages for the shared accounts, using the Co-sell par
 
 **Look for:** Messages that pair the account's priority with a recent signal and read as coming from both firms, ready for both teams to send.
 
-Open the full prompt: [ABM messages for a target list](../prompts/09-content-and-enablement/abm-messages.md)
+Open the full prompt: [ABM messages for a target list](../prompts/16-content-and-enablement/abm-messages.md)
 
 Quick version:
 

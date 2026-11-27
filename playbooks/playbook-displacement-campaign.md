@@ -14,7 +14,7 @@ Lists the accounts where the rival delivers the workload you want to win.
 
 **Look for:** Accounts in your territory where the rival's footprint is small. Those are usually easier to unseat than its strategic accounts.
 
-Open the full prompt: [Competitor's customers in my vertical](../prompts/06-outsourcing-and-services/competitor-customers.md)
+Open the full prompt: [Competitor's customers in my vertical](../prompts/10-outsourcing-and-services/competitor-customers.md)
 
 Quick version:
 
@@ -28,7 +28,7 @@ Shows, for each shortlisted account, how deep the rival is and where it's thin.
 
 **Look for:** Wedge workloads where the rival has few engagements (3 or fewer is an editable default) and that match what you sell. Ignore catch-all workloads such as Project/Programs Management. Drop accounts where the rival is #1 across the board.
 
-Open the full prompt: [A competitor's footprint at an account](../prompts/06-outsourcing-and-services/competitor-at-account.md)
+Open the full prompt: [A competitor's footprint at an account](../prompts/10-outsourcing-and-services/competitor-at-account.md)
 
 Quick version:
 
@@ -56,7 +56,7 @@ Finds recent outsourcing engagements at the account's peers in your workload, fo
 
 **Look for:** One peer move you can cite in the opener. Present it as a public industry move, not as your own customer.
 
-Open the full prompt: [Peer deals for social proof](../prompts/06-outsourcing-and-services/peer-deals.md)
+Open the full prompt: [Peer deals for social proof](../prompts/10-outsourcing-and-services/peer-deals.md)
 
 Quick version:
 

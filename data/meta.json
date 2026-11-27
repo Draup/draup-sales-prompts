@@ -11,7 +11,7 @@
    "folder": "00-start-here",
    "name": "Start here",
    "short": "Start here",
-   "desc": "Tell Claude who you are and what you sell, once. Every other prompt gets sharper."
+   "desc": "Tell your AI who you are and what you sell, once. Every other prompt gets sharper."
   },
   {
    "id": "research",
@@ -42,43 +42,92 @@
    "desc": "Reach out when something just changed: hiring spikes, leadership moves, news, new tools."
   },
   {
+   "id": "outreach",
+   "folder": "05-outreach-and-messaging",
+   "name": "Outreach and messaging",
+   "short": "Outreach",
+   "desc": "Research-backed emails, call scripts, LinkedIn notes and briefing notes, each grounded in dated Draup facts."
+  },
+  {
    "id": "prospect",
-   "folder": "05-prospecting-and-lists",
+   "folder": "06-prospecting-and-lists",
    "name": "Prospecting and target lists",
    "short": "Prospecting",
    "desc": "Build, size and qualify target lists from firmographics, tech, hiring and growth."
   },
   {
+   "id": "plays",
+   "folder": "07-solution-plays",
+   "name": "Solution plays: by what you sell",
+   "short": "Solution plays",
+   "desc": "Find the accounts most ready for what you sell, and check any account's readiness: cloud, data & AI, ERP, security, GenAI, CX, supply chain, HR tech, managed services, engineering, testing."
+  },
+  {
+   "id": "deals",
+   "folder": "08-deal-strategy",
+   "name": "Deal strategy and qualification",
+   "short": "Deals",
+   "desc": "Win live opportunities: re-engage stalled deals, answer RFPs, build business cases, handle objections and beat a named competitor."
+  },
+  {
+   "id": "compete",
+   "folder": "09-competitive-intelligence",
+   "name": "Competitive intelligence",
+   "short": "Competitors",
+   "desc": "Track what rivals are winning, building and losing, and where you can take share."
+  },
+  {
    "id": "services",
-   "folder": "06-outsourcing-and-services",
+   "folder": "10-outsourcing-and-services",
    "name": "Outsourcing and services deals",
    "short": "Services",
    "desc": "For IT services, consulting and staffing sellers: incumbents, share of wallet, GCCs and wedges."
   },
   {
-   "id": "market",
-   "folder": "07-vertical-intelligence",
-   "name": "Industry and market intelligence",
-   "short": "Industry",
-   "desc": "Industry-level numbers, priorities and vendor landscapes for pitches and planning."
-  },
-  {
    "id": "plan",
-   "folder": "08-account-planning-and-expansion",
+   "folder": "11-account-planning",
    "name": "Account planning and expansion",
    "short": "Planning",
    "desc": "Account plans, entry points, risk checks, QBR prep and territory tiering."
   },
   {
+   "id": "expand",
+   "folder": "12-expansion-and-cross-sell",
+   "name": "Expansion and cross-sell",
+   "short": "Expansion",
+   "desc": "Grow existing customers: global account maps, whitespace, cross-sell, new budget holders and sponsor coverage."
+  },
+  {
+   "id": "partners",
+   "folder": "13-partners-and-alliances",
+   "name": "Partners and alliances",
+   "short": "Partners",
+   "desc": "Pick, plan and grow co-sell motions with the partners already embedded in your accounts."
+  },
+  {
+   "id": "market",
+   "folder": "14-industry-intelligence",
+   "name": "Industry and market intelligence",
+   "short": "Industry",
+   "desc": "Industry-level numbers, priorities and vendor landscapes for pitches and planning."
+  },
+  {
+   "id": "leaders",
+   "folder": "15-sales-leadership-and-revops",
+   "name": "Sales leadership and RevOps",
+   "short": "Leadership",
+   "desc": "Size territories, segment books, plan pipeline and enable reps on new verticals."
+  },
+  {
    "id": "content",
-   "folder": "09-content-and-enablement",
+   "folder": "16-content-and-enablement",
    "name": "Content and enablement",
    "short": "Content",
    "desc": "Turn Draup data into battlecards, ABM messages and email sequences."
   },
   {
    "id": "talent",
-   "folder": "10-talent-cost-and-location",
+   "folder": "17-talent-cost-and-location",
    "name": "Talent cost and location",
    "short": "Talent",
    "desc": "Cost-arbitrage, location and hiring-difficulty cases for services pursuits. Uses the Draup for Talent connector."

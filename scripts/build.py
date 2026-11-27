@@ -307,7 +307,8 @@ def readme():
     L += ["## Help and contributing", "",
           f"- **Connection or access questions:** see [Connect Draup to your AI](guides/connect.md#troubleshooting) or email {LK.get('support', '')}.",
           "- **A prompt that could be better, or a new idea:** open an issue, or see [CONTRIBUTING.md](CONTRIBUTING.md) to submit a change.", ""]
-    L += ["## License", "", "Prompts and guides: [Creative Commons Attribution 4.0](LICENSE). Code: [MIT](LICENSE-CODE). \"Draup\" is a trademark of Draup, Inc.; \"Claude\" is a trademark of Anthropic and \"ChatGPT\" of OpenAI. These licenses grant no trademark rights (see [NOTICE](NOTICE)).", "",
+    L += ["## License", "", "Prompts and guides: [Creative Commons Attribution 4.0](LICENSE). Code: [MIT](LICENSE-CODE). \"Draup\" is a trademark of Draup, Inc.; \"Claude\" is a trademark of Anthropic and \"ChatGPT\" of OpenAI. These licenses grant no trademark rights.", "",
+          "Free to use, share and adapt, including at work, as long as you credit *\"Draup Sales Prompt Library by Draup, Inc.\"* and link back here. Data returned by Draup for Sales stays governed by your Draup agreement. Details: [NOTICE](NOTICE).", "",
           f"*Version {META['version']} · updated {META['updated']}*"]
     write("README.md", "\n".join(L))
 

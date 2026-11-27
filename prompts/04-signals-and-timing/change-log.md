@@ -95,8 +95,8 @@ Turn this into a 5-bullet update for my manager.
 
 ## Related prompts
 
-- [QBR prep](../../prompts/08-account-planning-and-expansion/qbr-prep.md): What changed at the customer during the review period, set against the outcomes you delivered, with three talking points and three asks.
-- [Renewal risk check (RAG)](../../prompts/08-account-planning-and-expansion/risk-check.md): A Red/Amber/Green risk table for one customer, including your sponsor's status, with dated evidence, an overall rating and two actions.
+- [QBR prep](../../prompts/11-account-planning/qbr-prep.md): What changed at the customer during the review period, set against the outcomes you delivered, with three talking points and three asks.
+- [Renewal risk check (RAG)](../../prompts/11-account-planning/risk-check.md): A Red/Amber/Green risk table for one customer, including your sponsor's status, with dated evidence, an overall rating and two actions.
 - [Weekly trigger sweep for my book](../../prompts/04-signals-and-timing/weekly-book-sweep.md): One table of the week's real triggers across up to 10 accounts, each with a so-what and an action, plus a clean list of accounts with nothing new.
 
 <details>
