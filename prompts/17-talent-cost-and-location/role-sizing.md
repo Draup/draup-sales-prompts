@@ -1,6 +1,6 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Size a role and who employs it
+# Size a skill pool and its employers
 
 > **How many people hold a role in up to 3 countries, how fast supply is growing, and which companies employ the most, split into prospects and services competitors.**
 
@@ -26,7 +26,7 @@
 Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my market-sizing analyst for a services practice. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company lookups. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my market-sizing analyst for a services practice. Use the Draup for Talent connector for talent-supply facts, and the Draup for Sales connector for company facts. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Role: [e.g. SAP FICO Consultant]
@@ -34,20 +34,22 @@ INPUTS (edit these)
 - Vertical (optional): [limit to people at companies in this industry, e.g. Retail]
 - What I sell: [one line, e.g. SAP finance managed services — skip if you ran the start-here prompt]
 
+CONTEXT (optional)
+A skill pool tells you two things at once: where you can hire to deliver, and which end clients carry big in-house teams that could move to managed services. Services firms holding the same skill are the competitors you'll meet in both deals and hiring.
+
 STEPS
 1. Find Draup's standard name for the role. If there's no exact match, show the 3 closest and ask which to use. Then confirm Draup's name for each country.
 2. For each country, pull the talent supply for the role, its likely range, 3-year growth and how reliable the estimate is, limited to [Vertical] if given.
 3. For the largest country, pull the top 25 current employers of people in this role.
 4. Sort those employers into end clients (use the skill in-house) and services firms (IT services, consulting, staffing). Keep the top 15 overall.
+5. For the largest end client, pull its top 3 executives in the function that owns this skill and its most important news item from the last 90 days.
 
 OUTPUT
 - Bottom line: 2 sentences — how big and fast-growing the supply is, and what it means for [What I sell].
+- Recommended next step: who to take it to (name and title from step 5), what to do, and why now (one dated fact). If none is found, say so.
 - "Supply": Country | Talent supply | Likely range | 3-yr growth | Reliability. Largest first.
-- "Who employs them": Rank | Employer | Type (End client or Services firm) | People in role | Likely owner (for end clients). Top 15.
-- "Prospects": end clients with the largest in-house teams (managed-services or augmentation candidates).
-- "Competitors": services firms holding most of this skill, met in both deals and hiring.
-- "Why this matters for [What I sell]": 3 bullets, each fact → implication → action.
-- Recommended next step: who to take it to (title), what to do, and why now (one dated figure).
+- "Who employs them": Employer | Type (End client or Services firm) | People in role. Top 10.
+- Detail: employers 11–15; prospects (end clients with the largest in-house teams); competitors (services firms holding most of this skill); 3 bullets on what this means for [What I sell].
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
@@ -56,18 +58,21 @@ RULES
 - If the role returns nothing in a country, write "Not in Draup" for that row; never borrow another country's figure.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
 - If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
 - Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
-- Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-How many [Role]s are there in [Countries] per Draup, with likely range and 3-year growth? Then list the top 15 employers in the largest country, split into end clients (prospects) and services firms (competitors).
+Bottom line and next step first: how many [Role]s are in [Countries] (with likely range and 3-year growth), and the top 15 employers in the largest country, split into end-client prospects and services competitors.
 ```
 
 </details>
@@ -95,14 +100,14 @@ Which metros in the largest country hold most of this skill?
 
 ## Related prompts
 
-- [Hard-to-hire roles: staffing pitch](../../prompts/17-talent-cost-and-location/hard-to-hire.md): Which of an account's roles are hardest to hire in its key location, with supply, demand and pay, turned into a staffing or managed-services pitch.
-- [Who's hiring for a tech or role](../../prompts/06-prospecting-and-lists/hiring-led-list.md): The end employers posting the most jobs for a technology or buyer role, cleaned of job boards and staffing firms, with who to call and the industries driving demand.
-- [Where a vertical's teams sit](../../prompts/14-industry-intelligence/talent-hubs.md): The metros where an industry's IT and R&D teams are concentrated, with hubs that host both: where its delivery and engineering work happens.
+- [Roles the client can't hire: staffing pitch](../../prompts/17-talent-cost-and-location/hard-to-hire.md): Which of an account's roles are hardest to hire in its key location, with supply, demand and pay, turned into a staffing or managed-services pitch.
+- [Who's hiring for a tech or role](../../prompts/06-prospecting-and-lists/hiring-led-list.md): The end employers posting most for a technology or buyer role, cleaned of job boards and staffing firms, with hiring per 1,000 staff, who to call and a dated why-now.
+- [Find where a vertical's teams sit](../../prompts/14-industry-intelligence/talent-hubs.md): The metros where an industry's IT and R&D teams are concentrated, hubs that host both, where to focus, and a named person at the biggest local employer.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`search_talent_entities_v3`, `get_talent_dashboard_locations`, `get_talent_size_compare_roles_v3`, `talent_size_compare_locations`, `visualize_account`
+`search_talent_entities_v3`, `get_talent_dashboard_locations`, `get_talent_size_compare_roles_v3`, `talent_size_compare_locations`, `visualize_account`, `get_account_id`, `accounts_executives_key_executives_v3`, `get_signal_news_v3`
 
 Status: **documented, not live-tested**. Prompt id: `talent-role-sizing`.
 
@@ -110,4 +115,4 @@ Status: **documented, not live-tested**. Prompt id: `talent-role-sizing`.
 
 ---
 
-[Back to Talent cost and location](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Talent cost and location](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

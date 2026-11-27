@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Industry email sequence
+# 3-email sequence for one industry persona
 
-> **A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example.**
+> **A ready-to-load 3-email sequence for one persona in one industry, each email built on a priority in the persona's function and a dated move by a real company, plus the first account to load with a named contact.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You're starting outbound into an industry and need a sequence grounded in what that industry is actually working on. | Marketing & ABM, SDR / BDR, Account Executive | Everyone | 2–4 min | Industry ecosystem, News signals |
+| You're starting outbound into an industry and need a sequence grounded in what that industry is working on. Use the ABM openers prompt instead when you already have a named account list. | Marketing & ABM, SDR / BDR, Account Executive | Everyone | 2–4 min | Industry ecosystem, News signals, Executives & movement, Priorities & opportunities |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -34,20 +34,24 @@ INPUTS (edit these)
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 - Proof point (optional): [e.g. cut forecast error at Fabrikam Foods]
 
+CONTEXT (optional)
+A sequence lands when every email is about the persona's own problem and carries proof that a peer is acting on it. Industry priorities give the themes, but they come undated; the proof has to come from named companies with dates.
+
 STEPS
-1. Match [Vertical] to Draup's industry name. If it returns zeros, say so and try the parent industry, naming it.
-2. Pull the industry's current priorities and judge fit from each priority's text.
-3. Pick the 3 closest to [Business function] and [What I sell]. If no category matches the function, use the nearest (for Supply Chain: Manufacturing, Procurement, Management & Strategy) and say so.
-4. For each, find one named company in [Vertical] acting on it in the last 180 days, from the priority's examples or Draup's industry news (search first, then the news feed for links). The company must be the actor.
+1. Match [Vertical] to Draup's industry name and map [Business function] to its 1–3 main workloads; say which. If the industry returns zeros, say so and try the parent industry, naming it.
+2. Pull the industry's priorities and judge fit from each priority's text.
+3. Pick the 3 closest to [Business function] and [What I sell]. If no priority sits in the function, use the nearest (for Supply Chain: Manufacturing, Procurement, Management & Strategy) and say so.
+4. For each, find one named company in [Vertical] acting on it in the last 180 days: first the priority's own examples; if they carry no date, pull the dated [Business function] priorities of 2–3 of the industry's largest employers, then Draup's industry news (search first, then the feed for links). The company must be the actor.
+5. Name the first account to load: the company behind the strongest dated example (or the largest employer if none). Pull its top 3 executives in [Business function] and pick the closest match to [Persona].
 
 OUTPUT
 - Bottom line: 2 sentences — the persona's top industry pressure and the angle the sequence takes.
-- "Priorities used": Priority | Why it fits the persona | Company example (month, year, source).
+- Recommended next step: the first account to load, who to send it to (name and title from step 5), and the dated example. If none is found, say so.
 - Email 1 (day 1): subject (7 words max) and body on priority 1.
 - Email 2 (day 4): priority 2, using [Proof point] if given.
 - Email 3 (day 9): priority 3, a short close-the-loop note.
 - Each body: company example, the problem, one sentence on how [What I sell] helps, one low-effort call to action.
-- Recommended next step: which [Vertical] accounts to load first, and why now (one dated fact).
+- Detail: "Priorities used": Priority | Why it fits the persona | Company example (month, year, source).
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
@@ -56,18 +60,21 @@ RULES
 - No example found: write on the priority alone and flag it. Claim no results beyond [Proof point].
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
-- If a name returns nothing, retry once with Draup's spelling and say which worked.
-- Drop news noise: outages and breaches (unless I sell security), stock chatter, charity, sponsorships and awards, passing mentions, look-alike names, sister companies, and old stories re-dated as new (use the event date in the text). Merge items about the same event and keep the earliest. Give the source and headline for every item, plus the link when Draup has one.
-- Keep to about 450 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Map a business function to its 1–3 main Draup workloads (types of work, e.g. Cloud) and say which you used.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables; then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Write a 3-email sequence for a [Persona] in [Vertical], using the 3 Draup industry priorities closest to [Business function] and one dated company example per email. 120 words max each, with subject lines.
+Bottom line and next step first: a 3-email sequence (120 words each, with subjects) for a [Persona] in [Vertical], on 3 [Business function] priorities, each with a dated company example, plus the first account to load.
 ```
 
 </details>
@@ -85,6 +92,10 @@ Give me two subject-line options for each email to A/B test.
 ```
 
 ```text
+List 10 more accounts in [Vertical] to load, each active in [Business function] hiring.
+```
+
+```text
 Turn priority 1 and its example into a short LinkedIn post for our company page. Check your Draup licence before publishing Draup data externally.
 ```
 
@@ -95,15 +106,15 @@ Turn priority 1 and its example into a short LinkedIn post for our company page.
 
 ## Related prompts
 
-- [Industry point of view for a pitch](../../prompts/14-industry-intelligence/industry-pov.md): The 5 industry priorities that matter most for what you sell, each with dated company proof and a likely owner, turned into a 5-slide narrative and a one-line POV.
-- [ABM messages for a target list](../../prompts/16-content-and-enablement/abm-messages.md): A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle.
-- [Weekly industry signal digest](../../prompts/04-signals-and-timing/vertical-digest.md): A one-screen digest of the week's material moves in one industry, grouped by theme, with the accounts worth touching.
-- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom.
+- [Build an industry point of view](../../prompts/14-industry-intelligence/industry-pov.md): The 5 industry priorities that matter most for what you sell, each with dated company proof and a likely owner, turned into a 5-slide narrative, a one-line POV and a named first contact.
+- [ABM openers for 10 accounts at once](../../prompts/16-content-and-enablement/abm-messages.md): A table of short openers for up to 10 accounts per pass, each written to your persona in their language and tied to one stated priority and one dated signal from the last 60 days, graded Strong, OK or Weak, with sources and an optional joint partner note.
+- [Weekly industry signal digest](../../prompts/04-signals-and-timing/vertical-digest.md): A one-screen digest of the week's material moves in one industry, grouped by theme, with source counts, the accounts worth touching and a named person at the best one.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`extract_entities`, `ecosystem_get_vertical_key_priorities`, `build_news_filters_v3`, `get_signal_news_v3`, `get_news_feed_v3`
+`extract_entities`, `ecosystem_get_vertical_key_priorities`, `ecosystem_get_vertical_organization_top_employers`, `get_account_priorities_v3`, `build_news_filters_v3`, `get_signal_news_v3`, `get_news_feed_v3`, `accounts_executives_key_executives_v3`
 
 Status: **tested live**. Prompt id: `content-email-sequence`.
 
@@ -111,4 +122,4 @@ Status: **tested live**. Prompt id: `content-email-sequence`.
 
 ---
 
-[Back to Content and enablement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Content and enablement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

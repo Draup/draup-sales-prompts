@@ -1,8 +1,8 @@
-[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [Use as a skill](../guides/use-as-a-skill.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
 
-# Enter a new industry
+# Break into a new industry
 
-> **Goal:** Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.
+> **Goal:** Learn a new industry fast, brief the team on its language and buyers, build a first account list, and launch outbound with a point of view.
 
 **For:** Marketing & ABM, Sales Leader & RevOps, SDR / BDR, Account Executive · **Time:** 45–60 min · **Steps:** 5
 
@@ -10,78 +10,78 @@
 
 ## Step 1. One-page vertical market snapshot
 
-Gives a one-page view of the industry: spend and growth, top priorities, technologies gaining ground and who outsources what.
+Gives a one-page view of the industry: size and growth, top priorities, technologies gaining ground and, for services sellers, who outsources what.
 
-**Look for:** The 2–3 priorities closest to what you sell. If the industry returns zeros, Claude tries the parent industry; check which one it used.
+**Look for:** The 2–3 priorities closest to what you sell. Industry totals are global and IT spend is modelled; if the industry returns zeros, check which parent industry Claude used.
 
 Open the full prompt: [One-page vertical market snapshot](../prompts/14-industry-intelligence/vertical-snapshot.md)
 
 Quick version:
 
 ```text
-Give me a one-page Draup snapshot of [Vertical]: revenue, IT and R&D spend with growth, the 5 priorities most relevant to [What I sell], 5 vertical-specific growing technologies, top vendors (no agencies or staffing), top outsourcers and workloads.
+Bottom line and next step first: a one-page snapshot of [Vertical] (in [Region] if given): size and growth, the 5 priorities that fit [What I sell] with dated company proof, the top buyers, and who to call first.
 ```
 
-## Step 2. Vertical vendor league table
+## Step 2. Brief reps on a new industry
 
-Shows who really wins outsourcing work in the industry, plus the top workloads and buyers.
+Turns the industry into a rep brief: the words to use, who buys and how the function is organised at one reference account, and where your rivals already sit.
 
-**Look for:** The firms you'll meet most often, and buyers that use many providers: often the easiest way in.
+**Look for:** The buyer titles at the reference account and the 10 terms your reps must use on the first call.
 
-Open the full prompt: [Vertical vendor league table](../prompts/14-industry-intelligence/vendor-league.md)
+Open the full prompt: [Brief reps on a new industry](../prompts/15-sales-leadership-and-revops/vertical-enablement.md)
 
 Quick version:
 
 ```text
-Rank the top 15 outsourcing providers in [Vertical] by engagements, excluding agencies and staffing firms, with share and type. Add top workloads, top buyers, the leaders in [Workload], and where [My company] ranks.
+Bottom line and next step first: brief my reps on [Vertical] for [What I sell] — 10 terms, the top priorities in [Business function], buyer titles at [Reference account], rivals in play and 5 discovery questions.
 ```
 
-## Step 3. Build and size an ICP list
+## Step 3. Size your ideal-customer list
 
 Builds and sizes the target list in the industry from location, size and technology.
 
-**Look for:** A first list of 25 accounts in the right primary industry, sized for your team.
+**Look for:** A first list of 25 accounts in the right primary industry, with the count applying every condition.
 
-Open the full prompt: [Build and size an ICP list](../prompts/06-prospecting-and-lists/icp-list.md)
+Open the full prompt: [Size your ideal-customer list](../prompts/06-prospecting-and-lists/icp-list.md)
 
 Quick version:
 
 ```text
-Count every company with primary vertical [Vertical], HQ in [Country], [Minimum employees]+ staff (running [Technology] if given). Show the top 25 by revenue with providers, 90-day postings and who to call, plus a why-now for the best 5.
+Bottom line first: how many [Vertical] companies HQ'd in [Country] with [Minimum employees]+ staff (running [Technology]) match every filter, distributors set aside. Then the 5 to start with, each with a dated why-now, and who to call first.
 ```
 
-## Step 4. Industry point of view for a pitch
+## Step 4. Build an industry point of view
 
-Turns the industry's priorities into a point of view with company examples.
+Turns the industry's priorities into a point of view with dated company proof.
 
 **Look for:** One sentence you'd say to any executive in the industry, backed by a dated company example.
 
-Open the full prompt: [Industry point of view for a pitch](../prompts/14-industry-intelligence/industry-pov.md)
+Open the full prompt: [Build an industry point of view](../prompts/14-industry-intelligence/industry-pov.md)
 
 Quick version:
 
 ```text
-Pick the 5 [Vertical] priorities most relevant to [What I sell] for a [Audience], each with dated company examples, and turn them into a 5-slide narrative plus a 35-word POV.
+Bottom line and next step first: pick the 5 [Vertical] priorities that fit [What I sell] for a [Audience], each with dated proof from named companies, then a 5-slide narrative and a 35-word POV.
 ```
 
-## Step 5. Industry email sequence
+## Step 5. 3-email sequence for one industry persona
 
-Writes a 3-email sequence for your main persona, built on those priorities.
+Writes a 3-email sequence for your main persona, built on those priorities, and names the first account to load.
 
-**Look for:** Emails that open with a real, dated industry move and never present it as your customer.
+**Look for:** Emails that open with a real, dated industry move, never presented as your customer, and a named contact at the first account.
 
-Open the full prompt: [Industry email sequence](../prompts/16-content-and-enablement/email-sequence.md)
+Open the full prompt: [3-email sequence for one industry persona](../prompts/16-content-and-enablement/email-sequence.md)
 
 Quick version:
 
 ```text
-Write a 3-email sequence for a [Persona] in [Vertical], using the 3 Draup industry priorities closest to [Business function] and one dated company example per email. 120 words max each, with subject lines.
+Bottom line and next step first: a 3-email sequence (120 words each, with subjects) for a [Persona] in [Vertical], on 3 [Business function] priorities, each with a dated company example, plus the first account to load.
 ```
 
 ## What you finish with
 
-An industry brief, the competitors to expect, a first target list, a one-line point of view and a ready-to-load email sequence.
+An industry brief, a rep enablement sheet, a first target list, a one-line point of view and a ready-to-load email sequence.
 
 ---
 
-[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [Use as a skill](../guides/use-as-a-skill.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

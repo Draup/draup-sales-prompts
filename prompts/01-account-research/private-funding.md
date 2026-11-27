@@ -1,8 +1,8 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Private company funding
+# Private company funding and who signs
 
-> **How much a private company has raised, its last round and valuation, equity history, whether it is in growth mode, and who signs.**
+> **How much a private company has raised, its last round and valuation, whether it is in growth mode, and who signs, by name.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
@@ -33,17 +33,18 @@ STEPS
 2. Pull private funding: total raised and each round's date, type, amount, valuation and lead investors.
 3. Pull the profile (workforce, year founded) and the monthly hiring trend for the last 12 months.
 4. From the first executives page, pick the founder or CEO, the CFO and the leader closest to [What I sell].
+5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 4), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
 - Headline: total raised, last round (date, type, amount, valuation, leads).
 - "Last 5 equity rounds": Date | Type | Amount ($M) | Valuation ($M) | Lead investors. Newest first.
-- "Debt and secondary": same columns, listed separately.
 - "Growth mode": workforce, average monthly postings, and the last 5 full months against the 5 before.
-- "Who signs": usually the founder, CEO or CFO at this stage; name them if Draup has them, with title and time in role.
-- "What this means for [What I sell]": 2 bullets (fresh capital often funds hiring and tooling; a long gap may mean cost discipline).
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting) and why now (one dated fact).
+- "Who signs": usually the founder, CEO or CFO at this stage; name them with title and time in role.
+- "What this means for [What I sell]": 2 bullets.
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Debt and secondary": same columns as the equity table.
 
 RULES
 - Debt and secondary sales are not equity rounds; keep them out of the equity table and the round count.
@@ -53,16 +54,18 @@ RULES
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
 - Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details; don't infer personal details or past buying relationships.
-- Keep to about 250 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 380 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-[Company] funding: total raised, last round (date, amount, valuation, leads), last 5 equity rounds in $M with debt separate, headcount and hiring trend, and who likely signs.
+[Company] funding: bottom line and who signs, then total raised, last round (date, amount, valuation, leads), last 5 equity rounds in $M with debt separate, and the hiring trend.
 ```
 
 </details>
@@ -90,13 +93,13 @@ Compare its hiring with [Competitor]'s.
 
 ## Related prompts
 
-- [One-page account brief](../../prompts/01-account-research/account-brief.md): A one-page brief on size, money, priorities, recent deals and any competitor in the stack, ending with who to call and why now.
-- [Acquisitions, strategic bets and the openings they create](../../prompts/01-account-research/acquisitions.md): The account's acquisitions in the last 3 years, grouped by theme, the integration work each creates and the top 3 openings for you, plus an optional read of its strategic investments.
+- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- [Openings from their recent acquisitions](../../prompts/01-account-research/acquisitions.md): The top 3 integration openings from the account's acquisitions in the last 3 years, who likely owns each, and an optional read of its strategic investments.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `accounts_private_financials_v3`, `get_account_details_v3`, `accounts_hiring_timeline_v3`, `accounts_executives_key_executives_v3`
+`get_account_id`, `accounts_private_financials_v3`, `get_account_details_v3`, `accounts_hiring_timeline_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `research-private-funding`.
 
@@ -104,4 +107,4 @@ Status: **tested live**. Prompt id: `research-private-funding`.
 
 ---
 
-[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

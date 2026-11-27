@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Outsourcing footprint and incumbents
+# Outsourcing footprint and consolidation wedge
 
-> **How much the account outsources, to whom, how concentrated its provider base is, and which workloads are ripe for vendor consolidation.**
+> **How much the account outsources, to whom, how concentrated it is, and the workloads where a consolidation pitch for what you sell fits, ending with a named buyer and a dated why-now.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before any services pursuit, to size the account and see who you are up against. | Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances | Services sellers | 2–4 min | Outsourcing deals |
+| Before any services pursuit, to size the account and see who you're up against. Use this when you don't yet know which rival matters; use services-competitor-at-account instead when you do. | Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances | Services sellers | 2–4 min | Outsourcing deals, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -29,39 +29,44 @@ INPUTS (edit these)
 - What I sell: [One line, e.g. data engineering and analytics managed services — skip if you ran the start-here prompt]
 
 STEPS
-1. Find the company by its website and confirm it is the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Pull the outsourcing summary: active service providers, active engagements and Draup-estimated outsourced headcount.
-3. Pull the top 25 providers by engagements. Set aside agencies, staffing, market-research and merchandising firms and the account's subsidiaries (give their combined share in one line). Keep the top 15 of the rest, with each one's share and the combined top-3 and top-15 shares.
-4. Pull the top 10 outsourced workloads with engagement counts.
-5. For the top 5 workloads, pull providers (up to 200 rows): how many, and the largest one's share. If exactly 50 come back, call the count a floor.
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull the account's active service providers and active engagements, once for the whole account and once for the business function closest to [What I sell] (e.g. IT).
+3. Pull the top 25 providers by engagements. Set aside agencies, staffing, market-research and merchandising firms and the account's own subsidiaries (one line with their combined share). Keep the top 10 of the rest, and note each one's engagements in that function.
+4. Pull the top 15 outsourced workloads (a workload is a type of work, e.g. Application Development & Maintenance).
+5. For up to 5 workloads, skipping catch-alls, take those matching [What I sell] first, then the largest others, and pull their providers: how many, and the largest one's share.
+6. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — concentrated or long tail, and the best opening for [What I sell].
-- Verdict: "Concentrated" if the top 3 hold more than 50% of engagements (editable default), otherwise "Long tail", with both shares.
-- "Snapshot": Providers | Engagements | Draup-estimated outsourced headcount.
-- "Incumbents": Rank | Provider | Engagements | % of total, largest first.
-- "Workloads": Workload | Engagements | Providers | Largest provider and share | Likely owner (title).
-- "Consolidation wedge": up to 3 workloads matching [What I sell] with 5+ providers and none above 40% (editable default), each with a one-line pitch.
-- Recommended next step: who to contact (title), what to do, and why now (one dated fact).
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Verdict line: "Concentrated" if the top 3 providers hold more than 50% of active engagements (editable default), otherwise "Long tail". Every % is a share of the account's total active engagements from step 2; state that total.
+- "Consolidation wedge" (up to 3): Workload | Engagements | Providers | Largest provider and share | One-line pitch. Only workloads matching [What I sell] with 5+ providers and none above 40% (editable defaults).
+- "Top providers": Rank | Provider | Engagements | % of total | In [function].
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: the 15 workloads (Workload | Engagements | Providers checked?) and the set-aside line.
 
 RULES
 - Show catch-all workloads (Project/Programs Management, Account Management) but never recommend them.
-- If no top-10 workload matches [What I sell], say so instead of forcing a wedge.
+- If no workload matches [What I sell], say so instead of forcing a wedge.
+- If a company with $10B+ revenue shows fewer than 20 IT-services engagements, warn that the work may be in-house (check for a capability centre) or the data thin.
+- Leave agencies, staffing, market-research and merchandising firms, software vendors and look-alike names out of provider lists.
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup returns nothing for a section, write "Not in Draup"; never guess or fill from memory.
-- Engagements and outsourced headcount are Draup-derived estimates, not public contracts. Never call them signed deals.
-- If a name returns nothing, retry once with Draup's spelling and say which worked.
-- Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Size [Company]'s outsourcing in Draup: providers, engagements, Draup-estimated outsourced headcount, top 15 IT and services providers by share, top 10 workloads, a concentrated-or-long-tail verdict and up to 3 consolidation workloads.
+Bottom line and a next step (named person, dated why-now) first. Then size [Company]'s outsourcing: active engagements, top 10 IT and services providers by share, concentrated or long tail, and up to 3 consolidation wedges for [What I sell].
 ```
 
 </details>
@@ -71,32 +76,36 @@ Size [Company]'s outsourcing in Draup: providers, engagements, Draup-estimated o
 Paste these into the same chat after the first answer.
 
 ```text
-Show [Competitor]'s footprint at [Company] and where it is thinnest.
+Show [Competitor]'s footprint at [Company] and where it's thinnest.
 ```
 
 ```text
-Which executives own the consolidation workloads?
+Who owns the wedge workloads? List up to 5 leaders with full titles.
 ```
 
 ```text
-Draft a 120-word vendor-consolidation point of view for the CIO.
+Is any of this work moving in-house? Check in-house hiring in the wedge workloads.
+```
+
+```text
+Draft a 120-word vendor-consolidation point of view for the person in the next step.
 ```
 
 ## Tips for better results
 
-- A long tail of small providers often means no one owns the workload end to end. That is the opening for a consolidation pitch.
-- Outsourced headcount is a Draup estimate. Use it to compare accounts, not as a number to quote to the client.
+- A long tail of small providers often means no one owns the workload end to end. That's the opening for a consolidation pitch.
+- Engagement counts are Draup-derived. Use them to compare providers inside one account, not as contract values to quote to the client.
 
 ## Related prompts
 
-- [A competitor's footprint at an account](../../prompts/10-outsourcing-and-services/competitor-at-account.md): How deep a rival services firm is at the account, how it delivers, and the workloads where it is weakest: your wedge.
-- [Vendor mix vs the vertical](../../prompts/10-outsourcing-and-services/vendor-mix-benchmark.md): Where the account outsources more or less than its industry, and which leading industry providers it doesn't use yet.
-- [Is work coming back in-house? (re-insourcing risk)](../../prompts/10-outsourcing-and-services/reinsourcing-risk.md): For each outsourced workload, whether the account is building the same skills in-house, plus fast-growing in-house teams outside its outsourced list: cost takeout, capability gap or re-insourcing risk.
+- [A rival's footprint and your wedge](../../prompts/10-outsourcing-and-services/competitor-at-account.md): How deep a rival services firm is at the account (or, if it's absent, who really is), how it delivers, and the workloads where it's weakest: your wedge, with a named buyer and a dated why-now.
+- [How their vendor mix compares with peers](../../prompts/10-outsourcing-and-services/vendor-mix-benchmark.md): Where the account outsources more or less than its industry, which leading industry providers it doesn't use yet, and who to raise it with.
+- [Is outsourced work coming back in-house?](../../prompts/10-outsourcing-and-services/reinsourcing-risk.md): For each outsourced workload, whether the account is building the same skills in-house — re-insourcing risk, capability gap or cost takeout — plus fast-growing in-house teams outside its outsourced list.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_outsourcing_summary_v3`, `get_deals_service_provider_v3`, `get_deals_workloads_v3`
+`get_account_id`, `get_outsourcing_summary_v3`, `get_deals_service_provider_v3`, `get_deals_workloads_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `services-outsourcing-footprint`.
 
@@ -104,4 +113,4 @@ Status: **tested live**. Prompt id: `services-outsourcing-footprint`.
 
 ---
 
-[Back to Outsourcing and services deals](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Outsourcing and services deals](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

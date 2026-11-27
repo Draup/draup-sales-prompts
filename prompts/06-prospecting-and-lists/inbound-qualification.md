@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Is this inbound account worth it?
+# Is this inbound lead worth pursuing?
 
-> **A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan.**
+> **A fast Pursue now / Pursue / Nurture / Disqualify verdict on an inbound or referred account: your must-haves, urgency tied to what you sell, a bake-off check against your competitors, and a reply plan.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| A lead, demo request or referral lands and you need to decide in minutes whether it deserves an AE's time. | SDR / BDR, Account Executive, Marketing & ABM | Everyone | 1–2 min | Company directory, Company & financials, News signals, Hiring & job postings |
+| A lead, demo request or referral lands and you need to decide in minutes whether it deserves an AE's time. | SDR / BDR, Account Executive, Marketing & ABM, Sales Leader & RevOps | Everyone | 1–2 min | Company directory, Company & financials, News signals, Hiring & job postings |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -18,7 +18,7 @@
 | `[Requester title]` | Director of Store Operations |
 | `[What they asked for]` | a demo of shift scheduling |
 | `[My must-haves]` | US retailer, 5,000+ staff, $1B+ revenue |
-| `[Business function]` | Operations |
+| `[Business function]` | Operations (security and data sit under IT in Draup) |
 | `[What I sell]` | store-operations software |
 
 ## 2. Copy the detailed prompt
@@ -29,45 +29,52 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my sales development analyst qualifying inbound accounts. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Company: [Website, e.g. fivebelow.com]
-- Requester title: [Who reached out, e.g. Director of Store Operations]
+- Company: [website, e.g. fivebelow.com]
+- Requester title: [who reached out, e.g. Director of Store Operations]
 - What they asked for: [e.g. a demo of shift scheduling]
-- My must-haves: [e.g. US retailer, 5,000+ staff, $1B+ revenue]
-- Business function: [The function I sell to, e.g. Operations]
+- My must-haves: [checkable facts, e.g. US retailer, 5,000+ staff, $1B+ revenue]
+- Business function: [the function I sell to, e.g. Operations; security and data sit under IT in Draup]
 - What I sell: [one line, e.g. store-operations software — skip if you ran the start-here prompt]
 
 STEPS
-1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. Use Draup's exact name from then on. If it isn't in Draup, say so and stop.
-2. Pull its company profile: primary vertical, HQ, workforce, revenue and growth, workforce growth %, postings (90 days).
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. If it isn't in Draup, say so and stop.
+2. Profile: primary vertical, HQ, workforce, revenue and growth, workforce growth %, postings (90 days).
 3. Read the requester: does [Requester title] buy or champion in [Business function], and does [What they asked for] fit what I sell?
-4. Pull top news (last 90 days) and [Business function] postings (last 12 months).
+4. Pull news from the last 90 days where [Company] is the actor, and [Business function] postings in the workloads closest to What I sell (last 12 months).
+5. If I've named competitors (here or in my setup), check the whole stack for their products, with usage and first-seen dates.
+6. The top 3 executives in [Business function], including the most senior leader for what I sell (e.g. the CISO for security); if none is senior, widen once to Chief, EVP and CIO titles.
 
 OUTPUT
-- Bottom line: 2 sentences — the verdict (Pursue now, Pursue, Nurture or Disqualify) and why, for [What I sell].
-- Fit table: Must-have | Draup value (date) | Meets / Partly / Misses / Unknown.
-- "Requester": likely role (decision maker, champion, user, researcher) and ask fit.
-- "Why now": up to 3 events (date | headline | source | so-what), or "none in 90 days", plus [Business function] postings in the last 12 months.
-- Recommended next step: a one-line reply answering [What they asked for], who else to loop in (title), and why now.
+- Bottom line: 2 sentences — the verdict and why, for [What I sell].
+- Recommended next step: a one-line reply answering [What they asked for], who else to loop in (name and full title from step 6), and the dated why-now (or "the request itself is the why-now").
+- "Fit": Must-have | Draup value (date) | Meets / Partly / Misses / Unknown.
+- "Why now": up to 3 events (date | headline | so-what), or "none in 90 days tied to what I sell".
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: requester read (decision maker, champion, user, researcher); competitor products found; postings count.
 
 RULES
-- The inbound is the intent. Pursue = every must-have met and the requester fits. News only raises urgency: Pursue now = Pursue + a material 90-day event.
-- Nurture = Partly or Unknown (a missing number) on any must-have, or a student, job-seeker, vendor or researcher; list what to verify. Disqualify = misses a must-have.
+- The inbound is the intent. Pursue = every must-have met and the requester fits. Pursue now = Pursue plus a material 90-day event tied to [Business function] or what I sell; unrelated news never raises urgency.
+- Nurture = Partly or Unknown on any must-have, or a student, job-seeker, vendor or researcher; list what to verify. Disqualify = misses a must-have.
+- A competitor installed with High or Medium usage, or first seen in the last 12 months: write "likely bake-off or renewal" in the verdict.
+- Flag revenue growth over 20% as likely M&A until checked.
+- Show USD millions using Draup's conversion rate.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill from memory.
-- Show USD millions using Draup's conversion rate; if Draup gives none, name the rate and date and mark it as outside Draup.
-- Drop noise: stock chatter, outages, charity, awards, passing mentions, look-alike names, sister companies and re-dated old stories. Merge duplicates. Give date, source and headline (link when Draup has one).
-- Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Qualify the inbound from [Requester title] at [Company], who asked for [What they asked for], against my must-haves ([My must-haves]). Pursue if all are met; give urgency from 90-day news, [Business function] hiring and a reply plan.
+Verdict first (Pursue now, Pursue, Nurture or Disqualify) on the inbound from [Requester title] at [Company] asking for [What they asked for], against [My must-haves]. Check my competitors in their stack; give a reply line and who to loop in.
 ```
 
 </details>
@@ -77,11 +84,11 @@ Qualify the inbound from [Requester title] at [Company], who asked for [What the
 Paste these into the same chat after the first answer.
 
 ```text
-Who are the top 3 people in [Business function] there? Names, titles and level.
+Draft the full reply to the requester using the why-now.
 ```
 
 ```text
-Draft the full reply to the requester using one why-now event.
+Map the 3 most senior people for what I sell there, including the CISO or equivalent.
 ```
 
 ```text
@@ -90,19 +97,20 @@ Show 3 peers of similar size so I can mention them.
 
 ## Tips for better results
 
-- Write your must-haves as clear, checkable facts (country, size, revenue, vertical). The verdict is only as sharp as the criteria.
-- 'Nurture' is not a no. Check back when a new event appears.
+- Write your must-haves as checkable facts (country, size, revenue, vertical). The verdict is only as sharp as the criteria.
+- A pricing request plus your competitor in the stack usually means a bake-off or a renewal check. Ask which.
+- Nurture is not a no. Check back when a new event appears.
 
 ## Related prompts
 
-- [Build and size an ICP list](../../prompts/06-prospecting-and-lists/icp-list.md): The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5.
-- [What's worth acting on now](../../prompts/04-signals-and-timing/whats-actionable.md): Up to 5 real triggers from the last 90 days, each tied to a stated priority, a likely owner and a suggested action, with the noise stripped out.
-- [10-minute pre-call snapshot](../../prompts/01-account-research/precall-snapshot.md): Five short bullets you can read in the lobby: who they are, what just happened, where hiring is rising, the priority closest to your offer, and one question to ask.
+- [Size your ideal-customer list](../../prompts/06-prospecting-and-lists/icp-list.md): The true count of companies matching every filter, distributors set aside, and the 5 accounts to start with, each with who to call and a dated why-now.
+- [What's worth acting on now](../../prompts/04-signals-and-timing/whats-actionable.md): An Act, Watch or Skip verdict and up to 5 real triggers from the last 90 days, kept or dropped with what you sell in mind (incidents and regulatory inquiries count if they bear on your offer), each with a named owner and a source count.
+- [10-minute pre-call snapshot](../../prompts/01-account-research/precall-snapshot.md): Bottom line and who to contact first, then five lobby-length bullets: who they are, what just happened, where hiring in your function is moving, the priority closest to your offer, and one question to ask.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_account_details_v3`, `get_universe_companies_v3`, `get_top_signals`, `accounts_hiring_summary_v3`
+`get_account_id`, `get_universe_companies_v3`, `get_signal_news_v3`, `accounts_hiring_summary_v3`, `get_account_tech_stack_products_v3`, `accounts_executives_key_executives_v3`
 
 Status: **tested live**. Prompt id: `prospect-inbound-qualification`.
 
@@ -110,4 +118,4 @@ Status: **tested live**. Prompt id: `prospect-inbound-qualification`.
 
 ---
 
-[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

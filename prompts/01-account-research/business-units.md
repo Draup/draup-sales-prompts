@@ -1,8 +1,8 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Fastest-growing business units
+# Business units worth targeting first
 
-> **Business units ranked by revenue growth, with the two worth targeting, the priority behind each and the unit leader's title.**
+> **The two business units to target first, ranked by growth, with the priority behind each and a named leader to approach.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
@@ -31,16 +31,16 @@ INPUTS (edit these)
 STEPS
 1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Pull revenue by business unit for the latest year Draup holds, and the latest reported fiscal year.
-3. Pull stated priorities and match each unit to the priorities that mention its products, markets or workloads.
-4. For the top 2 units, find the most senior leader on the first executives page for the closest function.
+3. Pull stated priorities for the function closest to [What I sell] and match each unit to the priorities that mention its products, markets or workloads.
+4. For the top 2 units, find the most senior leader on the first executives page for the function closest to [What I sell].
+5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- "Business units": Rank | Unit | Revenue (millions, currency) | Share % | YoY | Fiscal year. Sort by YoY, highest first.
-- "Target these 2": for each, why (growth, size), one linked priority with source and quarter, and the unit leader's title (or "title to find").
+- Recommended next step: one person by name and title (from step 4), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "Target these 2": for each, why (growth, size), one linked priority with source and quarter, and the unit leader by name and title (or "title to find").
+- "Business units" (fiscal year in the heading): Rank | Unit | Revenue (millions, currency) | Share % | YoY. Sort by YoY, highest first.
 - "Watch": units shrinking more than 5% (editable default), with a reason if Draup shows one.
-- "Why this matters for [What I sell]": 2 bullets.
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting) and why now (one dated fact).
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
@@ -49,19 +49,21 @@ RULES
 - If segment data is empty, say so and fall back to priorities grouped by business function, labelled as a fallback.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
-- Financials are annual, in millions of reporting currency, by fiscal year (which can run ahead of the calendar). Use the latest year's regional split only. Check for a divestment, demerger or restatement before calling a drop over 5% a cut.
-- Use each person's full profile title, not the seniority label. In banking and consulting VP and SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level (if none appears, say so in Gaps).
-- Keep to about 250 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Money is annual, in millions of reporting currency. IT and R&D spend are Draup estimates that often move with revenue; don't treat their growth as a separate signal. Check for a divestment or restatement before calling a drop over 5% a cut.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 380 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Rank [Company]'s business units by revenue growth (revenue, share, YoY, fiscal year), skip reconciliation lines, and name the top 2 to target for [What I sell], each with a linked priority and the leader's title.
+Which [Company] business units should I target for [What I sell]? Bottom line and who to approach, then units ranked by revenue growth (revenue, share, YoY) and the top 2, each with a linked priority.
 ```
 
 </details>
@@ -89,14 +91,14 @@ Compare the top unit's priorities with what [Competitor] offers.
 
 ## Related prompts
 
-- [One-page account brief](../../prompts/01-account-research/account-brief.md): A one-page brief on size, money, priorities, recent deals and any competitor in the stack, ending with who to call and why now.
-- [Is their budget growing or shrinking?](../../prompts/01-account-research/budget-posture.md): A verdict on whether the account's budget is growing, holding or shrinking, the IT spend split, and the deal size and pitch that fit.
-- [Which region should own this account](../../prompts/01-account-research/buying-center.md): Which region and metros hold the revenue, people and decision makers for your function, which region should own the pursuit, and where to hold the first meeting.
+- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- [Is their budget growing or shrinking?](../../prompts/01-account-research/budget-posture.md): A verdict on whether the account's budget is growing, holding or shrinking, the deal size and pitch that fit, and who to take it to.
+- [Which region should own this account](../../prompts/01-account-research/buying-center.md): Which region should own the pursuit, where to hold the first meeting and with whom, backed by revenue by region, top metros and where your function's leaders sit.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_revenue_by_business_v3`, `get_account_financials_v3`, `get_account_priorities_v3`, `accounts_executives_key_executives_v3`
+`get_account_id`, `get_revenue_by_business_v3`, `get_account_financials_v3`, `get_account_priorities_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `research-business-units`.
 
@@ -104,4 +106,4 @@ Status: **tested live**. Prompt id: `research-business-units`.
 
 ---
 
-[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

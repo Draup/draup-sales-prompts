@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Entry points and whitespace
+# Best entry points: expand or new
 
-> **The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner.**
+> **The five best ways in for what you sell, each marked Expand (we already serve it) or New, with dated evidence, incumbents, any installed competitor and the likely owner.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You know the account but need a concrete first or next deal to work on. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 2–4 min | Priorities & opportunities, Executives & movement |
+| You know the account (often an existing customer) and need a concrete next deal to work on. Use plan-account-plan instead for a full plan. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 2–4 min | Priorities & opportunities, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -17,6 +17,8 @@
 | `[Company]` | bmw.com |
 | `[Business function or Workload]` | Supply Chain |
 | `[What I sell]` | supply-chain planning software |
+| `[Already deployed (optional)]` | demand planning in Europe |
+| `[Competitor (optional)]` | Kinaxis, o9 Solutions |
 
 ## 2. Copy the detailed prompt
 
@@ -27,42 +29,49 @@ Act as my pursuit strategist. Use Draup for Sales for every fact. Don't use outs
 
 INPUTS (edit these)
 - Company: [Website, e.g. bmw.com]
-- Business function or Workload: [Required, e.g. Supply Chain or Demand Management]
+- Business function or Workload: [e.g. Supply Chain or Demand Management]
 - What I sell: [One line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Already deployed (optional): [What we already run there, e.g. demand planning in Europe; blank for a prospect]
+- Competitor (optional): [e.g. Kinaxis, o9 Solutions]
 
 STEPS
-1. Find the company by its website and confirm it is the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Pull Draup's opportunities (potential initiatives) for the account, always limited to [Business function or Workload], never unfiltered.
-3. Drop initiatives unrelated to [What I sell], and, if the account sells technology, initiatives about its own products. Rank the rest by fit, then by how recent the evidence is.
-4. For the top 5, note the initiative, its evidence (source and date), and incumbent tech and providers.
-5. Pull key executives in the same function separately (10 per page, up to 3 pages) and match up to 2 per entry point by workload or title.
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Map [Business function or Workload] to the 1–2 workloads closest to [What I sell] and say which. Pull Draup's potential initiatives for the account, always narrowed to those workloads (if nothing comes back, to the function; never unlimited).
+3. Drop initiatives unrelated to [What I sell], templates that don't fit the account's industry and, if it sells technology, initiatives about its own products. Mark any initiative we already serve (from Already deployed) "Expand", the rest "New". Rank by fit, then by how recent the evidence is.
+4. For the top 5, note the initiative, its evidence (source and date), incumbent tech, and only providers that plausibly deliver this work.
+5. Check the whole tech stack for [Competitor] products in the same workloads. Rate [Competitor]: Red for High usage in the workloads I sell into; Amber for Medium usage there or anything newly detected in 12 months; otherwise Green, still listed.
+6. Pull leaders in the same function (10 per page, up to 3 pages) and match up to 2 per entry point by workload or title.
+7. Timing: the most important news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the best way in and why now.
-- "Entry points": # | Initiative | Evidence and date | Incumbent tech | Incumbent providers | Likely owner(s) | Our opening (one line).
+- Recommended next step: one person from step 6 (name and title), what to do, and why now (the step-7 item or another dated fact). If none turned up, say so.
+- "Entry points": # | Initiative (Expand or New) | Evidence and date | Incumbents (tech; providers) | Likely owner.
+- "Competitor in these workloads": Product | Maker | Usage | Last seen | Rating. Write "none found" if empty.
 - "Lead with": the single best entry point and why, in two sentences.
-- "Dropped as unrelated": a one-line list, so I can bring any back.
-- Recommended next step: who to contact (title), what to do, and why now (one dated fact).
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Dropped as unrelated" in one line, so I can bring any back.
 
 RULES
-- Executives are matched by function, not confirmed owners; say so.
-- If no executives come back, list the titles to target. If the function returns nothing, try the closest Draup workload.
-- Use each person's full profile title, not the seniority label. In banking and consulting, VP/SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level.
+- Owners are matched by function and workload, not confirmed; label them "likely".
+- Providers here are linked to the initiative, not confirmed: say "linked" and leave out firms that clearly don't do this work (publishers, architects, recyclers).
 
 STANDARD RULES (leave as is)
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup returns nothing for a section, write "Not in Draup"; never guess or fill from memory.
-- Use professional information only (name, title, employer, Draup profile link). No personal contact details; don't infer personal details or past buying relationships.
-- Label anything you infer (buyer role, intent, fit) as "likely".
-- Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- If [Company] sells technology, drop priorities and tools about its own products.
+- Label inferences (buyer role, intent, fit) "likely".
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Find the top 5 entry points at [Company] for [What I sell] from Draup's opportunities in [Business function or Workload]: initiative, dated evidence, incumbent tech and providers, and the executive who likely owns it.
+Bottom line and next step (named owner, dated why-now) first. Find the top 5 entry points at [Company] for [What I sell] in [Business function]: initiative, Expand or New (we run [Already deployed]), dated evidence, incumbents, [Competitor] installed, likely owner.
 ```
 
 </details>
@@ -80,24 +89,25 @@ Which providers would we compete with on entry point 1, and how strong are they 
 ```
 
 ```text
-Turn 'Lead with' into a 100-word email to the likely owner.
+Turn 'Lead with' into a 100-word email to the person in the next step.
 ```
 
 ## Tips for better results
 
-- Always narrow by function or workload. Unfiltered, this pulls far too many items.
-- If you save your solution offering in the Draup platform, Draup can also surface entry points from executive moves and intent signals.
+- For a customer, say what you already run there. The answer then separates expansion from new business.
+- Name the competitors you meet. An installed rival in the same workload changes the play from land to displace.
+- If you save your solution offering in the Draup platform, Draup can also surface entry points from leadership moves and intent signals.
 
 ## Related prompts
 
-- [Draft an account plan](../../prompts/11-account-planning/account-plan.md): An account plan in eight parts: snapshot, their strategy in their own words, buying committee, incumbents, ranked expansion plays, risks and a 90-day plan, plus an optional short SWOT.
-- [Who to partner with vs replace, by priority](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it, and whether to partner, displace or walk into an open door.
-- [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): A ranked list of the people likely to buy, influence or block your deal in one function or workload, with their role in the decision, an entry point and the sponsor to reach later.
+- [Draft an account plan](../../prompts/11-account-planning/account-plan.md): An account plan led by the bottom line, the first play and who to call: buying committee, ranked expansion plays, incumbents (including installed competitors), risks and a 90-day plan.
+- [Which providers to partner with or replace](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it with their engagements in that function, and whether to partner, displace or walk through an open door.
+- [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `accounts_opportunities_v3`, `accounts_executives_key_executives_v3`
+`get_account_id`, `accounts_opportunities_v3`, `accounts_executives_key_executives_v3`, `get_account_tech_stack_products_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `plan-entry-points`.
 
@@ -105,4 +115,4 @@ Status: **tested live**. Prompt id: `plan-entry-points`.
 
 ---
 
-[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

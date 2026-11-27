@@ -1,0 +1,19 @@
+{
+  "name": "draup-sales",
+  "version": "1.2.0",
+  "description": "Draup Sales Prompt Library: tested prompts and playbooks for sales research and outreach, plus the Draup for Sales connector.",
+  "author": {
+    "name": "Draup, Inc.",
+    "url": "https://draup.com"
+  },
+  "homepage": "https://draup.github.io/draup-sales-prompts/",
+  "repository": "https://github.com/Draup/draup-sales-prompts",
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "sales",
+    "prompts",
+    "draup",
+    "account-research",
+    "mcp"
+  ]
+}

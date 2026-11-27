@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "draup-sales": {
+      "type": "http",
+      "url": "https://mcp.draup.com/mcp/sales"
+    }
+  }
+}

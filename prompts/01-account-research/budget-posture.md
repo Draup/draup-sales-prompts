@@ -1,8 +1,8 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
 # Is their budget growing or shrinking?
 
-> **A verdict on whether the account's budget is growing, holding or shrinking, the IT spend split, and the deal size and pitch that fit.**
+> **A verdict on whether the account's budget is growing, holding or shrinking, the deal size and pitch that fit, and who to take it to.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
@@ -33,16 +33,17 @@ STEPS
 2. Pull revenue, EBITDA, IT and R&D spend for the last 3 fiscal years, plus Draup's next-year forecast.
 3. Pull the IT spend split for the latest and prior year.
 4. Pull acquisitions (3 years), and divestments, layoffs and cost programmes from news (12 months; say so).
+5. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- "3-year trend": Fiscal year | Revenue | YoY | EBITDA margin | IT spend | YoY | R&D | YoY, forecast year last.
+- Recommended next step: one person by name and title (from step 5), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
 - Verdict: Growing, Holding or Shrinking, with 3 dated evidence bullets.
-- "IT spend split (Draup estimate)": Category | Latest FY | Prior FY | YoY | % of total.
+- "3-year trend": Fiscal year | Revenue | YoY | EBITDA margin | IT spend (Draup estimate). Forecast year last.
 - "Deal-size implication": one line on how big a first deal to propose.
-- "What to pitch": 3 bullets fitting the verdict, naming the IT spend category most addressable by [What I sell] and its likely owner (title).
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting) and why now (one dated fact).
+- "What to pitch": 3 bullets fitting the verdict, naming the IT spend category most addressable by [What I sell] and its likely owner.
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "IT spend split (Draup estimate)": Category | Latest FY | Prior FY | YoY | % of total; R&D spend by year.
 
 RULES
 - Verdict (editable default): Growing = revenue and EBITDA up over 3% a year; Shrinking = either down over 5% after the divestment check; else Holding.
@@ -52,17 +53,20 @@ RULES
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
-- IT and R&D spend are Draup estimates, and IT spend often moves with revenue; don't treat IT-spend growth as a separate signal.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Money is annual, in millions of reporting currency. IT and R&D spend are Draup estimates that often move with revenue; don't treat their growth as a separate signal. Check for a divestment or restatement before calling a drop over 5% a cut.
 - If a forecast is more than 15% from the latest actual, or contradicts the latest year-on-year change, show both and call it a model estimate.
-- Financials are annual, in millions of reporting currency, by fiscal year (which can run ahead of the calendar).
-- Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Is [Company]'s budget growing, holding or shrinking? 3-year revenue, EBITDA, IT and R&D spend plus forecast, the IT spend split, a verdict with evidence, deal-size implication and pitch for [What I sell].
+Is [Company]'s budget growing, holding or shrinking? Bottom line and who to pitch first, then 3-year revenue, EBITDA margin and IT spend, a verdict with evidence, deal-size implication and the pitch for [What I sell].
 ```
 
 </details>
@@ -90,14 +94,14 @@ Draft a cost-takeout talk track for the CFO based on this.
 
 ## Related prompts
 
-- [One-page account brief](../../prompts/01-account-research/account-brief.md): A one-page brief on size, money, priorities, recent deals and any competitor in the stack, ending with who to call and why now.
-- [Fastest-growing business units](../../prompts/01-account-research/business-units.md): Business units ranked by revenue growth, with the two worth targeting, the priority behind each and the unit leader's title.
-- [Account SWOT, outside-in](../../prompts/01-account-research/swot.md): A SWOT of the account built only from dated Draup evidence, ending with where your offer fits and who to take it to.
+- [One-page account brief](../../prompts/01-account-research/account-brief.md): Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- [Business units worth targeting first](../../prompts/01-account-research/business-units.md): The two business units to target first, ranked by growth, with the priority behind each and a named leader to approach.
+- [Account SWOT, outside-in](../../prompts/01-account-research/swot.md): A SWOT of the account built only from dated Draup evidence, ending with where your offer fits and the named person to take it to.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_account_financials_v3`, `accounts_financials_revenue_rnd_timelines_v3`, `accounts_financials_forecast_v3`, `accounts_financials_revenue_by_it_spend_v3`, `accounts_partnerships_mergers_v3`, `get_signal_news_v3`
+`get_account_id`, `get_account_financials_v3`, `accounts_financials_revenue_rnd_timelines_v3`, `accounts_financials_forecast_v3`, `accounts_financials_revenue_by_it_spend_v3`, `accounts_partnerships_mergers_v3`, `get_signal_news_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `research-budget-posture`.
 
@@ -105,4 +109,4 @@ Status: **tested live**. Prompt id: `research-budget-posture`.
 
 ---
 
-[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

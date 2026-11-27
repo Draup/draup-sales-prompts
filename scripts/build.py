@@ -22,7 +22,7 @@ ROLES = META["roles"]
 LAYERS = META["data"]
 BY_ID = {p["id"]: p for p in PROMPTS}
 REQUIRED = ["id", "category", "title", "outcome", "when", "roles", "data", "time", "inputs", "quick", "prompt", "followups", "tips", "tools", "status"]
-TECH_WORDS = re.compile(r"\b(v3|endpoint|payload|api|json|mcp__|response_data|get_[a-z_]+)\b", re.I)
+TECH_WORDS = re.compile(r"\b(v3|payload|api|json|mcp__|response_data|get_[a-z_]+)\b", re.I)
 
 
 def fail(msgs):
@@ -130,7 +130,7 @@ LK = META.get("links", {})
 
 def nav(rel):
     up = "../" * rel.count("/")
-    items = [("Home", f"{up}README.md"), ("Connect Draup", f"{up}guides/connect.md"),
+    items = [("Home", f"{up}README.md"), ("Connect Draup", f"{up}guides/connect.md"), ("Use as a skill", f"{up}guides/use-as-a-skill.md"),
              ("All prompts", f"{up}README.md#find-prompts-by-sales-job"), ("Playbooks", f"{up}playbooks/README.md"),
              ("Glossary", f"{up}guides/glossary.md")]
     return " · ".join(f"[{t}]({u})" for t, u in items)
@@ -190,12 +190,19 @@ def role_page(code, r):
     lines = [nav(rel), "", f"# Prompts for {r['name']}", "", r["desc"], "", f"{len(ps)} prompts, grouped by sales job.", ""]
     if START:
         lines += [f"**First:** [connect Draup for Sales](../guides/connect.md), then run {link(START, rel)} once per chat so every answer is tailored to what you sell.", ""]
+    starters = [BY_ID[i] for i in META.get("role_start", {}).get(code, []) if i in BY_ID]
+    if starters:
+        lines += ["## Start with these 5", "", "| # | Prompt | What you get | Time |", "|---|---|---|---|"]
+        lines += [f"| {n} | {link(p, rel)} | {esc_cell(p['outcome'])} | {p['time']} |" for n, p in enumerate(starters, 1)] + [""]
+    if META.get("trust_notes"):
+        lines += ["> **Before you trust a number**"] + [f"> - {t}" for t in META["trust_notes"]] + [""]
+    lines += ["## Everything for your role, by sales job", ""]
     for c in META["categories"]:
         cps = [p for p in ps if p["category"] == c["id"] and p["category"] != "setup"]
         if not cps:
             continue
-        lines += [f"## {c['name']}", "", "| Prompt | What you get |", "|---|---|"]
-        lines += [f"| {link(p, rel)} | {esc_cell(p['outcome'])} |" for p in cps] + [""]
+        lines += [f"### {c['name']}", "", "| Prompt | What you get | Time |", "|---|---|---|"]
+        lines += [f"| {link(p, rel)}{' *(Preview: Talent connector)*' if p['status'] == 'schema-only' else ''} | {esc_cell(p['outcome'])} | {p['time']} |" for p in cps] + [""]
     pbs = [pb for pb in PLAYBOOKS if code in pb.get("for", [])]
     if pbs:
         lines += ["## Playbooks for you", ""] + [f"- [**{pb['title']}**](../playbooks/{pb['id']}.md): {pb['goal']}" for pb in pbs] + [""]
@@ -246,7 +253,7 @@ def readme():
         badge("license", "CC BY 4.0", "555", "LICENSE")]) + "</p>", ""]
     L += [f'<p align="center"><b>{META["tagline"]}</b></p>', ""]
     L += ['<p align="center">' + " · ".join([
-        f'<a href="{LK.get("claude")}"><b>Add to Claude</b></a>', f'<a href="{LK.get("chatgpt")}"><b>Add to ChatGPT</b></a>',
+        f'<a href="{LK.get("claude")}"><b>Add to Claude</b></a>', f'<a href="{LK.get("chatgpt")}"><b>Add to ChatGPT</b></a>', f'<a href="{LK.get("teams")}">Microsoft Teams &amp; Copilot</a>', '<a href="guides/use-as-a-skill.md">Use as a skill</a>',
         '<a href="guides/connect.md#option-3-any-mcp-client-custom-connector">Other MCP clients</a>',
         f'<a href="{META["pages"]}">Interactive library</a>', '<a href="#download-the-guides">PDF guides</a>']) + "</p>", ""]
     L += ["## Start in 3 steps", "",
@@ -254,40 +261,55 @@ def readme():
           "| You use | Do this |", "|---|---|",
           f"| **Claude** | [Add Draup for Sales from Claude's directory]({LK.get('claude')}), click **Connect** and sign in with your Draup account. |",
           f"| **ChatGPT** | [Add the Draup for Sales plugin]({LK.get('chatgpt')}) and sign in with your Draup account. |",
-          "| **Claude Code, Cursor, VS Code or your own agent** | Add Draup as a custom MCP connector: [step-by-step setup](guides/connect.md#option-3-any-mcp-client-custom-connector). |", ""]
+          f"| **Microsoft 365 Copilot or Teams** | [Get the Draup for Sales agent]({LK.get('teams')}) from the Microsoft Marketplace (your admin may need to approve it). |",
+          "| **Claude Code, Cursor, VS Code or your own agent** | Add Draup as a custom MCP connector: [step-by-step setup](guides/connect.md#option-3-any-mcp-client-custom-connector). |", "",
+          "> **Want your AI to pick the prompt for you?** Add the whole library as a skill. [See below](#use-the-whole-library-as-a-skill).", ""]
     if START:
         L += [f"**2. Tell your assistant about you, once.** Paste [{START['title']}]({ppath(START)}) at the top of a new chat with your role, offering, territory and competitors. In Claude you can save it in a Project so it's always on.", ""]
     L += ["**3. Pick a prompt, fill the `[brackets]`, paste.** Every prompt has a detailed version for the best results, a quick version, and follow-ups to keep going.", "",
           "> Every answer opens with a two-line **bottom line** and closes with a **recommended next step** (who to contact, what to do, why now) and the **gaps** worth asking about in discovery.", ""]
-    L += ["## How it works", "", "```mermaid", "flowchart LR",
-          '    A["You: paste a prompt<br/>with your account filled in"] --> B["Claude or ChatGPT"]',
-          '    B <-->|"asks / answers"| C["Draup for Sales<br/>connector"]',
-          '    C <-->|"live data"| D[("Draup: companies, priorities,<br/>buyers, tech, hiring, deals, news")]',
-          '    B --> E["Decision-ready answer:<br/>bottom line, tables,<br/>next step, gaps"]', "```", ""]
+    L += ["<details>", "<summary><b>How it works</b></summary>", "", "```mermaid", "flowchart LR",
+          '    A["1. You paste a prompt<br/>and fill in the account"] --> B["2. Claude or ChatGPT<br/>plans the research"]',
+          '    B --> C["3. Draup for Sales<br/>returns live Draup data"]',
+          '    C --> D["4. You get a decision-ready answer:<br/>bottom line, tables,<br/>next step, gaps"]', "```", "", "</details>", ""]
     L += ["## What you can do with it", "",
           "| Job | What you get |", "|---|---|",
           "| **Walk into every meeting prepared** | A one-page brief on any account in two minutes: size, money, priorities and recent moves. |",
           "| **Find the right people** | The buying committee, new leaders, and warm paths in through your existing customers. |",
-          "| **Reach out at the right moment** | Hiring spikes, leadership changes, new tools and news, the week they happen. |",
+          "| **Reach out at the right moment** | Hiring spikes, new tools, news and leadership changes, with dates so you know how fresh each one is. |",
           "| **Build better target lists** | Lists sized to your ICP, accounts using a competitor, companies hiring for what you sell. |",
           "| **Win services deals** | The incumbent providers, how deep they go, and where the wedge is. |",
           "| **Plan and grow accounts** | Account plans, risk checks, QBR prep and territory tiers backed by data. |", ""]
-    L += ["## Start with these", "", "| Prompt | What you get | Time |", "|---|---|---|"]
-    L += [f"| {link(p)} | {esc_cell(p['outcome'])} | {p['time']} |" for p in featured()] + [""]
-    L += ["## Find prompts by role", "", "| Your role | What the prompts help you do |", "|---|---|"]
-    L += [f"| [**{r['name']}**](roles/{r['slug']}.md) | {r['desc']} |" for r in ROLES.values()] + [""]
+    L += ["## Start here: pick your role", "", "Each role page opens with the 5 prompts that role uses most, in order.", "",
+          "| Your role | Start with | Then try |", "|---|---|---|"]
+    for code, r in ROLES.items():
+        st = [BY_ID[i] for i in META.get("role_start", {}).get(code, []) if i in BY_ID]
+        first = link(st[0]) if st else ""
+        then = ", ".join(link(x) for x in st[1:3])
+        L.append(f"| [**{r['name']}**](roles/{r['slug']}.md) | {first} | {then} |")
+    L += ["", "<details>", "<summary><b>The 12 most popular prompts</b></summary>", "", "| Prompt | What you get | Time |", "|---|---|---|"]
+    L += [f"| {link(p)} | {esc_cell(p['outcome'])} | {p['time']} |" for p in featured()] + ["", "</details>", ""]
     L += ["## Find prompts by sales job", "", "| Sales job | What it covers | Prompts |", "|---|---|---|"]
     L += [f"| [**{c['name']}**](prompts/{c['folder']}/README.md) | {c['desc']} | {len(in_cat(c['id']))} |" for c in META["categories"] if in_cat(c["id"])] + [""]
     if PLAYBOOKS:
         L += ["## Playbooks: complete workflows", "", "Each playbook chains prompts into one end-to-end job. Run the steps in one chat.", "",
               "| Playbook | Goal | Time |", "|---|---|---|"]
         L += [f"| [**{pb['title']}**](playbooks/{pb['id']}.md) | {esc_cell(pb['goal'])} | {pb.get('time','')} |" for pb in PLAYBOOKS] + [""]
+    L += ["## Use the whole library as a skill", "",
+          "Give your AI all the prompts at once. Then ask in plain words (\"prep me for my call with Kroger\") and it picks the right prompt, fills it in and follows it.", "",
+          "| You use | Do this |", "|---|---|",
+          "| **Claude** | Download the [skill zip](dist/draup-sales-prompts-skill.zip), then in Claude go to *Customize → Skills → + → Upload a skill*. |",
+          "| **Claude Code** | `/plugin marketplace add Draup/draup-sales-prompts` then `/plugin install draup-sales@draup-sales-prompts` (also connects Draup). |",
+          "| **ChatGPT** | Create a Project or custom GPT, upload [the one-file library](dist/draup-sales-prompts-all.md), and paste the [ready-made instructions](guides/use-as-a-skill.md#chatgpt-project-or-custom-gpt). |",
+          f"| **Any AI that can browse** | Paste: *\"Use the Draup Sales Prompt Library at {LK.get('llms')} for my request.\"* |", "",
+          "Step-by-step for each option, plus Claude Projects and Microsoft Copilot: [Use the library as a skill](guides/use-as-a-skill.md).", ""]
     L += ["## Download the guides", "", "Printable PDFs for sharing and offline reading:", "",
           "| Guide | What's inside |", "|---|---|",
           "| [**Quick-start guide**](pdf/draup-sales-prompts-quick-start.pdf) | How to connect, the start-here prompt, the 12 most useful quick prompts, and tips. |",
           "| [**Full prompt catalogue**](pdf/draup-sales-prompts-catalogue.pdf) | Every prompt in full, with inputs, follow-ups and tips. |",
           "| [**Playbooks**](pdf/draup-sales-prompts-playbooks.pdf) | Step-by-step workflows for common sales jobs. |",
-          "| **Role cheat sheets** | The quick prompts for each role: " + " · ".join(f"[{r['name']}](pdf/roles/{r['slug']}.pdf)" for r in ROLES.values()) + " |", ""]
+          "| **Role cheat sheets** | Each role's top 5, then all its quick prompts: " + " · ".join(f"[{r['name']}](pdf/roles/{r['slug']}.pdf)" for r in ROLES.values()) + " |",
+          "| [**Skill for Claude (zip)**](dist/draup-sales-prompts-skill.zip) · [**One-file library**](dist/draup-sales-prompts-all.md) | Use the whole library as a skill in Claude, ChatGPT or any AI. |", ""]
     L += ["## How every prompt is built", "",
           "Each prompt is written to get a decision-ready answer, not a data dump:", "",
           "| Part | What it does |", "|---|---|",
@@ -296,12 +318,12 @@ def readme():
           "| **Output** | The tables and sections you get back, with columns, top N and units spelled out. |",
           "| **Rules** | Guardrails that keep answers honest: every number is dated, and missing data says \"Not in Draup\" instead of a guess. |", "",
           f"{tested} of {n} prompts were tested live against Draup data on public companies and refined over three review rounds. The other {n - tested} use the Draup for Talent connector and are marked *Preview*.", ""]
-    L += ["## The data behind the prompts", "", "| Draup data | What's in it |", "|---|---|"]
-    L += [f"| **{v['name']}** | {v['desc']} |" for v in LAYERS.values()] + ["",
+    L += ["## The data behind the prompts", "", "<details>", "<summary>What Draup data the prompts use</summary>", "", "| Draup data | What's in it |", "|---|---|"]
+    L += [f"| **{v['name']}** | {v['desc']} |" for v in LAYERS.values()] + ["", "</details>", "",
           "How to read each data type: [Data guide](guides/data-guide.md) · Terms explained: [Glossary](guides/glossary.md) · Connection details: [Draup's MCP documentation](" + LK.get("mcp_docs", "") + ")", ""]
     L += ["## Good to know", "",
           "- **Your access applies.** Draup for Sales is read-only and shows what your Draup subscription covers.",
-          "- **Check before you send.** Draup data is a strong starting point. Verify the facts you put in front of a customer, especially names and numbers.",
+          "- **Before you trust a number:** " + " ".join(META.get("trust_notes", [])),
           "- **Keep customer data private.** Don't paste confidential CRM or customer data into prompts unless your company's AI policy allows it.",
           "- **Tested in Claude.** The prompts were tested in Claude and written in plain language so they work with the ChatGPT plugin too.", ""]
     L += ["## Help and contributing", "",
@@ -333,6 +355,12 @@ def export_csv():
 
 def site():
     tpl = (ROOT / "templates" / "site.html").read_text(encoding="utf-8")
+    for key, fname in (("SVG_DRAUP", "draup-logo.svg"), ("SVG_CLAUDE", "claude.svg"), ("SVG_OPENAI", "openai.svg"), ("SVG_GITHUB", "github.svg")):
+        svg = (ROOT / "assets" / fname).read_text(encoding="utf-8")
+        svg = re.sub(r"<title>.*?</title>", "", svg)
+        if key != "SVG_DRAUP":
+            svg = svg.replace("<svg ", '<svg aria-hidden="true" focusable="false" ', 1).replace('role="img" ', "")
+        tpl = tpl.replace("{{" + key + "}}", svg)
     payload = {"meta": META, "prompts": PROMPTS, "playbooks": PLAYBOOKS}
     js = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
     write("docs/index.html", tpl.replace("/*__DATA__*/null", js))
@@ -399,13 +427,33 @@ def print_html():
     (out / "roles").mkdir(exist_ok=True)
     for code, r in ROLES.items():
         ps = [p for p in PROMPTS if code in p["roles"] and p["category"] != "setup"]
-        body = "<section class='sheet'>" + "".join(f"<div class='q'><h3>{h(p['title'])}</h3>{pre(p['quick'])}</div>" for p in ps) + "</section>"
+        starters = [BY_ID[i] for i in META.get("role_start", {}).get(code, []) if i in BY_ID]
+        sid = {p["id"] for p in starters}
+        parts = ["<section><h2>Start with these 5</h2>"]
+        parts += [f"<div class='q big'><h3>{n}. {h(p['title'])} <span class='t'>{h(p['time'])}</span></h3><p class='outcome'>{h(p['outcome'])}</p>{pre(p['quick'])}</div>" for n, p in enumerate(starters, 1)]
+        if META.get("trust_notes"):
+            parts.append("<div class='box accent'><h3>Before you trust a number</h3><ul>" + "".join(f"<li>{h(t)}</li>" for t in META["trust_notes"]) + "</ul></div>")
+        parts.append("</section>")
+        for c in META["categories"]:
+            cps = [p for p in ps if p["category"] == c["id"] and p["id"] not in sid]
+            if not cps:
+                continue
+            parts.append(f"<section class='grp'><h2>{h(c['name'])}</h2>")
+            for p in cps:
+                tag = " <span class='tag'>Preview: Talent connector</span>" if p["status"] == "schema-only" else ""
+                parts.append(f"<div class='q'><h3>{h(p['title'])} <span class='t'>{h(p['time'])}</span>{tag}</h3>{pre(p['quick'])}</div>")
+            parts.append("</section>")
+        body = "".join(parts)
         (out / "roles" / f"{r['slug']}.html").write_text(encoding="utf-8", data=print_doc(f"Cheat sheet: {r['name']}", body, r["desc"] + " Quick versions; full prompts are in the catalogue."))
     # quick start
     qs = (ROOT / "templates" / "quick-start.html").read_text(encoding="utf-8") if (ROOT / "templates" / "quick-start.html").exists() else ""
     if qs:
-        top = "".join(f"<div class='q'><h3>{h(p['title'])}</h3><p class='outcome'>{h(p['outcome'])}</p>{pre(p['quick'])}</div>" for p in featured()[:12])
-        qs = qs.replace("{{START_PROMPT}}", pre(START["prompt"]) if START else "").replace("{{TOP_PROMPTS}}", top)
+        top = "".join(f"<div class='q'><h3>{h(p['title'])} <span class='t'>{h(p['time'])}</span></h3><p class='outcome'>{h(p['outcome'])}</p>{pre(p['quick'])}</div>" for p in featured()[:12])
+        rows = "".join(f"<tr><td><b>{h(r['name'])}</b></td><td>" + " · ".join(h(BY_ID[i]['title']) for i in META.get('role_start', {}).get(code, [])[:3] if i in BY_ID) + "</td></tr>" for code, r in ROLES.items())
+        role_tbl = f"<table><tr><th>Your role</th><th>Start with</th></tr>{rows}</table>"
+        trust = "<ul>" + "".join(f"<li>{h(t)}</li>" for t in META.get("trust_notes", [])) + "</ul>"
+        qs = (qs.replace("{{START_PROMPT}}", pre(START["prompt"]) if START else "").replace("{{TOP_PROMPTS}}", top)
+                .replace("{{ROLE_START}}", role_tbl).replace("{{TRUST}}", trust))
         (out / "quick-start.html").write_text(encoding="utf-8", data=print_doc("Quick-start guide", qs, "Get useful answers from Draup in Claude in five minutes."))
 
 
@@ -434,6 +482,9 @@ def main():
     if (ROOT / "templates" / "site.html").exists():
         site()
     print_html()
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import skill
+    skill.build(ROOT, META, PROMPTS, PLAYBOOKS, CATS, BY_ID)
     print("Built README, prompt pages, roles, playbooks, CSV, site and print HTML.")
 
 

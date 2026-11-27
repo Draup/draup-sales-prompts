@@ -6,7 +6,10 @@ The prompts in this library need **Draup for Sales** switched on in your AI assi
 |---|---|---|
 | **Claude** (claude.ai, desktop or mobile) | Add the Draup for Sales connector from Claude's directory | [Open in Claude](https://claude.ai/directory/draup-for-sales) |
 | **ChatGPT** | Add the Draup for Sales plugin | [Open in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ad0b735a0d88191b98c333a6fe40ce7) |
+| **Microsoft 365 Copilot or Teams** | Get the Draup for Sales agent from the Microsoft Marketplace | [Open the listing](https://marketplace.microsoft.com/en-us/product/WA200010751) |
 | **Another MCP client** (Claude Code, Cursor, VS Code, Windsurf, Copilot Studio, your own agent) | Add Draup as a custom MCP connector | [Custom setup below](#option-3-any-mcp-client-custom-connector) |
+
+> **Want your AI to choose the right prompt for you?** After connecting, add the whole library as a skill: [Use the library as a skill](use-as-a-skill.md).
 
 **Before you start, you need:**
 - **Draup for Sales access and a Draup user account.** You sign in with it when you connect, and you see only the data your subscription covers.
@@ -38,6 +41,17 @@ The prompts in this library need **Draup for Sales** switched on in your AI assi
 > These prompts were written and tested in Claude. They use plain language and are designed to work in ChatGPT with the Draup for Sales plugin too. If an answer doesn't use Draup data, add "Use Draup for Sales for this" and resend.
 
 > **On a ChatGPT Business or Enterprise workspace?** Your workspace admin may need to allow the plugin first.
+
+## Microsoft 365 Copilot and Teams
+
+Draup for Sales is also available as an agent for Microsoft 365 Copilot, Teams and Outlook.
+
+1. Open the [Draup for Sales listing on Microsoft Marketplace](https://marketplace.microsoft.com/en-us/product/WA200010751).
+2. Click **Get it now**. In most organisations your Microsoft 365 admin approves the app once for everyone.
+3. In Copilot or Teams, open the **Draup for Sales** agent and sign in if asked.
+4. Paste a prompt from this library, or ask in your own words.
+
+> The Copilot and Teams agent is a separate Draup app. The prompts here were tested in Claude. In Copilot, start with the quick versions.
 
 ## Option 3: Any MCP client (custom connector)
 

@@ -1,0 +1,3 @@
+Prompts and guides: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/).
+Credit: "Draup Sales Prompt Library by Draup, Inc." https://github.com/Draup/draup-sales-prompts
+"Draup" is a trademark of Draup, Inc.

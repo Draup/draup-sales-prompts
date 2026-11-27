@@ -23,6 +23,10 @@ pre { white-space: pre-wrap; word-break: break-word; font-family: "SF Mono", Men
 mark { background: var(--mark); color: var(--markink); border-radius: 1mm; padding: 0 .5mm; }
 ul, ol { margin: 0 0 2mm; padding-left: 5mm; } li { margin-bottom: 1mm; }
 .sheet { columns: 2; column-gap: 6mm; }
+.grp { break-before: auto; margin-top: 5mm; }
+.q .t { font-weight: 400; color: var(--muted); font-size: 8.5pt; margin-left: 2mm; }
+.q .tag { font-size: 8pt; background: #fbeadf; color: #8a3d0f; padding: 0.5mm 2mm; border-radius: 2mm; margin-left: 2mm; }
+.q.big pre { font-size: 8.6pt; }
 .q { break-inside: avoid; margin-bottom: 4mm; }
 .q pre { font-size: 8pt; }
 .steps > li { margin-bottom: 4mm; break-inside: avoid; }

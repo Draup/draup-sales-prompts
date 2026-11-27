@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
 # Size a vendor's install base
 
-> **What a vendor sells and how many companies use each product, so you can size an attach, co-sell or competitive-replacement motion.**
+> **What a vendor sells and how many companies use each product, so you can size an attach, co-sell or competitive-replacement motion, with a named person at the vendor or a first target to approach.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Planning a partner motion, sizing a competitor's footprint, or picking which product to build a campaign around. | Partnerships & Alliances, Marketing & ABM, Presales & Solutions | Everyone | 1–2 min | Tech stack |
+| Planning a partner motion, sizing a competitor's footprint, or picking which product to build a campaign around. | Partnerships & Alliances, Marketing & ABM, Presales & Solutions | Everyone | 1–2 min | Tech stack, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -16,6 +16,7 @@
 |---|---|
 | `[Vendor]` | servicenow.com |
 | `[What I sell]` | ITSM implementation and managed services |
+| `[Motion (optional)]` | attach or co-sell (default), or replace |
 
 ## 2. Copy the detailed prompt
 
@@ -27,39 +28,42 @@ Act as my partner and market-sizing analyst. Use Draup for Sales for every fact.
 INPUTS (edit these)
 - Vendor: [website of the vendor to size, partner or competitor, e.g. servicenow.com]
 - What I sell: [one line, e.g. ITSM implementation and managed services — skip if you ran the start-here prompt]
+- Motion (optional): [attach or co-sell (default), or replace]
 
 STEPS
 1. Find [Vendor] by its website (exact match) and confirm it is the parent, not a reseller or regional unit. If none or several match, ask me.
 2. Pull the products it builds and how many companies Draup detects using each. Rank by companies, largest first.
 3. For the top 3, pull the category and what each does.
 4. Mark which products [What I sell] attaches to, competes with, or doesn't touch.
+5. For the next step: for attach or co-sell, pull the top 3 executives at [Vendor] who run partners, alliances or channels (full profile titles); for replace, name the lead product's best first target list instead. Also pull the most important news item from the last 90 days where [Vendor] is the actor (e.g. a launch or acquisition).
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Table (up to 20 rows): Rank | Product | Category | Companies using it | Relation to [What I sell] (Attach / Compete / None).
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (top 10): Rank | Product | Category | Companies using it | Relation to [What I sell] (Attach, Compete, None).
 - "Where the base is concentrated": 2–3 bullets on which products carry the footprint and which are niche.
-- "Why this matters for [What I sell]": attach, co-sell or replace, with the 2 products to lead on and why.
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting), and why now (one dated fact).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- "Why this matters for [What I sell]": the 2 products to lead on and why.
+- Detail: the rest of the list (Draup returns up to 20 products per vendor); Gaps (what Draup lacked, to ask in discovery).
 
 RULES
 - Counts are companies where Draup sees public evidence of use, not licences, seats or revenue.
 - Don't add the counts together to get unique customers; one company often uses several products.
-- Draup returns up to 20 products per vendor and leaves out "Generic" rows. Say if the list looks capped.
-- For the next step, suggest a target list of companies whose stack includes the lead product.
+- Draup leaves out "Generic" rows. Say if the list looks capped at 20.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
 - Label anything you infer as "likely".
-- Keep to about 250 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-What products does [Vendor] build, and how many companies in Draup use each one? Table sorted by install base, with an attach, co-sell or replace angle for [What I sell].
+Bottom line and next step first (a named person, a dated why-now). What does [Vendor] build, and how many companies use each product? Top 10 by install base, each marked attach, compete or none for [What I sell].
 ```
 
 </details>
@@ -77,24 +81,28 @@ Which of my target accounts also run [top product]?
 ```
 
 ```text
-Draft a one-paragraph co-sell pitch to the vendor's partner team.
+Draft a one-paragraph co-sell pitch to the partner leader in the next step.
+```
+
+```text
+Show the same view for [a second vendor] so I can compare footprints.
 ```
 
 ## Tips for better results
 
 - Install-base counts are best for comparing products within one vendor, not for quoting as market share.
-- Pair this with the displacement list prompt to turn the biggest product into a named target list.
+- Pair this with the competitor target-list prompt to turn the biggest product into a named list.
 
 ## Related prompts
 
-- [Displacement target list](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A sized, revenue-ranked list of companies in your industry and country whose stack includes a competitor's products, confirmed in the same pass, with likely-inactive and misfiled names set aside.
-- [Who to partner with vs replace, by priority](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it, and whether to partner, displace or walk into an open door.
-- [Battlecard: rival software vendor](../../prompts/16-content-and-enablement/battlecard-product.md): A one-page internal battlecard on a rival software vendor: its most-used products, the largest companies running them, recent moves, how to beat it and the objection to expect.
+- [Target list: companies running a competitor](../../prompts/03-tech-stack-and-displacement/displacement-list.md): A true count and a ranked list of companies in your industry and country whose stack includes a competitor's products, with usage strength shown, distributors and inactive names flagged, and a named person at the top account.
+- [Which providers to partner with or replace](../../prompts/10-outsourcing-and-services/partner-map.md): For each priority in one function, the providers and tech vendors linked to it with their engagements in that function, and whether to partner, displace or walk through an open door.
+- [Battlecard: beat a rival software vendor](../../prompts/16-content-and-enablement/battlecard-product.md): A one-page internal battlecard on a rival software vendor: its most-used products, the largest end-user companies running them with usage strength, recent moves, how to beat it, the objection to expect and the first account to use the card on.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_account_key_solution_offerings_v3`, `get_tech_stack_product_data`
+`get_account_id`, `get_account_key_solution_offerings_v3`, `get_tech_stack_product_data`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `tech-vendor-install-base`.
 
@@ -102,4 +110,4 @@ Status: **tested live**. Prompt id: `tech-vendor-install-base`.
 
 ---
 
-[Back to Tech stack and displacement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Tech stack and displacement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

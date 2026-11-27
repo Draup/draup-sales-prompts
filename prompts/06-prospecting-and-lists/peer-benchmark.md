@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Benchmark an account against peers
+# Benchmark an account against its peers
 
-> **One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions.**
+> **How an account compares with its closest peers on growth, hiring in what you sell, your competitors in the stack and recent news, with discovery questions and who to call.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You want peer context for a meeting, or to see how an account compares with its rivals. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Marketing & ABM | Everyone | 2–4 min | Company directory, Company & financials, News signals |
+| You want peer context for a meeting, a QBR or a leadership review, scored on what you sell rather than generic size. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Marketing & ABM, Sales Leader & RevOps | Everyone | 2–4 min | Company directory, Company & financials, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -26,45 +26,50 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my competitive benchmarking analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Company: [Account website, e.g. delta.com]
-- Peer websites (optional): [Up to 6, e.g. united.com, aa.com, southwest.com]
+- Company: [account website, e.g. delta.com]
+- Peer websites (optional): [up to 4, e.g. united.com, aa.com, southwest.com]
 - What I sell: [one line, e.g. airline operations analytics platform — skip if you ran the start-here prompt]
 
 STEPS
 1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. Use Draup's exact name from then on.
-2. No peers given? Use Draup's listed competitors; keep the 5 closest in business and size.
-3. Pull everyone in one list by website: revenue and growth, IT spend, workforce and growth %, hiring %, attrition %, postings (90 days), outsourcing size, GCC count, Opportunity Index.
-4. For each, count distinct material news events in the last 90 days ("10+" if the first 10 all qualify).
+2. No peers given? Use Draup's listed competitors and keep the 4 closest in business and size. Look everyone up by website and check each came back.
+3. One company list for everyone: revenue and growth, workforce and growth %, attrition %, postings (90 days), Opportunity Index (Draup's 0–10 account-attractiveness score).
+4. Postings in the workloads mapped to What I sell, last 12 months, for all companies in one pass; add postings per 1,000 employees. Name the workloads used.
+5. If I've named competitors (here or in my setup), check each company's whole stack for their products, with usage strength and first- and last-seen dates.
+6. Count distinct material news events in the last 90 days for each and keep the most material ("10+" if the first 10 all qualify).
+7. For [Company]: its top 3 executives in the function closest to What I sell.
 
 OUTPUT
-- Bottom line: 2 sentences — where [Company] stands and what it means for [What I sell].
-- Benchmark table: rows = metrics; columns = [Company], each peer, peer median. Fiscal year beside money.
-- "Where [Company] leads": 3 bullets with numbers.
+- Bottom line: 2 sentences — where [Company] stands on what matters to [What I sell].
+- Recommended next step: a named person (name and full title from step 7), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Benchmark" (up to 8 rows): Metric | [Company] | Peer median | Leader | Read. Rows: revenue growth, workforce growth, postings in my workloads (12 months) and per 1,000, my competitors installed, news events (90 days).
 - "Questions to ask": 3 places it trails, phrased as discovery questions, never "you're behind".
-- "Recent news": Company | Events (90 days) | Most material event (date, headline, source).
-- "Why this matters": 3 talking points, e.g. "Peers grew hiring X%, you grew Y%".
-- Recommended next step: who to contact (title), what to do (call, email, intro, meeting), and why now (one dated fact).
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: the full per-company table (fiscal year beside money); each company's most material event (date, headline, source); competitor products found.
 
 RULES
-- IT spend is a Draup estimate, often modelled from revenue: label it "Draup-estimated"; its growth is not a separate signal.
+- Rate installed competitors: High usage in the workloads I sell into = Red, Medium = Amber; first seen in the last 12 months = Amber (newly detected).
+- Don't compare on IT spend: it is modelled from revenue (about 9% for banks) and adds nothing.
+- Don't compare on Draup's yes/no event flags; count dated events instead.
+- Show USD millions using Draup's conversion rate.
+- If I ask for a slide: 5 bullets + 1 table.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill from memory.
-- Look up named companies by website (exact) and check each came back. Name searches match on "contains" and pull in look-alikes, so keep only companies you resolved.
-- Don't compare companies on Draup's yes/no event flags; count dated news events from the last 90 days instead.
-- Show USD millions using Draup's conversion rate; if Draup gives none, name the rate and date and mark it as outside Draup.
-- Drop noise: stock chatter, outages, charity, awards, passing mentions, look-alike names, sister companies and re-dated old stories. Merge duplicates. Give date, source and headline (link when Draup has one).
-- Keep to about 400 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Benchmark [Company] against [Peer websites] (or its 5 closest Draup-listed competitors) on revenue growth, workforce growth, hiring, postings, GCCs and 90-day news events. Then give 3 leads, 3 questions and 3 talking points.
+Bottom line and next step first: benchmark [Company] against [Peer websites] (or its 4 closest Draup-listed competitors) on growth, postings in what I sell, my competitors in the stack and 90-day news. Then 3 discovery questions and who to call.
 ```
 
 </details>
@@ -74,32 +79,32 @@ Benchmark [Company] against [Peer websites] (or its 5 closest Draup-listed compe
 Paste these into the same chat after the first answer.
 
 ```text
-Compare AI and data hiring for the same companies over the last 12 months.
-```
-
-```text
 Which products did the peers adopt in the last 12 months that [Company] doesn't run?
 ```
 
 ```text
-Turn the talking points into a 100-word email to the CIO.
+Turn the questions into a 100-word email to the person in the next step.
+```
+
+```text
+Add 2 more peers and rerun the benchmark.
 ```
 
 ## Tips for better results
 
-- The table works best with 4 to 6 peers of similar size.
-- Lead with questions, not comparisons. Buyers often open up when asked how they see a gap.
+- Works best with 3 to 4 peers of similar size.
+- Lead with questions, not comparisons. Buyers open up when asked how they see a gap.
 
 ## Related prompts
 
-- [Sell into a customer's competitors](../../prompts/06-prospecting-and-lists/competitor-set.md): Your customer's real competitors, ranked by Draup's Opportunity Index score, with what happened at each in the last 90 days, a reference angle and who to call.
-- [AI readiness vs peers](../../prompts/11-account-planning/ai-readiness.md): A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers.
-- [Is their budget growing or shrinking?](../../prompts/01-account-research/budget-posture.md): A verdict on whether the account's budget is growing, holding or shrinking, the IT spend split, and the deal size and pitch that fit.
+- [Sell into your customer's competitors](../../prompts/06-prospecting-and-lists/competitor-set.md): Your customer's real competitors, ranked, with what happened at each in the last 90 days, a reference angle and a named person to call first.
+- [AI readiness against close peers](../../prompts/11-account-planning/ai-readiness.md): A read on the account's AI hiring, priorities, new tools and outsourced AI work, its AI hiring compared with up to 4 close peers, and who to raise it with.
+- [Is their budget growing or shrinking?](../../prompts/01-account-research/budget-posture.md): A verdict on whether the account's budget is growing, holding or shrinking, the deal size and pitch that fit, and who to take it to.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_universe_companies_v3`, `get_top_signals`
+`get_account_id`, `get_universe_companies_v3`, `talent_demand_top_companies_v3`, `get_account_tech_stack_products_v3`, `get_top_signals`, `accounts_executives_key_executives_v3`
 
 Status: **tested live**. Prompt id: `prospect-peer-benchmark`.
 
@@ -107,4 +112,4 @@ Status: **tested live**. Prompt id: `prospect-peer-benchmark`.
 
 ---
 
-[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,0 +1,38 @@
+# Draup Sales Prompt Library
+
+> Ready-to-use prompts for Claude and ChatGPT that turn Draup's sales intelligence into account briefs, buyer maps, target lists and outreach.
+
+Use these prompts with the Draup for Sales connector (Claude) or plugin (ChatGPT). Pick the prompt that matches the user's job, fill its inputs, and follow its steps, output format and rules exactly.
+
+## Start here
+
+- [All prompts in one file](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/dist/draup-sales-prompts-all.md): every prompt, playbook and data rule
+- [Prompt index](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/index.md): pick a prompt by job
+- [Data rules](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/data-rules.md)
+- [Connect Draup](https://github.com/Draup/draup-sales-prompts/blob/main/guides/connect.md)
+
+## Prompts by sales job
+
+- [Start here](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/start-here.md): Tell your AI who you are and what you sell, once. Every other prompt gets sharper.
+- [Account research](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/account-research.md): Know the account before you call: size, money, priorities, filings and earnings calls.
+- [Buyers and stakeholders](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/buyers-and-stakeholders.md): Find the people who own the problem and the budget, and a warm way in.
+- [Tech stack and displacement](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/tech-stack-and-displacement.md): See what they run, what's new, what's fading, and where a competitor is installed.
+- [Signals and timing](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/signals-and-timing.md): Reach out when something just changed: hiring spikes, leadership moves, news, new tools.
+- [Outreach and messaging](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/outreach-and-messaging.md): Research-backed emails, call scripts, LinkedIn notes and briefing notes, each grounded in dated Draup facts.
+- [Prospecting and target lists](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/prospecting-and-lists.md): Build, size and qualify target lists from firmographics, tech, hiring and growth.
+- [Solution plays: by what you sell](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/solution-plays.md): Find the accounts most ready for what you sell, and check any account's readiness: cloud, data & AI, ERP, security, GenAI, CX, supply chain, HR tech, managed services, engineering, testing.
+- [Deal strategy and qualification](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/deal-strategy.md): Win live opportunities: re-engage stalled deals, answer RFPs, build business cases, handle objections and beat a named competitor.
+- [Competitive intelligence](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/competitive-intelligence.md): Track what rivals are winning, building and losing, and where you can take share.
+- [Outsourcing and services deals](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/outsourcing-and-services.md): For IT services, consulting and staffing sellers: incumbents, share of wallet, GCCs and wedges.
+- [Account planning and expansion](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/account-planning.md): Account plans, entry points, risk checks, QBR prep and territory tiering.
+- [Expansion and cross-sell](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/expansion-and-cross-sell.md): Grow existing customers: global account maps, whitespace, cross-sell, new budget holders and sponsor coverage.
+- [Partners and alliances](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/partners-and-alliances.md): Pick, plan and grow co-sell motions with the partners already embedded in your accounts.
+- [Industry and market intelligence](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/industry-intelligence.md): Industry-level numbers, priorities and vendor landscapes for pitches and planning.
+- [Sales leadership and RevOps](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/sales-leadership-and-revops.md): Size territories, segment books, plan pipeline and enable reps on new verticals.
+- [Content and enablement](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/content-and-enablement.md): Turn Draup data into battlecards, ABM messages and email sequences.
+- [Talent cost and location](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/talent-cost-and-location.md): Cost-arbitrage, location and hiring-difficulty cases for services pursuits. Uses the Draup for Talent connector.
+
+## Optional
+
+- [Playbooks](https://raw.githubusercontent.com/Draup/draup-sales-prompts/main/skill/draup-sales-prompts/references/playbooks.md)
+- [Interactive library](https://draup.github.io/draup-sales-prompts/)

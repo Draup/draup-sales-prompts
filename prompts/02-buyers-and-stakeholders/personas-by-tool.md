@@ -1,8 +1,8 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
 # Who uses [Technology] there
 
-> **Which roles at the account use a given tool, grouped into three buyer personas with the other tools they use and the message for each.**
+> **Which roles at the account use a given tool, grouped into three buyer personas with the message for each, and the senior person to target first.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
@@ -36,33 +36,37 @@ STEPS
 3. Take the top 10 roles by count, with job family and other tools.
 4. Pull the number of job postings in the last 12 months that mention [Technology], as an activity check.
 5. Group the 10 roles into 3 buyer personas (e.g. builders, operators, business owners).
+6. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, to name the senior owner to target.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- "Roles using [Technology]": Role | Job family | Other top tools (up to 5).
+- Recommended next step: one person by name and title (from step 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "3 personas": name, roles in it, what they likely care about, adjacent tools that signal integration or displacement, a one-line message angle for [What I sell], and the likely senior owner.
+- "Roles using [Technology]": Role | Job family | Other top tools (up to 5). Top 10.
 - One line: postings mentioning [Technology] in the last 12 months.
-- "3 personas": name, roles in it, what they likely care about, adjacent tools that signal integration or displacement, a one-line message angle for [What I sell], and the likely senior owner (title).
-- "Who to target first" with one reason.
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting) and why now (one dated fact).
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
 - If no roles use the tool, say so and show the 5 closest tools that do appear.
 - Adjacent tools made by competitors I've named are displacement angles; say so.
+- If a company's posting count is larger than its workforce, the company match is wrong; say so and leave it out.
 
 STANDARD RULES (leave as is)
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
-- If a company's posting count is larger than its workforce, the company match is wrong; say so and leave it out.
-- Label anything you infer (buyer role, intent, fit, integration work) as "likely".
-- Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Label anything you infer (buyer role, intent, fit) as "likely".
+- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Which roles at [Company] use [Technology]? Top 10 roles with job family and other tools, grouped into 3 buyer personas with what each cares about and a message angle for [What I sell].
+Which roles at [Company] use [Technology]? Bottom line and who to target first, then top 10 roles with other tools, grouped into 3 buyer personas with a message angle for [What I sell].
 ```
 
 </details>
@@ -90,14 +94,14 @@ Which of the adjacent tools compete with ours?
 
 ## Related prompts
 
-- [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): A ranked list of the people likely to buy, influence or block your deal in one function or workload, with their role in the decision, an entry point and the sponsor to reach later.
-- [Hypothesis-led discovery questions](../../prompts/02-buyers-and-stakeholders/discovery-questions.md): An opening insight and eight discovery questions, each built on a dated fact about the account, with the hypothesis behind it and what a good answer tells you.
-- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a rival's products are live anywhere in the account's stack, how central they are, who else is in the room and which stated priorities could justify a switch.
+- [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
+- [Discovery questions built on their data](../../prompts/02-buyers-and-stakeholders/discovery-questions.md): An opening insight and eight discovery questions, each built on a dated fact about the account, with the hypothesis behind it and what a good answer tells you.
+- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `accounts_get_skills_architecture_v3`, `accounts_hiring_demand_category_v3`
+`get_account_id`, `accounts_get_skills_architecture_v3`, `accounts_hiring_demand_category_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `people-personas-by-tool`.
 
@@ -105,4 +109,4 @@ Status: **tested live**. Prompt id: `people-personas-by-tool`.
 
 ---
 
-[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

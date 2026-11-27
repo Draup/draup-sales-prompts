@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Signal-to-email (one or a few accounts)
+# Signal-led emails for up to 10 accounts
 
-> **For one account or up to 5 per pass: the freshest relevant signal, the priority it supports, and a short, sourced opener for your persona that ends in one low-friction ask.**
+> **For one account or up to 10 per pass: the most relevant recent signal (preferring your territory), the priority it supports, a fact check, and a short opener written in your persona's language that ends in one easy ask.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Writing first-touch emails or a small ABM wave, and you want every message anchored on something real and recent. | SDR / BDR, Account Executive, Marketing & ABM | Everyone | 4–6 min | News signals, Priorities & opportunities |
+| Use this when you have one to 10 named accounts and want each email anchored on that account's own recent event. Use "ABM messages for a target list" instead for a longer campaign list, a fixed theme or a joint partner note. | SDR / BDR, Account Executive, Marketing & ABM | Everyone | 4–6 min | News signals, Priorities & opportunities, Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -17,8 +17,9 @@
 | `[Accounts]` | bmw.com, target.com |
 | `[What I sell]` | supply-chain planning software |
 | `[Persona]` | VP Supply Chain |
-| `[Contact name]` | Jane Doe (optional) |
-| `[Proof point]` | cut forecast error for Contoso Retail (optional) |
+| `[Territory (optional)]` | North America |
+| `[Contact name (optional)]` | Jane Doe |
+| `[Proof point (optional)]` | cut forecast error for Contoso Retail |
 
 ## 2. Copy the detailed prompt
 
@@ -28,46 +29,47 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my outbound copywriter and researcher. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
-- Accounts: [one website, or up to 5, e.g. bmw.com, target.com]
+- Accounts: [one website, or up to 10, e.g. bmw.com, target.com]
 - What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
 - Persona: [who reads it, e.g. VP Supply Chain]
-- Contact name: [optional, e.g. Jane Doe]
-- Proof point: [optional result you may quote, e.g. cut forecast error for Contoso Retail]
+- Territory (optional): [region I cover, e.g. North America]
+- Contact name (optional): [e.g. Jane Doe]
+- Proof point (optional): [a result I may quote, e.g. cut forecast error for Contoso Retail]
 
 STEPS
-1. Find each account by website (exact match, parent company). Ask me if none or several match. If I gave more than 5, do the first 5 and offer to continue.
-2. Pull news for all the accounts in one go for the last 60 days: deals and partnerships, expansion, executive moves, M&A, funding or investment plans. Skip launches. Apply the noise rule; the account must be the actor.
-3. Per account, pick the one signal most relevant to [What I sell] and the persona.
-4. Pick the stated priority in the persona's function that best fits it, with source and fiscal quarter (fiscal labels can run ahead of the calendar, so keep the quarter out of the email).
-5. Write the message.
+1. Find each account by website (exact match, parent company); ask if none or several match. Do up to 10 per pass: after each 5, show the table and continue unless I say stop.
+2. Pull 60 days of news for all accounts in one feed pull: deals, expansion, executive moves, M&A, investment plans, and incidents that bear on what I sell. If one account fills over half the results, pull the quiet ones separately. The account must be the actor.
+3. Per account, pick the signal most relevant to [What I sell], the persona and my territory; prefer events in my territory and say if there are none.
+4. Fact-check it (Confirmed, Single source or Conflicting) and pick the persona's stated priority that best fits, with source and fiscal quarter.
+5. For one account, or a list's strongest row, pull the top 3 executives in the persona's function and name the best match.
+6. Write each message in [Persona]'s language and goals.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- One account: Signal (date, source, headline) | Priority (source, quarter) | Subject (7 words max) | Opener: 3 sentences, 70 words max: the signal, the priority posed as a question, one low-friction ask (e.g. "worth a 15-minute compare?"). Use the contact's name and proof point only if given.
-- Several accounts: Account | Signal (date) | Priority (quarter) | Message (2 sentences, 45 words max, ending in the ask) | Source and headline.
-- No qualifying signal: say so and write a priority-only opener.
-- "Not found": accounts I need to fix.
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting), and why now (one dated fact).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending": each message leaning on a single-source or conflicting fact, and what to verify (or "none").
+- One account: signal (date, source, fact check), priority, Subject (7 words max) and opener (70 words max): the signal, the priority as a question, one easy ask. Use contact name and proof point only if given.
+- Several accounts: Account | Signal (date; in territory?) | Fact check | Message (2 sentences, 45 words max, ending in the ask).
+- Detail: source and headline per account; priority used; priority-only openers where no signal qualified; "Not found" accounts; Gaps (what Draup lacked, to ask in discovery).
 
 RULES
-- Quote numbers exactly as the source states them.
-- Pose the signal–priority link as a question, never a claim.
-- No flattery, no "I noticed", no hype words, no exclamation marks.
+- Quote only Confirmed numbers, exactly as the source states them. Keep fiscal quarters out of the copy.
+- Pose the signal–priority link as a question; no flattery, "I noticed", hype or exclamation marks.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
-- Drop noise: outages and breaches (unless I sell security), stock chatter, charity, sponsorships and awards, passing mentions, look-alike names, sister companies, and old stories re-dated as new (use the event date in the text). Also drop bank branches, registrar notices, recruitment ads, surveys that only mention the company, supplier press releases and single-store property sales. Give the source and headline for every item, plus the link when Draup has one.
-- Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- Fact check before copy: tag each fact used Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting. Keep single-source numbers and disputed names or dates out of the copy; if a message still leans on one, put "Check before sending: [fact], [why]" directly above it.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-For each of [Accounts] (up to 5), find one deals, expansion, executive or M&A signal from the last 60 days, pair it with a stated priority, and write a short [Persona] opener ending in one easy ask. Cite sources.
+Bottom line and next step first. For each of [Accounts] (up to 10), pick the 60-day signal most relevant to [What I sell] and my [Territory], fact-check it, and write a 45-word [Persona] opener ending in one ask.
 ```
 
 </details>
@@ -85,24 +87,29 @@ Rewrite the openers for a CIO instead of [Persona].
 ```
 
 ```text
-Run the next 5 accounts in the same way.
+Run the next 10 accounts in the same way.
+```
+
+```text
+For the rows marked Single source, find a second source or swap in another signal.
 ```
 
 ## Tips for better results
 
-- Give Claude a real proof point you're allowed to quote. A specific, permitted result often beats a generic value statement.
+- Give the assistant a real proof point you're allowed to quote. A specific, permitted result often beats a generic value statement.
+- Add your territory once in the start-here prompt; signals in your region rank first and the table says when an account has none.
 - If most accounts come back with no qualifying signal, widen the window to 90 days in a follow-up.
 
 ## Related prompts
 
-- [What's worth acting on now](../../prompts/04-signals-and-timing/whats-actionable.md): Up to 5 real triggers from the last 90 days, each tied to a stated priority, a likely owner and a suggested action, with the noise stripped out.
-- [ABM messages for a target list](../../prompts/16-content-and-enablement/abm-messages.md): A table of short, personalised openers, 5 accounts per pass, each tied to one stated priority and one dated signal from the last 60 days, with sources and an optional partner or proof angle.
-- [Industry email sequence](../../prompts/16-content-and-enablement/email-sequence.md): A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example.
+- [ABM openers for 10 accounts at once](../../prompts/16-content-and-enablement/abm-messages.md): A table of short openers for up to 10 accounts per pass, each written to your persona in their language and tied to one stated priority and one dated signal from the last 60 days, graded Strong, OK or Weak, with sources and an optional joint partner note.
+- [What's worth acting on now](../../prompts/04-signals-and-timing/whats-actionable.md): An Act, Watch or Skip verdict and up to 5 real triggers from the last 90 days, kept or dropped with what you sell in mind (incidents and regulatory inquiries count if they bear on your offer), each with a named owner and a source count.
+- [3-email sequence for one industry persona](../../prompts/16-content-and-enablement/email-sequence.md): A ready-to-load 3-email sequence for one persona in one industry, each email built on a priority in the persona's function and a dated move by a real company, plus the first account to load with a named contact.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_news_feed_v3`, `get_account_priorities_v3`
+`get_account_id`, `get_news_feed_v3`, `get_account_priorities_v3`, `accounts_executives_key_executives_v3`
 
 Status: **tested live**. Prompt id: `signals-signal-to-email`.
 
@@ -110,4 +117,4 @@ Status: **tested live**. Prompt id: `signals-signal-to-email`.
 
 ---
 
-[Back to Signals and timing](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Signals and timing](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# AI readiness vs peers
+# AI readiness against close peers
 
-> **A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers.**
+> **A read on the account's AI hiring, priorities, new tools and outsourced AI work, its AI hiring compared with up to 4 close peers, and who to raise it with.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You sell AI, data or automation and need a maturity read or a peer comparison. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Marketing & ABM | Everyone | 4–6 min | Hiring & job postings, Priorities & opportunities, Tech stack, Outsourcing deals, Company directory |
+| You sell AI, data or automation and need a maturity read or a peer comparison. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Marketing & ABM | Everyone | 4–6 min | Hiring & job postings, Priorities & opportunities, Tech stack, Outsourcing deals, Company directory, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -28,42 +28,45 @@ Act as my AI market analyst. Use Draup for Sales for every fact. Don't use outsi
 INPUTS (edit these)
 - Company: [Website, e.g. pfizer.com]
 - What I sell: [One line, e.g. enterprise generative AI platform — skip if you ran the start-here prompt]
-- Peers: [Optional, up to 4 websites, e.g. lilly.com, abbvie.com; blank = Draup's closest competitors]
+- Peers (optional): [Up to 4 websites, e.g. lilly.com, abbvie.com; blank = Draup's closest competitors]
 
 STEPS
-1. Find the company by its website and confirm it is the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Peers, in one company-list lookup: my websites, or the account's top competitors in its primary vertical, keeping the 4 closest in revenue (0.3–3x, editable default), with workforce.
-3. Account deep-dive: "Artificial Intelligence & Data Science" postings (12 months, monthly); AI, Generative AI or Machine Learning priorities (count, latest two with quarter); AI tools newly detected in 12 months (up to 5, no generic tools); outsourced AI engagements and top 3 providers.
-4. For each peer, pull only AI & Data Science postings with monthly trend.
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Peers, in one company-list lookup: my websites, or the account's top competitors in its primary industry, keeping the 4 closest in revenue (0.3–3x, editable default), with workforce.
+3. Account deep-dive: "Artificial Intelligence & Data Science" postings (12 months, monthly); AI, Generative AI or Machine Learning priorities (count, latest two with quarter); AI tools newly detected in 12 months (up to 5, no generic tools such as chat assistants or office add-ons); outsourced AI engagements and top 3 providers.
+4. For each peer, pull only AI & Data Science postings with the monthly trend.
 5. Compare AI postings per 1,000 employees; under 10% apart is level (editable default).
+6. People and timing: at [Company], pull the top 3 leaders in the function that owns AI and data (often IT) and the most important news item from the last 90 days where it is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — where the account stands and the opening for [What I sell].
-- "Account deep-dive": AI postings and trend | AI priorities | New AI tools | Outsourced AI work, each dated.
-- "Peers": Company | Workforce | AI postings (12 mo) | Per 1,000 employees | Trend | Read (Ahead / Level / Behind). Account first.
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Peers": Company | AI postings (12 mo) | Per 1,000 employees | Trend | Read (Ahead, Level or Behind). Account first.
+- "Account deep-dive": 4 dated bullets — AI postings and trend, AI priorities, new AI tools, outsourced AI work.
 - "Questions to raise": 3, each naming a peer and a number.
-- "Why this matters for [What I sell]": 2 bullets and one peer-evidence sentence.
-- Recommended next step: who to contact (title), what to do, and why now (one dated fact).
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: peer workforce figures and "Why this matters for [What I sell]" (2 bullets and one peer-evidence sentence).
 
 RULES
 - Compare peers on AI hiring only. Tool additions are newly detected, not confirmed rollouts.
-- Priorities' quarter labels follow the fiscal year.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup returns nothing for a section, write "Not in Draup"; never guess or fill from memory.
-- Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
-- Engagements and outsourced headcount are Draup-derived estimates, not public contracts. Never call them signed deals.
-- Keep to about 400 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Read [Company]'s AI readiness in Draup: AI postings and trend, AI priorities, AI tools newly detected and outsourced AI work. Then compare its AI hiring per 1,000 employees with up to 4 peers.
+Bottom line and next step (named person, dated why-now) first. Read [Company]'s AI readiness: AI postings and trend, AI priorities, new AI tools and outsourced AI work. Then compare AI hiring per 1,000 employees with up to 4 peers.
 ```
 
 </details>
@@ -77,11 +80,11 @@ Show the 10 most recent AI postings at [Company], with title, date and location.
 ```
 
 ```text
-Which executives at [Company] own the AI priorities?
+Which leaders at [Company] own the AI priorities?
 ```
 
 ```text
-Write a 120-word peer-comparison email to the Chief Data Officer.
+Write a 120-word peer-comparison email to the person in the next step.
 ```
 
 ## Tips for better results
@@ -91,14 +94,14 @@ Write a 120-word peer-comparison email to the Chief Data Officer.
 
 ## Related prompts
 
-- [Talent rivals: who they lose people to](../../prompts/11-account-planning/talent-competitors.md): The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, and credible peers to benchmark against.
-- [Benchmark an account against peers](../../prompts/06-prospecting-and-lists/peer-benchmark.md): One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions.
-- [Are they really investing in X?](../../prompts/04-signals-and-timing/investing-in-x.md): A Yes / Early / No verdict on whether hiring, headcount and stated priorities back up a technology theme, with proof postings and talking points.
+- [Who they lose talent to](../../prompts/11-account-planning/talent-competitors.md): The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, credible benchmark peers, and who to raise it with.
+- [Benchmark an account against its peers](../../prompts/06-prospecting-and-lists/peer-benchmark.md): How an account compares with its closest peers on growth, hiring in what you sell, your competitors in the stack and recent news, with discovery questions and who to call.
+- [Are they really investing in X?](../../prompts/04-signals-and-timing/investing-in-x.md): A Yes / Early / No verdict on whether hiring, headcount and stated priorities back up a technology theme, with proof postings, three talking points and a named person to call.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_universe_companies_v3`, `accounts_hiring_demand_category_v3`, `get_account_priorities_v3`, `get_tech_stack_trend_v3`, `get_deals_workloads_v3`, `get_deals_service_provider_v3`
+`get_account_id`, `get_universe_companies_v3`, `accounts_hiring_demand_category_v3`, `get_account_priorities_v3`, `get_tech_stack_trend_v3`, `get_deals_workloads_v3`, `get_deals_service_provider_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `plan-ai-readiness`.
 
@@ -106,4 +109,4 @@ Status: **tested live**. Prompt id: `plan-ai-readiness`.
 
 ---
 
-[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# New leaders in the last 6 months
+# New leaders and warm intro paths
 
-> **Leaders who joined or were promoted in the last 6 months in your area, where they came from, and which ones arrive from your customers.**
+> **Leaders who joined or were promoted recently in your area, where they came from, and current leaders who used to work at your customers, so you know who to congratulate and who can introduce you.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Monthly, or when an account goes quiet: new leaders often review vendors in their first 90 days. | SDR / BDR, Account Executive, Account & Customer Success Manager | Everyone | 2–4 min | Executives & movement |
+| Monthly, or when an account goes quiet: new leaders often review vendors in their first 90 days. Use this for people who just arrived or came from your customers; use "Map the buying committee" instead when you need everyone who decides today. | SDR / BDR, Account Executive, Account & Customer Success Manager | Everyone | 2–4 min | Executives & movement |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -14,10 +14,10 @@
 
 | Placeholder | Example |
 |---|---|
-| `[Company]` | target.com |
-| `[Workload]` | Artificial Intelligence & Data Science, Cybersecurity |
-| `[Our customers]` | Contoso Retail, Fabrikam Foods |
-| `[What I sell]` | AI security and governance software |
+| `[Company]` | 3m.com |
+| `[Workload]` | Inventory Management, Demand Management — a type of work, not a function like Supply Chain; a function gets mapped for you |
+| `[Our customers (optional)]` | Contoso Retail, Fabrikam Foods |
+| `[What I sell]` | supply-chain planning software |
 
 ## 2. Copy the detailed prompt
 
@@ -27,46 +27,54 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my sales stakeholder analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Company: [website, e.g. target.com]
-- Workload: [1–3 workloads, e.g. Artificial Intelligence & Data Science, Cybersecurity]
-- Our customers: [optional, e.g. Contoso Retail, Fabrikam Foods]
-- What I sell: [one line, e.g. AI security and governance software — skip if you ran the start-here prompt]
+- Company: [website, e.g. 3m.com]
+- Workload: [1–3 Draup workloads, e.g. Inventory Management, Demand Management — not a function like Supply Chain; if I give a function, map it to workloads first]
+- Our customers (optional): [e.g. Contoso Retail, Fabrikam Foods]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Leaders in their first 90 days set plans and review vendors. The warmest door is often someone who used to work at one of your customers, whether they arrived last month or years ago.
 
 STEPS
 1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
-2. Pull executive hires and promotions, one workload at a time.
-3. Keep moves from the last 6 months where the person's current company is [Company].
-4. Compare each new hire's previous company with [Our customers], allowing name variants ("Contoso" = "Contoso Retail Inc.").
+2. If I gave a business function, map it to the 1–3 closest Draup workloads and say which.
+3. Pull executive hires and promotions, one workload at a time; keep rows where [Company] is the current employer.
+4. Keep moves from the last 6 months. Leadership data can lag about 3 months: if none fall inside, show the latest moves from the 3 months before, labelled "just outside the window".
+5. Compare each new hire's past companies (whole history, not just the last one) with [Our customers], allowing name variants ("Contoso" = "Contoso Retail Inc.").
+6. If fewer than 3 warm paths, also check current senior leaders in the matching business function (10 per page, up to 3 pages) whose past companies include [Our customers]. Flag any with under 6 months in their title as new.
+7. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title, what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
 - One line per workload: rows checked, rows kept, latest move date in the data.
-- "New leaders": Date | Hire or Promotion | Name | New title | Previous company | Workload | Warm path? Newest first.
-- "Warm paths": each person who came from one of [Our customers], and who on our side likely knows them.
+- "New leaders": Date | Name | New title | Came from (company, or "promoted") | Warm path? Newest first, up to 10.
+- "Warm paths": Name | Current title | Customer in their past | Found as (new leader or current leader) | Who on our side to ask.
 - "First-90-days plays": the top 3 people to approach, each with a one-line angle tied to [What I sell].
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting) and why now (one dated fact).
 - Gaps: what Draup didn't have — worth asking in discovery.
 
 RULES
 - Leave out exits; the customer-alumni prompt covers them.
 - Drop rows that clearly aren't about [Company], such as look-alike company names.
-- If a workload has no recent moves, say "none in the last 6 months"; don't widen silently.
+- If a workload has no moves even in the wider window, say "none found"; don't widen further silently.
 - A warm path means they worked at our customer, not that they bought from us.
 
 STANDARD RULES (leave as is)
-- If leadership-move results are too large to read, say so and use executive-movement news for the same period instead.
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
+- If I give a business function where a workload is needed, map it to the 1–3 closest Draup workloads, say which, then continue.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
-- Draup shows about the 10 latest moves per type and can't filter them by function: narrow by workload, say how many rows you checked and the latest move date, and keep only rows where [Company] is the current employer.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details; don't infer personal details or past buying relationships.
-- Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Leadership-move data can lag about 3 months; give the latest move date you saw.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Who joined or was promoted at [Company] in the last 6 months in [Workload]? Date, name, full title, previous company. Flag anyone who came from [Our customers]. Drop exits and unrelated rows.
+New leaders at [Company] in [Workload]: bottom line and who to contact first, then hires and promotions in the last 6 months (date, name, title, came from) and any current leaders who worked at [Our customers].
 ```
 
 </details>
@@ -80,29 +88,34 @@ Profile the top new leader and draft a congratulations note with a relevant angl
 ```
 
 ```text
-Also check current senior leaders whose past companies include [Our customers].
+Check pages 4–6 of current leaders for more warm paths.
 ```
 
 ```text
 Show exits in the same workloads: where did they go?
 ```
 
+```text
+Draft the intro request to our account team at the matched customer.
+```
+
 ## Tips for better results
 
-- Run it per workload. Without one you only see the most recent moves company-wide.
+- Type a workload if you know it; if you type a function such as Supply Chain, the prompt maps it to workloads and says which.
+- Leadership-move data can lag about 3 months, so the prompt shows moves just outside the window rather than an empty table.
 - A leader who came from one of your customers is often the warmest intro you can get.
 
 ## Related prompts
 
-- [Warm paths among current leaders](../../prompts/02-buyers-and-stakeholders/warm-paths-current-leaders.md): Senior leaders at the account who used to work at your customers, partners or your own company, so you can ask for a warm intro.
-- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive and two openers tied to the account's current priorities.
-- [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): A ranked list of the people likely to buy, influence or block your deal in one function or workload, with their role in the decision, an entry point and the sponsor to reach later.
-- [Customer alumni on the move](../../prompts/11-account-planning/follow-champions.md): Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first.
+- [Warm paths among current leaders](../../prompts/02-buyers-and-stakeholders/warm-paths-current-leaders.md): Senior leaders at the account who used to work at your customers, partners or your own company, who on your side to ask for the intro, and why now.
+- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
+- [Map the buying committee](../../prompts/02-buyers-and-stakeholders/buying-committee.md): Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
+- [Customer alumni now at your targets](../../prompts/11-account-planning/follow-champions.md): Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_account_executive_movement`, `accounts_executives_key_executives_v3`
+`get_account_id`, `get_account_executive_movement`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `people-new-leaders-warm-paths`.
 
@@ -110,4 +123,4 @@ Status: **tested live**. Prompt id: `people-new-leaders-warm-paths`.
 
 ---
 
-[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

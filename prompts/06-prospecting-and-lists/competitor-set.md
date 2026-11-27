@@ -1,8 +1,8 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Sell into a customer's competitors
+# Sell into your customer's competitors
 
-> **Your customer's real competitors, ranked by Draup's Opportunity Index score, with what happened at each in the last 90 days, a reference angle and who to call.**
+> **Your customer's real competitors, ranked, with what happened at each in the last 90 days, a reference angle and a named person to call first.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
@@ -16,7 +16,7 @@
 |---|---|
 | `[Company]` | your customer's website (e.g. fabrikam.com, illustrative) |
 | `[Referenceable?]` | no |
-| `[Proof point (optional)]` | a hypothetical result, e.g. cut scheduling overtime across its stores |
+| `[Proof point (optional)]` | cut scheduling overtime across its stores |
 | `[What I sell]` | warehouse workforce-scheduling software |
 
 ## 2. Copy the detailed prompt
@@ -27,45 +27,47 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my account-based marketing analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Company: [Customer's website, e.g. fabrikam.com (illustrative)]
+- Company: [customer's website, e.g. fabrikam.com (illustrative)]
 - Referenceable?: [yes or no — may I name them? e.g. no]
 - Proof point (optional): [e.g. cut scheduling overtime across its stores]
 - What I sell: [one line, e.g. warehouse workforce-scheduling software — skip if you ran the start-here prompt]
 
 STEPS
 1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. Use Draup's exact name from then on.
-2. Pull Draup's listed competitors, ranked by Opportunity Index, with workforce and revenue.
-3. Keep same-primary-vertical companies at 0.3–3x the customer's workforce (editable default); record removals. If under 4 remain, add same-vertical, same-HQ-country companies in that range, labelled "added peer".
-4. For the top 5, pull top news from the last 90 days and keep material events: deals, new centres, M&A, senior leadership changes, layoffs, major launches.
+2. Pull Draup's listed competitors, ranked by Opportunity Index (Draup's 0–10 account-attractiveness score), with workforce and revenue.
+3. Keep same-primary-vertical companies at 0.3–3x the customer's workforce (editable); record removals. If under 4 remain, add same-vertical, same-HQ-country companies in that range, labelled "added peer".
+4. For the top 5, pull top news from the last 90 days and keep material events: deals, new centres, M&A, senior leadership changes, layoffs, launches that touch [What I sell].
+5. For the #1 target: its top 3 executives in the function closest to What I sell.
 
 OUTPUT
-- Bottom line: 2 sentences — the best next targets and why for [What I sell].
-- Table: Rank | Competitor | Opportunity Index | Workforce | Revenue ($M, FY) | News events (90 days, top 5) | Listed or added | Who to call (title).
-- Top 5 each: "What happened" (up to 2 events: date | headline | source) and "Reference angle" (our result at [Company] → their situation).
-- "Removed": name and reason.
-- Recommended next step: who to contact (title), what to do (call, email, intro, meeting), and why now (one dated fact).
+- Bottom line: 2 sentences — the best next targets and why, for [What I sell].
+- Recommended next step: a named person (name and full title from step 5), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Top 5": Competitor | Workforce | What happened (date, headline) | Reference angle (our result → their situation).
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: full ranked list (Opportunity Index, revenue $M with FY, listed or added); "Removed" with reasons.
 
 RULES
 - If Referenceable? is no, never name [Company]; say "a leading [vertical] peer".
 - Write "No material events in 90 days" rather than padding.
-- "Who to call" = likely buyer title for [What I sell] at that company's size.
+- Don't compare companies on Draup's yes/no event flags; count dated events.
+- Show USD millions using Draup's conversion rate.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill from memory.
-- Don't compare companies on Draup's yes/no event flags; count dated news events from the last 90 days instead.
-- Show USD millions using Draup's conversion rate; if Draup gives none, name the rate and date and mark it as outside Draup.
-- Drop noise: stock chatter, outages, charity, awards, passing mentions, look-alike names, sister companies and re-dated old stories. Merge duplicates. Give date, source and headline (link when Draup has one).
-- Keep to about 400 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-List [Company]'s competitors in Draup, ranked by Opportunity Index, after removing unrelated firms. For the top 5, give up to 2 material events from the last 90 days, a reference angle and who to call.
+Bottom line and next step first: list [Company]'s real competitors, ranked, with up to 2 material events each from the last 90 days, a reference angle and who to call at the best target.
 ```
 
 </details>
@@ -79,28 +81,28 @@ Write a 3-email sequence for the #1 competitor using the reference angle.
 ```
 
 ```text
-Who owns [Business function] at the top 2? Names, titles and level.
+Check the whole tech stack of the top 5 for any product that competes with ours.
 ```
 
 ```text
-Check the whole tech stack of the top 5 for any product that competes with ours.
+Who owns [Business function] at the top 2? Names and full titles.
 ```
 
 ## Tips for better results
 
-- Check the 'Removed' list; small or unrelated firms are filtered out there.
+- Check the Removed list; small or unrelated firms are filtered out there.
 - Ask your customer before naming them. The prompt defaults to an anonymous reference.
 
 ## Related prompts
 
-- [Benchmark an account against peers](../../prompts/06-prospecting-and-lists/peer-benchmark.md): One table comparing an account with its closest peers on growth, hiring, workforce, footprint and recent news, plus where it leads and where to ask questions.
-- [Look-alikes of a best customer](../../prompts/06-prospecting-and-lists/lookalikes.md): Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches and who to call.
-- [Signal-to-email (one or a few accounts)](../../prompts/04-signals-and-timing/signal-to-email.md): For one account or up to 5 per pass: the freshest relevant signal, the priority it supports, and a short, sourced opener for your persona that ends in one low-friction ask.
+- [Benchmark an account against its peers](../../prompts/06-prospecting-and-lists/peer-benchmark.md): How an account compares with its closest peers on growth, hiring in what you sell, your competitors in the stack and recent news, with discovery questions and who to call.
+- [Find look-alikes of your best customer](../../prompts/06-prospecting-and-lists/lookalikes.md): Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches, plus who to call first and why now.
+- [Signal-led emails for up to 10 accounts](../../prompts/04-signals-and-timing/signal-to-email.md): For one account or up to 10 per pass: the most relevant recent signal (preferring your territory), the priority it supports, a fact check, and a short opener written in your persona's language that ends in one easy ask.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_universe_companies_v3`, `get_top_signals`
+`get_account_id`, `get_universe_companies_v3`, `get_top_signals`, `accounts_executives_key_executives_v3`
 
 Status: **tested live**. Prompt id: `prospect-competitor-set`.
 
@@ -108,4 +110,4 @@ Status: **tested live**. Prompt id: `prospect-competitor-set`.
 
 ---
 
-[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

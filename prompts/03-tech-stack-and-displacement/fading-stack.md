@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Fading stack: replacement windows
+# Fading tools and replacement windows
 
-> **The tools that have gone quiet in one area, what seems to be taking their place, and the 3 best-timed replacement pitches.**
+> **The tools that have gone quiet in one area, what seems to be taking their place, and the 3 best-timed replacement windows, each with a dated reason and a named person to call.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Hunting for a renewal or migration window, or before a modernisation pitch. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 2–4 min | Tech stack, Priorities & opportunities |
+| Hunting for a renewal or migration window, or before a modernisation pitch. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 2–4 min | Tech stack, Priorities & opportunities, Executives & movement, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -27,43 +27,45 @@ Act as my technology renewal and migration analyst. Use Draup for Sales for ever
 
 INPUTS (edit these)
 - Company: [website, e.g. target.com]
-- Technology: [category or workload, e.g. data management, Cybersecurity]
+- Technology: [area or workload, e.g. data management, cybersecurity]
 - What I sell: [one line, e.g. data-platform migration services — skip if you ran the start-here prompt]
 
 STEPS
 1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
-2. Pull the products in that category or workload, up to 5 pages.
+2. Pull the products in that area, up to 5 pages, and say which grouping you used.
 3. Group each: Fading (no usage strength, or last seen over 12 months ago); Weakening (Low, last seen 6–12 months ago); Active (High or Medium, seen in the last 90 days); Stable (the rest, counted only). Cut-offs are editable defaults.
 4. For each Fading or Weakening product, find Active products in the same sub-category: the likely successor or a parallel tool.
 5. Pull products first detected in the last 12 months in those sub-categories.
-6. Pull stated priorities here about modernisation, migration, consolidation or cost, with source and fiscal quarter.
+6. Pull stated priorities in the function closest to [What I sell] about modernisation, migration, consolidation or cost, with source and fiscal quarter.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- Table "Fading and weakening" (top 15, oldest first): Product | Maker | Sub-category | Last seen | Group | Likely successor (strength) | Read: Replaced / Parallel / Unclear.
-- Table "Replacement windows" (top 3): Product | Reason (successor, new arrival or priority, dated) | Likely owner | Opening for [What I sell].
-- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting), and why now (one dated fact).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table "Replacement windows" (top 3): Product | Why now (successor, new arrival or priority, dated) | Likely owner | Opening for [What I sell].
+- Table "Fading and weakening" (top 10, oldest first): Product | Maker | Last seen | Group | Read (Replaced, Parallel, Unclear).
+- Detail: likely successors with usage strength; new arrivals; Stable count; Gaps (what Draup lacked, to ask in discovery).
 
 RULES
 - "Fading" is the strongest claim allowed. Never say they dropped, retired or cancelled a product.
 - A last-seen date shared by many products is a data refresh; with Low strength it's weak evidence.
-- If nothing is fading, say the area looks stable.
+- If nothing is fading, say the area looks stable and lead the next step with a priority instead.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
 - Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
 - If [Company] sells technology itself, ignore its own products and priorities about products it sells.
-- Keep to about 320 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Which [Technology] products at [Company] have gone quiet in Draup (no usage strength, or not seen in 12 months)? For each, show the active product that likely replaced it, and name 3 replacement windows with a dated why-now.
+Bottom line and next step first (named owner, dated why-now). Which [Technology] tools at [Company] have gone quiet in Draup, what likely replaced each, and which 3 replacement windows suit [What I sell], each with a dated reason?
 ```
 
 </details>
@@ -81,7 +83,11 @@ Show the full active stack in the same sub-categories, so I know what I'd integr
 ```
 
 ```text
-Draft a 90-word email that opens on the migration window without naming the old vendor.
+Draft a 90-word email to the person in the next step that opens on the migration window without naming the old vendor.
+```
+
+```text
+Check whether the likely successor also appears in their job ads.
 ```
 
 ## Tips for better results
@@ -91,14 +97,14 @@ Draft a 90-word email that opens on the migration window without naming the old 
 
 ## Related prompts
 
-- [Their stack in one category](../../prompts/03-tech-stack-and-displacement/stack-category.md): What they run in one category, ranked by how actively each tool is used, with stale tools set aside, unfamiliar products explained and an optional vendor ranking with a consolidation read.
-- [What they adopted this year](../../prompts/03-tech-stack-and-displacement/recent-adoptions.md): The tools first detected at the account in the last 12 months, each labelled as competing with, complementing or unrelated to what you sell, with any competitor product called out first.
-- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a rival's products are live anywhere in the account's stack, how central they are, who else is in the room and which stated priorities could justify a switch.
+- [What they run in one tech area](../../prompts/03-tech-stack-and-displacement/stack-category.md): What they run in one area, ranked by how central each tool is, with your competitors rated Red, Amber or Green, stale tools set aside and a named person to call.
+- [What tools they adopted this year](../../prompts/03-tech-stack-and-displacement/recent-adoptions.md): The tools first detected at the account in the last 12 months, labelled as competing with, complementing or unrelated to what you sell, with any new competitor product flagged Amber first and a named person to call.
+- [Is a competitor installed?](../../prompts/03-tech-stack-and-displacement/competitor-installed.md): A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_account_tech_stack_products_v3`, `get_tech_stack_trend_v3`, `get_account_priorities_v3`
+`get_account_id`, `get_account_tech_stack_products_v3`, `get_tech_stack_trend_v3`, `get_account_priorities_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `tech-fading-stack`.
 
@@ -106,4 +112,4 @@ Status: **tested live**. Prompt id: `tech-fading-stack`.
 
 ---
 
-[Back to Tech stack and displacement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Tech stack and displacement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

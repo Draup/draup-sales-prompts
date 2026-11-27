@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.0 (2026-11-27)
+
+- 76 new prompts across 7 new sales jobs: solution plays (cloud, data & AI, ERP, cybersecurity, GenAI, CX, supply chain, HR tech, managed services, engineering, testing), outreach and messaging, deal strategy, competitive intelligence, expansion and cross-sell, partners and alliances, and sales leadership. 166 prompts in total.
+- Every prompt revised after customer walkthroughs: answers open with the bottom line and next step, name a person and a dated reason to act, fit on a phone, flag single-source or conflicting facts, and focus on the function you sell into.
+- Use the whole library as a skill: Claude skill (zip), Claude Code plugin that also connects Draup, ChatGPT Projects, Microsoft 365 Copilot & Teams, and llms.txt for any AI.
+- Playbooks reworked into 16, including new leader and account-manager playbooks.
+- Redesigned interactive library with Draup branding, role picker, sales-job sidebar, ranked search, shareable filters and a help section with Draup support.
+- Role pages and cheat sheets open with each role's top 5 prompts and a "Before you trust a number" box.
+
 ## 1.1.0 (2026-11-27)
 
 - New [Connect Draup to your AI](guides/connect.md) guide: add Draup for Sales from Claude's directory or as a ChatGPT plugin, or connect any MCP client (Claude Code, Cursor, VS Code, custom agents) using Draup's MCP documentation.

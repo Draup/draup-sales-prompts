@@ -8,7 +8,10 @@ This takes about five minutes. You need Claude or ChatGPT, and a Draup account w
 |---|---|
 | **Claude** | [Add Draup for Sales from Claude's directory](https://claude.ai/directory/draup-for-sales), click **Connect** and sign in with your Draup account. |
 | **ChatGPT** | [Add the Draup for Sales plugin](https://chatgpt.com/plugins/plugin_asdk_app_6ad0b735a0d88191b98c333a6fe40ce7) and sign in with your Draup account. |
+| **Microsoft 365 Copilot or Teams** | [Get the Draup for Sales agent](https://marketplace.microsoft.com/en-us/product/WA200010751) from the Microsoft Marketplace (your admin may need to approve it). |
 | **Another MCP client** | Add Draup as a custom connector: see [Connect Draup to your AI](connect.md#option-3-any-mcp-client-custom-connector). |
+
+**Tip:** to let your AI pick the right prompt for you, add the whole library as a skill. See [Use the library as a skill](use-as-a-skill.md).
 
 Full step-by-step instructions, admin notes and troubleshooting: **[Connect Draup to your AI](connect.md)**.
 

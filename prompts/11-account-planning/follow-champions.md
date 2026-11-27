@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Customer alumni on the move
+# Customer alumni now at your targets
 
 > **Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You want warm paths into new logos through people who may know your product. | Account Executive, Account & Customer Success Manager, SDR / BDR | Everyone | 2–4 min | Executives & movement, Talent flow & locations |
+| You want warm paths into new logos through people who may know your product. Use people-new-leaders-warm-paths instead for warm paths into the new leaders at one account. | Account Executive, Account & Customer Success Manager, SDR / BDR | Everyone | 2–4 min | Executives & movement, Talent flow & locations, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -29,44 +29,44 @@ Act as my relationship-mapping analyst. Use Draup for Sales for every fact. Don'
 INPUTS (edit these)
 - Company: [Our customer's website, e.g. walmart.com]
 - Accounts: [Our target list, e.g. Target, Kroger, Costco]
-- Function or workload: [Required, e.g. Supply Chain]
-- Champion names: [Optional, paste names from your CRM]
+- Function or workload: [e.g. Supply Chain — a function is fine, I'll map it to workloads]
+- Champion names (optional): [Paste names from your CRM]
 
 STEPS
-1. Find the company by its website and confirm it is the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
-2. Pull executive exits, last 12 months, narrowed to the workloads behind [Function or workload]. Keep director-plus by full title and rows whose previous company is [Company].
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Map [Function or workload] to its 1–3 main workloads and say which. Pull leadership exits for the last 12 months, one workload at a time. Keep director-plus by full title and rows whose previous company is [Company]. State rows checked and the latest move date.
 3. For each: name, old title, new employer, new title, month.
 4. Match names against [Champion names] and new employers against [Accounts], allowing for spelling differences.
 5. Pull talent-flow counts from [Company] to each target; write "not in the top flows" if absent.
+6. Timing: for the best warm path, pull the new employer's most important news item from the last 90 days.
 
 OUTPUT
 - Bottom line: 2 sentences — how many warm paths and the best one.
-- "Alumni on the move": Name | Old title | New employer | New title | Month | Named champion? | On my list?
+- Recommended next step: the best warm path (name and new title), the opening line, and why now (their move month or the step-6 news). If there's no warm path, say so and name the closest alumnus.
+- "Alumni on the move": Name | Old title | New employer and title | Month | Match (champion, my list or none).
 - "Warm paths": named champions first, then my list, each with one opening line about their new role.
-- "Flow to my targets": Target | People moved (window).
-- Recommended next step: who to contact (title), what to do, and why now (one dated fact).
-- Gaps: what Draup didn't have — worth asking in discovery.
+- Gaps: what Draup didn't have — worth checking in my CRM.
+- Detail: "Flow to my targets" (Target | People moved, window).
 
 RULES
 - Never claim a past buying relationship. Mention our work with [Company] only if my CRM confirms they were involved.
-- Names come only from executive movement; talent flow gives counts, never names.
+- Names come only from leadership moves; talent flow gives counts, never names.
 - If no exits come back, try a neighbouring workload.
 
 STANDARD RULES (leave as is)
-- If leadership-move results are too large to read, say so and use executive-movement news for the same period instead.
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup returns nothing for a section, write "Not in Draup"; never guess or fill from memory.
-- Use professional information only (name, title, employer, Draup profile link). No personal contact details; don't infer personal details or past buying relationships.
-- Draup shows only the latest 10 or so moves per type and can't filter by function: narrow by workload, state the latest move date and rows checked, and keep rows where [Company] is the current (for exits, previous) employer.
-- Talent-flow data ends about 3 months ago; state the months covered.
-- Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Talent-flow data ends about 3 months ago; state the months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 380 words including tables.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Which director-level and above people left [Company] recently in [Function or workload], per Draup? Name, old title, new employer, new title, month. Flag new employers on my list ([Accounts]) and any names I paste.
+Bottom line and next step (named alumnus, dated move) first. Which director-plus people left [Company] recently in [Function or workload], per Draup? Name, old title, new employer, new title, month. Flag employers on my list ([Accounts]) and names I paste.
 ```
 
 </details>
@@ -90,18 +90,18 @@ Who replaced each of them at [Company]?
 ## Tips for better results
 
 - Paste your real champions' names. Draup doesn't know who used your product, so a confirmed match is worth far more than a title match.
-- Narrow by function or workload. Draup lists only the most recent moves, so a narrow search surfaces more of the people you care about.
+- Leadership data lags about 3 months, so "recent" means up to the latest move date the answer states.
 
 ## Related prompts
 
-- [Talent rivals: who they lose people to](../../prompts/11-account-planning/talent-competitors.md): The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, and credible peers to benchmark against.
-- [New leaders in the last 6 months](../../prompts/02-buyers-and-stakeholders/new-leaders-warm-paths.md): Leaders who joined or were promoted in the last 6 months in your area, where they came from, and which ones arrive from your customers.
-- [Renewal risk check (RAG)](../../prompts/11-account-planning/risk-check.md): A Red/Amber/Green risk table for one customer, including your sponsor's status, with dated evidence, an overall rating and two actions.
+- [Who they lose talent to](../../prompts/11-account-planning/talent-competitors.md): The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, credible benchmark peers, and who to raise it with.
+- [New leaders and warm intro paths](../../prompts/02-buyers-and-stakeholders/new-leaders-warm-paths.md): Leaders who joined or were promoted recently in your area, where they came from, and current leaders who used to work at your customers, so you know who to congratulate and who can introduce you.
+- [Renewal risk check (red, amber, green)](../../prompts/11-account-planning/risk-check.md): A Red/Amber/Green risk table for one customer — your named sponsor, senior exits, layoffs, growth, installed and new competitor products in your workloads, negative news — with an overall rating and two actions.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `get_account_executive_movement`, `accounts_talent_flow_insights_companies_v3`
+`get_account_id`, `get_account_executive_movement`, `accounts_talent_flow_insights_companies_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `plan-follow-champions`.
 
@@ -109,4 +109,4 @@ Status: **tested live**. Prompt id: `plan-follow-champions`.
 
 ---
 
-[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Top hiring companies in a vertical
+# Find who hires hardest in a vertical
 
-> **The real end employers posting the most jobs in an industry, with outliers and recruiters removed, hiring intensity shown and who to call.**
+> **The real end employers hiring hardest in an industry, ranked on postings per 1,000 staff with recruiters and outliers removed, plus hot spots and a named person to call first.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You want the most active companies in a vertical this year: active hiring often means active budgets. | SDR / BDR, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps | Everyone | 2–4 min | Industry ecosystem, Hiring & job postings |
+| You want the most active companies in a vertical this year; active hiring often means active budgets. | SDR / BDR, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps | Everyone | 2–4 min | Industry ecosystem, Hiring & job postings |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -25,46 +25,47 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my market research analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Vertical: [Industry, e.g. Life Sciences]
+- Vertical: [industry, e.g. Life Sciences]
 - What I sell: [one line, e.g. talent-acquisition software — skip if you ran the start-here prompt]
 
 STEPS
 1. Resolve the vertical to Draup's name and show it.
 2. Pull Draup's top hiring companies for the vertical (a fixed top 50) and note the time window Draup states.
-3. Remove staffing and recruiting firms and job boards, and record each removal.
-4. Take the top 25 left. Look them up in one company list and keep only the exact companies: workforce, primary vertical and postings in the last 90 days.
-5. Remove outliers: a company whose posting count is above its workforce, or an unfamiliar firm posting far more than household names. Keep the top 20.
-6. Work out postings per 1,000 employees.
+3. Remove staffing and recruiting firms and job boards; record each.
+4. Look the rest up in one company list by exact name: workforce, primary vertical and postings (90 days). Work out postings per 1,000 employees.
+5. Remove outliers: a posting count above the company's workforce, or an unfamiliar firm posting far more than household names. Rank companies with 1,000+ staff (editable) by postings per 1,000.
+6. For the #1: its top 3 executives in the function closest to What I sell and its most important news item from the last 90 days.
 
 OUTPUT
-- Bottom line: 2 sentences — who is hiring hardest and what it means for [What I sell].
-- Header: vertical and time window ("window not stated" if Draup gives none).
-- Table (top 20, most postings first): Rank | Company | Postings | Postings (90 days) | Workforce | Postings per 1,000 staff | Primary vertical | Who to call (title) | Flag.
-- "Removed": name and reason.
-- "Hot spots for [What I sell]": 5 companies with the highest intensity or strongest recent hiring, one reason each.
-- Recommended next step: who to contact (title), what to do (call, email, intro, meeting), and why now (one dated fact).
+- Bottom line: 2 sentences — who is hiring hardest for their size and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Hiring hardest" (top 10): Rank | Company | Postings | Per 1,000 staff | Workforce.
+- "Hot spots for [What I sell]": 5 companies, one reason each.
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: vertical and window ("window not stated" if none); companies under 1,000 staff; the raw-count ranking; "Removed" with reasons.
 
 RULES
 - Flag "check vertical" when a company's primary vertical isn't [Vertical].
-- If a company has no workforce figure, write "n/a" for intensity rather than dropping it.
-- "Who to call" = likely buyer title for [What I sell] at that company's size.
+- No workforce figure: write "n/a" for intensity and list it in Detail rather than dropping it.
+- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
+- If an industry returns zeros, say so, retry with its parent and name it.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill from memory.
-- If an industry returns zeros, say so, retry with its parent (e.g. Airlines → Transportation & Logistics) and name it.
-- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
-- A posting count in the millions or above the company's workforce means a failed match; say so and drop it.
-- Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Show the top 20 [Vertical] companies by job postings after removing staffing firms, recruiters and outliers. Add workforce, postings per 1,000 staff and who to call, and name 5 hot spots for [What I sell].
+Bottom line and next step first: the top 10 [Vertical] companies by postings per 1,000 staff (1,000+ employees), staffing firms and outliers removed, 5 hot spots for [What I sell], and who to call at the #1.
 ```
 
 </details>
@@ -87,19 +88,19 @@ Draft a hiring-themed opener for the #1 hot spot.
 
 ## Tips for better results
 
-- Postings per 1,000 staff shows who is hiring hard for their size, not just who is biggest.
-- Check the 'Removed' list if a name you expected is missing.
+- Ranking on postings per 1,000 staff shows who is hiring hard for their size, not just who is biggest.
+- Check the Removed list if a name you expected is missing.
 
 ## Related prompts
 
-- [Who's hiring for a tech or role](../../prompts/06-prospecting-and-lists/hiring-led-list.md): The end employers posting the most jobs for a technology or buyer role, cleaned of job boards and staffing firms, with who to call and the industries driving demand.
-- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom.
-- [Are they hiring more than usual?](../../prompts/04-signals-and-timing/hiring-spike.md): A plain-English verdict on whether job postings are running above or below normal, which workloads drive it, and whether it's seasonal.
+- [Who's hiring for a tech or role](../../prompts/06-prospecting-and-lists/hiring-led-list.md): The end employers posting most for a technology or buyer role, cleaned of job boards and staffing firms, with hiring per 1,000 staff, who to call and a dated why-now.
+- [One-page vertical market snapshot](../../prompts/14-industry-intelligence/vertical-snapshot.md): A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- [Are they hiring more than usual?](../../prompts/04-signals-and-timing/hiring-spike.md): A plain-English verdict on whether job postings in the function you sell into are running above or below normal, which workloads drive it, whether it's seasonal, and who to call.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`extract_entities`, `ecosystem_get_vertical_organization_top_top_hiring_accounts`, `get_universe_companies_v3`
+`extract_entities`, `ecosystem_get_vertical_organization_top_top_hiring_accounts`, `get_universe_companies_v3`, `accounts_executives_key_executives_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `market-hiring-leaders`.
 
@@ -107,4 +108,4 @@ Status: **tested live**. Prompt id: `market-hiring-leaders`.
 
 ---
 
-[Back to Industry and market intelligence](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Industry and market intelligence](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-# Build and size an ICP list
+# Size your ideal-customer list
 
-> **The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5.**
+> **The true count of companies matching every filter, distributors set aside, and the 5 accounts to start with, each with who to call and a dated why-now.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| You are planning a territory, a campaign or next quarter's target list. | SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM | Everyone | 4–6 min | Company directory, Company & financials, News signals |
+| You are planning a territory, a campaign or next quarter's target list. Use this when industry and size define your list; use "Who's hiring for a tech or role" instead when hiring is the filter. | SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM | Everyone | 4–6 min | Company directory, Company & financials, News signals |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -14,12 +14,12 @@
 
 | Placeholder | Example |
 |---|---|
-| `[Vertical]` | Banking & Financial Services |
-| `[Country]` | India |
+| `[Vertical]` | Retail |
+| `[Country]` | United States of America |
 | `[Minimum employees]` | 5,000 |
-| `[Technology (optional)]` | SAP S/4HANA |
-| `[Rank by]` | revenue |
-| `[What I sell]` | core-banking modernisation services |
+| `[Technology (optional)]` | Snowflake |
+| `[Rank by (optional)]` | Opportunity Index (default), revenue or workforce |
+| `[What I sell]` | data observability software |
 
 ## 2. Copy the detailed prompt
 
@@ -29,47 +29,53 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my sales operations analyst building a target account list. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Vertical: [Industry, e.g. Banking & Financial Services]
-- Country: [HQ country in full, e.g. India]
+- Vertical: [industry, e.g. Retail]
+- Country: [HQ country in full, e.g. United States of America]
 - Minimum employees: [e.g. 5,000]
-- Technology (optional): [Product they must run, e.g. SAP S/4HANA]
-- Rank by: [revenue, workforce or Opportunity Index; default revenue]
-- What I sell: [one line, e.g. core-banking modernisation services — skip if you ran the start-here prompt]
+- Technology (optional): [a product they must run, e.g. Snowflake]
+- Rank by (optional): [Opportunity Index (Draup's 0–10 account-attractiveness score), revenue or workforce; default Opportunity Index, which surfaces reachable mid-size accounts]
+- What I sell: [one line, e.g. data observability software — skip if you ran the start-here prompt]
 
 STEPS
-1. Resolve the vertical, country and technology to Draup's names.
-2. List companies with primary vertical [Vertical], HQ in [Country] and, if given, [Technology] in their tech stack (that filter is the evidence). Leave the size minimum off; sort by [Rank by].
-3. Apply [Minimum employees] yourself: count matches, companies lacking a workforce figure, and matches by band: [Minimum]–9,999 (skip if empty), 10,000–49,999, 50,000+.
-4. For the 5 best fits only, pull 90-day top news and confirm [Technology] with its last-seen date.
+1. Resolve the vertical, country and technology to Draup's names and show them.
+2. Count: list companies with primary vertical [Vertical], HQ in [Country], at least [Minimum employees] staff and, if given, [Technology] in their stack. Use the short company view (up to 100 rows a page) so every match is counted; that is the true total. Run it once with the size limit set below the minimum and once with no size limit; what's left over is the number lacking a workforce figure.
+3. Flag intermediaries: distributors, wholesalers and resellers (sub-vertical Wholesale Distribution & B2B Supply, or a description that says so), insurance brokers, and holding or private-equity firms. Set them aside from the ranking by default and say how many.
+4. Rank the rest by [Rank by] and pull full rows for the top 10: workforce, revenue, postings (90 days), service providers.
+5. For the 5 best fits: confirm [Technology] with its usage strength (High, Medium or Low) and last-seen date, and pull the most important news item from the last 90 days where the company is the actor.
+6. For the #1 account: the top 3 executives in the function closest to What I sell.
 
 OUTPUT
-- Bottom line: 2 sentences — how big the list is and what it means for [What I sell].
-- Header: "N companies match" (or "250+"), band counts, and "M more lack a workforce figure; include them?"
-- Top 25 (by [Rank by]): Rank | Company | Workforce | Revenue ($M, FY) | IT spend ($M, FY) | Opportunity Index | Service providers (3, unranked) | Postings (90 days) | Who to call (likely title) | Flag.
-- "Where to start" (5 rows): Company | Why it fits | Why now (freshest material dated event, or "none in 90 days") | [Technology] last seen.
-- Recommended next step: who to contact (title), what to do (call, email, intro, meeting), and why now (one dated fact).
+- Bottom line: 2 sentences — the true count with every filter applied, and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Where to start" (5 rows): Company | Why it fits | Why now (dated, or "none in 90 days") | [Technology] usage.
+- "Top 10": Rank | Company | Workforce | Postings (90 days) | Flag.
+- Count line: "N companies match every filter; X intermediaries set aside; Y more lack a workforce figure. Include them?"
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: revenue ($M, FY), Draup-estimated IT spend and 3 providers for the top 10; the intermediaries list.
 
 RULES
-- Flag "check vertical" if a description doesn't fit.
-- IT spend is a Draup estimate, often modelled from revenue: label it "Draup-estimated"; its growth is not a separate signal.
+- If the count runs past 300, report "300+" rather than guessing.
+- Low [Technology] usage means present, not standard; say so.
+- Flag "check revenue" above $5M revenue per employee (often gross trading revenue) and "check vertical" when a description doesn't fit.
+- IT spend is a Draup estimate, often modelled from revenue; never rank on it.
+- Professional information only; no personal contact details.
 
-- Flag "check revenue" when revenue per employee is above $5M (often gross trading revenue). (editable default)
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
-- If an input still shows its bracketed example, use my saved context or ask me before starting.
-- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill from memory.
-- Use primary vertical only, sort largest first, and flag "possibly inactive" (zero postings in 90 days, or no revenue and no workforce).
-- Pull 10 companies per page (each row is large), at most 3 pages. For the total, check whether a 250th match exists and report "250+" if it does; size-band and missing-workforce counts then cover the rows pulled.
-- Show USD millions using Draup's conversion rate; if Draup gives none, name the rate and date and mark it as outside Draup.
-- Keep to about 450 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Count every company with primary vertical [Vertical], HQ in [Country], [Minimum employees]+ staff (running [Technology] if given). Show the top 25 by revenue with providers, 90-day postings and who to call, plus a why-now for the best 5.
+Bottom line first: how many [Vertical] companies HQ'd in [Country] with [Minimum employees]+ staff (running [Technology]) match every filter, distributors set aside. Then the 5 to start with, each with a dated why-now, and who to call first.
 ```
 
 </details>
@@ -79,32 +85,37 @@ Count every company with primary vertical [Vertical], HQ in [Country], [Minimum 
 Paste these into the same chat after the first answer.
 
 ```text
-Tier these 25 by propensity to buy [What I sell].
+Show the companies with no workforce figure, largest revenue first.
 ```
 
 ```text
-Include the companies with no workforce figure and show the 10 largest by revenue.
+Put the distributors back and re-rank by revenue.
 ```
 
 ```text
-For the top 5, who owns [Business function]? Names, titles and level.
+Tier the top 10 by propensity to buy [What I sell].
+```
+
+```text
+Write a 70-word opener for the #1 account built on its why-now.
 ```
 
 ## Tips for better results
 
-- Primary vertical keeps the list clean, but a company filed under another industry won't appear. Add those by hand.
-- If the count looks small, ask how many companies dropped out for missing workforce data.
+- The default ranking (Opportunity Index, distributors set aside) surfaces mid-size accounts your AEs may not own yet. Rank by revenue when you want the biggest logos.
+- Low usage of the required technology often means a pocket, not the main platform. Ask about it in discovery.
+- Size filters drop companies with no workforce figure, often big private firms. The count line tells you how many.
 
 ## Related prompts
 
-- [Look-alikes of a best customer](../../prompts/06-prospecting-and-lists/lookalikes.md): Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches and who to call.
-- [Fastest revenue growers in my ICP](../../prompts/06-prospecting-and-lists/revenue-growth-screen.md): The fastest-growing companies by revenue in your segment, with M&A-driven jumps set aside and a shortlist growing both revenue and headcount.
-- [Tier my accounts by propensity to buy](../../prompts/11-account-planning/propensity-tiering.md): Up to 25 accounts scored 0–100 on an editable Fit (0–50) and Timing (0–50) rubric, tiered A, B or C and placed on a fit-versus-timing grid, with the driver behind each score.
+- [Find look-alikes of your best customer](../../prompts/06-prospecting-and-lists/lookalikes.md): Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches, plus who to call first and why now.
+- [Find the fastest revenue growers](../../prompts/06-prospecting-and-lists/revenue-growth-screen.md): The fastest-growing companies by revenue in your segment, with M&A-driven jumps set aside, a shortlist growing both revenue and headcount, and who to call first.
+- [Tier my accounts by fit and timing](../../prompts/11-account-planning/propensity-tiering.md): Up to 25 accounts scored 0–100 on fit to what you sell (hiring in your workloads, installed competitors) and timing (news, hiring, growth), tiered A, B or C with a spread you can act on, and the driver behind each score.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`extract_entities`, `build_company_filters_v3`, `get_universe_companies_v3`, `get_top_signals`, `get_account_tech_stack_products_v3`
+`extract_entities`, `get_universe_companies_v3`, `get_account_tech_stack_products_v3`, `get_top_signals`, `accounts_executives_key_executives_v3`
 
 Status: **tested live**. Prompt id: `prospect-icp-list`.
 
@@ -112,4 +123,4 @@ Status: **tested live**. Prompt id: `prospect-icp-list`.
 
 ---
 
-[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

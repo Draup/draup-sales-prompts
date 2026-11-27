@@ -1,0 +1,12292 @@
+# Draup Sales Prompt Library (all prompts)
+
+
+
+166 prompts and 16 playbooks for Claude, ChatGPT or any AI assistant connected to Draup for Sales. Source: https://github.com/Draup/draup-sales-prompts · Licence: CC BY 4.0, credit "Draup Sales Prompt Library by Draup, Inc."
+
+
+
+## Instructions for the assistant
+
+
+
+1. **Check that Draup data is available.** The Draup for Sales connector (Claude) or plugin (ChatGPT) must be connected. If it isn't, tell the user how to connect it: Claude https://claude.ai/directory/draup-for-sales · ChatGPT https://chatgpt.com/plugins/plugin_asdk_app_6ad0b735a0d88191b98c333a6fe40ce7 · any other MCP client: https://draup.com/sales/data/model-context-protocol. Don't answer from general knowledge as if it were Draup data.
+2. **Understand the job.** Work out what the user wants to get done (e.g. prepare for a meeting, find buyers, build a list, beat a competitor) and their role if known.
+3. **Pick the prompt.** Open `references/index.md`, choose the single best prompt by its "Use it when" line, then open its category file. For multi-step goals, check `references/playbooks.md`.
+4. **Fill the inputs.** Take inputs from the user's message or earlier context (what they sell, territory, competitors). If a required input is missing, ask one short question. Don't run on example values.
+5. **Follow the detailed prompt exactly.** Run its STEPS in order, produce its OUTPUT format, and obey its RULES and STANDARD RULES. Use the quick version only if the user asks for something fast.
+6. **Apply the data rules** in `references/data-rules.md` to every answer: date every fact, say "Not in Draup" instead of guessing, confirm the parent company, flag conflicting or single-source facts.
+7. **Offer the prompt's follow-ups** at the end.
+
+If the user is new, suggest they first tell you about themselves using the **Tell your AI about you** prompt (`setup-about-me` in `references/start-here.md`).
+
+
+
+# Start here
+
+Tell your AI who you are and what you sell, once. Every other prompt gets sharper.
+
+## Tell your AI about you
+
+- **id:** `setup-about-me`
+- **What you get:** Your assistant (Claude or ChatGPT) remembers what you sell, your ideal customer, competitors, territory, the platform you run on and your key accounts, and applies the library's data rules to every later answer.
+- **Use it when:** At the start of a new chat, before any other prompt in this library. If you use Claude or ChatGPT Projects, use "Set up a Claude Project once" instead: you fill it in once and every chat starts ready.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager, Sales Leader & RevOps, Marketing & ABM, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** My role (e.g. Enterprise AE, US retail); I sell (e.g. software, services or both); What I sell (e.g. software: data observability platform · services: application modernisation and cloud migration); Typical deal (e.g. software: $100K–$400K a year · services: $500K–$3M, 6–12 months); Ideal customer (e.g. software: 5,000+ employees, a data team · services: retail, $5B+ revenue); Buyers (e.g. software: VP Data Engineering signs · services: CIO signs); Competitors (e.g. software: Datadog · services: Accenture, in-house teams); Focus (e.g. new logos, or renewals and expansion); Territory (optional) (e.g. United States of America, Canada); Platform we run on / integrate with (optional) (e.g. software: Snowflake · services: Microsoft Azure, SAP); Our customers (optional) (e.g. Contoso Retail, Fabrikam Foods — leave blank if you can't name logos); Proof point (optional) (e.g. Contoso Retail closes its books two days faster — leave blank if none); My accounts (optional, up to 5) (e.g. Fabrikam Foods — Jane Doe, VP Supply Chain Planning — demand planning in 3 regions — 30 Jun 2027)
+
+### Detailed prompt
+
+```text
+You are my sales research partner for this chat. Use Draup for Sales for every fact.
+
+ABOUT ME (edit these; optional lines can stay blank)
+- My role: [e.g. Enterprise AE, US retail]
+- I sell: [software, services or both]
+- What I sell: [e.g. software: data observability platform | services: application modernisation and cloud migration]
+- Typical deal: [e.g. software: $100K–$400K a year | services: $500K–$3M, 6–12 months]
+- Ideal customer: [e.g. software: 5,000+ employees, a data team | services: retail, $5B+ revenue]
+- Buyers: [e.g. software: VP Data Engineering signs | services: CIO signs]
+- Competitors: [companies or products, e.g. software: Datadog | services: Accenture, in-house teams]
+- Focus: [e.g. new logos, or renewals and expansion]
+- Territory (optional): [e.g. United States of America, Canada]
+- Platform we run on / integrate with (optional): [e.g. software: Snowflake | services: Microsoft Azure, SAP]
+- Our customers (optional): [e.g. Contoso Retail, Fabrikam Foods]
+- Proof point (optional): [e.g. Contoso Retail closes its books 2 days faster]
+- My accounts (optional, up to 5; account — sponsor name and title — what we run there — renewal date): [e.g. Fabrikam Foods — Jane Doe, VP Supply Chain Planning — demand planning in 3 regions — 30 Jun 2027]
+
+STEPS (now)
+1. Find each competitor, platform, customer and account in Draup by website or exact name; ask only if there is no match or several. Record products with their maker; if a website lands on a subsidiary, use the parent.
+2. Map What I sell to one business function and 2–5 Draup workloads (types of work, e.g. Cloud Computing); drop any that don't fit.
+
+OUTPUT (now)
+- 6 short lines: me; customer and buyers; territory; platform (product → maker); competitors (product → maker); customers, proof point and focus.
+- If I listed accounts: Account (Draup name) | Sponsor | What we run | Renewal.
+- The function and workloads you'll use, then "Ready. Name an account."
+
+Data rules (leave as is; no need to read)
+- Fill prompt inputs from ABOUT ME unless I override them; ask if a required one is missing.
+- For an account in My accounts, use its sponsor and what we run as inputs; mark plays "expand" or "new".
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell.
+- If I give a business function where a workload is needed, map it to the 1–3 closest workloads and say which.
+- Prefer events, people and sites in my Territory; say if none.
+- Platform is a fit signal, not a competitor: say if it's in the stack.
+- Check each account's whole tech stack for my competitors' products: High usage in the workloads I sell is Red, Medium is Amber, newly detected in 12 months is a separate Amber.
+- Use Draup for every fact and date it; label outside knowledge and inferences ("likely"); write "Not in Draup" for gaps.
+- Companies: find by website, confirm the parent, flag subsidiaries; retry an empty name once in Draup's spelling.
+- News: the account must be the actor. Drop noise (outages, stock chatter, charity, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; list everyone sharing a title. Leadership moves can lag about 3 months. Professional information only.
+- Money: annual, millions of reporting currency; IT and R&D spend are modelled; check divestments before calling a drop a cut.
+- Hiring covers 12 months; postings are openings, not hires. Every count applies all my filters.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount. Priority tools and providers are "linked", not confirmed.
+- If a step returns nothing or something odd, say so and try one fallback; never show a blank template.
+- Open every answer with "Bottom line" and "Recommended next step" (named person and title, dated why-now; say if none); at most 2 short tables up front, the rest under "Detail"; end with "Gaps".
+- Never use Draup's own customer or user data.
+
+Confirm, then apply ABOUT ME and the data rules to everything in this chat.
+```
+
+### Quick version
+
+```text
+Remember for this chat: I'm [My role] selling [What I sell] to [Ideal customer] in [Territory]; competitors [Competitors]; platform [Platform we run on / integrate with]. Confirm in 6 lines, then suggest my best first prompt.
+```
+
+### Follow-ups
+
+- Add my 5 key accounts with sponsor, what we run there and renewal date, and confirm the Draup names.
+- Change my focus to renewals and expansion, and confirm.
+- Add Infosys and Databricks to my competitors and give their Draup names and makers.
+- Run the one-page account brief on my first named account.
+
+### Tips
+
+- Only the first eight lines are needed. Leave Territory, Platform, Our customers, Proof point and My accounts blank if you don't have them; the prompts still work.
+- Account managers: fill in My accounts. Sponsor and "what we run there" turn later prompts from prospect-style into expand-or-new plays.
+- Software sellers: put the platform you need in the stack (e.g. a cloud data platform) under Platform, not Competitors; it is read as a fit signal.
+
+## Set up a Claude Project once
+
+- **id:** `setup-claude-project`
+- **What you get:** Instructions for a Claude Project, so every chat in it already knows what you sell, your territory, platform, competitors and key accounts, and follows the library's data rules without pasting anything.
+- **Use it when:** Recommended path. Do it once when you set up a Claude Project for your territory, team or a key account. Use "Tell your AI about you" instead for a one-off chat or in a tool without Projects.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager, Sales Leader & RevOps, Marketing & ABM, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances
+- **Time:** 4–6 min
+- **Inputs:** ABOUT ME (e.g. the same fields as "Tell your AI about you": the first eight are needed; Territory, Platform, Our customers, Proof point and My accounts are optional)
+
+### Detailed prompt
+
+```text
+Paste into your Claude Project's instructions; fill in ABOUT ME once.
+
+You are my sales research partner. Use Draup for Sales for every fact.
+
+ABOUT ME (edit these; optional lines can stay blank)
+- My role: [e.g. Enterprise AE, US retail]
+- I sell: [software, services or both]
+- What I sell: [e.g. software: data observability platform | services: application modernisation and cloud migration]
+- Typical deal: [e.g. software: $100K–$400K a year | services: $500K–$3M, 6–12 months]
+- Ideal customer: [e.g. software: 5,000+ employees, a data team | services: retail, $5B+ revenue]
+- Buyers: [e.g. software: VP Data Engineering signs | services: CIO signs]
+- Competitors: [companies or products, e.g. software: Datadog | services: Accenture, in-house teams]
+- Focus: [e.g. new logos, or renewals and expansion]
+- Territory (optional): [e.g. United States of America, Canada]
+- Platform we run on / integrate with (optional): [e.g. software: Snowflake | services: Microsoft Azure, SAP]
+- Our customers (optional): [e.g. Contoso Retail, Fabrikam Foods]
+- Proof point (optional): [e.g. Contoso Retail closes its books 2 days faster]
+- My accounts (optional, up to 5; account — sponsor name and title — what we run there — renewal date): [e.g. Fabrikam Foods — Jane Doe, VP Supply Chain Planning — demand planning in 3 regions — 30 Jun 2027]
+
+STEPS (first chat, or when I say "recheck my setup")
+1. Find each competitor, platform, customer and account in Draup by website or exact name; ask only if there is no match or several. Record products with their maker; if a website lands on a subsidiary, use the parent.
+2. Map What I sell to one business function and 2–5 Draup workloads (types of work, e.g. Cloud Computing); drop any that don't fit.
+
+OUTPUT (same time)
+- 6 short lines: me; customer and buyers; territory; platform (product → maker); competitors (product → maker); customers, proof point and focus.
+- If I listed accounts: Account (Draup name) | Sponsor | What we run | Renewal.
+- The function and workloads you'll use, then "Ready. Name an account."
+
+Data rules (leave as is; no need to read)
+- Fill prompt inputs from ABOUT ME unless I override them; ask if a required one is missing.
+- For an account in My accounts, use its sponsor and what we run as inputs; mark plays "expand" or "new".
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell.
+- If I give a business function where a workload is needed, map it to the 1–3 closest workloads and say which.
+- Prefer events, people and sites in my Territory; say if none.
+- Platform is a fit signal, not a competitor: say if it's in the stack.
+- Check each account's whole tech stack for my competitors' products: High usage in the workloads I sell is Red, Medium is Amber, newly detected in 12 months is a separate Amber.
+- Use Draup for every fact and date it; label outside knowledge and inferences ("likely"); write "Not in Draup" for gaps.
+- Companies: find by website, confirm the parent, flag subsidiaries; retry an empty name once in Draup's spelling.
+- News: the account must be the actor. Drop noise (outages, stock chatter, charity, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; list everyone sharing a title. Leadership moves can lag about 3 months. Professional information only.
+- Money: annual, millions of reporting currency; IT and R&D spend are modelled; check divestments before calling a drop a cut.
+- Hiring covers 12 months; postings are openings, not hires. Every count applies all my filters.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount. Priority tools and providers are "linked", not confirmed.
+- If a step returns nothing or something odd, say so and try one fallback; never show a blank template.
+- Open every answer with "Bottom line" and "Recommended next step" (named person and title, dated why-now; say if none); at most 2 short tables up front, the rest under "Detail"; end with "Gaps".
+- Never use Draup's own customer or user data.
+```
+
+### Quick version
+
+```text
+Bottom line: set it once. Next step: copy the detailed version into your Claude Project's instructions, fill in ABOUT ME (optional lines can stay blank) and switch on the Draup for Sales connector.
+```
+
+### Follow-ups
+
+- Recheck my setup: which competitors, platform, customers and accounts resolve in Draup, and under what names?
+- Start my weekly routine: what's worth acting on across my named accounts this week?
+- Run the one-page account brief on my top named account.
+
+### Tips
+
+- A Project keeps your context across chats, so you never paste the setup again.
+- Make one Project per territory or strategic account if your context differs a lot between them; My accounts holds up to 5.
+- When you change ABOUT ME, ask Claude to "recheck my setup" so names are resolved again.
+
+
+# Account research
+
+Know the account before you call: size, money, priorities, filings and earnings calls.
+
+## One-page account brief
+
+- **id:** `research-account-brief`
+- **What you get:** Bottom line and a named person to call with a dated why-now, then the priorities in your function, the people who likely own them, any competitor in the stack and the key numbers.
+- **Use it when:** An account just landed on your list, or before a first meeting. Use the 10-minute pre-call snapshot instead when you only have a few minutes.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, SDR / BDR
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. starbucks.com); What I sell (e.g. store technology and data platform services); Competitor (optional) (e.g. Snowflake or Accenture (company or product))
+
+### Detailed prompt
+
+```text
+Act as my sales research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. starbucks.com]
+- What I sell: [one line, e.g. store technology and data platform services — skip if you ran the start-here prompt]
+- Competitor (optional): [company or product, e.g. Snowflake]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the profile and latest fiscal-year revenue, EBITDA and IT spend with growth (if private, funding instead), and revenue by business unit and region, kept only if more than one unit or region holds 10% or more.
+3. Pull stated priorities for the function closest to [What I sell]; keep the 8 most relevant, newest first. If it has none, say so and use the company-wide list.
+4. Pull acquisitions from the last 3 years.
+5. Pull the top 3 executives for the function closest to [What I sell] and the 2 most important news items from the last 90 days where [Company] is the actor.
+6. If I named a competitor, check the whole tech stack for its products, in any area; if it is a services firm, check its active engagements (Draup-derived) at the account instead.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 5), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "What they're focused on": Priority | Source + quarter | Likely owner (name from step 5, else title) | Why it matters. Up to 8.
+- "Who to talk to": Name | Full title | Time in role | Linked priority. Up to 3.
+- "Competitor in the stack" (if named): one line rated Red, Amber or Green with product, usage strength and last seen.
+- "Why this matters for [What I sell]": 3 bullets: fact → implication → action.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "The numbers" (Metric | Latest FY | YoY); business units and regions if kept; "Recent deals" (Date | Company acquired | Size | Why), flagging divestments and duplicates.
+
+RULES
+- If [Company] sells technology, drop priorities about its own products and its own products from linked tools.
+- The acquisitions table can be incomplete; if news names a deal it lacks, say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Money is annual, in millions of reporting currency. IT and R&D spend are Draup estimates that often move with revenue; don't treat their growth as a separate signal. Check for a divestment or restatement before calling a drop over 5% a cut.
+- Competitor rating: a [Competitor] product with High usage in the workloads I sell is Red; Medium is Amber; newly detected in the last 12 months is a separate Amber signal.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+One-page Draup brief on [Company]: bottom line, who to call (name, title) and why now; 8 priorities in the function closest to [What I sell]; latest revenue with growth; [Competitor] in the stack. Date every number.
+```
+
+### Follow-ups
+
+- Now map the buying committee for [Business function].
+- Which of these priorities have the most hiring behind them?
+- Is their budget growing or shrinking? Show the 3-year trend.
+- Turn the 'Why this matters' section into a 90-word email to the person in the next step.
+
+### Tips
+
+- Add your main competitor: finding it, or its absence, in the stack is often the most useful line in the brief.
+- Use the company website rather than the name; it is the most reliable way to land on the right company.
+- Business-unit and region tables only appear when the company is genuinely split; a single-market retailer skips them.
+
+## 10-minute pre-call snapshot
+
+- **id:** `research-precall-snapshot`
+- **What you get:** Bottom line and who to contact first, then five lobby-length bullets: who they are, what just happened, where hiring in your function is moving, the priority closest to your offer, and one question to ask.
+- **Use it when:** You have a call in 10 minutes. Use the one-page account brief instead when you have 30 minutes or need the numbers and a competitor check.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager, Presales & Solutions
+- **Time:** 1–2 min
+- **Inputs:** Company (e.g. medtronic.com); What I sell (e.g. application modernisation and cloud migration services); Meeting with (optional) (e.g. VP Global IT, or a name)
+
+### Detailed prompt
+
+```text
+Act as my pre-call research assistant. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. medtronic.com]
+- What I sell: [one line, e.g. application modernisation and cloud migration services — skip if you ran the start-here prompt]
+- Meeting with (optional): [name or title, e.g. VP Global IT]
+
+CONTEXT (why this matters)
+Ten minutes is enough for one good opener. Company-wide hiring at a large firm is dominated by store, plant or care roles, so this prompt looks only at the function you sell into.
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the profile: what they do, workforce, latest revenue and its fiscal year.
+3. Pull the top news from the last 90 days where [Company] is the actor.
+4. Pull the top 3 workloads (types of work, e.g. Cloud Computing) trending up in hiring (12 months), by postings, in the business function closest to [What I sell] (e.g. IT); if none is rising there, show that function's top 3 by postings with their trend.
+5. Pull stated priorities for the function closest to [What I sell] and pick the one closest to [What I sell], preferring the function of the person I'm meeting.
+6. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role), and look there for the person I'm meeting.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- If I named who I'm meeting: one priority they likely own, and their time in role if step 6 found them.
+- Then exactly 5 bullets, 25 words or fewer each:
+  1. What they do and their size (workforce, revenue, fiscal year).
+  2. The 2 most important events from the last 90 days, each dated.
+  3. Hiring in [function]: the top 3 workloads with posting counts and trend (rising, flat or falling).
+  4. The priority closest to [What I sell], with source and quarter.
+  5. One open question that cites a fact from bullets 1–4.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- If fewer than 2 real events exist, say so; don't pad.
+- If the website match isn't exact or lands on a subsidiary, say which company you used.
+- Executive function tags are loose: skip anyone whose title clearly sits outside the function (e.g. a business-unit president).
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Call with [Company] in 10 minutes. Bottom line and who to contact first, then five 25-word bullets: size; 2 events from 90 days; hiring in the function closest to [What I sell]; its closest priority; one question.
+```
+
+### Follow-ups
+
+- Give me 3 more questions like bullet 5, each tied to a different fact.
+- Who else from [Company] should be in the next meeting?
+- Expand bullet 2: what changed and why it matters for [What I sell].
+- Show company-wide hiring too, so I can see where the overall headcount is going.
+
+### Tips
+
+- Name who you're meeting. Claude picks the priority in their function and checks their time in role.
+- If you have 30 minutes rather than 10, run the one-page account brief instead.
+
+## Is their budget growing or shrinking?
+
+- **id:** `research-budget-posture`
+- **What you get:** A verdict on whether the account's budget is growing, holding or shrinking, the deal size and pitch that fit, and who to take it to.
+- **Use it when:** Before you set deal size or pick a value story, or when a champion says 'budgets are tight'.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. unilever.com); What I sell (e.g. managed data engineering and analytics services)
+
+### Detailed prompt
+
+```text
+Act as my sales finance analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. unilever.com]
+- What I sell: [one line, e.g. managed data engineering and analytics services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull revenue, EBITDA, IT and R&D spend for the last 3 fiscal years, plus Draup's next-year forecast.
+3. Pull the IT spend split for the latest and prior year.
+4. Pull acquisitions (3 years), and divestments, layoffs and cost programmes from news (12 months; say so).
+5. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 5), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Verdict: Growing, Holding or Shrinking, with 3 dated evidence bullets.
+- "3-year trend": Fiscal year | Revenue | YoY | EBITDA margin | IT spend (Draup estimate). Forecast year last.
+- "Deal-size implication": one line on how big a first deal to propose.
+- "What to pitch": 3 bullets fitting the verdict, naming the IT spend category most addressable by [What I sell] and its likely owner.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "IT spend split (Draup estimate)": Category | Latest FY | Prior FY | YoY | % of total; R&D spend by year.
+
+RULES
+- Verdict (editable default): Growing = revenue and EBITDA up over 3% a year; Shrinking = either down over 5% after the divestment check; else Holding.
+- For any drop over 5%, name the divestment, demerger or restatement behind it, or say none falls in that year.
+- If every IT split category moves with the total, call the split proportional.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Money is annual, in millions of reporting currency. IT and R&D spend are Draup estimates that often move with revenue; don't treat their growth as a separate signal. Check for a divestment or restatement before calling a drop over 5% a cut.
+- If a forecast is more than 15% from the latest actual, or contradicts the latest year-on-year change, show both and call it a model estimate.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Is [Company]'s budget growing, holding or shrinking? Bottom line and who to pitch first, then 3-year revenue, EBITDA margin and IT spend, a verdict with evidence, deal-size implication and the pitch for [What I sell].
+```
+
+### Follow-ups
+
+- Convert everything to USD and compare with [Company 2].
+- Which business units are growing fastest?
+- Draft a cost-takeout talk track for the CFO based on this.
+
+### Tips
+
+- A falling number is not always a cut. Spin-offs and restatements often explain big drops; the prompt checks for them.
+- The IT spend split is Draup's estimate. Use it to size the conversation, not as a reported figure.
+
+## Which priority to anchor your pitch on
+
+- **id:** `research-priorities-by-function`
+- **What you get:** The single priority to lead with, who likely owns it by name, where the account's priorities cluster and the vendors linked to each.
+- **Use it when:** You need to know which initiative to anchor a pitch on.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. siemens.com); What I sell (e.g. cloud data-platform modernisation services); Business function (optional) (e.g. IT — leave blank and Claude picks the best fit)
+
+### Detailed prompt
+
+```text
+Act as my sales strategy analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. siemens.com]
+- What I sell: [one line, e.g. cloud data-platform modernisation services — skip if you ran the start-here prompt]
+- Business function (optional): [e.g. IT; leave blank and Claude picks]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull how many priorities mention each workload (a type of work, e.g. Data Engineering). Mark each Strong, Partial or No fit to [What I sell] and keep the top 5 by fit, then count.
+3. If I gave no business function, choose the one holding most Strong-fit workloads and say why.
+4. Pull up to 8 priorities for that function and sort them by date yourself, newest first.
+5. Pull the top 3 executives in that function (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, to name the anchor's likely owner.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 5), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "Best anchor for [What I sell]": the one priority to lead with, its likely owner by name, and 2 bullets on why.
+- "Top priorities in [Business function]": Priority | Source + quarter | Workloads | Up to 3 linked providers. Up to 8.
+- "Where priorities cluster": Rank | Workload | # priorities | Fit (Strong, Partial, No). Top 5.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: a one-line summary of each priority.
+
+RULES
+- Leave out linked technology or use cases that clearly don't fit the industry.
+- If the function has no priorities, say so and show the 3 nearest functions by priority count.
+- Source matters: earnings-call priorities usually outweigh news-derived ones; say which each is.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Tools and providers linked to a priority are "linked", not confirmed. Leave out recruiters, staffing firms, agencies and research firms.
+- If [Company] sells technology, drop priorities about its own products and its own products from linked tools.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Which [Company] priority should I anchor [What I sell] on? Bottom line, the anchor and its likely owner by name, then top 5 workloads by fit and the top 8 priorities in the best-fit function.
+```
+
+### Follow-ups
+
+- For the anchor priority, which technology and incumbent vendors are linked?
+- Who else owns the anchor priority? Find executives tagged to its workloads.
+- Is there hiring behind these priorities, or are they just talk?
+
+### Tips
+
+- Leaving the function blank lets Claude choose where your offer fits best.
+- Priorities from earnings calls often carry more weight than ones inferred from news.
+
+## Their leaders' own words on [Topic]
+
+- **id:** `research-proof-points`
+- **What you get:** Up to six verbatim leadership quotes on your topic with speaker and fiscal quarter, who to take them to, or the annual-filing sections to read when there's no call.
+- **Use it when:** You want to open with the customer's own words rather than your claims. Use "Numbers from the latest earnings call" instead when you need figures for a business case.
+- **Best for:** Account Executive, Presales & Solutions, Marketing & ABM, Account & Customer Success Manager
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); Topic (e.g. AI, supply chain, technology investment); What I sell (e.g. AI-driven demand forecasting software)
+
+### Detailed prompt
+
+```text
+Act as my sales research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Topic: [e.g. AI, supply chain, technology investment]
+- What I sell: [one line, e.g. AI-driven demand forecasting software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. List the earnings-call transcripts, newest first, and open the most recent. Note each speaker's title from the introductions, and whether it is an analyst or a press call.
+3. Find every passage where an executive talks about [Topic], preferring the CEO and CFO. If [Topic] isn't there, say so and repeat on the previous call.
+4. Fallback: if there are no transcripts, or neither call mentions [Topic], pull the annual filings Draup holds for the last 5 years (US SEC filers only).
+5. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, to choose who to take the quotes to.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 5), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Header: call date, the company's own name for the period with Draup's label in brackets, call type.
+- "Quotes": # | Speaker and title | Verbatim quote (40 words or fewer) | What it signals. Up to 6, strongest first.
+- "How to use this with [What I sell]": 2 bullets, each pairing a quote with a talking point.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail, fallback only: "Filings to read": Fiscal year | Type | Filed date | Link; then up to 4 sections to read (e.g. Risk Factors, Business), one line each on what to look for.
+
+RULES
+- Quote word for word; trim with an ellipsis, never paraphrase inside quotation marks. Executives only, not analysts.
+- Don't summarise or quote a filing you haven't opened. Non-US companies usually have none; that's expected.
+- Read only what you need; reproduce nothing beyond the quotes.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Quote [Company]'s leaders on [Topic] from the latest earnings call: bottom line and who to take it to first, then up to 6 verbatim quotes with speaker, title and fiscal quarter. No call? List filings to read.
+```
+
+### Follow-ups
+
+- Do the same for the previous call. Has the tone on [Topic] changed?
+- Pull every number they stated in this call into a table.
+- Write a 3-line email opener using the strongest quote.
+
+### Tips
+
+- Quarters follow the company's fiscal year, which can run a year ahead of the calendar. The prompt shows both labels.
+- For US-listed companies, the filing fallback points you to risk-factor language you can cite.
+
+## Numbers from the latest earnings call
+
+- **id:** `research-numbers-from-the-call`
+- **What you get:** The three numbers from the latest earnings call that matter for your deal, the question each opens and who to raise them with, plus every stated number in a reference table.
+- **Use it when:** Building a business case, a QBR, or an executive email that should use their numbers, not yours. Use "Their leaders' own words" instead when you want quotes on a theme.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); What I sell (e.g. store and supply-chain technology modernisation)
+
+### Detailed prompt
+
+```text
+Act as my financial analyst for a sales team. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- What I sell: [one line, e.g. store and supply-chain technology modernisation — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. List the earnings-call transcripts, newest first, and open the most recent analyst call. If the newest is a press call, use the latest analyst call and say so.
+3. Note each executive's title from the introductions.
+4. Extract every number an executive states: results, guidance, targets, capital spending, technology investment, site counts, headcount, AI or digital metrics, savings programmes.
+5. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 5), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Header: call date, the company's own name for the period, Draup's quarter label in brackets.
+- "Numbers that matter for [What I sell]": Number | Period it refers to | Speaker | Question it opens. Exactly 3.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Everything they said", grouped as Guidance / Investment and capex / Operating KPIs / Technology, AI and digital: Metric | Value | Period | Actual, guidance or target | Speaker. Up to 15 rows, then offer the rest.
+
+RULES
+- Executives only; skip numbers that appear only in analysts' questions.
+- Keep units and currency as stated ("$5 billion to $6 billion", "about 6%"). Don't round or convert unless I ask.
+- Separate the period a number refers to from the call's quarter. Mark raised or lowered only if the speaker compares with earlier guidance.
+- No transcript: say so and suggest the filing fallback in "Their leaders' own words".
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+From [Company]'s latest earnings call: bottom line and who to raise it with, then the 3 numbers that matter for [What I sell], each with period, speaker and a question to ask.
+```
+
+### Follow-ups
+
+- Compare these with the previous call's numbers. What moved?
+- Build a one-slide business case using the three numbers that matter.
+- Which of these numbers ties to a stated priority in Draup?
+
+### Tips
+
+- Their own guidance is the strongest anchor for a business case. Quote it rather than analyst estimates.
+- Press calls usually carry less guidance; the prompt switches to the analyst call.
+
+## What changed between two earnings calls
+
+- **id:** `research-call-over-call`
+- **What you get:** Themes that are new, stronger, weaker or dropped between the last two earnings calls, each with a quote, who owns them, and a 2-line talk track for your next QBR.
+- **Use it when:** Advanced: quarterly, for strategic accounts. Before a strategic meeting, QBR or renewal, to show you know where their story is moving.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. siemens.com); What I sell (e.g. industrial AI platform services)
+
+### Detailed prompt
+
+```text
+Act as my sales strategy analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. siemens.com]
+- What I sell: [one line, e.g. industrial AI platform services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. List the earnings-call transcripts, newest first. Pick the two most recent analyst calls for consecutive quarters. If one is a press call or a quarter is missing, say so and use the nearest pair.
+3. Open the latest call in full and list its 6–10 main themes (strategy, investment, cost, technology, markets, risks).
+4. Open the previous call. If it fails to load or comes back truncated, compare against the priorities Draup sourced in the previous quarter instead, and say so.
+5. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, to name who owns the New themes.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 5), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Header: both calls with dates, the company's own period names and Draup's quarter labels.
+- "Theme shifts": Theme | Status (New, Stronger, Weaker, Dropped, Continued) | Quote from the latest call (25 words or fewer, speaker) | Likely owner. Up to 8, New first.
+- "What this means for [What I sell]": 3 implications, each tied to a row.
+- "QBR talk track": 2 lines: "Last quarter you emphasised X; now you're talking about Y. Here's how we help with Y."
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: for each theme, one line on how it was framed in the previous call.
+
+RULES
+- Quote executives only, word for word.
+- Call a theme Dropped only if it got real airtime before and none now.
+- Read for themes; reproduce nothing beyond the quotes.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Label anything you infer (buyer role, intent, fit) as "likely".
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Compare [Company]'s two latest earnings calls: bottom line and who to raise it with, then themes marked New, Stronger, Weaker, Dropped or Continued, each with a short quote, and a 2-line QBR talk track.
+```
+
+### Follow-ups
+
+- Go deeper on the top New theme: every quote about it from the latest call.
+- Which executives own the New themes?
+- Turn the implications into 3 talking points for my QBR.
+
+### Tips
+
+- This reads two long transcripts, so it takes longer than most prompts. Run it once a quarter per key account.
+- New and Stronger themes are often where fresh budget goes; test that in the meeting.
+
+## Which region should own this account
+
+- **id:** `research-buying-center`
+- **What you get:** Which region should own the pursuit, where to hold the first meeting and with whom, backed by revenue by region, top metros and where your function's leaders sit.
+- **Use it when:** Planning territory ownership for a global account, or deciding where to run the first meetings.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. unilever.com); Business function (e.g. IT); What I sell (e.g. data and analytics managed services)
+
+### Detailed prompt
+
+```text
+Act as my territory planning analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. unilever.com]
+- Business function: [e.g. IT]
+- What I sell: [one line, e.g. data and analytics managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull revenue by region for the latest fiscal year: share and year-on-year change.
+3. Pull key locations (up to 100 rows) for [Business function] and combine them into one row per metro.
+4. Pull senior executives in [Business function], 10 per page, up to 3 pages, and count them by country and metro.
+5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 4), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "Recommended owning region": 3 bullets weighing revenue, people and decision makers, separating where budget sits from where delivery happens.
+- "Where to hold the first meeting": one metro and why.
+- "Revenue by region": Region | Share % | YoY | Fiscal year.
+- "Top 8 metros": Metro | Country | 12-month postings | Top function | HQ or GCC (global capability centre: a company-owned offshore site). Sort by postings.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Where [Business function] leaders sit": Country or metro | # senior leaders | Most senior title; indicative headcount per metro.
+
+RULES
+- Site headcount is approximate and varies between lookups: call it indicative and back it with postings. GCC tags can include plants; drop mainly-manufacturing sites.
+- A "new" site can only be inferred from postings; say so. The HQ metro may be undercounted; don't conclude the HQ is small.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Which region should own [Company] for [Business function]? Bottom line, who to meet first and where, then revenue by region, the top 8 metros with postings and capability-centre flags, and where senior leaders sit.
+```
+
+### Follow-ups
+
+- What is each GCC hiring for? Top functions and skills by metro.
+- Name the top 5 leaders in the recommended region.
+- Which service providers deliver from these metros?
+
+### Tips
+
+- Budget is often decided at HQ but spent where the delivery centre is. The output separates the two.
+- European executive profiles can be restricted, so Europe may look thinner on leaders than it is.
+
+## Business units worth targeting first
+
+- **id:** `research-business-units`
+- **What you get:** The two business units to target first, ranked by growth, with the priority behind each and a named leader to approach.
+- **Use it when:** Choosing which division to enter first at a conglomerate or multi-segment company.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. siemens.com); What I sell (e.g. rail and infrastructure digital-twin software)
+
+### Detailed prompt
+
+```text
+Act as my sales research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. siemens.com]
+- What I sell: [one line, e.g. rail and infrastructure digital-twin software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull revenue by business unit for the latest year Draup holds, and the latest reported fiscal year.
+3. Pull stated priorities for the function closest to [What I sell] and match each unit to the priorities that mention its products, markets or workloads.
+4. For the top 2 units, find the most senior leader on the first executives page for the function closest to [What I sell].
+5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 4), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "Target these 2": for each, why (growth, size), one linked priority with source and quarter, and the unit leader by name and title (or "title to find").
+- "Business units" (fiscal year in the heading): Rank | Unit | Revenue (millions, currency) | Share % | YoY. Sort by YoY, highest first.
+- "Watch": units shrinking more than 5% (editable default), with a reason if Draup shows one.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Leave out eliminations, reconciliation, corporate and internal financing lines.
+- If segment data is a year older than the latest fiscal year, say so plainly.
+- If segment data is empty, say so and fall back to priorities grouped by business function, labelled as a fallback.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Money is annual, in millions of reporting currency. IT and R&D spend are Draup estimates that often move with revenue; don't treat their growth as a separate signal. Check for a divestment or restatement before calling a drop over 5% a cut.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Which [Company] business units should I target for [What I sell]? Bottom line and who to approach, then units ranked by revenue growth (revenue, share, YoY) and the top 2, each with a linked priority.
+```
+
+### Follow-ups
+
+- Who leads the top unit? Map its buying committee.
+- What is the top unit hiring for?
+- Compare the top unit's priorities with what [Competitor] offers.
+
+### Tips
+
+- Fast-growing units often have new budget, which makes them a good first entry point.
+- Segment data can lag the latest annual report by a year; the prompt flags it.
+
+## Openings from their recent acquisitions
+
+- **id:** `research-acquisitions`
+- **What you get:** The top 3 integration openings from the account's acquisitions in the last 3 years, who likely owns each, and an optional read of its strategic investments.
+- **Use it when:** An account has been buying or investing in companies and you sell integration, data, migration, change or platform work.
+- **Best for:** Account Executive, Services, SI & Staffing Seller, Presales & Solutions, Account & Customer Success Manager, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. siemens.com); What I sell (e.g. ERP and data integration services); Strategic bets (optional) (e.g. yes — adds investments from the last 12 months)
+
+### Detailed prompt
+
+```text
+Act as my M&A analyst for a sales team. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. siemens.com]
+- What I sell: [one line, e.g. ERP and data integration services — skip if you ran the start-here prompt]
+- Strategic bets (optional): [yes or no, e.g. yes — adds 12 months of investments]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull acquisitions from the last 3 years.
+3. Search 12 months of M&A news with [Company]'s name in the question, not just news tagged to [Company] (the acquired firm is often the one tagged). Add deals where [Company] is the buyer that the table lacks; list divestments separately.
+4. Infer each deal's integration work: systems, data, security, process, people.
+5. If Strategic bets is yes, pull investments (12 months), drop debt financing, merge repeat rounds and compare themes with stated priorities.
+6. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, to name who owns the top opening.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "Top 3 integration openings for [What I sell]": deal, months since close, likely owner.
+- "Acquisitions": Date | Target | Theme | Likely integration work | Source (table or news). Newest first, up to 10.
+- Optional "Strategic bets": up to 3, each with a matching priority or "none yet".
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: what each target does and its size; "Divestments (news)": Date | Business sold | Buyer; investments table (Company | Rounds | Total $M | Latest date).
+
+RULES
+- Flag rows whose date, target and size don't fit together, and duplicates; count each deal once.
+- Deals closed 3–18 months ago (editable default) are usually the best openings. Investment amounts are whole rounds, not [Company]'s cheque.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+[Company]'s acquisitions from the last 3 years, cross-checked with M&A news: bottom line and who to contact, then date, target, theme and likely integration work, and the top 3 openings for [What I sell].
+```
+
+### Follow-ups
+
+- Which executives joined [Company] from the acquired companies?
+- What tech stack did the top acquisition bring in?
+- Show strategic investments over the last 3 years to see whether the bets are new.
+- Draft a 100-word note to the owner of the top opening.
+
+### Tips
+
+- Most deal sizes are undisclosed. That's normal; the date and theme matter more for timing.
+- If the deals table looks empty for a company you know has been buying, the news cross-check usually finds the missing deals.
+
+## Private company funding and who signs
+
+- **id:** `research-private-funding`
+- **What you get:** How much a private company has raised, its last round and valuation, whether it is in growth mode, and who signs, by name.
+- **Use it when:** Selling to a startup or scale-up, or checking a private competitor's runway.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Partnerships & Alliances
+- **Time:** 1–2 min
+- **Inputs:** Company (e.g. databricks.com); What I sell (e.g. security compliance automation)
+
+### Detailed prompt
+
+```text
+Act as my venture research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. databricks.com]
+- What I sell: [one line, e.g. security compliance automation — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull private funding: total raised and each round's date, type, amount, valuation and lead investors.
+3. Pull the profile (workforce, year founded) and the monthly hiring trend for the last 12 months.
+4. From the first executives page, pick the founder or CEO, the CFO and the leader closest to [What I sell].
+5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 4), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Headline: total raised, last round (date, type, amount, valuation, leads).
+- "Last 5 equity rounds": Date | Type | Amount ($M) | Valuation ($M) | Lead investors. Newest first.
+- "Growth mode": workforce, average monthly postings, and the last 5 full months against the 5 before.
+- "Who signs": usually the founder, CEO or CFO at this stage; name them with title and time in role.
+- "What this means for [What I sell]": 2 bullets.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Debt and secondary": same columns as the equity table.
+
+RULES
+- Debt and secondary sales are not equity rounds; keep them out of the equity table and the round count.
+- Amounts in $M; write "undisclosed" for missing valuations.
+- No funding returned: say it may be bootstrapped, public or untracked; if public, suggest the account brief.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+[Company] funding: bottom line and who signs, then total raised, last round (date, amount, valuation, leads), last 5 equity rounds in $M with debt separate, and the hiring trend.
+```
+
+### Follow-ups
+
+- Who are the lead investors' other portfolio companies in my ideal customer profile?
+- Which leaders joined in the last 6 months?
+- Compare its hiring with [Competitor]'s.
+
+### Tips
+
+- Public companies return nothing here. Use the one-page account brief for them.
+- A recent large round is often one of the strongest why-now signals for a scale-up.
+
+## Account SWOT, outside-in
+
+- **id:** `research-swot`
+- **What you get:** A SWOT of the account built only from dated Draup evidence, ending with where your offer fits and the named person to take it to.
+- **Use it when:** Preparing an executive briefing or a point of view for a strategic pursuit. A shorter SWOT is also an optional section in the account-plan prompt.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps, Services, SI & Staffing Seller, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. target.com); What I sell (e.g. retail supply-chain AI and data services)
+
+### Detailed prompt
+
+```text
+Act as my strategy analyst for a sales team. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- What I sell: [one line, e.g. retail supply-chain AI and data services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull revenue and EBITDA margin for the last 3 fiscal years, and revenue growth by business unit.
+3. Pull the 10 most recent stated priorities, preferring the function closest to [What I sell].
+4. Pull hiring workloads trending up and declining over the last 12 months in the function closest to [What I sell]; add the company-wide top 3 for context.
+5. Pull workforce growth and the top 5 companies they lose people to.
+6. Pull technology added in the last 12 months (High and Medium usage only), the top 3 executives in the function closest to [What I sell] and the top news from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Strengths (growth, margin, capabilities being built), Weaknesses (shrinking units or margins, attrition, priorities without hiring), Opportunities (priorities with hiring and technology behind them), Threats (layoffs, talent loss, cost pressure): 3–4 bullets each, the point then dated evidence in brackets.
+- "Where [What I sell] fits": 3 bullets, each tied to a Weakness or Opportunity, with the likely owner by name where step 6 found one.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Drop any bullet without Draup evidence.
+- Phrase weaknesses as questions for the buyer, not judgements.
+- Talent-flow data ends about 3 months ago; state the months covered.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Money is annual, in millions of reporting currency. IT and R&D spend are Draup estimates that often move with revenue; don't treat their growth as a separate signal. Check for a divestment or restatement before calling a drop over 5% a cut.
+- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Evidence-based SWOT of [Company] from Draup: bottom line and who to take it to, then 3–4 dated bullets each for strengths, weaknesses, opportunities and threats, and where [What I sell] fits.
+```
+
+### Follow-ups
+
+- Turn the Opportunities into a 3-slide point of view for the CIO.
+- Which executives own the Weaknesses you listed?
+- Run the same SWOT for [Company 2] and compare.
+
+### Tips
+
+- Every bullet cites Draup evidence, so you can defend it in front of the customer.
+- Building a full account plan? The account-plan prompt has a shorter SWOT section; use this one when the SWOT itself is the deliverable.
+
+
+# Buyers and stakeholders
+
+Find the people who own the problem and the budget, and a warm way in.
+
+## Map the buying committee
+
+- **id:** `people-buying-committee`
+- **What you get:** Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.
+- **Use it when:** Before multi-threading an account, or when you only know one contact. Use this when you need everyone who decides today; use "New leaders and warm intro paths" instead when you want people who just arrived or who came from your customers.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager, Presales & Solutions
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. costco.com); Business function or workload (e.g. IT, or Artificial Intelligence & Data Science); Region (optional) (e.g. United States of America); What I sell (e.g. application modernisation and cloud migration services)
+
+### Detailed prompt
+
+```text
+Act as my sales stakeholder analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. costco.com]
+- Business function or workload: [e.g. IT, or Artificial Intelligence & Data Science]
+- Region (optional): [e.g. United States of America]
+- What I sell: [one line, e.g. application modernisation and cloud migration services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+One contact is a single point of failure. A committee map tells you who to open with, who signs, and who might block, so you can multi-thread before the first proposal.
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull key executives for the function or workload, 10 per page, up to 3 pages, with region only if I gave one.
+3. If a workload returns fewer than 5 people, add the 2 closest workloads and say which. Drop clear title–function mismatches and flag people at subsidiaries or acquired brands.
+4. If no economic buyer (C-level, EVP, "Head of") appears, search once more without the function filter for C-level titles (Chief, EVP, CIO), keep those whose titles fit, and say what you found.
+5. Pull priorities for the same function or workload to match leaders to initiatives.
+6. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step in two parts, each with one dated fact: "Entry point" (the likely champion by name and title, and how to open) and "Sponsor to reach later" (the likely economic buyer by name and title, and what you need first). If either is missing, say so.
+- One line: people found, pages checked, people kept, subsidiaries flagged, and whether the step-4 widening ran.
+- "Buying committee": Rank | Name | Full title and unit (flag subsidiaries) | Likely role | Linked priority + quarter. Up to 10, ranked by role, then budget control, then title.
+- Likely roles: Economic buyer, Technical buyer, Champion candidate, Influencer, Potential blocker (e.g. incumbent-tool owner, security, procurement).
+- "Roles with no clear person": the titles to look for.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: Name | Location | Budget control | Time in role | LinkedIn; anyone beyond the top 10.
+
+RULES
+- Economic buyer and champion are candidates, never confirmed.
+- Rank the parent company's own leaders above subsidiary leaders unless the subsidiary is where [What I sell] lands.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Widen once to C-level.
+```
+
+### Follow-ups
+
+- Profile the entry-point contact and give me 2 openers.
+- Which of these people joined in the last 6 months?
+- Do any of them have past companies that are our customers?
+
+### Tips
+
+- Use a workload (e.g. Cybersecurity) when your offer is narrow; use a function (e.g. IT) for a broad map.
+- Many top leaders carry no function tag in Draup, which is why the prompt widens once to C-level titles before saying there's no economic buyer.
+- Opening cold with the economic buyer often fails. Start with the entry point and earn the sponsor meeting.
+
+## New leaders and warm intro paths
+
+- **id:** `people-new-leaders-warm-paths`
+- **What you get:** Leaders who joined or were promoted recently in your area, where they came from, and current leaders who used to work at your customers, so you know who to congratulate and who can introduce you.
+- **Use it when:** Monthly, or when an account goes quiet: new leaders often review vendors in their first 90 days. Use this for people who just arrived or came from your customers; use "Map the buying committee" instead when you need everyone who decides today.
+- **Best for:** SDR / BDR, Account Executive, Account & Customer Success Manager
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. 3m.com); Workload (e.g. Inventory Management, Demand Management — a type of work, not a function like Supply Chain; a function gets mapped for you); Our customers (optional) (e.g. Contoso Retail, Fabrikam Foods); What I sell (e.g. supply-chain planning software)
+
+### Detailed prompt
+
+```text
+Act as my sales stakeholder analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. 3m.com]
+- Workload: [1–3 Draup workloads, e.g. Inventory Management, Demand Management — not a function like Supply Chain; if I give a function, map it to workloads first]
+- Our customers (optional): [e.g. Contoso Retail, Fabrikam Foods]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Leaders in their first 90 days set plans and review vendors. The warmest door is often someone who used to work at one of your customers, whether they arrived last month or years ago.
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. If I gave a business function, map it to the 1–3 closest Draup workloads and say which.
+3. Pull executive hires and promotions, one workload at a time; keep rows where [Company] is the current employer.
+4. Keep moves from the last 6 months. Leadership data can lag about 3 months: if none fall inside, show the latest moves from the 3 months before, labelled "just outside the window".
+5. Compare each new hire's past companies (whole history, not just the last one) with [Our customers], allowing name variants ("Contoso" = "Contoso Retail Inc.").
+6. If fewer than 3 warm paths, also check current senior leaders in the matching business function (10 per page, up to 3 pages) whose past companies include [Our customers]. Flag any with under 6 months in their title as new.
+7. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title, what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- One line per workload: rows checked, rows kept, latest move date in the data.
+- "New leaders": Date | Name | New title | Came from (company, or "promoted") | Warm path? Newest first, up to 10.
+- "Warm paths": Name | Current title | Customer in their past | Found as (new leader or current leader) | Who on our side to ask.
+- "First-90-days plays": the top 3 people to approach, each with a one-line angle tied to [What I sell].
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Leave out exits; the customer-alumni prompt covers them.
+- Drop rows that clearly aren't about [Company], such as look-alike company names.
+- If a workload has no moves even in the wider window, say "none found"; don't widen further silently.
+- A warm path means they worked at our customer, not that they bought from us.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- If I give a business function where a workload is needed, map it to the 1–3 closest Draup workloads, say which, then continue.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Leadership-move data can lag about 3 months; give the latest move date you saw.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+New leaders at [Company] in [Workload]: bottom line and who to contact first, then hires and promotions in the last 6 months (date, name, title, came from) and any current leaders who worked at [Our customers].
+```
+
+### Follow-ups
+
+- Profile the top new leader and draft a congratulations note with a relevant angle.
+- Check pages 4–6 of current leaders for more warm paths.
+- Show exits in the same workloads: where did they go?
+- Draft the intro request to our account team at the matched customer.
+
+### Tips
+
+- Type a workload if you know it; if you type a function such as Supply Chain, the prompt maps it to workloads and says which.
+- Leadership-move data can lag about 3 months, so the prompt shows moves just outside the window rather than an empty table.
+- A leader who came from one of your customers is often the warmest intro you can get.
+
+## Warm paths among current leaders
+
+- **id:** `people-warm-paths-current-leaders`
+- **What you get:** Senior leaders at the account who used to work at your customers, partners or your own company, who on your side to ask for the intro, and why now.
+- **Use it when:** Before cold outreach to a senior buyer, or when building an intro plan for a strategic account. Use "New leaders and warm intro paths" instead when recent arrivals matter most.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); Business function (e.g. IT); Our customers (e.g. Contoso Retail, Fabrikam Foods); My company (optional) (e.g. Northwind Data Services — to find alumni); Partners (optional) (e.g. Tailspin Partners); What I sell (e.g. cloud data-platform modernisation services)
+
+### Detailed prompt
+
+```text
+Act as my relationship-mapping analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Business function: [e.g. IT]
+- Our customers: [comma-separated, e.g. Contoso Retail, Fabrikam Foods]
+- My company (optional): [to find alumni, e.g. Northwind Data Services]
+- Partners (optional): [e.g. Tailspin Partners]
+- What I sell: [one line, e.g. cloud data-platform modernisation services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull key executives in [Business function], 10 per page, up to 3 pages.
+3. Compare each person's past companies with [Our customers], [My company] and [Partners], allowing name variants ("Contoso" = "Contoso Retail Inc.").
+4. If fewer than 3 match, check 3 more pages or widen to all functions, and say which.
+5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (a matched leader), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- One line: profiles checked, matches found, functions covered.
+- "Warm paths": Name | Full title | Matched past company | Match type (Customer, Our alumni, Partner) | Budget control. Customers first, then alumni, then partners; by seniority within each.
+- "Intro plan": for the top 3, who on our side to ask and a one-line ask.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: years at [Company], their title at the matched company (only if it was their most recent previous role), LinkedIn.
+
+RULES
+- Past companies come without dates unless it was the most recent previous employer: say "previously worked at", not when.
+- Don't infer they used or bought our product there.
+- If nothing matches, write "No matches in N profiles checked"; don't stretch to near-miss names.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Which senior [Business function] leaders at [Company] previously worked at [Our customers], [My company] or [Partners]? Bottom line and the intro to ask for first, then name, title, matched company, match type and budget control.
+```
+
+### Follow-ups
+
+- Draft the intro request to our account manager at the matched customer.
+- Profile the top match and give 2 openers referencing their past company.
+- Run the same check on new leaders from the last 6 months.
+
+### Tips
+
+- List customers where you have a strong, referenceable relationship; a weak one makes a poor intro.
+- Add your own company to find alumni. Former colleagues are often the fastest door-openers.
+
+## Executive profile and openers
+
+- **id:** `people-executive-profile`
+- **What you get:** A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
+- **Use it when:** Before an email, call or meeting with a specific senior person.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager
+- **Time:** 2–4 min
+- **Inputs:** Executive name (e.g. Jane Doe); Company (e.g. target.com); Business function (e.g. IT); What I sell (e.g. AI platform engineering services)
+
+### Detailed prompt
+
+```text
+Act as my sales research assistant. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Executive name: [e.g. Jane Doe]
+- Company: [website, e.g. target.com]
+- Business function: [their likely function, e.g. IT]
+- What I sell: [one line, e.g. AI platform engineering services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. There is no name search: page through key executives in [Business function], 10 per page, up to 50, and stop when you find the name (allow initials and short forms).
+3. If not found, show the top 5 in that function (name, full title) and ask which I mean. Don't guess.
+4. Pull up to 5 recent priorities for their workloads; if none come back, use their business function.
+5. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (usually this executive), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- Header: name, full title from the profile, location, LinkedIn.
+- "Profile": Time at company | Time in current title | Budget control | Workloads | Previous employer and title | Past companies.
+- "What they likely own": 2 priorities from their area, each with source and quarter.
+- "Openers": 2 openers (35 words or fewer), each tied to a named priority and [What I sell]; one may mention their previous employer.
+- "One question to ask": open-ended, citing a priority.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Under 12 months in the current title is a timing signal; mention it.
+- Say if the person belongs to a subsidiary or acquired brand.
+- If not found and likely in Europe or the UK, say the profile may be restricted.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Profile [Executive name] at [Company] ([Business function]): bottom line and why reach out now, then full title, time in role, past companies, budget control, 2 openers tied to current priorities and one question.
+```
+
+### Follow-ups
+
+- Write a 90-word email using opener 1.
+- Who does this person likely work with? Map the buying committee around them.
+- What does their previous employer run in my category?
+
+### Tips
+
+- Give the function you think they're in. Large companies have thousands of profiles, so the right function makes the search much faster.
+- Openers tied to a named priority often land better than ones tied to the person's career.
+
+## Who uses [Technology] there
+
+- **id:** `people-personas-by-tool`
+- **What you get:** Which roles at the account use a given tool, grouped into three buyer personas with the message for each, and the senior person to target first.
+- **Use it when:** Planning persona-based outreach or ABM around a product you integrate with or replace.
+- **Best for:** Presales & Solutions, Marketing & ABM, Account Executive
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. jpmorganchase.com); Technology (e.g. salesforce); What I sell (e.g. CRM data quality and automation)
+
+### Detailed prompt
+
+```text
+Act as my persona research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. jpmorganchase.com]
+- Technology: [tool name, e.g. salesforce]
+- What I sell: [one line, e.g. CRM data quality and automation — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the company's roles that list [Technology] as a skill or tool. Names match exactly and in lower case; if nothing returns, try up to 3 variants (e.g. "salesforce crm", "salesforce sales cloud") and say which worked.
+3. Take the top 10 roles by count, with job family and other tools.
+4. Pull the number of job postings in the last 12 months that mention [Technology], as an activity check.
+5. Group the 10 roles into 3 buyer personas (e.g. builders, operators, business owners).
+6. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, to name the senior owner to target.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "3 personas": name, roles in it, what they likely care about, adjacent tools that signal integration or displacement, a one-line message angle for [What I sell], and the likely senior owner.
+- "Roles using [Technology]": Role | Job family | Other top tools (up to 5). Top 10.
+- One line: postings mentioning [Technology] in the last 12 months.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- If no roles use the tool, say so and show the 5 closest tools that do appear.
+- Adjacent tools made by competitors I've named are displacement angles; say so.
+- If a company's posting count is larger than its workforce, the company match is wrong; say so and leave it out.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Label anything you infer (buyer role, intent, fit) as "likely".
+- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Which roles at [Company] use [Technology]? Bottom line and who to target first, then top 10 roles with other tools, grouped into 3 buyer personas with a message angle for [What I sell].
+```
+
+### Follow-ups
+
+- Find senior executives who manage these personas.
+- Write one 80-word email per persona.
+- Which of the adjacent tools compete with ours?
+
+### Tips
+
+- Type the tool in lower case and in its common short form first ("salesforce", "sap", "jira").
+- Adjacent tools tell you what to integrate with, or what you might replace.
+
+## Discovery questions built on their data
+
+- **id:** `people-discovery-questions`
+- **What you get:** An opening insight and eight discovery questions, each built on a dated fact about the account, with the hypothesis behind it and what a good answer tells you.
+- **Use it when:** Before a discovery call, so you lead with insight instead of 'tell me about your priorities'.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); What I sell (e.g. supply-chain and fulfilment modernisation services); Meeting with (optional) (e.g. SVP Technology, or a name)
+
+### Detailed prompt
+
+```text
+Act as my discovery coach. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- What I sell: [one line, e.g. supply-chain and fulfilment modernisation services — skip if you ran the start-here prompt]
+- Meeting with (optional): [name or title, e.g. SVP Technology]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the 8 most recent stated priorities in the meeting person's function, or else the function closest to [What I sell].
+3. Pull technology added in the last 12 months (High and Medium usage) in that function; if none, use the function's current High and Medium stack and say so.
+4. Pull hiring workloads trending up over 12 months in that function (ignore partial first and last months).
+5. Pull hires and promotions for the most relevant workload; if only exits come back, note the count and use news instead.
+6. Pull the top 3 executives in the business function closest to [What I sell] (full title, time in role) and the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from step 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "Opening insight": 2 sentences to open with, built on the strongest fact.
+- "Discovery questions": # | Question | Hypothesis | Evidence (dated fact) | What a good answer tells me. Exactly 8: 3 priorities, 2 technology, 2 hiring, 1 leadership or news. Order: strategy, specifics, then timing and budget.
+- "If you only ask two": the two that best qualify [What I sell].
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Open questions only, no pitches.
+- Phrase evidence as a well-read seller would ("I saw you've been building out AI engineering"), never as surveillance.
+- Each question cites a different fact; if a source has no data, use another and say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
+- Leadership-move data can lag about 3 months; give the latest move date you saw.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Discovery prep for [Company]: bottom line and who else to invite, a 2-sentence opening insight, then 8 questions, each tied to a dated Draup fact, with the hypothesis and what a good answer tells me.
+```
+
+### Follow-ups
+
+- Write the answers I'd hope to hear and how I'd respond to each.
+- Turn the top 2 questions into a meeting agenda email.
+- Pre-fill MEDDPICC for this deal from the same evidence.
+
+### Tips
+
+- Questions grounded in their own priorities often earn more airtime than generic discovery.
+- Say who you're meeting; the prompt shifts priorities, technology and hiring to their function.
+
+## Pre-fill MEDDPICC from outside-in data
+
+- **id:** `people-meddpicc-prefill`
+- **What you get:** A MEDDPICC sheet (the deal-qualification checklist) pre-filled with what Draup can show — metrics, buyer candidates, pain, competition rated Red/Amber/Green — and clear 'must discover' flags for the rest.
+- **Use it when:** After the first meeting, or before a deal review, to see what you know and what you still have to find out.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps, Presales & Solutions
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. target.com); What I sell (e.g. cloud data-platform modernisation services); Business function (e.g. IT); Competitor (optional) (e.g. Accenture or Snowflake (company or product))
+
+### Detailed prompt
+
+```text
+Act as my deal-qualification analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- What I sell: [one line, e.g. cloud data-platform services — skip if you ran the start-here prompt]
+- Business function: [e.g. IT]
+- Competitor (optional): [e.g. Snowflake or Accenture]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Metrics: latest revenue and growth, and targets or guidance in relevant priorities.
+3. Economic buyer: [Business function] executives, up to 3 pages of 10; keep senior titles with high budget control. If none is C-level, EVP or "Head of", widen once to C-level titles without the function filter.
+4. Pain: the 5 most recent priorities in [Business function], with workloads.
+5. Competition: if [Competitor] sells software, check the whole tech stack for any product it makes, in any area; if a services firm, pull its active engagements here. Then the top incumbents on the pain workloads.
+6. Champion: start with executives under a year in their title from the people already pulled. Only if there are none, check hires and promotions (last 6 months) for the main workload, keeping only people whose current employer is [Company]; say so.
+7. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: one person by name and title (from steps 3 or 6), what to do (call, email, intro, meeting) and why now (a dated fact from the last 90 days); say if either is missing.
+- "MEDDPICC": Letter | What Draup suggests | Evidence + date | Status (Evidence, Hypothesis, Must discover) | Question to confirm. Rows: Metrics, Economic buyer, Decision criteria, Decision process, Paper process, Identify pain, Champion, Competition (with its Red, Amber or Green rating).
+- Decision criteria: hypotheses from stack and priorities. Decision and Paper process: "Must discover" (fiscal year end hints timing).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: incumbent providers on the pain workloads with active engagements.
+
+RULES
+- Economic buyer and champion are candidates, never confirmed.
+- Rank providers by engagements yourself; drop recruiters, staffing, agency and research firms; flag subsidiaries.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
+- Leadership-move data can lag about 3 months; give the latest move date you saw.
+- Competitor rating: a [Competitor] product with High usage in the workloads I sell is Red; Medium is Amber; newly detected in the last 12 months is a separate Amber signal.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Pre-fill MEDDPICC for [What I sell] at [Company] in [Business function]: bottom line and who to see next, then metrics, economic buyer candidates, pain, and [Competitor] rated Red/Amber/Green. Mark the rest must-discover.
+```
+
+### Follow-ups
+
+- Write the 5 questions that would close the biggest unknowns.
+- Profile the top economic-buyer candidate.
+- Show [Competitor]'s footprint at this account in detail.
+
+### Tips
+
+- Outside-in data can suggest Metrics, Pain and Competition well. Decision process, Paper process and Champion usually need a conversation.
+- Re-run after each meeting and overwrite the Must-discover rows with what you learned.
+
+
+# Tech stack and displacement
+
+See what they run, what's new, what's fading, and where a competitor is installed.
+
+## What they run in one tech area
+
+- **id:** `tech-stack-category`
+- **What you get:** What they run in one area, ranked by how central each tool is, with your competitors rated Red, Amber or Green, stale tools set aside and a named person to call.
+- **Use it when:** Before discovery or a technical call, when you need to know what you'd sit next to or replace. Use this when you want the whole area; use "Is a competitor installed?" instead when you only care about one rival.
+- **Best for:** Account Executive, Presales & Solutions, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); Technology (e.g. data warehousing); What I sell (e.g. cloud data-platform modernisation services); Competitor (optional) (e.g. Snowflake); View (optional) (e.g. products (default) or vendors)
+
+### Detailed prompt
+
+```text
+Act as my presales technology analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Technology: [area in plain words, e.g. data warehousing, cybersecurity]
+- What I sell: [one line, e.g. cloud data-platform modernisation services — skip if you ran the start-here prompt]
+- Competitor (optional): [vendor or product, e.g. Snowflake — skip if saved in setup]
+- View (optional): [products (default) or vendors]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Match my area to Draup's narrowest grouping (sub-category, category or workload) and say which you used. If it returns nothing, try the next broader grouping once.
+3. Pull its products, up to 5 pages: maker, sub-category, usage strength (High, Medium, Low), last seen, countries.
+4. Split them: Active (a usage strength and seen in the last 12 months) and Stale (the rest).
+5. If I named competitors, check the whole stack for their products and rate each (see rules).
+6. If View is vendors, rank makers by Active products: fragmented if no maker holds 25% of them, concentrated if the top 2 hold over 50% (editable defaults).
+7. For up to 3 lesser-known Active products, pull what each does and how many companies use it.
+8. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table "Active" (top 10, High to Low): Product | Maker | Usage strength | Last seen | Fit (Competes, Complements, Unrelated).
+- "My competitors here": product, rating (Red, Amber, Green) and one line of evidence, or "none detected".
+- "Why this matters for [What I sell]": 3 bullets: where we'd fit, what we'd replace, one discovery question.
+- Detail: vendors view (Rank | Maker | Active products | Main products) with the play (consolidate, replace or attach); "Stale" count plus the 5 most recent; "Products you may not know" with install base; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Product counts measure breadth, not spend. Say how many products you reviewed.
+- Many products share one last-seen date from a data refresh; lean on usage strength.
+- Skip labels that aren't products; flag products credited to the wrong maker.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
+- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
+- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named owner and a dated why-now). Then what [Company] runs for [Technology]: active tools by usage strength, my [Competitor] products rated Red, Amber or Green, and stale tools set aside.
+```
+
+### Follow-ups
+
+- Which of the active products have the most hiring behind them in their job ads?
+- Show the same view for [another area] so I can see the adjacent stack.
+- Switch to the vendors view and tell me which makers are fading.
+- Draft a 70-word email to the person in the next step, without naming any tool they haven't named in public.
+
+### Tips
+
+- Usage strength (High, Medium, Low) tells you how central a tool is. A product with no strength listed is one Draup no longer detects.
+- If your area returns nothing, describe it differently ("data warehouse" rather than "analytics") and the assistant will try Draup's nearest grouping.
+- Put your competitors in the start-here prompt once and every tech prompt rates them for you.
+
+## Is a competitor installed?
+
+- **id:** `tech-competitor-installed`
+- **What you get:** A clear verdict on whether a competitor's products are live in the account's stack, rated Red, Amber or Green, framed correctly as a rival to displace, an adjacent tool or a platform you run on, with a named person to call.
+- **Use it when:** Before you pitch a replacement, when a deal stalls and you suspect an incumbent, or before you mention a tool in outreach. Use this for one or two named competitors; use "What they run in one tech area" instead for the whole area.
+- **Best for:** Account Executive, Presales & Solutions, Marketing & ABM, SDR / BDR
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. jpmorganchase.com); Competitor (e.g. Snowflake); Relationship (optional) (e.g. rival to displace (default), adjacent tool, or platform we run on); What I sell (e.g. lakehouse data platform)
+
+### Detailed prompt
+
+```text
+Act as my competitive analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. jpmorganchase.com]
+- Competitor: [vendor or product, one or two, e.g. Snowflake, Google BigQuery]
+- Relationship (optional): [rival to displace (default), adjacent tool we sit beside, or platform we run on]
+- What I sell: [one line, e.g. lakehouse data platform — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Resolve each competitor to its maker (keep a product's name too) and search the whole stack by that maker, up to 5 pages: usage strength, last seen, countries, workloads; rate each product (see rules). For a broad maker (e.g. Google), keep products in [What I sell]'s space and count the rest.
+3. Check whether [Company] makes or owns a product in the same sub-category (its own or acquired brands in its stack). If so, it is more likely consolidating onto its own tool than switching.
+4. Pull the other Active products in the same sub-categories, stated priorities in those workloads (newest first; skip ones about products [Company] sells) and the count of job postings in the last 12 months naming the competitor's products.
+5. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]. If step 3 found a product [Company] owns, say so here.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Verdict: "Installed and active", "Installed but fading" or "Not detected in Draup", with the rating and the evidence.
+- Table "Competitor footprint": Product | Usage strength | Last seen | Workloads | Rating.
+- Table (up to 3), "Switch triggers" for a rival or "Openings" otherwise: Priority | Source and quarter | Likely owner | Why it opens a door for us.
+- Detail: "Who else is in the room" (top 8: Product | Maker | Usage strength | Last seen); hiring evidence (or "none found"); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Frame by Relationship. Displace a rival. Never suggest displacing an adjacent tool; look for integration gaps. A platform we run on is a fit signal. Rate rivals only; for the others write "n/a".
+- "Active" = a usage strength and seen in the last 12 months; otherwise "fading".
+- "Not detected" is not proof they don't use it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
+- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
+- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named owner, dated why-now). Is [Competitor] installed anywhere in [Company]'s stack? Rate it Red, Amber or Green, say if [Company] owns a rival product itself, and treat it as a [Relationship].
+```
+
+### Follow-ups
+
+- Who owns the workloads where [Competitor] sits? Map the buying committee.
+- Find 10 more companies in the same industry whose stack includes [Competitor] products.
+- Turn the top switch trigger or opening into a 90-word email to the person in the next step.
+- Run it again with Relationship set to adjacent tool and compare the openings.
+
+### Tips
+
+- Set Relationship when the tool isn't a true rival. Datadog is adjacent for a data-observability seller, and a platform such as Snowflake is something you need in the stack, not something to replace.
+- If the account makes a product in the same category, the verdict says so first: a company that owns its own tool rarely switches to yours.
+- Draup sees tools through public evidence such as job ads. A tool that runs quietly in the background may show as Low or not at all.
+
+## What tools they adopted this year
+
+- **id:** `tech-recent-adoptions`
+- **What you get:** The tools first detected at the account in the last 12 months, labelled as competing with, complementing or unrelated to what you sell, with any new competitor product flagged Amber first and a named person to call.
+- **Use it when:** Looking for a why-now: a new tool usually means a new project, a new owner and fresh budget.
+- **Best for:** Account Executive, SDR / BDR, Presales & Solutions
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); What I sell (e.g. supply-chain planning software); Competitor (optional) (e.g. Kinaxis, o9 Solutions)
+
+### Detailed prompt
+
+```text
+Act as my technology signals analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Competitor (optional): [one or more, e.g. Kinaxis, o9 Solutions — skip if saved in setup]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Pull every product first detected at the company in the last 12 months, up to 5 pages, and review them all before narrowing. Note the earliest and latest first-detected dates.
+3. If I named competitors, search the whole stack by each maker; flag any product first detected in this window (newly detected = Amber) and rate older installs too (see rules).
+4. Drop Low-usage products unless they're in my category or made by a competitor.
+5. Label each: Competes (does what [What I sell] does), Complements (sits next to it or feeds it) or Unrelated.
+6. Look for clusters in Competes and Complements (e.g. several new security tools).
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Headline: "N products first detected between [earliest] and [latest]; X compete, Y complement."
+- "Competitor alert": product, first-detected month, usage strength, rating, or "none".
+- Table (top 10; Competes, then Complements, newest first): First detected | Product | Maker | Usage strength | Relation.
+- "Why this matters for [What I sell]": 3 bullets on the likely projects, each naming a product.
+- Detail: the remaining rows (up to 25) and counts by category for the rest; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Recent first-detected dates are reliable here; only a date that predates the product isn't. It marks Draup's first public evidence, not a contract.
+- Additions only; don't infer removals. Say how many products you reviewed and dropped.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Trust last-seen date and usage strength. Ignore the confidence score and "Generic" rows. Say "fading", never "dropped".
+- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
+- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named owner, dated why-now). What did Draup first detect at [Company] in the last 12 months? Flag any new [Competitor] product first, then label the rest Competes, Complements or Unrelated to [What I sell].
+```
+
+### Follow-ups
+
+- For the top 3 complementary adoptions, who likely owns them? Find executives in the matching workloads.
+- Which older tools in the same categories look like they are fading?
+- Write a 3-sentence opener that references the strongest new adoption without saying how we know.
+- Check whether the strongest new tool also shows up in their job ads.
+
+### Tips
+
+- A cluster of new tools in one area is often a stronger signal than any single product.
+- List your main competitors in the input (or the start-here prompt) so the assistant checks their whole product range, not just this year's additions.
+
+## Fading tools and replacement windows
+
+- **id:** `tech-fading-stack`
+- **What you get:** The tools that have gone quiet in one area, what seems to be taking their place, and the 3 best-timed replacement windows, each with a dated reason and a named person to call.
+- **Use it when:** Hunting for a renewal or migration window, or before a modernisation pitch.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); Technology (e.g. data management); What I sell (e.g. data-platform migration services)
+
+### Detailed prompt
+
+```text
+Act as my technology renewal and migration analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Technology: [area or workload, e.g. data management, cybersecurity]
+- What I sell: [one line, e.g. data-platform migration services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Pull the products in that area, up to 5 pages, and say which grouping you used.
+3. Group each: Fading (no usage strength, or last seen over 12 months ago); Weakening (Low, last seen 6–12 months ago); Active (High or Medium, seen in the last 90 days); Stable (the rest, counted only). Cut-offs are editable defaults.
+4. For each Fading or Weakening product, find Active products in the same sub-category: the likely successor or a parallel tool.
+5. Pull products first detected in the last 12 months in those sub-categories.
+6. Pull stated priorities in the function closest to [What I sell] about modernisation, migration, consolidation or cost, with source and fiscal quarter.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table "Replacement windows" (top 3): Product | Why now (successor, new arrival or priority, dated) | Likely owner | Opening for [What I sell].
+- Table "Fading and weakening" (top 10, oldest first): Product | Maker | Last seen | Group | Read (Replaced, Parallel, Unclear).
+- Detail: likely successors with usage strength; new arrivals; Stable count; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- "Fading" is the strongest claim allowed. Never say they dropped, retired or cancelled a product.
+- A last-seen date shared by many products is a data refresh; with Low strength it's weak evidence.
+- If nothing is fading, say the area looks stable and lead the next step with a priority instead.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named owner, dated why-now). Which [Technology] tools at [Company] have gone quiet in Draup, what likely replaced each, and which 3 replacement windows suit [What I sell], each with a dated reason?
+```
+
+### Follow-ups
+
+- For the top replacement window, who owns that workload? Map the buying committee.
+- Show the full active stack in the same sub-categories, so I know what I'd integrate with.
+- Draft a 90-word email to the person in the next step that opens on the migration window without naming the old vendor.
+- Check whether the likely successor also appears in their job ads.
+
+### Tips
+
+- Last-seen dates matter more than first-seen dates. A tool with no usage strength listed is one Draup no longer detects.
+- Treat "fading" as a hypothesis to test in discovery, not a fact to put in an email.
+
+## Size a vendor's install base
+
+- **id:** `tech-vendor-install-base`
+- **What you get:** What a vendor sells and how many companies use each product, so you can size an attach, co-sell or competitive-replacement motion, with a named person at the vendor or a first target to approach.
+- **Use it when:** Planning a partner motion, sizing a competitor's footprint, or picking which product to build a campaign around.
+- **Best for:** Partnerships & Alliances, Marketing & ABM, Presales & Solutions
+- **Time:** 1–2 min
+- **Inputs:** Vendor (e.g. servicenow.com); What I sell (e.g. ITSM implementation and managed services); Motion (optional) (e.g. attach or co-sell (default), or replace)
+
+### Detailed prompt
+
+```text
+Act as my partner and market-sizing analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vendor: [website of the vendor to size, partner or competitor, e.g. servicenow.com]
+- What I sell: [one line, e.g. ITSM implementation and managed services — skip if you ran the start-here prompt]
+- Motion (optional): [attach or co-sell (default), or replace]
+
+STEPS
+1. Find [Vendor] by its website (exact match) and confirm it is the parent, not a reseller or regional unit. If none or several match, ask me.
+2. Pull the products it builds and how many companies Draup detects using each. Rank by companies, largest first.
+3. For the top 3, pull the category and what each does.
+4. Mark which products [What I sell] attaches to, competes with, or doesn't touch.
+5. For the next step: for attach or co-sell, pull the top 3 executives at [Vendor] who run partners, alliances or channels (full profile titles); for replace, name the lead product's best first target list instead. Also pull the most important news item from the last 90 days where [Vendor] is the actor (e.g. a launch or acquisition).
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (top 10): Rank | Product | Category | Companies using it | Relation to [What I sell] (Attach, Compete, None).
+- "Where the base is concentrated": 2–3 bullets on which products carry the footprint and which are niche.
+- "Why this matters for [What I sell]": the 2 products to lead on and why.
+- Detail: the rest of the list (Draup returns up to 20 products per vendor); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Counts are companies where Draup sees public evidence of use, not licences, seats or revenue.
+- Don't add the counts together to get unique customers; one company often uses several products.
+- Draup leaves out "Generic" rows. Say if the list looks capped at 20.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Label anything you infer as "likely".
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named person, a dated why-now). What does [Vendor] build, and how many companies use each product? Top 10 by install base, each marked attach, compete or none for [What I sell].
+```
+
+### Follow-ups
+
+- List companies in [Vertical] headquartered in [Country] whose stack includes [top product], sorted by revenue.
+- Which of my target accounts also run [top product]?
+- Draft a one-paragraph co-sell pitch to the partner leader in the next step.
+- Show the same view for [a second vendor] so I can compare footprints.
+
+### Tips
+
+- Install-base counts are best for comparing products within one vendor, not for quoting as market share.
+- Pair this with the competitor target-list prompt to turn the biggest product into a named list.
+
+## Who's already working each priority
+
+- **id:** `tech-priority-stack-incumbent-map`
+- **What you get:** For each stated priority in one function: the tools and service providers already linked to it, rated where they're your competitors, and whether to displace, co-sell or go greenfield, judged for a software or a services seller.
+- **Use it when:** Use this when you want, priority by priority, which tools and providers are already in place and where to displace, co-sell or go first. Use "Who to partner with vs replace, by priority" instead when you're choosing between named partners, and "Pick a co-sell partner" when you need one integrator for a deal.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. target.com); Business function (e.g. Supply Chain); What I sell (e.g. supply-chain planning software); I sell (e.g. software (or services)); Competitor (optional) (e.g. Kinaxis, o9 Solutions)
+
+### Detailed prompt
+
+```text
+Act as my account strategy analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Business function: [e.g. Supply Chain, IT]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- I sell: [software or services — skip if you ran the start-here prompt]
+- Competitor (optional): [vendors or services firms, e.g. Kinaxis, o9 Solutions]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Map [Business function] to its main workloads and name them. Pull stated priorities in the function, newest first; keep up to 8. If none, try the closest function and say so.
+3. For each priority: workloads, source and quarter, up to 6 linked tools, up to 6 linked providers.
+4. Pull the stack once, filtered to the makers of [Competitor] and the linked tools (look up very broad makers such as Microsoft separately). Keep tools with a usage strength seen in 12 months; rate competitor products (see rules).
+5. Count each provider's active engagements in the function's workloads, shown as "in [Business function] / total". Leave staffing, BPO, agency and market-research firms out of the plays.
+6. Tag each priority. Software seller: Displace = a competitor product is active in its workloads; Co-sell = an IT services firm works it. Services seller: Displace = a rival services firm works it; Co-sell = a linked software product needs services. Either: Greenfield = nothing relevant; else Not ours.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (newest first, up to 8): Priority (quarter) | Incumbent tools (rating) | Providers (in function) | Play | Likely owner.
+- "Top 3 plays": priority, incumbent or partner, opening.
+- Detail: linked tools with usage strength and last seen; provider engagement counts (in function / total); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Provider counts are "active engagements (Draup-derived)", not contracts; rank providers by them yourself.
+- If the same integrators appear on every priority, call it weak evidence, not Co-sell everywhere.
+- Tools and providers are linked to a priority by workload, not confirmed on it. Say "linked", never "used for".
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Check the whole tech stack for products made by [Competitor], whatever area they're filed under; if [Competitor] is a product (e.g. Google BigQuery), record it and its maker.
+- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named owner, dated why-now). Map [Company]'s [Business function] priorities to the tools and providers linked to each, rate my [Competitor] products, and tag each priority Displace, Co-sell, Greenfield or Not ours.
+```
+
+### Follow-ups
+
+- For the top Displace priority, how deep is [Competitor]? Show every product with usage strength and last seen.
+- Who owns each of the top 3 priorities? List executives in the matching workloads.
+- Turn the top play into a one-page point of view for the person in the next step.
+- Compare the top two providers head to head in [Business function].
+
+### Tips
+
+- A priority with no linked tools or providers is often greenfield: an easier place to be first.
+- Set "I sell" correctly. A services firm on a priority is a partner for a software seller but the incumbent for a services seller.
+- Provider counts are filtered to your function, so a big agency that works marketing won't look like your supply-chain incumbent.
+
+## Target list: companies running a competitor
+
+- **id:** `tech-displacement-list`
+- **What you get:** A true count and a ranked list of companies in your industry and country whose stack includes a competitor's products, with usage strength shown, distributors and inactive names flagged, and a named person at the top account.
+- **Use it when:** Launching a competitive-replacement campaign or building an SDR list.
+- **Best for:** SDR / BDR, Marketing & ABM, Sales Leader & RevOps, Account Executive
+- **Time:** 4–6 min
+- **Inputs:** Competitor (e.g. Snowflake); Vertical (e.g. Retail); Country (e.g. United States of America); Minimum employees (e.g. 5,000); What I sell (e.g. lakehouse data platform)
+
+### Detailed prompt
+
+```text
+Act as my competitive list-building analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [vendor or product, e.g. Snowflake]
+- Vertical: [industry, e.g. Retail, Life Sciences]
+- Country: [HQ country in full, e.g. United States of America]
+- Minimum employees: [e.g. 5,000]
+- What I sell: [one line, e.g. lakehouse data platform — skip if you ran the start-here prompt]
+
+STEPS
+1. Turn my industry and country into Draup's exact names; say which you used. If the industry returns zeros, try its parent industry and name it.
+2. List only companies whose tech stack includes [Competitor] products, showing which ones: primary industry [Vertical], HQ in [Country], at least [Minimum employees] staff, largest revenue first. For a product, filter by its maker and keep rows showing it.
+3. Count by paging this exact list, 10 per page, until a page returns fewer than 10. The total must apply every filter (industry, country, size, technology).
+4. Separately, run the list once without the size limit, companies with no workforce figure first (10 rows), and report how many lack size data (or "10+"). Never mix this into the total.
+5. Show the top 10 with usage strength. Flag distributors, wholesalers and resellers, possibly inactive companies and rows clearly outside the industry, and offer to exclude them.
+6. For the top-ranked company, pull the top 3 executives in the function closest to [What I sell] and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]. Include the true count.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (top 10): Rank | Company | Workforce | [Competitor] products (usage strength) | Flag.
+- Detail: revenue (USD M, fiscal year) and Opportunity Index for the same rows; the next 5; "Flagged" (Company | Reason); "Missing size data": count; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Opportunity Index is Draup's own rating of how strong the sales opportunity is (higher is stronger); use it to order, not to quote.
+- Don't rank on IT spend; for many companies it is modelled from revenue.
+- Low usage everywhere means the competitor is present but not central; say so in the bottom line.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Use primary industry only. Flag "possibly inactive" (zero postings in 90 days, or no revenue and no workforce).
+- Counts must apply every filter. The quick count ignores technology conditions, so count by paging; stop after 5 pages and report the total so far with a plus.
+- Show USD millions using Draup's conversion rate. If Draup gives no rate, name the rate and date and mark it as outside Draup.
+- Trust last-seen date and usage strength. Ignore first-seen dates, the confidence score and "Generic" rows. Say "fading", never "dropped".
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named person at the top account, dated why-now). How many [Vertical] companies in [Country] with [Minimum employees]+ staff run [Competitor], counted with every filter? Top 10 with usage strength; flag distributors and inactive names.
+```
+
+### Follow-ups
+
+- Show the next 10 in the same way, distributors excluded.
+- For the top 5, what stated priorities could justify a switch?
+- Write a 2-sentence opener for each of the top 5, each tied to one dated fact.
+- Re-rank the list by Opportunity Index to find reachable mid-size accounts.
+
+### Tips
+
+- The total is counted with every filter applied. If it looks small, lower the minimum size or widen the country rather than trusting a bigger unfiltered number.
+- Retail and consumer lists often include distributors and wholesalers; the flag column lets you drop them before the list goes to SDRs.
+
+
+# Signals and timing
+
+Reach out when something just changed: hiring spikes, leadership moves, news, new tools.
+
+## What's worth acting on now
+
+- **id:** `signals-whats-actionable`
+- **What you get:** An Act, Watch or Skip verdict and up to 5 real triggers from the last 90 days, kept or dropped with what you sell in mind (incidents and regulatory inquiries count if they bear on your offer), each with a named owner and a source count.
+- **Use it when:** Before outreach, at the start of an account cycle, or when an account has gone quiet. Use this for one account; use "Weekly trigger sweep for my book" for up to 10 accounts at once.
+- **Best for:** SDR / BDR, Account Executive, Account & Customer Success Manager
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. jpmorganchase.com); What I sell (e.g. AI governance software); Territory (optional) (e.g. North America)
+
+### Detailed prompt
+
+```text
+Act as my sales-trigger analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. jpmorganchase.com]
+- What I sell: [one line, e.g. AI governance software — skip if you ran the start-here prompt]
+- Territory (optional): [region I cover, e.g. North America — skip if saved in setup]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull its top-ranked news signals and news feed for the last 90 days; review at least 30 items, or say how many there were.
+3. Apply the noise rule (it depends on what I sell); also drop store closures counted as layoffs. The company must be the actor.
+4. Keep executive moves (VP and above), M&A, partnerships, expansion, investment plans, restructuring, regulatory inquiries or fines, and incidents or launches that touch my space. Merge repeat coverage; count independent sources.
+5. Link each trigger to a stated priority in the function closest to [What I sell] only if the text supports it (source, fiscal quarter); else "no direct link".
+6. Rank by relevance to [What I sell], then events in my territory, then recency.
+7. Pull the top 3 executives in the function closest to [What I sell] and match each trigger to its likeliest owner, checking titles in the profile bio.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]. Start with Act, Watch or Skip.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for. Add an opening sentence built on a Confirmed trigger.
+- Table "Triggers" (up to 5; if fewer than 3 survive, say so and don't pad): Date | Trigger (with any number) | Why it matters to us | Likely owner (name, title) | Sources (1 = unverified).
+- Detail: per trigger, source and headline (link), linked priority (quarter) and action; "Dropped as noise" count by type, naming any incident and whether it was kept; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- If event and capture dates differ by over 30 days, use the event date and flag it.
+- Never build the opening sentence on a single-source or conflicting fact.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line first (Act, Watch or Skip) and next step: a named owner and one dated trigger. Then up to 5 real 90-day triggers at [Company] that bear on [What I sell], incidents included, with source counts.
+```
+
+### Follow-ups
+
+- Turn the top trigger into a 70-word email to the person in the next step.
+- Who is the new executive in trigger [N]? Pull their professional profile.
+- Run the same check for the last 30 days only.
+- Which of these triggers has a second source I can quote?
+
+### Tips
+
+- Outages, incidents and regulatory inquiries are kept when they bear on what you sell (security, reliability, observability, IT operations, compliance). Put your offer in the start-here prompt so the filter knows.
+- A trigger marked "1 = unverified" is fine for prioritising but not for quoting; the email follow-up will warn you before you send it.
+- Fewer than 3 real triggers is a useful answer: lead with a priority, not a news hook.
+
+## Signal-led emails for up to 10 accounts
+
+- **id:** `signals-signal-to-email`
+- **What you get:** For one account or up to 10 per pass: the most relevant recent signal (preferring your territory), the priority it supports, a fact check, and a short opener written in your persona's language that ends in one easy ask.
+- **Use it when:** Use this when you have one to 10 named accounts and want each email anchored on that account's own recent event. Use "ABM messages for a target list" instead for a longer campaign list, a fixed theme or a joint partner note.
+- **Best for:** SDR / BDR, Account Executive, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Accounts (e.g. bmw.com, target.com); What I sell (e.g. supply-chain planning software); Persona (e.g. VP Supply Chain); Territory (optional) (e.g. North America); Contact name (optional) (e.g. Jane Doe); Proof point (optional) (e.g. cut forecast error for Contoso Retail)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter and researcher. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Accounts: [one website, or up to 10, e.g. bmw.com, target.com]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Persona: [who reads it, e.g. VP Supply Chain]
+- Territory (optional): [region I cover, e.g. North America]
+- Contact name (optional): [e.g. Jane Doe]
+- Proof point (optional): [a result I may quote, e.g. cut forecast error for Contoso Retail]
+
+STEPS
+1. Find each account by website (exact match, parent company); ask if none or several match. Do up to 10 per pass: after each 5, show the table and continue unless I say stop.
+2. Pull 60 days of news for all accounts in one feed pull: deals, expansion, executive moves, M&A, investment plans, and incidents that bear on what I sell. If one account fills over half the results, pull the quiet ones separately. The account must be the actor.
+3. Per account, pick the signal most relevant to [What I sell], the persona and my territory; prefer events in my territory and say if there are none.
+4. Fact-check it (Confirmed, Single source or Conflicting) and pick the persona's stated priority that best fits, with source and fiscal quarter.
+5. For one account, or a list's strongest row, pull the top 3 executives in the persona's function and name the best match.
+6. Write each message in [Persona]'s language and goals.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending": each message leaning on a single-source or conflicting fact, and what to verify (or "none").
+- One account: signal (date, source, fact check), priority, Subject (7 words max) and opener (70 words max): the signal, the priority as a question, one easy ask. Use contact name and proof point only if given.
+- Several accounts: Account | Signal (date; in territory?) | Fact check | Message (2 sentences, 45 words max, ending in the ask).
+- Detail: source and headline per account; priority used; priority-only openers where no signal qualified; "Not found" accounts; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Quote only Confirmed numbers, exactly as the source states them. Keep fiscal quarters out of the copy.
+- Pose the signal–priority link as a question; no flattery, "I noticed", hype or exclamation marks.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- Fact check before copy: tag each fact used Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting. Keep single-source numbers and disputed names or dates out of the copy; if a message still leans on one, put "Check before sending: [fact], [why]" directly above it.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first. For each of [Accounts] (up to 10), pick the 60-day signal most relevant to [What I sell] and my [Territory], fact-check it, and write a 45-word [Persona] opener ending in one ask.
+```
+
+### Follow-ups
+
+- Write a second-touch email for each account using a different priority.
+- Rewrite the openers for a CIO instead of [Persona].
+- Run the next 10 accounts in the same way.
+- For the rows marked Single source, find a second source or swap in another signal.
+
+### Tips
+
+- Give the assistant a real proof point you're allowed to quote. A specific, permitted result often beats a generic value statement.
+- Add your territory once in the start-here prompt; signals in your region rank first and the table says when an account has none.
+- If most accounts come back with no qualifying signal, widen the window to 90 days in a follow-up.
+
+## Are they hiring more than usual?
+
+- **id:** `signals-hiring-spike`
+- **What you get:** A plain-English verdict on whether job postings in the function you sell into are running above or below normal, which workloads drive it, whether it's seasonal, and who to call.
+- **Use it when:** Timing outreach, or checking a hunch that an account is gearing up (or slowing down).
+- **Best for:** SDR / BDR, Account Executive, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); What I sell (e.g. data and AI staff augmentation); Workload (optional) (e.g. Artificial Intelligence & Data Science)
+
+### Detailed prompt
+
+```text
+Act as my hiring-signals analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- What I sell: [one line, e.g. data and AI staff augmentation — skip if you ran the start-here prompt]
+- Workload (optional): [a type of work, e.g. Artificial Intelligence & Data Science; blank uses the function closest to what I sell]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Pull monthly job postings for the last 12 months, company-wide and for the function closest to [What I sell] (or [Workload]); full months only, and say which months you used.
+3. Work out the monthly average and standard deviation, and the last 5 full months against the 5 before.
+4. Verdict on the last 3 full months (editable defaults): Spiking = any month over 2 standard deviations above average; Above normal = their average over 1 above; Slowing = over 1 below; Normal = anything else.
+5. Label a flagged month seasonal if it's an industry peak (e.g. retail holidays), or company-wide if many unrelated workloads rose together.
+6. For each flagged month, list the top 5 workloads against their usual month.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Verdict: one plain-English line (e.g. "Above normal in IT, not seasonal") with the 5-vs-5 change in %, for the function and company-wide.
+- Table (last 6 full months, function view): Month | Postings | Gap from average (standard deviations) | Flag.
+- Table "What drove it" (top 5): Workload | Postings in flagged month | Usual month | Likely owner.
+- Detail: the full 12-month series; the company-wide view; "Why this matters for [What I sell]" (2–3 bullets); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Standard deviations go in the table; the verdict uses plain words.
+- State the exact window, e.g. "Dec 2025 – Oct 2026".
+- A seasonal frontline spike is rarely a buying signal; say so when it's the driver.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
+- If one company's posting count is in the millions or above its workforce, the company match failed. Say so and drop it.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named owner, dated why-now). Is [Company] hiring more than usual in the function closest to [What I sell]? Last 5 full months vs the 5 before, flagged months, drivers, and whether it's seasonal.
+```
+
+### Follow-ups
+
+- Show 3 recent postings from the flagged month in [Workload], with title, location and date.
+- Which cities did the extra postings come from?
+- Is this backed by a stated priority? Check their priorities in the same workloads.
+- Write a 70-word email to the person in the next step about the capability being built, with no posting counts.
+
+### Tips
+
+- The function view is the one that matters: store or warehouse hiring can swamp a retailer's company-wide total.
+- Slowing is a signal too: it can mean a freeze, a reorganisation or a shift to outsourcing worth asking about.
+
+## Are they really investing in X?
+
+- **id:** `signals-investing-in-x`
+- **What you get:** A Yes / Early / No verdict on whether hiring, headcount and stated priorities back up a technology theme, with proof postings, three talking points and a named person to call.
+- **Use it when:** Before you claim an account is "investing in GenAI" (or SAP, or cloud) in a pitch or email.
+- **Best for:** Account Executive, Presales & Solutions, SDR / BDR
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. jpmorganchase.com); Technology (e.g. generative AI for software development); What I sell (e.g. AI developer-productivity platform)
+
+### Detailed prompt
+
+```text
+Act as my investment-signals analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. jpmorganchase.com]
+- Technology: [theme in plain words, e.g. generative AI for software development]
+- What I sell: [one line, e.g. AI developer-productivity platform — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Pull the skills and workloads in the company's job postings over the last 12 months, trending up first, and pick those related to my theme using Draup's exact names. Broad labels ("Generative AI") may match nothing; specific ones ("AI-Assisted Development") usually do.
+3. For each: 12-month postings and average per month in the last 5 full months against the 5 before. Flag one-off spikes (one month over half the total). Read declining skills' monthly numbers before trusting the label.
+4. Pull 3 recent postings for the strongest skill: title, date, location, key responsibilities.
+5. Pull the headcount trend for the matching job family (e.g. software developers): a year before the latest month against the latest month.
+6. Pull stated priorities that mention the theme, with source and fiscal quarter.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]. Start with the verdict: Yes (rising hiring, growing headcount and a stated priority), Early (rising hiring only) or No.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (top 8): Skill | 12-month postings | Avg/month, prior 5 | Avg/month, last 5 | Note.
+- "Talking points": 3, each with a number and its date.
+- Detail: proof postings (Title | Date | Location | What the role does); headcount (job family, then and now, % change, months covered); stated priorities (name, source, quarter, likely owner); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- "Rising" = the last 5 full months beat the 5 before by more than 20% (editable default).
+- Salaries are often missing from postings; don't estimate them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Talent-flow data ends about 3 months ago; state the months covered.
+- If one company's posting count is in the millions or above its workforce, the company match failed. Say so and drop it.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line (Yes, Early or No) and next step first, with a named owner. Is [Company] really investing in [Technology]? Related job-ad skills, last 5 full months vs the 5 before, 3 proof postings, headcount trend and stated priorities.
+```
+
+### Follow-ups
+
+- Which tools did they start hiring for from near zero this year?
+- Who leads this area? Find executives tagged to the matching workload.
+- Turn the talking points into a 3-sentence opener for the person in the next step.
+- Compare the same theme at [a peer] so I can say whether they're ahead or behind.
+
+### Tips
+
+- Use Draup's own skill names. The assistant reads them off the trending list first, so broad labels don't come back empty.
+- Early is often a good verdict for a seller: hiring is rising but the work isn't fully staffed yet.
+
+## Which tools their job ads are building
+
+- **id:** `signals-practice-shift`
+- **What you get:** The software tools in the account's job ads, matched against its installed stack and sorted into New, Building, Core and Coasting, so you see where people and budget are moving before it hits the press, with a named person to call.
+- **Use it when:** Validating a technology priority, or looking for an early, non-obvious why-now in engineering, data and AI.
+- **Best for:** Account Executive, Presales & Solutions, SDR / BDR, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. servicenow.com); What I sell (e.g. AI code-review and governance tooling); Business function (optional) (e.g. IT)
+
+### Detailed prompt
+
+```text
+Act as my hiring and stack-signals analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. servicenow.com]
+- What I sell: [one line, e.g. AI code-review and governance tooling — skip if you ran the start-here prompt]
+- Business function (optional): [e.g. IT or ER&D (engineering and R&D); blank uses the function closest to what I sell]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Pull the skills in the company's job postings over the last 12 months in the function: the top 50 plus those trending up. Keep named software tools only.
+3. For each tool, compare average postings per month in the last 5 full months with the 5 before. Set aside one-off spikes (one month over half the total).
+4. Pull the installed stack for the makers of the top 15 tools: usage strength, last seen, and whether first detected in the last 12 months. For very broad makers (Google, Microsoft, Amazon), also narrow by category. Say which tools you couldn't find.
+5. Group each tool (editable defaults): New = 5 or fewer a month before, 20+ (or 5x) after; Building = rising in job ads but Low, absent or new in the stack; Core = in job ads and High or Medium in the stack; Coasting = High in the stack, under 5 postings in 12 months.
+6. For the top 3 New or Building tools, pull 2 recent postings each: title, date, location.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (top 10, by recent volume): Tool | Avg/month, prior 5 | Avg/month, last 5 | In stack (strength) | Group.
+- "What it signals": 3 bullets on the practice change, and the opening for [What I sell] with its likely owner.
+- Detail: makers, first-detected flags and sample titles; rows 11–20; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Job-ad mentions measure hiring demand, not licences or spend; say so once.
+- If nothing is New, say so and lead with Building.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
+- If one company's posting count is in the millions or above its workforce, the company match failed. Say so and drop it.
+- Trust last-seen date and usage strength. Ignore the confidence score and "Generic" rows. Say "fading", never "dropped".
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named owner, dated why-now). Which software tools appear in [Company]'s job ads this year, and how do they match its stack? Sort into New, Building, Core and Coasting.
+```
+
+### Follow-ups
+
+- Show 3 full job descriptions for the top New tool so I can quote the responsibilities.
+- Has anyone senior been hired into this area recently? Check executive moves in the matching workload.
+- Write a 70-word email to the person in the next step that opens on this practice shift.
+- Which of these tools are made by my competitors?
+
+### Tips
+
+- A tool that shows up in job ads before it shows up in the stack is often a project in its first months: a good time to engage.
+- Big employers' company-wide results can be swamped by frontline hiring, so the prompt reads the function closest to what you sell unless you name another.
+
+## Priorities with no hiring behind them
+
+- **id:** `signals-priorities-vs-hiring`
+- **What you get:** Which stated priorities in your function have hiring behind them and which don't: the gaps where the account may need to buy rather than build, with a named person to call.
+- **Use it when:** Shaping a services or software pitch, or deciding which priority to lead with.
+- **Best for:** Account Executive, Services, SI & Staffing Seller, Presales & Solutions
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. target.com); What I sell (e.g. intelligent automation and RPA services); Business function (optional) (e.g. Supply Chain)
+
+### Detailed prompt
+
+```text
+Act as my account strategy analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- What I sell: [one line, e.g. intelligent automation and RPA services — skip if you ran the start-here prompt]
+- Business function (optional): [e.g. Supply Chain, IT; blank uses the function closest to what I sell]
+
+STEPS
+1. Find [Company] by its website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company. If none or several match, or it looks wrong, ask me. Use Draup's exact name from then on.
+2. Pull the workloads in the stated priorities for the function, ranked by how many priorities involve each. Keep the top 15. If the function has none, say so and don't borrow from others.
+3. Pull hiring by workload for the last 12 months, up to 5 pages: postings and trend. Set frontline workloads (store operations, food and beverage, warehousing) aside unless they relate to what I sell.
+4. Match each priority workload to its hiring; where names differ, use the closest and say so.
+5. Mark each (editable defaults): Backed = top 20 hiring workload or trending up; Partial = 50+ postings but not Backed; Thin = under 50; Silent = none; Not comparable = strategy or governance work that rarely appears in job ads.
+6. For the 3 biggest gaps (most priorities, least hiring), pull the priority names with source and fiscal quarter.
+7. For the next step, pull the top 3 executives in the function closest to [What I sell] (full profile titles; flag subsidiaries) and the top news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Build-or-buy gaps" (top 3): priority, source and quarter, hiring numbers, and why [What I sell] could fill it.
+- Table (top 10): Workload | Priorities involving it | Postings (12 months) | Trend | Read.
+- Detail: the remaining workloads; "Already backed" (2–3 workloads they're building in-house, with likely owners); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Little hiring doesn't prove they will buy; they may already outsource the work. Say so, and suggest checking their outsourcing for those workloads.
+- State the hiring window.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 380 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named owner, dated why-now). Compare [Company]'s priority workloads in my function with 12 months of hiring; mark each Backed, Partial, Thin or Silent, and name the 3 biggest build-or-buy gaps for [What I sell].
+```
+
+### Follow-ups
+
+- For the top gap, which service providers already work that workload at [Company]?
+- Who owns the top gap? List executives tagged to that workload.
+- Write a one-paragraph point of view on the top gap for the person in the next step.
+- Run the same check for [another function].
+
+### Tips
+
+- Silent or Thin workloads with several priorities are worth testing as buy signals, after you check who already does the work for them.
+- Backed workloads still matter. They show where the account has in-house teams you'd work alongside.
+
+## Who in my market just [did X]?
+
+- **id:** `signals-news-question-templates`
+- **What you get:** A clean, dated list of the companies in your industry and country that just did one thing you choose (M&A, layoffs, leadership changes, expansion or new centres, funding, or partnerships), with source counts and a named person at the best account.
+- **Use it when:** Building a themed list, prepping an industry call, or finding companies that just changed.
+- **Best for:** SDR / BDR, Marketing & ABM, Account Executive, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Event type (e.g. expansion or new centres); Vertical (e.g. Banking & Financial Services); Country (e.g. India); What I sell (e.g. cloud migration services); Window (optional) (e.g. 6 months (default 90 days)); Theme (optional) (e.g. cloud migration (partnerships only))
+
+### Detailed prompt
+
+```text
+Act as my market-news researcher. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Event type: [one of M&A; layoffs; leadership change; expansion or new centres; funding; partnership — e.g. expansion or new centres]
+- Vertical: [industry, e.g. Banking & Financial Services]
+- Country: [in full, e.g. India]
+- What I sell: [one line, e.g. cloud migration services — skip if you ran the start-here prompt]
+- Window (optional): [default 90 days; up to 12 months]
+- Theme (optional): [for partnerships, e.g. cloud migration]
+
+STEPS
+1. Use Draup's exact industry and country names; say which you used.
+2. Search Draup news first with "Which [Vertical] companies in [Country] [Event type] in the last [Window]?" (main source; up to 20 results, often without links). Then page the news feed for the same filters to add links and catch misses. Review at least 30 items in total.
+3. Apply the noise rule. Keep only items where the named company is the actor, the event happened in [Country], and the company really is in [Vertical].
+4. By type: M&A: Acquisition, Merger or Divestiture, and Announced or Completed. Layoffs: store and branch closures listed separately; headcount only if stated. Leadership: C-level and VP, at the new employer. Expansion: add Type (capability centre, tech centre, office); leave out factories, stores, branches and wealth centres. Funding: no donations or grants. Partnerships: no sponsorships or marketing tie-ins.
+5. Merge repeat coverage, keeping the earliest date and counting sources.
+6. For the most relevant company, pull the top 3 executives in the function closest to [What I sell].
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (top 10, newest first): Date | Company | What happened (with any number) | Sources (count).
+- "Pattern": 3 bullets, and why it matters for [What I sell]; name the 3 companies to approach first.
+- Detail: rows 11–20; source and headline (link if available) and type for every row; "Excluded" count by reason; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Search results come back by relevance, not date; sort by date yourself.
+- One event type per run.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Hiring, new-technology and news data cover the last 12 months; if my window is longer, say what was covered.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 420 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named person, a dated why-now). Which [Vertical] companies in [Country] did [Event type] in the last [Window]? Top 10: date, company, what happened and how many sources report it.
+```
+
+### Follow-ups
+
+- For the top 5 companies, pull a one-line profile: workforce, revenue and HQ.
+- Run the same event type for [another country].
+- Write a 2-sentence opener for each of the top 5, using only items with 2+ sources.
+- Which of these companies already run my competitors' products?
+
+### Tips
+
+- The news search finds more but often without links; the feed adds links. The assistant uses both and gives source and headline either way.
+- Phrase the theme the way a press release would ("core banking", "cloud migration").
+- A single-source item is worth a look but not a quote; the Sources column shows which ones to double-check.
+
+## Who just picked a vendor
+
+- **id:** `signals-vendor-selection-news`
+- **What you get:** A dated list of companies in your industry that just selected, deployed or replaced a vendor in your category: competitor wins to watch, peer proof, and the implementation partners involved, with a named person at the best account.
+- **Use it when:** Weekly or monthly competitive watch, or before a campaign in a new industry.
+- **Best for:** Account Executive, Marketing & ABM, Partnerships & Alliances, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Technology (e.g. demand forecasting software); Vertical (e.g. Retail); Competitor (e.g. RELEX, Blue Yonder); What I sell (e.g. supply-chain planning software); My company (optional) (e.g. Northwind Data Services; Tailspin Partners); Window (optional) (e.g. 90 days (default))
+
+### Detailed prompt
+
+```text
+Act as my competitive-intelligence analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Technology: [your category in plain words, e.g. demand forecasting software]
+- Vertical: [industry, e.g. Retail, Insurance]
+- Competitor: [one or more rival vendors, e.g. RELEX, Blue Yonder]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- My company (optional): [our firm and partners, e.g. Northwind Data Services; Tailspin Partners]
+- Window (optional): [default 90 days; up to 12 months]
+
+STEPS
+1. Turn my industry into Draup's exact name; say which you used.
+2. Search Draup news for the window with 3 phrasings: "[Vertical] company selects or partners with a [Technology] vendor", "... deploys, goes live on or migrates to new [Technology]" and "... replaces its legacy [Technology] system", then one search per competitor. Add links from the news feed where you can. Review at least 30 items.
+3. Keep only stories where a named buyer chose a named vendor: buyer, vendor, implementation partner, scope (sites, regions, modules), what it replaced, and stage (Selected, Implementing, Live, Expanded).
+4. Drop vendor roundups, rankings, "editorial picks", product launches and single stores named as the buyer. Merge repeat coverage and count sources; a win reported only by the vendor's own release is single-source.
+5. Look up the 10 most relevant buyers in one company-list lookup for HQ and workforce; mark the rest "not checked".
+6. For the best buyer to approach, pull the top 3 executives in the function closest to [What I sell].
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (top 10, newest first): Date | Buyer (HQ) | Vendor | Stage | Sources (count).
+- "Competitor wins": with later phases still open.
+- Detail: implementation partner, scope and what it replaced per row; "Peer proof" (rows where [My company] or a partner won, or "none found"); "Implementation partners seen" (Partner | Wins | Vendors); source and headline per row; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- A selection isn't a go-live; always show the stage.
+- Search results come back by relevance, not date; sort by date yourself.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Hiring, new-technology and news data cover the last 12 months; if my window is longer, say what was covered.
+- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 420 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named person, a dated why-now). Which [Vertical] companies selected, deployed or replaced a [Technology] vendor in [Window]? Top 10 with buyer, vendor, stage and source count; flag [Competitor] wins.
+```
+
+### Follow-ups
+
+- For each competitor win, which phases or regions are still open?
+- Which implementation partner appears most often? Profile them as a co-sell target.
+- Write a 3-sentence peer-proof email using our most recent win for 5 lookalike accounts.
+- Check the stack at the top 3 competitor wins: is the product already showing as active?
+
+### Tips
+
+- Phrase your category the way a press release would ("demand forecasting", "replenishment", "core banking"). Search works on meaning, not exact words.
+- Multi-year rollouts often start with one module. A competitor win today can still leave later modules open.
+
+## What changed since [Date]
+
+- **id:** `signals-change-log`
+- **What you get:** A dated log of what changed at an account since a date you choose, ranked by impact on your deal, with competitor tools rated and a clear call: reopen, wait or watch for a lost deal; defend, expand or monitor for a customer.
+- **Use it when:** Revisiting a closed-lost deal, prepping a renewal or QBR, or picking up an account from a colleague.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. walmart.com); Date (e.g. 2026-03-01); Relationship (e.g. current customer (or lost deal)); What I sell (e.g. supply-chain planning software); Business function (optional) (e.g. Supply Chain)
+
+### Detailed prompt
+
+```text
+Act as my account-intelligence analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. walmart.com]
+- Date: [e.g. 2026-03-01: when we lost the deal or held the last QBR]
+- Relationship: [current customer or lost deal]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Business function (optional): [e.g. Supply Chain, IT; blank uses the function closest to what I sell]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Priorities: stated priorities in the function sourced after [Date], with fiscal quarter and workloads.
+3. Leadership: hires, exits and promotions since [Date], one workload at a time, with full titles, rows checked and latest move date; then the top 3 executives in the function now.
+4. Technology: products first detected since [Date] in the function, and any competitor product anywhere in the stack; rate each (see rules).
+5. Hiring: average monthly postings in the function before vs after [Date], full months only.
+6. News since [Date]: executive moves, M&A, partnerships, expansion, layoffs, investment plans, and incidents that bear on what I sell.
+7. Financials: any new fiscal year's revenue growth; check for a divestment before calling a drop a cut.
+
+OUTPUT
+- Bottom line: 2 sentences, starting with the call (lost deal: reopen, wait or watch; current customer: defend, expand or monitor) and the top change.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table "Change log" (highest impact first, at most 10 rows, then offer more): Date | Type | What changed | Impact | Likely owner.
+- Detail: sources; competitor ratings; hiring before and after; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Technology, hiring and news reach back 12 months; if [Date] is older, say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell (e.g. IT) and say which. If I give a function, map it to its main workloads first and name them.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Leadership data shows about the 10 latest moves per type and can lag about 3 months. Keep only rows where [Company] is the current employer (for exits, the previous one).
+- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line first (customer: defend, expand or monitor; lost deal: reopen, wait or watch) and next step with a named person. Then up to 10 dated changes at [Company] since [Date] that matter for [What I sell].
+```
+
+### Follow-ups
+
+- Draft a re-engagement email to the new leader in the function, tied to the top change.
+- Has any competitor product been first detected since [Date]? Show usage strength and countries.
+- Turn this into a 5-bullet update for my manager.
+- Compare this with the risk check for the same account.
+
+### Tips
+
+- For a closed-lost revisit, use the date you lost. For renewals, use the date of the last QBR.
+- A competitor tool rated Red in your workloads is the first thing to raise at a renewal; Amber means ask about it in discovery.
+- Leadership data can lag about 3 months; the latest move date tells you how fresh it is.
+
+## Weekly trigger sweep for my book
+
+- **id:** `signals-weekly-book-sweep`
+- **What you get:** One phone-sized table of the week's real triggers across up to 10 accounts, including any CEO or leadership change that takes effect in the window, plus the nearest item just outside the window for every quiet account.
+- **Use it when:** Monday morning, or before a pipeline review. Use this for your whole book; use "What's worth acting on now" to go deep on one account.
+- **Best for:** Account Executive, Account & Customer Success Manager, SDR / BDR
+- **Time:** 4–6 min
+- **Inputs:** Accounts (e.g. walmart.com, target.com, bmw.com, pfizer.com); What I sell (e.g. supply-chain planning software); Window (optional) (e.g. last 7 days (default; up to 30))
+
+### Detailed prompt
+
+```text
+Act as my weekly account-signals analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Accounts: [up to 10 websites, e.g. walmart.com, target.com, bmw.com — or "my saved list"]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Window (optional): [default last 7 days; up to 30 days]
+
+STEPS
+1. Reuse the Draup names saved in my setup. Resolve others by website (exact match, parent company); ask only if none or several match. If I gave more than 10, do the first 10 and offer to continue.
+2. Pull news for all accounts in one feed pull for the window: executive moves (CEO and other C-level changes first), M&A, layoffs, partnerships and vendor deals, expansion, funding and investment, plus incidents or regulatory items that bear on what I sell. If one account fills more than half the results, pull the other accounts separately.
+3. Apply the noise rule; also drop court dockets, stock-analysis pieces and store-property sales tagged as M&A.
+4. After step 3, for every account with nothing left, check its top-ranked signals and keep items whose event or effective date falls inside the window, even if the story was captured before or after it (e.g. a new CEO who takes over on a date inside the window).
+5. Leadership check: before calling any account quiet, confirm steps 2–4 found no CEO or other C-level change announced or effective in the window.
+6. Label subsidiary news "[Subsidiary] ([Account])". Merge repeat coverage and count sources.
+7. Write one "so what" per item for [What I sell] and tag it Act now (this week), Plan (next touch) or Watch.
+8. For the top Act-now account, pull the top 3 executives in the function closest to [What I sell].
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (Act now first, then newest; up to 10): Account | Date | Trigger (with any number) | So what | Action.
+- "Just outside the window": for each quiet account, the nearest material item (date, one line), or "nothing in 90 days".
+- "No material signals" and "Not resolved": account names only.
+- Detail: source and headline, type, source count and likely owner per item; "Dropped" count by reason; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Every item needs an event or effective date inside the window; drop anything you can't date.
+- Don't pull leadership-move histories for every account; if I ask about one, narrow to the workloads I name.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (named person, dated why-now). For [Accounts], list [Window]'s real triggers, including leadership changes effective in the window, each with a so-what for [What I sell]; give quiet accounts their nearest item outside it.
+```
+
+### Follow-ups
+
+- Write a short email for each Act now item, with a fact check on each.
+- For [Account], show leadership moves in [workload] in the last 30 days.
+- Run the same sweep for the last 14 days and compare it with this week.
+- Turn the "Just outside the window" items into priority-led touches for the quiet accounts.
+
+### Tips
+
+- Save your account list in a Claude Project or the start-here prompt so you can rerun this every Monday with one line.
+- Use a 14-day window after a holiday week; the "Just outside the window" line still shows what you'd otherwise miss.
+- One big name can flood a shared news pull; the prompt re-pulls the quiet accounts so they aren't missed.
+
+## Weekly industry signal digest
+
+- **id:** `signals-vertical-digest`
+- **What you get:** A one-screen digest of the week's material moves in one industry, grouped by theme, with source counts, the accounts worth touching and a named person at the best one.
+- **Use it when:** A weekly routine for vertical sellers and marketers, or before an industry call or event.
+- **Best for:** Marketing & ABM, Account Executive, Sales Leader & RevOps, SDR / BDR
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Insurance); What I sell (e.g. claims automation software); Country (optional) (e.g. United Kingdom); Window (optional) (e.g. last 7 days (default; up to 30))
+
+### Detailed prompt
+
+```text
+Act as my industry news editor. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Insurance, Life Sciences]
+- What I sell: [one line, e.g. claims automation software — skip if you ran the start-here prompt]
+- Country (optional): [in full, e.g. United Kingdom]
+- Window (optional): [default last 7 days; up to 30 days]
+
+STEPS
+1. Use Draup's exact industry and country names. If the industry returns nothing, try its parent and name it.
+2. Pull the most-covered industry news in the window: M&A, executive moves, partnerships, expansion, layoffs, funding, plus incidents or regulatory actions that bear on what I sell. Review at least 30 items.
+3. Check each company really belongs to the industry; tags can leak to similar names or unrelated events.
+4. Apply the noise rule; also drop board-nominee filings and minor marketing deals. The named company must be the actor, and if I gave a country, the event must happen there.
+5. Keep regional-unit news (e.g. a country CEO change at a global insurer) but name the unit. Merge repeat coverage and count sources.
+6. Rank by relevance to [What I sell], then company size; keep the top 10. For the top 3 companies, attach one fitting stated priority with fiscal quarter.
+7. For the best account to touch, pull the top 3 executives in the function closest to [What I sell].
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Table (up to 10): Date | Company (unit) | What happened (with any number) | Why it matters for [What I sell] | Sources (count).
+- "Accounts to touch": 3–5, each with reason, linked priority and likely owner.
+- Detail: "Themes" (2–3 patterns citing the rows behind each); region, type and source and headline per row; "Dropped" count by reason; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Keep amounts in the reported currency; convert to USD in brackets only if I ask, using Draup's rate.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News noise: drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alike names, sister companies, recruitment ads, supplier press releases, bank branches, registrar notices, single-store sales and old stories re-dated as new (use the event date). Outages, incidents, breaches and regulatory inquiries are triggers if I sell security, reliability, observability, IT operations or compliance; keep any item that bears directly on What I sell, even if normally noise. Give source and headline for every item, plus the link when Draup has one.
+- If sources conflict on a name, date or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Pull company lists and priorities 10 at a time; show the top results first and offer to continue.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows max); the rest under "Detail". Keep to about 420 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named person, a dated why-now). This week's [Vertical] digest: the 10 most material moves with date, source count and why each matters for [What I sell], plus 3–5 accounts to touch.
+```
+
+### Follow-ups
+
+- Turn this digest into a 150-word LinkedIn post for our industry page, using only items with 2+ sources. Check your Draup licence before publishing Draup data externally.
+- For the accounts to touch, write a 2-sentence opener each.
+- Run the same digest for the last 30 days and show which themes are growing.
+- Which of this week's companies run my competitors' products?
+
+### Tips
+
+- Industry tags can catch companies with similar names. The "Dropped" count shows how much the assistant filtered out.
+- Run it every Monday with the same inputs so you can compare themes week to week.
+
+
+# Outreach and messaging
+
+Research-backed emails, call scripts, LinkedIn notes and briefing notes, each grounded in dated Draup facts.
+
+## Email a newly appointed executive
+
+- **id:** `outreach-new-executive`
+- **What you get:** The newest senior appointments in your area at one account, checked against a second source, the stated priority that fits the new remit, and a 90-word first-90-days email plus a short follow-up.
+- **Use it when:** A leader has just been appointed or promoted at a target account and you want to be the useful email in a crowded inbox, not another congratulations note.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. marriott.com); Function or area (e.g. Sales & Marketing); What I sell (e.g. loyalty personalisation software); Executive (optional) (e.g. the new head of loyalty); Proof point (optional) (e.g. lifted repeat bookings for Contoso Retail)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter for executive transitions. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. marriott.com]
+- Function or area: [where the new leader sits, e.g. Sales & Marketing]
+- What I sell: [one line, e.g. loyalty personalisation software — skip if you ran the start-here prompt]
+- Executive (optional): [name or role if known, e.g. the new head of loyalty]
+- Proof point (optional): [a result I may quote, e.g. lifted repeat bookings for Contoso Retail]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull executive-movement news about [Company] for the last 6 months, newest first, 15 items. Keep corporate appointments at VP or above in or near [Function]; drop single-site appointments (one hotel, store or plant) and board seats. If I named an executive, find them first.
+3. Fact-check each appointment's name, title and start date.
+4. Pull key executives in [Function], 10 per page, up to 2 pages. Flag anyone under 12 months in their current title as "new in role". Use the full profile title; if the person isn't there, write "profile not found" and rely on the announcement.
+5. Rank up to 5 candidates by recency, seniority, fit and fact check; pick one.
+6. Pull up to 8 [Function] priorities, newest quarter first, and choose the one closest to the new remit.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Email: subject (6 words max) and body (90 words max): the announced remit, no congratulation clichés; the priority as a question about their first 90 days; one concrete offer; one ask for 20 minutes. Use [Proof point] only if given.
+- Follow-up (day 5): 50 words max, a second fact, same ask.
+- Table "New leaders" (up to 5, newest first): Date | Name | New title | Fact check | Source.
+- Detail: the angle (person and priority in Draup's words, source, quarter); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Reference only what was announced: role, remit, start date. Never mention time in role or career history the announcement didn't state.
+- No qualifying appointment in 6 months: say so and offer the "new in role" profiles instead; don't stretch older moves.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (the named new leader, dated). Find the newest VP-and-above appointment in [Function] at [Company] in 6 months, confirm it with a second source, match a priority, and write a 90-word email and 50-word follow-up.
+```
+
+### Follow-ups
+
+- Write a version for the new leader's own boss, tied to a different priority.
+- Draft a LinkedIn connection note under 300 characters for the same person.
+- Who else joined [Company] in [Function] in the last 6 months? Show the next 5.
+- Find a second source for the appointment so I can name the start date.
+
+### Tips
+
+- Big brands announce many site-level appointments (hotel or store managers). Naming a corporate function such as Sales & Marketing keeps those out.
+- If the new leader isn't in Draup's executive list yet, the announcement alone is enough; leadership data can lag about 3 months.
+- If two outlets disagree on a title or start date, the email leaves it out and the check line tells you what to confirm.
+
+## Email after a funding or investment
+
+- **id:** `outreach-funding`
+- **What you get:** A dated, fact-checked read of the account's latest raise or announced investment, where the money is going by function, and a 100-word email plus a LinkedIn note that ties it to one priority.
+- **Use it when:** An account has just raised money or announced a big investment plan (new region, plant, capital programme) and budgets are being set.
+- **Best for:** Account Executive, SDR / BDR, Marketing & ABM
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. databricks.com); Persona (e.g. VP Engineering); What I sell (e.g. cloud cost management software); Proof point (optional) (e.g. cut cloud spend for Fabrikam Foods)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter for growth-stage and investing accounts. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. databricks.com]
+- Persona: [who reads it, e.g. VP Engineering]
+- What I sell: [one line, e.g. cloud cost management software — skip if you ran the start-here prompt]
+- Proof point (optional): [a result I may quote, e.g. cut cloud spend for Fabrikam Foods]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on. Note whether it is public or private.
+2. Pull funding history: the last 3 rounds (date, USD millions, type, lead investors), or say it has none.
+3. Pull 6 months of fundraise-and-investment news, newest first, 10 items. Sort each: Raised, Committed (announced spending), Reported (talks) or Invested in others. Fact-check each amount.
+4. Pull 12 months of job postings by function: top 6 with trend, last 5 full months vs the 5 before.
+5. Pull up to 6 priorities in [Persona]'s function, newest quarter first, and link the newest Raised or Committed event to the hiring and best-fit priority.
+6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Email: subject (6 words max) and body (100 words max): the event and its date in one clause; the stated use; a question linking it to [Persona]'s priority; one concrete offer; one ask. Use [Proof point] only if given.
+- LinkedIn note: 280 characters max.
+- Table "Money events" (newest first): Date | Type | Amount | Stated use | Fact check.
+- Table "Where it is going" (top 6): Function | Postings (12 months) | Last 5 vs prior 5 | Trend.
+- Detail: sources and lead investors; invested-in-others items, one line each; linked priority (source, quarter); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Never congratulate or mention valuation; quote an amount only if Confirmed, as the source states it.
+- Reported or in-talks items are not closed: never write them as done, and prefer a closed event for the hook. If the only events are investments in other companies, write from hiring and priority instead.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named reader, a dated event). List [Company]'s funding and investment news from 6 months, fact-check the amounts, show where hiring is rising, and write a 100-word email to a [Persona].
+```
+
+### Follow-ups
+
+- Write the same email for the CFO, focused on spending the new money with control.
+- Which metros are getting the new hiring? Show the top 5 with postings.
+- Draft a second touch for day 6 that uses the hiring trend instead of the funding.
+- Find a second source for the amount so I can quote it.
+
+### Tips
+
+- The strongest hook is often the stated use of funds (a new region or team), not the amount.
+- Corporate venture arms make many investments in other companies; those rarely mean the account itself has new budget.
+- Amounts reported by one outlet, or reported differently by two, stay out of the email until you confirm them.
+
+## Email after an acquisition
+
+- **id:** `outreach-acquisition`
+- **What you get:** The account's recent deals sorted by type and status and fact-checked, the integration work it has described in its own words, and a 100-word email to a named reader aimed at that integration problem.
+- **Use it when:** An account has just closed or announced an acquisition and you want to reach the people who now have to merge systems, suppliers or teams.
+- **Best for:** Account Executive, SDR / BDR, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. novartis.com); Persona (e.g. Head of R&D IT); What I sell (e.g. clinical data integration services); Acquired company (optional) (e.g. a deal you already know about)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter for post-merger integration. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. novartis.com]
+- Persona: [who reads it, e.g. Head of R&D IT]
+- What I sell: [one line, e.g. clinical data integration services — skip if you ran the start-here prompt]
+- Acquired company (optional): [a deal you already know about]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull acquisitions from the last 12 months and remove duplicates.
+3. Pull 6 months of M&A news, newest first, 10 items. Keep deals where [Company] or a labelled subsidiary is the buyer; separate company acquisitions from licence or trademark purchases; mark each announced or closed; check the target name matches the text. Fact-check size and close date.
+4. Pull up to 5 priorities whose names mention integration (if fewer than 2, also try "acqui"), with function, source, quarter and linked tools and providers.
+5. Choose the newest closed acquisition with an integration priority near [Persona]'s area (or the one I named, if it qualifies).
+6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Email: subject (6 words max) and body (100 words max): the deal and close date; the integration task as a question; one concrete offer (a day-100 checklist, a teardown of similar integrations); one ask.
+- Variant (60 words max) for a leader on the acquired side, only if that company is in Draup.
+- Table "Deals" (newest first): Date | Target | Type | Status | Fact check.
+- Table "Integration work they've described": Priority (Draup's words) | Function | Quarter | Likely owner.
+- Detail: size, buyer (group or subsidiary) and source per deal; linked tools or providers; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Never mention write-downs, impairments, failed trials, job cuts or share price in the copy.
+- A licence, asset or trademark purchase is not a company integration; use it only if it creates the work I sell.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- The acquisitions table can miss deals; if news or priorities name one it lacks, check 12 months of M&A news. Say tools are "linked" to a priority, never "used for".
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named reader, a dated deal). List [Company]'s acquisitions from 12 months, fact-check size and close date, find priorities that mention integration, and write a 100-word email to a [Persona] about the integration work.
+```
+
+### Follow-ups
+
+- Find the leaders on the acquired side who are still in Draup, with titles.
+- Write a second touch for day 7 on the supplier or data side of the same integration.
+- Which service providers are linked to the integration priority? Who should I partner with or displace?
+- Find a second source for the deal size so I can quote it.
+
+### Tips
+
+- Deals between 3 and 12 months past close are often the sweet spot: the plan exists, the work is still open.
+- Large acquirers also buy rights and trademarks; those rarely create systems integration work.
+- If the acquisitions table looks thin, the news step usually finds the missing deal.
+
+## Email during cost cuts or restructuring
+
+- **id:** `outreach-restructuring`
+- **What you get:** A private read of the account's cost pressure and restructuring news, a sensitivity rating, and a careful 90-word email built on the company's own stated savings goal, with a softer alternative and a named reader.
+- **Use it when:** An account is cutting costs, closing sites or restructuring, and you sell something that pays back fast but need to approach without seeming to profit from people's bad news.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. nestle.com); Persona (e.g. VP Procurement); What I sell (e.g. spend analytics software); Region (optional) (e.g. Europe); Proof point (optional) (e.g. found savings in indirect spend for Fabrikam Foods)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter for accounts under cost pressure. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. nestle.com]
+- Persona: [who reads it, e.g. VP Procurement]
+- What I sell: [one line, e.g. spend analytics software — skip if you ran the start-here prompt]
+- Region (optional): [e.g. Europe]
+- Proof point (optional): [a result I may quote, e.g. found savings in indirect spend for Fabrikam Foods]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the latest financial snapshot: revenue and EBITDA, year-on-year growth, fiscal year.
+3. Pull 6 months of layoff and restructuring news, newest first, 10 items (in [Region] if given): date, event, location, function affected; label subsidiaries.
+4. Pull up to 4 priorities whose names mention cost (if under 2, try "efficien" and "productivity"), with function, source and quarter.
+5. Rate sensitivity: High if cuts hit [Persona]'s own function or region in the last 90 days, Medium if another function in the same region, otherwise Low.
+6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for. For High sensitivity, suggest waiting 2 to 4 weeks.
+- Sensitivity: High, Medium or Low, with a one-line reason.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Email: subject (6 words max, no "cost-cutting" or "tough times") and body (90 words max): their goal in their words; a question on where the next savings must come from; a low-risk offer framed around payback (a two-week diagnostic, a fixed-scope pilot); one ask.
+- Softer alternative (50 words max): no meeting ask, one resource.
+- Table "Their stated savings goals": Priority (Draup's words) | Function | Quarter | Likely owner.
+- Detail (for me, never for the copy): Metric | Fiscal year | Value | Year-on-year; what's happening (Date | Event | Location | Function | Source); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Never mention job cuts, closures, sites, union talks, people affected, "turnaround" or falling results in the copy. Claim no savings figure beyond [Proof point]. If the cuts hit [Persona]'s own team, also draft for an adjacent function.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Financials come in the reporting currency, in millions, with Draup's conversion rate; convert to US dollars only when comparing or when I ask.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named reader). For [Company], show revenue growth, 6 months of restructuring news and stated cost priorities; rate sensitivity; write a 90-word [Persona] email on their own savings goal, never mentioning cuts.
+```
+
+### Follow-ups
+
+- Rewrite the email for the CFO, tied to the cash or margin priority.
+- Which functions are still hiring despite the cuts? Show the top 5 with trends.
+- Draft a 3-touch sequence over 3 weeks that never mentions the restructuring.
+- Is anyone new leading [Persona]'s function since the restructuring began?
+
+### Tips
+
+- The company's own words (from an earnings call) are the safest hook: you're echoing their goal, not their pain.
+- If the persona's team was just cut, a short resource with no meeting ask often lands better than a pitch.
+
+## Email after a new site or centre
+
+- **id:** `outreach-new-site`
+- **What you get:** The account's newest centres, leases and expansions, fact-checked and matched against its location footprint and local hiring, plus a 100-word email and a LinkedIn note aimed at what the site is being staffed for.
+- **Use it when:** An account has announced a new office, capability centre (an in-house delivery or tech centre, often called a GCC), hub or expansion, and the vendors for that site are about to be chosen.
+- **Best for:** Account Executive, SDR / BDR, Services, SI & Staffing Seller, Partnerships & Alliances
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. hsbc.com); Persona (e.g. Head of the India technology centre); What I sell (e.g. managed workplace and IT services for new delivery centres); Business function (optional) (e.g. IT (default)); Location (optional) (e.g. Bengaluru)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter for expansion and new-site triggers. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. hsbc.com]
+- Persona: [who reads it, e.g. Head of the India technology centre]
+- What I sell: [one line, e.g. managed workplace and IT services for new delivery centres — skip if you ran the start-here prompt]
+- Business function (optional): [default IT, e.g. IT or ER&D (engineering and R&D)]
+- Location (optional): [metro to focus on, e.g. Bengaluru]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull 6 months of centre-setup and expansion news, newest first, 10 items (only [Location] if given). Keep new centres, leases, hubs and capacity growth; drop store openings and partner facilities. Fact-check stated scale. If nothing qualifies, widen to 12 months.
+3. Pull the top 8 locations for [Business function]: approximate headcount, 12-month postings, growth index, tags.
+4. For the chosen location, pull the top 5 workloads in its postings over 12 months, with trend, and up to 3 [Business function] priorities they support (or say none fits).
+5. Pick the announced site with rising postings.
+6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Email: subject (6 words max) and body (100 words max): the announcement and its date; what the site will do (from postings) as a question; one offer tied to standing it up; one ask.
+- LinkedIn note: under 300 characters.
+- Table "Site signals" (newest first): Date | Location | What was announced | Scale stated | Fact check.
+- Table "What they're staffing it for" (top 5): Workload | Postings | Trend | Likely owner.
+- Detail: footprint check (Metro | Approx. headcount | Postings | Growth index | Tag); sources; linked priority; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Quote announced scale only if Confirmed, as the source states it; never quote Draup headcount in copy.
+- A headquarters move is a relocation, not new demand, unless the source says capacity grows. If the site shows no postings, say so and lower confidence.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Site headcount is approximate and centre tags can include plants; lean on postings. A "New Site" tag is inferred from postings.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named reader, a dated announcement). Find [Company]'s new-site news from 6 months, fact-check the scale, check local postings, and write a 100-word email to a [Persona] on what it's staffed for.
+```
+
+### Follow-ups
+
+- Who leads [Business function] in [Location]? Show up to 5 people with full titles.
+- Which service providers already deliver from [Location] for this account?
+- Write a version for a facilities or workplace leader instead of [Persona].
+- Find a second source for the stated scale so I can quote it.
+
+### Tips
+
+- A lease or opening plus rising local postings is a much stronger trigger than either alone.
+- Selling services to capability centres? Run the capability-centre services prompt next for build-operate-transfer and centre-of-excellence angles.
+
+## Email on a hiring surge
+
+- **id:** `outreach-hiring-surge`
+- **What you get:** Which function is hiring above its own normal, the workloads and roles driving it, a named reader, and a 100-word email on the capability the surge is building, with no counting of their job ads in the copy.
+- **Use it when:** An account is posting more jobs than usual in a function you sell into and you want to reach out while the team and its budget are taking shape.
+- **Best for:** SDR / BDR, Account Executive, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. delta.com); Persona (e.g. VP Commercial Strategy); What I sell (e.g. sales enablement and CRM services); Business function (optional) (e.g. Sales & Marketing)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter for hiring-led triggers. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. delta.com]
+- Persona: [who reads it, e.g. VP Commercial Strategy]
+- What I sell: [one line, e.g. sales enablement and CRM services — skip if you ran the start-here prompt]
+- Business function (optional): [e.g. Sales & Marketing]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull 12 months of job postings by function: top 6, each with last 5 full months vs the 5 before and any "Trending Up" label. Use [Business function], else the function closest to [What I sell], else the biggest riser that fits.
+3. In that function, pull the top 5 workloads with trend and the 4 newest postings: title, date, location, work type and a responsibility hinting at a new team or programme.
+4. Pull up to 4 priorities in that function and pick the one the hiring most plausibly supports.
+5. Label it Surge (over 25% up, editable default), Rising (10 to 25%), Flat, or Seasonal (a one-month spike); write copy only for Surge or Rising.
+6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact. Also pull the most important news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Email: subject (6 words max) and body (100 words max): the capability being built, in general terms from public job ads ("building out a media sales team"); a question on ramping it; one offer; one ask.
+- Table "Functions" (top 6): Function | Postings (12 months) | Last 5 vs prior 5 (%) | Label.
+- Table "What's driving it" (top 5): Workload | Postings | Recent months.
+- Detail: newest roles (Date | Title | Location | Work type | Hint); linked priority (Draup's words, source, quarter); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Never quote posting counts or percentages in the copy; describe the team being built.
+- If over half the newest roles are contract, say it may signal staff augmentation. If no function is Surge or Rising, say so and suggest a priority-led message instead.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Postings are openings, not hires. The monthly series has partial first and last months; compare the last 5 full months with the 5 before.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named reader, a dated why-now). Find where [Company]'s postings near [What I sell] rose most (last 5 full months vs 5 before), show what drives it, and write a 100-word [Persona] email.
+```
+
+### Follow-ups
+
+- Show the metros where this function's postings are rising fastest.
+- Who leads this function at [Company]? List up to 5 with full titles.
+- Write a version for a services firm offering to staff part of the build-out.
+- Is there a news item or priority that explains the surge?
+
+### Tips
+
+- Read the newest postings' responsibilities: they often name the new programme the surge is for.
+- Partial first and last months distort the trend; the 5-versus-5 full-month comparison avoids that.
+
+## Email on a new or rival tool
+
+- **id:** `outreach-new-technology`
+- **What you get:** Whether a technology or rival product is really in use at the account, how central it is (rated Red, Amber or Green if it's a competitor), where it shows up in public job ads, the priority it links to, and a 100-word email that never reveals stack tracking.
+- **Use it when:** You've heard an account adopted a technology, or a competitor's product turned up there, and you want a timely, credible message: a complement, displace or integrate play.
+- **Best for:** Account Executive, SDR / BDR, Presales & Solutions, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. intel.com); Technology or competitor (e.g. Databricks); Play (e.g. complement (or displace, or integrate)); Persona (e.g. Director of Data Engineering); What I sell (e.g. data observability software)
+
+### Detailed prompt
+
+```text
+Act as my technical outbound copywriter. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. intel.com]
+- Technology or competitor: [product or vendor, e.g. Databricks]
+- Play: [complement, displace or integrate]
+- Persona: [who reads it, e.g. Director of Data Engineering]
+- What I sell: [one line, e.g. data observability software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Check the whole stack for products by [Technology or competitor]: category, usage strength, first and last evidence. Mark each Active (seen in 6 months) or Fading, and New if first seen in 12 months; rate competitors.
+3. If [Company] makes or owns a product in the same category, say a displace play is unlikely.
+4. Pull the 3 newest job postings naming the tool (title, date, what the team does with it) and the 12-month count.
+5. Pull up to 3 priorities in the tool's workload and judge the [Play] opening: complement (Active, central), displace (Low or Fading), integrate (New, and priorities mention connecting systems).
+6. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact. Also pull the most important news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- Verdict: the [Play] opening as Strong, Moderate or Weak, with one reason.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Email: subject (6 words max) and body (100 words max): the team or programme from the job ads; a question tied to the priority; one offer for [Play]; one ask. Name the tool only if it appears in their public job ads.
+- Table "In the stack": Product | Usage strength | Last seen | Status | Rating.
+- Detail: job ads with the 12-month count; linked priority (Draup's words, source, quarter); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- "First seen" is Draup's first public evidence, not a contract date; never write "you just bought".
+- Never disparage the tool or its maker. If it isn't in the stack or job ads, say so and stop before writing.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Search by maker, whatever area products are filed under; for very broad makers (Microsoft, Google, Amazon), also name the category.
+- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- If [Company] sells technology itself, skip priorities about products it sells.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (a named reader, a dated why-now). Check [Company]'s stack for [Technology or competitor] with usage strength and rating; count job ads naming it; link a priority; write a 100-word [Play] email to a [Persona].
+```
+
+### Follow-ups
+
+- Which other tools appear next to [Technology or competitor] in the same job ads?
+- Who owns this area at [Company]? Show up to 5 people with full titles.
+- Rewrite the email for the integrate play, aimed at an enterprise architect.
+- Run the competitor check for a second vendor in the same category.
+
+### Tips
+
+- Job ads are public, so they're the safest way to mention a tool in an email.
+- A tool with High usage and recent evidence is usually central: lead with a complement or integration angle rather than a rip-and-replace.
+- If the account makes its own tool in the same category, the verdict will say so; a displace pitch rarely lands there.
+
+## Cold-call opener, talk track, objections
+
+- **id:** `outreach-cold-call`
+- **What you get:** A 10-second opener, a 60-second talk track and three objection replies for one named person, each built on a fact-checked public fact or stated priority, plus three discovery questions.
+- **Use it when:** You're about to cold-call a named prospect and want a reason to call that is specific to this account, not a generic pitch.
+- **Best for:** SDR / BDR, Account Executive
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. lowes.com); Persona (e.g. VP Supply Chain Planning); What I sell (e.g. supply-chain planning software); Business function (optional) (e.g. Supply Chain); Competitor (optional) (e.g. Blue Yonder)
+
+### Detailed prompt
+
+```text
+Act as my cold-calling coach. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. lowes.com]
+- Persona: [who you're calling, e.g. VP Supply Chain Planning]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Business function (optional): [the persona's function, e.g. Supply Chain; blank uses the one closest to what I sell]
+- Competitor (optional): [company or product, e.g. Blue Yonder]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the account's top-ranked news from the last 90 days and keep the 2 items most relevant to [Business function] where [Company] is the actor. Fact-check each.
+3. Pull up to 4 [Business function] priorities with source, quarter and linked tools.
+4. If I named a competitor, check the whole stack for products by its maker, whatever area they're filed under: usage strength, last seen and rating.
+5. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact. That person is who I call.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Opener (25 words max): who you are, the specific public reason for the call, and a permission question.
+- Talk track (150 words max, about 60 seconds): the reason for calling; the problem it creates for someone in [Persona]'s seat, as a question; how [What I sell] helps, in one line; the ask (20 minutes, two time options).
+- Objection replies (40 words max each) to "We already have [tool]", "Not a priority right now" and "Just send me an email": acknowledge, use one account fact, end with a question.
+- Discovery questions: 3, each tied to a priority.
+- Table "Reasons to call" (2 or 3, newest first): Date | Fact | Source | Fact check.
+- Detail (prep, not to say): linked tools and competitor products with rating; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Never name an installed tool unless it appears in public job ads or announcements, claim to know internal plans, or invent peer statistics.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Rating: an installed competitor product with High usage in the workloads of What I sell is Red, Medium is Amber, else Green. Newly detected (first seen within 12 months) is a separate Amber signal.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (who to call, named, and why today). From 2 confirmed public facts and [Company]'s priorities, write a 25-word opener, a 150-word talk track, three objection replies and three discovery questions for a [Persona].
+```
+
+### Follow-ups
+
+- Write the voicemail I leave if they don't pick up, and a matching follow-up email.
+- Give me two more objection replies: "We're mid-contract" and "Talk to procurement".
+- Rewrite the talk track for a services seller offering a managed service.
+- Who should I call second if this person doesn't pick up?
+
+### Tips
+
+- Lead with the newest confirmed fact; anything older than a quarter sounds like research, not a reason to call.
+- If the company reports on a fiscal year that runs ahead of the calendar, say "on your latest earnings call" rather than naming a quarter.
+
+## LinkedIn note and InMail to an executive
+
+- **id:** `outreach-linkedin-exec`
+- **What you get:** A confirmed profile for one named executive, a 300-character connection note with no pitch, a 110-word InMail tied to a stated priority in their remit, and a short message for after they accept.
+- **Use it when:** You have one senior person to reach on LinkedIn and want a note that gets accepted and an InMail that gets read.
+- **Best for:** SDR / BDR, Account Executive, Account & Customer Success Manager, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. cisco.com); Executive (e.g. Global Head of Enterprise Applications, IT); What I sell (e.g. AI-assisted quoting software); Business function (optional) (e.g. IT); Shared ground (optional) (e.g. we both spoke at the same industry event)
+
+### Detailed prompt
+
+```text
+Act as my social-selling copywriter. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. cisco.com]
+- Executive: [name and/or title, e.g. Global Head of Enterprise Applications, IT]
+- What I sell: [one line, e.g. AI-assisted quoting software — skip if you ran the start-here prompt]
+- Business function (optional): [e.g. IT; blank uses the one closest to what I sell]
+- Shared ground (optional): [a real, permitted connection, e.g. we both spoke at the same industry event]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Find the executive: pull key executives in [Business function], 10 per page, up to 3 pages, and match by name or full profile title. If not found, show the 5 closest titles and ask which to use. Record full title, location, function and workloads.
+3. Pull up to 6 [Business function] priorities, newest quarter first, and keep the one closest to the executive's remit.
+4. Pull the account's top-ranked news from the last 90 days where [Company] is the actor and keep one item that touches the remit, if any. Fact-check it.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Connection note: 300 characters max including spaces, no pitch, no link; mention [Shared ground] only if I gave it.
+- InMail: subject (6 words max) and body (110 words max): the priority or news as context; a question about their remit; one line on [What I sell]; one ask.
+- After they accept (60 words max): thanks in a few words, one useful resource, no meeting ask.
+- Table "Who": Name | Full title | Location | Workloads | Pages checked.
+- Detail: the hook (priority in Draup's words, source, quarter; news item, date, source); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Never mention tenure, schools, past employers, skills or anything else from the profile unless it is [Shared ground].
+- If the person can't be found, don't write to a guessed person; ask me.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Use each person's full profile title, not the seniority label. In banking and consulting VP and SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level.
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
+- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 380 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first. Find [Executive] at [Company], confirm the full title, match a stated priority and a confirmed 90-day news item, then write a 300-character note, a 110-word InMail and a 60-word post-accept message.
+```
+
+### Follow-ups
+
+- Write a second InMail for day 7 on a different priority.
+- Draft a comment I could leave on a company post about this priority.
+- Find two peers of [Executive] in the same function for a parallel thread.
+- Turn the InMail into a 70-word email for the same person.
+
+### Tips
+
+- Draup has no name search for executives, so give the full title as well as the name; it makes the match much faster.
+- Notes with no pitch are often accepted more readily; save the ask for the InMail or the post-accept message.
+
+## Voicemail script plus follow-up email
+
+- **id:** `outreach-voicemail`
+- **What you get:** A 25-second voicemail for a named person built on one confirmed public fact, the matching same-day follow-up email, and a shorter second voicemail for day 4.
+- **Use it when:** You call senior buyers who rarely pick up and want the voicemail and email to work as one touch.
+- **Best for:** SDR / BDR, Account Executive
+- **Time:** 1–2 min
+- **Inputs:** Company (e.g. target.com); Persona (e.g. VP Store Operations); What I sell (e.g. workforce scheduling software); Me (e.g. [Your name], Northwind Data Services); Priority theme (optional) (e.g. store teams)
+
+### Detailed prompt
+
+```text
+Act as my phone-outreach copywriter. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Persona: [who you're calling, e.g. VP Store Operations]
+- What I sell: [one line, e.g. workforce scheduling software — skip if you ran the start-here prompt]
+- Me: [your name and firm, e.g. [Your name], Northwind Data Services]
+- Priority theme (optional): [a word or two to find the right priority, e.g. store teams]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull news about [Company] for the last 60 days, newest first, 8 items: deals and partnerships, executive moves, expansion, M&A, investment plans and layoffs. Keep items where [Company] is the actor; drop items where its name is an ordinary word or belongs to another firm. Fact-check each.
+3. Pull up to 3 priorities whose names match [Priority theme]; if none (or no theme), take the 3 newest in the persona's function.
+4. Pick one Confirmed fact and one priority that connect.
+5. Pull the top 3 executives in [Persona]'s function (full profile titles; flag subsidiaries) and pick the likeliest contact.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Voicemail 1 (60 words max, about 25 seconds): name and firm; the fact; one question tied to the priority; callback ask; "I'll send a short note too"; name and number said slowly at the end as [phone].
+- Follow-up email (same day): subject (6 words max) and body (80 words max): one line referencing the voicemail; the same fact; the question; one ask with a yes-or-no reply option.
+- Voicemail 2 (day 4, 40 words max): a different fact or priority, same callback ask.
+- Table "Facts used": Date | Fact | Source | Fact check.
+- Detail: priority used (Draup's words, source, quarter); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Spell out numbers the way you'd say them ("five to six billion") in the scripts.
+- Never leave pricing, competitor names or anything confidential on a voicemail.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 380 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (who to call, named, and why now). From one confirmed 60-day fact and one [Company] priority, write a 60-word voicemail, an 80-word follow-up email and a 40-word day-4 voicemail for a [Persona].
+```
+
+### Follow-ups
+
+- Write a 3-touch call-email-call cadence for the next 10 days.
+- Rewrite voicemail 1 for the persona's boss.
+- Give me a 15-second version for a mobile number.
+- Swap in a different confirmed fact for voicemail 2.
+
+### Tips
+
+- Read the script aloud once; if it runs past 30 seconds, cut the value line, not the fact.
+- Common words in company names can pull in unrelated news; the actor check in step 2 catches most of it.
+
+## Emails to three buyers at one account
+
+- **id:** `outreach-multithread`
+- **What you get:** A thread map for one account (economic buyer, technical buyer and champion), each named from Draup and tied to a different stated priority, with two fact-checked emails per person and a staggered send plan.
+- **Use it when:** A deal depends on more than one person and you want to open three conversations at once without sending the same email three times.
+- **Best for:** Account Executive, SDR / BDR, Account & Customer Success Manager, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. siemens.com); What I sell (e.g. supply-chain planning software); Personas (optional) (e.g. CFO, Head of Supply Chain IT, SVP Supply Chain Planning); Proof point (optional) (e.g. cut planning cycle time at Fabrikam Foods)
+
+### Detailed prompt
+
+```text
+Act as my account-based sequencing strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. siemens.com]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Personas (optional): [three titles, e.g. CFO, Head of Supply Chain IT, SVP Supply Chain Planning; blank and I'll suggest them]
+- Proof point (optional): [a result I may quote, e.g. cut planning cycle time at Fabrikam Foods]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the account's key priorities grouped by function in one pass (up to 3 per function).
+3. Give each persona a distinct priority: Economic buyer (Finance or Management & Strategy), Technical buyer (IT or the function's systems), Champion (the operating function closest to [What I sell]). Use my titles if given.
+4. For each persona's function, pull 5 key executives and pick the likeliest by full profile title; drop titles that don't fit and flag subsidiaries. If no economic buyer appears, search once more for Chief, EVP or CIO titles.
+5. Pull top-ranked news from the last 90 days; keep one Confirmed item all three threads can use (the account must be the actor).
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for. Start with the champion.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Per persona: Email 1 (subject 6 words max, body 90 words max) on that persona's priority; Email 2 (day 4, 50 words max) on the shared news item or a second fact; same single ask in both.
+- Table "Thread map": Persona | Name | Full title | Priority (quarter) | Angle in one line.
+- Send plan: champion day 1, technical buyer day 3, economic buyer day 6, and what to do if one replies.
+- Detail: priorities in Draup's words with source; "Roles with no clear person" (titles to look for); Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Never reuse a paragraph across threads. Never write "I've also contacted your colleagues" or CC anyone. Buyer roles are candidates, labelled "likely".
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Use each person's full profile title, not the seniority label. In banking and consulting VP and SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level.
+- If [Company] sells technology itself, ignore its own products and priorities about products it sells.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
+- Professional information only (name, title, employer, Draup's profile link). No personal contact details.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first (who to email first, named). Give [Company]'s economic buyer, technical buyer and champion each a different priority, name a person for each, and write two emails each with a staggered send plan.
+```
+
+### Follow-ups
+
+- Add a fourth thread for procurement, tied to a sourcing priority.
+- Write a LinkedIn connection note for each of the three people.
+- One of them replied positively; draft the internal-champion brief I should send them.
+- Swap the economic buyer for the CIO and rewrite that thread.
+
+### Tips
+
+- The grouped-priorities view covers every function in one pass, so you can see at a glance which leaders share an agenda.
+- In conglomerates, executive lists often include business-unit heads under a shared function tag; check the full title before you pick.
+
+## Re-engage a stalled or ghosted account
+
+- **id:** `outreach-reengage`
+- **What you get:** A dated, fact-checked list of what changed since your last contact, a reopen-or-wait call, a re-engagement email built on the change, a polite break-up email, and a version for a new person if one appeared.
+- **Use it when:** A deal or conversation went quiet weeks or months ago and you want a reason to re-open that isn't "just checking in". For a fuller account review, use "What changed since [Date]".
+- **Best for:** Account Executive, Account & Customer Success Manager, SDR / BDR
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. pfizer.com); Last contact date (e.g. 2026-06-01); What we discussed (e.g. an AI pilot for R&D data); Contact title (e.g. Head of R&D Data); What I sell (e.g. AI data platform services); Workload or function (optional) (e.g. Artificial Intelligence & Data Science)
+
+### Detailed prompt
+
+```text
+Act as my deal re-engagement strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. pfizer.com]
+- Last contact date: [e.g. 2026-06-01]
+- What we discussed: [one line, e.g. an AI pilot for R&D data]
+- Contact title: [the person who went quiet, e.g. Head of R&D Data]
+- What I sell: [one line, e.g. AI data platform services — skip if you ran the start-here prompt]
+- Workload or function (optional): [e.g. Artificial Intelligence & Data Science; blank uses the one closest to what I sell]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull news since [Last contact date], newest first, 10 items: executive moves, M&A, partnerships, expansion, layoffs. Flag leadership changes in or above [Contact title]'s area. Fact-check each.
+3. Pull up to 3 priorities in [Workload or function]; mark those sourced after [Last contact date].
+4. Compare average monthly postings in [Workload or function], full months before vs after [Last contact date].
+5. Pull the top 3 executives in the function now and check whether [Contact title] is still there.
+6. Pick the one or two changes most relevant to [What we discussed] and decide: Reopen now (a change touches the topic), Reopen via new person (a new leader owns it), or Wait (nothing material; set a date).
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell]. Start with the verdict and one dated reason.
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Re-engagement email: subject (6 words max) and body (90 words max): the change; one clause recalling [What we discussed]; a question on whether it changes their thinking; one small ask.
+- Break-up email (60 words max): a polite close that asks permission ("shall I close this out for now?").
+- New-person version (70 words max), only if a new leader appeared.
+- Table "What changed" (newest first): Date | Change | Type | Relevance | Fact check.
+- Detail: sources; hiring before and after; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- No guilt or pressure: never "I've tried several times", "just checking in" or "did you get my email".
+- Pose hiring shifts as a question, never a claim, and without counts.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Hiring, new-technology and news data cover the last 12 months; if my date is older, cover the last 12 months and say so.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line first (reopen now, reopen via a new person, or wait) and the next step with a named person. List confirmed changes at [Company] since [Last contact date], then write a 90-word re-engagement email and a 60-word break-up email.
+```
+
+### Follow-ups
+
+- Write a LinkedIn message for the new leader instead of an email.
+- If they reply "not now", draft a 2-line response and a reminder for 90 days.
+- Run the same check for my other stalled accounts: [websites].
+- Find a second source for the top change so I can name it in the email.
+
+### Tips
+
+- The break-up email works best after one re-engagement attempt; send it about a week later.
+- A new leader in the buyer's chain is often the strongest reason to reopen, and a reason to write to both people.
+
+## One-page brief before a C-level meeting
+
+- **id:** `outreach-exec-briefing`
+- **What you get:** A one-page, send-ahead briefing note for a C-level meeting (what you understand they're working on, what you'll bring, a 30-minute agenda and two questions), built only on confirmed facts, with a cover email and a private prep sheet of sensitivities.
+- **Use it when:** You have a meeting booked with a C-level executive and want to send a short note 24 to 48 hours ahead that shows you've done the work.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. unilever.com); Executive title (e.g. Chief Digital and Marketing Officer); Meeting purpose (e.g. first meeting on creator-marketing measurement); What I sell (e.g. marketing mix and attribution analytics); Business function (optional) (e.g. Sales & Marketing); Proof point (optional) (e.g. improved media ROI for Contoso Retail)
+
+### Detailed prompt
+
+```text
+Act as my executive-briefing writer. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. unilever.com]
+- Executive title: [e.g. Chief Digital and Marketing Officer]
+- Meeting purpose: [one line, e.g. first meeting on creator-marketing measurement]
+- What I sell: [one line, e.g. marketing mix and attribution analytics — skip if you ran the start-here prompt]
+- Business function (optional): [e.g. Sales & Marketing; blank uses the executive's function]
+- Proof point (optional): [a result I may quote, e.g. improved media ROI for Contoso Retail]
+
+STEPS
+1. Find [Company] by website (exact match) and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. Pull the latest financial snapshot: revenue and EBITDA with year-on-year growth and fiscal year.
+3. Pull news about [Company] for the last 90 days, newest first, 8 items: deals, executive moves, M&A, investment, expansion, layoffs. Check each item's content matches its category; set aside divestments, cuts and disputes as sensitivities. Fact-check the rest.
+4. Pull up to 4 [Business function] priorities, newest quarter first.
+5. Pull the top 3 executives in the function and confirm who holds [Executive title] (full profile title).
+6. Choose the 3 Confirmed points most relevant to [Meeting purpose] and build the note.
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Recommended next step: who (name and full title), what (call, email, intro or meeting) and why now (one dated fact). If Draup has neither, say so and name the title to look for.
+- "Check before sending" (directly above the copy): any fact the copy leans on that is single-source or disputed, and what to verify; or "none".
+- Briefing note (350 words max), ready to send: title line; "Why we're meeting" (1 sentence); "What we understand you're working on" (3 bullets, each with a public source and date); "What we'll bring" (3 bullets, no claims beyond [Proof point]); "Proposed agenda" (30 minutes, 3 items with minutes); "Two questions we'd value your view on".
+- Cover email: 60 words max, one ask (confirm the agenda or add to it).
+- Detail (prep sheet, not to send): Metric | Fiscal year | Value | Year-on-year; recent news with dates and sources; "Don't raise unless they do" (sensitive items) and why; Gaps (what Draup lacked, to ask in discovery).
+
+RULES
+- Use financials only as private context; never describe results as weak or declining in the note.
+- Quote priorities in the company's own words where possible; don't present Draup's summaries as their quotes.
+- Copy: one ask; no flattery, "I noticed", hype, exclamation marks or fiscal quarters; pose links to their plans as questions; cite only public sources (announcements, news, earnings calls, job ads), never Draup or how you found them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory. If a name returns nothing, retry once with Draup's spelling.
+- Financials come in the reporting currency, in millions, with Draup's conversion rate; convert to US dollars only when comparing or when I ask.
+- News: [Company] must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes, sister companies and re-dated old stories; keep incidents or regulatory items that bear on What I sell. Give source and headline per item.
+- Fact check: tag each fact Confirmed (company announcement, filing or 2+ independent sources), Single source or Conflicting; keep single-source numbers and disputed names or dates out of the copy.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Phone-first: bottom line, next step and copy first; at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first. Build a send-ahead one-page note for a [Executive title] at [Company]: 3 confirmed, dated things they're working on, what we'll bring, a 30-minute agenda, two questions, a 60-word cover email and private sensitivities.
+```
+
+### Follow-ups
+
+- Turn the note into a 3-slide opening deck for the meeting.
+- Write the follow-up email I'll send after the meeting, leaving blanks for what they said.
+- Add a short section on what two peers are doing on the same priority.
+- Who else from their team should I invite, by name and title?
+
+### Tips
+
+- Send the note 24 to 48 hours ahead; it often gets forwarded to the people the executive wants in the room.
+- Keep the sensitivities list handy: a divestment or reorganisation is often on the executive's mind even if it's not on your agenda.
+
+
+# Prospecting and target lists
+
+Build, size and qualify target lists from firmographics, tech, hiring and growth.
+
+## Size your ideal-customer list
+
+- **id:** `prospect-icp-list`
+- **What you get:** The true count of companies matching every filter, distributors set aside, and the 5 accounts to start with, each with who to call and a dated why-now.
+- **Use it when:** You are planning a territory, a campaign or next quarter's target list. Use this when industry and size define your list; use "Who's hiring for a tech or role" instead when hiring is the filter.
+- **Best for:** SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Retail); Country (e.g. United States of America); Minimum employees (e.g. 5,000); Technology (optional) (e.g. Snowflake); Rank by (optional) (e.g. Opportunity Index (default), revenue or workforce); What I sell (e.g. data observability software)
+
+### Detailed prompt
+
+```text
+Act as my sales operations analyst building a target account list. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Retail]
+- Country: [HQ country in full, e.g. United States of America]
+- Minimum employees: [e.g. 5,000]
+- Technology (optional): [a product they must run, e.g. Snowflake]
+- Rank by (optional): [Opportunity Index (Draup's 0–10 account-attractiveness score), revenue or workforce; default Opportunity Index, which surfaces reachable mid-size accounts]
+- What I sell: [one line, e.g. data observability software — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical, country and technology to Draup's names and show them.
+2. Count: list companies with primary vertical [Vertical], HQ in [Country], at least [Minimum employees] staff and, if given, [Technology] in their stack. Use the short company view (up to 100 rows a page) so every match is counted; that is the true total. Run it once with the size limit set below the minimum and once with no size limit; what's left over is the number lacking a workforce figure.
+3. Flag intermediaries: distributors, wholesalers and resellers (sub-vertical Wholesale Distribution & B2B Supply, or a description that says so), insurance brokers, and holding or private-equity firms. Set them aside from the ranking by default and say how many.
+4. Rank the rest by [Rank by] and pull full rows for the top 10: workforce, revenue, postings (90 days), service providers.
+5. For the 5 best fits: confirm [Technology] with its usage strength (High, Medium or Low) and last-seen date, and pull the most important news item from the last 90 days where the company is the actor.
+6. For the #1 account: the top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — the true count with every filter applied, and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Where to start" (5 rows): Company | Why it fits | Why now (dated, or "none in 90 days") | [Technology] usage.
+- "Top 10": Rank | Company | Workforce | Postings (90 days) | Flag.
+- Count line: "N companies match every filter; X intermediaries set aside; Y more lack a workforce figure. Include them?"
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: revenue ($M, FY), Draup-estimated IT spend and 3 providers for the top 10; the intermediaries list.
+
+RULES
+- If the count runs past 300, report "300+" rather than guessing.
+- Low [Technology] usage means present, not standard; say so.
+- Flag "check revenue" above $5M revenue per employee (often gross trading revenue) and "check vertical" when a description doesn't fit.
+- IT spend is a Draup estimate, often modelled from revenue; never rank on it.
+- Professional information only; no personal contact details.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line first: how many [Vertical] companies HQ'd in [Country] with [Minimum employees]+ staff (running [Technology]) match every filter, distributors set aside. Then the 5 to start with, each with a dated why-now, and who to call first.
+```
+
+### Follow-ups
+
+- Show the companies with no workforce figure, largest revenue first.
+- Put the distributors back and re-rank by revenue.
+- Tier the top 10 by propensity to buy [What I sell].
+- Write a 70-word opener for the #1 account built on its why-now.
+
+### Tips
+
+- The default ranking (Opportunity Index, distributors set aside) surfaces mid-size accounts your AEs may not own yet. Rank by revenue when you want the biggest logos.
+- Low usage of the required technology often means a pocket, not the main platform. Ask about it in discovery.
+- Size filters drop companies with no workforce figure, often big private firms. The count line tells you how many.
+
+## Who's hiring for a tech or role
+
+- **id:** `prospect-hiring-led-list`
+- **What you get:** The end employers posting most for a technology or buyer role, cleaned of job boards and staffing firms, with hiring per 1,000 staff, who to call and a dated why-now.
+- **Use it when:** You sell around a technology or to a persona and want accounts actively building in that area. Use this when hiring is the filter; use "Size your ideal-customer list" instead when industry and size define the list.
+- **Best for:** SDR / BDR, Account Executive, Services, SI & Staffing Seller, Marketing & ABM
+- **Time:** 2–4 min
+- **Inputs:** Technology or Role (e.g. Snowflake (or: Head of Data Platform)); Country (e.g. United States of America); Vendor to exclude (optional) (e.g. Snowflake Inc.); What I sell (e.g. data-platform migration services)
+
+### Detailed prompt
+
+```text
+Act as my pipeline research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Technology or Role: [a product, e.g. Snowflake, or a job title, e.g. Head of Data Platform]
+- Country: [in full, e.g. United States of America]
+- Vendor to exclude (optional): [the maker, or my own company, e.g. Snowflake Inc.]
+- What I sell: [one line, e.g. data-platform migration services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the technology (or role) and country to Draup's names; show them.
+2. Technology: filter postings by that product. If the top company has under 30 postings (editable), also run a keyword search and say which you used. Role: list the title variants Draup sees and keep only the same seat (drop recruiter and junior variants).
+3. Pull the top 40 companies by postings in [Country], last 12 months, excluding staffing firms and job boards.
+4. Remove [Vendor to exclude] and its subsidiaries and unnamed rows; record each. Move IT-services and consulting firms to a separate "Partners hiring" list.
+5. Look up the top 10 end employers in one company list by exact name: workforce and primary industry. Work out postings per 1,000 employees.
+6. For the top 3 by postings per 1,000: the most important news item from the last 90 days where the company is the actor. For the #1: its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — where demand is and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "End employers hiring" (top 10): Rank | Company | Postings (12 months) | Per 1,000 staff | Why now (dated).
+- "Partners hiring" (top 5): Company | Postings — co-sell partner or competitor.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: industries driving demand (Industry | Postings | Share %); the "Removed" list with reasons.
+
+RULES
+- Label tables with country, window and filter (product or keyword).
+- Raw postings reward size: show per-1,000 beside every count; write "n/a" when workforce is missing.
+- A posting count above the company's workforce means a failed match; say so and drop it.
+- Postings are openings, not hires. Professional information only.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: which end employers posted most [Technology or Role] jobs in [Country] in 12 months? Top 10 after removing job boards, staffing firms and the vendor, with postings per 1,000 staff and who to call.
+```
+
+### Follow-ups
+
+- For the top 5 employers, show 3 recent postings each with title, date, location and key responsibilities.
+- Which of these employers show [Technology] in their tech stack, with usage strength and last-seen date?
+- Draft a 70-word opener for the #1 employer that cites its hiring.
+
+### Tips
+
+- Postings per 1,000 staff often reorders the list: a mid-size company hiring hard beats a giant's routine backfill.
+- IT-services firms hiring for a technology are building a practice. Treat them as partner or competitor leads, not end customers.
+
+## Find look-alikes of your best customer
+
+- **id:** `prospect-lookalikes`
+- **What you get:** Up to 20 companies that look like your best customer on industry, size, HQ and shared technology, each with the reason it matches, plus who to call first and why now.
+- **Use it when:** You have a strong reference customer and want more accounts like it.
+- **Best for:** SDR / BDR, Account Executive, Marketing & ABM, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. your best customer's website (e.g. contoso.com, illustrative)); Key products to match (optional) (e.g. SAP, Blue Yonder); What I sell (e.g. retail demand-forecasting software)
+
+### Detailed prompt
+
+```text
+Act as my account-targeting analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [best customer's website, e.g. contoso.com (illustrative)]
+- Key products to match (optional): [e.g. SAP, Blue Yonder]
+- What I sell: [one line, e.g. retail demand-forecasting software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. Use Draup's exact name from then on.
+2. Profile it: primary vertical, HQ country, workforce, revenue. With no key products given, pick its 5 products most relevant to [What I sell], skipping office, browser and chat tools.
+3. Start with Draup's listed competitors; keep those in the same business at 0.3–3x its workforce (editable) and record removals.
+4. Widen: same primary vertical and HQ country, 0.3–3x workforce, listing only companies whose stack includes the key products and showing which ones. Match by product or vendor, not category. Sort by Opportunity Index (Draup's 0–10 account-attractiveness score). Stop at 20.
+5. For the best 5: the most important news item from the last 90 days where the company is the actor. For the #1: its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — how many real look-alikes exist and what that means for [What I sell].
+- Recommended next step: a named person (name and full title from step 5), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Best 5 to start with": Company | Why similar | Shared key products | Why now (dated).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: one line with the customer profile used; the full list (Company | Workforce | Revenue ($M, FY) | Shared products | Listed competitor? | Flag); removals.
+
+RULES
+- Never include the customer, its subsidiaries or sister companies.
+- If fewer than 20 fit, name the criterion you loosened; never loosen silently.
+- If I've named competitors (here or in my setup), check the best 5's whole stack for their products: High usage = Red, Medium = Amber, first seen in the last 12 months = Amber (newly detected).
+- Size filters drop companies with no workforce figure; say how many and offer to include them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: find up to 20 look-alikes of [Company] (same industry and HQ country, 0.3–3x its size, sharing its key products), say why each matches, and name who to call at the best one.
+```
+
+### Follow-ups
+
+- Write a reference-style opener for each of the best 5 without naming [Company].
+- Who owns [Business function] at the top 3? Names and full titles.
+- Show the next 10 look-alikes.
+
+### Tips
+
+- Naming 2 or 3 key products gives tighter matches than letting Claude pick.
+- Use the website rather than the name; it is the most reliable way to land on the right company.
+
+## Benchmark an account against its peers
+
+- **id:** `prospect-peer-benchmark`
+- **What you get:** How an account compares with its closest peers on growth, hiring in what you sell, your competitors in the stack and recent news, with discovery questions and who to call.
+- **Use it when:** You want peer context for a meeting, a QBR or a leadership review, scored on what you sell rather than generic size.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Marketing & ABM, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. delta.com); Peer websites (optional) (e.g. united.com, aa.com, southwest.com); What I sell (e.g. airline operations analytics platform)
+
+### Detailed prompt
+
+```text
+Act as my competitive benchmarking analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [account website, e.g. delta.com]
+- Peer websites (optional): [up to 4, e.g. united.com, aa.com, southwest.com]
+- What I sell: [one line, e.g. airline operations analytics platform — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. Use Draup's exact name from then on.
+2. No peers given? Use Draup's listed competitors and keep the 4 closest in business and size. Look everyone up by website and check each came back.
+3. One company list for everyone: revenue and growth, workforce and growth %, attrition %, postings (90 days), Opportunity Index (Draup's 0–10 account-attractiveness score).
+4. Postings in the workloads mapped to What I sell, last 12 months, for all companies in one pass; add postings per 1,000 employees. Name the workloads used.
+5. If I've named competitors (here or in my setup), check each company's whole stack for their products, with usage strength and first- and last-seen dates.
+6. Count distinct material news events in the last 90 days for each and keep the most material ("10+" if the first 10 all qualify).
+7. For [Company]: its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — where [Company] stands on what matters to [What I sell].
+- Recommended next step: a named person (name and full title from step 7), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Benchmark" (up to 8 rows): Metric | [Company] | Peer median | Leader | Read. Rows: revenue growth, workforce growth, postings in my workloads (12 months) and per 1,000, my competitors installed, news events (90 days).
+- "Questions to ask": 3 places it trails, phrased as discovery questions, never "you're behind".
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: the full per-company table (fiscal year beside money); each company's most material event (date, headline, source); competitor products found.
+
+RULES
+- Rate installed competitors: High usage in the workloads I sell into = Red, Medium = Amber; first seen in the last 12 months = Amber (newly detected).
+- Don't compare on IT spend: it is modelled from revenue (about 9% for banks) and adds nothing.
+- Don't compare on Draup's yes/no event flags; count dated events instead.
+- Show USD millions using Draup's conversion rate.
+- If I ask for a slide: 5 bullets + 1 table.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: benchmark [Company] against [Peer websites] (or its 4 closest Draup-listed competitors) on growth, postings in what I sell, my competitors in the stack and 90-day news. Then 3 discovery questions and who to call.
+```
+
+### Follow-ups
+
+- Which products did the peers adopt in the last 12 months that [Company] doesn't run?
+- Turn the questions into a 100-word email to the person in the next step.
+- Add 2 more peers and rerun the benchmark.
+
+### Tips
+
+- Works best with 3 to 4 peers of similar size.
+- Lead with questions, not comparisons. Buyers open up when asked how they see a gap.
+
+## Sell into your customer's competitors
+
+- **id:** `prospect-competitor-set`
+- **What you get:** Your customer's real competitors, ranked, with what happened at each in the last 90 days, a reference angle and a named person to call first.
+- **Use it when:** You just won, or have a strong reference at, a company and want to take the story to its rivals.
+- **Best for:** Account Executive, SDR / BDR, Marketing & ABM, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. your customer's website (e.g. fabrikam.com, illustrative)); Referenceable? (e.g. no); Proof point (optional) (e.g. cut scheduling overtime across its stores); What I sell (e.g. warehouse workforce-scheduling software)
+
+### Detailed prompt
+
+```text
+Act as my account-based marketing analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [customer's website, e.g. fabrikam.com (illustrative)]
+- Referenceable?: [yes or no — may I name them? e.g. no]
+- Proof point (optional): [e.g. cut scheduling overtime across its stores]
+- What I sell: [one line, e.g. warehouse workforce-scheduling software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. Use Draup's exact name from then on.
+2. Pull Draup's listed competitors, ranked by Opportunity Index (Draup's 0–10 account-attractiveness score), with workforce and revenue.
+3. Keep same-primary-vertical companies at 0.3–3x the customer's workforce (editable); record removals. If under 4 remain, add same-vertical, same-HQ-country companies in that range, labelled "added peer".
+4. For the top 5, pull top news from the last 90 days and keep material events: deals, new centres, M&A, senior leadership changes, layoffs, launches that touch [What I sell].
+5. For the #1 target: its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — the best next targets and why, for [What I sell].
+- Recommended next step: a named person (name and full title from step 5), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Top 5": Competitor | Workforce | What happened (date, headline) | Reference angle (our result → their situation).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: full ranked list (Opportunity Index, revenue $M with FY, listed or added); "Removed" with reasons.
+
+RULES
+- If Referenceable? is no, never name [Company]; say "a leading [vertical] peer".
+- Write "No material events in 90 days" rather than padding.
+- Don't compare companies on Draup's yes/no event flags; count dated events.
+- Show USD millions using Draup's conversion rate.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: list [Company]'s real competitors, ranked, with up to 2 material events each from the last 90 days, a reference angle and who to call at the best target.
+```
+
+### Follow-ups
+
+- Write a 3-email sequence for the #1 competitor using the reference angle.
+- Check the whole tech stack of the top 5 for any product that competes with ours.
+- Who owns [Business function] at the top 2? Names and full titles.
+
+### Tips
+
+- Check the Removed list; small or unrelated firms are filtered out there.
+- Ask your customer before naming them. The prompt defaults to an anonymous reference.
+
+## Find the fastest revenue growers
+
+- **id:** `prospect-revenue-growth-screen`
+- **What you get:** The fastest-growing companies by revenue in your segment, with M&A-driven jumps set aside, a shortlist growing both revenue and headcount, and who to call first.
+- **Use it when:** You want accounts with money and momentum, or a growth angle for a campaign.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 2–4 min
+- **Inputs:** Vertical (e.g. Retail); Country (e.g. United States of America); Minimum revenue ($M) (e.g. 1,000); Minimum employees (optional) (e.g. 5,000); What I sell (e.g. e-commerce replatforming services)
+
+### Detailed prompt
+
+```text
+Act as my market research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Retail]
+- Country: [HQ country in full, e.g. United States of America]
+- Minimum revenue ($M): [e.g. 1,000]
+- Minimum employees (optional): [e.g. 5,000]
+- What I sell: [one line, e.g. e-commerce replatforming services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical and country to Draup's names and show them.
+2. List companies with primary vertical [Vertical], HQ in [Country], revenue of at least [Minimum revenue] (and the employee minimum if given). Count them all, then sort by revenue growth and take the top 30.
+3. Mark "M&A-driven?" when growth tops 20% (check acquisitions and M&A news for up to 5), "check vertical" when the description doesn't fit, "stale year" when the fiscal year lags by over a year.
+4. Set those aside; keep the top 10. Add workforce, workforce growth % and postings (90 days).
+5. For the top 3 "growing and hiring": the most important news item from the last 90 days where the company is the actor. For the #1: its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — who is growing fastest and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 5), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Fastest growers" (top 10): Rank | Company | Revenue growth % (FY) | Workforce growth % | Flag.
+- "Growing and hiring": revenue growth over 10% and workforce growth over 0% (editable), one-line angle each.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: revenue ($M, FY), postings (90 days) and Opportunity Index for the top 10; "Set aside" rows and reasons; how many companies had no growth figure.
+
+RULES
+- Growth over 20% is "likely M&A until checked"; say what you found.
+- Before calling a revenue drop of more than 5% a cut, check for a divestment, demerger or restatement.
+- Size filters drop companies with no workforce figure; say how many.
+- Show USD millions using Draup's conversion rate.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: the 10 fastest-growing [Vertical] companies by revenue, HQ in [Country], $[Minimum revenue]M+, with likely M&A jumps set aside, a shortlist also growing headcount, and who to call at the best one.
+```
+
+### Follow-ups
+
+- For the top 5, what are their stated priorities this year?
+- Which of these grew revenue with flat headcount, and what does that suggest?
+- Draft a growth-themed opener for the Growing and hiring companies.
+
+### Tips
+
+- Very high growth often means an acquisition. The prompt sets these aside until checked.
+- Companies report on different fiscal years. Compare growth rates, not raw totals.
+
+## Spot scale-up and cost-out buyers
+
+- **id:** `prospect-growth-and-cost-out`
+- **What you get:** Who in a vertical is adding people fast (scale-up buyers) and who is shrinking (cost-out buyers), with merged or closed companies removed and a named person to call first.
+- **Use it when:** You pitch scale or cost takeout and want companies under growth strain or cost pressure.
+- **Best for:** SDR / BDR, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Banking & Financial Services); Country (optional) (e.g. United States of America); What I sell (e.g. managed IT operations and automation services)
+
+### Detailed prompt
+
+```text
+Act as my market research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Banking & Financial Services]
+- Country (optional): [HQ country in full, e.g. United States of America]
+- What I sell: [one line, e.g. managed IT operations and automation services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical to Draup's name and show it.
+2. Pull Draup's fastest-growing-workforce and biggest-decline lists for the vertical (each a fixed top 50). In the decline list, "attrition" is the % change in workforce.
+3. Keep only [Country] HQs if given. Split each list at 1,000 employees (editable).
+4. For the 10 largest shrinking 1,000+ companies, run one news search (last 12 months) for acquisitions, mergers, closures, bankruptcies, layoffs and restructuring.
+5. Move merged or closed companies to "Absorbed or defunct"; give the rest a dated reason or "no news found".
+6. For the best-fit company on each side: its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — who needs scale, who needs cost-out, and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Growing (1,000+)", top 10: Company | Current workforce | Growth % | Likely buyer title.
+- "Shrinking (1,000+, independent)", top 10: Company | Current | Change % | Likely reason (date).
+- "What to pitch": 2 bullets for growers (scale, enablement), 2 for shrinkers (cost takeout, automation).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: previous workforce figures; smaller companies (names and % only); "Absorbed or defunct" with date.
+
+RULES
+- State Draup's comparison period, or "period not stated".
+- Never call a decline a layoff without a dated news item; don't lead with small companies' huge percentages.
+- If an industry returns zeros, say so, retry with its parent (e.g. Airlines → Transportation & Logistics) and name it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: [Vertical] companies with the fastest workforce growth and the biggest declines (1,000+ staff), with mergers and closures checked, the pitch angle for each side and who to call first.
+```
+
+### Follow-ups
+
+- Check the next 10 shrinking companies the same way.
+- For the top 3 shrinking companies, who runs IT and Finance now?
+- Write a cost-takeout opener for the #1 shrinking company citing its news.
+
+### Tips
+
+- Shrinking lists can include firms that were merged away. Confirm before you call.
+- Percentages for small companies swing widely. Treat them as leads to verify.
+
+## Find startups with real momentum
+
+- **id:** `prospect-startups`
+- **What you get:** The startups in a vertical that Draup scores for momentum, with what they do, funding, hiring, why they'd buy and a named person to contact first.
+- **Use it when:** You sell to high-growth companies, or want early-stage logos before competitors find them.
+- **Best for:** SDR / BDR, Account Executive, Partnerships & Alliances
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Insurance); City (optional) (e.g. London); What I sell (e.g. cloud cost-management software)
+
+### Detailed prompt
+
+```text
+Act as my startup prospecting analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Insurance]
+- City (optional): [e.g. London]
+- What I sell: [one line, e.g. cloud cost-management software — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical and, if given, the city to Draup's metro name (e.g. "Greater London Area, United Kingdom"); show both.
+2. Pull Draup's top startups for the vertical (fixed top 50), limited to that metro if given. Keep only startups with a momentum score, highest first.
+3. Look up the top 10 in one company list, keeping only the same Draup companies: what they do, HQ, workforce growth %, total funding, investors, postings (90 days).
+4. For those 10, pull the last funding round (type, date, amount, lead investor).
+5. For the best fit: its founders or first functional leaders (up to 3) and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — how many momentum startups there are and the best fit for [What I sell].
+- Recommended next step: a named person (name and full title from step 5), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Top 10" (highest momentum first): Startup | What they do | Last round (type, date, $M) | Postings (90 days) | Flag.
+- "Why they'd buy": one line each for the top 5, tied to funding, hiring or stage.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: HQ, workforce growth %, total funding, lead investor and momentum score for all 10; "X startups scored".
+
+RULES
+- Leave out units of large corporations; they aren't startups.
+- Flag "possibly inactive" (zero postings in 90 days, or no revenue and no workforce).
+- If an industry returns zeros, say so, retry with its parent and name it.
+- Stop at 10 and offer the next 10.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: the top 10 [Vertical] startups by Draup's momentum score, with what they do, funding, last round, 90-day postings, why each might buy [What I sell], and who to contact at the best one.
+```
+
+### Follow-ups
+
+- Continue with startups 11 to 20.
+- Which of these raised money in the last 12 months? Show round, amount and date.
+- Draft a 70-word opener for the best fit tied to its last round.
+
+### Tips
+
+- Add a city to focus on your territory.
+- A recent round plus rising job postings is often the best timing signal at a startup.
+
+## Find the biggest logos in your city
+
+- **id:** `prospect-territory-logos`
+- **What you get:** The largest employers in a vertical in one metro, by Draup-estimated local headcount, with global capability centres (GCCs) called out and a named person to call first.
+- **Use it when:** You own a city or metro and want the big local employers to prioritise.
+- **Best for:** Account Executive, SDR / BDR, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 1–2 min
+- **Inputs:** City (e.g. Bengaluru); Vertical (e.g. Banking & Financial Services); What I sell (e.g. GCC talent and operations services)
+
+### Detailed prompt
+
+```text
+Act as my territory planning analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- City: [e.g. Bengaluru]
+- Vertical: [industry, e.g. Banking & Financial Services]
+- What I sell: [one line, e.g. GCC talent and operations services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the city to Draup's metro name (e.g. "Bengaluru Area, India") and the vertical to Draup's name; show both. If the metro returns nothing, try the nearest Draup metro and say which worked.
+2. Pull the top employers in [Vertical] in that metro, ranked by local headcount; take the top 25.
+3. Look them up in one company list and keep only the exact companies: global workforce, HQ country, and whether the metro is one of their GCC locations (a global capability centre is a company-owned offshore or captive site).
+4. Work out local share = local headcount ÷ global workforce. Move IT-services or staffing firms to a separate list unless [Vertical] is IT services.
+5. For the best fit for [What I sell]: its top 3 executives located in [City] in the function closest to What I sell, and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — who the big local logos are and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 5), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Top 10" (largest local headcount first): Company | Local headcount (approx.) | Local share % | Site type (HQ / GCC / Other).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: rows 11–25; global workforce and HQ country for all; "GCCs in [City]"; service firms in the list.
+
+RULES
+- Local headcount is a Draup estimate and can vary between lookups; present it as approximate.
+- A GCC tag can include plants or operations sites; if a site looks like a plant, say so.
+- Look up named companies by website or exact name; "contains" matches pull in look-alikes.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: the 10 biggest [Vertical] employers in [City] by Draup-estimated local headcount, with local share, HQ or GCC site type, and who to call at the best one.
+```
+
+### Follow-ups
+
+- For the top 5 GCCs, which functions are they hiring for in [City]?
+- Who leads the [City] centre at the top 3 companies?
+- Compare [City] with [another city] for the same vertical.
+
+### Tips
+
+- A high local share means the site matters to the company, which often means local decision makers.
+- Use local headcount to rank companies, not to size teams.
+
+## Is this inbound lead worth pursuing?
+
+- **id:** `prospect-inbound-qualification`
+- **What you get:** A fast Pursue now / Pursue / Nurture / Disqualify verdict on an inbound or referred account: your must-haves, urgency tied to what you sell, a bake-off check against your competitors, and a reply plan.
+- **Use it when:** A lead, demo request or referral lands and you need to decide in minutes whether it deserves an AE's time.
+- **Best for:** SDR / BDR, Account Executive, Marketing & ABM, Sales Leader & RevOps
+- **Time:** 1–2 min
+- **Inputs:** Company (e.g. fivebelow.com); Requester title (e.g. Director of Store Operations); What they asked for (e.g. a demo of shift scheduling); My must-haves (e.g. US retailer, 5,000+ staff, $1B+ revenue); Business function (e.g. Operations (security and data sit under IT in Draup)); What I sell (e.g. store-operations software)
+
+### Detailed prompt
+
+```text
+Act as my sales development analyst qualifying inbound accounts. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. fivebelow.com]
+- Requester title: [who reached out, e.g. Director of Store Operations]
+- What they asked for: [e.g. a demo of shift scheduling]
+- My must-haves: [checkable facts, e.g. US retailer, 5,000+ staff, $1B+ revenue]
+- Business function: [the function I sell to, e.g. Operations; security and data sit under IT in Draup]
+- What I sell: [one line, e.g. store-operations software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; ask me if several match. If it isn't in Draup, say so and stop.
+2. Profile: primary vertical, HQ, workforce, revenue and growth, workforce growth %, postings (90 days).
+3. Read the requester: does [Requester title] buy or champion in [Business function], and does [What they asked for] fit what I sell?
+4. Pull news from the last 90 days where [Company] is the actor, and [Business function] postings in the workloads closest to What I sell (last 12 months).
+5. If I've named competitors (here or in my setup), check the whole stack for their products, with usage and first-seen dates.
+6. The top 3 executives in [Business function], including the most senior leader for what I sell (e.g. the CISO for security); if none is senior, widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — the verdict and why, for [What I sell].
+- Recommended next step: a one-line reply answering [What they asked for], who else to loop in (name and full title from step 6), and the dated why-now (or "the request itself is the why-now").
+- "Fit": Must-have | Draup value (date) | Meets / Partly / Misses / Unknown.
+- "Why now": up to 3 events (date | headline | so-what), or "none in 90 days tied to what I sell".
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: requester read (decision maker, champion, user, researcher); competitor products found; postings count.
+
+RULES
+- The inbound is the intent. Pursue = every must-have met and the requester fits. Pursue now = Pursue plus a material 90-day event tied to [Business function] or what I sell; unrelated news never raises urgency.
+- Nurture = Partly or Unknown on any must-have, or a student, job-seeker, vendor or researcher; list what to verify. Disqualify = misses a must-have.
+- A competitor installed with High or Medium usage, or first seen in the last 12 months: write "likely bake-off or renewal" in the verdict.
+- Flag revenue growth over 20% as likely M&A until checked.
+- Show USD millions using Draup's conversion rate.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Verdict first (Pursue now, Pursue, Nurture or Disqualify) on the inbound from [Requester title] at [Company] asking for [What they asked for], against [My must-haves]. Check my competitors in their stack; give a reply line and who to loop in.
+```
+
+### Follow-ups
+
+- Draft the full reply to the requester using the why-now.
+- Map the 3 most senior people for what I sell there, including the CISO or equivalent.
+- Show 3 peers of similar size so I can mention them.
+
+### Tips
+
+- Write your must-haves as checkable facts (country, size, revenue, vertical). The verdict is only as sharp as the criteria.
+- A pricing request plus your competitor in the stack usually means a bake-off or a renewal check. Ask which.
+- Nurture is not a no. Check back when a new event appears.
+
+
+# Solution plays: by what you sell
+
+Find the accounts most ready for what you sell, and check any account's readiness: cloud, data & AI, ERP, security, GenAI, CX, supply chain, HR tech, managed services, engineering, testing.
+
+## Find accounts ripe for cloud migration
+
+- **id:** `plays-cloud-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy cloud migration, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a cloud or infrastructure-modernisation campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Aerospace & Defense); Country (e.g. United States of America); What I sell (e.g. cloud migration and managed cloud services)
+
+### Detailed prompt
+
+```text
+Act as my cloud-migration target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Aerospace & Defense]
+- Country: [HQ country in full, e.g. United States of America]
+- What I sell: [one line, e.g. cloud migration and managed cloud services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry and country to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in the Cloud Computing and Infrastructure Management System workloads, 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in Cloud Computing, Infrastructure Management System, Legacy Modernization and Data Centre Management; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop cloud providers, IT resellers and IT-services firms, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only cloud and infrastructure tools; work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 5 priorities each in those four workloads, newest first.
+7. One news search across the top 5 on modernisation, cloud, data-centre or infrastructure partnerships, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in Cloud Computing or Infrastructure Management System; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Hiring 0–3 (thirds by postings per 1,000); Priority 0–3 (3 = modernisation priority in the last 4 fiscal quarters; 2 = older or news-sourced); Stack 0–2 (2 = migration tooling, or public cloud beside on-premise virtualisation); Outsourcing 0–1 (5+ engagements); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Count a priority only if its text mentions infrastructure, cloud, data centre, platform or core-system modernisation; these workloads also catch payments and store projects.
+- Government IT contractors that serve defence or public-sector primes are providers, not buyers.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for cloud migration on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- A migration tool showing in the stack is often a sign a programme is already under way.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for cloud migration?
+
+- **id:** `plays-cloud-readiness`
+- **What you get:** A 0–20 readiness score for cloud migration at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a cloud or infrastructure-modernisation deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Account & Customer Success Manager
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. thekrogerco.com); Competitor or incumbent (optional) (e.g. Infosys); What I sell (e.g. cloud migration and managed cloud services)
+
+### Detailed prompt
+
+```text
+Act as my cloud-migration account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. thekrogerco.com]
+- Competitor or incumbent (optional): [e.g. Infosys]
+- What I sell: [one line, e.g. cloud migration and managed cloud services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure). If it sells cloud services itself, drop its own products throughout.
+2. Money: latest revenue and growth, Draup-estimated IT spend and its split (direction only).
+3. Intent: up to 6 priorities in Cloud Computing, Infrastructure Management System, Legacy Modernization, Data Centre Management and DevOps, newest first, with linked tools and providers.
+4. Current state: vendors ranked by products in the cloud, infrastructure and data-centre workloads, with top products; sort into public cloud and on-premise (virtualisation, mainframe, Unix, servers, storage).
+5. Capability: IT postings by workload, then the top 15 skills in cloud, infrastructure and DevOps postings; last 5 full months vs the 5 before.
+6. Incumbents: providers ranked by active engagements at [Company] in the step-3 workloads, top 10, no agencies or staffing firms. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in Cloud Computing or Infrastructure Management System; keep cloud, infrastructure, platform, CTO or CIO titles; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on modernisation, cloud, data centres, acquisitions, separations or cost programmes; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Intent (dated modernisation priority), On-premise gap, Capacity gap (4 = thin cloud hiring beside a modernisation push), Buying pattern (active infrastructure outsourcing), Timing (dated trigger).
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: current state (Area | Vendors | Read); IT split (direction only).
+
+RULES
+- Count a priority only if its text mentions infrastructure, cloud, data centre, platform or core-system modernisation.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for cloud migration (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Map the buying committee for Infrastructure Management System.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- A big hardware and on-premise software share in the IT split, next to few cloud postings, often signals a buy-not-build migration.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for data platforms
+
+- **id:** `plays-data-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy data-platform modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a data-platform, lakehouse or analytics campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Banking & Financial Services); Country (e.g. United States of America); What I sell (e.g. lakehouse modernisation and analytics services)
+
+### Detailed prompt
+
+```text
+Act as my data-platform target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Banking & Financial Services]
+- Country: [HQ country in full, e.g. United States of America]
+- What I sell: [one line, e.g. lakehouse modernisation and analytics services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry and country to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in the Data Engineering and Business Intelligence & Analytics workloads, 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in Data Engineering and Business Intelligence & Analytics; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop technology and data vendors and IT-services firms, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only data tools, sorted legacy (Hadoop, Teradata, Informatica PowerCenter, on-premise warehouses) or modern; work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 5 priorities each in those two workloads plus Artificial Intelligence & Data Science, newest first.
+7. One news search across the top 5 on data, analytics or data-platform partnerships, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in Data Engineering or Business Intelligence & Analytics; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Hiring 0–3 (thirds by postings per 1,000); Priority 0–3 (3 = data priority tied to an outcome in the last 4 fiscal quarters; 2 = older); Stack 0–2 (2 = legacy tools visible; 1 = modern only); Outsourcing 0–1 (20+ engagements); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Count a priority only if it names data, analytics, a data platform or a measurable data outcome; drop priorities about products the company sells (many banks sell data services).
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for data-platform modernisation on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Legacy and modern tools side by side usually means a migration is under way: ask what is left to move.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for data platforms?
+
+- **id:** `plays-data-readiness`
+- **What you get:** A 0–20 readiness score for data-platform modernisation at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a data-platform, lakehouse or analytics deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Account & Customer Success Manager
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. target.com); Competitor or incumbent (optional) (e.g. Databricks); What I sell (e.g. lakehouse modernisation and analytics services)
+
+### Detailed prompt
+
+```text
+Act as my data-platform account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Competitor or incumbent (optional): [e.g. Databricks]
+- What I sell: [one line, e.g. lakehouse modernisation and analytics services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
+3. Intent: up to 6 priorities in Data Engineering, Business Intelligence & Analytics and Artificial Intelligence & Data Science that name data, analytics or a measurable data outcome, newest first, with linked tools and providers.
+4. Current state: vendors ranked by products in Data Engineering and Business Intelligence & Analytics, sorted into legacy (Hadoop, Teradata, Netezza, Informatica PowerCenter, older BI) and modern.
+5. Capability: the top 15 data skills in postings, noting legacy skills and rising ones; last 5 full months vs the 5 before.
+6. Incumbents: providers ranked by active engagements at [Company] in the step-3 workloads, top 10, no agencies, research or merchandising firms. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in Data Engineering or Business Intelligence & Analytics; keep data, analytics, insights, platform, CDO or CTO titles; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on data platforms, analytics, AI, leadership changes, acquisitions or capex; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Intent, Legacy gap (legacy platforms still in use), Capability gap (4 = legacy skills still hired and governance or platform skills trending up), Buying pattern, Timing.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: current state (Layer | Legacy | Modern | Read).
+
+RULES
+- Legacy skills in current job ads mean the old platform is far from retired; check usage before calling a vendor the standard.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for data-platform modernisation (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Show the 10 most recent data-engineering postings with title, date and the tools named.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- Legacy skills still in job ads (for example Hadoop) often mean the old platform is far from retired.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for ERP modernisation
+
+- **id:** `plays-erp-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy ERP modernisation, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a S/4HANA, Oracle Cloud ERP or other ERP campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Industrial); Country (e.g. Germany); Target platform (e.g. SAP S/4HANA); Legacy platform (optional) (e.g. SAP ERP (ECC)); What I sell (e.g. SAP S/4HANA migration and AMS services)
+
+### Detailed prompt
+
+```text
+Act as my ERP-modernisation target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Industrial]
+- Country: [HQ country in full, e.g. Germany]
+- Target platform: [e.g. SAP S/4HANA]
+- Legacy platform (optional): [e.g. SAP ERP (ECC)]
+- What I sell: [one line, e.g. SAP S/4HANA migration and AMS services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry, country and platforms to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most postings naming [Target platform], 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in engagements involving [Target platform] or [Legacy platform]; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop ERP vendors, consultancies and IT-services firms, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only ERP products from the main makers, labelling each company Not started (legacy only), Mid-migration, Moved or Other ERP; work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 6 Finance & Accounting and IT priorities each, marked direct (ERP named) or indirect.
+7. One news search across the top 5 on ERP programmes, carve-outs, acquisitions, divestments or finance transformation, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in IT, then Finance & Accounting (ERP, applications, CIO or CFO titles); no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Hiring 0–3 (thirds by [Target platform] postings per 1,000); ERP status 0–2 (Not started or Mid-migration 2, Other ERP 1); Trigger 0–3 (3 = carve-out, acquisition or finance transformation within 12 months; 2 = indirect priority); Outsourcing 0–1 (3+ ERP engagements); Named programme 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Never present an indirect trigger as a confirmed ERP project; label it direct or indirect.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for ERP modernisation on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Carve-outs and divestments are among the strongest ERP triggers: the separated business needs its own system, fast.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for ERP modernisation?
+
+- **id:** `plays-erp-readiness`
+- **What you get:** A 0–20 readiness score for ERP modernisation at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a S/4HANA, Oracle Cloud ERP or other ERP deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Account & Customer Success Manager
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. caterpillar.com); Target platform (e.g. SAP S/4HANA); Competitor or incumbent (optional) (e.g. Cognizant); What I sell (e.g. SAP S/4HANA migration and AMS services)
+
+### Detailed prompt
+
+```text
+Act as my ERP-modernisation account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. caterpillar.com]
+- Target platform: [e.g. SAP S/4HANA]
+- Competitor or incumbent (optional): [e.g. Cognizant]
+- What I sell: [one line, e.g. SAP S/4HANA migration and AMS services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
+3. Intent: up to 6 priorities in Finance & Accounting and IT, each marked direct (ERP named) or indirect (carve-out, integration, shared services, productivity programme), newest first, with linked tools and providers.
+4. Current state: ERP products from the main ERP makers (SAP, Oracle, Infor, Microsoft, Epicor) and [Target platform]'s maker, 30 per page and at most 2 pages, with usage and last seen; group by vendor.
+5. Capability: postings naming [Target platform] versus postings naming the main legacy ERP, 12 months: say which one hiring points to; last 5 full months vs the 5 before.
+6. Incumbents: providers ranked by engagements at [Company] involving ERP or [Target platform], top 10, no agencies or facilities firms. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in IT, then Finance & Accounting; keep ERP, applications, finance-systems, CIO or CFO titles; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on ERP, acquisitions, divestments, separations, productivity programmes or finance transformation; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Platform intent, Legacy exposure, Trigger (direct or indirect), Partner pattern, Owner clarity.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: ERP landscape (Vendor | Products, usage, last seen | Read).
+
+RULES
+- High legacy usage with legacy hiring far above [Target platform] hiring is "maintaining", not "migrating": score Platform intent low.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for ERP modernisation (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Show the 10 most recent ERP postings with title, date, location and platform named.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- Hiring often points to a different ERP than the one you expect; follow the postings, not the logo.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for cybersecurity
+
+- **id:** `plays-cyber-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy cybersecurity, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a security platform, managed security or security consolidation campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Hospitals & Healthcare Services); Country (e.g. United States of America); What I sell (e.g. managed detection and response and identity security)
+
+### Detailed prompt
+
+```text
+Act as my cybersecurity target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Hospitals & Healthcare Services]
+- Country: [HQ country in full, e.g. United States of America]
+- What I sell: [one line, e.g. managed detection and response and identity security — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry and country to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in the Cybersecurity workload, 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in Cybersecurity; top 15.
+4. Incidents: one news search for breaches or ransomware at [Industry] companies in [Country], last 90 days; add up to 3 named companies.
+5. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop security vendors, managed-security providers and IT-services firms, investors, off-industry rows and foreign companies' local teams.
+6. One company-list lookup for the 10 by website: workforce, revenue, providers, and only security tools; note legacy on-premise tools and 3+ overlapping tools in one job (firewall, endpoint, SIEM, identity); work out postings per 1,000 employees.
+7. Top 5 by provisional score: up to 5 priorities each in the Cybersecurity workload; if none, try the Cybersecurity technology area once.
+8. One news search across the top 5 on breaches, regulatory actions, security leadership changes or acquisitions, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+9. Top 3: 3 executives each in Cybersecurity; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 9), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Incident 0–3 (3 = own incident in 90 days; 1 = earlier in 12 months); Hiring 0–3 (thirds by postings per 1,000); Stack 0–2 (legacy on-premise or 3+ overlapping tools); Outsourcing 0–1 (3+ engagements); Priority 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Use incident facts as published; never speculate on cause, attacker or impact. Openers lead with help or a peer pattern, never the breach.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for cybersecurity on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- A breach at a close peer is often as useful as one at the account: boards ask 'could that be us?'.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for security investment?
+
+- **id:** `plays-cyber-readiness`
+- **What you get:** A 0–20 readiness score for cybersecurity at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a security platform, managed security or security consolidation deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Account & Customer Success Manager
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. unitedhealthgroup.com); Competitor or incumbent (optional) (e.g. Palo Alto Networks); What I sell (e.g. managed detection and response and identity security)
+
+### Detailed prompt
+
+```text
+Act as my cybersecurity account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. unitedhealthgroup.com]
+- Competitor or incumbent (optional): [e.g. Palo Alto Networks]
+- What I sell: [one line, e.g. managed detection and response and identity security — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
+3. Intent: up to 6 priorities in the Cybersecurity workload (if none, the Cybersecurity technology area once); keep security, identity, resilience or privacy priorities, newest first, with linked tools and providers.
+4. Current state: security vendors ranked by products in the Cybersecurity workload, with top products; flag legacy on-premise tools and categories where 3+ vendors overlap (firewall, endpoint, SIEM, identity).
+5. Capability: the top 15 skills in Cybersecurity postings; note incident-response and cloud-security skills; last 5 full months vs the 5 before.
+6. Incumbents: providers ranked by Cybersecurity engagements at [Company], top 10. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in Cybersecurity; find the CISO or equivalent and anyone under a year in title; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on incidents, breaches, litigation, regulation, acquisitions or security leadership (check main subsidiaries too); if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Pressure (incident, litigation or regulation), Change (acquisition or new leader), Tool sprawl, Capacity gap, Stated intent.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: current state (Category | Vendors | Overlap or legacy flag).
+
+RULES
+- Use incident and litigation facts as published; never speculate on cause or impact, and never open outreach with them. Drop investor law-firm notices.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for cybersecurity (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Show every security tool with usage strength and last seen, by category.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- Acquisitions are an underused security trigger: every integration brings identities, endpoints and networks to bring under control.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for generative AI
+
+- **id:** `plays-genai-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy generative AI, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a generative AI platform, AI-agent or AI services campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Insurance); Country (e.g. United Kingdom); What I sell (e.g. generative AI implementation and AI agent services)
+
+### Detailed prompt
+
+```text
+Act as my generative-AI target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Insurance]
+- Country: [HQ country in full, e.g. United Kingdom]
+- What I sell: [one line, e.g. generative AI implementation and AI agent services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry and country to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most naming Generative AI, Large Language Models, Prompt Engineering or Retrieval Augmented Generation, 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in Artificial Intelligence & Data Science; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop AI vendors and IT-services firms (flag subsidiaries with their parent), investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only AI and machine-learning tools, marking GenAI platforms (hosted model services, copilots, agent frameworks, retrieval tools); work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 5 Generative AI priorities each (if none, Artificial Intelligence & Data Science, and say so).
+7. One news search across the top 5 on GenAI launches, AI agents or AI partnerships, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in Artificial Intelligence & Data Science; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Priority 0–3 (3 = GenAI or agentic priority in the last 4 fiscal quarters; 2 = AI without GenAI); Hiring 0–3 (thirds by postings per 1,000); Stack 0–2 (2 = two or more GenAI platforms); News 0–1 (dated launch); Outsourcing 0–1. Stage in Detail: Scaling, Piloting or Exploring.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Classic analytics or machine-learning tools alone are not GenAI evidence; drop generic chat widgets.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for generative AI on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Tools without a priority often mean pilots stuck short of production, which is a strong services opening.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for generative AI?
+
+- **id:** `plays-genai-readiness`
+- **What you get:** A 0–20 readiness score for generative AI at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a generative AI platform, AI-agent or AI services deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Account & Customer Success Manager
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. allianz.com); Competitor or incumbent (optional) (e.g. Accenture); What I sell (e.g. generative AI implementation and AI agent services)
+
+### Detailed prompt
+
+```text
+Act as my generative-AI account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. allianz.com]
+- Competitor or incumbent (optional): [e.g. Accenture]
+- What I sell: [one line, e.g. generative AI implementation and AI agent services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure). If it sells AI products, drop its own products throughout.
+2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
+3. Intent: up to 6 priorities in the Generative AI technology area (if fewer than 3, add Artificial Intelligence & Data Science and say so), newest first, with linked tools and providers.
+4. Current state: AI and machine-learning products with usage and last seen; mark GenAI platforms, copilots, agent frameworks and retrieval tools, and the 1–2 platforms they build on.
+5. Capability: the top 15 skills in AI and data-science postings; call out GenAI, model-provider and governance skills; last 5 full months vs the 5 before.
+6. Incumbents: providers ranked by Artificial Intelligence & Data Science engagements at [Company], top 10. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in Artificial Intelligence & Data Science; keep AI, data, digital, CTO or CDO titles; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on GenAI, AI agents, AI investments and partnerships; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Stated intent, Platform maturity, Skills and governance, Money committed, Delivery gap (4 = intent and platform ahead of hiring or partners).
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: GenAI stack (Product | Type | Usage | Last seen).
+
+RULES
+- Classic analytics or ML tools alone are not GenAI evidence. A model-provider skill shows intent to use it, not a contract.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for generative AI (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Show the 10 most recent GenAI postings with title, date and tools named.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- Model-provider names appearing as skills in job ads are often the clearest sign of which platform a company has picked.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for CX change
+
+- **id:** `plays-cx-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy CX and contact-centre change, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a CX and contact-centre campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Insurance); Country (e.g. United States of America); Workloads (optional) (e.g. a type of work, default Customer Service & Support, Customer Success); Products that signal fit (optional) (e.g. Genesys Cloud CX, Amazon Connect); What I sell (e.g. contact-centre modernisation and CX managed services)
+
+### Detailed prompt
+
+```text
+Act as my CX and contact-centre target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Insurance]
+- Country: [HQ country in full, e.g. United States of America]
+- Workloads (optional): [a type of work, default Customer Service & Support, Customer Success]
+- Products that signal fit (optional): [e.g. Genesys Cloud CX, Amazon Connect]
+- What I sell: [one line, e.g. contact-centre modernisation and CX managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry, country and workloads to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in [Workloads] or naming [Products that signal fit], 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in [Workloads]; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop contact-centre operators, IT-services firms, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only contact-centre and CRM tools; work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 5 Customer Support & Service priorities each (add Sales & Marketing if I sell CRM).
+7. One news search across the top 5 on contact centres, customer service, CRM, CX outsourcing, reshoring or vendor choices, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in Customer Service & Support (customer care, contact-centre or chief customer titles); no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Priority 0–3 (3 = service-cost, churn or self-service priority in the last 2 fiscal quarters); Hiring 0–3 (thirds by postings per 1,000); Stack 0–2 (2 = old and new contact-centre products both active, or a platform first seen in 12 months); Outsourcing 0–1 (top third); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Heavy outsourcing with no stated priority = "renewal watch", not ripe.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for CX and contact-centre change on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Edit the workloads to match exactly what you deliver; the hiring and outsourcing rankings follow them.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for CX change?
+
+- **id:** `plays-cx-readiness`
+- **What you get:** A 0–20 readiness score for CX and contact-centre change at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a CX and contact-centre deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. verizon.com); Workloads (optional) (e.g. a type of work, default Customer Service & Support, Customer Success); Competitor or incumbent (optional) (e.g. Genesys, or Concentrix); What I sell (e.g. contact-centre modernisation and CX managed services)
+
+### Detailed prompt
+
+```text
+Act as my CX and contact-centre account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. verizon.com]
+- Workloads (optional): [a type of work, default Customer Service & Support, Customer Success]
+- Competitor or incumbent (optional): [e.g. Genesys, or Concentrix]
+- What I sell: [one line, e.g. contact-centre modernisation and CX managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, Draup-estimated IT spend (direction only) and its split.
+3. Intent: up to 6 priorities in Customer Support & Service, plus up to 3 whose name contains "contact", newest first, with linked tools and providers.
+4. Current state: the stack in category Customer Service Software (if empty, [Workloads]), up to 30 rows; High or Medium usage in 6 months is core.
+5. Capability: Customer Support & Service postings by workload (one big month is a batch, not a trend); last 5 full months vs the 5 before.
+6. Incumbents: providers in [Workloads] ranked by active engagements, top 10; contact-centre operators count. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in Customer Service & Support (customer care, contact-centre or chief customer titles); check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on contact centres, customer service, CRM, CX outsourcing, reshoring or vendor choices; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need (service-cost or churn priority), Momentum, Change window (old and new contact-centre products both active), Budget (outsourcing share or savings target), Trigger.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: current state (Tool | Maker | Usage | Last seen | Read).
+
+RULES
+- Low in-house hiring plus large outsourcing reads "buys, doesn't build". Layoffs or reshoring beside AI service programmes are triggers, not disqualifiers.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for CX and contact-centre change (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Which incumbent is weakest in the workloads I lead? Show its footprint.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- Reshoring customer care or a big AI service programme changes which providers win; check who is in before you pitch.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for supply chain tech
+
+- **id:** `plays-scm-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy supply chain planning and logistics tech, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a supply chain planning and logistics campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Food, Beverages & Consumer Goods); Country (e.g. United States of America); Workloads (optional) (e.g. a type of work, default Demand Management, Supply Chain Analytics, Logistics & Distribution); Products that signal fit (optional) (e.g. SAP IBP, Kinaxis); What I sell (e.g. supply chain planning implementation and logistics technology services)
+
+### Detailed prompt
+
+```text
+Act as my supply-chain technology target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Food, Beverages & Consumer Goods]
+- Country: [HQ country in full, e.g. United States of America]
+- Workloads (optional): [a type of work, default Demand Management, Supply Chain Analytics, Logistics & Distribution]
+- Products that signal fit (optional): [e.g. SAP IBP, Kinaxis]
+- What I sell: [one line, e.g. supply chain planning implementation and logistics technology services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry, country and workloads to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in [Workloads] or naming [Products that signal fit], 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in [Workloads]; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop logistics providers and IT-services firms, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only tools in category Supply Chain & Logistics Software; work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 5 Supply Chain priorities each, with linked tools and providers.
+7. One news search across the top 5 on network redesigns, distribution centres, planning platforms or separations, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in Supply Chain; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Priority 0–3 (3 = network, productivity or separation priority in the last 2 fiscal quarters); Hiring 0–3 (thirds by postings per 1,000); Stack 0–2 (2 = an older planning tool beside a newer one, or a platform first seen in 12 months); Outsourcing 0–1 (top third); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Cost or separation news counts only when it names supply chain or logistics.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for supply chain planning and logistics tech on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Edit the workloads to match exactly what you deliver; the hiring and outsourcing rankings follow them.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for SCM tech?
+
+- **id:** `plays-scm-readiness`
+- **What you get:** A 0–20 readiness score for supply chain planning and logistics tech at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a supply chain planning and logistics deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. unilever.com); Workloads (optional) (e.g. a type of work, default Demand Management, Supply Chain Analytics, Logistics & Distribution, Warehousing); Competitor or incumbent (optional) (e.g. Kinaxis, or Capgemini); What I sell (e.g. supply chain planning implementation and logistics technology services)
+
+### Detailed prompt
+
+```text
+Act as my supply-chain technology account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. unilever.com]
+- Workloads (optional): [a type of work, default Demand Management, Supply Chain Analytics, Logistics & Distribution, Warehousing]
+- Competitor or incumbent (optional): [e.g. Kinaxis, or Capgemini]
+- What I sell: [one line, e.g. supply chain planning implementation and logistics technology services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
+3. Intent: up to 6 priorities in Supply Chain, plus up to 3 whose name contains "cost", newest first, with linked tools and providers.
+4. Current state: the stack in category Supply Chain & Logistics Software (if empty, [Workloads]), up to 30 rows; High or Medium usage in 6 months is core.
+5. Capability: Supply Chain postings by workload; name the top 3 workloads; last 5 full months vs the 5 before.
+6. Incumbents: providers in [Workloads] ranked by active engagements, top 10; split planning from execution where workloads show it. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in Supply Chain; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on supply chain redesign, distribution centres, planning platforms, separations and logistics partners; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need, Momentum, Change window (old and new planning tools both active, or a separation in 12 months), Budget (productivity programme naming supply chain), Trigger.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: current state (Tool | Maker | Usage | Last seen | Read).
+
+RULES
+- Separations, mergers and divestments that move brands or plants are triggers.
+- Drop linked tools that clearly belong elsewhere, and e-commerce or label tools.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for supply chain planning and logistics tech (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Which incumbent is weakest in the workloads I lead? Show its footprint.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- Separations and divestments that move brands or plants force planning and logistics decisions fast.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for HR tech
+
+- **id:** `plays-hcm-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy HR technology and HCM, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a HR technology and HCM campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Banking & Financial Services); Country (e.g. United Kingdom); Workloads (optional) (e.g. a type of work, default HRIS & Analytics, Workforce Administration & Management, Payroll, Talent Acquisition); Products that signal fit (optional) (e.g. Workday HCM, SAP SuccessFactors, Oracle PeopleSoft); What I sell (e.g. HCM implementation, payroll consolidation and HR operations services)
+
+### Detailed prompt
+
+```text
+Act as my HR-technology target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Banking & Financial Services]
+- Country: [HQ country in full, e.g. United Kingdom]
+- Workloads (optional): [a type of work, default HRIS & Analytics, Workforce Administration & Management, Payroll, Talent Acquisition]
+- Products that signal fit (optional): [e.g. Workday HCM, SAP SuccessFactors, Oracle PeopleSoft]
+- What I sell: [one line, e.g. HCM implementation, payroll consolidation and HR operations services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry, country and workloads to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in [Workloads] or naming [Products that signal fit], 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in [Workloads]; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop staffing firms, HR outsourcers and IT-services firms, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only HR and payroll tools (category Human Capital Management Software (HCM)); work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 5 Human Resources priorities each, with linked tools and providers.
+7. One news search across the top 5 on HR systems, payroll, restructuring, mergers or HR leadership changes, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in Human Resources; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Priority 0–3 (3 = people, restructuring or HR-systems priority in the last 2 fiscal quarters); Hiring 0–3 (thirds by postings per 1,000); Stack 0–2 (2 = two core HR or payroll systems at once, or an HCM platform first seen in 12 months); Outsourcing 0–1 (top third); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Staffing suppliers are recruiting vendors, not HR-technology incumbents.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for HR technology and HCM on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Edit the workloads to match exactly what you deliver; the hiring and outsourcing rankings follow them.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for HR tech?
+
+- **id:** `plays-hcm-readiness`
+- **What you get:** A 0–20 readiness score for HR technology and HCM at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a HR technology and HCM deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. homedepot.com); Workloads (optional) (e.g. a type of work, default HRIS & Analytics, Workforce Administration & Management, Payroll, Talent Acquisition); Competitor or incumbent (optional) (e.g. Workday, or Accenture); What I sell (e.g. HCM implementation, payroll consolidation and HR operations services)
+
+### Detailed prompt
+
+```text
+Act as my HR-technology account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. homedepot.com]
+- Workloads (optional): [a type of work, default HRIS & Analytics, Workforce Administration & Management, Payroll, Talent Acquisition]
+- Competitor or incumbent (optional): [e.g. Workday, or Accenture]
+- What I sell: [one line, e.g. HCM implementation, payroll consolidation and HR operations services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
+3. Intent: up to 6 priorities in Human Resources, plus up to 3 whose name contains "workforce", newest first, with linked tools and providers.
+4. Current state: the stack in category Human Capital Management Software (HCM) (if empty, [Workloads]), up to 30 rows; High or Medium usage in 6 months is core.
+5. Capability: Human Resources postings by workload, focusing on HR systems and HR operations roles; last 5 full months vs the 5 before.
+6. Incumbents: providers in [Workloads] ranked by active engagements, top 10; if most are staffing firms with one engagement each, say "HR services are open ground". If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in Human Resources; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on HR systems, payroll, restructuring and HR leadership changes; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need, Momentum, Change window (two systems doing one job, or a platform added in 12 months), Budget (restructuring or workforce programme), Trigger.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: current state (Tool | Maker | Usage | Last seen | Read).
+
+RULES
+- Drop education, childcare and other misfiled HR tools. Staffing firms are recruiting suppliers, not HCM incumbents.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for HR technology and HCM (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Which incumbent is weakest in the workloads I lead? Show its footprint.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- A new HR leader in their first year often reviews systems and partners.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for AMS deals
+
+- **id:** `plays-ams-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy AMS and IT managed services, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a AMS and IT managed-services campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Life Sciences); Country (e.g. United States of America); Workloads (optional) (e.g. a type of work, default Application Development & Maintenance, Infrastructure Management System); What I sell (e.g. application management and IT infrastructure managed services)
+
+### Detailed prompt
+
+```text
+Act as my AMS and IT managed-services target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Life Sciences]
+- Country: [HQ country in full, e.g. United States of America]
+- Workloads (optional): [a type of work, default Application Development & Maintenance, Infrastructure Management System]
+- What I sell: [one line, e.g. application management and IT infrastructure managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry, country and workloads to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in the IT function, 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in [Workloads]; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop IT-services firms and captives, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers; work out postings per 1,000 employees.
+6. Top 5 by provisional score: each one's providers in [Workloads] (up to 50) for count, top-3 share and long tail; top 3: IT priorities containing "cost".
+7. One news search across the top 5 on separations, divestments, IT outsourcing, vendor consolidation, cost programmes or IT layoffs, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in IT (Application Development & Maintenance or Infrastructure Management System); keep applications, infrastructure, CIO or CTO titles; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Fragmentation 0–3 (3 = 15+ long-tail providers or top 3 under 50%; 2 = top 3 at 50–75%); Hiring 0–3 (thirds by IT postings per 1,000); Priority 0–2 (2 = cost programme naming technology; 1 = other savings); Outsourcing 0–1 (top third); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Drop agencies, staffing firms, "Self" and captives (names containing the company's name) from provider counts; never recommend catch-all workloads such as Account Management.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for AMS and IT managed services on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- A long tail of small providers is the clearest consolidation signal; one entrenched incumbent is a displacement play.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for AMS consolidation?
+
+- **id:** `plays-ams-readiness`
+- **What you get:** A 0–20 readiness score for AMS and IT managed services at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a AMS and IT managed-services deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. pfizer.com); Workloads (optional) (e.g. a type of work, default Application Development & Maintenance, Infrastructure Management System); Competitor or incumbent (optional) (e.g. Accenture); What I sell (e.g. application management and IT infrastructure managed services)
+
+### Detailed prompt
+
+```text
+Act as my AMS and IT managed-services account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. pfizer.com]
+- Workloads (optional): [a type of work, default Application Development & Maintenance, Infrastructure Management System]
+- Competitor or incumbent (optional): [e.g. Accenture]
+- What I sell: [one line, e.g. application management and IT infrastructure managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, Draup-estimated IT spend (direction only) and its split.
+3. Intent: up to 6 priorities in IT, plus up to 3 IT priorities whose name contains "cost", newest first, with linked tools and providers.
+4. Current state: providers ranked by active engagements in [Workloads], up to 50: count, top-3 share and long tail (1–2 engagements).
+5. Capability: IT postings by workload; rising in-house hiring in an outsourced workload is a re-insourcing flag; last 5 full months vs the 5 before.
+6. Incumbents: the top 10 providers from step 4 with their share. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in IT, in Application Development & Maintenance or Infrastructure Management System; keep applications, infrastructure, platforms, CIO or CTO titles; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on separations, divestments, IT outsourcing, vendor consolidation, cost programmes and IT layoffs; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need (savings programme naming technology), Momentum (rising in-house IT hiring = re-insourcing risk), Fragmentation, Budget, Trigger (separation or cost programme).
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: provider landscape (Provider | Engagements | Share); captives separately.
+
+RULES
+- Drop agencies, staffing firms, "Self" and captives from provider counts; list captives separately. Never recommend catch-all workloads (Project/Programs Management, Account Management).
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for AMS and IT managed services (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Which incumbent is weakest in the workloads I lead? Show its footprint.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- A spin-off or business sale usually creates transition and application-split work for 12 to 24 months.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for ER&D services
+
+- **id:** `plays-erd-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy engineering and R&D services, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a engineering and R&D services campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Automotive); Country (e.g. Germany); Workloads (optional) (e.g. a type of work, default Embedded & Firmware Engineering, Vehicle Electronics, Mechanical Design & Development); Engineering service rivals (optional) (e.g. LTTS, Capgemini, Cyient); What I sell (e.g. embedded software and product engineering services)
+
+### Detailed prompt
+
+```text
+Act as my engineering and R&D services target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Automotive]
+- Country: [HQ country in full, e.g. Germany]
+- Workloads (optional): [a type of work, default Embedded & Firmware Engineering, Vehicle Electronics, Mechanical Design & Development]
+- Engineering service rivals (optional): [e.g. LTTS, Capgemini, Cyient]
+- What I sell: [one line, e.g. embedded software and product engineering services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry, country and workloads to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in the ER&D function (broader and more reliable than niche engineering workloads), 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in [Workloads]; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop engineering-services firms and captives, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers; work out postings per 1,000 employees.
+6. Top 5 by provisional score: rank each one's engineering providers in [Workloads] (one pull each), marking captives. For the top 3, up to 3 ER&D priorities.
+7. One news search across the top 5 on R&D programmes, engineering centres, new platforms or engineering partnerships, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in ER&D; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Provider mix 0–3 (3 = top 3 under 60% excluding captives, or a new engineering centre in 12 months); Hiring 0–3 (thirds by ER&D postings per 1,000); Priority 0–2 (2 = R&D programme shift in the last 4 fiscal quarters); Outsourcing 0–1 (top third); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Captives (names containing the company's name) are in-house, not rivals; show them separately.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for engineering and R&D services on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Hiring by the ER&D function is broader and more reliable than niche engineering workloads.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for ER&D services?
+
+- **id:** `plays-erd-readiness`
+- **What you get:** A 0–20 readiness score for engineering and R&D services at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a engineering and R&D services deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. bosch.com); Workloads (optional) (e.g. a type of work, default Embedded & Firmware Engineering, Vehicle Electronics, Mechanical Design & Development); Competitor or incumbent (optional) (e.g. LTTS); What I sell (e.g. embedded software and product engineering services)
+
+### Detailed prompt
+
+```text
+Act as my engineering and R&D services account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. bosch.com]
+- Workloads (optional): [a type of work, default Embedded & Firmware Engineering, Vehicle Electronics, Mechanical Design & Development]
+- Competitor or incumbent (optional): [e.g. LTTS]
+- What I sell: [one line, e.g. embedded software and product engineering services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, and Draup-estimated R&D spend and growth.
+3. Intent: up to 6 priorities in ER&D, plus up to 3 whose name contains "engineering", newest first, with linked tools and providers.
+4. Current state: engineering providers ranked by active engagements in [Workloads], marking captives (names containing the company's name) as in-house.
+5. Capability: ER&D postings by workload; flag [Workloads] that slow while priorities grow; last 5 full months vs the 5 before.
+6. Incumbents: the top 10 providers from step 4, captives left out of share. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in ER&D; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on R&D programmes, engineering centres, new platforms and engineering partnerships; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need (R&D programme shift), Momentum, Provider mix (4 = top 3 under 60% excluding captives), Budget (R&D spend growing), Trigger.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: provider landscape with captives marked; R&D spend (Draup-estimated).
+
+RULES
+- Captives are in-house: show them, never count them as rivals.
+- Private with no revenue or R&D spend: write "Not in Draup" and score Budget 2. If [Workloads] return little, use the top ER&D workloads from step 5 and say so.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for engineering and R&D services (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Which incumbent is weakest in the workloads I lead? Show its footprint.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- Captive engineering centres take new work first; find out what they can't absorb.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+## Find accounts ripe for testing services
+
+- **id:** `plays-qe-targets`
+- **What you get:** A ranked list of companies in your industry and country most ready to buy quality engineering and testing, scored 0–10 and ranked on hiring per 1,000 staff, with a named person to call at the top 3 and a dated why-now.
+- **Use it when:** Building a quality engineering and testing campaign, an SDR list or next quarter's targets in one industry. Use this to find accounts; use the matching readiness check instead when you already have one account.
+- **Best for:** Account Executive, SDR / BDR, Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller
+- **Time:** 6–10 min
+- **Inputs:** Industry (e.g. Banking & Financial Services); Country (e.g. India); Workloads (optional) (e.g. a type of work, default Software Testing, Quality Assurance); Testing tools that signal fit (optional) (e.g. Tricentis Tosca, Selenium, Micro Focus UFT); What I sell (e.g. test automation and quality engineering services)
+
+### Detailed prompt
+
+```text
+Act as my quality-engineering target-list analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Industry: [e.g. Banking & Financial Services]
+- Country: [HQ country in full, e.g. India]
+- Workloads (optional): [a type of work, default Software Testing, Quality Assurance]
+- Testing tools that signal fit (optional): [e.g. Tricentis Tosca, Selenium, Micro Focus UFT]
+- What I sell: [one line, e.g. test automation and quality engineering services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve industry, country and workloads to Draup's names and say which you used; if empty, try a member company's primary industry.
+2. Hiring: end employers in [Country], primary industry [Industry], posting most in [Workloads], 12 months, no staffing firms or job boards; top 20.
+3. Outsourcing: [Industry] companies HQ'd in [Country] ranked by active engagements in [Workloads]; top 15.
+4. Long list of 10: companies in both lists first. Merge subsidiaries into parents; drop testing and IT-services firms, investors, off-industry rows and foreign companies' local teams.
+5. One company-list lookup for the 10 by website: workforce, revenue, providers, and only testing tools (makers of [Testing tools that signal fit]), leaving out manufacturing quality-management tools; work out postings per 1,000 employees.
+6. Top 5 by provisional score: up to 5 IT priorities each, with linked tools and providers.
+7. One news search across the top 5 on software quality, release failures, outages tied to releases, core-system changes or regulatory deadlines, last 90 days; if nothing fits, use each company's most material dated event, labelled indirect.
+8. Top 3: 3 executives each in [Workloads], falling back to IT; no senior owner: widen once to Chief, EVP and CIO titles.
+
+OUTPUT
+- Bottom line: 2 sentences — who leads and what it means for [What I sell].
+- Recommended next step: the #1 account's person (name, full title; step 8), the action and the dated why-now (step 7); if missing, name the title to find.
+- "Ranked targets" (top 10): Rank | Company | Postings per 1,000 staff | Score /10 | Why now (dated).
+- "Who to call" (top 3): Company | Person (name, full title) | Opening angle.
+- Gaps: what Draup didn't have.
+- Detail: score breakdown with evidence; Dropped (company, reason); local teams.
+
+Score (editable): Priority 0–3 (3 = core-system change, digital launch or regulatory deadline in the last 2 fiscal quarters); Hiring 0–3 (thirds by postings per 1,000); Stack 0–2 (2 = a fading commercial test tool, or an automation tool first seen in 12 months); Outsourcing 0–1 (top third); News 0–1.
+
+RULES
+- Each point traces to a Detail cell. Rank by score, ties by postings per 1,000; never by raw postings or IT spend (no workforce figure: use raw postings, say so).
+- Outages count only when tied to a release or code change.
+- Named competitors (here or in setup): check the top 3's stacks; High usage = Red, Medium or first seen in 12 months = Amber.
+- Postings are openings, not hires; engagements are Draup estimates.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Industry] companies in [Country] for quality engineering and testing on a 0–10 score (hiring per 1,000 staff, priorities, stack, outsourcing, 90-day news) and name who to call at the top 3.
+```
+
+### Follow-ups
+
+- Run the readiness check on the #1 account.
+- Show the next 10 companies with the same scoring.
+- Write a 70-word opener for each of the top 3, each tied to its why-now.
+- Which of these run a competitor I name? Rate each Red, Amber or Green.
+
+### Tips
+
+- Ranking on postings per 1,000 staff often reorders the list completely; mid-size players can outrank the giants.
+- Foreign banks' local testing centres often out-hire local banks; they're a centre-of-excellence motion, not the ranked list.
+- Check Dropped and the local-teams list: big names misfiled under another industry or HQ'd abroad land there.
+
+## Is this account ready for QE services?
+
+- **id:** `plays-qe-readiness`
+- **What you get:** A 0–20 readiness score for quality engineering and testing at one account, with incumbents rated Red, Amber or Green, a named owner with a dated why-now, an entry angle and four fact-based discovery questions.
+- **Use it when:** Before investing pursuit time in one account for a quality engineering and testing deal, or ahead of a first meeting. Use the matching target-list prompt instead to find accounts.
+- **Best for:** Account Executive, Presales & Solutions, Account & Customer Success Manager, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. ford.com); Workloads (optional) (e.g. a type of work, default Software Testing, Quality Assurance); Competitor or incumbent (optional) (e.g. Wipro, or Tricentis); What I sell (e.g. test automation and quality engineering services)
+
+### Detailed prompt
+
+```text
+Act as my quality-engineering account strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. ford.com]
+- Workloads (optional): [a type of work, default Software Testing, Quality Assurance]
+- Competitor or incumbent (optional): [e.g. Wipro, or Tricentis]
+- What I sell: [one line, e.g. test automation and quality engineering services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website; confirm it is the parent, not a subsidiary or sister company (ask if unsure).
+2. Money: latest revenue and growth, and Draup-estimated IT spend (direction only).
+3. Intent: up to 6 priorities in IT and ER&D, plus up to 3 whose name contains "quality"; only software-quality priorities count, newest first, with linked tools and providers.
+4. Current state: the testing stack for [Workloads], up to 30 rows, dropping manufacturing quality-management tools; High or Medium usage seen in 6 months is core.
+5. Capability: testing postings in IT and ER&D; under 60 a year (editable) means in-house testing is small; last 5 full months vs the 5 before.
+6. Incumbents: providers in [Workloads] ranked by active engagements, top 10; flag joint ventures or captives as in-house. If I named a competitor, check the whole stack for its products, any category.
+7. Owner: executives in [Workloads], falling back to IT, then ER&D; check titles against the function; no senior owner: widen once to Chief, EVP and CIO titles. If news names a different leader, say so.
+8. Why now: the most important 90-day news where [Company] is the actor, on software quality, recalls or outages tied to software, release failures and core-system changes; if none, widen to 6 months and say so.
+
+OUTPUT
+- Bottom line: 2 sentences — verdict (Ready now 15+, Warming 10–14, Early under 10), score /20, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title; step 7), the action and the dated why-now (step 8); if missing, name the title to find.
+- "Readiness score": Dimension | Dated evidence | Score (0–4). Dimensions (editable): Need, Momentum, Change window (a fading commercial tool listed, or a software recall in 6 months), Budget (warranty, quality or cost programme), Trigger.
+- "Incumbents": Vendor or provider | Footprint | Rating | Read. Rating: my competitor's product installed with High usage in my workloads = Red; Medium, or first seen in 12 months (newly detected) = Amber; else Green (open door).
+- "Entry angle": 2 sentences tied to one priority and one gap. "Discovery questions": 4 one-liners, each opening with a dated fact.
+- Gaps: what Draup didn't have.
+- Detail: current state (Tool | Maker | Usage | Last seen | Read).
+
+RULES
+- Recalls or outages count only when tied to software or updates; plant quality goes in Entry angle.
+- Competitor absent: analyse who is there. Big company, thin data: say the work may be in-house or the data thin, not Early.
+- Products show footprint, not spend (say "fading", never "dropped"); engagements are Draup estimates, not contracts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: score [Company]'s readiness for quality engineering and testing (0–20) on five dated dimensions, rate the incumbents, name the owner with a dated why-now, and give 4 discovery questions.
+```
+
+### Follow-ups
+
+- Map the buying committee around the owner you found.
+- Turn the entry angle into a 100-word email to the person in the next step.
+- Which incumbent is weakest in the workloads I lead? Show its footprint.
+- Re-score after I tell you what I learned in discovery.
+
+### Tips
+
+- Add your rival or the incumbent you replace: finding it, or not, is often the deciding line.
+- A software recall or failed over-the-air update is the strongest testing trigger; lead with help, not the incident.
+- A low score with a strong trigger is usually worth a call; a high score with no trigger is a nurture.
+
+
+# Deal strategy and qualification
+
+Win live opportunities: re-engage stalled deals, answer RFPs, build business cases, handle objections and beat a named competitor.
+
+## Re-open a stalled deal
+
+- **id:** `deals-stalled-reentry`
+- **What you get:** A reopen, wait or walk-away verdict on a stalled deal, tested against why it stalled, with the named person to call, the dated change that justifies it and a 90-word re-entry email.
+- **Use it when:** A live opportunity has gone quiet for 60+ days, or a prospect said "not now". Use this to restart a stalled or lost deal; use "What changed since [Date]" (signals-change-log) instead for a routine check on a current customer.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. starbucks.com); Stalled since (e.g. 2026-05-15); Why it stalled (e.g. budget freeze (or: champion left, priority shifted, lost to competitor, no decision)); Last contact (e.g. Jane Doe, VP Supply Chain Systems (optional)); Competitor (e.g. Blue Yonder (optional)); What I sell (e.g. supply-chain planning software)
+
+### Detailed prompt
+
+```text
+Act as my deal-rescue strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. starbucks.com]
+- Stalled since: [date it went quiet, e.g. 2026-05-15]
+- Why it stalled: [budget freeze, champion left, priority shifted, lost to competitor, no decision — or your words]
+- Last contact (optional): [name and title, e.g. Jane Doe, VP Supply Chain Systems]
+- Competitor (optional): [e.g. Blue Yonder]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+A credible re-entry names a dated change on the buyer's side and shows the blocker has moved; if it still holds, recommend waiting.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use the function closest to [What I sell]; say which.
+3. Test the stall reason. Budget freeze: latest revenue and EBITDA growth. Champion left: look for [Last contact] in 2 pages (10 per page) of that function's executives. Priority shifted: up to 10 priorities in the function, noting those sourced after [Stalled since]. Lost to competitor: check the whole stack for [Competitor] products. No decision: run all four lightly.
+4. People: the 3 most senior executives in the function by title, plus anyone under 1 year in title.
+5. News since [Stalled since] (up to 12 months): investments, executive moves, vendor selections, layoffs. Review 20+ items; mark the most important from the last 90 days.
+6. Hiring: average monthly postings in the function, 5 full months before [Stalled since] vs the 5 latest.
+7. Pick the re-entry angle: a dated change tied to a priority.
+
+OUTPUT
+- Bottom line: 2 sentences — Reopen now, Wait until [event or date] or Walk away, with the deciding fact.
+- Recommended next step: a named person (name, full title), the action this week and the dated why-now; if none, say so.
+- Table "Stall reason test": Reason | Still true? (Yes, Weaker, Gone, Not in Draup) | Evidence + date.
+- Table "What changed" (up to 6, newest first): Date | Type | What changed | Why it matters.
+- "Re-entry email": 90 words max: open with the dated change, at most one line on history, one low-friction ask.
+- Detail: who to re-engage (Name | Full title | In role since) and hiring.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- A reason is "Gone" only with a dated fact after [Stalled since].
+- A [Competitor] product with High usage in the workloads I sell into is Red: reopen only on a new trigger. Medium or newly detected is Amber.
+- Falling hiring with rising investment usually means automation or outsourcing, not a freeze.
+- News and hiring reach back 12 months; if [Stalled since] is older, say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+My deal at [Company] stalled on [Stalled since] because [Why it stalled]. Lead with reopen, wait or walk away, then the named person to call and the dated change since. Add the stall-reason test and a 90-word re-entry email.
+```
+
+### Follow-ups
+
+- Write a 3-touch re-engagement sequence (email, call script, LinkedIn note) around the re-entry angle.
+- Profile the newest leader in that function and suggest two openers.
+- Run the renewal-style risk check on this account before I commit time to it.
+
+### Tips
+
+- Be honest about why it stalled. The prompt tests that reason first, which is what makes the re-entry credible.
+- A new leader in the buying function is often the best re-entry: they have no history with the old "no".
+- If the verdict is Wait, put the named event in your calendar and re-run the prompt then.
+
+## RFP research and bid/no-bid call
+
+- **id:** `deals-rfp-research`
+- **What you get:** A bid, bid-to-learn or qualify-out call on an RFP, with the likely evaluation priorities, who is already there, the named panel member to reach, three win themes and the questions to submit in the Q&A window.
+- **Use it when:** An RFP, RFI or tender has landed and you have days, not weeks, to decide whether to bid and how to position.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 6–10 min
+- **Inputs:** Company (e.g. mastercard.com); RFP scope (e.g. managed data-platform modernisation for payments analytics); Area in scope (e.g. Data Engineering, Cloud Computing (or a function like IT)); Known bidders (e.g. Accenture, Infosys (optional)); What I sell (e.g. data-platform modernisation services)
+
+### Detailed prompt
+
+```text
+Act as my bid manager. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. mastercard.com]
+- RFP scope: [one line from the RFP, e.g. managed data-platform modernisation for payments analytics]
+- Area in scope: [1–3 workloads or a function, e.g. Data Engineering, Cloud Computing — or IT]
+- Known bidders (optional): [e.g. Accenture, Infosys]
+- What I sell: [one line, e.g. data-platform modernisation services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+RFPs mirror priorities the buyer already stated, often shaped by an incumbent. An incumbent-heavy RFP with no matching priority is usually column fodder.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Turn [Area in scope] into 1–3 workloads (types of work, e.g. Data Engineering); if I gave a function, map it and say which.
+3. Evaluation priorities: up to 10 in those workloads (if fewer than 3, widen to the function), with quarter and outcome lines.
+4. Incumbents: engagements and partners in those workloads, then the top 10 providers, minus staffing and agency firms.
+5. Installed tools: the top 10 products in those workloads by usage (High, then Medium), with vendor.
+6. Known bidders: engagements in scope (services) or whole-stack check (software).
+7. Panel: executives in those workloads, up to 2 pages of 10.
+8. News, 12 months: vendor selections, partnerships, technology budgets, leadership changes. Review 20+ items; mark the most important from the last 90 days.
+9. Money: revenue and growth.
+
+OUTPUT
+- Bottom line: 2 sentences — Bid, Bid-to-learn or Qualify-out, and the deciding fact. Bid if 2+ High-weight priorities match and no provider holds over 40% of in-scope engagements (editable default).
+- Recommended next step: a named person (name, full title) from the panel, the action this week and the dated why-now; if none, say so.
+- Table "Likely evaluation priorities" (up to 6): Priority | Source + quarter | Weight | How to answer it. High weight = from the 2 latest quarters (publication month for news priorities) and on scope.
+- Table "Who is already there" (up to 8): Provider or vendor | Engagements or products | Share in scope | Threat (Incumbent, Contender, Minor).
+- "Win themes": 3: theme, their words (dated), our proof, ghosting line.
+- "Q&A questions": 5 that expose gaps or hidden incumbent advantages.
+- Detail: panel (Name | Full title | Linked priority, up to 6), known-bidder footprint, money.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Ghosting lines describe a weakness, never a named rival.
+- Quote any technology budget figure from news.
+- A known bidder's product with High usage in scope is Red (incumbent advantage); Medium is Amber.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 500 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+RFP at [Company], scope [RFP scope]. Lead with bid, bid-to-learn or qualify-out, and the named panel member to reach with a dated why-now. Then likely evaluation priorities, incumbents in [Area in scope], 3 win themes and 5 Q&A questions.
+```
+
+### Follow-ups
+
+- Draft the executive summary of our response (250 words) using the win themes.
+- Turn the evaluation priorities into a compliance matrix with our response approach per row.
+- Profile the top panel member and suggest how to address them in the orals.
+- Show the 10 most recent engagements of the top incumbent in these workloads.
+
+### Tips
+
+- Paste the RFP's own scope sentence; the closer it matches the buyer's language, the better the priority match.
+- Use the Q&A questions to make the buyer state things the incumbent already knows.
+- If the call is Qualify-out, spending the bid budget elsewhere is often the better decision.
+
+## Business-case inputs from their numbers
+
+- **id:** `deals-business-case-inputs`
+- **What you get:** The size of the prize as a range, built on the account's own revenue, margin, spend, outsourcing and hiring, with every number labelled, a worked example you can edit and the named owner to validate it with.
+- **Use it when:** You need to quantify value for a proposal or CFO conversation. Use this for a new deal's value model; use "Expansion business case from growth units" (expand-business-case) instead to grow an existing customer.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. medtronic.com); Area affected (e.g. Data Engineering (or a function like IT)); Value levers (e.g. cost per pipeline, time to data, vendor consolidation); Our assumptions (e.g. 20% productivity gain; loaded cost $120K per FTE (optional)); What I sell (e.g. managed data engineering services)
+
+### Detailed prompt
+
+```text
+Act as my value engineer. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. medtronic.com]
+- Area affected: [workload or function your offer changes, e.g. Data Engineering, or IT]
+- Value levers: [2–3, e.g. cost per pipeline, time to data, vendor consolidation]
+- Our assumptions (optional): [e.g. 20% productivity gain; loaded cost $120K per FTE]
+- What I sell: [one line, e.g. managed data engineering services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+CFOs discount industry averages; a case built on the buyer's own numbers, with every assumption labelled and editable, survives finance review.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Map [Area affected] to 1–3 workloads (types of work) and its business function; say which.
+3. Money: 3-year revenue, EBITDA, Draup-estimated IT and R&D spend, latest growth and next-year forecast.
+4. IT spend split, latest two years: software on premise, internal staffing, IT outsourcing, hardware.
+5. Workforce: IT and R&D headcount and number of sites.
+6. Outsourcing in the workloads: active engagements and partners.
+7. Hiring in the workloads: 12-month postings and metros; then the 10 latest postings, noting published pay, contract versus full-time, and lines naming partners, cost or speed targets.
+8. Stated targets: up to 5 priorities in the workloads (if none, the function) with outcome lines naming a cost, speed, capacity or risk goal.
+9. Owner and trigger: the top 3 executives in the function (one page of 10) and the most important news item from the last 90 days.
+10. Worked example: per lever, the formula, inputs from above, [Our assumptions], and a low–high result.
+
+OUTPUT
+- Bottom line: 2 sentences — the size of the prize as a range and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) who owns the biggest lever, the action this week and the dated why-now; if none, say so.
+- Table "Worked example": Lever | Formula | Low | High (USD millions).
+- Table "Their numbers" (top 8): Metric | Value | Year | Label (Reported, Draup estimate, Model forecast, Our assumption).
+- "What they said they want": up to 3 bullets: priority, quarter, lever.
+- "Assumptions to validate": each of our inputs and who can confirm it (title).
+- Detail: full numbers (IT split, headcount, engagements, postings) and up to 3 risks to the case.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Every number carries one label: Reported, Draup estimate, Model forecast or Our assumption.
+- With no assumptions given, use a marked placeholder ("[X]% gain — your number"); never invent one.
+- Margin % = EBITDA / revenue, same year. If Draup has no IT split, say so.
+- A priority about building in-house or cutting vendors goes under risks.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- IT spend is Draup-estimated, often modelled from revenue; don't treat its growth as a signal. Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 480 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Business-case inputs for [What I sell] at [Company]. Lead with the prize as a range and the named person to validate it. Show their numbers, each labelled Reported, Draup estimate or Our assumption, and a worked example per lever.
+```
+
+### Follow-ups
+
+- Turn the worked example into a one-slide value summary for the CFO.
+- Rebuild the case with conservative assumptions and show payback at our price of [Price].
+- Which executive owns each lever? Map them to the buying committee.
+
+### Tips
+
+- Give your own assumptions where you have proof; the prompt keeps them visibly separate from the buyer's numbers.
+- Show ranges, not single numbers. Finance teams trust a range they can tighten in the meeting.
+- Postings rarely publish pay; if none do, bring your own loaded-cost figure and label it.
+
+## Pick a realistic signature window
+
+- **id:** `deals-budget-timing`
+- **What you get:** Whether your close date fits the buyer's fiscal calendar and budget posture, the events that move money in the next two quarters, the best 4–8 week signature window and the named person to confirm it with.
+- **Use it when:** You're setting a close date or a champion says "let's revisit next quarter". Use this to set or test the date; use "Mutual action plan on their calendar" (deals-mutual-action-plan) instead once the date is agreed.
+- **Best for:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. 3m.com); Target close date (e.g. 2027-03-31); Business function (e.g. IT (optional)); What I sell (e.g. industrial data-platform software)
+
+### Detailed prompt
+
+```text
+Act as my deal-timing analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. 3m.com]
+- Target close date: [e.g. 2027-03-31]
+- Business function (optional): [the budget holder's function, e.g. IT]
+- What I sell: [one line, e.g. industrial data-platform software — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Deals slip when the close date ignores the buyer's calendar: fiscal year-end, budget release, earnings, reorganisations and spin-offs.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use [Business function], or the one closest to [What I sell]; say which.
+3. Fiscal calendar: the latest fiscal year in Draup's financials and its end date; the last 5 earnings calls with fiscal label and release date. Infer each fiscal quarter's months, the next call and the fiscal year-end.
+4. Budget posture: latest revenue and EBITDA with growth, and next-year forecast. If news or a newer call reports a fiscal year Draup's table lacks, use it, labelled "from news".
+5. Money-moving events, last 6 months: guidance, cost programmes, layoffs, reorganisations, spin-offs, divestments, big investments, leadership changes in the function. Review at least 20 items.
+6. Hiring in the function: average monthly postings, last 5 full months versus the 5 before.
+7. Up to 5 recent priorities in the function, fiscal labels translated to calendar months.
+8. People: the top 3 executives in the function (one page of 10).
+9. Judge [Target close date] against fiscal year-end, reorganisations and earnings dates.
+
+OUTPUT
+- Bottom line: 2 sentences — the best signature window and whether [Target close date] is Realistic, At risk or Unrealistic.
+- Recommended next step: a named person (name, full title) to confirm the budget release date with, the action this week and the dated why-now; if none, say so.
+- Table "Buyer calendar" (up to 8, by date): Date | Event | Effect (Accelerates, Delays, Neutral) | Source.
+- "Budget posture": Growing, Holding or Tightening, with 3 dated facts.
+- "Signature window": the 4–8 week window and why, plus a fallback.
+- "Questions for the buyer": 3 (budget release date, approval thresholds, freeze periods).
+- Detail: fiscal mapping (Fiscal period | Calendar months | Evidence), hiring, priorities.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Never assume a calendar fiscal year; derive it from period end and call dates, and show both if they disagree.
+- Quote garbled news numbers as written and flag them.
+- A reorganisation or spin-off effective inside the window is a Delay unless news ties it to new spending. Label future call dates "inferred".
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- IT spend is Draup-estimated, often modelled from revenue; don't treat its growth as a signal. Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Is [Target close date] realistic at [Company]? Lead with the best signature window and the named person to confirm it with, then fiscal quarters as calendar months, budget posture and events in the next 6 months that move money.
+```
+
+### Follow-ups
+
+- Build a mutual action plan backwards from the recommended signature window.
+- Draft a short note to my champion asking the 3 calendar questions.
+- Is their budget growing or shrinking? Show the 3-year trend and IT spend split.
+
+### Tips
+
+- Ask your champion when the next budget is released; it is the single most useful date in the deal.
+- Spin-offs and reorganisations often freeze new vendor decisions for a quarter or more. Plan around them.
+- Re-run this before each forecast call; events change the window.
+
+## Answer objections with their own facts
+
+- **id:** `deals-objection-handler`
+- **What you get:** Which objections are real and which are cover, with a short reply and a question back for each, built on dated facts about the account, and the named person to take the answer to.
+- **Use it when:** A buyer has pushed back (not a priority, already have a vendor, no budget, we'll build in-house, bad timing), or before a meeting where you expect pushback.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. adobe.com); Objections (e.g. already have a vendor; bad timing (or: all)); Area (e.g. Cloud Computing, Data Engineering (or a function like IT; optional)); Incumbent or competitor (e.g. Infosys (optional)); What I sell (e.g. managed cloud and data modernisation services)
+
+### Detailed prompt
+
+```text
+Act as my objection-handling coach. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. adobe.com]
+- Objections: [not a priority; have a vendor; no budget; build in-house; bad timing — or "all"]
+- Area (optional): [workloads or a function, e.g. Cloud Computing — or IT]
+- Incumbent or competitor (optional): [e.g. Infosys, or Snowflake]
+- What I sell: [one line, e.g. managed cloud and data modernisation services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Objections are usually partly true: acknowledge it, add one hard fact from their company, ask a question; if the evidence agrees, re-qualify.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use [Area], or the function closest to [What I sell], as 1–3 workloads; say which.
+3. Pull only what the objections need. Not a priority: up to 6 priorities in the function. Already have a vendor: active engagements and top providers in the workloads; for software, check the whole stack for the incumbent's products. No budget: revenue, EBITDA, Draup-estimated IT spend and split. Build in-house: 12 months of postings in the workloads and any in-house priority. Bad timing: 90 days of news on reorganisations, layoffs, leadership changes and big programmes.
+4. Owner and trigger: the top 3 executives in the function and the most important 90-day news item.
+5. Judge each: Supports, Partly or Undercuts.
+6. Reply: acknowledge, one dated fact, reframe, one question.
+
+OUTPUT
+- Bottom line: 2 sentences — which objections are real, which are cover, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title), the action this week and the dated why-now; if none, say so.
+- Table "Objection scorecard": Objection | Verdict | Key fact (dated) | Source.
+- Per objection: "Reply" (under 60 words) and "Question back".
+- "If it's real": a re-qualification move (narrower scope, another workload, later date).
+- Detail: vendor table (Provider or product | Engagements or usage | Where thin), money, hiring.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Each reply uses a fact from the last 12 months, never industry trends.
+- A large incumbent isn't a reason to quit: find workloads where it has 3 or fewer engagements. Ignore the company's own products.
+- An incumbent product with High usage in my workloads is Red (the objection is real: position as complement or narrower scope); Medium is Amber.
+- Falling postings undercut "we'll build in-house"; rising ones support it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Answer these objections at [Company] with dated Draup facts: [Objections]. Lead with which are real, which are cover, and the named person to take it to. For each: verdict, the key fact, a 60-word reply and a question back.
+```
+
+### Follow-ups
+
+- Role-play the buyer: raise these objections one by one and score my replies.
+- Turn the 'already have a vendor' answer into a one-page second-vendor point of view.
+- Write a follow-up email that answers the objection I heard today in under 120 words.
+
+### Tips
+
+- Ask for "all" before a big meeting; pick one or two right after a call so the answers stay sharp.
+- A Supports verdict is useful: it tells you to change scope or timing rather than push harder.
+
+## Win plan against a rival
+
+- **id:** `deals-competitive-strategy`
+- **What you get:** How entrenched a named rival is at the account (rated Red, Amber or Green), the pitch they'll likely make, your wedge, three landmine questions and the named person to align with first.
+- **Use it when:** A specific rival is in a live deal with you, as incumbent or the other finalist. Use this for one live deal; use "Is a competitor installed?" (tech-competitor-installed) instead for a quick check before you pitch.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. medtronic.com); Competitor (e.g. Databricks (product or services firm)); Area in the deal (e.g. Data Engineering (or a function like IT; optional)); Deal stage (e.g. shortlist of two (optional)); What I sell (e.g. cloud data-platform software)
+
+### Detailed prompt
+
+```text
+Act as my competitive deal strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. medtronic.com]
+- Competitor: [the rival, software or services, e.g. Databricks or Accenture]
+- Area in the deal (optional): [workload or function, e.g. Data Engineering — or IT]
+- Deal stage (optional): [e.g. shortlist of two]
+- What I sell: [one line, e.g. cloud data-platform software — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+This is one deal, not a battlecard: how embedded the rival is here and where the evidence favours us. Never claim unshown weaknesses.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use [Area in the deal], or the function closest to [What I sell], mapped to 1–3 workloads; say which.
+3. Footprint. Software rival: whole-stack check for its products (strength, last seen, countries, workloads). Services rival: its engagements, tier, workloads and delivery locations.
+4. Skills pull: the 12-month count and trend of postings naming [Competitor]'s main product as a skill (from hiring by skill, not full postings), plus metros from up to 10 postings.
+5. Who else is in the room: High and Medium products in the workloads (software rival) or the top 10 providers (services rival).
+6. Priorities: up to 5 in the workloads, else the function, else say none.
+7. People: one page of 10 executives in the workloads; flag skills or past employers pointing to [Competitor].
+8. News, last 12 months: partnerships, vendor selections, hiring plans in the area, any [Company]–[Competitor] announcements; mark the most important from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — the entrenchment rating and our best path.
+- Recommended next step: a named person (name, full title) to align with, the action this week and the dated why-now; if none, say so.
+- Table "Rival footprint" (up to 8): Product or engagement | Usage or tier | Last seen | Where.
+- Table "Landmines" (3): Question or proof point | What it exposes | When to use it.
+- "Their likely pitch": 3 bullets tied to account facts.
+- "Our wedge": 2–3 areas where the evidence favours [What I sell].
+- Detail: skills pull, who else is there, priorities, people to align (Name | Full title | Leaning, likely).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Rating: Red if a [Competitor] product has High usage in the deal's workloads, or a services rival holds the most engagements there; Amber if Medium usage, newly detected or a top-3 provider; Green otherwise.
+- Landmines are fair questions grounded in a dated fact; no claims about the rival's pricing or roadmap.
+- Never borrow priorities from other functions.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+[Competitor] is in my deal at [Company]. Lead with how entrenched they are (Red, Amber, Green) and the named person to align with. Then their footprint, likely pitch, our wedge and 3 landmine questions.
+```
+
+### Follow-ups
+
+- Write the discovery script that works the 3 landmines in naturally.
+- Draft a reference-call brief: which of our customers should talk to them and what they should cover.
+- Build the one-page battlecard for [Competitor] in my industry.
+- Which of their leaders came from companies where [Competitor] is big?
+
+### Tips
+
+- Name the rival as Draup would spell it (product or company); if nothing comes back, try the maker's name.
+- Skills in job ads often show a rival's real depth better than the installed-stack view alone.
+- Software rival in a services deal (or the reverse)? Run it twice, once for each, and compare.
+
+## Prepare for their procurement team
+
+- **id:** `deals-procurement-landscape`
+- **What you get:** The procurement stance to expect (consolidate, cost-down, re-bid or strategic), who already supplies the work in scope and how concentrated they are, the pressure procurement is under and the named procurement lead to reach.
+- **Use it when:** A deal is heading to procurement or a vendor-selection process, or the buyer mentions consolidation or a preferred-supplier list.
+- **Best for:** Account Executive, Services, SI & Staffing Seller, Account & Customer Success Manager, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. roche.com); Work in scope (e.g. Application Development & Maintenance (or a function like IT)); Deal type (e.g. services (or software)); What I sell (e.g. application management services)
+
+### Detailed prompt
+
+```text
+Act as my procurement strategy advisor for sellers. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. roche.com]
+- Work in scope: [workload or function being bought, e.g. Application Development & Maintenance — or IT]
+- Deal type: [services or software]
+- What I sell: [one line, e.g. application management services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Fragmented providers under a cost programme mean consolidation and rate pressure; a concentrated base means an incumbent to dislodge. Find the technology procurement lead, not direct materials.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Map [Work in scope] to 1–3 workloads (types of work) and say which.
+3. Whole account: active engagements and partners.
+4. In scope: active engagements and partners in those workloads, then the top 10 providers; compute the top-3 share.
+5. Software deals: the top 10 technology vendors in the workloads, with main products.
+6. Up to 5 Procurement priorities, with outcome lines and linked tools and providers.
+7. Pressure, last 12 months of news: savings programmes, restructuring, layoffs, divestments, vendor consolidation, outsourcing deals. Review at least 20 items; mark the most important from the last 90 days.
+8. Procurement executives, one page of 10: look for IT, indirect, digital or technology procurement titles; flag subsidiaries. If none, take the top 3 executives in the function that owns the work.
+
+OUTPUT
+- Bottom line: 2 sentences — the stance to expect (Consolidate, Cost-down, Competitive re-bid or Strategic partner) and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) in procurement, or the business owner if none, the action this week and the dated why-now; if none, say so.
+- Table "Provider landscape" (top 10 in scope): Rank | Provider | Active engagements | Share. Then the top-3 share and a label: Concentrated over 50%, Fragmented under 30% (editable defaults), else Mixed.
+- Table "Pressure on procurement" (up to 5): Date | Programme or event | Figure | Source.
+- "What they'll ask for" (rate card, outcome pricing, transition plan, savings commitment) and "How to prepare": 3 moves.
+- Detail: whole-account context, procurement tools, software vendors, "Procurement contacts" (Name | Full title | Unit | IT/indirect or direct materials).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Exclude advertising, media, PR, staffing and market-research firms when the deal is IT or services work, and say so.
+- A savings programme counts only if news names a target, date or scope.
+- If no IT, indirect or technology procurement lead appears, say so rather than naming a direct-materials buyer.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Procurement read for [Company] on [Work in scope]. Lead with the stance to expect and the named procurement lead to reach. Then incumbents and their share, cost programmes with figures, and 3 moves to prepare.
+```
+
+### Follow-ups
+
+- Draft a consolidation proposal outline that reduces their provider count in [Work in scope].
+- Which of the incumbents are thinnest here? Show their engagements and tiers.
+- Write a 100-word note to the procurement lead framing our offer against their savings programme.
+
+### Tips
+
+- Ask your champion who in procurement covers technology services; Draup's procurement pages often skew to direct materials.
+- Fragmented plus a savings target usually means a consolidation play beats a pure price play.
+
+## Arm your champion to sell internally
+
+- **id:** `deals-champion-pack`
+- **What you get:** A forwardable brief your champion can use to sell the deal inside: why now in their company's words, cost of waiting, answers for the CFO, CIO and procurement, a 150-word internal email, and who to route it to.
+- **Use it when:** You have a champion who supports the deal but needs ammunition to win budget or reach the economic buyer.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. 3m.com); Champion (e.g. Jane Doe, Director Supply Chain Analytics); Decision maker (e.g. SVP Global Supply Chain (optional)); Competitor or status quo (e.g. SAP IBP, or spreadsheets (optional)); What I sell (e.g. supply-chain planning software)
+
+### Detailed prompt
+
+```text
+Act as my deal coach who writes for champions. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. 3m.com]
+- Champion: [name and title, e.g. Jane Doe, Director Supply Chain Analytics]
+- Decision maker (optional): [title or name, e.g. SVP Global Supply Chain]
+- Competitor or status quo (optional): [e.g. SAP IBP, or spreadsheets]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Champions lose deals because they can't make the case in their company's language. The pack must read as their argument, short enough to forward.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use the champion's function; say which.
+3. Their words: up to 6 priorities in the function with quarter and outcome lines; mark earnings-call ones.
+4. Money: revenue and EBITDA growth.
+5. Momentum: 12 months of monthly postings in the function (rising, flat or falling).
+6. Recent events, last 90 days: investments, orders, cost actions, leadership moves. Review at least 15 items.
+7. Peer moves: 6 months of industry news where a named peer adopted what [What I sell] provides.
+8. Check the whole stack for any named status-quo tool's maker.
+9. Decision maker: if I gave none, take the top 3 executives in the function (one page of 10) and pick the likely economic buyer.
+
+OUTPUT
+- Bottom line: 2 sentences — the case the champion can make and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) the champion should route the pack to, the action this week and the dated why-now; if none, say so.
+- "Why now": 3 bullets in the champion's voice, each a dated fact plus implication; lead with an earnings-call priority if one exists.
+- Table "If they ask…": Who (CFO, CIO, Procurement) | Answer | Fact behind it (dated).
+- "Internal email": 150 words max, champion to decision maker, no vendor name in the first two sentences, a specific ask.
+- "Cost of waiting": 2 bullets tied to stated outcomes.
+- Detail: peer moves (or "No peer proof in Draup"), status-quo usage, "Don't say" (2 unsupported claims).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Write Why now and the email as "we" and "our", in the buyer's voice. No superlatives about [What I sell].
+- Priority outcome lines are Draup summaries, not verbatim quotes.
+- A status-quo tool with High usage in the workloads I sell into is a strong incumbent: frame us as an addition or phased swap, not a rip-out.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 480 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Champion pack for [Champion] at [Company]. Lead with the case and the named decision maker to route it to before a dated event, then 3 dated why-now facts, CFO/CIO/procurement answers and a 150-word internal email.
+```
+
+### Follow-ups
+
+- Turn the pack into a 3-slide internal deck the champion can present.
+- Write the champion's talk track for a 5-minute slot in the staff meeting.
+- What would the CFO's objections be? Answer each with a dated fact.
+
+### Tips
+
+- Send the email draft to your champion as a suggestion, not a script; they'll edit it into their own voice.
+- Earnings-call priorities carry the most weight internally because leadership said them in public.
+- If peer proof comes back empty, swap in your own customer reference rather than stretching the evidence.
+
+## Reality-check a forecasted deal
+
+- **id:** `deals-forecast-check`
+- **What you get:** An outside-in score of a forecasted deal on pain, money, timing, people and competition, a recommended forecast category, the questions to ask the rep and the named buyer to verify with.
+- **Use it when:** Before a forecast call or deal review, or when a deal looks too good to be true.
+- **Best for:** Sales Leader & RevOps, Account Executive, Account & Customer Success Manager
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. fedex.com); Deal summary (e.g. AI-enabled customer-support services, $2M, close 2026-12-31); Stated pain (e.g. support costs rising with shipment volume); Forecast category (e.g. Commit); Competitor (e.g. Concentrix (optional)); What I sell (e.g. AI-enabled customer-support services)
+
+### Detailed prompt
+
+```text
+Act as my sales manager running a deal review. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. fedex.com]
+- Deal summary: [offer, amount, close date, e.g. AI support services, $2M, close 2026-12-31]
+- Stated pain: [e.g. support costs rising with shipment volume]
+- Forecast category: [the rep's call: Commit, Best case, Pipeline]
+- Competitor (optional): [e.g. Concentrix]
+- What I sell: [one line, e.g. AI-enabled customer-support services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+When the rep's story and the account's evidence disagree, this shows the manager which questions to ask.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use the function closest to [What I sell] (e.g. Customer Support & Service) and its 1–3 workloads; say which.
+3. Pain: up to 6 priorities in the function that match [Stated pain].
+4. Money: revenue and EBITDA growth.
+5. Activity: postings in the function (last 5 full months vs the 5 before) and active engagements.
+6. People: one page of 10 function executives: the top 3 and anyone under 1 year in title.
+7. Events, last 90 days: layoffs, restructuring, leadership changes, cost programmes, acquisitions, guidance. Review at least 20 items.
+8. Competition: [Competitor] in the whole stack (software) or engagements (services).
+9. Score each dimension 0–2 against [Forecast category] and the close date.
+
+OUTPUT
+- Bottom line: 2 sentences — whether the forecast category holds and the recommended category.
+- Recommended next step: a named person (name, full title) at the account to verify the deal with, the action this week and the dated why-now; if none, say so.
+- Table "Scorecard": Dimension | Score | Evidence + date | Contradicts the rep? Then Total out of 10 and category: Commit 8–10, Best case 6–7, Pipeline 4–5, Omit 0–3 (editable defaults).
+- "Questions for the rep": 4, tied to weak scores.
+- "Red flags": up to 3.
+- Detail: the numbers behind each score.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Pain 2 = matching priority in the 2 latest quarter labels. Money 2 = growth and no cost action touching the function. Timing 2 = no blocking event before close. People 2 = stable, or a new leader with a mandate. Competition 2 = no strong incumbent; 0 if a [Competitor] product has High usage, or [Competitor] is a top-3 provider by engagements, in my workloads; 1 if Medium, fewer engagements or newly detected. Activity is evidence for Money and Timing, not scored alone.
+- Priorities about products [Company] sells aren't internal pain.
+- Layoffs hurt Money only if they hit the function or signal a freeze. Never raise a score to match the rep.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- If I ask for a slide: 5 bullets + 1 table.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Reality-check my [Forecast category] deal at [Company]: [Deal summary]. Lead with whether the category holds and the named buyer to verify with. Score Pain, Money, Timing, People and Competition 0–2 from dated evidence and give 4 questions for the rep.
+```
+
+### Follow-ups
+
+- Run this check on my other 5 Commit deals: [Accounts, deal summaries].
+- Write the coaching note for the rep in under 120 words.
+- Build the plan that gets the weakest dimension to 2 before close.
+
+### Tips
+
+- Use it as a conversation starter in deal reviews, not a verdict on the rep.
+- Low Pain plus high Money often means the buyer can afford it but hasn't decided they need it; coach to the business case.
+- Re-run after each big event at the account; one news item can flip Timing.
+
+## Mutual action plan on their calendar
+
+- **id:** `deals-mutual-action-plan`
+- **What you get:** A mutual action plan built backwards from your close date that respects the buyer's fiscal calendar, names buyer owners at each step, flags events that could move dates and says who to send the draft to.
+- **Use it when:** You've agreed a target close date and want a plan both sides sign up to. Use this once the date is agreed; use "Pick a realistic signature window" (deals-budget-timing) instead to test the date first.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. starbucks.com); Deal stage (e.g. technical evaluation complete); Target close date (e.g. 2027-01-29); Steps still needed (e.g. security review, business case sign-off, procurement, legal (optional)); What I sell (e.g. data-platform modernisation services)
+
+### Detailed prompt
+
+```text
+Act as my deal desk lead. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. starbucks.com]
+- Deal stage: [e.g. technical evaluation complete]
+- Target close date: [e.g. 2027-01-29]
+- Steps still needed (optional): [e.g. security review, business case sign-off, procurement, legal]
+- What I sell: [one line, e.g. data-platform modernisation services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Plans that ignore fiscal year-end, freezes, earnings or a new executive mid-plan slip quietly; give every step a buyer owner.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use the business function closest to [What I sell] (e.g. IT) and say which.
+3. Fiscal calendar: the latest fiscal year and its end date from Draup's financials; the last 5 earnings calls with fiscal label and release date. Infer fiscal year-end, the next call and quarter-ends in the plan window.
+4. Stakeholders: function executives (one page of 10) and Procurement executives (5); look for technology or indirect procurement and anyone under 1 year in title. Flag subsidiaries.
+5. Events, last 90 days and announced for the window: leadership changes with effective dates, reorganisations, divestments, IPOs or spin-offs, investor events. Review at least 15 items.
+6. Up to 3 recent priorities in the function to anchor the objective.
+7. Build backwards from [Target close date] using [Steps still needed], or: business case sign-off, security and architecture review, procurement, legal, executive approval, signature, kickoff.
+
+OUTPUT
+- Bottom line: 2 sentences — Achievable, Tight or Unrealistic, with an alternative date if needed.
+- Recommended next step: a named person (name, full title) to send the draft plan to, the action this week and the dated why-now; if none, say so.
+- Table "Mutual action plan" (up to 8): Step | Target date | Buyer owner and ours | Exit criteria | Calendar note.
+- Table "Buyer calendar" (up to 6): Date | Event (fiscal year-end, quarter-end, earnings call, leadership start) | Effect on the plan.
+- "Objective": one sentence in the buyer's words, tied to a dated priority.
+- "Timeline risks": up to 3, each with the step it threatens and a mitigation.
+- Detail: "Stakeholders" (Name | Full title | Role: approver, reviewer, signer, user | In title since), up to 8.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Never assume a calendar fiscal year; derive it from financials and call dates and say how.
+- A senior leader starting or leaving inside the window is a timeline risk; name the effective date.
+- Default durations (editable): security review 3 weeks, procurement 3, legal 2, executive approval 1.
+- Don't name subsidiary executives as approvers unless the deal is with that unit. Label future call dates "inferred".
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Mutual action plan for [Company] from [Deal stage] to [Target close date]. Lead with Achievable, Tight or Unrealistic and who to send the draft to, then milestones with buyer owners and calendar events that could shift dates.
+```
+
+### Follow-ups
+
+- Turn the plan into a one-page document I can share with the buyer (no internal notes).
+- Draft the email proposing this plan to my champion.
+- Which steps can run in parallel to pull the close date in by two weeks?
+
+### Tips
+
+- Share the plan as a draft and ask the buyer to correct dates; their edits are the best signal of real intent.
+- Name buyer owners by function first; confirm names with your champion before sharing.
+- Earnings dates are inferred from past calls; check the investor-relations calendar before you commit.
+
+
+# Competitive intelligence
+
+Track what rivals are winning, building and losing, and where you can take share.
+
+## What a rival did this quarter
+
+- **id:** `compete-recent-moves`
+- **What you get:** The few moves a competitor made in the last 90 days that change your deals (customer wins, partnerships, launches, deals and leadership), the accounts to defend or attack, and the named person to call at the top one.
+- **Use it when:** Before a pipeline review or competitive deal, or when the field asks "what is [Competitor] up to?" Use this for one rival; use "Quarterly competitor watch for the team" (compete-quarterly-watch) for up to 3 side by side, or "How a rival's strategy is shifting" (compete-strategy-shift) after an earnings call.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Sales Leader & RevOps, Marketing & ABM, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Competitor (e.g. adobe.com); What I sell (e.g. digital experience platform); Territory (e.g. North America (optional)); Our differentiators (e.g. open architecture, faster time to value (optional))
+
+### Detailed prompt
+
+```text
+Act as my competitive-intelligence analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [website, e.g. adobe.com]
+- What I sell: [one line, e.g. digital experience platform — skip if you ran the start-here prompt]
+- Territory (optional): [e.g. North America]
+- Our differentiators (optional): [e.g. open architecture, faster time to value]
+
+CONTEXT (why this matters)
+Most competitive news is noise. What matters: named customer wins, partnerships that bundle the rival into accounts, launches that close a gap, leaders leaving.
+
+STEPS
+1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Search Draup's news for [Competitor] over the last 90 days: wins, partnerships, launches, deals, investments, leadership, layoffs. Review at least 20 items.
+3. Pull the news feed for the same window, limited to [Competitor] and to deals and partnerships, M&A, executive movement and layoffs (15 items), to add links and catch misses.
+4. Pull acquisitions in the last 12 months and reconcile each with the news (date, target, price).
+5. Classify each surviving item: Customer win (a named company adopting or expanding [Competitor]), Partnership, Product launch, M&A or investment, Leadership or layoff, Expansion. Merge repeat coverage. Prefer moves in [Territory].
+6. Write three signals on where [Competitor] is pushing next, each backed by two dated items.
+7. Pick the top account to watch (Defend first, in [Territory] if given), find it by name and confirm it's the right company, and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
+
+OUTPUT
+- Bottom line: 2 sentences — the move that matters most and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at the top account, the action this week and the dated why-now; if none, say so.
+- Table "Moves that matter" (up to 8, newest first): Date | Type | What happened | Named company | Source.
+- Table "Accounts to watch" (up to 8): Company | Move | Defend, Avoid for now or Attack later | Why (likely).
+- "Three signals": Signal, dated evidence, what it means for [What I sell].
+- "Counter-message": 3 bullets for this month, tied to [Our differentiators] if given (60 words max).
+- Detail: the rest of the log (up to 15 total) and the acquisitions reconciliation.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- A partner press release that only mentions [Competitor] is a Partnership, not a customer win; a marketplace listing is not a win.
+- Keep only items dated inside the window by the event date in the text.
+- A rival's outage, breach, price rise or layoff is a counter-message trigger for me; keep it.
+- If the acquisitions table and news disagree, show both and say which is newer; a price from news alone is single-source.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- The acquisitions table can miss deals; check 12 months of M&A news too. Divestments come from news only.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+What did [Competitor] do in the last 90 days that matters to [What I sell]? Lead with the bottom line and a named person at the top account to defend, then dated moves, accounts to watch and a counter-message.
+```
+
+### Follow-ups
+
+- Turn the counter-message into a 120-word email to the named executive at the top Defend account.
+- For [Named company], check whether [Competitor] products show up in their tech stack and how strong they are.
+- Run the same log for my second competitor and compare the two.
+
+### Tips
+
+- Run it monthly for your top two rivals; Accounts to watch is usually the most useful output.
+- Partner announcements tell you which services firms are now steering deals toward the rival.
+- Add your territory so the named account and next step land in your patch.
+
+## What a rival is building next
+
+- **id:** `compete-hiring-signals`
+- **What you get:** What a competitor is likely building or selling next, read from its own job ads (rising workloads, skills and new roles in the last 5 months), with proof postings, a talk track and the named person to brief.
+- **Use it when:** Before a roadmap or positioning review, or when you suspect a rival is entering your space.
+- **Best for:** Presales & Solutions, Sales Leader & RevOps, Marketing & ABM, Partnerships & Alliances, Account Executive
+- **Time:** 4–6 min
+- **Inputs:** Competitor (e.g. databricks.com); What I sell (e.g. AI agents for sales teams); Focus area (e.g. Artificial Intelligence & Data Science (optional)); Account to defend or win (e.g. visa.com (optional))
+
+### Detailed prompt
+
+```text
+Act as my competitive-intelligence analyst who reads job ads for strategy. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [website, e.g. databricks.com]
+- What I sell: [one line, e.g. AI agents for sales teams — skip if you ran the start-here prompt]
+- Focus area (optional): [a workload, i.e. a type of work, e.g. Artificial Intelligence & Data Science]
+- Account to defend or win (optional): [website of a live deal or key customer, e.g. visa.com]
+
+CONTEXT (why this matters)
+Companies hire 6–12 months ahead of launches. The signal is change, not volume; skills spiking in lockstep or on every posting are tagging artefacts.
+
+STEPS
+1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull hiring by workload (12 months, global, top 15) with monthly trends. Compare the last 5 full months with the 5 before: Rising (+25% or more, editable default), Steady or Falling. Draw no conclusions from catch-all workloads (Account Management, Project/Programs Management).
+3. Pull the top 20 skills within [Focus area], or else the workloads closest to [What I sell], with trends; flag Rising skills.
+4. Pull job titles trending up (12 months); if fewer than 3, use the rising workloads.
+5. For the 2 most surprising rising skills or titles, pull 4 recent postings each and read the responsibilities. Drop a skill as an artefact if it appears in unrelated roles (HR, finance) or rises in lockstep with an unrelated skill.
+6. Turn what survives into build signals: the offer or segment the hiring points to.
+7. Dated trigger: [Competitor]'s most important news item from the last 90 days that bears on the build signals.
+8. If I gave [Account to defend or win], find it by website and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
+
+OUTPUT
+- Bottom line: 2 sentences — what they're likely building and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at [Account to defend or win], the action this week, and [Competitor]'s dated move as the why-now; with no account given, name the role to brief.
+- Table "Build signals" (up to 3): Likely building or selling | Evidence | Threat or opening | Likely timing.
+- Table "Where hiring is moving" (top 10): Workload | Postings (12 mo) | Last 5 vs prior 5 | Read.
+- "Talk track": 2 bullets for my team (50 words max).
+- Detail: rising skills and titles (kept or dropped as artefact) and proof postings (Date | Title | Location | quote).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- A signal needs two kinds of evidence (e.g. a rising skill plus a posting naming the offer); otherwise label it "weak".
+- Never infer revenue or customers from postings.
+- Under 300 postings in 12 months is a small sample; keep conclusions tentative.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+What is [Competitor] building next, judged from its job ads? Lead with the bottom line and who to brief, then rising workloads and roles (last 5 full months vs prior 5), proof postings and up to 3 build signals.
+```
+
+### Follow-ups
+
+- Show where those rising roles are based: which metros and countries.
+- Compare this with what [Competitor] said on its latest earnings call.
+- Write a one-page internal brief for product marketing on the top build signal.
+
+### Tips
+
+- New job titles (e.g. forward-deployed roles for a new segment) are usually stronger signals than skill counts.
+- Read 3–4 actual postings before acting on any skill spike.
+- Add a live deal as the account and the next step names the person to brief there.
+
+## Where a rival's people are going
+
+- **id:** `compete-talent-drain`
+- **What you get:** Who a competitor loses people to and hires from, its workforce trend, the clients absorbing its staff (a sign of insourcing or delivery strain) and the named person to talk to at the most exposed client.
+- **Use it when:** Before a displacement pitch, or when a rival's delivery quality or stability is your angle.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Sales Leader & RevOps, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Competitor (e.g. cognizant.com); What I sell (e.g. application modernisation and managed services); Region (e.g. United States (optional))
+
+### Detailed prompt
+
+```text
+Act as my competitive-intelligence analyst for workforce signals. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [website, e.g. cognizant.com]
+- What I sell: [one line, e.g. application modernisation and managed services — skip if you ran the start-here prompt]
+- Region (optional): [country or metro, e.g. United States]
+
+CONTEXT (why this matters)
+A rival losing people faster than it hires, or to its own clients, is under delivery pressure; flows are directional, not total headcount.
+
+STEPS
+1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull talent flow by company, sorted by people lost, 25 rows ([Region] only if given). Remove its own subsidiaries, "Self Employed" and blank employers.
+3. If the region result looks almost the same as global, say the region may not have applied and show global.
+4. Split rows into Rival vendors (services firms, software vendors, consultancies) and End clients (companies that buy from [Competitor]). Net flow = hired from minus lost to.
+5. Pull the monthly workforce trend (hires, exits, net, total) for the same window.
+6. Search Draup's news for [Competitor] leadership moves and layoffs in the last 6 months; mark the most important from the last 90 days.
+7. For the top end client absorbing staff (or else the top end client in the list), find it by name and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
+
+OUTPUT
+- Bottom line: 2 sentences — the pressure on [Competitor] and what it means for [What I sell]. Add the window: "Talent flow for [months], [region or global]".
+- Recommended next step: a named person (name, full title) at the most exposed end client, the action this week and the dated why-now; if none, say so.
+- Table "Loses people to" (top 10): Company | Type (rival vendor, end client) | Lost | Hired from | Net.
+- Table "Monthly trend" (last 6 full months): Month | Hires | Exits | Net; then one line on direction.
+- "Clients absorbing their staff": end clients with 50+ people lost to and few hired back (editable default), each with a likely read (insourcing, rebadging, new captive).
+- "Leadership changes" (6 months, up to 5) and "How to use this": 3 bullets.
+- Detail: net winners against them (top 3) and the full monthly trend with workforce.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Counts are people moves Draup observed in the window, not total headcount or attrition rates.
+- Never tell a client that [Competitor] is losing staff on their account; use it to shape questions.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Talent flow ends about 3 months ago and the last month undercounts exits; state the months.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Label anything you infer as "likely".
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Where are [Competitor]'s people going? Lead with the bottom line and a named person at the client most likely absorbing its staff, then who it loses talent to and hires from, and monthly hires vs exits.
+```
+
+### Follow-ups
+
+- For [End client], show its outsourcing providers and [Competitor]'s engagements there.
+- Which job families is [Competitor] losing most in [Region]?
+- Write 3 discovery questions on delivery continuity I can ask the named executive.
+
+### Tips
+
+- End clients high in the lose-to list are often your best displacement targets.
+- Pair this with "A competitor's footprint at an account" (services-competitor-at-account) for the client it flags.
+
+## Rival head-to-head in one industry
+
+- **id:** `compete-vertical-head-to-head`
+- **What you get:** Two services firms compared in one industry and country by active engagements, shared and exclusive customers and workload mix, with the shared accounts to attack, the workloads where you lead and a named person at the top target.
+- **Use it when:** Planning an industry campaign against a rival services firm, or deciding where your firm should focus versus a competitor.
+- **Best for:** Services, SI & Staffing Seller, Sales Leader & RevOps, Account Executive, Partnerships & Alliances, Marketing & ABM
+- **Time:** 2–4 min
+- **Inputs:** Our firm (e.g. Wipro, or a second rival if your firm isn't in Draup); Competitor (e.g. Cognizant); Industry (e.g. Banking & Financial Services); Country (e.g. United States of America); Our accounts (e.g. paste a list (optional)); What I sell (e.g. data engineering and cloud managed services)
+
+### Detailed prompt
+
+```text
+Act as my competitive strategist for an IT services firm. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Our firm: [Draup name of your services firm, e.g. Wipro — or a second rival if yours isn't in Draup]
+- Competitor: [services firm, e.g. Cognizant]
+- Industry: [e.g. Banking & Financial Services]
+- Country: [customer HQ country in full, e.g. United States of America]
+- Our accounts (optional): [pasted list, if our firm isn't in Draup]
+- What I sell: [one line, e.g. data engineering and cloud managed services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Shared accounts are where buyers already compare both firms; exclusive accounts show each fortress; workload mix shows credibility.
+
+STEPS
+1. Confirm Draup's names for both firms, industry and country.
+2. Pull the provider ranking for [Industry] customers headquartered in [Country] (primary industry only): engagements and rank for both firms, plus the top 10 providers. Drop agencies, staffing and real-estate firms.
+3. Pull the top 20 customers by engagements for each firm, same industry and country.
+4. Match the lists by exact company name: Shared, Ours only, Theirs only. If I pasted Our accounts, use those for our side.
+5. Pull the top 12 workloads by engagements for each firm, same industry and country, and each workload's share of the firm's total. Mark the workloads closest to [What I sell].
+6. For each shared account, note who has more engagements and the gap.
+7. For the top attack account, find it by website, pull its top 3 executives in the function closest to [What I sell] (one page of 10) and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — "[Our firm]: N engagements (#rank); [Competitor]: N (#rank)" and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at the top attack account, the action this week and the dated why-now; if none, say so.
+- Table "Where to attack" (5): Customer | Ours | Theirs | Workload to lead with. Shared accounts where [Competitor] leads by 3x or less (editable default).
+- Table "Workload mix" (top 10): Workload | Ours (share) | Theirs (share) | Edge. No edge called on catch-all workloads.
+- "Where we lead": 3 workloads where our share is 5+ points higher (editable default), my offering's workloads first.
+- Detail: top 10 providers, all shared accounts with gaps, and 5 fortresses each side.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Every count uses both the industry and country conditions; never report a total from a check that dropped one.
+- Count shared accounts on exact names; flag near-matches separately.
+- Leave misclassified customers and either firm's subsidiaries out of Where to attack; if a firm has under 5 customers here, widen to the region.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Compare [Our firm] and [Competitor] in [Industry], [Country]. Lead with who's ahead and a named person at the top shared account to attack. Then the 5 attack accounts, workload mix and 3 workloads where we lead, all on active engagements.
+```
+
+### Follow-ups
+
+- For [Shared account], show both firms' engagements by workload.
+- Which executives at the top 3 attack accounts own [Workload]?
+- Turn Where we lead into a one-page industry point of view.
+
+### Tips
+
+- Shared accounts where the rival leads narrowly are usually the fastest share-of-wallet wins.
+- If your firm isn't in Draup, paste your customer list; the overlap still works.
+
+## How a rival's strategy is shifting
+
+- **id:** `compete-strategy-shift`
+- **What you get:** How a competitor's stated priorities moved across its last three earnings calls, the acquisitions, leaders and cuts behind each shift, what changes in your deals and who to brief.
+- **Use it when:** After a rival's earnings call, a big acquisition or a leadership change. Use this for the strategic read; use "What a rival did this quarter" (compete-recent-moves) for a dated list of moves.
+- **Best for:** Sales Leader & RevOps, Presales & Solutions, Marketing & ABM, Account Executive, Partnerships & Alliances
+- **Time:** 4–6 min
+- **Inputs:** Competitor (e.g. salesforce.com); What I sell (e.g. customer service platform); Area to watch (e.g. customer service and AI agents (optional)); Account to defend or win (e.g. att.com (optional))
+
+### Detailed prompt
+
+```text
+Act as my competitive strategist who reads earnings calls. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [website, e.g. salesforce.com]
+- What I sell: [one line, e.g. customer service platform — skip if you ran the start-here prompt]
+- Area to watch (optional): [e.g. customer service and AI agents]
+- Account to defend or win (optional): [website of a live deal or key customer, e.g. visa.com]
+
+CONTEXT (why this matters)
+A real shift shows three ways: a louder priority on the call, money behind it, people behind it. Read a tech vendor's priorities as product moves.
+
+STEPS
+1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. List its earnings-call transcripts; note the latest three with fiscal quarter and release date.
+3. Pull its key priorities grouped by function (up to 3 each, with fiscal quarter). Sort into New in the latest quarter, Repeated, and Older only. Focus on [Area to watch], or else on areas closest to [What I sell].
+4. Search Draup's news for [Competitor], last 6 months: executive appointments and exits, acquisitions, divestments, layoffs. Review at least 20 items; mark the most important from the last 90 days.
+5. Pull acquisitions in the last 12 months and reconcile with news. Flag announced-but-not-closed deals.
+6. For each theme, link the priority, the money and the people.
+7. If I gave [Account to defend or win], find it by website and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
+
+OUTPUT
+- Bottom line: 2 sentences — the shift that matters most and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at [Account to defend or win], the action this week, and [Competitor]'s dated move as the why-now; with no account given, name the role to brief.
+- Table "Strategy read" (3): Shift | Strength (Strong = call + money + people; Moderate = two; Talk only) | Dated evidence | What changes in deals.
+- Table "Money and people behind it" (up to 8): Date | Move | Size if given | Theme.
+- "Trap question": one discovery question that exposes the rival's integration or execution risk.
+- Detail: calls covered (Fiscal quarter | Release date) and priority shifts (Theme | New, Repeated or Fading | Latest quarter | Example priority).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Keep only acquisitions and leadership items where [Competitor] is the actor and the event is in the window.
+- Never estimate layoff numbers.
+- Say where they'll bundle or discount, what new objection to expect, and where they're distracted.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- The acquisitions table can miss deals; check 12 months of M&A news too. Divestments come from news only.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+How has [Competitor]'s strategy shifted across its last 3 earnings calls? Lead with the bottom line and who to brief. Rate each shift Strong, Moderate or Talk only, and say what changes in my deals.
+```
+
+### Follow-ups
+
+- Pull the latest call and quote the two passages that support the strongest shift.
+- Which of my accounts run the products [Competitor] just acquired?
+- Update my battlecard for [Competitor] with these shifts.
+
+### Tips
+
+- "Talk only" themes are often marketing; Strong themes are what their reps will push next quarter.
+- Acquisitions mid-integration are a classic opening: ask customers about roadmap certainty.
+
+## Where a rival makes its money
+
+- **id:** `compete-revenue-mix`
+- **What you get:** A competitor's revenue by business unit and region with growth, plus what it sells most, read as where it will defend price and where it is exposed, with the dated move and person to act on.
+- **Use it when:** Before a pricing or positioning discussion, or when building a competitive account strategy.
+- **Best for:** Sales Leader & RevOps, Account Executive, Services, SI & Staffing Seller, Marketing & ABM, Presales & Solutions
+- **Time:** 2–4 min
+- **Inputs:** Competitor (e.g. accenture.com); What I sell (e.g. data and AI services); Region I sell in (e.g. EMEA (optional)); Account to defend or win (e.g. boeing.com (optional))
+
+### Detailed prompt
+
+```text
+Act as my competitive analyst for pricing and positioning. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [website, e.g. accenture.com]
+- What I sell: [one line, e.g. data and AI services — skip if you ran the start-here prompt]
+- Region I sell in (optional): [e.g. EMEA]
+- Account to defend or win (optional): [website of a live deal or key customer, e.g. visa.com]
+
+CONTEXT (why this matters)
+A rival protects its biggest, fastest-growing lines and discounts where revenue is small or shrinking. Draup holds no list prices, so mix, growth and install base are proxies; say so.
+
+STEPS
+1. Find [Competitor] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull the latest fiscal-year revenue, EBITDA and R&D spend with growth, and the next-year forecast.
+3. Pull revenue by business unit (share and growth). If Draup has none, say so and rely on step 5.
+4. Pull revenue by region for the latest year; compute growth from the two years' amounts.
+5. Mix proxy. Software: its top 10 products by number of companies using them. Services: its customer summary and top 12 workloads by engagements, marking those closest to [What I sell].
+6. Classify each unit, region, product or workload: Core (large and growing), Cash (large, flat or falling), Bet (small, fast growing), Exposed (small and shrinking). Large = 15%+ share; growing = above company growth (editable defaults).
+7. Dated trigger: [Competitor]'s most important news item from the last 90 days.
+8. If I gave [Account to defend or win], find it by website and pull its top 3 executives in the function closest to [What I sell] (one page of 10).
+
+OUTPUT
+- Bottom line: 2 sentences — where they'll defend and where they're exposed, and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at [Account to defend or win], the action this week, and [Competitor]'s dated move as the why-now; with no account given, name the role to brief.
+- Table "Where they make money" (up to 10): Unit, region, product or workload | Share or size | Growth | Class. Highlight [Region I sell in].
+- Table "Headline numbers": Metric | Latest FY | Growth | Forecast.
+- "Defend vs exposed": 3 bullets each, tied to rows above; then a 2-sentence pricing read, labelled as inference.
+- Detail: full unit, region and mix tables.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Product counts are install base, not revenue.
+- Never state the rival's prices, discounts or product margins; Draup doesn't hold them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- IT spend is Draup-estimated, often modelled from revenue; don't treat its growth as a signal. Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
+- Use the latest year's regional split; compute growth from amounts and check for divestments before calling a drop a cut.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- If I ask for a slide: 5 bullets + 1 table.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Where does [Competitor] make its money? Lead with where it will defend price and where it's exposed, and the named person to act with. Show revenue, growth and forecast, revenue by unit and region, and its biggest products or workloads.
+```
+
+### Follow-ups
+
+- Compare this mix with my second competitor's.
+- Which accounts in my territory run [Competitor]'s Exposed products?
+- Write 3 pricing objections we'll hear in their Core area and a reply to each.
+
+### Tips
+
+- Large technology vendors often have no business-unit split in Draup; the product install-base list is the better proxy.
+- Regions growing below the company average are often where their field teams are being cut back.
+
+## Accounts where a rival is fading
+
+- **id:** `compete-fading-installs`
+- **What you get:** Your target accounts rated by how strong a rival's installed products are (Entrenched, Present, Thin or Fading), the successor already in place, and the best 3 takeout targets with a named person at the top one.
+- **Use it when:** Planning a takeout campaign against a software rival across a named account list.
+- **Best for:** Account Executive, SDR / BDR, Presales & Solutions, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Competitor (e.g. Teradata); Accounts (e.g. visa.com, fedex.com, att.com, boeing.com); What I sell (e.g. cloud data warehouse)
+
+### Detailed prompt
+
+```text
+Act as my competitive displacement analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [software vendor or product, e.g. Teradata]
+- Accounts: [up to 8 websites, e.g. visa.com, fedex.com, att.com, boeing.com]
+- What I sell: [one line, e.g. cloud data warehouse — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+A rival's weakest installs are the cheapest wins: usage thin, evidence stale, a successor already in. Entrenched installs are expensive fights.
+
+STEPS
+1. Find each account by website and confirm the parent; ask only if none or several match. If I gave more than 8, do the first 8 and offer to continue.
+2. For each account, check the whole tech stack for products made by [Competitor] (one lookup each, up to 50 rows), whatever area they're filed under. If [Competitor] is a product, check its maker.
+3. Record usage strength and last seen. A last-seen date shared by 3+ of an account's rows, or repeated across accounts, is a refresh date.
+4. Rate each account by its strongest [Competitor] product seen in the last 90 days (not on a refresh date): High = Entrenched, Medium = Present, Low = Thin, none = Fading. Flag any product first seen within 12 months (the one use of first-seen dates). Editable defaults.
+5. For the 3 weakest accounts, pull the stack in the sub-category matching [What I sell] (e.g. Data Warehouse Software, 30 rows each) and name High or Medium products from other vendors: the likely successor.
+6. Rank targets: Fading, then Thin, then fewest [Competitor] products first (an easier swap).
+7. For the #1 target, pull its top 3 executives in the matching workload (e.g. Data Engineering) or IT, and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — the best target and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at the #1 target, the action this week and the dated why-now; if none, say so.
+- Table "Install health" (up to 8): Account | Strongest product (strength, last seen) | Products found | Rating.
+- Table "Best 3 takeout targets": Account | Successor in place | Why now (dated) | Opening for [What I sell].
+- "Leave for later": Entrenched and Present accounts, one line each.
+- Detail: successor reads (Replacing, Parallel, Unclear), countries, accounts not resolved.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Entrenched counts as Red and Present as Amber in any risk check; a newly detected install is a fresh choice, so don't attack it.
+- A third-vendor successor already at High means a likely mid-migration: the play is speed, not persuasion.
+- "Not found" is not proof they don't use it; say "not detected".
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Label anything you infer as "likely".
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+For up to 8 [Accounts], check every [Competitor] product in the stack. Lead with the best takeout target and a named person there. Rate each account Entrenched, Present, Thin or Fading and name the successor already in place.
+```
+
+### Follow-ups
+
+- For [Account], map the buying committee in the function that owns the product.
+- Check job ads at the best 3 targets for skills naming [Competitor].
+- Write a 90-word email to the named executive at the top target.
+
+### Tips
+
+- Keep the list to accounts you can work this quarter; 8 is one pass.
+- A rival product still listed but Low across the board is often a renewal you can shape.
+
+## Quarterly competitor watch for the team
+
+- **id:** `compete-quarterly-watch`
+- **What you get:** A one-page quarterly report on up to 3 rivals: a side-by-side scorecard including hiring in your space, each one's top moves and leadership changes, three team actions and a named account contact for the biggest threat.
+- **Use it when:** At the start of each quarter, for a team meeting or sales kick-off. Use this for up to 3 rivals side by side; use "What a rival did this quarter" (compete-recent-moves) to go deep on one.
+- **Best for:** Sales Leader & RevOps, Marketing & ABM, Presales & Solutions, Partnerships & Alliances
+- **Time:** 6–10 min
+- **Inputs:** Competitors (e.g. capgemini.com, cognizant.com, accenture.com); What I sell (e.g. cloud and data managed services); Quarter (e.g. last 90 days (optional)); Last report (e.g. paste last quarter's scorecard (optional))
+
+### Detailed prompt
+
+```text
+Act as my competitive-intelligence lead writing the quarterly team briefing. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitors: [up to 3 websites, e.g. capgemini.com, cognizant.com, accenture.com]
+- What I sell: [one line, e.g. cloud and data managed services — skip if you ran the start-here prompt]
+- Quarter (optional): [default last 90 days]
+- Last report (optional): [paste last quarter's scorecard to compare]
+
+CONTEXT (why this matters)
+A team briefing needs the same lenses per rival and the few moves that matter; a rival adding roles in my space is coming for my deals.
+
+STEPS
+1. Find each competitor by website and confirm name, HQ and website. If I gave more than 3, do the first 3 and offer to continue.
+2. For each, pull the quarter's news plus one targeted customer-wins search. Review 20+ items per rival; keep the top 5 by importance to [What I sell].
+3. For each, pull the 12-month hiring timeline: last 5 full months vs the 5 before, Growing (+10% or more), Flat or Cutting (−10% or more), editable defaults. A month that jumps over 2x and stays may be a data-coverage change; flag it.
+4. For each, pull 12-month postings in the 1–3 workloads closest to [What I sell], with trend.
+5. Note dated leadership changes; if I pasted last quarter's scorecard, mark what changed.
+6. Pick three team actions tied to dated moves.
+7. From the named win most relevant to [What I sell], find the account by website and confirm its HQ and industry (if its executives look like look-alikes, use the next win and say so); pull its top 3 executives in the function closest to [What I sell].
+
+OUTPUT
+- Bottom line: 2 sentences — the biggest threat this quarter and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at the account in the strongest rival win, the action this week and the dated why-now; if none, say so.
+- Table "Scorecard": Rival | Top move (dated) | Hiring overall (% change) | Hiring in my space | Change vs last report.
+- Table "Team actions next quarter" (3): Action | Owner role | Trigger move (dated).
+- Per rival: "So what for us", one line, plus its top 3 moves.
+- "Patterns" (2 bullets) and "Watch list" (3: unclosed deals, leaders in transition).
+- Detail: each rival's top 5 moves (Date | Move | Source) and counts of deals, M&A and leadership changes.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Scorecard counts come only from items that survived the noise rule; say how many were reviewed per rival.
+- Label unclosed acquisitions "announced".
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- If I ask for a slide: 5 bullets + 1 table.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 500 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Quarterly watch on up to 3 [Competitors]. Lead with the biggest threat and a named person at the account it touches. Then a scorecard (top move, hiring overall and in my space), top moves per rival and 3 team actions.
+```
+
+### Follow-ups
+
+- Turn the scorecard into a slide-ready table and 3 speaker notes.
+- Deep-dive the strongest move with the strategy-shift prompt.
+- Draft a 150-word note to the sales team with the 3 actions. (Check your Draup licence before sharing Draup data outside your company.)
+
+### Tips
+
+- Save the scorecard each quarter and paste it next time; the change column is what leaders read.
+- Three rivals per run keeps it fast; split bigger lists across runs.
+
+
+# Outsourcing and services deals
+
+For IT services, consulting and staffing sellers: incumbents, share of wallet, GCCs and wedges.
+
+## Outsourcing footprint and consolidation wedge
+
+- **id:** `services-outsourcing-footprint`
+- **What you get:** How much the account outsources, to whom, how concentrated it is, and the workloads where a consolidation pitch for what you sell fits, ending with a named buyer and a dated why-now.
+- **Use it when:** Before any services pursuit, to size the account and see who you're up against. Use this when you don't yet know which rival matters; use services-competitor-at-account instead when you do.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. pfizer.com); What I sell (e.g. data engineering and analytics managed services)
+
+### Detailed prompt
+
+```text
+Act as my outsourcing analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- What I sell: [One line, e.g. data engineering and analytics managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull the account's active service providers and active engagements, once for the whole account and once for the business function closest to [What I sell] (e.g. IT).
+3. Pull the top 25 providers by engagements. Set aside agencies, staffing, market-research and merchandising firms and the account's own subsidiaries (one line with their combined share). Keep the top 10 of the rest, and note each one's engagements in that function.
+4. Pull the top 15 outsourced workloads (a workload is a type of work, e.g. Application Development & Maintenance).
+5. For up to 5 workloads, skipping catch-alls, take those matching [What I sell] first, then the largest others, and pull their providers: how many, and the largest one's share.
+6. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — concentrated or long tail, and the best opening for [What I sell].
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Verdict line: "Concentrated" if the top 3 providers hold more than 50% of active engagements (editable default), otherwise "Long tail". Every % is a share of the account's total active engagements from step 2; state that total.
+- "Consolidation wedge" (up to 3): Workload | Engagements | Providers | Largest provider and share | One-line pitch. Only workloads matching [What I sell] with 5+ providers and none above 40% (editable defaults).
+- "Top providers": Rank | Provider | Engagements | % of total | In [function].
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: the 15 workloads (Workload | Engagements | Providers checked?) and the set-aside line.
+
+RULES
+- Show catch-all workloads (Project/Programs Management, Account Management) but never recommend them.
+- If no workload matches [What I sell], say so instead of forcing a wedge.
+- If a company with $10B+ revenue shows fewer than 20 IT-services engagements, warn that the work may be in-house (check for a capability centre) or the data thin.
+- Leave agencies, staffing, market-research and merchandising firms, software vendors and look-alike names out of provider lists.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and a next step (named person, dated why-now) first. Then size [Company]'s outsourcing: active engagements, top 10 IT and services providers by share, concentrated or long tail, and up to 3 consolidation wedges for [What I sell].
+```
+
+### Follow-ups
+
+- Show [Competitor]'s footprint at [Company] and where it's thinnest.
+- Who owns the wedge workloads? List up to 5 leaders with full titles.
+- Is any of this work moving in-house? Check in-house hiring in the wedge workloads.
+- Draft a 120-word vendor-consolidation point of view for the person in the next step.
+
+### Tips
+
+- A long tail of small providers often means no one owns the workload end to end. That's the opening for a consolidation pitch.
+- Engagement counts are Draup-derived. Use them to compare providers inside one account, not as contract values to quote to the client.
+
+## A rival's footprint and your wedge
+
+- **id:** `services-competitor-at-account`
+- **What you get:** How deep a rival services firm is at the account (or, if it's absent, who really is), how it delivers, and the workloads where it's weakest: your wedge, with a named buyer and a dated why-now.
+- **Use it when:** You're planning a displacement or second-vendor play at an account a rival already serves. Use services-outsourcing-footprint instead when you don't know who's there yet.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. pfizer.com); Competitor (e.g. Cognizant); What I sell (e.g. application modernisation and managed cloud services)
+
+### Detailed prompt
+
+```text
+Act as my competitive-intelligence analyst for IT services deals. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- Competitor: [Services firm, e.g. Cognizant]
+- What I sell: [One line, e.g. application modernisation and managed cloud services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull the account's active engagements and top 10 providers, for the whole account and for the business function closest to [What I sell] (e.g. IT), leaving out agencies and staffing firms. Confirm the competitor's Draup spelling.
+3. Pull the competitor's engagement detail at the account: engagements, relationship tier, workloads, client and delivery locations.
+4. If it has 2 engagements or fewer here (editable default), say so, show the top 5 IT and services providers, and run steps 3 and 5 on the largest one instead. If the account runs its own capability centre or has fewer than 20 IT-services engagements, flag that the work may be in-house.
+5. Pull the account's workload counts and the analysed provider's workload counts at the account. Then check who holds each of at most 5 workloads: wedges matching [What I sell] plus the provider's top 2, skipping catch-alls.
+6. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — how entrenched [Competitor] (or the largest provider, if the rival is absent) is, and where [What I sell] gets in.
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Verdict line: "[Provider] is #N at [Company] with X active engagements (Y in [function]); tier: …".
+- "Wedge workloads" (up to 3): Workload | Its engagements | Who else holds it | Why it's a wedge. Workloads matching [What I sell] where the analysed provider has 3 engagements or fewer (editable default) or an operational or limited tier.
+- "Top providers": Rank | Provider | Engagements | % of account total | In [function]. Highlight the analysed provider.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: the provider's footprint by workload; its onshore, nearshore and offshore delivery share.
+
+RULES
+- Tiers: strategic = broad, long-standing; operational = defined services; specialist = niche; limited = a few small engagements. Operational and limited are easiest to unseat.
+- Show catch-all workloads (Project/Programs Management, Account Management) but never recommend them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. How big is [Competitor] at [Company] in Draup: rank, engagements, tier, delivery locations, and 3 thin workloads matching [What I sell]? If it's absent, analyse the largest provider.
+```
+
+### Follow-ups
+
+- Show the 10 most recent engagements between [Company] and [Competitor], with month, workload and delivery location.
+- Which leaders at [Company] own the wedge workloads?
+- Draft a 3-bullet 'why a second vendor' point of view for the person in the next step.
+
+### Tips
+
+- Spell provider names as Draup does. If a name returns nothing, try the short brand name.
+- If your rival isn't there, the prompt switches to the largest provider, so an empty result still gives you a plan.
+- A thin footprint in a workload you lead is usually a better wedge than attacking the rival's core.
+
+## A rival's customers you can win
+
+- **id:** `services-competitor-customers`
+- **What you get:** A ranked list of a rival's customers in your industry and country, how entrenched it is at each, and the 3 to attack first, with a named buyer at the best one.
+- **Use it when:** You're building a displacement campaign against one services rival in one industry. Use services-competitor-at-account instead for a single account.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, SDR / BDR, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Competitor (e.g. Capgemini); Vertical (e.g. Life Sciences); Country (e.g. United States of America); Workload (optional) (e.g. Data Engineering); What I sell (e.g. clinical data and analytics managed services)
+
+### Detailed prompt
+
+```text
+Act as my displacement-campaign analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [Services firm, e.g. Capgemini]
+- Vertical: [Draup industry, e.g. Life Sciences]
+- Country: [Customer HQ country in full, e.g. United States of America]
+- Workload (optional): [e.g. Data Engineering, or a business function I'll map; blank for all]
+- What I sell: [One line, e.g. clinical data and analytics managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Confirm Draup's spelling of the competitor, industry and country. Use each customer's primary industry so loosely tagged companies don't slip in.
+2. Pull the competitor's customers in that primary industry with HQ in that country (and workload, if given), by engagements. Keep the top 20.
+3. For the top 8, pull each account's provider ranking: total engagements, the competitor's rank and share, and the provider just above or below it.
+4. Pull the competitor's top 5 workloads in this industry and country.
+5. People and timing: pick the Best 3 (see OUTPUT). For the first one, pull its top 3 leaders in the business function closest to [What I sell] (full profile titles) and its most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — how big [Competitor] is here and which accounts to attack first.
+- Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Headline line: "[Competitor] has N customers and X active engagements in [Vertical], [Country]", plus its top 5 workloads.
+- "Targets" (top 10): Rank | Customer | Engagements with rival | Share of account | Read.
+- Read: Entrenched (#1 or above 30%), Contestable (10–30%), Foothold (below 10%) — editable defaults. Rows 9–20: "not assessed".
+- "Best 3 to target": assessed Contestable or Foothold accounts with the most engagements, one line each with the provider next to the rival.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: rows 11–20 and each top-8 account's total engagements and rank.
+
+RULES
+- Flag customers that look misclassified, are the competitor's own subsidiaries or are investors; leave them out of Best 3.
+- If fewer than 5 customers come back, drop the workload, then widen the country to its region, and say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named buyer, dated why-now) first. Which [Vertical] companies headquartered in [Country] use [Competitor] most in Draup? Top 20 by engagements, its share and rank at the top 8, and the 3 most contestable.
+```
+
+### Follow-ups
+
+- Show [Competitor]'s footprint and wedge workloads at the first Best-3 account.
+- Assess rows 9–16 the same way.
+- Write a 3-email displacement sequence for the person in the next step.
+
+### Tips
+
+- Use the full country name, e.g. United States of America.
+- A Contestable account is often easier to win than one where the rival is the main partner.
+
+## Peers' outsourcing deals for social proof
+
+- **id:** `services-peer-deals`
+- **What you get:** Recent outsourcing engagements at the prospect's peers in the work you sell, ready-to-use proof lines, and who to send them to and why now.
+- **Use it when:** You need "companies like you are already doing this" evidence for an email, a deck or a first call.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Marketing & ABM
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. pfizer.com); Workload (e.g. Software Testing); My company (optional) (e.g. Northwind Data Services)
+
+### Detailed prompt
+
+```text
+Act as my sales researcher building social proof for a services pitch. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- Workload: [Draup workload, e.g. Software Testing; a business function like Quality is fine, I'll map it]
+- My company (optional): [Our services firm as Draup spells it, e.g. Northwind Data Services]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry and HQ country.
+2. If I gave a business function, map it to its 1–2 main workloads and say which. Pull engagements in those workloads at other companies with the same primary industry and HQ country. Keep the 10 most recent: month, customer, provider, delivery location, one-line description. If fewer than 5, widen to the industry worldwide and say so.
+3. Merge near-duplicates (same customer, provider and work within a quarter). Drop agencies, staffing firms and investors listed as customers.
+4. If My company is given, pull our engagements in those workloads in the same industry, newest first, as reference candidates.
+5. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — how common this work is among peers and the strongest proof angle.
+- Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Peer engagements": Month | Customer | Provider | What the work was. Newest first.
+- "Proof lines": 3 sentences of 25 words or fewer. Name companies only where I say it's allowed; otherwise describe them by size and industry.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Who peers use" (providers with counts) and "Our references" (Month | Customer | What the work was), if My company is given.
+
+RULES
+- These are Draup-derived records, paraphrased, with month-level dates. Never present them as quotes, press releases or signed contracts.
+- If I ask for public references only, keep engagements Draup marks as publicly reported.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 400 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Find the 10 most recent [Workload] engagements at [Company]'s peers (same industry and HQ country) in Draup: month, customer, provider, the work. Then write 3 proof lines.
+```
+
+### Follow-ups
+
+- Turn the proof lines into a 90-word email to the person in the next step.
+- Which of these peers are also our customers? Here is our list: [Our customers].
+- Show the same for [another Workload].
+
+### Tips
+
+- Engagement records have month-level dates. Use them to show a pattern, not to quote a specific contract.
+- Describing peers by size and industry is often safer than naming them.
+
+## Find the biggest buyers of my service
+
+- **id:** `services-offering-to-buyers`
+- **What you get:** Your offering mapped to Draup workloads you approve, then the 20 companies in your territory that outsource them most, their incumbents, where the provider mix is fragmented, and who to call first.
+- **Use it when:** You have a new service line or practice, or want the biggest buyers of one type of work in an industry or country.
+- **Best for:** Services, SI & Staffing Seller, Marketing & ABM, Sales Leader & RevOps, SDR / BDR, Partnerships & Alliances
+- **Time:** 4–6 min
+- **Inputs:** What I sell (e.g. We modernise legacy mainframe and .NET applications to cloud-native, then run them as a managed service.); Country or Vertical (e.g. Germany); Workload (optional) (e.g. Application Development & Maintenance)
+
+### Detailed prompt
+
+```text
+Act as my go-to-market analyst for a services practice. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- What I sell: [One paragraph, e.g. We modernise legacy mainframe and .NET applications to cloud-native, then run them as a managed service.]
+- Country or Vertical: [Required. HQ country in full, e.g. Germany, or a Draup industry, e.g. Banking & Financial Services]
+- Workload (optional): [If you know the Draup name, e.g. Application Development & Maintenance; skips the mapping]
+
+STEPS
+1. If Workload is given, confirm it and go to step 3. Otherwise map [What I sell] to up to 8 Draup workloads (types of work), each Strong, Partial or Doubtful with a 5-word reason. Automatic mapping can be loose; judge each.
+2. Stop for me to confirm or prune (if I said "don't wait", use Strong only).
+3. Pull the top 20 companies outsourcing the confirmed workloads in [Country or Vertical] (primary industry; HQ country). Remove IT services firms, consultancies, staffing firms, agencies and investors.
+4. Pull the top 10 providers in the same segment, with share.
+5. For the top 10 buyers, pull their top 3 providers in those workloads. Rows 11–20: "not checked".
+6. People and timing: at the top buyer in "Where to play", pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- "Workload mapping" (shown first, before the list): Workload | Fit | Reason.
+- Bottom line: 2 sentences — segment size and where to start.
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Target list" (top 10): Rank | Company | Engagements | Main incumbent (share) | Fragmented?
+- Fragmented = no provider above 40% of that buyer's work in these workloads (editable default).
+- "Where to play": 3–5 fragmented or broadest buyers, one line each.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: rows 11–20 and "Segment providers" (Rank | Provider | Engagements | % of segment).
+
+RULES
+- Never run the list without a country or industry; unlimited, it returns only global megacaps.
+- Never map to catch-all workloads such as Account Management.
+- Flag companies that look misclassified; leave them out of Where to play.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Map [What I sell] to Draup workloads for me to approve. Then give the bottom line, a named first call, and the 20 companies in [Country or Vertical] outsourcing that work most, with main incumbent and fragmentation.
+```
+
+### Follow-ups
+
+- Add Draup's Opportunity Index score for each company and re-rank.
+- For the top 5, who owns these workloads?
+- Show peer engagements in the confirmed workloads I can use as social proof.
+- Format this as a target list I can paste into my CRM (company, website, reason).
+
+### Tips
+
+- Check the workload mapping before the list is built. One wrong workload can fill the list with the wrong companies.
+- A country or industry keeps the list from leaning toward global megacaps.
+
+## Profile a services firm, rival or partner
+
+- **id:** `services-competitor-profile`
+- **What you get:** A services firm's size, top customers, workloads and delivery hubs in your segment, ending in how to out-position it (rival) or where to team with it (partner), and a named person to act on.
+- **Use it when:** Before a competitive bid, when a new rival keeps showing up, or before approaching a firm as a partner.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances, Marketing & ABM
+- **Time:** 2–4 min
+- **Inputs:** Firm (e.g. Cognizant); Rival or partner (e.g. Rival); Vertical or Country (e.g. Life Sciences); What I sell (e.g. clinical data management and testing services)
+
+### Detailed prompt
+
+```text
+Act as my competitive and alliances analyst for services deals. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Firm: [Services firm, e.g. Cognizant]
+- Rival or partner: [e.g. Rival]
+- Vertical or Country: [Required. Draup industry, e.g. Life Sciences, or customer HQ country in full]
+- What I sell: [One line, e.g. clinical data management and testing services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the firm by website or name; confirm Draup's spelling and that it's the parent. If a sister brand also matches, list it separately.
+2. Pull its customer summary: active customers, engagements, main industries.
+3. Pull its top 10 customers and top 10 workloads by engagements, overall and within [Vertical or Country].
+4. Pull its delivery locations, always limited to [Vertical or Country]. Keep the top 10 metros and group them onshore (customers' country), nearshore (same region) or offshore.
+5. People and timing: pull the most important news from the last 90 days where [Firm] is the actor (client wins, acquisitions, alliances). Partner: pull [Firm]'s top 3 leaders for [Vertical or Country] or alliances. Rival: pull the top 3 leaders, in the function closest to [What I sell], at its largest in-segment customer, where a displacement play would start.
+
+OUTPUT
+- Bottom line: 2 sentences — how strong [Firm] is in this segment and what that means for [What I sell].
+- Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Header line: [Firm] | active customers | engagements | top 3 industries.
+- "Top customers": Rank | Customer | Engagements overall | In segment.
+- Rival: "How to out-position [Firm]" — 3 angles tied to facts (thin where we lead, offshore-heavy, few big logos). Partner: "Where to team" — 3 angles tied to facts (workloads it lacks that we cover, shared customers, complementary hubs).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Workloads" (Workload | Overall | In segment) and "Delivery hubs" (Metro | Country | Engagements | Onshore/Nearshore/Offshore, plus the % split).
+
+RULES
+- Never pull delivery locations without the industry or country limit; the full list is too large.
+- Show catch-all workloads (Project/Programs Management, Account Management) but never recommend them.
+- Analyst rankings and awards are context, never a why-now.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Profile [Firm] from Draup: customers and engagements, top customers and workloads overall and in [Vertical or Country], delivery hubs with onshore share, then 3 out-position (rival) or teaming (partner) angles.
+```
+
+### Follow-ups
+
+- Which [Vertical] companies in [Country] use [Firm] most and look contestable?
+- Show [Firm]'s footprint at [Company].
+- Turn the three angles into a one-page battlecard, or a partner intro note.
+
+### Tips
+
+- Compare the overall and in-segment columns: a firm that is huge overall can be thin in your industry.
+- For partners, overlap in customers matters more than size. Shared accounts are where a joint pitch lands.
+
+## Which providers to partner with or replace
+
+- **id:** `services-partner-map`
+- **What you get:** For each priority in one function, the providers and tech vendors linked to it with their engagements in that function, and whether to partner, displace or walk through an open door.
+- **Use it when:** You're deciding who to partner with and who you'd be replacing at one account. Use this when you want the play for every priority; use services-cosell-partner instead when you sell software and need one SI to co-sell with, and tech-priority-stack-incumbent-map when you only need who's working each priority.
+- **Best for:** Partnerships & Alliances, Services, SI & Staffing Seller, Account Executive
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. pfizer.com); Business function (e.g. IT); I sell (e.g. software); What I sell (e.g. AI and automation platform); Partners to evaluate (optional) (e.g. Tailspin Partners, Accenture)
+
+### Detailed prompt
+
+```text
+Act as my alliances and pursuit strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- Business function: [e.g. IT, Supply Chain, Human Resources]
+- I sell: [software, services or both — skip if you ran the start-here prompt]
+- What I sell: [One line, e.g. AI and automation platform — skip if you ran the start-here prompt]
+- Partners to evaluate (optional): [Our current or candidate partners, e.g. Tailspin Partners, Accenture]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull priorities in [Business function], sort by date and keep up to 8 most relevant to [What I sell], with source and quarter (if fewer exist, say how many).
+3. For each priority, list up to 4 linked providers and 4 linked products. Skip the account's subsidiaries, agencies and staffing firms.
+4. Pull the account's provider ranking twice: limited to [Business function] (if that returns nothing, to its main workloads), and for the whole account. Show each provider's engagements as "in function / total".
+5. Tag each Partner (complements what I sell), Displace (does what I sell) or Neutral. For software sellers, services firms and platforms we run on are Partner or Neutral, not Displace.
+6. If I named partners to evaluate, compare them head to head: engagements in [Business function] at the account, in total there, and in [Business function] across the account's industry.
+7. People and timing: at [Company], pull the top 3 leaders in [Business function] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — who to team with and who you'd replace.
+- Recommended next step: a person from step 7 (name and title), what to do (often via the best partner's account lead), and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Priority map": Priority (source, quarter) | Linked providers (in function / total) | Linked tech | Play | Likely owner.
+- Play: Partner-led, Displacement, or Open (nothing linked, or only providers with 2 or fewer engagements in the function; editable default).
+- "Best partners to call": up to 3, named partners first, each with in-function engagements and why.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Who we'd displace" (up to 3, with engagements) and the head-to-head table from step 6.
+
+RULES
+- Tools and providers are linked to priorities by workload, not confirmed: say "linked", never "used for".
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- If [Company] sells technology, drop priorities and tools about its own products.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. For [Company]'s top priorities in [Business function], which providers and tech vendors are linked to each, with engagements in that function? Tag Partner, Displace or Open for [What I sell].
+```
+
+### Follow-ups
+
+- Pick the best co-sell partner for the top Open priority.
+- Show the buying committee for [Business function].
+- Draft a note to the best partner's account lead proposing a joint session with the person in the next step.
+
+### Tips
+
+- A provider linked to a priority works in the same workloads; it hasn't necessarily won that initiative. Check its in-function engagements before pitching a partnership.
+- Name the partners you're weighing. The head-to-head comparison is often the most useful part of the answer.
+- Open priorities with no strong incumbent are often the quickest entry.
+
+## Is outsourced work coming back in-house?
+
+- **id:** `services-reinsourcing-risk`
+- **What you get:** For each outsourced workload, whether the account is building the same skills in-house — re-insourcing risk, capability gap or cost takeout — plus fast-growing in-house teams outside its outsourced list.
+- **Use it when:** Before a renewal, an expansion pitch or a new pursuit, to decode what the account really intends.
+- **Best for:** Services, SI & Staffing Seller, Account & Customer Success Manager, Account Executive
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. pfizer.com); What I sell (e.g. managed analytics and BI services)
+
+### Detailed prompt
+
+```text
+Act as my services account strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- What I sell: [One line, e.g. managed analytics and BI services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull the top 10 outsourced workloads with engagements.
+3. Pull in-house postings by workload in one pass (up to 60, monthly); narrowing to one workload mixes in co-tagged roles. Compare the last 5 full months with the 5 before and name the months.
+4. Also list workloads outside that top 10 with postings up over 50% and 50+ in 12 months.
+5. Pull capability-centre sites (company-owned offshore sites, all functions) and 12-month centre setup or expansion news where [Company] is the actor; ignore branches, wealth centres, HQ moves and plants.
+6. Classify each outsourced workload in order: No signal (under 20 postings in 12 months); Re-insourcing risk (up over 20% and a capability centre hiring in that function); Capability gap (up over 20%, no centre); Cost takeout (up 20% or less: rate and vendor pressure).
+7. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — biggest risk and biggest opening for [What I sell].
+- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Workload read": Workload | Engagements | In-house postings (12 mo) | Last 5 vs prior 5 | Read.
+- "Biggest risk" and "Biggest opening": one workload each, with what to pitch.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Growing in-house, outside the outsourced top 10" (Workload | Postings | Change | Centre link | Likely meaning) and the capability-centre sites.
+
+RULES
+- Thresholds are editable defaults. Catch-all workloads (Project/Programs Management, Account Management): "not assessed".
+- Site headcount is indicative; count each site once.
+- Each Read is a hypothesis, not a fact.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Label inferences (buyer role, intent, fit) "likely".
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. For [Company]'s top 10 outsourced workloads, compare recent in-house postings with the months before, check capability centres, and label each: re-insourcing risk, capability gap, cost takeout or no signal.
+```
+
+### Follow-ups
+
+- Who leads the capability centre behind the biggest risk?
+- Show the 10 most recent in-house postings for the risk workload, with title, date and location.
+- Draft a renewal-defence talking point for the risk workload.
+
+### Tips
+
+- Hiring and outsourcing in the same workload isn't always bad news. Without a captive centre behind it, it often means demand is outgrowing both.
+- The fastest in-house growth is often outside the outsourced top 10; that list is where new captive teams show up first.
+
+## Their capability centres and the services play
+
+- **id:** `services-gcc-opportunity`
+- **What you get:** The account's global capability centres (company-owned offshore sites): where, which functions, how fast they hire, likely new sites, a maturity read, the services play that fits, and who to call.
+- **Use it when:** You sell capability-centre set-up, build-operate-transfer, staff augmentation or managed services to companies with captive centres.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. pfizer.com); What I sell (e.g. GCC build-operate-transfer and talent services in India)
+
+### Detailed prompt
+
+```text
+Act as my capability-centre and location-strategy analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- What I sell: [One line, e.g. GCC build-operate-transfer and talent services in India — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull sites Draup tags as global capability centres (GCCs), all functions: metro, country, indicative size, functions hiring, 12-month postings, growth index. Count each site once; drop sites hiring mainly in manufacturing (likely plants).
+3. Pull IT and R&D footprint summaries. Take likely new sites only from news naming a new centre or office; Draup's "New Site" tag can also mark established sites.
+4. Pull centre setup and expansion news (12 months) where [Company] is the actor.
+5. In one company-list lookup, pull the account's top competitors in its primary industry with centre counts. Drop suppliers, dealers, its own subsidiaries and firms under one-fifth of its revenue.
+6. People and timing: pull the top 3 leaders in the function closest to [What I sell], preferring those based in the largest centre's country, and the most important news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — centre maturity and the play for [What I sell].
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Centres": Metro | Country | Functions hiring | Postings (12 mo) | Indicative size. By postings.
+- "Maturity" (editable defaults): Nascent = 1–2 centre metros, one main function; Scaling = 3–5 metros or several fast-growing functions; Mature = 6+ metros, several functions, average or slower growth.
+- "Recommended play": build-operate-transfer or centre-as-a-service (nascent or new site), centre-of-excellence expansion (scaling), managed services (mature), or not a centre account, and why.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Likely new sites (from news)" (Metro | Date | What opened), IT and R&D footprint, and "Peers" (Company | Centre locations).
+
+RULES
+- Site headcount is approximate and varies between pulls; never quote it as exact.
+- If no centres come back, say so; don't infer one.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Label inferences (buyer role, intent, fit) "likely".
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Map [Company]'s capability centres in Draup: metro, functions hiring, 12-month postings, indicative size, likely new sites and peers' centre counts. Give a maturity read and the services play.
+```
+
+### Follow-ups
+
+- Who runs the largest centre? Find leaders based in that metro.
+- Which IT and services providers deliver from [centre country] for this account?
+- Which outsourced workloads is the centre likely to take back in-house?
+- What roles are they hiring at the likely new site?
+
+### Tips
+
+- A site with fresh postings but little workforce is often the best moment for build-operate-transfer or staffing support.
+- Peers with many more centres make a strong "your competitors are already doing this" argument.
+
+## How their vendor mix compares with peers
+
+- **id:** `services-vendor-mix-benchmark`
+- **What you get:** Where the account outsources more or less than its industry, which leading industry providers it doesn't use yet, and who to raise it with.
+- **Use it when:** You need a peer-based argument for a new service line, or to find consolidation targets. For internal planning.
+- **Best for:** Services, SI & Staffing Seller, Partnerships & Alliances, Account Executive, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. pfizer.com); What I sell (e.g. cloud infrastructure managed services)
+
+### Detailed prompt
+
+```text
+Act as my services benchmarking analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- What I sell: [One line, e.g. cloud infrastructure managed services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry.
+2. Pull the account's top 50 outsourced workloads with engagements, and each one's share of that total.
+3. Pull the industry's top 50 outsourced workloads and shares the same way. If it returns zeros, try the parent industry and name it.
+4. For the industry's top 20, compute an index: account share ÷ industry share. Under 0.5 = under-indexed; over 2.0 = over-indexed (editable defaults).
+5. Pull the account's top 10 providers and the industry's top 10, leaving out agencies, staffing, market-research and merchandising firms. Find leaders missing at the account.
+6. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the clearest gap or excess and what it means for [What I sell].
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Workload mix" (top 10 by industry share): Workload | Account share | Industry share | Index | Read.
+- "Under-indexed": up to 3 matching [What I sell], each as a question ("peers outsource this more; is it in-house?"). "Over-indexed": up to 3 that may suit consolidation or rate pressure.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: rows 11–20 of the mix and "Providers" (Industry rank | Provider | At the account? engagements or No).
+
+RULES
+- Shares are of each top-50 total, not all work; say so. The index is fragile: internal use only, never in front of the client.
+- Exclude catch-all workloads (Project/Programs Management, Account Management, Talent Acquisition) from Under and Over picks.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Compare [Company]'s outsourced workload mix and top providers with its industry's in Draup. Show where it's under- or over-indexed and which leading industry providers it doesn't use.
+```
+
+### Follow-ups
+
+- Is [Company] hiring in-house for the under-indexed workloads?
+- Which industry peers outsource the under-indexed workload most? Give me 5 names as proof.
+- Draft a 100-word peer-benchmark email to the person in the next step, without the index numbers.
+
+### Tips
+
+- An under-indexed workload is either greenfield or done in-house. A quick look at job postings tells you which.
+- Use the index to plan, not to pitch. In front of the client, talk about what peers do, not the multiplier.
+
+## Pick the SI to co-sell with
+
+- **id:** `services-cosell-partner`
+- **What you get:** A shortlist of service partners already delivering your workload at the account — counted within that workload, not account-wide — and experienced with your technology, with the one to call first.
+- **Use it when:** You sell software and want a systems integrator (SI) already inside the account to open or speed up a deal. Use services-partner-map instead when you want the partner-or-displace play for every priority, and partners-joint-account-plan once you've picked the partner.
+- **Best for:** Partnerships & Alliances, Account Executive, Presales & Solutions
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. pfizer.com); Workload or business function (e.g. Data Engineering); Technology (e.g. Snowflake); What I sell (e.g. Snowflake-native data observability software); Our current partners (optional) (e.g. Tailspin Partners)
+
+### Detailed prompt
+
+```text
+Act as my partner and alliances manager. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- Workload or business function: [e.g. Data Engineering, or IT — I'll map a function to its main workloads]
+- Technology: [Our product or platform as Draup names it, e.g. Snowflake]
+- What I sell: [One line, e.g. Snowflake-native data observability software — skip if you ran the start-here prompt]
+- Our current partners (optional): [e.g. Tailspin Partners]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on. Note its primary industry.
+2. If I gave a business function, map it to the 1–3 workloads closest to [What I sell] and say which.
+3. Pull the top 10 providers in those workloads at the account, leaving out agencies and staffing firms, and each one's total engagements at the account. Show "in workload / total".
+4. For the top 5 (plus current partners in the top 10), pull relationship tier and delivery locations.
+5. Pull the top 10 providers whose engagements involve [Technology] in the account's primary industry, worldwide.
+6. Check the account's whole tech stack for [Technology] and other products by its maker: usage strength and last seen.
+7. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the partner to call first and why.
+- Recommended next step: a person from step 7 (name and title), what to do (with or through the partner), and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Shortlist": Partner (current partners marked) | In workload / total | Tier | [Technology] engagements in industry | Verdict.
+- Verdict: Lead co-sell (here in the workload and [Technology]-skilled), Access partner (here, little [Technology]), Skills partner ([Technology]-skilled, not here) or Skip. Current partners first.
+- "Call first": one partner, three reasons tied to numbers.
+- "Is [Technology] already there?": installed (strength, last seen) or not seen — expand or land.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- If [Technology] returns nothing, retry with the vendor or product family name and say which worked.
+- A strategic tier means access and possibly loyalty to a rival product; note it, don't assume it.
+- Never rank partners on whole-account counts; a firm big elsewhere in the account may do none of this work.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Which providers deliver [Workload] at [Company] (engagements in that work vs total), which have [Technology] experience in its industry, and which one do I call first?
+```
+
+### Follow-ups
+
+- Draft a short note to [Partner]'s account lead proposing a joint approach to the person in the next step.
+- Which other accounts in [Vertical] does [Partner] serve in [Workload]?
+- Build a joint account plan for [Company] with [Partner].
+
+### Tips
+
+- The best co-sell partner is usually already inside the account in your workload, even if it isn't the biggest provider overall.
+- Ask for the partner's other accounts in the industry to build a joint pipeline, not just one deal.
+
+
+# Account planning and expansion
+
+Account plans, entry points, risk checks, QBR prep and territory tiering.
+
+## Draft an account plan
+
+- **id:** `plan-account-plan`
+- **What you get:** An account plan led by the bottom line, the first play and who to call: buying committee, ranked expansion plays, incumbents (including installed competitors), risks and a 90-day plan.
+- **Use it when:** Annual or half-year account planning, or when you inherit a strategic account.
+- **Best for:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps
+- **Time:** 6–10 min
+- **Inputs:** Company (e.g. bmw.com); What I sell (e.g. supply-chain planning software); Business function (e.g. Supply Chain); Already buy from us (optional) (e.g. demand planning for two regions); Our goal (optional) (e.g. double ARR in 12 months); Competitor (optional) (e.g. Kinaxis, o9 Solutions)
+
+### Detailed prompt
+
+```text
+Act as my strategic account planner. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. bmw.com]
+- What I sell: [One line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Business function: [The function that buys from us, e.g. Supply Chain]
+- Already buy from us (optional): [e.g. demand planning for two regions]
+- Our goal (optional): [e.g. double ARR in 12 months]
+- Competitor (optional): [Up to 3, e.g. Kinaxis, o9 Solutions]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Snapshot: profile, latest revenue (USD at Draup's rate), Opportunity Index.
+3. Strategy: top 5 [Business function] priorities, newest first, with source, quarter and workloads.
+4. Buying committee: top 8 leaders in [Business function] by title and budget control (up to 3 pages of 10). If no economic buyer (C-level, EVP, "Head of") appears, search once more for Chief, EVP or CIO titles.
+5. Incumbents: products on those workloads (strength, last seen), top providers in the function, and any [Competitor] product anywhere in the stack. Rate [Competitor]: Red for High usage in the workloads I sell into; Amber for Medium usage there or anything newly detected in 12 months; otherwise Green, still listed.
+6. Risks: senior exits in 6 months (by workload; state the latest move date), layoffs in 90 days, [Competitor] products newly detected in 12 months.
+7. Timing: the most important news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the prize and the first play.
+- Recommended next step: one person from step 4 (name and title), what to do, and why now (the dated item from step 7 or another dated fact). If none turned up, say so.
+- "Expansion plays" (top 3, building on what they buy): Play | Evidence and date | Builds on | Likely owner. A High-usage [Competitor] product in the play's workload makes it a displacement; say so.
+- "Buying committee" (top 5): Name | Full title | Budget control | Why they matter.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail, each part with its source and date: Snapshot; "Their strategy in their own words" (Priority | Quarter | Workloads); Incumbents (Workload | Products | Providers | [Competitor] rating); Risks (3 dated); 90-day plan toward [Our goal] (two actions per 30 days, owner role each); SWOT only if I ask.
+
+RULES
+- In banking and consulting, VP and SVP are mid-level.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell. Where a workload is needed and I gave a function, map it to its 1–3 main Draup workloads and say which.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 500 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line, first play and a named contact with a dated why-now first. Then an account plan for [Company]: [Business function] priorities, buying committee, incumbents and installed [Competitor] products, ranked plays for [What I sell], risks, 90-day plan.
+```
+
+### Follow-ups
+
+- Add the short SWOT section.
+- Turn the 90-day plan into a mutual action plan I can share with my champion.
+- Run a renewal risk check on this account.
+- Write a 120-word executive summary of this plan for my VP.
+
+### Tips
+
+- Paste what they already buy and your goal. The expansion plays and 90-day plan get much sharper.
+- Name the competitors you meet. A rival installed with High usage in your workload turns an expansion play into a displacement.
+
+## Best entry points: expand or new
+
+- **id:** `plan-entry-points`
+- **What you get:** The five best ways in for what you sell, each marked Expand (we already serve it) or New, with dated evidence, incumbents, any installed competitor and the likely owner.
+- **Use it when:** You know the account (often an existing customer) and need a concrete next deal to work on. Use plan-account-plan instead for a full plan.
+- **Best for:** Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. bmw.com); Business function or Workload (e.g. Supply Chain); What I sell (e.g. supply-chain planning software); Already deployed (optional) (e.g. demand planning in Europe); Competitor (optional) (e.g. Kinaxis, o9 Solutions)
+
+### Detailed prompt
+
+```text
+Act as my pursuit strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. bmw.com]
+- Business function or Workload: [e.g. Supply Chain or Demand Management]
+- What I sell: [One line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Already deployed (optional): [What we already run there, e.g. demand planning in Europe; blank for a prospect]
+- Competitor (optional): [e.g. Kinaxis, o9 Solutions]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Map [Business function or Workload] to the 1–2 workloads closest to [What I sell] and say which. Pull Draup's potential initiatives for the account, always narrowed to those workloads (if nothing comes back, to the function; never unlimited).
+3. Drop initiatives unrelated to [What I sell], templates that don't fit the account's industry and, if it sells technology, initiatives about its own products. Mark any initiative we already serve (from Already deployed) "Expand", the rest "New". Rank by fit, then by how recent the evidence is.
+4. For the top 5, note the initiative, its evidence (source and date), incumbent tech, and only providers that plausibly deliver this work.
+5. Check the whole tech stack for [Competitor] products in the same workloads. Rate [Competitor]: Red for High usage in the workloads I sell into; Amber for Medium usage there or anything newly detected in 12 months; otherwise Green, still listed.
+6. Pull leaders in the same function (10 per page, up to 3 pages) and match up to 2 per entry point by workload or title.
+7. Timing: the most important news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the best way in and why now.
+- Recommended next step: one person from step 6 (name and title), what to do, and why now (the step-7 item or another dated fact). If none turned up, say so.
+- "Entry points": # | Initiative (Expand or New) | Evidence and date | Incumbents (tech; providers) | Likely owner.
+- "Competitor in these workloads": Product | Maker | Usage | Last seen | Rating. Write "none found" if empty.
+- "Lead with": the single best entry point and why, in two sentences.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Dropped as unrelated" in one line, so I can bring any back.
+
+RULES
+- Owners are matched by function and workload, not confirmed; label them "likely".
+- Providers here are linked to the initiative, not confirmed: say "linked" and leave out firms that clearly don't do this work (publishers, architects, recyclers).
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- If [Company] sells technology, drop priorities and tools about its own products.
+- Label inferences (buyer role, intent, fit) "likely".
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named owner, dated why-now) first. Find the top 5 entry points at [Company] for [What I sell] in [Business function]: initiative, Expand or New (we run [Already deployed]), dated evidence, incumbents, [Competitor] installed, likely owner.
+```
+
+### Follow-ups
+
+- Write a discovery question for each entry point, citing its evidence.
+- Which providers would we compete with on entry point 1, and how strong are they here?
+- Turn 'Lead with' into a 100-word email to the person in the next step.
+
+### Tips
+
+- For a customer, say what you already run there. The answer then separates expansion from new business.
+- Name the competitors you meet. An installed rival in the same workload changes the play from land to displace.
+- If you save your solution offering in the Draup platform, Draup can also surface entry points from leadership moves and intent signals.
+
+## Where they're building teams
+
+- **id:** `plan-expansion-footprint`
+- **What you get:** The metros where the account is adding people in one function, with capability centres and likely new sites called out, net hiring over a stated window, and who to call.
+- **Use it when:** You're planning where to expand inside a customer, or which regional team should own it.
+- **Best for:** Account & Customer Success Manager, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. walmart.com); Business function (e.g. Supply Chain); What I sell (e.g. warehouse automation software)
+
+### Detailed prompt
+
+```text
+Act as my account-expansion analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. walmart.com]
+- Business function: [e.g. Supply Chain, IT, ER&D]
+- What I sell: [One line, e.g. warehouse automation software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull key locations for [Business function]: metro, country, indicative workforce, 12-month postings, growth index and site tags (HQ, capability centre). Keep the top 10 by postings, plus every capability-centre row.
+3. Infer likely new sites: metros with real postings but little or no workforce. Say they're inferred.
+4. Pull net hiring by metro from talent flow (hires minus exits) and state the months covered.
+5. People and timing: pull the top 3 leaders in [Business function], preferring those based in the fastest-growing metro, and the most important news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — where they're building and where [What I sell] should land.
+- Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Top metros": Metro | Tag | Postings (12 mo) | Growth index | Net hiring (window).
+- "Why this matters for [What I sell]": 3 bullets on where to land or expand and which regional team should own it.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "Capability centres and likely new sites" (Metro | Country | Tag or "inferred new" | Postings) and "Fastest growing" (3 metros with the highest growth index among those with 100+ workforce; editable default).
+
+RULES
+- Always run with one business function.
+- Site workforce is approximate and varies between pulls; treat it as indicative and lean on postings.
+- The growth index is postings divided by workforce, so it runs high for small sites; say so when one tops the list.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
+- Talent-flow data ends about 3 months ago; state the months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Label inferences (buyer role, intent, fit) "likely".
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 400 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Where is [Company] building [Business function] teams? Top 10 metros by 12-month postings with growth index, HQ or capability-centre tags, net hiring (state the window) and likely new sites.
+```
+
+### Follow-ups
+
+- Run the same for [another Business function] and compare.
+- Who are the leaders based in the fastest-growing metro?
+- What roles are they hiring at the likely new site?
+
+### Tips
+
+- A metro with fresh postings but little workforce is often the earliest sign of a team being built.
+- Talent-flow numbers lag by a few months. Use job postings for the most recent picture.
+
+## Renewal risk check (red, amber, green)
+
+- **id:** `plan-risk-check`
+- **What you get:** A Red/Amber/Green risk table for one customer — your named sponsor, senior exits, layoffs, growth, installed and new competitor products in your workloads, negative news — with an overall rating and two actions.
+- **Use it when:** About 90 days before a renewal, or when a deal goes quiet. Use plan-qbr-prep instead the week before a business review, and signals-change-log for a monthly what-changed log.
+- **Best for:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. walmart.com); Business function (e.g. Supply Chain); Sponsor name and title (e.g. Jane Doe, VP Supply Chain Systems); Competitor (e.g. Blue Yonder, Manhattan Associates); What I sell (e.g. warehouse automation software)
+
+### Detailed prompt
+
+```text
+Act as my customer-success risk analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. walmart.com]
+- Business function: [Our sponsor's function, e.g. Supply Chain]
+- Sponsor name and title: [e.g. Jane Doe, VP Supply Chain Systems — a title alone may match several people]
+- Competitor: [Products or firms we lose to, e.g. Blue Yonder, Manhattan Associates]
+- What I sell: [One line, e.g. warehouse automation software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Sponsor: look for [Sponsor name] among leaders in [Business function] (up to 3 pages of 10) and in recent exits. Red: left. Amber: title or unit changed. If not found, say "not found in Draup", not "left".
+3. Senior exits in [Business function], 6 months, narrowed by its main workloads. Red: the sponsor's level or above. Amber: other director-plus. State rows checked and the latest move date.
+4. Layoffs, 90 days. Red: touching [Business function] or over 5% of staff. Amber: other. Workforce growth (talent-flow window; state the months): Red below −3%, Amber −3% to 0%. Revenue growth, latest fiscal year: Red below −5% without a divestment, Amber −5% to +2%.
+5. Competitor tools: check the whole tech stack for any product made by [Competitor], whatever area it's filed under. Red: a [Competitor] product with High usage in the same workloads as What I sell. Amber: Medium usage in those workloads, or newly detected in the last 12 months. Low usage or other workloads: list it, rate Green.
+6. Negative news, 90 days, where [Company] is the actor. Red: a merger, divestment or restructuring touching [Business function]. Amber: other restructuring or cost-cutting, or a new vendor in our category.
+
+OUTPUT
+- Bottom line: 2 sentences — overall rating and the risk to act on.
+- Recommended next step: the sponsor or another leader from step 2 (name and title), what to do, and why now (the most important dated news item from step 6 or 4); if none turned up, say so.
+- Table: Risk | Rating | Evidence | Date | Source. One row each: Sponsor, Senior exits, Layoffs, Workforce growth, Revenue growth, Competitor tools, Negative news.
+- "Overall": Red if 2+ Reds, or Red on Sponsor or Competitor tools; Amber if any Red or 2+ Ambers; else Green.
+- "Two actions this month", each tied to a row.
+- Gaps: what Draup didn't have — worth asking your sponsor.
+
+RULES
+- Cut-offs are editable defaults. No rows = Green (unverified). Data unavailable or sponsor not found = Not in Draup, left out of Overall.
+- In the Competitor tools row, name each product with its usage and workload.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- Talent-flow data ends about 3 months ago; state the months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 400 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Renewal risk on [Company]: Red/Amber/Green for our sponsor [Sponsor name], [Business function] exits, layoffs, growth, [Competitor] tools installed or new in our workloads, negative news; overall rating, 2 actions.
+```
+
+### Follow-ups
+
+- Who replaced the leader who left, and do we know them?
+- Draft a check-in email to our sponsor that addresses the top risk without alarming them.
+- Run the same check on my other top 5 customers: [Accounts].
+
+### Tips
+
+- Give your sponsor's name, not just a title. Big accounts often have several people with the same title.
+- "Green (unverified)" means Draup found nothing, not that the risk is zero. Confirm with your sponsor.
+- Name the competitor products you actually lose to. An installed rival with High usage in your workload is rated Red, even if it's been there for years.
+
+## Who they lose talent to
+
+- **id:** `plan-talent-competitors`
+- **What you get:** The companies an account loses people to and hires from, with net flow: the employers it competes with for skills, credible benchmark peers, and who to raise it with.
+- **Use it when:** You want peers the buyer watches for talent, or a benchmark set that isn't just the annual-report competitor list.
+- **Best for:** Account & Customer Success Manager, Account Executive, Marketing & ABM
+- **Time:** 1–2 min
+- **Inputs:** Company (e.g. walmart.com); Business function (optional) (e.g. IT); What I sell (e.g. developer productivity software)
+
+### Detailed prompt
+
+```text
+Act as my account intelligence analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. walmart.com]
+- Business function (optional): [e.g. IT; blank uses the function closest to What I sell]
+- What I sell: [One line, e.g. developer productivity software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Pull talent flow by company for [Business function] (or the function closest to [What I sell]): companies it loses people to and companies it hires from.
+3. Remove the account's own subsidiaries and sister companies, "Self Employed", and blank or unknown employers. Mark staffing and IT services firms.
+4. Join the two lists and work out net flow per company (hired from minus lost to).
+5. People and timing: at [Company], pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — who it competes with for talent and what that means for [What I sell].
+- Recommended next step: a person from step 5 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Window line: "Talent flow for [months], [function]".
+- "Loses talent to" (top 10): Company | People lost | People hired from them | Net.
+- "Hires talent from" (top 10): Company | People hired | People lost to them | Net.
+- "Talent rivals": companies in both top 10s — they compete for the same skills, which makes them good benchmark peers. They aren't necessarily business rivals.
+- "Why this matters for [What I sell]": 2–3 bullets (e.g. losing engineers to a tech employer: show what that employer's teams use; staffing firms high in the list: likely contractor dependence).
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Counts are people moves Draup observed in the window, not total headcount.
+- Staffing and IT services firms usually mean contractors moving, not competition; keep them out of Talent rivals.
+- If the function returns nothing, rerun for the whole company and say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Talent-flow data ends about 3 months ago; state the months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Label inferences (buyer role, intent, fit) "likely".
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 380 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Which companies does [Company] lose the most people to, and hire the most from? Top 10 each way with net flow, excluding its subsidiaries and staffing firms. State the window.
+```
+
+### Follow-ups
+
+- Benchmark [Company] against its top 3 talent rivals on hiring and growth.
+- Which senior leaders left [Company] for these rivals recently?
+- Which skills are they losing most to [rival]?
+
+### Tips
+
+- Talent rivals are often better benchmark peers than the competitors named in an annual report.
+- The data lags by a few months, so it describes the recent past, not this month.
+
+## Customer alumni now at your targets
+
+- **id:** `plan-follow-champions`
+- **What you get:** Senior people who recently left one of your customers, where they went, and which new employers are on your target list, with any champions you name flagged first.
+- **Use it when:** You want warm paths into new logos through people who may know your product. Use people-new-leaders-warm-paths instead for warm paths into the new leaders at one account.
+- **Best for:** Account Executive, Account & Customer Success Manager, SDR / BDR
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. walmart.com); Accounts (e.g. Target, Kroger, Costco, Home Depot); Function or workload (e.g. Supply Chain); Champion names (optional) (e.g. paste names from your CRM)
+
+### Detailed prompt
+
+```text
+Act as my relationship-mapping analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Our customer's website, e.g. walmart.com]
+- Accounts: [Our target list, e.g. Target, Kroger, Costco]
+- Function or workload: [e.g. Supply Chain — a function is fine, I'll map it to workloads]
+- Champion names (optional): [Paste names from your CRM]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Map [Function or workload] to its 1–3 main workloads and say which. Pull leadership exits for the last 12 months, one workload at a time. Keep director-plus by full title and rows whose previous company is [Company]. State rows checked and the latest move date.
+3. For each: name, old title, new employer, new title, month.
+4. Match names against [Champion names] and new employers against [Accounts], allowing for spelling differences.
+5. Pull talent-flow counts from [Company] to each target; write "not in the top flows" if absent.
+6. Timing: for the best warm path, pull the new employer's most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — how many warm paths and the best one.
+- Recommended next step: the best warm path (name and new title), the opening line, and why now (their move month or the step-6 news). If there's no warm path, say so and name the closest alumnus.
+- "Alumni on the move": Name | Old title | New employer and title | Month | Match (champion, my list or none).
+- "Warm paths": named champions first, then my list, each with one opening line about their new role.
+- Gaps: what Draup didn't have — worth checking in my CRM.
+- Detail: "Flow to my targets" (Target | People moved, window).
+
+RULES
+- Never claim a past buying relationship. Mention our work with [Company] only if my CRM confirms they were involved.
+- Names come only from leadership moves; talent flow gives counts, never names.
+- If no exits come back, try a neighbouring workload.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Talent-flow data ends about 3 months ago; state the months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 380 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named alumnus, dated move) first. Which director-plus people left [Company] recently in [Function or workload], per Draup? Name, old title, new employer, new title, month. Flag employers on my list ([Accounts]) and names I paste.
+```
+
+### Follow-ups
+
+- For each warm path, find the new employer's priorities in their function.
+- Draft a 70-word congratulations note on the first person's new role.
+- Who replaced each of them at [Company]?
+
+### Tips
+
+- Paste your real champions' names. Draup doesn't know who used your product, so a confirmed match is worth far more than a title match.
+- Leadership data lags about 3 months, so "recent" means up to the latest move date the answer states.
+
+## QBR prep: talking points and asks
+
+- **id:** `plan-qbr-prep`
+- **What you get:** Three talking points and three asks for your business review, built on what changed at the customer in your sponsor's function, set against the outcomes you delivered.
+- **Use it when:** The week before a quarterly or executive business review. Use plan-risk-check instead about 90 days before renewal, and signals-change-log for a monthly what-changed log.
+- **Best for:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. walmart.com); Review period (optional) (e.g. 1 Aug 2026 – 31 Oct 2026); Business function (e.g. Supply Chain); What I sell (e.g. warehouse automation software, live in 40 distribution centres); Outcomes we delivered (e.g. uptime 99.9%, picking time down 12%); Competitor (optional) (e.g. Blue Yonder)
+
+### Detailed prompt
+
+```text
+Act as my customer-success and QBR analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. walmart.com]
+- Review period (optional): [e.g. 1 Aug 2026 – 31 Oct 2026; blank = last full calendar quarter]
+- Business function: [Our sponsor's function, e.g. Supply Chain]
+- What I sell: [One line, e.g. warehouse automation software, live in 40 distribution centres — skip if you ran the start-here prompt]
+- Outcomes we delivered: [Paste this period's results, e.g. uptime 99.9%, picking time down 12%]
+- Competitor (optional): [e.g. Blue Yonder]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Priorities in [Business function] dated in [Review period] (10 at a time), with workloads; if none, the 3 most recent, marked as earlier.
+3. Leadership: director-plus moves in [Review period], one step-2 workload per pull; keep only people whose current or previous employer is [Company]. If nothing falls in the period, say so and give the latest move date.
+4. Hiring: monthly postings in [Business function] in [Review period] versus the same-length period before; top 3 [Business function] workloads trending up.
+5. News in [Review period] where [Company] is the actor: deals, expansion, M&A, layoffs, restructuring.
+6. Competitor check: any [Competitor] product in the stack in our workloads, with usage and last seen; flag anything newly detected in the period.
+7. People: the top 3 leaders in [Business function] (full profile titles).
+8. Financials: latest fiscal-year revenue and growth (USD at Draup's rate).
+
+OUTPUT
+- Bottom line: 2 sentences — the biggest change and what it means for renewal or expansion.
+- Recommended next step: one person from step 7 or the sponsor (name and title), what to do before the meeting, and why now (a dated item from steps 2–5). If none turned up, say so.
+- "3 talking points": each links a dated change to [Outcomes we delivered].
+- "3 asks": expansion (tied to a priority), reference or case study, executive sponsor.
+- "What changed" (up to 8 rows): Date | Type | What changed | Why it matters.
+- Gaps: what Draup didn't have — worth asking in the meeting.
+- Detail: leadership moves (Name | Move | Full title | Month), hiring numbers, competitor check, financials.
+
+RULES
+- Hiring, technology and news cover 12 months at most; if [Review period] is older, say what was covered.
+- Check for a divestment before calling a revenue drop a cut.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Lead with 3 talking points, 3 asks and a next step naming a person. QBR for [Company], [Review period]: what changed in [Business function] (priorities, leaders, hiring, news, installed [Competitor] tools), set against [Outcomes we delivered].
+```
+
+### Follow-ups
+
+- Turn the talking points and asks into 3 QBR slides: headline, evidence, ask.
+- Run a renewal risk check before the meeting.
+- Which new priority is the best expansion opportunity, and who owns it?
+
+### Tips
+
+- Lead with the outcomes you delivered; Draup's outside-in view works best as the bridge to your asks.
+- Leadership data can lag about 3 months, so a quiet leadership section may just mean the data hasn't caught up. The answer states the latest move date.
+
+## Tier my accounts by fit and timing
+
+- **id:** `plan-propensity-tiering`
+- **What you get:** Up to 25 accounts scored 0–100 on fit to what you sell (hiring in your workloads, installed competitors) and timing (news, hiring, growth), tiered A, B or C with a spread you can act on, and the driver behind each score.
+- **Use it when:** Planning a quarter or a territory, or deciding where to spend limited time. Use plan-territories instead to split a whole market between reps.
+- **Best for:** Account Executive, Sales Leader & RevOps, Account & Customer Success Manager, SDR / BDR
+- **Time:** 4–6 min
+- **Inputs:** Accounts (e.g. target.com, walmart.com, siemens.com, zebra.com, bmwgroup.com); What I sell (e.g. supply-chain planning software); Target revenue band (optional) (e.g. $5B–$150B); Competitor (optional) (e.g. Kinaxis, o9 Solutions)
+
+### Detailed prompt
+
+```text
+Act as my territory planning analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Accounts: [Up to 25 websites, e.g. target.com, walmart.com, siemens.com]
+- What I sell: [One line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Target revenue band (optional): [e.g. $5B–$150B]
+- Competitor (optional): [e.g. Kinaxis, o9 Solutions]
+
+STEPS
+1. Look up the accounts by website (exact match), 10 per lookup. Resolve misses one by one; if a website returns a subsidiary, ask. Never match by name.
+2. Take revenue, revenue growth, Opportunity Index (Draup's 0–10 fit score), hiring %, workforce growth and primary industry.
+3. Map [What I sell] to 1–3 Draup workloads and say which. For each account, pull 12-month postings in those workloads (one small lookup each) and rank them within the list.
+4. If I named competitors, check in one list lookup which accounts have their products; for the top 10 by Fit, check usage strength in my workloads.
+5. For the top 10 by Fit, count distinct dated news events from the last 90 days where the company is the actor; an event tied to [What I sell] counts double. Others: "not checked", 8 points.
+6. Score, add up and tier, then apply the re-tier rule.
+7. People and timing: at the top account, pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the A accounts and what they share.
+- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- Table: Tier | Account | Total (Fit + Timing) | Strongest driver | Weakest driver. By total.
+- One-line reason per A account.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: per-account values (postings in my workloads, competitor usage, news count), "Rubric used", "Data flags" (missing values, websites that resolved to a subsidiary, possibly inactive).
+
+RULES
+- Rubric (editable defaults). FIT 50: relevance 20 (postings in my workloads: list's top third 20, middle 10, else 0); competitor installed 5 (High or Medium in my workloads 5, elsewhere 2, none 0: a displacement play); Opportunity Index 10 (score); revenue in band 10 (in 10, within 2x 5, else 2; 10 if no band); revenue growth 5 (over 5% 5, 0–5% 3). TIMING 50: news 20 (0, 1–2 = 8, 3–5 = 14, 6+ = 20); hiring % 15 (over 10% 15, 5–10% 10, 2–5% 5); workforce growth 15 (over 3% 15, 0–3% 10, −3–0% 5).
+- Leave IT spend out: it's modelled from revenue and doesn't separate accounts.
+- Tiers: A 70+, B 50–69, C under 50. If more than half the list lands in one tier, re-tier by rank (top 30% A, next 40% B, rest C) and say so.
+- Missing value = half that item's points, flagged.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Tier [Accounts] for [What I sell]: fit (postings in my workloads, installed [Competitor]) and timing (news, hiring, growth), A/B/C relative to the list, one-line reason each.
+```
+
+### Follow-ups
+
+- Change the rubric: relevance 30, Opportunity Index 0, and rerun.
+- For my A accounts, give one why-now signal each from the last 60 days.
+- Count news events for the accounts marked "not checked".
+- Build a one-page account brief for the top-scoring account.
+
+### Tips
+
+- The rubric is in the prompt on purpose. Change the weights to match how your team actually wins.
+- Use websites, not names. Some parents use unusual domains (home.barclays, group.bnpparibas); if a website returns a subsidiary, the assistant will ask.
+- If every account looks like an A, the re-tier rule spreads them by rank so the list is still usable.
+
+## Carve balanced territories by geography
+
+- **id:** `plan-territories`
+- **What you get:** An industry-and-country account list, counted first, cleaned of holding and private-equity firms, and split into territories by HQ region, then balanced to within 10% on Draup-estimated IT spend, revenue or count.
+- **Use it when:** Advanced: annual territory planning or when a new rep joins; best run by RevOps or a sales leader. Use plan-propensity-tiering instead to rank a list you already own.
+- **Best for:** Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Insurance); Country (e.g. United States of America); Minimum employees (e.g. 10000); Number of territories (e.g. 3); Balance on (optional) (e.g. revenue); Accounts already owned (optional) (e.g. metlife.com, allstate.com)
+
+### Detailed prompt
+
+```text
+Act as my RevOps territory planner. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [Draup industry, e.g. Insurance]
+- Country: [HQ country in full, e.g. United States of America]
+- Minimum employees: [e.g. 10000]
+- Number of territories: [e.g. 3]
+- Balance on (optional): [Draup-estimated IT spend (default), revenue or account count]
+- Accounts already owned (optional): [Websites to exclude, e.g. metlife.com]
+
+STEPS
+1. Confirm Draup's names for the industry and country.
+2. Count first: companies whose primary industry is [Vertical], HQ in [Country], with [Minimum employees]+ staff. If more than 100, stop and ask me to raise the threshold.
+3. Pull them 10 at a time, largest first by the balance measure: HQ metro, employees, revenue, Draup-estimated IT spend.
+4. Remove accounts already owned (match by website). Remove non-operating holding companies, conglomerates and private-equity or investment firms, and list them. Flag misfiled companies (HQ or description doesn't fit) and possibly inactive ones.
+5. Group accounts by HQ region (e.g. Northeast, Southeast, Central, West; or metros if there are more than 4 territories). Assign whole regions to territories, then move single accounts only if a territory is more than 10% off balance; list every move.
+6. Count companies of the same size and country that have [Vertical] only as a secondary industry; list up to 5 that genuinely operate in it as "Consider adding". Don't assign them.
+
+OUTPUT
+- Bottom line: 2 sentences — universe size and how even the split is.
+- Recommended next step: who on my team does what, by when (e.g. "RevOps lead reviews the moves with the three regional managers this week"). No account why-now needed.
+- "Territory summary": Territory | Regions and main metros | Accounts | Total (USD M, fiscal year) | Share.
+- "Moves for balance": each single account moved, from and to, and why.
+- Gaps: what Draup didn't have — worth checking in our CRM.
+- Detail: one table per territory (Account | HQ metro | Employees | Revenue | IT spend); "Removed" (holding, private-equity, owned); "Consider adding"; "Data flags" (misfiled, possibly inactive, no IT spend so placed by revenue, how many matches lack size data).
+
+RULES
+- Size limits drop companies with no workforce figure (often large private firms or mutuals); report how many and offer to include them.
+- IT spend is a Draup estimate, often modelled from revenue, so balancing on it is close to balancing on revenue; say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first. Count [Vertical] companies (primary industry) headquartered in [Country] with [Minimum employees]+ staff, drop owned, holding and private-equity firms, and split the rest into [Number of territories] territories by HQ region, balanced within 10%.
+```
+
+### Follow-ups
+
+- Rebalance on account count instead.
+- Add Draup's Opportunity Index score and show the top 5 per territory.
+- Tier each territory's accounts by fit to what we sell.
+- Export the assignments as a table I can paste into a spreadsheet.
+
+### Tips
+
+- Geography comes first so each rep gets a coherent patch; balance is then fixed with a few named moves you can argue about.
+- Large suppliers whose main industry is different won't appear in the main list. Check "Consider adding".
+- Balancing on spend favours fairness of opportunity; balancing on count favours fairness of workload. Pick one.
+
+## Brief for a C-level pursuit meeting
+
+- **id:** `plan-cxo-pursuit-brief`
+- **What you get:** A one-page pursuit brief for a C-level meeting: the 3 workloads to lead with, the buyers, incumbents, a Go or Not-yet evidence check, what to learn in meeting 1 and a 90-day plan.
+- **Use it when:** You have, or want, a meeting with a CIO, CTO, COO or other C-level buyer on a large pursuit.
+- **Best for:** Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps, Presales & Solutions
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. pfizer.com); Business function (e.g. IT); What I sell (e.g. AI-led application modernisation services)
+
+### Detailed prompt
+
+```text
+Act as my pursuit lead. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- Business function: [The executive's function, e.g. IT for a CIO]
+- What I sell: [One line, e.g. AI-led application modernisation services — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Money: latest fiscal-year revenue (USD at Draup's rate) and growth.
+3. Priorities in [Business function] from the 4 most recent quarter labels in the data; count how many involve each workload.
+4. For the top 6 workloads, pull engagements, leading providers and the top provider's tier.
+5. Pick 3 lead workloads: most evidence, best fit to [What I sell], no strategic incumbent. Skip catch-alls.
+6. Buyers: up to 6 senior leaders in [Business function] (10 per page, up to 3 pages), plus director-plus moves in 6 months narrowed by those workloads. If no C-level, EVP or "Head of" appears, search once more for Chief, EVP or CIO titles and say what you found.
+7. Timing: the most important news item from the last 90 days where [Company] is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — the case and the opening angle.
+- Recommended next step: one buyer from step 6 (name and title), what to do, and why now (the step-7 item or another dated fact). If none turned up, say so.
+- "Lead with": Workload | Priority evidence (quarter) | Incumbent and tier | Our angle.
+- "Buyers": Name | Full title | Why they matter | Recent move.
+- "Evidence check: Go / Not yet": Go if 2+ matching priorities sit in the 2 latest quarter labels, a reachable senior buyer exists, and a lead workload has no strategic incumbent (editable default); else Not yet and what would change it.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: money context; "What we must learn in meeting 1" (3 questions); "90-day plan" (two actions per 30 days).
+
+RULES
+- In banking and consulting, VP and SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named buyer, dated why-now) first. Build a C-level pursuit brief for [Company]'s [Business function] leader: 3 workloads to lead with (priorities plus incumbents), buyers, a Go or Not-yet check, meeting-1 questions and a 90-day plan.
+```
+
+### Follow-ups
+
+- Write 5 hypothesis-led questions for the executive, each citing a fact from the brief.
+- Pick a co-sell partner for the first lead workload.
+- Turn the brief into a 3-slide executive summary.
+
+### Tips
+
+- The evidence check is in the prompt. Tighten or loosen it to match how your team qualifies large pursuits.
+- Check each buyer's full title yourself. Seniority tags can overstate.
+
+## AI readiness against close peers
+
+- **id:** `plan-ai-readiness`
+- **What you get:** A read on the account's AI hiring, priorities, new tools and outsourced AI work, its AI hiring compared with up to 4 close peers, and who to raise it with.
+- **Use it when:** You sell AI, data or automation and need a maturity read or a peer comparison.
+- **Best for:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. pfizer.com); What I sell (e.g. enterprise generative AI platform); Peers (optional) (e.g. lilly.com, abbvie.com, novartis.com, bms.com)
+
+### Detailed prompt
+
+```text
+Act as my AI market analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. pfizer.com]
+- What I sell: [One line, e.g. enterprise generative AI platform — skip if you ran the start-here prompt]
+- Peers (optional): [Up to 4 websites, e.g. lilly.com, abbvie.com; blank = Draup's closest competitors]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary or sister company. If several match, ask me. Use Draup's exact name from then on.
+2. Peers, in one company-list lookup: my websites, or the account's top competitors in its primary industry, keeping the 4 closest in revenue (0.3–3x, editable default), with workforce.
+3. Account deep-dive: "Artificial Intelligence & Data Science" postings (12 months, monthly); AI, Generative AI or Machine Learning priorities (count, latest two with quarter); AI tools newly detected in 12 months (up to 5, no generic tools such as chat assistants or office add-ons); outsourced AI engagements and top 3 providers.
+4. For each peer, pull only AI & Data Science postings with the monthly trend.
+5. Compare AI postings per 1,000 employees; under 10% apart is level (editable default).
+6. People and timing: at [Company], pull the top 3 leaders in the function that owns AI and data (often IT) and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — where the account stands and the opening for [What I sell].
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Peers": Company | AI postings (12 mo) | Per 1,000 employees | Trend | Read (Ahead, Level or Behind). Account first.
+- "Account deep-dive": 4 dated bullets — AI postings and trend, AI priorities, new AI tools, outsourced AI work.
+- "Questions to raise": 3, each naming a peer and a number.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: peer workforce figures and "Why this matters for [What I sell]" (2 bullets and one peer-evidence sentence).
+
+RULES
+- Compare peers on AI hiring only. Tool additions are newly detected, not confirmed rollouts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 420 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named person, dated why-now) first. Read [Company]'s AI readiness: AI postings and trend, AI priorities, new AI tools and outsourced AI work. Then compare AI hiring per 1,000 employees with up to 4 peers.
+```
+
+### Follow-ups
+
+- Show the 10 most recent AI postings at [Company], with title, date and location.
+- Which leaders at [Company] own the AI priorities?
+- Write a 120-word peer-comparison email to the person in the next step.
+
+### Tips
+
+- A low AI hiring rate alongside several AI priorities often means the work is outsourced or not yet staffed. Both are openings.
+- Pick peers the buyer actually watches. Paste their websites if Draup's competitors don't fit.
+
+
+# Expansion and cross-sell
+
+Grow existing customers: global account maps, whitespace, cross-sell, new budget holders and sponsor coverage.
+
+## Map a customer's units, sites and leaders
+
+- **id:** `expand-account-map`
+- **What you get:** A one-page map of a customer: business units and regions with growth, key sites, the units and brands its leaders sit in and recent acquisitions, marked Ours, Adjacent or Open, with the top white space and who leads it.
+- **Use it when:** At the start of an account plan, or when you inherit a large customer.
+- **Best for:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. 3m.com); What I sell (e.g. supply-chain analytics software); Where we are today (e.g. Safety & Industrial, North America (optional))
+
+### Detailed prompt
+
+```text
+Act as my strategic account planner. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. 3m.com]
+- What I sell: [one line, e.g. supply-chain analytics software — skip if you ran the start-here prompt]
+- Where we are today (optional): [units or regions we serve, e.g. Safety & Industrial, North America — or my saved account notes]
+
+CONTEXT (why this matters)
+Large customers buy in pieces: units, regions, brands and service centres each have their own leaders and budgets.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull the profile (HQ, workforce, industries) and revenue by business unit (share, growth), or say none.
+3. Pull revenue by region for the latest year; compute growth from the two years' amounts.
+4. Pull key locations across all functions, 40 rows. Group by metro: functions present, postings (12 months), site tags (HQ, capability centre). Keep the top 10 metros by postings plus every capability centre.
+5. Pull the top 10 senior leaders (one page) and one page of 10 in the function closest to [What I sell]; note each one's unit or brand from the employer on their profile.
+6. Pull acquisitions in the last 3 years, and the most important news item from the last 90 days where [Company] is the actor.
+7. Mark each unit, region and site Ours (from [Where we are today]), Adjacent (same unit or region) or Open.
+
+OUTPUT
+- Bottom line: 2 sentences — where the room to grow is and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) who leads the biggest open area, the action this week and the dated why-now; if none, say so.
+- Table "White space" (top 3): Area | Fact behind it | Who leads it | Status.
+- Table "Where to sell" (up to 10): Unit, region or site | Share or postings | Growth | Status (Ours, Adjacent, Open).
+- "Units and brands in the leadership": up to 5 bullets; flag subsidiaries and brands that may have been sold or spun off.
+- Detail: shape of the account (HQ, workforce, revenue, industries), all units, regions and key sites, acquisitions (Date | Company | Why bought).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- A unit or brand seen only in leaders' profiles is "seen in leadership", not a confirmed business unit.
+- If unit or region revenue is empty, don't infer it from news.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- Use the latest year's regional split; compute growth from amounts and check for divestments before calling a drop a cut.
+- The acquisitions table can miss deals; check 12 months of M&A news too. Divestments come from news only.
+- Site headcount is indicative only; lean on postings.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Map [Company] on one page. Lead with the 3 biggest open areas for [What I sell] and a named leader to approach. Show units, regions and top sites with growth, marked Ours, Adjacent or Open, and recent acquisitions.
+```
+
+### Follow-ups
+
+- For the biggest Open unit, map the buying committee.
+- Where are they hiring fastest in the function closest to what I sell?
+- Turn the white space into 3 expansion plays with a first email each.
+
+### Tips
+
+- Fill in Where we are today (or save account notes in the start-here prompt); the Ours, Adjacent and Open labels are what make the map useful.
+- Leaders' profile employers often reveal brands and units the revenue split hides.
+
+## Find uncovered functions worth selling to
+
+- **id:** `expand-function-whitespace`
+- **What you get:** Every business function at an existing customer scored on priorities, hiring and outsourced work against where you already sell, with the top 3 uncovered functions, the named leaders who own them and a bridge from your current footprint.
+- **Use it when:** Before an account plan or QBR, when you want to grow beyond the function you sell into today. Use this to rank functions across the account; use "Entry points" (plan-entry-points) instead to pick initiatives inside one function.
+- **Best for:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. roche.com); Current footprint (e.g. IT – data engineering and BI (or my saved account notes)); What I sell (e.g. data and analytics services)
+
+### Detailed prompt
+
+```text
+Act as my account-expansion strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. roche.com]
+- Current footprint: [where we sell today, by function or workload, e.g. IT – data engineering and BI — or my saved account notes]
+- What I sell: [one line, e.g. data and analytics services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+A function worth pursuing shows three signals: leaders talking about it, hiring behind it and work already bought from outside.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull the grouped key priorities (up to 3 per function, with quarter), not the full list, which is too large.
+3. Pull 12-month hiring by function (top 15), last 5 full months vs the 5 before.
+4. Pull outsourced workloads (types of work, e.g. Data Engineering) by deal count (top 20), mapped to functions, plus active engagements per function; if a function returns zero, retry Draup's other name (R&D for ER&D).
+5. Score each function 0–3 (editable default): +1 for an earnings-call priority in the last two fiscal quarters, +1 for Rising hiring or postings in the top third of functions, +1 for 20+ deals in its workloads. Mark Covered if it matches [Current footprint].
+6. Keep only uncovered functions that fit [What I sell]. For the top 2, pull senior leaders filtered by the function and the workloads matching [What I sell] (one page of 10 each).
+7. Pull the most important 90-day news item touching a top function.
+
+OUTPUT
+- Bottom line: 2 sentences — the best uncovered function and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) who owns the top function, the action this week and the dated why-now; if none, say so.
+- Table "Top 3 whitespace functions": Function | Score | Why now (dated priority or hiring fact) | Leader (name, title).
+- Table "Function heat map" (up to 10): Function | Latest priority (quarter) | Postings and trend | Engagements | Score (Covered?).
+- "Bridge": per top function, how [Current footprint] gets us in the room (shared data, leader or programme).
+- Detail: who owns each top function (Name | Full title | Location | Years in title, up to 5) and incumbent providers.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Catch-all workloads (Account Management, Project/Programs Management) never score a function.
+- Don't recommend a function whose only signal is outsourcing to agencies or staffing firms.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- Active engagements (Draup-derived) are estimates, not signed contracts. Rank providers by them; never quote outsourced headcount.
+- If the company sells technology itself, ignore its own products and priorities about them.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Score every business function at [Company] on priorities, 12-month hiring and outsourced work. Lead with the top 3 uncovered functions for [What I sell] and the named leader to approach, with a dated why-now.
+```
+
+### Follow-ups
+
+- For [Function], map the full buying committee.
+- Which providers already work in [Function] and how deep are they?
+- Draft a 100-word email from our current sponsor introducing us to the [Function] leader.
+
+### Tips
+
+- Be precise in Current footprint (function and workload); vague footprints produce vague whitespace.
+- The Bridge line is what turns a cold function into a warm introduction.
+
+## Cross-sell from their adjacent stack
+
+- **id:** `expand-adjacent-tech`
+- **What you get:** The tools a customer runs next to what you already sell them, graded Active, Thin or Fading and rated for incumbent strength, with the priorities and job ads that justify a cross-sell, up to 3 plays and the named owner to pitch.
+- **Use it when:** You have a product installed and want to sell the next one, or attach a service to it.
+- **Best for:** Account & Customer Success Manager, Account Executive, Presales & Solutions
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. visa.com); What we already sell them (e.g. our data integration platform (or my saved account notes)); Adjacent areas (e.g. Data Governance Software, Data Quality Software (optional)); What I sell (e.g. data governance and quality platform)
+
+### Detailed prompt
+
+```text
+Act as my cross-sell strategist for a software account team. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. visa.com]
+- What we already sell them: [product or category, e.g. our data integration platform — or my saved account notes]
+- Adjacent areas (optional): [1–3 software categories, e.g. Data Governance Software, Data Quality Software; if blank, pick the 2–3 next to what we sell]
+- What I sell: [one line, e.g. data governance and quality platform — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+The easiest expansion is next door to a working install, if the area is open rather than locked by a strong incumbent.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Confirm our install: check the stack for that product or maker (strength, last seen); if not detected, say so.
+3. Pull the stack in [Adjacent areas], up to 40 rows each; if a category returns nothing, retry the closest Draup category and say which worked.
+4. Grade each tool: Active (High or Medium, seen in 90 days), Thin (Low, seen in 90 days), Fading (no strength, or last seen over 90 days ago). Drop obvious misfilings.
+5. Pull up to 5 priorities in the adjacent areas' workloads; keep only those actually about the area.
+6. Pull the top 15 job-ad skills for the matching workload (12 months).
+7. Owner and trigger: from one page of 10 executives in the matching workload or function, the 3 whose title or skills best fit the adjacent area; and the most important news item from the last 90 days.
+8. Build up to 3 plays: Replace (fading or thin incumbent), Consolidate (3+ overlapping tools) or Complement (strong incumbent).
+
+OUTPUT
+- Bottom line: 2 sentences — open or locked, and the best play for [What I sell].
+- Recommended next step: a named person (name, full title) who owns the adjacent area, the action this week and the dated why-now; if none, say so.
+- Table "Cross-sell plays" (up to 3): Play | Target tools | Evidence (dated) | Opening line (25 words max).
+- Table "Adjacent landscape" (top 10): Product | Maker | Strength, last seen | Grade.
+- One line on our install, and "Incumbents to respect": coexist or compete.
+- Detail: the full landscape and why-now evidence (priorities, skills).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- An incumbent with High usage there is Red (locked: complement it); Medium is Amber.
+- A product first seen in 12 months and already Medium or High is a fresh choice; complement it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Trust usage strength and last-seen date; ignore confidence scores and "Generic" rows. A last-seen date shared by many rows is a data refresh. Say "fading", never "dropped".
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+At [Company], confirm our installed product, then grade every tool in [Adjacent areas]. Lead with the best cross-sell play and the named owner to pitch, with a dated why-now. Show incumbent strength, matching priorities and job-ad skills.
+```
+
+### Follow-ups
+
+- Map the buying committee for [Adjacent area].
+- Draft a consolidation business case for the Consolidate play.
+- Which peers of [Company] already run our adjacent product?
+
+### Tips
+
+- Name exact Draup categories in Adjacent areas; if unsure, leave it blank and Claude will pick the ones next to what you sell.
+- Fragmented areas with several Low tools often signal no clear owner; find one.
+
+## New budget holders outside our footprint
+
+- **id:** `expand-new-budget-holders`
+- **What you get:** Senior leaders new in role (about 18 months or less) in the functions you don't yet sell to, plus announced leadership changes, each with the priority they likely own, a first-90-days angle and the one to contact first.
+- **Use it when:** Quarterly in your top accounts, or when you need a reason to reach a new part of a customer. Use this to widen into functions you don't cover; use "New leaders and warm paths" (people-new-leaders-warm-paths) instead for warm intros in the function you already sell to.
+- **Best for:** Account & Customer Success Manager, Account Executive, SDR / BDR, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Company (e.g. boeing.com); Functions we don't cover (e.g. Finance & Accounting, Human Resources, Procurement); What I sell (e.g. finance and HR process automation)
+
+### Detailed prompt
+
+```text
+Act as my account-expansion researcher. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. boeing.com]
+- Functions we don't cover: [1–3 business functions, e.g. Finance & Accounting, Human Resources, Procurement]
+- What I sell: [one line, e.g. finance and HR process automation — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+New leaders review vendors and set priorities in their first year; in a customer, one in an uncovered function is the cleanest way in.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull senior leaders in [Functions we don't cover], 10 per page, up to 3 pages. Keep Director and above by full title with 18 months or less in their current title (editable default).
+3. Search Draup's news for executive appointments, departures and interim roles at [Company] in the last 6 months; keep only items where [Company] is the employer, and mark the most important from the last 90 days.
+4. Pull up to 3 priorities per uncovered function (latest fiscal quarters first) and match each new leader to the closest by function and title.
+5. Rank: C-level or "Head of" first, then budget control, then shortest time in title.
+
+OUTPUT
+- Bottom line: 2 sentences — the best new budget holder and what it means for [What I sell]. Add: people checked, pages, people kept.
+- Recommended next step: a named person (name, full title), the top new leader, the action this week and the dated why-now; if none, say so.
+- Table "New budget holders" (up to 10): Name | Full title | Function | Months in title | Linked priority (quarter).
+- "First-90-days angles": top 3 leaders, 2 lines each, tied to [What I sell] and to proof from the part of [Company] we serve.
+- "Announced changes" (6 months): Date | Change (appointment, exit, interim) | Role | Source.
+- Detail: each leader's unit (flag subsidiaries), location and budget control; functions with no new leader.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Interim leaders and announced searches mean decisions may wait; say so next to the person.
+- If a function returns fewer than 3 people, say profiles may be thin rather than concluding there's no leader.
+- Board appointments are not budget holders.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Leadership data can lag about 3 months; give the latest move date seen.
+- If European executives return none, say profiles there may be restricted.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 400 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+At [Company], find senior leaders in [Functions we don't cover] 18 months or less in title. Lead with the one to contact first and the dated why-now, then announced changes, linked priorities and first-90-days angles.
+```
+
+### Follow-ups
+
+- Write a 90-word intro email from our current sponsor to [Leader].
+- Where did [Leader] work before, and was it one of our customers?
+- Map the rest of the buying committee under [Leader].
+
+### Tips
+
+- Months in title comes from the profile and can lag about 3 months; confirm before you open with "congratulations".
+- Announced departures are as useful as hires: the successor will review vendors.
+
+## Subsidiaries and acquisitions to expand into
+
+- **id:** `expand-subsidiaries`
+- **What you get:** A customer's acquired companies and subsidiaries, each checked for whether it still runs on its own (own hiring, size, people moving to the parent), ranked as expansion targets, with the named person to approach at the top one.
+- **Use it when:** After a customer buys companies, or when the main account is saturated and you want the next logo inside the group.
+- **Best for:** Account & Customer Success Manager, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. medtronic.com); What I sell (e.g. ERP integration and managed services); Window (e.g. last 3 years (optional))
+
+### Detailed prompt
+
+```text
+Act as my account-expansion analyst for corporate groups. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. medtronic.com]
+- What I sell: [one line, e.g. ERP integration and managed services — skip if you ran the start-here prompt]
+- Window (optional): [default last 3 years]
+
+CONTEXT (why this matters)
+An integrating acquisition is bought for centrally by the parent; a standalone subsidiary has its own leaders and budget and sells like a new logo.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull acquisitions in [Window]: date, company, intent, size, and whether Draup holds it as a company.
+3. Search Draup's M&A news for [Company], last 12 months, for deals the table misses and any divestments; mark the most important item from the last 90 days.
+4. Pull talent flow by company (20 rows, largest movement first). Rows marked as its own subsidiaries are subsidiaries; large one-way flows from an acquired company into [Company] suggest staff moving onto the parent.
+5. For the 3 largest acquired companies or subsidiaries Draup holds: profile (workforce, parent shown) and 12-month hiring summary.
+6. Rate each: Integrating (few or no own postings, or staff moving to parent), Standalone (own postings continuing), Unclear.
+7. For the top target: if Standalone, pull its own top 3 executives; if Integrating, pull the parent's top 3 executives in the function closest to [What I sell] (one page of 10).
+
+OUTPUT
+- Bottom line: 2 sentences — the best target and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at the target or the parent's integration lead, the action this week and the dated why-now; if none, say so.
+- Table "Target check" (top 3): Company | Workforce | Own postings (12 mo) | Rating | Who to approach.
+- Table "Acquisitions" (up to 10, newest first): Date | Company | Size or "undisclosed" | In Draup?
+- "Expansion plays": per target, the angle for [What I sell] and the timing. "Leave alone": divested or spun-off units, dated.
+- Detail: deals from news missing from the table; subsidiaries in talent flow (Company | Moving to parent | Moving back | Read).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- A subsidiary with zero own postings is likely folded into the parent's hiring; don't call it inactive.
+- Don't treat internal division names (e.g. "[Company] MedTech") as separate companies unless Draup holds them as one.
+- Keep deal sizes as reported; if table and news disagree, show both.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- The acquisitions table can miss deals; check 12 months of M&A news too. Divestments come from news only.
+- Talent flow ends about 3 months ago and the last month undercounts exits; state the months.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Label anything you infer as "likely".
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 450 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+List [Company]'s acquisitions in [Window] and subsidiaries. Lead with the best target and a named person to approach. For the top 3, check size, own hiring and staff moving to the parent; rate Integrating or Standalone.
+```
+
+### Follow-ups
+
+- For [Target], who are the senior leaders and which came from the parent?
+- What does [Target] run in its tech stack compared with the parent?
+- Draft an email to the parent's integration lead offering help with [Target].
+
+### Tips
+
+- Deals closed 6–18 months ago are often mid-integration: the busiest window for systems work.
+- The acquisitions table can miss big deals; the news step is not optional.
+
+## Land at one site, expand to others
+
+- **id:** `expand-site-to-site`
+- **What you get:** From the site or capability centre you already serve, the sister sites doing the same work, ranked by workload overlap and growth, with each one's local leader and the next site to approach.
+- **Use it when:** You've landed at one site or global capability centre and want to replicate it across the group.
+- **Best for:** Account & Customer Success Manager, Services, SI & Staffing Seller, Account Executive, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. 3m.com); Site we serve (e.g. Bengaluru, India); Business function (e.g. IT (optional)); What I sell (e.g. infrastructure managed services)
+
+### Detailed prompt
+
+```text
+Act as my land-and-expand strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. 3m.com]
+- Site we serve: [metro, e.g. Bengaluru, India]
+- Business function (optional): [e.g. IT, ER&D, Finance & Accounting; default is the one closest to What I sell]
+- What I sell: [one line, e.g. infrastructure managed services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+A proven site is your best reference; the best next site does similar work, is growing for its size and has a reachable leader.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use [Business function], or the one closest to [What I sell]; say which.
+3. Pull key locations for the function limited to capability-centre sites, 15 rows: metro, indicative workforce, 12-month postings, growth index.
+4. Pull key locations for the function across all site types, 15 rows, to add the HQ and other large sites. Merge by metro.
+5. Pull the top workloads in job ads for the function at [Site we serve] and the 2 most promising other sites (one lookup per site, 8 rows).
+6. For the top 3 candidate sites, pull senior leaders in the function based there (one page of 5 each). Drop anyone whose headline names another employer.
+7. Score each: workload overlap with [Site we serve] (High, Medium, Low), growth index vs the median of listed sites, and whether a named local leader exists.
+8. Pull the most important news item from the last 90 days where [Company] is the actor (site openings and expansions first).
+
+OUTPUT
+- Bottom line: 2 sentences — the next site and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) at the next site, the action this week and the dated why-now; if none, say so.
+- Table "Next 3 sites": Metro | Overlap | Growth vs median | Local leader (name, title) | Why now (dated).
+- Table "Sites with the function" (up to 10): Metro | Tag | Workforce (indicative) | Postings (12 mo) | Growth index. Highlight [Site we serve].
+- "Reference story": 2 lines on what we deliver at [Site we serve] that maps to the next site's hiring. "Intro path": who at our site could introduce us, and to whom.
+- Detail: what each site is hiring for (Workload | our site | Site 2 | Site 3).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- If rows come back for every function, say the limit didn't apply and keep only that function's rows.
+- A site with zero postings in 12 months is stable, not growing; don't rank it first.
+- The growth index is postings divided by workforce, so it runs high for small sites; say so when one tops the list.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Site headcount is indicative only; lean on postings.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Starting from [Site we serve] at [Company], rank the sister sites for [Business function]. Lead with the next site to approach and its named local leader with a dated why-now. Compare size, postings and what each site is hiring for.
+```
+
+### Follow-ups
+
+- What are they hiring for at [Next site]? Show 5 recent postings.
+- Draft an intro request from our sponsor at [Site we serve] to the leader at [Next site].
+- Which providers already deliver at [Next site]?
+
+### Tips
+
+- Workload overlap matters more than size: the same work means your reference lands.
+- Capability-centre tags can include plants; check the functions before you plan the pitch.
+
+## Check sponsor risk and relationship gaps
+
+- **id:** `expand-sponsor-coverage`
+- **What you get:** A risk read on your executive sponsor (tenure, new bosses, announced changes), a coverage grid of who you know versus who matters, likely successors and the 3 named relationships to build next.
+- **Use it when:** Before a renewal or expansion, after a reorganisation, or when one sponsor carries the account. Use this for relationship coverage; use "Renewal risk check" (plan-risk-check) for the whole account's risk, including competitors.
+- **Best for:** Account & Customer Success Manager, Sales Leader & RevOps, Account Executive, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. mastercard.com); Our sponsor (e.g. Jane Doe, SVP Data Platforms (or my saved account notes)); Who we know (e.g. Director Data Engineering; Head of IT Procurement (optional)); Business function (e.g. IT (optional)); What I sell (e.g. data platform services)
+
+### Detailed prompt
+
+```text
+Act as my account relationship strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. mastercard.com]
+- Our sponsor: [name and title, e.g. Jane Doe, SVP Data Platforms — a title alone may match several people]
+- Who we know (optional): [titles of other contacts, names optional]
+- Business function (optional): [default is the one closest to What I sell, e.g. IT]
+- What I sell: [one line, e.g. data platform services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Accounts are lost when one sponsor leaves or is overruled. Good coverage spans three levels in more than one unit; never guess at people's plans.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Use [Business function], or the one closest to [What I sell]; say which.
+3. Pull senior leaders in the function, 10 per page, up to 3 pages. If fewer than 15 come back, add the top 20 leaders across the company (2 pages) to cover the C-suite.
+4. Match [Our sponsor] and [Who we know] to profiles by name and title; unmatched contacts are "not found in Draup".
+5. Search Draup's news for executive appointments, departures, interim roles and reorganisations at [Company] in the last 6 months; mark the most important from the last 90 days.
+6. Rate sponsor risk: High (new leader above them in 12 months, unit reorganised, or under 6 months in title), Medium (over 6 years in title, or their function lead is interim), Low otherwise. Editable defaults.
+7. Build the coverage grid: three levels by unit or region, each Known or Gap.
+
+OUTPUT
+- Bottom line: 2 sentences — sponsor risk and the biggest coverage gap. Add: people checked, pages, contacts matched.
+- Recommended next step: a named person (name, full title) to build a relationship with next, the action this week and the dated why-now; if none, say so.
+- "Sponsor read": one line: title, months in title, risk (High, Medium, Low) and the dated signals behind it.
+- Table "Coverage grid": Level | up to 4 units or regions, each cell Known (who) or Gap (most senior person there).
+- Table "Build next" (3): Person (name, title) | Why (dated fact) | Intro path through someone we know.
+- Detail: likely successors or backups (up to 3, months in title) and leadership changes (Date | Change | Source).
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- Sponsor risk is internal planning; never put it in customer-facing copy.
+- Function tags can be loose (legal or scientific leaders under IT); drop clear mismatches and say how many.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Leadership data can lag about 3 months; give the latest move date seen.
+- If European executives return none, say profiles there may be restricted.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 420 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Rate [Our sponsor]'s risk at [Company] (tenure, new leaders above, announced changes). Lead with the risk and the named person to build a relationship with next, then a coverage grid and likely successors.
+```
+
+### Follow-ups
+
+- Draft a note from [Our sponsor] introducing us to [Gap leader].
+- Prepare a 1-page executive-sponsor brief for our CEO to meet [Economic buyer].
+- Run this again after the next earnings call and compare.
+
+### Tips
+
+- Give your sponsor's name and title; several people often share a title.
+- A brand-new CFO or CPO above your sponsor often triggers a vendor review within two quarters.
+
+## Expansion business case from growth units
+
+- **id:** `expand-business-case`
+- **What you get:** A short, evidence-led case for expanding into a customer's fastest-growing unit or region: where growth is, the priorities funding it, a Draup-estimated spend pool, a 150-word executive summary and the named owner to send it to.
+- **Use it when:** Before proposing an expansion to an existing customer's sponsor or your own deal desk. Use this to grow an existing customer; use "Business-case inputs from their numbers" (deals-business-case-inputs) instead for a new deal's value model.
+- **Best for:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. boeing.com); Current footprint (e.g. Commercial Airplanes, North America; $400K a year (or my saved account notes)); Expansion idea (e.g. extend predictive maintenance analytics to Global Services); What I sell (e.g. industrial IoT analytics software and services)
+
+### Detailed prompt
+
+```text
+Act as my value consultant writing an expansion business case. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. boeing.com]
+- Current footprint: [where we are and roughly what it's worth, e.g. Commercial Airplanes, North America; $400K a year]
+- Expansion idea: [one line, e.g. extend predictive maintenance analytics to Global Services]
+- What I sell: [one line, e.g. industrial IoT analytics software and services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+Expansion cases ride the customer's own growth story: where growth is, what leadership committed to, why our proof de-risks it.
+
+STEPS
+1. Find [Company] by website and confirm it's the parent, not a subsidiary; if unsure, ask me.
+2. Pull latest revenue, EBITDA, R&D and IT spend with growth, and forecasts.
+3. Pull revenue by business unit and by region; name the fastest-growing unit and region (or say Draup has no unit split).
+4. Pull key priorities grouped by function; keep those supporting [Expansion idea] or the growth unit, with quarter and stated targets.
+5. Pull the Draup-estimated IT spend split (software, internal staffing, IT outsourcing, hardware) for the latest two years.
+6. Pull workloads (types of work) trending up in hiring (12 months) linked to [Expansion idea].
+7. Owner and trigger: the top 3 executives in the function closest to [Expansion idea] (one page of 10) and the most important news item from the last 90 days.
+8. Size a range: the relevant IT-spend category scaled by the growth unit's revenue share, against [Current footprint].
+
+OUTPUT
+- Bottom line: 2 sentences — the size of the opportunity and what it means for [What I sell].
+- Recommended next step: a named person (name, full title) who owns the expansion area, the action this week and the dated why-now; if none, say so.
+- Table "Growth story" (up to 8): Unit, region or metric | Share or value | Growth | Year.
+- Table "Spend pool": Category | Latest | Prior year | Note; then the sized range with the maths shown.
+- "What leadership committed to" (priority, quarter, fit), "Why us" (3 bullets) and "Risks" (up to 3, dated).
+- "Executive summary": 150 words max, for our sponsor to forward.
+- Detail: hiring behind it and full financials.
+- Gaps: what Draup didn't have; ask it in discovery.
+
+RULES
+- The sized range is not their budget; show the formula.
+- If hiring looks thin for the company's size, say so and lean on priorities.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me.
+- Date and source every fact (headline for news). Write "Not in Draup" for gaps; never fill from memory.
+- IT spend is Draup-estimated, often modelled from revenue; don't treat its growth as a signal. Use USD millions at Draup's rate. A forecast over 15% off the latest actual is a model estimate.
+- Use the latest year's regional split; compute growth from amounts and check for divestments before calling a drop a cut.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do. News-based priorities carry a month instead.
+- News: one question search plus the company feed (deals, M&A, executive moves, investments, layoffs), company as actor. Drop stock chatter, charity, awards, political commentary, passing mentions, look-alikes and re-dated stories; keep any item bearing directly on What I sell, even if normally noise. If sources conflict on a name or number, say so and repeat neither; single-source figures are unverified.
+- Pick people by profile title, not rank; skip subsidiary, misfiled or look-alike profiles; use Draup's function names (IT, Sales & Marketing). No C-level, EVP or "Head of"? Check one unfiltered page for the parent's Chief, EVP or CIO. If several share a title, ask. No personal contact details.
+- Phone-first: Bottom line and next step first; max 2 tables up front (5 columns, 10 rows). Keep everything above Detail to about 500 words, tables included; Detail and Gaps follow or are offered.
+```
+
+### Quick version
+
+```text
+Build an expansion case for [Expansion idea] at [Company]. Lead with the size of the opportunity and the named owner to send it to. Show growth units, supporting priorities, a Draup-estimated spend pool and a 150-word summary.
+```
+
+### Follow-ups
+
+- Turn the executive summary into a 5-slide outline.
+- Which leaders own the priorities in the case?
+- Stress-test the case: what would make the sponsor say no?
+
+### Tips
+
+- Quote management's own words from the priorities; sponsors reuse them in budget requests.
+- Fill in what the current footprint is worth; the comparison makes the ask feel proportionate.
+
+
+# Partners and alliances
+
+Pick, plan and grow co-sell motions with the partners already embedded in your accounts.
+
+## Which SIs to recruit in an industry
+
+- **id:** `partners-recruit-si-shortlist`
+- **What you get:** A ranked shortlist of systems integrators that deliver your workload in one industry and already work with your technology, with anchor customers, delivery hubs, the one to recruit first and who to call there.
+- **Use it when:** You're building or refreshing a partner programme for an industry and need to know which SIs actually have the practice. Use partners-compare-candidates instead when you already have 2–3 names.
+- **Best for:** Partnerships & Alliances, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Insurance); Workload (e.g. Data Engineering); Technology (e.g. Snowflake); Customer HQ country (optional) (e.g. United States of America); Our current partners (optional) (e.g. Tailspin Partners); What I sell (e.g. data observability software for insurers)
+
+### Detailed prompt
+
+```text
+Act as my partner-programme strategist recruiting systems integrators (SIs). Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [Draup industry, e.g. Insurance]
+- Workload: [The type of work my product serves, e.g. Data Engineering; a business function is fine, I'll map it]
+- Technology: [Our platform or a rival's, as Draup names it, e.g. Snowflake]
+- Customer HQ country (optional): [In full, e.g. United States of America; blank for worldwide]
+- Our current partners (optional): [e.g. Tailspin Partners]
+- What I sell: [One line, e.g. data observability software for insurers — skip if you ran the start-here prompt]
+
+STEPS
+1. Turn the industry, workload, technology and country into Draup's exact names; if I gave a business function, map it to its 1–2 main workloads. Say which you used.
+2. Rank providers by engagements for customers whose primary industry is [Vertical] (HQ in [Customer HQ country] if given) in [Workload]. Keep the top 15. Remove agencies, staffing firms and customers' captive units, and list them.
+3. Rank providers again for the same industry and country by engagements that mention [Technology], top 15. Then count all engagements in the industry that mention [Technology], so you can show each provider's share.
+4. Pick 3 candidates that rank high in both lists, current partners first if they appear. For each, pull its top 5 customers for [Technology] work in the industry (one lookup each).
+5. For the same 3, pull delivery locations for [Workload] in the industry (one lookup each). Keep the top 5 metros and group them onshore (customers' country), nearshore or offshore.
+6. People and timing: pull the recruit-first SI's top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+
+OUTPUT
+- Bottom line: 2 sentences — the SI to recruit first and what it means for [What I sell].
+- Recommended next step: a person from step 6 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Shortlist" (top 10): Rank | Provider (current partners marked) | [Workload] engagements | [Technology]-related engagements (share of industry total) | Verdict.
+- Verdict: Recruit first (top 10 in both lists), Practice partner (strong in the workload, little [Technology]), Technology specialist (strong in [Technology], thin in the workload) or Watch.
+- "Top 3 profiles": Provider | Top customers for [Technology] | Single-account depth? | Top delivery hubs | Onshore share.
+- Gaps: what Draup didn't have — worth asking in the first partner call.
+- Detail: "Shared customers" (customers that appear for 2+ of the top 3) and "Removed" (Provider | Reason).
+
+RULES
+- Flag "single-account depth" when one customer holds more than half of a provider's [Technology]-related engagements (editable default); never make it "Recruit first" on that basis alone.
+- Call technology matches "[Technology]-related", never a certified practice.
+- If [Technology] returns fewer than 20 engagements (editable default), retry with the vendor's name, then drop the country; say which worked.
+- Mark delivery metros that don't fit the provider's footprint "check location".
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named SI leader, dated why-now) first. Which providers have the most [Workload] engagements in [Vertical], and the most mentioning [Technology]? Shortlist the top 10, profile the best 3 and pick one to recruit first.
+```
+
+### Follow-ups
+
+- Draft a recruitment email to the person in the next step, citing two facts from the shortlist.
+- Run the same shortlist for [second Technology] so I can see who works with both.
+- For [Provider], which of its [Vertical] customers don't run [Technology] yet? That's our joint pipeline.
+
+### Tips
+
+- Rank on the technology list as well as the workload list: a firm that is huge in the workload but rarely touches your technology needs heavy enablement.
+- Mid-size specialists often show up high in the technology list. They can be easier to win as partners than the largest firms.
+
+## Accounts a partner can open for you
+
+- **id:** `partners-sourced-pipeline`
+- **What you get:** A sized list of companies in your industry and country where a named partner already delivers work and your product (or a rival's) isn't in the stack, with how deep the partner is at the top 5 and a named buyer at the best one.
+- **Use it when:** Before a joint pipeline review, a partner business plan or a co-marketing campaign, when you need accounts the partner can open for you.
+- **Best for:** Partnerships & Alliances, Account Executive, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Partner (e.g. Accenture); Vertical (e.g. Retail); Country (e.g. United States of America); Not installed (e.g. Databricks); What I sell (e.g. lakehouse analytics platform for retailers)
+
+### Detailed prompt
+
+```text
+Act as my partner pipeline analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Partner: [Services firm as Draup spells it, e.g. Accenture]
+- Vertical: [Draup industry, e.g. Retail]
+- Country: [HQ country in full, e.g. United States of America]
+- Not installed: [Maker whose products must be absent: ours, or a rival's, e.g. Databricks]
+- What I sell: [One line, e.g. lakehouse analytics platform for retailers — skip if you ran the start-here prompt]
+
+STEPS
+1. Turn the partner, industry, country and maker into Draup's exact names; say which you used.
+2. Size the list: companies with primary industry [Vertical], HQ in [Country], [Partner] among their engaged providers, and no product made by [Not installed] anywhere in the stack. Using the names-only view, check whether a 50th, 100th and 250th match exists to band the total (under 50, 50–99, 100–249, 250+).
+3. Run the same band check once without the [Not installed] condition, labelled as such, so I can see what share of [Partner]'s base here already runs [Not installed].
+4. Pull the top 10 matches in full, by revenue: workforce, revenue, Opportunity Index, other providers, parent.
+5. Flag: Subsidiary (name the parent), Misfiled, Possibly inactive. List private companies without revenue that are larger than the 5th row under "Large private companies".
+6. For the top 5 unflagged rows, pull [Partner]'s engagement detail: workloads, engagements (how many in workloads matching [What I sell]), tier and locations.
+7. People and timing: at the top unflagged account, pull the top 3 leaders in the business function closest to [What I sell] and the most important news item from the last 90 days where it is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — how much pipeline exists and which account to raise with [Partner] first.
+- Recommended next step: a person from step 7 (name and title), what to do (raised with [Partner]'s client lead for that account), and why now (the dated news item or another dated fact); if none turned up, say so.
+- Header line: "[Band] companies match; without the [Not installed] condition, [band]." One line on what the difference implies.
+- "Pipeline" (top 10): Rank | Company | Revenue (USD M, FY) | Other providers (3) | Flag.
+- "Partner depth" (top 5): Company | [Partner] engagements (in my workloads / total) | Tier | Depth | Joint angle for [What I sell].
+- Depth: Deep (5+ engagements, or any in a workload that matches [What I sell]), Light (1–4); editable defaults.
+- Gaps: what Draup didn't have — worth asking the partner.
+- Detail: workforce, Opportunity Index, parent; "Large private companies".
+
+RULES
+- "No [Not installed] products" means Draup sees no public evidence of them; present it as a hypothesis to confirm with the partner, not proof.
+- Judge depth on engagements, not the tier label; one small engagement can carry a "Strategic" tier.
+- If fewer than 10 match, widen the country to its region, and say so.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named buyer, dated why-now) first. Which [Vertical] companies in [Country] use [Partner] and show no [Not installed] products? Band the total, show the top 10 by revenue and the partner's depth at the top 5.
+```
+
+### Follow-ups
+
+- Show rows 11–20 the same way.
+- For the top 3, what stated priorities in data and analytics could justify a joint pitch?
+- Draft a one-page joint account list I can send to [Partner]'s alliance team (check our Draup licence first).
+
+### Tips
+
+- If the list is small or full of mid-size names, the big accounts probably already run the excluded maker. That's useful for the partner conversation too.
+- Lead the partner review with accounts where the partner works in a workload next to yours; that's where an introduction is credible.
+
+## Joint account plan with a partner
+
+- **id:** `partners-joint-account-plan`
+- **What you get:** A one-page plan you and a partner can both sign up to for one account: where the partner already works in your function, the priorities there, your technology's and a rival's position, who to meet and a 90-day plan with owners on both sides.
+- **Use it when:** After you've picked a co-sell partner for an account and need a shared plan before the joint kickoff call. Use services-cosell-partner instead if you haven't picked the partner yet.
+- **Best for:** Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller, Presales & Solutions
+- **Time:** 4–6 min
+- **Inputs:** Company (e.g. allianz.com); Partner (e.g. Capgemini); Our technology (e.g. Snowflake); Competitor (optional) (e.g. Databricks); Business function (e.g. IT); What I sell (e.g. data quality and observability software)
+
+### Detailed prompt
+
+```text
+Act as my alliance manager. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [Website, e.g. allianz.com]
+- Partner: [Services firm as Draup spells it, e.g. Capgemini]
+- Our technology: [Our product or its maker as Draup names it, e.g. Snowflake]
+- Competitor (optional): [Rival maker, e.g. Databricks]
+- Business function: [Where the buyers sit, e.g. IT]
+- What I sell: [One line, e.g. data quality and observability software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the company by its website and confirm it's the parent, not a subsidiary. Use Draup's exact name from then on.
+2. Pull the account's top 10 providers, once limited to [Business function] and once for the whole account; note [Partner]'s rank and engagements in each.
+3. Pull [Partner]'s engagement detail at the account (workloads, tier, locations) and its engagements per workload. Pick up to 3 joint workloads closest to [What I sell], skipping catch-alls.
+4. Pull priorities in the joint workloads, newest first; keep the 5 most relevant with source and quarter, noting whether [Partner] or our tools are linked.
+5. Check the whole tech stack for products made by [Our technology] and [Competitor], whatever area they're filed under: usage strength and last seen. Rate [Competitor]: Red for High usage in the workloads I sell into; Amber for Medium usage there or anything newly detected in 12 months; otherwise Green, still listed.
+6. Pull 10 leaders in [Business function]; keep up to 4, preferring group-level people, and label each person's unit.
+7. Timing: from the last 90 days of news, keep at most 2 reasons to act now (skip the account's own product launches).
+
+OUTPUT
+- Bottom line: 2 sentences — the joint play and why it beats either firm alone.
+- Recommended next step: one person from step 6 (name and title), who opens (us or [Partner]), and why now (a step-7 item). If none turned up, say so.
+- "Joint workloads": Workload | [Partner] engagements | Linked priorities | [Our technology] status | [Competitor] rating.
+- "90-day plan": Days | Action | Our owner (role) | [Partner] owner (role) | Done when — for days 1–30 (align, access), 31–60 (discovery, proof) and 61–90 (joint proposal).
+- Gaps: what Draup didn't have — worth asking the partner.
+- Detail: "Partner position" (rank and engagements in function and total, tier, locations); "Priorities to pitch together" (Priority | Quarter | [Partner] linked? | Joint play | Likely owner); "People" (Name | Full title | Unit | Who opens).
+
+RULES
+- If [Partner] has fewer than 3 engagements in the joint workloads (editable default), call the plan partner-light and name the best-placed provider in those workloads.
+- A strategic-tier partner protects its scope: position [What I sell] as speeding its delivery.
+- If [Competitor] is rated Red, plan for a bake-off or a coexist position and say which.
+- Links between priorities and tools or providers are by workload: say "linked", never "used for".
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- If [Company] sells technology, drop priorities and tools about its own products.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 480 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named leader, dated why-now) first. Joint plan for [Company] with [Partner]: its engagements in [Business function] vs total, joint workloads and priorities, [Our technology] and [Competitor] in the stack, and a 90-day plan.
+```
+
+### Follow-ups
+
+- Turn the plan into a one-slide summary for the joint kickoff call.
+- Draft the email from me to [Partner]'s client lead proposing the kickoff, under 120 words.
+- Show the next 10 leaders in [Business function], with full titles.
+
+### Tips
+
+- Send the partner the joint-workloads table before the kickoff; it shows you've done homework on their account, not just yours.
+- A partner that is big at the account can still be light in your function. The plan checks both counts and says when the partner is light.
+
+## Is this partner rising or slowing?
+
+- **id:** `partners-momentum-check`
+- **What you get:** A Rising, Steady or Slowing verdict on a prospective partner, scored from its hiring, headcount growth, client wins, acquisitions and footprint in your industry and country, with who to talk to there.
+- **Use it when:** Before you sign, renew or put marketing funds behind a services partner. Use partners-compare-candidates instead to choose between several.
+- **Best for:** Partnerships & Alliances, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Partner (e.g. hcltech.com); Vertical (e.g. Automotive); Country (e.g. Germany); What I sell (e.g. software-defined vehicle testing platform)
+
+### Detailed prompt
+
+```text
+Act as my partner due-diligence analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Partner: [Website of the services firm, e.g. hcltech.com]
+- Vertical: [Draup industry where we'd work together, e.g. Automotive]
+- Country: [Customer HQ country in full, e.g. Germany]
+- What I sell: [One line, e.g. software-defined vehicle testing platform — skip if you ran the start-here prompt]
+
+STEPS
+1. Find the partner by website and confirm the parent, not a regional unit.
+2. Pull its customer summary: active customers, engagements and top 3 customers overall.
+3. Pull 12 months of monthly job postings. Compare the average of the last 5 full months with the 5 before. If one month more than doubles the one before and stays there (editable default), call it a "step change" that may reflect wider data coverage, not only demand.
+4. Pull headcount growth over Draup's latest 12-month workforce window (it ends about 3 months ago; say the dates).
+5. Search 12 months of deals, partnerships and M&A news where [Partner] is the actor (review 15+ items, keep up to 8), and pull 12 months of acquisitions; say if the acquisitions list looks incomplete.
+6. For customers with primary industry [Vertical] and HQ in [Country]: pull [Partner]'s top 10 customers by engagements, and its delivery locations (top 8, with the share delivered in [Country]).
+7. People and timing: pull [Partner]'s top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+
+OUTPUT
+- Bottom line: 2 sentences — the verdict and what it means for [What I sell].
+- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Scorecard": Signal | Evidence (dated) | Score from −1 to +1. Defaults (editable): Hiring +1 above +10%, −1 below −10%, else 0 (a step change scores 0 with a note); Headcount +1 above +3%, −1 below 0%; New client wins in 12 months +1 for 3 or more, −1 for none; Acquisitions +1 if any adds a capability close to [What I sell]; Segment footprint +1 if 5+ customers in the segment have 10+ engagements, −1 if fewer than 2.
+- Verdict: Rising (+2 or more), Steady (−1 to +1), Slowing (−2 or less).
+- "Wins and moves": Date | Event | Counterparty | Why it matters for us.
+- Gaps: what Draup didn't have — worth asking the partner.
+- Detail: "Footprint in [Vertical], [Country]" (Customer | Engagements), delivery hubs (Metro | Engagements | Onshore or offshore, with the onshore share) and "What this means for us" (3 bullets, each tied to a number).
+
+RULES
+- Engagement data lags announcements: if news shows a big new win where engagements are low, say so.
+- Sports, sponsorship and stadium "partnerships" are not client wins.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Postings are openings, not hires; skip the partial first and last months and compare the last 5 full months with the 5 before.
+- Talent-flow data ends about 3 months ago; state the months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named partner leader, dated why-now) first. Is [Partner] rising, steady or slowing? Score its hiring trend, headcount growth, client wins and acquisitions in 12 months, and its footprint in [Vertical], [Country].
+```
+
+### Follow-ups
+
+- Run the same check on [second partner] and put the two scorecards side by side.
+- Which of [Partner]'s [Vertical] customers in [Country] run our technology or a rival's?
+- Draft three questions for our partner review that test the weakest signal.
+
+### Tips
+
+- Ask the partner about anything scored 0 with a note; a step change in postings or a fresh big win is a good conversation opener.
+- Momentum in your segment matters more than company-wide growth. A firm can be growing overall and flat in your industry.
+
+## Attach targets on a partner platform
+
+- **id:** `partners-platform-attach`
+- **What you get:** A sized, ranked list of companies in your industry and country that run a platform you integrate with and show no sign of your rival add-on, with the platform confirmed, a dated why-now and a named owner for the top 3.
+- **Use it when:** You sell an add-on or integration for a platform (SAP, Salesforce, ServiceNow, Snowflake) and want a co-marketing or marketplace list to work with the platform vendor's field team.
+- **Best for:** Partnerships & Alliances, Marketing & ABM, SDR / BDR, Account Executive
+- **Time:** 4–6 min
+- **Inputs:** Platform (e.g. SAP S/4HANA); Competitor (e.g. Celonis); Vertical (e.g. Automotive); Country (e.g. Germany); What I sell (e.g. process-mining add-on for SAP)
+
+### Detailed prompt
+
+```text
+Act as my platform-alliances and marketplace analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Platform: [Product we integrate with, as Draup names it, e.g. SAP S/4HANA]
+- Competitor: [Maker of the rival add-on whose products must be absent, e.g. Celonis]
+- Vertical: [Draup industry, e.g. Automotive]
+- Country: [HQ country in full, e.g. Germany]
+- What I sell: [One line, e.g. process-mining add-on for SAP — skip if you ran the start-here prompt]
+
+STEPS
+1. Turn the inputs into Draup's exact names; say which you used.
+2. Size the list: companies with primary industry [Vertical], HQ in [Country], [Platform] in their tech stack and no product made by [Competitor] anywhere in the stack. Using the names-only view, check whether a 50th, 100th and 250th match exists, to band the total.
+3. Run the same band check without the [Competitor] condition, labelled as such, so I can see what share of [Platform] users show no rival.
+4. Pull the top 10 with full detail, by revenue: workforce, revenue, Opportunity Index, parent, main providers.
+5. Flag: Subsidiary (name the parent; the add-on may be bought centrally), Misfiled, Possibly inactive.
+6. For the top 3 unflagged, confirm the platform: pull the platform maker's products in the platform's exact category only (e.g. "Enterprise Resource Planning Software (ERP)" for S/4HANA), with usage strength and last seen. A maker-only pull can cut the platform off.
+7. People and timing: for the same 3, pull the top leader in the function closest to [What I sell] (full profile title) and the most important news item from the last 90 days where the company is the actor.
+
+OUTPUT
+- Bottom line: 2 sentences — list size and the account to take to the platform vendor first.
+- Recommended next step: a person from step 7 (name and title), what to do (often with the platform vendor's partner manager), and why now (the dated news item or another dated fact); if none turned up, say so.
+- Header line: "[Band] run [Platform] with no [Competitor] products; [band] run [Platform] in total."
+- "Attach list" (top 10): Rank | Company | Revenue (USD M, FY) | Parent | Flag.
+- "Top 3 confirmed": Company | [Platform] strength and last seen | Why now (dated) | Likely owner (name, title) | Opener angle.
+- Gaps: what Draup didn't have — worth asking the platform vendor.
+- Detail: workforce and Opportunity Index per row; "Likely missing big names" (up to 3, labelled "probably runs [Competitor]; not checked").
+
+RULES
+- "No [Competitor] products" means Draup sees no public evidence of them; say "no sign of", never "doesn't use".
+- If [Platform] isn't confirmed or was last seen over 12 months ago (editable default), drop the company from the top 3 and say why.
+- Shareholding notices and recalls are not a why-now.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- Pull lists and priorities 10 at a time. Count first when a list could be long; never report a total that drops one of my conditions.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 430 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named owner, dated why-now) first. Which [Vertical] companies in [Country] run [Platform] with no [Competitor] products? Band the total vs all [Platform] users, show the top 10 by revenue, confirm the top 3.
+```
+
+### Follow-ups
+
+- Show rows 11–20 the same way.
+- Draft a short note to the platform vendor's partner manager proposing a joint campaign on the top 10 (check our Draup licence before sharing the list).
+- For the top 3, who else owns [Platform] there? Show leaders with full titles.
+
+### Tips
+
+- Platform vendors respond to lists that help them sell their own platform. Lead with accounts where the platform is current and something just changed.
+- If the list is mostly mid-size companies, that's often where rival add-ons haven't landed yet. Size your campaign for that segment.
+
+## Enablement brief for a partner's sellers
+
+- **id:** `partners-enablement-brief`
+- **What you get:** A brief you hand to a partner's sales team: where your product fits their practice in your industry, which of their customers run your platform or a rival's, a joint value proposition, 5 qualification questions and 3 objection handlers.
+- **Use it when:** After a partner agreement is signed, before a joint enablement session or a partner sales kickoff.
+- **Best for:** Partnerships & Alliances, Marketing & ABM, Presales & Solutions
+- **Time:** 4–6 min
+- **Inputs:** Partner (e.g. Infosys); Vertical (e.g. Banking & Financial Services); Platform (e.g. Snowflake); Competitor (e.g. Databricks); What I sell (e.g. data observability for Snowflake); Proof point (optional) (e.g. cut data-incident time 40% at a mid-size retailer)
+
+### Detailed prompt
+
+```text
+Act as my partner enablement lead. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Partner: [Services firm as Draup spells it, e.g. Infosys]
+- Vertical: [Draup industry, e.g. Banking & Financial Services]
+- Platform: [The technology our product runs on or with, as Draup names its maker, e.g. Snowflake]
+- Competitor: [Rival maker, e.g. Databricks]
+- What I sell: [One line, e.g. data observability for Snowflake — skip if you ran the start-here prompt]
+- Proof point (optional): [e.g. cut data-incident time 40% at a mid-size retailer]
+
+STEPS
+1. Confirm Draup's spelling of each input; say which you used.
+2. Pull the partner's customer summary: active customers, engagements and top customers overall.
+3. Pull the partner's top 10 workloads and top 10 customers in primary industry [Vertical].
+4. Pull the partner's [Vertical] customers ranked by engagements that mention [Platform] (top 10): its practice evidence.
+5. Using the short company view, list the partner's [Vertical] customers whose stack includes [Platform] products (10, by revenue), then those of them with no [Competitor] products (10). Never match by name.
+6. Match the lists: a customer from step 3 or 4 that also appears in step 5 is a warm start.
+7. People and timing: pull [Partner]'s top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+
+OUTPUT
+(Written to the partner's sellers, in the second person.)
+- Bottom line: 2 sentences — where [What I sell] fits their [Vertical] practice and the first 3 customers to raise it with.
+- Recommended next step: a person from step 7 (name and title), what to do (for me, the partner manager), and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Where to start" (up to 10): Customer | Your engagements in [Vertical] | Your [Platform]-related engagements | Stack: [Platform] only, both, or not seen | Play.
+- Play: Expand (you already do [Platform] work there), Land ([Platform] present, no [Competitor], little [Platform] work by you), Coexist (both makers present: position alongside).
+- "5 qualification questions": Question | What a good answer sounds like.
+- Gaps: what Draup didn't have — worth confirming with the partner.
+- Detail: "Why this fits your practice" (3 bullets tied to their workload numbers); "Joint value proposition" (60 words or fewer, using [Proof point] once); "3 objection handlers" (Objection | Response under 40 words | Proof); "How to bring us in" (a routing line with placeholders for our partner manager).
+
+RULES
+- Platform presence is public evidence; tell sellers to confirm it before quoting it.
+- Never imply a customer told us anything; these are outside-in facts.
+- Leave catch-all workloads (e.g. Project/Programs Management) out of "Why this fits".
+- If [Platform]-related engagements are fewer than 10 (editable default), say the partner's practice is early and lead with Land plays.
+- Check our Draup licence before sharing Draup data outside the company; the partner-facing version can drop engagement counts.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Trust usage strength and last-seen date; ignore first-seen dates, confidence scores and "Generic" rows.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 500 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and first 3 customers first. Enablement brief for [Partner]'s sellers in [Vertical]: their workloads and customers, who runs [Platform] (with or without [Competitor]), a joint pitch, 5 qualification questions, 3 objection handlers.
+```
+
+### Follow-ups
+
+- Turn the brief into a 5-slide outline for the enablement session.
+- Write a 90-second talk track a partner seller can use on a customer call.
+- Build a joint account plan for the top warm-start customer with [Partner].
+
+### Tips
+
+- Lead with the partner's own customers and workloads. Partner sellers skim past vendor-centric decks.
+- Keep the brief to what a seller can use on the next call; save the deep data for the partner manager.
+
+## Compare candidate partners head to head
+
+- **id:** `partners-compare-candidates`
+- **What you get:** A weighted scorecard comparing 2–3 candidate partners in one industry and country on workload depth, technology experience, customer breadth, onshore delivery and momentum, with a pick, each candidate's main risk and who to call at the pick.
+- **Use it when:** You have budget or capacity for one new partner in a segment and need to choose, or justify the choice to your leadership. Use partners-recruit-si-shortlist instead when you don't have names yet.
+- **Best for:** Partnerships & Alliances, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Inputs:** Candidates (e.g. Cognizant, Capgemini, Wipro); Vertical (e.g. Life Sciences); Country (e.g. United States of America); Workload (e.g. Data Engineering); Technology (e.g. Databricks); Weights (optional) (e.g. workload 30, technology 25, breadth 20, onshore 10, momentum 15); What I sell (e.g. clinical data platform)
+
+### Detailed prompt
+
+```text
+Act as my partner-selection analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Candidates: [2–3 services firms as Draup spells them, e.g. Cognizant, Capgemini, Wipro]
+- Vertical: [Draup industry, e.g. Life Sciences]
+- Country: [Customer HQ country in full, e.g. United States of America]
+- Workload: [e.g. Data Engineering; a business function is fine, I'll map it]
+- Technology: [Our platform or a rival's, e.g. Databricks]
+- Weights (optional): [Editable default: workload depth 30, technology 25, customer breadth 20, onshore delivery 10, momentum 15]
+- What I sell: [One line, e.g. clinical data platform — skip if you ran the start-here prompt]
+
+STEPS
+1. Confirm Draup's spelling of each candidate; list any sister brand separately, unmerged. If I gave a business function, map it to its 1–2 main workloads.
+2. In one lookup, pull engagements for all candidates among customers with primary industry [Vertical] and HQ in [Country]. Repeat once for [Workload] only, and once for engagements that mention [Technology].
+3. For each candidate, pull its top 5 customers in the segment; compute the share of its segment engagements held by its top 2.
+4. For each candidate, pull delivery locations for the segment; compute the share delivered in [Country] (onshore).
+5. For each candidate, pull headcount growth over Draup's latest 12-month workforce window.
+6. Score each criterion 0–100 relative to the best candidate (best = 100, others = value ÷ best × 100). For customer breadth, use 100 minus the top-2 share before scaling. Apply the weights and total.
+7. People and timing: pull the pick's top 3 leaders for [Vertical] or alliances (full profile titles) and its most important news item from the last 90 days (client wins, acquisitions, new alliances; analyst rankings and awards are context, not a why-now).
+
+OUTPUT
+- Bottom line: 2 sentences — the pick and what it means for [What I sell].
+- Recommended next step: a person from step 7 (name and title), what to do, and why now (the dated news item or another dated fact); if none turned up, say so.
+- "Scorecard": Criterion | Weight | one column per candidate showing raw value (score) | then a Total row. Criteria: Workload depth ([Workload] engagements in segment), Technology ([Technology]-related engagements), Customer breadth (top-2 share), Onshore delivery (% in [Country]), Momentum (headcount growth %).
+- "Pick": one candidate, 3 reasons tied to numbers.
+- "Risk per candidate": one line each (e.g. concentration, offshore-heavy, thin technology work).
+- Gaps: what Draup didn't have — worth asking each candidate.
+- Detail: "Sensitivity" (does the pick change if the technology weight doubles? who wins then) and "If you can sign two" (the most complementary pair and why).
+
+RULES
+- If a candidate has fewer than 10 engagements in the segment (editable default), mark its share-based scores "insufficient data" and score them 0, saying so.
+- Say plainly when the pick is driven mainly by scale, and show the runner-up's strongest criterion.
+- Never present the scorecard as Draup's rating; it's your weighted read of Draup data.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every fact. If Draup has nothing, write "Not in Draup"; never fill from memory. If a name returns nothing, retry once with Draup's spelling.
+- Engagement counts are "active engagements (Draup-derived)", not signed contracts. Don't show outsourced headcount.
+- Rank providers by engagements yourself.
+- Talent-flow data ends about 3 months ago; state the months.
+- News: the named company must be the actor. Drop stock chatter, charity, sponsorships, awards, political commentary, passing mentions, look-alikes and re-dated stories, but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Use full profile titles and professional information only. If several people share a title, list them and ask. Leadership data lags about 3 months; give the latest move date.
+- Phone-first: bottom line and next step first; at most 2 tables up front (5 columns, 10 rows each); reference tables under "Detail". Keep to about 450 words including tables.
+```
+
+### Quick version
+
+```text
+Bottom line and next step (named leader at the pick, dated why-now) first. Compare [Candidates] in [Vertical], [Country]: engagements in [Workload] and mentioning [Technology], top-2 customer share, onshore share, headcount growth. Weighted scorecard, pick, sensitivity check, each one's risk.
+```
+
+### Follow-ups
+
+- Rerun the scorecard with technology weighted 40 and workload 20.
+- Run the momentum check on the pick before we sign.
+- Draft a one-paragraph recommendation for my VP with the scorecard attached.
+
+### Tips
+
+- Change the weights before you look at the result, not after. It keeps the choice honest.
+- A firm with most of its segment work at one or two customers can still be the right partner, but only if those customers are on your target list.
+
+
+# Industry and market intelligence
+
+Industry-level numbers, priorities and vendor landscapes for pitches and planning.
+
+## One-page vertical market snapshot
+
+- **id:** `market-vertical-snapshot`
+- **What you get:** A one-page view of an industry, optionally scoped to your region: size and growth, the priorities that fit what you sell with dated company proof, the top buyers, and who to call first.
+- **Use it when:** You are entering a vertical, building a territory plan, or need industry context for a pitch or a leadership review.
+- **Best for:** Sales Leader & RevOps, Marketing & ABM, Account Executive, Services, SI & Staffing Seller
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Aerospace & Defense); Region (optional) (e.g. Europe, or North America and Europe); What I sell (e.g. PLM and engineering-data software)
+
+### Detailed prompt
+
+```text
+Act as my industry analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Aerospace & Defense]
+- Region (optional): [e.g. Europe, or North America and Europe]
+- What I sell: [one line, e.g. PLM and engineering-data software — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical to Draup's name. A sub-industry (e.g. Airlines) can return zeros: use the parent and say so. Resolve [Region] to Draup's region names (e.g. Western, Northern, Southern and Eastern Europe) and show them.
+2. Pull the vertical's revenue, IT spend and R&D spend for the latest year, with growth. These totals are global even when I give a region.
+3. Pull the vertical's key priorities and pick the 5 most relevant to [What I sell]. Draup gives them no dates, so for the top 2 pull the dated priorities of the 2 largest employers (in [Region] if given) in that function and use those as proof.
+4. Top buyers: list companies with primary vertical [Vertical] (HQ in [Region] if given), largest workforce first, top 10.
+5. Pull growing technologies (fixed top 50); keep up to 5 relevant to [What I sell], or say "none relevant in Draup".
+6. Services sellers only (from my setup or What I sell): top outsourcing vendors (no agencies, staffing, research or merchandising firms) and top 5 workloads, with active engagements (Draup-derived).
+7. For the top buyer most relevant to [What I sell]: its top 3 executives in that function and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — the state of [Vertical] and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 7), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "The numbers": Metric | Value ($B) | Growth % | Year ("latest, year not given" if omitted). Say the totals are global.
+- "Top priorities": Priority | Dated proof (company, quarter) | Likely owner (title) | Fit (my judgement).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: top buyers in [Region]; technology gaining ground (Technology | Companies adopting, window not stated); outsourcing (services sellers only); what you excluded.
+
+RULES
+- Draup marks every vertical priority as not tied to a seller, so "Fit" is your judgement; say so.
+- Every vertical list is Draup's fixed top 50, not the whole market; say so once.
+- Flag buyers whose business doesn't fit [Vertical], and sanctioned or state-owned firms where relevant.
+- Vertical IT spend tracks revenue; don't present its growth as a separate trend.
+- Leave generic tools (office suites, browsers, chat assistants, design tools) out of technology lists.
+- If I ask for a slide: 5 bullets + 1 table.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 450 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: a one-page snapshot of [Vertical] (in [Region] if given): size and growth, the 5 priorities that fit [What I sell] with dated company proof, the top buyers, and who to call first.
+```
+
+### Follow-ups
+
+- Turn the top 3 priorities into a 5-slide point of view for [What I sell].
+- Which 10 companies in [Vertical] in [Region] hire most per 1,000 staff right now?
+- Show the outsourcing league table for this vertical (services sellers).
+
+### Tips
+
+- Add a region to scope buyers and proof to your territory; the industry totals stay global.
+- If a section comes back empty, it is usually the industry name. Ask Claude to try the parent industry.
+- The Fit column is the assistant's judgement, not a Draup score. Challenge it.
+
+## Build an industry point of view
+
+- **id:** `market-industry-pov`
+- **What you get:** The 5 industry priorities that matter most for what you sell, each with dated company proof and a likely owner, turned into a 5-slide narrative, a one-line POV and a named first contact.
+- **Use it when:** You need a 'why this, why now' story for an industry keynote, campaign or first meeting.
+- **Best for:** Marketing & ABM, Account Executive, Presales & Solutions, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Vertical (e.g. Automotive); Audience (e.g. VP Supply Chain); What I sell (e.g. supply-chain planning software)
+
+### Detailed prompt
+
+```text
+Act as my industry marketing strategist. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Automotive]
+- Audience: [the persona, e.g. VP Supply Chain]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical to Draup's name and show it.
+2. Pull the vertical's key priorities. If none come back, use the stated priorities of its 3 largest employers and say so.
+3. Choose the 5 priorities that best fit [What I sell] and [Audience]'s function. Judge by what each describes, since function labels may not match the audience, and explain each choice in one line.
+4. Draup's vertical priorities carry no dates. For each chosen priority, keep the named company examples, then pull the dated priorities of 2–3 of the vertical's largest employers in that function and use those as proof (company, quarter or month).
+5. Market context: the vertical's revenue and R&D growth, and the 3 fastest-growing technologies relevant to [What I sell]; if none qualify, say "Not in Draup" rather than listing generic tools.
+6. For the company behind the strongest proof: its top 3 executives in [Audience]'s function and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — the industry story and why [What I sell] fits it now.
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Top 5 priorities": # | Priority | Dated proof | Likely owner (title) | Why it matters to [Audience].
+- "5-slide narrative": per slide a title, 3 short bullets and one dated proof point. Slide 1: the market shift. Slides 2–4: the three strongest priorities. Slide 5: why [What I sell] now.
+- "One-line POV": 35 words or fewer.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: why each priority was chosen; growth figures with year (or "year not given").
+
+RULES
+- Use only Draup facts and company examples. Never invent statistics or quotes.
+- Company examples are real public companies; present them as industry evidence, never as our customers.
+- IT spend tracks revenue in Draup; don't use its growth as a trend.
+- If an industry returns zeros, say so, retry with its parent and name it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 500 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: pick the 5 [Vertical] priorities that fit [What I sell] for a [Audience], each with dated proof from named companies, then a 5-slide narrative and a 35-word POV.
+```
+
+### Follow-ups
+
+- Turn this into a 3-email sequence for [Audience], 120 words or fewer each, each with one dated example.
+- Which 10 [Vertical] companies are most active on priority #1?
+- Make a version for a CFO audience.
+
+### Tips
+
+- Name a specific persona in Audience. 'VP Supply Chain' gives sharper picks than 'executives'.
+- Check your Draup licence before publishing Draup data externally, for example in a keynote or blog.
+
+## Who wins services work in a vertical
+
+- **id:** `market-vendor-league`
+- **What you get:** Who really wins outsourcing work in a vertical, after removing agencies and staffing firms, plus top workloads and buyers, where your firm ranks, and who to call first.
+- **Use it when:** You sell IT or business services and need to know who you are up against in an industry.
+- **Best for:** Services, SI & Staffing Seller, Partnerships & Alliances, Sales Leader & RevOps, Marketing & ABM
+- **Time:** 2–4 min
+- **Inputs:** Vertical (e.g. Life Sciences); Workload (optional) (e.g. Application Development & Maintenance); My company (e.g. Northwind Data Services (illustrative)); What I sell (e.g. clinical-data platform services)
+
+### Detailed prompt
+
+```text
+Act as my services market analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Life Sciences]
+- Workload (optional): [a type of work, e.g. Application Development & Maintenance]
+- My company: [as Draup spells it, e.g. Northwind Data Services (illustrative)]
+- What I sell: [one line, e.g. clinical-data platform services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical to Draup's name and show it.
+2. Pull the vertical's top outsourcing vendors (a fixed top 50). Remove advertising and media agencies, staffing, market-research, merchandising and field-marketing firms; list what you removed. Keep the top 15.
+3. Pull the top 10 outsourced workloads and the top 10 outsourcing buyers.
+4. If I gave a workload, pull the top 10 providers for it among companies whose primary vertical is [Vertical].
+5. Find [My company]'s rank and active engagements, or say "not in the top 50"; if nothing returns, try the short brand name.
+6. For the top buyer where [My company] is absent: its top 3 executives in the function closest to What I sell and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — how the market is split and where [My company] stands.
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "League table" (top 10): Rank | Provider | Active engagements (Draup-derived) | Share of top 15 % | Type (global systems integrator, consulting, niche specialist, business-process outsourcer).
+- "Where [My company] stands": rank, gap to #1 and #5, and the 2 workloads with the most room.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: ranks 11–15; concentration (top-3 share; "concentrated" over 50%, editable); top workloads; top buyers with likely owner; "[Workload] leaders"; excluded firms.
+
+RULES
+- Show catch-all workloads (Project/Programs Management, Account Management) but never recommend them as the opening.
+- Flag buyers whose business doesn't fit [Vertical].
+- Engagements are Draup-derived estimates, not public contracts; never call them signed deals.
+- If an industry returns zeros, say so, retry with its parent and name it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 400 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank the top 10 outsourcing providers in [Vertical] by active engagements, agencies and staffing removed; show where [My company] ranks, the top buyers, and who to call at the best opening.
+```
+
+### Follow-ups
+
+- Show where [Competitor] wins [Workload] work in [Vertical]: top 10 customers.
+- For the top 5 buyers, who are their top 3 providers?
+- Which buyers have no top-5 provider in [Workload]?
+
+### Tips
+
+- Engagement counts measure breadth of relationship, not revenue.
+- Agencies and staffing firms rank high on raw counts; the prompt removes them so the table shows real services rivals.
+
+## Find where a vertical's teams sit
+
+- **id:** `market-talent-hubs`
+- **What you get:** The metros where an industry's IT and R&D teams are concentrated, hubs that host both, where to focus, and a named person at the biggest local employer.
+- **Use it when:** You are choosing where to hold events, recruit or place delivery capacity for an industry.
+- **Best for:** Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller
+- **Time:** 1–2 min
+- **Inputs:** Vertical (e.g. Banking & Financial Services); Country (optional) (e.g. India); What I sell (e.g. data-engineering services)
+
+### Detailed prompt
+
+```text
+Act as my market and location analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Banking & Financial Services]
+- Country (optional): [in full, e.g. India]
+- What I sell: [one line, e.g. data-engineering services — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical, and the country if given, to Draup's names and show them.
+2. Pull the metros where the vertical's IT teams are concentrated, ranked by Draup's workforce-strength index. The data is global, so if I gave a country, keep only its metros.
+3. Do the same for the vertical's R&D teams, and mark metros on both lists.
+4. For the #1 hub: the biggest [Vertical] employer there, its top 3 executives located in that metro in the function closest to What I sell, and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — where the vertical's technical work sits and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 4), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "IT hubs" (top 10): Rank | Metro | Country | Index | Also an R&D hub?
+- "Where to focus": 3 metros, one reason each (delivery, events or recruiting).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: "R&D hubs" (top 10): Rank | Metro | Country | Index.
+
+RULES
+- The index is relative strength, not headcount. Never call it employees, and only compare values within one list.
+- These hubs show where delivery and engineering sit, not where budget holders are; say so once.
+- If an industry returns zeros, say so, retry with its parent and name it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: the top 10 metros for [Vertical] IT teams and for R&D teams by Draup's workforce-strength index, metros on both lists, 3 places to focus, and who to meet in the #1 hub.
+```
+
+### Follow-ups
+
+- Who are the 10 biggest [Vertical] employers in the #1 metro?
+- Which companies have GCCs in the top 3 IT hubs?
+- Compare the top 2 countries on labour force, cost of living and tax.
+
+### Tips
+
+- Use the index to rank places, not to size teams.
+- Add a country to get a territory-level view.
+
+## Find who hires hardest in a vertical
+
+- **id:** `market-hiring-leaders`
+- **What you get:** The real end employers hiring hardest in an industry, ranked on postings per 1,000 staff with recruiters and outliers removed, plus hot spots and a named person to call first.
+- **Use it when:** You want the most active companies in a vertical this year; active hiring often means active budgets.
+- **Best for:** SDR / BDR, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Inputs:** Vertical (e.g. Life Sciences); What I sell (e.g. talent-acquisition software)
+
+### Detailed prompt
+
+```text
+Act as my market research analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Life Sciences]
+- What I sell: [one line, e.g. talent-acquisition software — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the vertical to Draup's name and show it.
+2. Pull Draup's top hiring companies for the vertical (a fixed top 50) and note the time window Draup states.
+3. Remove staffing and recruiting firms and job boards; record each.
+4. Look the rest up in one company list by exact name: workforce, primary vertical and postings (90 days). Work out postings per 1,000 employees.
+5. Remove outliers: a posting count above the company's workforce, or an unfamiliar firm posting far more than household names. Rank companies with 1,000+ staff (editable) by postings per 1,000.
+6. For the #1: its top 3 executives in the function closest to What I sell and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — who is hiring hardest for their size and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 6), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Hiring hardest" (top 10): Rank | Company | Postings | Per 1,000 staff | Workforce.
+- "Hot spots for [What I sell]": 5 companies, one reason each.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: vertical and window ("window not stated" if none); companies under 1,000 staff; the raw-count ranking; "Removed" with reasons.
+
+RULES
+- Flag "check vertical" when a company's primary vertical isn't [Vertical].
+- No workforce figure: write "n/a" for intensity and list it in Detail rather than dropping it.
+- Postings are openings, not hires. Ignore the first and last months of a monthly series; they are usually partial.
+- If an industry returns zeros, say so, retry with its parent and name it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: the top 10 [Vertical] companies by postings per 1,000 staff (1,000+ employees), staffing firms and outliers removed, 5 hot spots for [What I sell], and who to call at the #1.
+```
+
+### Follow-ups
+
+- For the top 5, which functions and skills are they hiring for most?
+- Which of these are hiring most in [Country]?
+- Draft a hiring-themed opener for the #1 hot spot.
+
+### Tips
+
+- Ranking on postings per 1,000 staff shows who is hiring hard for their size, not just who is biggest.
+- Check the Removed list if a name you expected is missing.
+
+## Check if a skill market buys contractors
+
+- **id:** `market-contract-vs-fulltime`
+- **What you get:** What share of hiring for a skill is contract versus full-time, how much staffing firms drive it, what it means for staff-aug or SI demand, and a named end-employer contact.
+- **Use it when:** You sell staffing, staff augmentation or SI services and want to know whether a skill's market buys contractors.
+- **Best for:** Services, SI & Staffing Seller, Partnerships & Alliances, Sales Leader & RevOps
+- **Time:** 1–2 min
+- **Inputs:** Technology (e.g. SAP S/4HANA); Country (optional) (e.g. United States of America); What I sell (e.g. SAP staff augmentation)
+
+### Detailed prompt
+
+```text
+Act as my talent market analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Technology: [skill or product, e.g. SAP S/4HANA]
+- Country (optional): [in full, e.g. United States of America]
+- What I sell: [one line, e.g. SAP staff augmentation — skip if you ran the start-here prompt]
+
+STEPS
+1. Resolve the technology, and the country if given, to Draup's names and show them.
+2. Pull the work-type breakdown of postings for [Technology] over the last 12 months: full-time, contract, part-time, other and no type stated.
+3. Work out each type's share of all postings and of postings that state a type.
+4. Pull the top 15 companies posting for [Technology] in the same window and country, and classify each as end employer, staffing firm or IT services/SI.
+5. For the top end employer: its top 3 executives in the function that owns [Technology] and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — whether this market buys contractors and what it means for [What I sell].
+- Recommended next step: a named person (name and full title from step 5), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Split": Work type | Postings | Share of all % | Share of stated-type %. Verdict: "contract-heavy" over 40% of stated, "balanced" at 20–40%, else "full-time-led" (editable).
+- "Who's hiring" (top 10): Company | Postings | Type.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: header with technology, country (or "global") and exact window; ranks 11–15; 3 bullets on what it means for [What I sell].
+
+RULES
+- Never count no-type postings as full-time, and always show the no-type share.
+- Use the same window and country for every number; city breakdowns are out of scope.
+- Many staffing or SI firms in the top 15 is another sign of contract-led demand.
+- Postings are openings, not hires.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: for [Technology] postings in 12 months, the contract vs full-time split (stated types), the no-type share, how many top-15 hirers are staffing or IT-services firms, and who to call.
+```
+
+### Follow-ups
+
+- Run the same check for [another technology] and compare the two.
+- Which end employers post the most contract roles for [Technology]?
+- What job titles dominate [Technology] postings?
+
+### Tips
+
+- A large no-type share is normal. Judge the split on postings that state a type.
+- If staffing firms dominate the hirer list, demand is often met through contractors: a staff-aug opening.
+
+## Compare countries for a delivery centre
+
+- **id:** `market-country-compare`
+- **What you get:** A side-by-side country comparison on labour force, unemployment, cost of living, inflation, tax and stability, with takeaways, client questions and, if you name the client, who to talk to.
+- **Use it when:** A client is weighing delivery or GCC locations, or you are positioning a nearshore or offshore option.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances, Sales Leader & RevOps
+- **Time:** 1–2 min
+- **Inputs:** Country A (e.g. India); Country B (e.g. Poland); Country C (optional) (e.g. Mexico); Client (optional) (e.g. the client's website, e.g. fabrikam.com (illustrative)); What I sell (e.g. nearshore delivery centre services)
+
+### Detailed prompt
+
+```text
+Act as my location strategy analyst. Use Draup for Sales for every fact.
+
+INPUTS (edit these)
+- Country A: [in full, e.g. India]
+- Country B: [in full, e.g. Poland]
+- Country C (optional): [e.g. Mexico]
+- Client (optional): [the client's website, e.g. fabrikam.com (illustrative)]
+- What I sell: [one line, e.g. nearshore delivery centre services — skip if you ran the start-here prompt]
+
+STEPS
+1. Use full country names as Draup knows them (e.g. "United States of America", not "USA").
+2. Pull Draup's country data for all of them in one go: labour force, unemployment rate, median age, cost-of-living index, inflation, corporate tax rate, political stability, and any other workforce metric Draup returns.
+3. If I named a client: find it by website (confirm the parent), then pull its top 3 executives in IT or global delivery and its most important news item from the last 90 days (centre openings, expansions or cost programmes first).
+
+OUTPUT
+- Bottom line: 2 sentences — how the locations compare and which fits [What I sell] best for this client.
+- Recommended next step: a named person (name and full title from step 3), the action and one dated why-now fact; if Draup has neither, say so and name the title to find.
+- "Comparison": Metric | [Country A] | [Country B] | ([Country C]) | Period.
+- "Takeaways": 3 bullets on talent-pool scale, cost position, and tax and risk.
+- "Questions to ask the client": 3 (e.g. language needs, time-zone overlap, scale over 3 years).
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: 2 bullets on how to position each location for [What I sell].
+
+RULES
+- Cost of living is an index (higher = more expensive), not a currency amount; say so.
+- This view has no salary data. For pay by role and city, say the Draup for Talent connector is needed.
+- Use no outside sources for missing metrics; mark them "Not in Draup".
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me first.
+- Date every number; write "Not in Draup" for gaps and never fill them from memory.
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell; map a function to its main workloads and say which.
+- News: the company must be the actor. Drop stock chatter, political commentary, charity, awards, passing mentions, look-alikes, sister companies and re-dated stories. Keep any item that bears directly on What I sell, even if it's normally noise. Give date, source and headline.
+- If sources conflict on a name or number, say so and don't repeat either as fact; treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Counts apply every filter I set.
+- At most 2 tables up front (5 columns, 10 rows); reference tables go under "Detail". Keep to about 350 words including tables, then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: compare [Country A] and [Country B] on labour force, unemployment, median age, cost of living, inflation, corporate tax and stability, with periods, 3 takeaways and 3 client questions.
+```
+
+### Follow-ups
+
+- Which metros in [Country B] have the strongest IT teams in [Vertical]?
+- Who are the biggest [Vertical] employers in [City]?
+- Turn this into a one-slide location comparison.
+
+### Tips
+
+- The comparison answers in a single lookup, so it is quick to run several pairs.
+- Name the client to get a named contact and a dated reason to call.
+
+
+# Sales leadership and RevOps
+
+Size territories, segment books, plan pipeline and enable reps on new verticals.
+
+## Which region gets the next rep
+
+- **id:** `leaders-territory-potential`
+- **What you get:** A ranked comparison of 2–5 regions for one industry — how many sizeable accounts each holds, how many are active in the work you sell, where your rivals already sit, and the revenue at stake — with the region to staff next and the first account to open there.
+- **Use it when:** Annual or half-year planning, when you must decide which country or region gets the next rep, partner or campaign budget. Use this to compare regions; use "Which cities to base reps and events" to pick cities inside one country, and the territory-carving prompt to split a region between reps.
+- **Best for:** Sales Leader & RevOps, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Aerospace & Defense); Regions (e.g. France, Germany, United Kingdom); Minimum employees (e.g. 2,000); What I sell (e.g. OT and device security software); My competitors (optional) (e.g. CrowdStrike, Palo Alto Networks); Current coverage (optional) (e.g. 1 rep in the UK, none in France or Germany)
+
+### Detailed prompt
+
+```text
+Act as my sales strategy and RevOps analyst sizing territories. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [Draup industry, e.g. Aerospace & Defense]
+- Regions: [2–5 HQ countries in full, e.g. France, Germany, United Kingdom]
+- Minimum employees: [e.g. 2,000]
+- What I sell: [one line, e.g. OT and device security software — skip if you ran the start-here prompt]
+- My competitors (optional): [rival products or firms, e.g. CrowdStrike, Palo Alto Networks — skip if you ran the start-here prompt]
+- Current coverage (optional): [reps per region, e.g. 1 rep in the UK, none in France]
+
+STEPS
+1. Use Draup's exact industry and region names; map What I sell to its 1–3 main workloads (types of work, e.g. Cybersecurity) and say which.
+2. Per region, list companies with primary industry [Vertical], HQ there and [Minimum employees]+ staff (names only, up to 100, by revenue). Over 100? Ask me to raise the threshold.
+3. Per region, repeat step 2 adding "active in my workloads". That count is the relevance measure.
+4. Per region, pull the top 10 by revenue in full, showing only my competitors' products: revenue and year, rivals present (stack, or provider list for services rivals), description.
+5. Flag misfiled, distributor, holding or private-equity, possibly inactive, subsidiary, and companies that sell what I sell. Count them; leave them out of totals.
+6. Score each region (editable): share of workload-active accounts 35%, top-10 revenue 25%, rival-present accounts 20% (displacement pool), accounts 20%. With coverage, divide by reps plus one.
+7. For the winning region's top clean account, pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — the region to staff next and what it means for [What I sell].
+- Recommended next step: the decision, its owner on my team and a date to decide by; then the first account to open, with a named person (name and title from step 7) and one dated fact. If none is found, say so.
+- "Regions compared": Region | Accounts (all / in my workloads) | Rival present (of top 10) | Top-10 revenue (USD B, FY) | Score.
+- "Where to add capacity": top region and runner-up, 2 number-backed reasons each, plus any coverage gap.
+- Detail: top 5 logos per region; what's missing (removed rows; big names with no workforce figure or HQ elsewhere); rubric.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- Totals cover the top 10 per region only, never the whole market.
+- A rival present at over 70% of accounts no longer separates regions; say so and lean on the workload count.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Counts and totals must apply every condition I set; never report one from a check that dropped a condition.
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: which of [Regions] gets the next rep for [What I sell] in [Vertical] ([Minimum employees]+ staff), scored on accounts active in my workloads, rivals and revenue, plus the first account and person.
+```
+
+### Follow-ups
+
+- Rerun with Minimum employees at 1,000 for the two smallest regions.
+- Change the weights: workload activity 50%, revenue 30%, rival presence 20%.
+- For the top region, carve the accounts into 2 balanced territories, whole metros first.
+- List well-known companies missing from [Region] (no workforce figure or HQ elsewhere) so I can add them by hand.
+
+### Tips
+
+- Compare regions with the same size cut; a lower threshold in one region makes it look bigger than it is.
+- If your rival shows up almost everywhere, the "active in my workloads" count is the better guide to where demand is.
+- Big groups registered in one country but run from another can drop out of the list; check "What's missing" before you commit headcount.
+
+## Which cities to base reps and events
+
+- **id:** `leaders-metro-heatmap`
+- **What you get:** A ranked map of the metros in one country where an industry's people, big local employers and the employers active in your workloads concentrate, telling you where to base reps, run events, or assign a named-account owner instead.
+- **Use it when:** Deciding where to hire the next field rep, where to hold a roadshow or dinner series, or which city a new office should cover. Use "Which region gets the next rep" first if you're still choosing the country.
+- **Best for:** Sales Leader & RevOps, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Insurance); Country (e.g. United States of America); Metros to compare (optional) (e.g. Hartford, Dallas, Chicago); What I sell (e.g. claims-automation software)
+
+### Detailed prompt
+
+```text
+Act as my field-sales and events strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [Draup industry, e.g. Insurance]
+- Country: [in full, e.g. United States of America]
+- Metros to compare (optional): [e.g. Hartford, Dallas, Chicago; default the top 5]
+- What I sell: [one line, e.g. claims-automation software — skip if you ran the start-here prompt]
+
+CONTEXT (optional)
+Two metros with similar totals can differ: one is two headquarters (a named-account job), the other a dozen large regional sites (a volume territory). Local headcount is approximate.
+
+STEPS
+1. Use Draup's exact industry, country and metro names; map What I sell to its workloads. If the industry returns zeros, try its parent and name it.
+2. Pull Draup's metro map for the industry (a fixed top 50 worldwide, ranked by a relative strength index); keep metros in [Country], plus mine.
+3. For the top 5 metros (or mine), pull the industry's top local employers there (up to 50 each) with approximate local headcount.
+4. For the same metros, list companies in the industry with a presence there, 1,000+ staff and activity in my workloads (names only, up to 50). That count is the relevance measure.
+5. Per metro: local headcount of the top 50, employers with 1,000+ local staff (editable default), top-2 share, 3 biggest employers. Flag employers from another primary industry; don't let them drive the verdict.
+6. Classify: HQ cluster (top 2 hold over 50%), Broad territory (8+ employers with 1,000+ local staff), Mixed.
+7. For the lead metro's biggest relevant employer, pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — where to base people and what it means for [What I sell].
+- Recommended next step: the decision, its owner and a date; then the first account to open, with a named person (name and title from step 7) and one dated fact. If none is found, say so.
+- "Heatmap": Metro | Local headcount (approx.) | Employers 1,000+ / in my workloads | Type | 3 biggest employers. By relevance, then strength.
+- "Where to put people and events": up to 3 rep bases (5 accounts each) and 2 event cities (6 accounts to invite).
+- Detail: named-account metros with the 2 accounts that justify a named owner; flagged employers; strength index.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- The strength index is relative; never call it headcount. Write "approx." beside every local headcount.
+- These are people, not budget holders: where the HQ is elsewhere, say where decisions are likely made.
+- "Who to invite" means the account, not a named person.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Counts and totals must apply every condition I set; never report one from a check that dropped a condition.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank the top 5 metros in [Country] for [Vertical], with big local employers, employers active in my workloads and whether each is a broad territory or a few HQ accounts, for [What I sell].
+```
+
+### Follow-ups
+
+- For [Metro], which of these employers run a capability centre or HQ there?
+- Add two more metros: [Metro], [Metro].
+- Who leads [Business function] at the 5 accounts in my top rep-base metro?
+- Turn the events section into a 3-city roadshow plan with invite lists.
+
+### Tips
+
+- A metro full of 1,000–3,000-person regional sites often makes a better volume territory than one with two giant headquarters.
+- Run it for two industries you sell into and overlay the results to find cities that serve both.
+- Check where the HQ sits before you staff for a big local employer; the buyer may be in another city.
+
+## Sort my book into coverage tiers
+
+- **id:** `leaders-book-segmentation`
+- **What you get:** Up to 20 accounts sorted into Strategic, Growth, Maintain and Deprioritise on an editable potential-versus-momentum rubric that scores your own workloads and rivals, with the coverage model for each tier and the flags behind every placement.
+- **Use it when:** Setting coverage for a new fiscal year, rebalancing books between reps, or deciding which accounts get a named AE, a pooled team or a digital motion. Use the propensity-tiering prompt instead when the question is who might buy this quarter.
+- **Best for:** Sales Leader & RevOps, Account & Customer Success Manager, Account Executive
+- **Time:** 4–6 min
+- **Inputs:** Accounts (e.g. boeing.com, airbus.com, rtx.com, northropgrumman.com, l3harris.com); What I sell (e.g. OT and device security software); My competitors (optional) (e.g. CrowdStrike, Palo Alto Networks); Current customers (optional) (e.g. l3harris.com); Reps available (optional) (e.g. 3)
+
+### Detailed prompt
+
+```text
+Act as my sales operations lead designing account coverage. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Accounts: [up to 20 websites, 10 per pass, e.g. boeing.com, airbus.com, rtx.com, l3harris.com]
+- What I sell: [one line, e.g. OT and device security software — skip if you ran the start-here prompt]
+- My competitors (optional): [rival products or firms, e.g. CrowdStrike, Palo Alto Networks — skip if you ran the start-here prompt]
+- Current customers (optional): [websites, e.g. l3harris.com]
+- Reps available (optional): [e.g. 3]
+
+STEPS
+1. Map What I sell to its 1–3 main workloads and say which. Look up the accounts by website (exact), 10 per lookup, showing only my competitors' products. Resolve misses one by one; ask if only suggestions return.
+2. Take revenue and year, revenue growth, hiring %, workforce growth, workforce and rivals present.
+3. Per account, pull 12-month postings in my workloads (keep only those) and work out postings per 1,000 employees.
+4. POTENTIAL 0–50 (editable): workload postings per 1,000 — top third 20, middle 12, else 4; revenue — over $20B 15, $5–20B 10, $1–5B 6, else 2; rival present 10 (current customers: risk flag, 5); Opportunity Index 5.
+5. MOMENTUM 0–50 (editable): revenue growth — over 8% 20, 3–8% 14, 0–3% 8, else 3; hiring % — over 10% 15, 6–10% 10, 3–6% 5, else 1; workforce growth — over 3% 15, 0–3% 10, else 3. Missing value = half points, flagged; revenue moving over 25% in a year = check for a merger or spin-off, score 8.
+6. Segment (editable): Strategic = Potential 30+ and Momentum 25+; Maintain = Potential 30+ only; Growth = Momentum 25+ only; else Deprioritise. Customers stay at Maintain or above. Over half in one segment? Re-segment by rank (top 30%, next 40%, rest) and say so.
+7. For the top Strategic account, pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — the shape of the book and what it means for [What I sell].
+- Recommended next step: the coverage decision, its owner and a date; then the first account to open, with a named person (name and title from step 7) and one dated fact. If none is found, say so.
+- "Segments": Account | Segment | Potential | Momentum | Strongest driver. Strategic first.
+- "Coverage model": Strategic = named AE, sponsor, account plan; Growth = pooled AEs; Maintain = AM-led cadence; Deprioritise = digital or partner-led. Counts per tier; flag over 5 Strategic per rep.
+- Detail: postings and rivals per account; flags; rubric.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- Opportunity Index is Draup's own rating; never quote it as a company fact.
+- Flagged accounts reach Strategic only as "Strategic (confirm)".
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: sort [Accounts] into Strategic, Growth, Maintain or Deprioritise for [What I sell], scoring revenue, postings in my workloads, rivals installed and growth, with a coverage model per tier.
+```
+
+### Follow-ups
+
+- Check usage strength (High, Medium, Low) of my rivals at the 5 Strategic and Maintain accounts.
+- Change the rubric: workload postings 30, revenue 10, and rerun.
+- Split the Strategic and Growth accounts across [Reps available] reps, balanced on Potential.
+- Give one dated why-now signal from the last 60 days for each Strategic account.
+
+### Tips
+
+- Run it after propensity tiering: tiering says who might buy now, segmentation says who deserves a named owner all year.
+- When a rival shows up at nearly every account, the workload-postings score is what separates them; ask for usage strength before calling an account contested.
+- Private companies often lack revenue in Draup; score them by hand rather than letting them fall to Deprioritise.
+
+## Board slides: where we hunt next quarter
+
+- **id:** `leaders-where-to-hunt-slide`
+- **What you get:** Three board-ready slides for one industry — the market in numbers, the 8 accounts to hunt next quarter chosen on fit with what you sell, and what the team needs — with speaker notes and every number dated and sourced.
+- **Use it when:** Preparing a quarterly business review, a board update or a sales kick-off section on where the team will hunt next quarter. Use "Next quarter's target accounts" when you need a working list for reps rather than slides.
+- **Best for:** Sales Leader & RevOps, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Insurance); Region (optional) (e.g. North America); What I sell (e.g. claims and underwriting data services); My competitors (optional) (e.g. Guidewire, Duck Creek); Our position (optional) (e.g. 4 customers in the vertical, 1 partner)
+
+### Detailed prompt
+
+```text
+Act as my chief of staff to the sales leader, building board slides. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [Draup industry, e.g. Insurance]
+- Region (optional): [e.g. North America; narrows the account picks — industry totals stay global]
+- What I sell: [one line, e.g. claims and underwriting data services — skip if you ran the start-here prompt]
+- My competitors (optional): [rival products or firms, e.g. Guidewire, Duck Creek — skip if you ran the start-here prompt]
+- Our position (optional): [e.g. 4 customers in the vertical, 1 partner]
+
+STEPS
+1. Use Draup's exact industry and region names; map What I sell to its workloads. If the industry returns zeros, try its parent and name it.
+2. Pull the industry's revenue and growth (Draup may give no year; say so).
+3. Pull industry priorities; keep the 3 most relevant to [What I sell] (examples are undated; say so).
+4. Pull the top outsourcing buyers and fastest-growing companies by workforce (each a fixed top 50, worldwide). Keep growers with 1,000+ staff; narrow both to [Region] if given.
+5. Run one 90-day news search in the industry (and region): acquisitions, expansions, partnerships, investments, leadership changes. Review up to 20 items.
+6. Shortlist 12 candidates (two-list companies first) and check them in one company list by exact name, showing only my competitors' products and whether each is active in my workloads. Pick 8: workload-active first, then two-list, then the strongest single reason.
+7. For the top pick, pull its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — where we hunt and what it means for [What I sell].
+- Recommended next step: the board ask to make first and its owner; then the first account to open, with a named person (name and title from step 7) and one dated fact. If none is found, say so.
+- Slide 1 "[Vertical]: the market": one-sentence headline, revenue and growth, 3 priorities with what each means for us.
+- Slide 2 "Where we hunt next quarter": Account | Why it fits (workloads, rival) | Why now (dated) | Likely owner (title). 8 rows.
+- Slide 3 "What we need": 3 asks (rep, partner, event, budget), each tied to a slide-2 fact and Our position.
+- Detail: speaker notes (60 words per slide); sources and caveats.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- One-slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- Use growth-list companies only from the core business; mark brokers, health groups and agencies.
+- Why-now counts only if dated in the last 90 days with the company as actor.
+- Industry totals are global Draup estimates; never add them to company figures.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Map a business function to its 1–3 main Draup workloads (types of work, e.g. Cloud) and say which you used.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: 3 board slides on [Vertical] for [What I sell] — market numbers, 8 accounts to hunt next quarter (each active in my workloads, with a dated why-now) and the asks.
+```
+
+### Follow-ups
+
+- Turn slide 2 into a one-page brief per account for the team.
+- Redo the slides for [Second vertical] so I can compare.
+- Add a fourth slide: which services rivals lead in this industry and where we rank.
+- Shorten everything to one slide for the board pack.
+
+### Tips
+
+- Accounts that appear on two lists and are active in your workloads usually make a stronger board story than the biggest logo.
+- Keep the speaker notes; they hold the caveats the slide can't.
+- If you share these slides outside the company, check your Draup licence before publishing Draup data externally.
+
+## Next quarter's target accounts, ranked by triggers
+
+- **id:** `leaders-pipeline-targets`
+- **What you get:** A territory-wide list of accounts ranked by distinct triggers in the last 90 days, activity in the work you sell and rival presence, with one dated why-now each, the person to call at the top account, and the off-list companies acting in your territory.
+- **Use it when:** Setting next quarter's pipeline-generation targets for SDRs and AEs in one territory, or planning a campaign wave. Use "Board slides: where we hunt next quarter" to present the plan, and "Which accounts each rep works this week" for named books.
+- **Best for:** Sales Leader & RevOps, SDR / BDR, Account Executive, Marketing & ABM
+- **Time:** 6–10 min
+- **Inputs:** Vertical (e.g. Automotive); Country (e.g. Germany); Minimum employees (e.g. 5,000); What I sell (e.g. software-defined-vehicle engineering services); My competitors (optional) (e.g. Capgemini Engineering, Bertrandt); Accounts to exclude (optional) (e.g. bmwgroup.com)
+
+### Detailed prompt
+
+```text
+Act as my pipeline-generation strategist for a territory. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [Draup industry, e.g. Automotive]
+- Country: [HQ country in full, e.g. Germany]
+- Minimum employees: [e.g. 5,000]
+- What I sell: [one line, e.g. software-defined-vehicle engineering services — skip if you ran the start-here prompt]
+- My competitors (optional): [rival products or firms, e.g. Capgemini Engineering, Bertrandt — skip if you ran the start-here prompt]
+- Accounts to exclude (optional): [websites in active deals, e.g. bmwgroup.com]
+
+STEPS
+1. Use Draup's exact industry and country names; map What I sell to its workloads.
+2. List the territory: primary industry [Vertical], HQ in [Country], [Minimum employees]+ staff (names only, up to 50, by revenue). Repeat once adding "active in my workloads" and mark those. Remove exclusions.
+3. Run three 90-day news searches in [Vertical] and [Country]: (a) leadership changes; (b) expansions and investments; (c) partnerships, vendor selections, acquisitions and divestments.
+4. Keep items where a listed company is the actor and the event concerns [Country]; merge repeats. Off-list companies' real events go to "Acting in the territory".
+5. For the 10 accounts with the most trigger types, pull full rows in one lookup by exact name, showing only my competitors' products: hiring %, 90-day postings, rivals present.
+6. Score (editable): each trigger type 20 (max 60); workload-active 20; rival present 10; hiring % over 8% adds 10. Act this month 60+, Next quarter 30–59, Watch under 30. If over half share a tag, re-tag by rank (top 30%, next 40%, rest) and say so.
+7. For the top account, pull its top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — how many accounts to work now and what it means for [What I sell].
+- Recommended next step: who to contact first (name and title from step 7), what to do, and the dated trigger. If none is found, say so.
+- "Target list" (top 10): Account | Triggers (type, date) | In my workloads / rival | Tag | Why now.
+- "Targets for next quarter": counts per tag; a split by rep or SDR if I give team size.
+- Detail: acting in the territory; accounts with no triggers; dropped items by reason; likely owner title per account.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- Job cuts, plant restructuring or a site sale are triggers only for cost-out, transformation or services offers; say which.
+- Board appointments and regional sales hires count only if the role is in my buying area.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Size limits drop companies with no workforce figure (often private firms or mutuals); say so.
+- Counts and totals must apply every condition I set; never report one from a check that dropped a condition.
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: rank [Vertical] accounts in [Country] ([Minimum employees]+ staff) by distinct 90-day triggers, activity in my workloads and rival presence, with a dated why-now each for [What I sell].
+```
+
+### Follow-ups
+
+- Write a 70-word opener for each Act-this-month account, tied to its trigger.
+- Add the 11th to 20th accounts and score them the same way.
+- Who leads [Business function] at my top 5 accounts?
+- Rerun with only partnership and vendor-selection news.
+
+### Tips
+
+- Accounts with two different trigger types are usually worth more than one account with five articles on the same story.
+- The "Acting in the territory" list often holds the best surprises: foreign companies building local sites and private groups your size limit missed.
+- Rerun it in the last two weeks of each quarter to refresh targets.
+
+## Brief reps on a new industry
+
+- **id:** `leaders-vertical-enablement`
+- **What you get:** A rep-ready brief on an industry you're entering: the words to use, what it funds in your function, who buys and how the function is organised at a lead account, where your rivals already sit, the services firms you'll meet and 5 discovery questions.
+- **Use it when:** Onboarding reps to a new industry, launching a vertical team, or preparing a sales kick-off session. Use the industry point-of-view prompt when you need a narrative for customers rather than a brief for your team.
+- **Best for:** Sales Leader & RevOps, Account Executive, SDR / BDR, Presales & Solutions
+- **Time:** 4–6 min
+- **Inputs:** Vertical (e.g. Energy & Utilities); Reference account (e.g. nationalgrid.com); Business function (e.g. IT); What I sell (e.g. asset-data and field-service modernisation services); My competitors (optional) (e.g. IBM Maximo, Accenture)
+
+### Detailed prompt
+
+```text
+Act as my sales enablement lead building a vertical playbook. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [Draup industry, e.g. Energy & Utilities]
+- Reference account: [website of a typical target, e.g. nationalgrid.com]
+- Business function: [where we sell, e.g. IT]
+- What I sell: [one line, e.g. asset-data and field-service modernisation services — skip if you ran the start-here prompt]
+- My competitors (optional): [rival products or firms, e.g. IBM Maximo, Accenture — skip if you ran the start-here prompt]
+
+CONTEXT (optional)
+Reps new to an industry lose credibility fast if they don't speak its language or know who owns what. Teach the words, what it funds and how buying is organised, with one real account as the example.
+
+STEPS
+1. Use Draup's exact industry and function names; map What I sell to its workloads. Find the reference account by website (parent company). If the industry returns zeros, try its parent and name it.
+2. Pull industry priorities; keep the 6 most relevant to [What I sell] in [Business function], plus 2 from other functions that shape the budget (examples undated).
+3. From the priority text, pick 10 industry terms a rep must know and define each in one line.
+4. Pull growing technologies (a fixed top 50). Drop generic tools (office suites, chat assistants, design tools, browsers, social networks); keep up to 8 and mark my competitors' products.
+5. Pull the top outsourcing vendors (a fixed top 50). Drop agencies, staffing, inspection and engineering-only firms unless they matter; keep 8 and mark my competitors.
+6. At the reference account: pull executives in [Business function] (10 per page, up to 2 pages) and read full titles to see how the function is organised; check its stack for my competitors' products with usage strength; pull its most important 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — what this industry buys and what it means for [What I sell].
+- Recommended next step: the enablement action, its owner and a date; then a first call at [Reference account] with a named person (name and title from step 6) and the dated news fact. If none is found, say so.
+- "What they're funding": Priority | What it means for [What I sell] | Company example (undated). Top 6.
+- "Who buys": Title pattern | Likely role (economic buyer, technical buyer, champion) | Example title at [Reference account], plus one line on how the function is organised.
+- Detail: 10 words to know; technology in play with rival ratings; services firms we'll meet; 5 discovery questions with what a good answer sounds like; a 60-word first-call opener.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- In the brief, use titles as patterns; name people only in the next step.
+- Industry priorities are undated themes, not news.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: brief my reps on [Vertical] for [What I sell] — 10 terms, the top priorities in [Business function], buyer titles at [Reference account], rivals in play and 5 discovery questions.
+```
+
+### Follow-ups
+
+- Turn this into a 10-question quiz for the reps.
+- Redo "Who buys" with [Second reference account] to check the pattern holds.
+- Write a 3-email sequence for the economic-buyer title in this brief.
+- Which of the services firms listed are partners we could recruit?
+
+### Tips
+
+- Pick a reference account that looks like your typical target, not the largest company in the industry.
+- Read the full titles: in many regulated industries IT is organised by business line, which changes who your rep should call.
+- Refresh the brief each half-year; priorities shift faster than reps expect.
+
+## Rewrite our ICP from best customers
+
+- **id:** `leaders-icp-refinement`
+- **What you get:** The traits your 5–10 best customers share in Draup — industry, HQ, size, providers, activity in the work you sell — turned into a tested look-alike definition with the number of new companies it returns, the trade-off of each loosening, and the first look-alike to approach.
+- **Use it when:** Rewriting the ideal customer profile before planning, a new campaign or a territory carve. Use the single-customer look-alike prompt when you start from one account.
+- **Best for:** Sales Leader & RevOps, Marketing & ABM, Account Executive
+- **Time:** 4–6 min
+- **Inputs:** Best customers (e.g. progressive.com, allstate.com, travelers.com, thehartford.com, chubb.com); What I sell (e.g. claims-automation software); My competitors (optional) (e.g. Guidewire, Duck Creek)
+
+### Detailed prompt
+
+```text
+Act as my go-to-market strategist refining an ideal customer profile. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Best customers: [5–10 websites, e.g. progressive.com, allstate.com, travelers.com, thehartford.com, chubb.com]
+- What I sell: [one line, e.g. claims-automation software — skip if you ran the start-here prompt]
+- My competitors (optional): [rival products or firms, e.g. Guidewire, Duck Creek — skip if you ran the start-here prompt]
+
+CONTEXT (optional)
+Start from what the best customers actually share, then check the definition returns a workable number of new companies: too tight finds only current customers, too loose drowns reps. Some websites resolve to a subsidiary or venture arm.
+
+STEPS
+1. Map What I sell to its 1–3 main workloads and say which. Look up all customers by website (exact) in one company list. If a row shows a parent, fund, venture arm or unit, look up the parent and ask me which to use.
+2. For each: primary industry, sub-industries, HQ country, workforce, revenue, growth, service providers, hiring %, and whether it's active in my workloads.
+3. Find shared traits: an industry or sub-industry held by 80%+ (editable), HQ countries, workforce and revenue range (rounded), providers at 60%+, workload activity.
+4. Write the look-alike definition, including "active in my workloads" if 80%+ share it. Count matches (names only, up to 100) minus the customers.
+5. Test up to 2 loosenings one at a time (drop the provider, widen the size band, add a neighbouring sub-industry), counted the same way. If I named competitors, test once adding "runs a rival product".
+6. Recommend the tightest definition returning 15–100 new companies (editable). Pull its top 10 by revenue in one detail page.
+7. For the first look-alike, pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — the recommended ICP and what it means for [What I sell].
+- Recommended next step: who owns the ICP update and by when; then the first account to open, with a named person (name and title from step 7) and one dated fact. If none is found, say so.
+- "Definitions tested": Version | Conditions | New companies | What it adds or loses.
+- "Recommended ICP": the conditions in plain words for a planning doc, plus 2 traits to qualify by hand.
+- Detail: shared traits (n of N; Strong 80%+, Moderate 60–79%); customer data check; first 10 look-alikes with why each matches.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- Never count the customers, their subsidiaries or sister companies as look-alikes.
+- Name well-known companies missing for lack of a workforce figure (e.g. large mutuals) and offer to add them.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Counts and totals must apply every condition I set; never report one from a check that dropped a condition.
+- Size limits drop companies with no workforce figure (often private firms or mutuals); say so.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: find what [Best customers] share in Draup, including activity in my workloads, turn it into a look-alike definition for [What I sell], count the new companies it returns and name the first to approach.
+```
+
+### Follow-ups
+
+- Run a full ICP list with the recommended definition, 10 rows at a time.
+- Tier the first 10 look-alikes by fit and timing for what I sell.
+- Repeat with my 5 most recent losses to see which traits they lack.
+- Write the ICP as a one-paragraph brief for SDRs.
+
+### Tips
+
+- Feed it customers that renewed or expanded, not just the biggest logos; the traits are sharper.
+- Some websites resolve to a venture arm or regional unit; the customer check catches it, so read that table first.
+- If the tight version only finds a handful of new companies, the market for that profile is small — that's a finding, not a failure.
+
+## Which accounts each rep works this week
+
+- **id:** `leaders-coverage-check`
+- **What you get:** Your pasted accounts and owners checked against real triggers in the window, tied to what you sell, grouped by owner, with the 5 actions for this week, the named person behind the top action, and which reps' books have gone quiet.
+- **Use it when:** Before a weekly or monthly team call, when you need to point reps at the accounts that just changed. Use the weekly book sweep for your own accounts without owners or coaching notes.
+- **Best for:** Sales Leader & RevOps, Account & Customer Success Manager
+- **Time:** 4–6 min
+- **Inputs:** Accounts and owners (e.g. costco.com – Rep A; starbucks.com – Rep A; fedex.com – Rep B; att.com – Rep B; visa.com – Rep C; mastercard.com – Rep C); What I sell (e.g. observability and IT operations software); My competitors (optional) (e.g. Datadog, Dynatrace); Window (optional) (e.g. last 30 days)
+
+### Detailed prompt
+
+```text
+Act as my sales manager running a pipeline and coverage review. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Accounts and owners: [up to 15 lines of website – owner, e.g. costco.com – Rep A; fedex.com – Rep B]
+- What I sell: [one line, e.g. observability and IT operations software — skip if you ran the start-here prompt]
+- My competitors (optional): [rival products or firms, e.g. Datadog, Dynatrace — skip if you ran the start-here prompt]
+- Window (optional): [default last 30 days; up to 90]
+
+CONTEXT (optional)
+Point each rep at the account that just changed. One big account can fill a combined news feed while others look quiet, and a system outage is a trigger for observability software but noise for most sellers, so tie each item to what I sell.
+
+STEPS
+1. Resolve all accounts by website (exact) in one short lookup; resolve misses one by one and ask if only suggestions return. Keep each owner beside the account.
+2. Pull one news feed for all accounts in the window, material categories only (leadership, acquisitions, partnerships and vendor deals, expansions and new centres, investments, layoffs), 2 pages. If one account fills over a third of items, pull again without it.
+3. For accounts still under 2 items, pull their top-ranked signals and keep items dated inside the window.
+4. Drop noise and items where the account isn't the actor (it advised on, supplied or was merely named in someone else's deal). Merge repeats.
+5. Tag each trigger: Strong (opens a project or budget), Useful (a reason to call), Context.
+6. Rank by strength, then recency; group by owner. If I named competitors, check the stacks of the top 3 action accounts and rate them.
+7. For action 1, pull the account's top 3 executives in the function closest to What I sell.
+
+OUTPUT
+- Bottom line: 2 sentences — where the team should spend this week and what it means for [What I sell].
+- Recommended next step: action 1 — who to contact (name and title from step 7), what to do, and the dated trigger. If none is found, say so.
+- "This week's 5 actions": Account | Owner | Trigger (what, date) | Strength | Action.
+- "By owner": Owner | Strong | Useful | Quiet accounts | Coaching note.
+- Detail: quiet accounts with their latest item's date; not resolved; rival ratings; coverage flags (3+ Strong for one owner, or a whole book quiet); sources.
+- Gaps: what Draup didn't have — worth asking in discovery.
+- Slide version (only if I ask): 5 bullets, each with one dated number, plus 1 table.
+
+RULES
+- Every trigger needs a date inside the window; drop anything you can't date.
+- A trigger counts once per account, however many outlets covered it.
+- Don't pull leadership-move histories for every account.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: for [Accounts and owners], find triggers in [Window] that matter to [What I sell], group them by owner, rank this week's 5 actions with a named contact for action 1, and list quiet books.
+```
+
+### Follow-ups
+
+- Draft a 60-word note to each owner with their top action.
+- Write the opener for action 1, tied to the trigger.
+- Extend the window to 90 days for the quiet accounts.
+- Rebalance: suggest moving 2 quiet accounts from the busiest owner to the quietest.
+
+### Tips
+
+- Paste the owner next to each website; the by-owner view is what makes this a management tool rather than a news digest.
+- A big brand can dominate a combined news feed; the per-account check stops quieter accounts being missed.
+- Use the coaching notes in one-to-ones rather than reading the full table in the team call.
+
+
+# Content and enablement
+
+Turn Draup data into battlecards, ABM messages and email sequences.
+
+## Battlecard: beat a rival services firm
+
+- **id:** `content-battlecard-services`
+- **What you get:** A one-page internal battlecard on a rival services firm: where it delivers in the work you sell, what it wins, recent moves, how to beat it, trap questions, the objection to expect and the first account to use the card on.
+- **Use it when:** A services rival keeps showing up in your pursuits, or you're preparing a team for a competitive bid or renewal. Selling software? Use "Battlecard: beat a rival software vendor" instead.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Presales & Solutions, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Competitor (e.g. infosys.com); What I sell (e.g. SAP S/4HANA migration and managed services); Vertical (optional) (e.g. Automotive); Where we lose to them (optional) (e.g. lost the Contoso Retail bid on offshore price); Proof we can cite (optional) (e.g. halved SAP ticket backlog at Fabrikam Foods)
+
+### Detailed prompt
+
+```text
+Act as my competitive analyst for services pursuits. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [rival services firm's website, e.g. infosys.com]
+- What I sell: [one line, e.g. SAP S/4HANA migration and managed services — skip if you ran the start-here prompt]
+- Vertical (optional): [e.g. Automotive]
+- Where we lose to them (optional): [paste win/loss notes, e.g. lost on offshore price]
+- Proof we can cite (optional): [e.g. halved SAP ticket backlog at Fabrikam Foods]
+
+CONTEXT (optional)
+Whole-firm totals flatter a big rival; the numbers that matter are in my workloads (types of work, e.g. ERP Implementation).
+
+STEPS
+1. Find [Competitor] by website and confirm it is the parent, not a subsidiary or brand; if unclear, ask me. Map What I sell to its 1–3 main workloads and say which.
+2. Pull HQ, workforce, and latest fiscal-year revenue and growth (in USD).
+3. Pull its top 10 customers by active engagements in my workloads (primary industry [Vertical] if given), and the firm-wide top 10 for contrast. Show both counts.
+4. Pull its top 8 workloads overall and its top 3 delivery locations from the firm's summary (the full location list is very long).
+5. Search 180 days of news on them (deals, acquisitions, leadership); review 30+ items.
+6. Pick the first account to use the card on: a top-10 customer in my workloads where they hold few engagements (3 or fewer, editable default). Pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — their size and strength in my workloads, and where [What I sell] can win.
+- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none is found, say so.
+- "Where they deliver my work": Customer | Industry | Engagements in my workloads / total. Top 10.
+- "How we win": 3 angles tied to facts above and [Proof we can cite]; one landmine where they're strongest.
+- "Trap questions": 3 discovery questions that surface their weak spots without naming them.
+- "Objection to expect": their likely claim and a one-line, data-backed reply.
+- Detail: what they win (workload, engagements); delivery hubs; recent moves (date, move, source, why it matters; up to 6); "Where we lose" counters for each pattern in my notes.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Never build an angle on catch-all workloads (Project/Programs Management, Account Management).
+- Mark the card "Internal use": customer lists are for targeting, not for quoting to clients.
+- Claim no results beyond [Proof we can cite].
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Engagements are "active engagements (Draup-derived)": activity estimates, not contracts or headcount.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: internal battlecard on [Competitor] for [What I sell] — top customers in my workloads, 180 days of moves, three ways we win, three trap questions, and the first account to use it on.
+```
+
+### Follow-ups
+
+- Which of my target accounts already use [Competitor]? Check [Accounts], 5 at a time.
+- Turn 'How we win' and the trap questions into a 90-second talk track for a discovery call.
+- Build the same card for the services rival we meet second most, and compare the two side by side.
+- Show [Competitor]'s engagement trend in my workloads at [Account].
+
+### Tips
+
+- Paste your win/loss notes. The 'Where we lose' section is often the part reps use most.
+- Read the 'in my workloads / total' column: a rival with hundreds of engagements firm-wide can be thin in your area.
+
+## Battlecard: beat a rival software vendor
+
+- **id:** `content-battlecard-product`
+- **What you get:** A one-page internal battlecard on a rival software vendor: its most-used products, the largest end-user companies running them with usage strength, recent moves, how to beat it, the objection to expect and the first account to use the card on.
+- **Use it when:** A software rival keeps showing up in your deals, or you're preparing a team for a competitive pursuit. Selling services? Use "Battlecard: beat a rival services firm" instead.
+- **Best for:** Account Executive, Presales & Solutions, Marketing & ABM
+- **Time:** 4–6 min
+- **Inputs:** Competitor (e.g. datadoghq.com or Datadog); What I sell (e.g. observability and IT operations software); Vertical (optional) (e.g. Retail); Where we lose to them (optional) (e.g. lost Contoso Retail on bundled pricing); Proof we can cite (optional) (e.g. Fabrikam Foods cut alert noise by half in one quarter)
+
+### Detailed prompt
+
+```text
+Act as my competitive analyst for software deals. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Competitor: [rival vendor's website or product, e.g. datadoghq.com or Datadog]
+- What I sell: [one line, e.g. observability and IT operations software — skip if you ran the start-here prompt]
+- Vertical (optional): [e.g. Retail]
+- Where we lose to them (optional): [paste win/loss notes, e.g. lost on bundled pricing]
+- Proof we can cite (optional): [e.g. Fabrikam Foods cut alert noise by half in one quarter]
+
+CONTEXT (optional)
+IT services firms and consultancies show up as big "users" because they implement or resell the rival; they're its partners, not targets. What matters is large end users, with usage strength showing whether the product is core or fading.
+
+STEPS
+1. Find [Competitor] by website and confirm the parent. If I named a product, use its maker. If unclear, ask me.
+2. Pull HQ, workforce, revenue and growth (USD), and their top 5 products by install count.
+3. In one list, pull the 10 largest companies by total workforce whose stack includes [Competitor] products, in primary industry [Vertical] if given. Exclude IT services, consulting and outsourcing firms (likely implementers or resellers) and say how many. Flag subsidiaries and holding companies.
+4. For the top 5, check the whole stack for any [Competitor] product, whatever area it's filed under, with usage and last-seen date. Low, or not seen in 6 months, is "fading".
+5. Search 180 days of news on them (launches, acquisitions, partnerships, leadership); review 30+ items.
+6. Pick the first account to use the card on: the largest Amber or fading install. Pull its top 3 executives in the function closest to What I sell and its most important 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — how entrenched they are and where [What I sell] can win.
+- Recommended next step: the first account, who to contact (name and title from step 6), what to do, and the dated fact. If none is found, say so.
+- "Where they're installed": Company | Industry | Workforce | Main product | Usage rating. Rows 6–10: "usage not checked".
+- "How we win": 3 angles tied to facts above and [Proof we can cite]; one landmine.
+- "Trap questions": 3 discovery questions that surface their weak spots without naming them.
+- "Objection to expect": their likely claim and a one-line reply.
+- Detail: top products by install count; excluded implementers; recent moves (up to 6, dated, sourced); "Where we lose" counters.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Mark the card "Internal use". Claim no results beyond [Proof we can cite].
+- No install in [Vertical]? Say so and show neighbouring industries.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- Trust last-seen date and usage strength, not first-seen dates. Say "fading", never "dropped".
+- Rivals: High usage in my workloads is Red, Medium Amber, newly detected Amber; unchecked is "present (usage not checked)". Ignore "Generic" rows.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: battlecard on [Competitor] for [What I sell] — the 10 largest end users running it (no IT services firms) with usage, 180 days of moves, how we win, and the first account to try.
+```
+
+### Follow-ups
+
+- Check rows 6–10 product by product and add usage strength and last-seen dates.
+- Which of my target accounts run [Competitor]? Check [Accounts], 5 at a time.
+- Turn 'How we win' into a one-page objection-handling sheet for SDRs.
+- List the IT services firms you excluded: they may be partners worth recruiting.
+
+### Tips
+
+- If your rival is a product inside a bigger company (a cloud database, say), name the product. Claude records the maker and checks every product it makes.
+- Usage strength and last-seen date matter more than the install count: Medium or fading installs are where switching conversations start.
+
+## ABM openers for 10 accounts at once
+
+- **id:** `content-abm-messages`
+- **What you get:** A table of short openers for up to 10 accounts per pass, each written to your persona in their language and tied to one stated priority and one dated signal from the last 60 days, graded Strong, OK or Weak, with sources and an optional joint partner note.
+- **Use it when:** You're launching an ABM play, an SDR sprint or a joint campaign on a named list of 10–30 accounts. Use this for lists; use the signal-to-email prompt instead when you want one or a few carefully timed emails with a subject line and the full signal story.
+- **Best for:** Marketing & ABM, SDR / BDR, Account Executive, Partnerships & Alliances
+- **Time:** 6–10 min
+- **Inputs:** Accounts (e.g. pepsico.com, medtronic.com, 3m.com, fedex.com, starbucks.com); Business function (e.g. Supply Chain); Persona (e.g. VP Supply Chain Planning); What I sell (e.g. supply-chain planning software); Proof point (optional) (e.g. cut planning cycle time at Fabrikam Foods); Co-sell partner (optional) (e.g. Tailspin Partners)
+
+### Detailed prompt
+
+```text
+Act as my ABM copywriter. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Accounts: [websites, up to 10 per pass, e.g. pepsico.com, medtronic.com, 3m.com, fedex.com]
+- Business function: [e.g. Supply Chain]
+- Persona: [the title you're writing to, e.g. VP Supply Chain Planning]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Proof point (optional): [e.g. cut planning cycle time at Fabrikam Foods]
+- Co-sell partner (optional): [e.g. Tailspin Partners]
+
+CONTEXT (optional)
+Write in the persona's words: a CFO hears cost and risk; a planning VP hears forecast accuracy, service levels and inventory. One dated, relevant signal beats three generic ones.
+
+STEPS
+1. Take the first 10 accounts. Resolve them by website in one company lookup and confirm each is the parent, not a subsidiary or brand. List any you can't resolve and carry on.
+2. For each, pull its top 3 [Business function] priorities, newest quarter first, with source and quarter. Keep the best fit for [What I sell].
+3. Pull one news feed for all 10, last 60 days, money-or-change categories only (deals, new sites, leadership moves, acquisitions, investments, layoffs). If one account fills over a third of items, pull again without it. For accounts with nothing, check their top-ranked signals inside the 60 days.
+4. Keep one item per account where the account is the actor, preferring one linked to the priority. Customer orders placed with the account count only as context.
+5. Write 2 sentences to [Persona], in their language: the signal and its date; then the link to the priority and the problem [What I sell] solves for that persona, ending in a soft question. Use [Proof point] in at most two messages. With [Co-sell partner], add ONE joint note for the strongest row.
+6. For the first account to send, pull its top 3 executives in [Business function] and pick the closest match to [Persona].
+
+OUTPUT
+- Bottom line: 2 sentences — how many accounts have a strong hook and which to send first.
+- Recommended next step: who to send first (name and title from step 6), and the dated signal. If none is found, say so.
+- Table: Account | Signal (date) | Priority (quarter) | Message | Strength. Strong first. Strong = signal links to priority; OK = both, unlinked; Weak = priority only.
+- Detail: sources for each row; the joint partner note; "Skipped" (not found or no [Business function] priority).
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- 45 words or fewer per message. No flattery or claims about the reader's own work.
+- No qualifying signal: write from the priority alone, mark Weak. Never invent or re-date a signal.
+- Quote priorities in Draup's words. After 10 accounts, show the table and continue with the next 10 unless I say stop.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 450 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: for up to 10 of [Accounts], a 2-sentence opener to a [Persona], in their words, tied to one [Business function] priority and one 60-day signal. Strong first (signal ties to the priority).
+```
+
+### Follow-ups
+
+- Do the next 10 accounts on my list.
+- Rewrite each Strong message as a LinkedIn connection request under 300 characters.
+- Rewrite the Strong rows for a CFO persona instead.
+- Write a 3-touch follow-up for the Strong rows: email on day 3, LinkedIn on day 6, a short close-the-loop email on day 10.
+
+### Tips
+
+- Narrow to one business function. Priorities across every function bury the one that matters to your persona.
+- Weak rows aren't wasted: they often point to accounts that need a call or a different angle rather than an email.
+- Change the persona and rerun: the same signal reads very differently to a CFO and a planning lead.
+
+## 3-email sequence for one industry persona
+
+- **id:** `content-email-sequence`
+- **What you get:** A ready-to-load 3-email sequence for one persona in one industry, each email built on a priority in the persona's function and a dated move by a real company, plus the first account to load with a named contact.
+- **Use it when:** You're starting outbound into an industry and need a sequence grounded in what that industry is working on. Use the ABM openers prompt instead when you already have a named account list.
+- **Best for:** Marketing & ABM, SDR / BDR, Account Executive
+- **Time:** 2–4 min
+- **Inputs:** Vertical (e.g. Automotive); Persona (e.g. Head of Supply Chain Planning); Business function (e.g. Supply Chain); What I sell (e.g. supply-chain planning software); Proof point (optional) (e.g. cut forecast error at Fabrikam Foods)
+
+### Detailed prompt
+
+```text
+Act as my outbound copywriter for [Vertical]. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Vertical: [industry, e.g. Automotive]
+- Persona: [title, e.g. Head of Supply Chain Planning]
+- Business function: [the persona's function, e.g. Supply Chain]
+- What I sell: [one line, e.g. supply-chain planning software — skip if you ran the start-here prompt]
+- Proof point (optional): [e.g. cut forecast error at Fabrikam Foods]
+
+CONTEXT (optional)
+A sequence lands when every email is about the persona's own problem and carries proof that a peer is acting on it. Industry priorities give the themes, but they come undated; the proof has to come from named companies with dates.
+
+STEPS
+1. Match [Vertical] to Draup's industry name and map [Business function] to its 1–3 main workloads; say which. If the industry returns zeros, say so and try the parent industry, naming it.
+2. Pull the industry's priorities and judge fit from each priority's text.
+3. Pick the 3 closest to [Business function] and [What I sell]. If no priority sits in the function, use the nearest (for Supply Chain: Manufacturing, Procurement, Management & Strategy) and say so.
+4. For each, find one named company in [Vertical] acting on it in the last 180 days: first the priority's own examples; if they carry no date, pull the dated [Business function] priorities of 2–3 of the industry's largest employers, then Draup's industry news (search first, then the feed for links). The company must be the actor.
+5. Name the first account to load: the company behind the strongest dated example (or the largest employer if none). Pull its top 3 executives in [Business function] and pick the closest match to [Persona].
+
+OUTPUT
+- Bottom line: 2 sentences — the persona's top industry pressure and the angle the sequence takes.
+- Recommended next step: the first account to load, who to send it to (name and title from step 5), and the dated example. If none is found, say so.
+- Email 1 (day 1): subject (7 words max) and body on priority 1.
+- Email 2 (day 4): priority 2, using [Proof point] if given.
+- Email 3 (day 9): priority 3, a short close-the-loop note.
+- Each body: company example, the problem, one sentence on how [What I sell] helps, one low-effort call to action.
+- Detail: "Priorities used": Priority | Why it fits the persona | Company example (month, year, source).
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- 120 words or fewer per body. Plain language, no hype, no emoji.
+- Present examples as public industry moves, never as our customers.
+- No example found: write on the priority alone and flag it. Claim no results beyond [Proof point].
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- Map a business function to its 1–3 main Draup workloads (types of work, e.g. Cloud) and say which you used.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 500 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: a 3-email sequence (120 words each, with subjects) for a [Persona] in [Vertical], on 3 [Business function] priorities, each with a dated company example, plus the first account to load.
+```
+
+### Follow-ups
+
+- Write a version of email 1 for a CFO in the same industry.
+- Give me two subject-line options for each email to A/B test.
+- List 10 more accounts in [Vertical] to load, each active in [Business function] hiring.
+- Turn priority 1 and its example into a short LinkedIn post for our company page. Check your Draup licence before publishing Draup data externally.
+
+### Tips
+
+- Name the persona's function. Industry priorities span every department, and the sequence works best when they're the persona's own problems.
+- Re-run it each quarter: industry priorities and the examples behind them change.
+
+## Explain where a Draup number comes from
+
+- **id:** `content-how-draup-knows`
+- **What you get:** A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing activity, talent flow and so on) and how far to trust it, written for the person who asked, with the help-centre link.
+- **Use it when:** A prospect or your own exec asks where a Draup number comes from and how much to trust it, or before you put a Draup figure on a slide.
+- **Best for:** Presales & Solutions, Account Executive, Account & Customer Success Manager, Marketing & ABM
+- **Time:** 1–2 min
+- **Inputs:** Metric or question (e.g. How does Draup estimate a company's IT spend?); Audience (e.g. a CFO at a prospect)
+
+### Detailed prompt
+
+```text
+Act as my presales engineer. Answer only from Draup's own help-centre content, through the Draup for Sales connector. Don't use outside knowledge or guess at methodology, and label anything that isn't from the help centre.
+
+INPUTS (edit these)
+- Metric or question: [what you were asked, e.g. How does Draup estimate a company's IT spend?]
+- Audience: [who will read it, e.g. a CFO at a prospect]
+
+CONTEXT (optional)
+Trust in a number grows when you say plainly what it is: a reported figure, a modelled estimate, or a count built from public signals such as job postings and news. Overstating precision loses a CFO faster than admitting a range. Known traps worth checking: IT spend is modelled from revenue for many companies; industry totals are global; leadership data can lag about 3 months, while news and hiring are near real-time.
+
+STEPS
+1. Ask Draup's help centre the question as written. If it's vague (e.g. "Is the data accurate?"), break it into the specific metric being questioned and ask about that.
+2. If the first answer doesn't cover how the number is built, ask once more with a narrower question (e.g. "Where does Draup's IT spend data come from?" or "How often is it refreshed?").
+3. Keep the help-centre article titles and links that come back.
+4. Decide which kind of number it is: reported, modelled estimate, or signal-based count. If the help centre doesn't say, write "not stated".
+
+OUTPUT
+- Bottom line: 2 sentences — what the number is (reported figure or Draup estimate) and how to present it to [Audience].
+- Recommended next step: who to send it to and how (e.g. reply to the CFO's email with the link), and the follow-up question to expect.
+- "How it's built": 3–4 plain sentences on where the data comes from, how the number is built and how often it's refreshed (if the help centre says).
+- "How to present it": one sentence, e.g. "a modelled estimate for sizing, not an audited figure".
+- "Source": help-centre article title(s) and link(s).
+- Gaps: what the help centre didn't cover — worth raising with Draup support.
+
+RULES
+- Use only what the help centre returned. If it has no relevant article, write "The Draup help centre doesn't cover this" and suggest asking Draup support.
+- Write for [Audience]: no internal jargon or field names.
+- Don't overstate precision. If the help centre says modelled or estimated, keep that word.
+- One metric at a time; offer the next.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. If the help centre has nothing, say so; never fill gaps from memory.
+- Phone-first: open with Bottom line and Recommended next step. Keep to about 200 words plus the links.
+```
+
+### Quick version
+
+```text
+Bottom line first: in 4–5 plain sentences, explain how Draup works out [Metric or question] for [Audience], whether it's reported or estimated, using only Draup's help centre, with the article link and one line on how to present it.
+```
+
+### Follow-ups
+
+- Turn this into a two-line footnote I can put under a slide.
+- Now answer the follow-up they're likely to ask: how current is this data?
+- Explain the same thing for an outsourcing-activity number instead.
+- Write a 'Before you trust a number' box for my team covering IT spend, industry totals and leadership data.
+
+### Tips
+
+- Ask about one metric at a time. "How is IT spend estimated?" usually gets a far better answer than "How accurate is Draup?".
+- Send the link with the answer, so the buyer can read the method in Draup's own words.
+
+
+# Talent cost and location
+
+Cost-arbitrage, location and hiring-difficulty cases for services pursuits. Uses the Draup for Talent connector.
+
+## Offshore saving case from market pay
+
+- **id:** `talent-offshoring-cost-case`
+- **What you get:** A per-FTE and team-level base-pay gap for moving a role offshore, with the talent supply and hiring difficulty to show the team can be staffed.
+- **Use it when:** Preview: needs the Draup for Talent connector; not yet live-tested. You're pitching offshore or nearshore delivery and the buyer wants a cost case grounded in market pay, not your rate card.
+- **Best for:** Services, SI & Staffing Seller, Presales & Solutions, Account Executive
+- **Time:** 4–6 min
+- **Note:** needs the separate Draup for Talent connector; not live-tested.
+- **Inputs:** Role (e.g. Data Engineer); Years of experience (e.g. 3–6); Onshore location (e.g. Greater New York City Area, United States); Offshore locations (e.g. Bengaluru Area, India; Kraków, Poland; Mexico City, Mexico); Team size (e.g. 25); What I sell (e.g. offshore data-engineering delivery); Client (optional) (e.g. pepsico.com); Exchange rate (optional) (e.g. the rate your finance team uses this quarter)
+
+### Detailed prompt
+
+```text
+Act as my deal-shaping analyst for services pursuits. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Role: [e.g. Data Engineer]
+- Years of experience: [band, e.g. 3–6]
+- Onshore location: [metro or country, e.g. Greater New York City Area, United States]
+- Offshore locations: [up to 3, e.g. Bengaluru Area, India; Kraków, Poland; Mexico City, Mexico]
+- Team size: [FTEs in scope, e.g. 25]
+- What I sell: [one line, e.g. offshore data-engineering delivery — skip if you ran the start-here prompt]
+- Client (optional): [website of the buyer, e.g. pepsico.com]
+- Exchange rate (optional): [your rate to USD per currency, e.g. your finance team's quarterly rate]
+
+CONTEXT (optional)
+A saving built from market pay beats one from your rate card, if you say what it leaves out and show the location can staff the team.
+
+STEPS
+1. Find Draup's standard name for the role. If there's no exact match, show the 3 closest and ask which to use.
+2. Match each place to Draup's name (metros look like "Bengaluru Area, India"). If one doesn't match, show the closest and ask.
+3. Per location, pull annual base pay at [Years of experience]: median, P10, P90, salaries reported, confidence (empty band: use all levels, say so).
+4. With my rates, work out saving per FTE, saving % and team saving in USD against onshore; without rates, show local pay and ask.
+5. For each offshore location, pull talent supply, 3-year growth and hiring difficulty for the role.
+6. If I named a client, pull its top 3 executives in the function that owns this work and its top 90-day news item.
+
+OUTPUT
+- Bottom line: 2 sentences — annual base-pay saving for [Team size] FTEs at the best location (or "rates needed"), and whether supply can staff it; say it's base pay, not loaded cost.
+- Recommended next step: who to take it to (name and title from step 6, or the title to find), what to do, and why now (one dated fact). If none is found, say so.
+- "Pay": Location | Median USD (or local) | Salaries reported | Saving per FTE | Saving %. Onshore first, then by saving.
+- "Can it scale?": Location | Talent supply | Hiring difficulty | Team as % of supply.
+- Detail: P10–P90 (local), confidence, 3-year supply growth; 3 bullets on what this means for [What I sell].
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- The saving excludes transition, attrition and knowledge-transfer cost. Add overhead only with my multiplier.
+- Don't build the bottom line on a location with low confidence or under 50 reported salaries (editable default); flag it.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
+- Show pay in local currency with its code; convert to USD only with my [Exchange rate], and say which rate.
+- Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: the base-pay saving for [Team size] [Role]s ([Years of experience] years) moving from [Onshore location] to [Offshore locations], at my exchange rates, and whether offshore supply can staff it.
+```
+
+### Follow-ups
+
+- Apply my loaded-cost multipliers ([onshore]x and [offshore]x) and redo the saving.
+- Add two nearshore options in Latin America and re-rank.
+- Turn this into a one-slide cost case with three bullets for the CFO, noting what the base-pay gap leaves out.
+
+### Tips
+
+- Use Draup's metro names (e.g. "Bengaluru Area, India"). If a city doesn't match, Claude shows the closest options.
+- Treat the result as a base-pay gap. Your commercial model adds overhead, margin and transition cost on top.
+
+## Best city for a delivery team
+
+- **id:** `talent-delivery-location`
+- **What you get:** A ranked shortlist of metros in one country for a delivery team, scored on talent supply, cost, hiring difficulty and location risk with editable weights, plus the client's existing footprint.
+- **Use it when:** Preview: needs the Draup for Talent connector; not yet live-tested. A client asks where you'd staff their team, or you're shaping a captive-centre, centre-of-excellence or build-operate-transfer proposal.
+- **Best for:** Services, SI & Staffing Seller, Presales & Solutions, Sales Leader & RevOps
+- **Time:** 4–6 min
+- **Note:** needs the separate Draup for Talent connector; not live-tested.
+- **Inputs:** Company (e.g. medtronic.com); Role (e.g. Cloud Engineer); Country (e.g. India); Team size (e.g. 60); What I sell (e.g. cloud engineering managed services); Weights (optional) (e.g. supply 35%, cost 30%, hiring difficulty 20%, location risk 15%)
+
+### Detailed prompt
+
+```text
+Act as my location-strategy analyst for services pursuits. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts and the client's existing sites. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [the client's website, e.g. medtronic.com]
+- Role: [e.g. Cloud Engineer]
+- Country: [in full, e.g. India]
+- Team size: [e.g. 60]
+- What I sell: [one line, e.g. cloud engineering managed services — skip if you ran the start-here prompt]
+- Weights (optional): [default supply 35%, cost 30%, hiring difficulty 20%, location risk 15% (editable default)]
+
+CONTEXT (optional)
+Clients pick delivery cities on more than pay: a cheap city with thin supply turns into attrition and missed service levels, and a city next to the client's own centre is easier to sell. Show the trade-off, not just the winner.
+
+STEPS
+1. Find Draup's standard name for the role. If there's no exact match, show the 3 closest and ask which to use. Then confirm Draup's name for [Country].
+2. Pull the 10 metros in [Country] with the most talent supply for the role, with 3-year growth, median annual base pay, open postings and hiring difficulty.
+3. Score each 1–10 on supply, cost (cheaper scores higher) and difficulty (easier scores higher).
+4. For the top 3, pull Draup's location profile (cost of living, political stability, rule of law, corporate tax), score risk 1–10, and combine all four scores with the weights.
+5. Find [Company] by website, confirm the parent, and list its sites or capability centres in [Country].
+6. Pull [Company]'s top 3 executives in the function that owns this work and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — the lead metro and backup, and whether a [Team size]-person team is realistic there.
+- Recommended next step: who to take it to (name and title from step 6), what to do, and why now (one dated fact). If none is found, say so.
+- Table: Metro | Talent supply | Median pay (local) | Hiring difficulty | Score. Top 5, by score.
+- "Client footprint": [Company]'s sites in [Country] with indicative headcount, or "Not in Draup".
+- Detail: top 3 compared on every metric with periods; 3-year growth and open postings; weights used.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Warn on capacity where [Team size] exceeds 2% of a metro's talent supply (editable default) or open postings are high against supply.
+- Site headcount is approximate: call it indicative.
+- Rank metros on local pay; no conversion is needed within one country.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
+- Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: the best metro in [Country] for a [Team size]-person [Role] team for [Company], scored on supply, pay, hiring difficulty and location risk, with the client's sites and who to take it to.
+```
+
+### Follow-ups
+
+- Re-run with cost weighted highest, then supply, then hiring difficulty.
+- Compare the top metro with the best metro in [Second country].
+- Which large employers in the top metro compete hardest for this role?
+
+### Tips
+
+- Change the weights to match the buyer's real worry: cost-led and scale-led buyers often pick different cities.
+- Take the capacity warning seriously: a cheap city with thin supply can turn into attrition and missed service levels.
+
+## Roles the client can't hire: staffing pitch
+
+- **id:** `talent-hard-to-hire`
+- **What you get:** Which of an account's roles are hardest to hire in its key location, with supply, demand and pay, turned into a staffing or managed-services pitch.
+- **Use it when:** Preview: needs the Draup for Talent connector; not yet live-tested. You sell staffing, staff augmentation or managed delivery and want evidence the client can't easily hire these roles itself.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, SDR / BDR
+- **Time:** 4–6 min
+- **Note:** needs the separate Draup for Talent connector; not live-tested.
+- **Inputs:** Company (optional) (e.g. fedex.com); Roles (e.g. Salesforce Developer, Data Engineer, SAP FICO Consultant); Location (e.g. Memphis, Tennessee Area, United States); What I sell (e.g. Salesforce and data staff augmentation); Exchange rate (optional) (e.g. the rate your finance team uses this quarter)
+
+### Detailed prompt
+
+```text
+Act as my staffing and managed-services strategist. Use the Draup for Talent connector for pay, talent-supply and hiring-difficulty facts, and the Draup for Sales connector for company facts and the account's job postings. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company (optional): [the account's website, e.g. fedex.com]
+- Roles: [up to 5, e.g. Salesforce Developer, Data Engineer, SAP FICO Consultant]
+- Location: [metro or country, e.g. Memphis, Tennessee Area, United States]
+- What I sell: [one line, e.g. Salesforce and data staff augmentation — skip if you ran the start-here prompt]
+- Exchange rate (optional): [your rate to USD for each local currency, e.g. the rate your finance team uses this quarter]
+
+CONTEXT (optional)
+A staffing pitch lands when the client already feels the pain: roles that are scarce in their city and that they keep re-posting. Easy-to-hire roles are a weak opener; lead with the scarce ones and expand from there.
+
+STEPS
+1. Find Draup's standard name for each role. If there's no exact match, show the 3 closest and ask which to use.
+2. Match the place to Draup's name (metros look like "Bengaluru Area, India"). If it doesn't match, show the closest and ask.
+3. For each role in [Location], pull hiring difficulty (higher means harder to hire), talent supply, 3-year supply growth, open postings and median annual base pay.
+4. Classify each: Hard (difficulty in the top third of roles checked, or postings outpacing supply; editable default), Moderate or Easy.
+5. If [Company] is given, find it by website (parent, not a subsidiary) and count its postings per role in the last 6 months, noting repeats or long-open ones. Then pull its top 3 executives in the function that owns these roles (often IT or HR talent acquisition) and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — which role is hardest to hire and what that means for [What I sell].
+- Recommended next step: who to take it to (name and title from step 5, or the title to find), what to do, and why now (one dated fact). If none is found, say so.
+- Table: Role | Hiring difficulty | Talent supply | Open postings | Verdict. Hardest first.
+- "The pitch": one line per Hard role on how [What I sell] removes the hiring problem.
+- Detail: median pay (local) and 3-year growth per role; "Account demand" (role, postings in 6 months, repeats or long-open).
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Explain the hiring-difficulty score in one plain line the first time it appears.
+- Don't pitch Easy roles; say they're usually better hired in-house.
+- Postings are openings, not hires.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
+- Show pay in local currency with its code; convert to USD only with my [Exchange rate], and say which rate.
+- Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: which of [Roles] is hardest to hire in [Location] — difficulty, supply, open postings, median pay — and which makes the best staffing pitch for [What I sell], and to whom.
+```
+
+### Follow-ups
+
+- Which nearby metros have more supply for the Hard roles? Show the top 3.
+- Write a 90-word email to [Company]'s head of talent acquisition built on the hardest role.
+- Which employers in [Location] hire the most people in the Hard roles?
+
+### Tips
+
+- Pair the difficulty score with the account's own postings: a hard role the client keeps re-posting is often your strongest opening.
+- Easy-to-hire roles are a weak staffing pitch. Lead with the scarce ones and expand from there.
+
+## Do layoffs open an outsourcing deal?
+
+- **id:** `talent-layoff-pool`
+- **What you get:** Where and in which roles a company has cut jobs in the last 12 months, read as a possible outsourcing trigger, plus which skills are now more available in the market.
+- **Use it when:** Preview: needs the Draup for Talent connector; not yet live-tested. A target announces cuts, or you want to know whether a restructuring creates an outsourcing or managed-services opening.
+- **Best for:** Services, SI & Staffing Seller, SDR / BDR, Account Executive
+- **Time:** 2–4 min
+- **Note:** needs the separate Draup for Talent connector; not live-tested.
+- **Inputs:** Company (e.g. 3m.com); Location (optional) (e.g. United States of America); Roles of interest (optional) (e.g. software engineer, QA); What I sell (e.g. managed engineering services)
+
+### Detailed prompt
+
+```text
+Act as my services-pursuit analyst. Use the Draup for Talent connector for layoff data, and the Draup for Sales connector for company facts, executives and news. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. 3m.com]
+- Location (optional): [country or metro, e.g. United States of America]
+- Roles of interest (optional): [e.g. software engineer, QA]
+- What I sell: [one line, e.g. managed engineering services — skip if you ran the start-here prompt]
+
+CONTEXT (optional)
+Cuts in one function plus hiring in another often mean work is moving, not disappearing; that's the services opening. Buyers react badly to outreach that leads with job losses, so the message must be about the business problem.
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary or a similarly named firm. If unclear, ask me.
+2. Pull the layoffs Draup records at [Company] in the last 12 months, in [Location] if given, grouped by month.
+3. Break the same records down by job title (top 10) and location (top 10). Show any roles of interest separately.
+4. Map the top titles to business functions (IT, engineering, customer service, finance) and name the functions with the deepest cuts.
+5. Pull layoff, restructuring and site news on [Company] from the last 90 days to explain the cuts.
+6. Pull the top 3 executives in the function with the deepest cuts (or the function closest to What I sell).
+
+OUTPUT
+- Bottom line: 2 sentences — the scale and focus of the cuts, and whether they point to an opening for [What I sell].
+- Recommended next step: who to take it to (name and title from step 6), what to do, and why now (one dated fact from step 5). If none is found, say so.
+- "Roles affected": Job title | Count | Function. Top 10.
+- "Possible outsourcing trigger": 3 bullets on whether work looks outsourced, consolidated or automated, and what [What I sell] could take on. Mark each "likely".
+- Detail: by month; by location (top 10); skills now more available in the market, for your delivery hiring plans; news used.
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Counts come from profiles Draup holds with a layoff date: a sample that shows the pattern, not the official total. Say so.
+- Report counts only. Never name or list individuals, describe people as a pool or bench, or suggest contacting them about the company.
+- Keep any outreach about the business problem, not the layoffs.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: does [Company]'s last 12 months of layoffs (by month, top titles, top locations; counts only, no names) point to an outsourcing opening for [What I sell], and who to take it to?
+```
+
+### Follow-ups
+
+- Which of these functions does [Company] already outsource, and to whom?
+- Draft a value-led note to the executive named above that doesn't mention the layoffs.
+- Compare with [Peer company]'s layoffs over the same 12 months.
+
+### Tips
+
+- Cuts in one function plus hiring in another often mean work is moving, not disappearing. That's the services opening.
+- Keep outreach about the business problem, not the cuts. Buyers often react badly to messages that lead with job losses.
+
+## Size a skill pool and its employers
+
+- **id:** `talent-role-sizing`
+- **What you get:** How many people hold a role in up to 3 countries, how fast supply is growing, and which companies employ the most, split into prospects and services competitors.
+- **Use it when:** Preview: needs the Draup for Talent connector; not yet live-tested. You're sizing a services practice, a staffing market or a target list built around one skill set.
+- **Best for:** Services, SI & Staffing Seller, Sales Leader & RevOps, Partnerships & Alliances
+- **Time:** 2–4 min
+- **Note:** needs the separate Draup for Talent connector; not live-tested.
+- **Inputs:** Role (e.g. SAP FICO Consultant); Countries (e.g. India, Poland, Philippines); Vertical (optional) (e.g. Retail); What I sell (e.g. SAP finance managed services)
+
+### Detailed prompt
+
+```text
+Act as my market-sizing analyst for a services practice. Use the Draup for Talent connector for talent-supply facts, and the Draup for Sales connector for company facts. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Role: [e.g. SAP FICO Consultant]
+- Countries: [up to 3, in full, e.g. India, Poland, Philippines]
+- Vertical (optional): [limit to people at companies in this industry, e.g. Retail]
+- What I sell: [one line, e.g. SAP finance managed services — skip if you ran the start-here prompt]
+
+CONTEXT (optional)
+A skill pool tells you two things at once: where you can hire to deliver, and which end clients carry big in-house teams that could move to managed services. Services firms holding the same skill are the competitors you'll meet in both deals and hiring.
+
+STEPS
+1. Find Draup's standard name for the role. If there's no exact match, show the 3 closest and ask which to use. Then confirm Draup's name for each country.
+2. For each country, pull the talent supply for the role, its likely range, 3-year growth and how reliable the estimate is, limited to [Vertical] if given.
+3. For the largest country, pull the top 25 current employers of people in this role.
+4. Sort those employers into end clients (use the skill in-house) and services firms (IT services, consulting, staffing). Keep the top 15 overall.
+5. For the largest end client, pull its top 3 executives in the function that owns this skill and its most important news item from the last 90 days.
+
+OUTPUT
+- Bottom line: 2 sentences — how big and fast-growing the supply is, and what it means for [What I sell].
+- Recommended next step: who to take it to (name and title from step 5), what to do, and why now (one dated fact). If none is found, say so.
+- "Supply": Country | Talent supply | Likely range | 3-yr growth | Reliability. Largest first.
+- "Who employs them": Employer | Type (End client or Services firm) | People in role. Top 10.
+- Detail: employers 11–15; prospects (end clients with the largest in-house teams); competitors (services firms holding most of this skill); 3 bullets on what this means for [What I sell].
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Show the likely range beside every supply figure; if reliability is poor, say so beside the number.
+- Employer counts come from profiles Draup has matched: use them to rank, not as exact headcount.
+- If the role returns nothing in a country, write "Not in Draup" for that row; never borrow another country's figure.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
+- Talent-supply sizes and hiring-difficulty scores are Draup estimates; say so once.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: how many [Role]s are in [Countries] (with likely range and 3-year growth), and the top 15 employers in the largest country, split into end-client prospects and services competitors.
+```
+
+### Follow-ups
+
+- Show the same supply figures for two adjacent roles so I can see the wider practice.
+- For the top 5 prospects, show their recent hiring for this role.
+- Which metros in the largest country hold most of this skill?
+
+### Tips
+
+- Large in-house teams at end clients are often expensive and hard to retain: a good managed-services conversation.
+- Use the likely range, not just the point estimate, when you put the number in a business case.
+
+## Is our rate defensible against market pay?
+
+- **id:** `talent-pay-benchmark`
+- **What you get:** Market pay for a role by employer, including named competitors, the markup a proposed or quoted rate implies, and the rate you'd need at your target markup.
+- **Use it when:** Preview: needs the Draup for Talent connector; not yet live-tested. You're pricing a staffing or managed-services bid, or a client pushes back that your rates are too high.
+- **Best for:** Services, SI & Staffing Seller, Presales & Solutions, Account Executive, Sales Leader & RevOps
+- **Time:** 2–4 min
+- **Note:** needs the separate Draup for Talent connector; not live-tested.
+- **Inputs:** Role (e.g. Java Developer); Location (e.g. Pune Area, India); Years of experience (e.g. 5–8); Rate to check (e.g. USD 32 per hour); Competitor (optional) (e.g. Infosys, Cognizant, Capgemini); Target markup range (optional) (e.g. 1.8–2.4x); Hours per year (optional) (e.g. 1,880); Exchange rate (optional) (e.g. the rate your finance team uses this quarter)
+
+### Detailed prompt
+
+```text
+Act as my pricing analyst for services bids. Use the Draup for Talent connector for pay facts, and the Draup for Sales connector for company facts. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Role: [e.g. Java Developer]
+- Location: [metro or country, e.g. Pune Area, India]
+- Years of experience: [band, e.g. 5–8]
+- Rate to check: [ours or a competitor's, with unit and currency, e.g. USD 32 per hour]
+- Competitor (optional): [e.g. Infosys, Cognizant, Capgemini]
+- Target markup range (optional): [e.g. 1.8–2.4x]
+- Hours per year (optional): [default 1,880 (editable default)]
+- Exchange rate (optional): [your rate to USD for each local currency, e.g. the rate your finance team uses this quarter]
+
+CONTEXT (optional)
+"You're expensive" is easier to answer with market pay than with a discount. The markup over what the market pays its people shows how much room you have and what a competitor must be absorbing to undercut you.
+
+STEPS
+1. Find Draup's standard name for the role. If there's no exact match, show the 3 closest and ask which to use.
+2. Match the place to Draup's name (metros look like "Bengaluru Area, India"). If it doesn't match, show the closest and ask.
+3. Pull market annual base pay at [Years of experience]: median, P10, P90, salaries reported, confidence.
+4. Pull median base pay by employer. Keep the top 15 among employers with 20+ salaries reported (editable default), plus any [Competitor].
+5. Convert to hourly with [Hours per year]. If [Rate to check] is in another currency, use my [Exchange rate] or ask for one.
+6. Divide [Rate to check] by the hourly median, P10 and P90 for the implied markup. With a target range, work out the rate needed at each end.
+
+OUTPUT
+- Bottom line: 2 sentences — where the rate sits against market pay and what that means for the bid.
+- Recommended next step: who to take it to (the bid owner or the client's procurement lead, by title), what to say, and the one number to lead with. If you can't name a person, say so.
+- "Rate check": Rate | Markup on median | on P10 | on P90 | Verdict against [Target markup range].
+- "Rate needed at target markup": Low end | High end, per hour.
+- Detail: market pay annual and hourly with salaries reported and confidence; by employer (rank, employer, median pay, salaries reported) with [Competitor] highlighted; 3 bullets — room on price, competitor pay, and a reply to "you're expensive".
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Base pay excludes benefits, bench, overhead and margin. Never present it as a competitor's bill rate.
+- Flag thin salary counts and low-confidence figures.
+- Without [Target markup range], show the multiples only; don't call a markup high or low.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
+- Show pay in local currency with its code; convert to USD only with my [Exchange rate], and say which rate.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: where [Rate to check] sits against [Role] market pay in [Location] — median and P10–P90, the markup it implies, the rate needed at my target markup, and how named competitors pay.
+```
+
+### Follow-ups
+
+- Redo the rate check for a junior band to see a blended rate.
+- Compare the same role in [Second location] and show the rate I'd need there for the same markup.
+- Write a 3-sentence reply to a client who says our rate is [X]% above competitors.
+
+### Tips
+
+- Give your own markup range; without it Claude shows only the multiples, which is safer than guessing what's normal.
+- Change hours per year to suit the country: working hours differ a lot between markets.
+- Employer pay is what firms pay their people, not what they charge. Use it to explain cost, not to quote a competitor's price.
+
+## Employer-brand gaps for an RPO pitch
+
+- **id:** `talent-employer-brand`
+- **What you get:** How a company scores as an employer against its hiring rivals, its three weakest areas from employee reviews, and RPO or employer-branding angles.
+- **Use it when:** Preview: needs the Draup for Talent connector; not yet live-tested. You sell RPO, recruitment marketing or employer-branding services and need a data-led reason to start the conversation.
+- **Best for:** Services, SI & Staffing Seller, Account Executive, Marketing & ABM
+- **Time:** 2–4 min
+- **Note:** needs the separate Draup for Talent connector; not live-tested.
+- **Inputs:** Company (e.g. costco.com); Hiring rivals (e.g. target.com, walmart.com); Location (optional) (e.g. United States of America); What I sell (e.g. RPO and employer-branding services)
+
+### Detailed prompt
+
+```text
+Act as my talent-acquisition services strategist. Use the Draup for Talent connector for employer-value scores, and the Draup for Sales connector for company facts, executives and news. Don't use outside knowledge unless I ask, and label it if you do.
+
+INPUTS (edit these)
+- Company: [website, e.g. costco.com]
+- Hiring rivals: [up to 3 companies it competes with for hires, e.g. target.com, walmart.com]
+- Location (optional): [country or metro for location-level scores, e.g. United States of America]
+- What I sell: [one line, e.g. RPO and employer-branding services — skip if you ran the start-here prompt]
+
+CONTEXT (optional)
+A gap against a named hiring rival opens more doors than an absolute score. Frame it constructively: this analysis may reach the client, and talent leaders respond to opportunities, not criticism.
+
+STEPS
+1. Find [Company] and each rival by website and confirm the parent company. Tell me if a rival can't be found and carry on.
+2. For each, pull the employer-value scores: overall index, employee reviews analysed, and every pillar and sub-pillar score. Use [Location] scores if given; otherwise company-wide.
+3. Find [Company]'s 3 weakest pillars: the lowest scores and the biggest gaps behind the rival average.
+4. For each weak pillar, summarise the review themes in your own words (2–3 themes each).
+5. Pull [Company]'s top 3 executives in Human Resources (prefer talent acquisition or the CHRO) and its most important news item from the last 90 days (hiring drives, new sites, layoffs).
+
+OUTPUT
+- Bottom line: 2 sentences — where [Company] trails its hiring rivals and the RPO angle that follows.
+- Recommended next step: an opening line for the person named from step 5 (name and title), framed on one gap against a named rival, with the dated why-now. If none is found, say so.
+- Table: Pillar | [Company] | Rival average | Gap. Worst gap first, top 6.
+- "Weakest 3": Pillar | Gap | What employees say (themes) | The RPO angle for [What I sell].
+- Detail: scores per rival and sub-pillar; reviews analysed and scope (company-wide or [Location]).
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Mark any company with fewer than 200 reviews analysed as low confidence (editable default), and don't build the opening line on it.
+- Paraphrase review themes. Never quote or identify individual reviewers.
+- Keep the tone constructive: frame gaps as opportunities.
+
+STANDARD RULES (leave as is)
+- If an input still shows its example, use my saved context or ask me first.
+- Date every fact. No data: write "Not in Draup"; never fill gaps from memory.
+- If the Draup for Talent connector is missing or returns an access error, stop and tell me; never estimate from memory.
+- Use full profile titles. No economic buyer? Search once for Chief, EVP and CIO titles. Leadership data lags about 3 months; professional information only.
+- News: the company must be the actor. Drop stock chatter, politics, charity, sponsorships, awards, passing mentions, look-alike names and re-dated stories; keep outages, breaches or inquiries only if they bear on What I sell. If sources conflict on a name or number, say so; single-source figures are unverified.
+- Never return a blank table: say what came back empty and use the fallback; at a big company, warn the work may be in-house or the data thin.
+- Phone-first: Bottom line and next step first; up front at most 2 tables (5 columns, 10 rows); the rest under "Detail". About 400 words including tables; then offer to continue.
+```
+
+### Quick version
+
+```text
+Bottom line and next step first: where [Company] trails [Hiring rivals] as an employer — overall index, reviews analysed, the 3 weakest pillars with review themes — and the RPO angle and person to open with for [What I sell].
+```
+
+### Follow-ups
+
+- Show how hard it is for [Company] to hire its top 3 roles in [Location].
+- Turn this into a 5-slide outline for an RPO discovery meeting.
+- Which pillar is [Company] strongest on, so we can acknowledge it first?
+
+### Tips
+
+- Compare against named hiring rivals. A gap against a known rival usually opens more doors than an absolute score.
+- Pair this with hiring difficulty: a weak employer brand plus hard-to-hire roles makes the strongest RPO case.
+
+
+# Playbooks
+
+Multi-step workflows. Run the steps in order in one conversation; each step names the prompt id to use.
+
+## Be ready for a first meeting
+
+**Goal:** Walk into a first meeting knowing the account, the people in the room and the questions that will earn a second meeting.
+**For:** Account Executive, SDR / BDR, Presales & Solutions, Services, SI & Staffing Seller · **Time:** 25–35 min
+
+1. **10-minute pre-call snapshot** (`research-precall-snapshot`): Gives you the 10-minute picture: size, money, current priorities in your function and what just changed. *Look for:* One priority and one dated change you can mention in the first two minutes. Check it's the parent company, not a subsidiary.
+2. **Map the buying committee** (`people-buying-committee`): Shows who owns the problem and the budget in the function you sell into, including a potential blocker. *Look for:* Your entry point (likely champion), the sponsor to reach later (economic buyer) and any potential blocker, by full title. If no C-level or "Head of" name appears, plan to ask who signs.
+3. **Discovery questions built on their data** (`people-discovery-questions`): Turns the snapshot into hypothesis-led questions, each tied to a cited fact. *Look for:* The 3 questions you'll definitely ask, and the one that tests whether the priority has budget this year.
+4. **Battlecard: beat a rival software vendor** (`content-battlecard-product`): Optional: run it when a known rival is in the deal. Selling services? Use "Battlecard: beat a rival services firm" instead. *Look for:* The objection their rep will raise and one trap question you can work into discovery.
+
+**Finish with:** A one-page meeting brief: account snapshot, who's who, an opening line, your discovery questions with the evidence behind each, and (if a rival is in play) the objection to expect.
+
+## Take accounts from a rival services firm
+
+**Goal:** Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
+**For:** Services, SI & Staffing Seller, Account Executive, SDR / BDR, Marketing & ABM · **Time:** 45–60 min
+
+1. **A rival's customers you can win** (`services-competitor-customers`): Lists the accounts where the rival delivers the workload you want to win. *Look for:* Accounts in your territory where the rival's footprint in your workload is small. Those are usually easier to unseat than its strategic accounts.
+2. **A rival's footprint and your wedge** (`services-competitor-at-account`): Shows, for each shortlisted account, how deep the rival is in your workload and where it's thin. *Look for:* Wedge workloads where the rival has few active engagements (3 or fewer is an editable default) and that match what you sell. Ignore catch-all workloads such as Project/Programs Management. Drop accounts where the rival leads across the board.
+3. **Who's already working each priority** (`tech-priority-stack-incumbent-map`): Shows who's already working each of the account's stated priorities. *Look for:* A priority the incumbent doesn't cover, or covers with dated tools: that's your reason to change.
+4. **Peers' outsourcing deals for social proof** (`services-peer-deals`): Finds recent outsourcing engagements at the account's peers in your workload, for social proof. *Look for:* One peer move you can cite in the opener. Present it as a public industry move, not as your own customer.
+5. **Signal-led emails for up to 10 accounts** (`signals-signal-to-email`): Times the outreach to something that just happened and writes the opener for each shortlisted account. *Look for:* A signal from the last 60 days tied to the wedge priority, sent to the named person. If there's none, park the account and revisit next month.
+
+**Finish with:** A short list of displacement targets, each with the wedge workload, the reason to change, a peer proof line and a ready-to-send opener.
+
+## Monday routine: who to contact this week
+
+**Goal:** Spend about half an hour each Monday finding which accounts and industry moves deserve action this week, and send the first touches.
+**For:** Account Executive, Account & Customer Success Manager, SDR / BDR · **Time:** 20–30 min weekly
+
+1. **Weekly trigger sweep for my book** (`signals-weekly-book-sweep`): Scans up to 10 named accounts for real triggers in the window and drops the noise. *Look for:* Accounts with a leadership change, new site, deal, acquisition, funding or layoff dated inside the window, plus the "just outside the window" line for quiet accounts. Outages and breaches count only if they bear on what you sell.
+2. **Weekly industry signal digest** (`signals-vertical-digest`): Shows what moved across your industry, including companies not yet on your list. *Look for:* Peer moves you can use as social proof, and any new company worth adding to your book.
+3. **What changed since [Date]** (`signals-change-log`): For the 2–3 hottest accounts, lists everything material that changed since your last touch. *Look for:* What's different since you last spoke: new people, new tools, hiring shifts. For a customer the verdict is defend, expand or monitor; for a lost deal, reopen, wait or watch.
+4. **Signal-led emails for up to 10 accounts** (`signals-signal-to-email`): Turns the week's best triggers into sourced openers, so the routine ends in a sent touch, not a list. *Look for:* Strong rows (signal linked to a priority) go out today to the named person; the rest get a call or wait for a better hook.
+
+**Finish with:** 3–5 accounts to contact this week, each with the trigger, its date, the person, the angle and a ready-to-send opener.
+
+## Account manager: risk, QBR, expansion
+
+**Goal:** For an existing customer, see what changed, rate the renewal risk, rebuild any lost relationships, walk into the QBR with a point of view, and leave with a named expansion play.
+**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps · **Time:** 45–60 min
+
+1. **What changed since [Date]** (`signals-change-log`): Lists everything material that changed at the customer since a date you choose (up to 12 months back). *Look for:* New leaders, new tools, hiring shifts or restructuring in the areas you serve. The verdict for a customer is defend, expand or monitor.
+2. **Renewal risk check (red, amber, green)** (`plan-risk-check`): Rates renewal and relationship risk Red, Amber or Green with dated evidence, including your sponsor. *Look for:* Any Red row, and whether your sponsor is still in role. A rival product with High usage in your workloads is Red, Medium is Amber; a newly detected one is Amber until you verify it.
+3. **New leaders and warm intro paths** (`people-new-leaders-warm-paths`): Run it when the risk check shows a new leader or a sponsor change: finds who joined or was promoted in your area and the warm paths to them. *Look for:* Decision-makers you haven't met yet, especially any arriving from one of your customers. Book the introduction before the renewal conversation starts.
+4. **QBR prep: talking points and asks** (`plan-qbr-prep`): Sets the outcomes you delivered against what changed in your sponsor's function, and produces 3 talking points and 3 asks. *Look for:* Talking points that link their newest priority to value you've delivered, and asks that lock in the renewal: executive sponsor, reference, expansion.
+5. **Best entry points: expand or new** (`plan-entry-points`): Turns the account into the five best expansion moves for what you sell, each marked expand or new, with evidence, incumbents and the likely owner. *Look for:* The entry point with the strongest dated evidence and the fewest incumbents. Name it as the expansion ask in the QBR, with the owner as your next meeting.
+
+**Finish with:** A dated change log, a RAG risk view with owners, a plan to meet new leaders, a QBR brief with talking points and 3 asks, and one expansion play with a named owner.
+
+## Outsourcing pursuit at a captive-centre account
+
+**Goal:** Size an account's outsourcing and captive-centre (GCC) footprint, read its sourcing intent, check the main incumbent, and build a pursuit brief for the executive sponsor.
+**For:** Services, SI & Staffing Seller, Sales Leader & RevOps, Presales & Solutions · **Time:** 55–70 min
+
+1. **Outsourcing footprint and consolidation wedge** (`services-outsourcing-footprint`): Shows who the account outsources to, for which workloads, and how concentrated it is. *Look for:* Workloads with many small providers (a consolidation play) or one dominant incumbent (a displacement or second-vendor play). Ignore catch-all workloads.
+2. **Their capability centres and the services play** (`services-gcc-opportunity`): Maps the account's company-owned offshore centres: where, how big, which functions and whether they're growing. *Look for:* Whether the GCC footprint is expanding, flat or shrinking, and which functions sit there. That points to optimisation, centre-of-excellence expansion or a build-operate-transfer play. Treat site headcount as indicative.
+3. **Is outsourced work coming back in-house?** (`services-reinsourcing-risk`): Checks whether the account is building in-house what it used to outsource. *Look for:* Outsourced workloads where the account is now hiring heavily or opening sites. Position augmentation or transition support there, not pure outsourcing.
+4. **A rival's footprint and your wedge** (`services-competitor-at-account`): Shows how deep the #1 incumbent is and where it's thin. *Look for:* The wedge workloads you'll lead with, and the incumbent's strongest areas to avoid.
+5. **Brief for a C-level pursuit meeting** (`plan-cxo-pursuit-brief`): Pulls it together into a go/no-go brief for the executive pursuit. *Look for:* The top 3 workloads to lead with, the named buyer for each, and a 90-day plan you can commit to.
+
+**Finish with:** A CXO pursuit brief: outsourcing and GCC picture, sourcing intent by workload, the incumbent's weak spots, the lead offer, buyers, a go/no-go call and a 90-day plan.
+
+## Co-sell an account with the right partner
+
+**Goal:** Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
+**For:** Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller · **Time:** 35–45 min
+
+1. **Which providers to partner with or replace** (`services-partner-map`): Shows which providers and vendors are already linked to each priority at the account, and whether each is a partner, a competitor or an opening. *Look for:* Providers already working the priority next to yours, counted in your function, not account-wide. They have access and credibility.
+2. **Pick the SI to co-sell with** (`services-cosell-partner`): Shortlists the partners already delivering your workload at the account and skilled in your technology, with the one to call first. *Look for:* Your existing partners ranked first, then the one with the deepest footprint in your workload. That's your co-sell pick.
+3. **Profile a services firm, rival or partner** (`services-competitor-profile`): Profiles the partner you picked: top customers, industries, workloads and delivery hubs. *Look for:* Overlap with your target list and industry, and delivery locations near the account's sites. That's the evidence for your co-sell ask to the partner.
+4. **ABM openers for 10 accounts at once** (`content-abm-messages`): Writes joint first-touch messages for the shared accounts, using the Co-sell partner input, up to 10 accounts per pass. *Look for:* Messages that pair the account's priority with a recent signal, written to the persona, plus one joint note for the strongest account that both teams can send.
+
+**Finish with:** A co-sell pick with evidence (where the partner is embedded and how it overlaps with your list) and joint openers for the shared target accounts.
+
+## Territory and list building: ICP to territories
+
+**Goal:** Turn what your best customers have in common into a sized list, tier it on fit and timing for what you sell, carve it into balanced territories, and send the first touches to the top tier.
+**For:** SDR / BDR, Account Executive, Marketing & ABM, Sales Leader & RevOps · **Time:** 45–60 min
+
+1. **Rewrite our ICP from best customers** (`leaders-icp-refinement`): Finds the traits your best customers share, including activity in the work you sell, and tests a look-alike definition. *Look for:* The tightest definition that still returns 15–100 new companies, and any customer that resolved to a subsidiary or venture arm.
+2. **Size your ideal-customer list** (`prospect-icp-list`): Builds and counts the list from that definition: industry, location, size and technology. *Look for:* A count that applies every condition, sized for your team's capacity. Check companies are in the right primary industry, and flag distributors, holding companies and inactive rows.
+3. **Tier my accounts by fit and timing** (`plan-propensity-tiering`): Scores up to 25 accounts on an editable fit-and-timing rubric that uses postings in your workloads, and splits them into tiers. *Look for:* A real spread across A, B and C. If more than half land in one tier, it re-tiers by rank; agree the A tier with the team.
+4. **Carve balanced territories by geography** (`plan-territories`): Carves the list into balanced territories, keeping whole regions together. *Look for:* No territory more than about 10% off balance, and no city split across reps without a reason. If the universe is over 100 accounts, raise the size threshold first.
+5. **ABM openers for 10 accounts at once** (`content-abm-messages`): Gives the A-tier accounts a personalised first touch, up to 10 accounts per pass. *Look for:* Strong rows (signal linked to priority) go to SDRs this week; Weak rows go to a nurture track.
+
+**Finish with:** A refined ICP, a sized list, A/B/C tiers with the scoring shown, territories per rep, and ready-to-send openers for the top tier.
+
+## Break into a new industry
+
+**Goal:** Learn a new industry fast, brief the team on its language and buyers, build a first account list, and launch outbound with a point of view.
+**For:** Marketing & ABM, Sales Leader & RevOps, SDR / BDR, Account Executive · **Time:** 45–60 min
+
+1. **One-page vertical market snapshot** (`market-vertical-snapshot`): Gives a one-page view of the industry: size and growth, top priorities, technologies gaining ground and, for services sellers, who outsources what. *Look for:* The 2–3 priorities closest to what you sell. Industry totals are global and IT spend is modelled; if the industry returns zeros, check which parent industry Claude used.
+2. **Brief reps on a new industry** (`leaders-vertical-enablement`): Turns the industry into a rep brief: the words to use, who buys and how the function is organised at one reference account, and where your rivals already sit. *Look for:* The buyer titles at the reference account and the 10 terms your reps must use on the first call.
+3. **Size your ideal-customer list** (`prospect-icp-list`): Builds and sizes the target list in the industry from location, size and technology. *Look for:* A first list of 25 accounts in the right primary industry, with the count applying every condition.
+4. **Build an industry point of view** (`market-industry-pov`): Turns the industry's priorities into a point of view with dated company proof. *Look for:* One sentence you'd say to any executive in the industry, backed by a dated company example.
+5. **3-email sequence for one industry persona** (`content-email-sequence`): Writes a 3-email sequence for your main persona, built on those priorities, and names the first account to load. *Look for:* Emails that open with a real, dated industry move, never presented as your customer, and a named contact at the first account.
+
+**Finish with:** An industry brief, a rep enablement sheet, a first target list, a one-line point of view and a ready-to-load email sequence.
+
+## Build a quarter's pipeline for one solution
+
+**Goal:** Go from one solution area (for example cloud migration, data, ERP, security or HR tech) to a scored target list, qualified accounts with a named buyer, the incumbents to work around, and timed first touches that cite each account's own evidence.
+**For:** Account Executive, SDR / BDR, Sales Leader & RevOps, Services, SI & Staffing Seller, Marketing & ABM · **Time:** 60–75 min
+
+1. **Find accounts ripe for cloud migration** (`plays-cloud-targets`): Builds the evidence-scored target list for your solution area in one industry and country. The example is cloud migration; swap in the matching target-list prompt for data, ERP, security, HR tech and the others. *Look for:* The top scores with at least three different kinds of evidence (priority, hiring, stack, outsourcing, news). Read the set-aside list for big names that are misfiled or headquartered elsewhere.
+2. **Is this account ready for cloud migration?** (`plays-cloud-readiness`): Qualifies each top account: current state, intent, incumbents, budget direction and owner. Use the readiness prompt that matches your solution. *Look for:* Ready now or Warming, with a trigger in the last 90 days. If Early, move to the next account rather than forcing it.
+3. **Map the buying committee** (`people-buying-committee`): Turns the owner from the readiness check into a full committee in the matching function. *Look for:* An entry point who can act now (a new leader is often the best), the economic buyer by full title, and any blocker who owns the incumbent tool or partner.
+4. **Who's already working each priority** (`tech-priority-stack-incumbent-map`): Shows, for each priority in the function, which tools and providers already work it and whether to displace, co-sell or go greenfield. *Look for:* One priority with a thin or fragmented incumbent: that's your wedge.
+5. **Peers' outsourcing deals for social proof** (`services-peer-deals`): Finds recent engagements at each account's peers in your workload, so the first touch carries social proof. *Look for:* One peer move per account you can cite as a public industry example, never as your own customer.
+6. **Signal-led emails for up to 10 accounts** (`signals-signal-to-email`): Writes the first touch from the freshest relevant signal and the priority it supports. *Look for:* One dated fact and one stated priority, sent to the named entry point, ending in a low-friction ask. If there's no signal in 60 days, keep the account in nurture and re-check next month.
+
+**Finish with:** A quarter's pipeline for one solution area: a scored target list, a readiness verdict and wedge for the top accounts, a named champion and sponsor for each, a peer proof line and a ready-to-send opener.
+
+## A week of trigger-based outreach
+
+**Goal:** Turn one week of real account triggers into timely, multi-channel outreach: every message tied to a dated public fact, routed to the right person, with a call and voicemail behind each email and a clean re-open for stalled deals.
+**For:** SDR / BDR, Account Executive, Account & Customer Success Manager · **Time:** 60–90 min across the week
+
+1. **Weekly trigger sweep for my book** (`signals-weekly-book-sweep`): Monday: finds the week's real triggers across up to 10 accounts and tags each Act now, Plan or Watch. *Look for:* The Act now rows and their trigger type: leadership change, funding or investment, acquisition, restructuring, new site or partnership. Note the accounts with nothing new; they feed Friday's step.
+2. **Email a newly appointed executive** (`outreach-new-executive`): Tuesday: writes the trigger email. Use this prompt for leadership changes; swap in the matching trigger prompt for funding, acquisitions, restructuring, new sites, hiring surges or new technology. *Look for:* One dated public fact and one stated priority per email, and nothing in the copy that reveals how you found it. For restructuring triggers, check the sensitivity rating before sending.
+3. **Emails to three buyers at one account** (`outreach-multithread`): Wednesday: for the one or two accounts that matter most, opens three threads (economic buyer, technical buyer, champion), each on a different priority. *Look for:* A named person for each role, or the title to find in 'Roles with no clear person'. Stagger the sends; never reuse a paragraph across threads.
+4. **Cold-call opener, talk track, objections** (`outreach-cold-call`): Thursday: call the people you emailed, with an opener and objection replies grounded in the same facts. *Look for:* The reason to call should match the email they received, so the call feels like a continuation. Keep installed-tool findings in your prep notes, not in the script.
+5. **Voicemail script plus follow-up email** (`outreach-voicemail`): Thursday, when they don't pick up: a 25-second voicemail and a same-day follow-up email that reinforce each other. *Look for:* The same fact in the voicemail and the email, and a yes-or-no reply option in the email.
+6. **Re-engage a stalled or ghosted account** (`outreach-reengage`): Friday: for stalled or ghosted accounts (including those with no new trigger this week), lists what changed since your last contact and writes a re-engagement and a break-up email. *Look for:* The verdict: Reopen now, Reopen via a new person, or Wait. If a new leader appeared, send the new-person version as well.
+
+**Finish with:** A logged week of outreach: each Act now account touched by email, call and voicemail on a dated fact, the top accounts multi-threaded to three people, and every stalled deal either re-opened, handed to a new contact, or closed out politely with a date to revisit.
+
+## Win a deal against a named rival
+
+**Goal:** When a named rival is in your deal, size how entrenched it is, line up the people and the arguments, arm your champion, and close on a plan the buyer has agreed.
+**For:** Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Sales Leader & RevOps · **Time:** 45–60 min
+
+1. **Win plan against a rival** (`deals-competitive-strategy`): Shows the rival's footprint at this account, how much the buyer's job ads lean on it, its likely pitch and your wedge. *Look for:* The verdict (Entrenched, Present, Light) and the 3 landmine questions. If the rival is Entrenched across the whole workload, consider narrowing scope to your wedge.
+2. **Map the buying committee** (`people-buying-committee`): Maps who buys, influences or could block in the deal's function, so you know who the rival's sponsor is and who is still open. *Look for:* Anyone leaning to the rival, an economic buyer you haven't met, and a potential blocker. Go by full titles, not seniority labels.
+3. **Answer objections with their own facts** (`deals-objection-handler`): Prepares evidence-backed answers to the pushback a rival's champion will feed the buyer, such as "we already have a vendor". *Look for:* Any objection the evidence Supports: change scope or timing there rather than arguing.
+4. **Arm your champion to sell internally** (`deals-champion-pack`): Gives your champion a forwardable case in their own company's language, with answers for finance, IT and procurement. *Look for:* Why-now facts from earnings-call priorities, and the internal email draft your champion is comfortable sending.
+5. **Mutual action plan on their calendar** (`deals-mutual-action-plan`): Locks the path to signature into the buyer's own calendar before the rival can slow it down. *Look for:* Leadership changes or fiscal dates inside the plan window, and whether the close date comes back Achievable.
+
+**Finish with:** A one-page win plan: the rival's footprint and likely pitch, your wedge and landmines, the people map, objection answers, a champion pack and a mutual action plan with dates.
+
+## Revive a stalled deal or walk away
+
+**Goal:** Decide whether a quiet deal is worth reviving, find a credible reason to re-engage, rebuild the case with the buyer's own numbers and set a realistic new close date.
+**For:** Account Executive, Account & Customer Success Manager, Sales Leader & RevOps · **Time:** 40–50 min
+
+1. **Re-open a stalled deal** (`deals-stalled-reentry`): Tests whether the reason the deal stalled still holds, lists what changed since, and drafts a re-entry email. *Look for:* The verdict (Reopen, Wait, Walk away). If it says Wait, diarise the named event and stop here.
+2. **New leaders and warm intro paths** (`people-new-leaders-warm-paths`): Finds leaders who joined or were promoted in the buying area since the deal went quiet, and where they came from. *Look for:* A new leader with no history of the old "no", ideally arriving from one of your customers.
+3. **Business-case inputs from their numbers** (`deals-business-case-inputs`): Rebuilds the value case on the buyer's own revenue, spend, team size and stated targets, with assumptions labelled. *Look for:* A low–high range finance will accept, and any in-house-build priority listed under Risks to the case.
+4. **Pick a realistic signature window** (`deals-budget-timing`): Maps the buyer's fiscal calendar and money-moving events so the new close date fits when budget is actually available. *Look for:* The recommended signature window and any reorganisation or spin-off that would delay it.
+5. **Reality-check a forecasted deal** (`deals-forecast-check`): Scores the revived deal on outside-in evidence before it goes back into the forecast. *Look for:* A total of 6 or more before calling it Best case, and the questions to answer before calling it Commit.
+
+**Finish with:** A rescue brief: why it stalled and whether that has changed, who to re-engage with a ready email, a refreshed business case, a calendar-aware close date and an honest forecast category.
+
+## Take accounts from a rival software vendor
+
+**Goal:** Pick a rival, understand where it's heading, find the accounts where its product is weakest, and open those accounts with a timely, evidence-based message.
+**For:** Account Executive, SDR / BDR, Presales & Solutions, Sales Leader & RevOps, Marketing & ABM · **Time:** 60–90 min
+
+1. **What a rival did this quarter** (`compete-recent-moves`): Shows what the rival has done in the last 90 days: customer wins, partnerships, launches and leadership changes. *Look for:* The Accounts to watch list. Leave fresh wins alone for now. Note any partner who is now steering deals to the rival.
+2. **How a rival's strategy is shifting** (`compete-strategy-shift`): Tells you what the rival's reps will push next quarter, and where an acquisition or cuts may distract them. *Look for:* Themes rated Strong (call, money and people all behind them) and the trap question. Selling services? Use "Where a rival's people are going" to find delivery pressure as well.
+3. **Accounts where a rival is fading** (`compete-fading-installs`): Ranks your named accounts by how weak the rival's installed products look, and names the successor tool already in place. *Look for:* Accounts rated Fading or Thin, and any account where a third vendor is already High: there you're racing, not persuading. Selling services? Use "A rival's customers you can win" instead.
+4. **Is a competitor installed?** (`tech-competitor-installed`): Confirms the rival's footprint at each of your top 3 targets and finds the stated priorities that could justify a switch. *Look for:* A rival product with High usage in your workloads (Red) or Medium (Amber), a switch trigger with a fiscal quarter, and a likely owner. "Not detected" isn't proof they don't use it.
+5. **Map the buying committee** (`people-buying-committee`): Finds the entry point and the sponsor in the function that owns the rival's product. *Look for:* The incumbent-tool owner (a likely blocker) and the champion candidate to open with. Go by full titles.
+6. **Battlecard: beat a rival software vendor** (`content-battlecard-product`): Arms the team with the objection to expect and three ways to win against the rival. *Look for:* The installs rated Amber or fading on the card, one trap question and one proof point you can actually cite. Mark the card internal use.
+7. **Signal-led emails for up to 10 accounts** (`signals-signal-to-email`): Turns the freshest signal at each target into a short, relevant first email. *Look for:* An email built on one dated signal and one stated priority, with no claims about the rival you can't back up.
+
+**Finish with:** A ranked takeout list of 3–8 accounts, each with the rival's install health, the likely successor, a switch trigger, the person to contact and a first email, plus a team counter-message for the quarter.
+
+## Map a strategic customer, size the expansion
+
+**Goal:** Map the whole customer, find the functions, units and sites you don't serve yet, secure the relationships that protect the account, and take a sized expansion case to your sponsor.
+**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps, Services, SI & Staffing Seller · **Time:** 75–100 min
+
+1. **Map a customer's units, sites and leaders** (`expand-account-map`): Gives you the shape of the account: units, regions, key sites, the brands its leaders sit in and recent acquisitions. *Look for:* The Ours / Adjacent / Open labels. Fill in where you are today or the map won't show white space.
+2. **Find uncovered functions worth selling to** (`expand-function-whitespace`): Scores every function on priorities, hiring and outsourced work against what you already sell. *Look for:* The top uncovered function with all three signals, and the bridge line from your current footprint.
+3. **New budget holders outside our footprint** (`expand-new-budget-holders`): Finds leaders who are new in role in the functions you don't cover, plus announced leadership changes. *Look for:* C-level or "Head of" leaders in their first 18 months, and any interim roles that could freeze or reopen decisions.
+4. **Land at one site, expand to others** (`expand-site-to-site`): Optional: run it when you've landed at one site or capability centre. Shows the sister sites doing similar work. *Look for:* A growing site with high workload overlap and a named local leader your current sponsor can introduce.
+5. **Check sponsor risk and relationship gaps** (`expand-sponsor-coverage`): Checks how exposed you are to one sponsor and where your relationship map has gaps. *Look for:* A High sponsor-risk rating, empty economic-buyer cells, and the three relationships to build next. Keep this internal.
+6. **Expansion business case from growth units** (`expand-business-case`): Builds a sized, evidence-led case that rides the customer's own growth story. *Look for:* Priorities quoted in management's words, a spend range with the formula shown, and a 150-word summary your sponsor can forward.
+7. **Draft an account plan** (`plan-account-plan`): Pulls everything into an eight-part account plan with ranked expansion plays and a 90-day plan. *Look for:* Expansion plays that match the whitespace and new budget holders you found, with owners and dates.
+
+**Finish with:** An account growth plan: a one-page map with white space marked, the top expansion function and site, the new budget holders and relationship gaps to close, and a sized business case ready for your sponsor.
+
+## Sales leader plan: market to coverage
+
+**Goal:** As a sales leader, size the market for what you sell, pick the region to staff, tier the accounts, carve balanced territories and set each rep's coverage, then run the plan week to week.
+**For:** Sales Leader & RevOps, Marketing & ABM · **Time:** 60–80 min
+
+1. **One-page vertical market snapshot** (`market-vertical-snapshot`): Gives the industry picture: size and growth, top priorities with likely owners, and technologies gaining ground. *Look for:* The 2–3 priorities closest to what you sell. Industry totals are global and IT spend is modelled, so don't use them to compare accounts.
+2. **Which region gets the next rep** (`leaders-territory-potential`): Compares 2–5 regions on how many sizeable accounts are active in your workloads, where your rivals sit, and revenue at stake. *Look for:* The region with the most accounts active in your workloads per rep. Read "What's missing" for big groups headquartered elsewhere before you commit headcount.
+3. **Tier my accounts by fit and timing** (`plan-propensity-tiering`): Tiers the chosen region's top accounts on fit and timing for what you sell. *Look for:* A real spread across A, B and C (it re-tiers by rank if over half land in one tier), with the driver behind each A account.
+4. **Carve balanced territories by geography** (`plan-territories`): Carves the accounts into balanced territories by geography: whole regions first, single accounts moved only to fix a big imbalance. *Look for:* No territory more than about 10% off balance, no city split across reps, and holding or private-equity firms excluded.
+5. **Sort my book into coverage tiers** (`leaders-book-segmentation`): Sets coverage inside each territory: Strategic, Growth, Maintain or Deprioritise, scored on your workloads and rivals as well as size and momentum. *Look for:* No rep with more than about 5 Strategic accounts, and every flagged account (spin-off, merger, private) checked by hand.
+6. **Which accounts each rep works this week** (`leaders-coverage-check`): Runs the plan week to week: checks each rep's accounts for fresh triggers and names this week's 5 actions. *Look for:* Owners with several Strong triggers and no plan (they need help) and owners whose whole book is quiet (they need new accounts).
+
+**Finish with:** A sized market view, the region to staff next, tiered accounts, balanced territories per rep, a coverage model with named Strategic accounts, and a weekly action list. Ask any leader prompt for a slide version (5 bullets + 1 table) for the board.
+
+## Launch a co-sell programme with a partner
+
+**Goal:** Choose the right services partner for an industry, check it's heading the right way, build the joint pipeline, plan the first account together and arm the partner's sellers.
+**For:** Partnerships & Alliances, Sales Leader & RevOps, Marketing & ABM · **Time:** 55–70 min
+
+1. **Which SIs to recruit in an industry** (`partners-recruit-si-shortlist`): Finds the SIs that already deliver your workload in the industry and work with your technology, so you recruit for a real practice rather than a logo. *Look for:* Firms that rank high on both the workload and the technology lists, without single-account depth. Your current partners, if they appear, come first.
+2. **Compare candidate partners head to head** (`partners-compare-candidates`): Puts the 2–3 best candidates side by side on workload depth, technology, customer breadth, onshore delivery and momentum, with weights you control. *Look for:* Whether the pick survives the sensitivity check, and each candidate's main risk (concentration, offshore-heavy, thin technology work).
+3. **Is this partner rising or slowing?** (`partners-momentum-check`): Checks the chosen partner is rising, not slowing: hiring, headcount, client wins, acquisitions and footprint in your segment. *Look for:* A Rising or Steady verdict, and any signal scored 0 with a note. Those are the questions for your first partner meeting.
+4. **Accounts a partner can open for you** (`partners-sourced-pipeline`): Lists the accounts in your segment where the partner already delivers work and your product isn't in the stack yet: the joint pipeline. *Look for:* Accounts with Deep partner depth in a workload next to yours. These are the ones the partner can credibly open.
+5. **Joint account plan with a partner** (`partners-joint-account-plan`): Turns the best pipeline account into a one-page joint plan: partner position, priorities in shared workloads, people and a 90-day plan with owners on both sides. *Look for:* Priorities that list the partner among linked providers, and a named owner on each side for days 1–30.
+6. **Enablement brief for a partner's sellers** (`partners-enablement-brief`): Gives the partner's sellers a short brief in their own terms: where your product fits their practice, which of their customers to start with, questions and objection handlers. *Look for:* Warm-start customers that appear in both the partner's practice list and your platform list. Lead the enablement session with them.
+
+**Finish with:** A chosen partner with evidence behind the choice, a sized joint pipeline, a signed-off plan for the first account and an enablement brief the partner's sellers can use on their next call.
+
+
+
+# Data rules
+
+Apply these to every answer.
+
+```text
+Data rules (leave as is; no need to read)
+- Fill prompt inputs from ABOUT ME unless I override them; ask if a required one is missing.
+- For an account in My accounts, use its sponsor and what we run as inputs; mark plays "expand" or "new".
+- Unless I say otherwise, narrow hiring, priority and workload pulls to the business function closest to What I sell.
+- If I give a business function where a workload is needed, map it to the 1–3 closest workloads and say which.
+- Prefer events, people and sites in my Territory; say if none.
+- Platform is a fit signal, not a competitor: say if it's in the stack.
+- Check each account's whole tech stack for my competitors' products: High usage in the workloads I sell is Red, Medium is Amber, newly detected in 12 months is a separate Amber.
+- Use Draup for every fact and date it; label outside knowledge and inferences ("likely"); write "Not in Draup" for gaps.
+- Companies: find by website, confirm the parent, flag subsidiaries; retry an empty name once in Draup's spelling.
+- News: the account must be the actor. Drop noise (outages, stock chatter, charity, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; list everyone sharing a title. Leadership moves can lag about 3 months. Professional information only.
+- Money: annual, millions of reporting currency; IT and R&D spend are modelled; check divestments before calling a drop a cut.
+- Hiring covers 12 months; postings are openings, not hires. Every count applies all my filters.
+- Engagements are "active engagements (Draup-derived)", not contracts; never quote outsourced headcount. Priority tools and providers are "linked", not confirmed.
+- If a step returns nothing or something odd, say so and try one fallback; never show a blank template.
+- Open every answer with "Bottom line" and "Recommended next step" (named person and title, dated why-now; say if none); at most 2 short tables up front, the rest under "Detail"; end with "Gaps".
+- Never use Draup's own customer or user data.
+
+Confirm, then apply ABOUT ME and the data rules to everything in this chat.
+```

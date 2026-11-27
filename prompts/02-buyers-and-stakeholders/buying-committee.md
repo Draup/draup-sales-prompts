@@ -1,12 +1,12 @@
-[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
 # Map the buying committee
 
-> **A ranked list of the people likely to buy, influence or block your deal in one function or workload, with their role in the decision, an entry point and the sponsor to reach later.**
+> **Who to open with and which sponsor to reach later, by name, then a ranked phone-readable list of the people likely to buy, influence or block your deal in one function or workload.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| Before multi-threading an account, or when you only know one contact. | Account Executive, SDR / BDR, Account & Customer Success Manager, Presales & Solutions | Everyone | 2–4 min | Executives & movement, Priorities & opportunities |
+| Before multi-threading an account, or when you only know one contact. Use this when you need everyone who decides today; use "New leaders and warm intro paths" instead when you want people who just arrived or who came from your customers. | Account Executive, SDR / BDR, Account & Customer Success Manager, Presales & Solutions | Everyone | 2–4 min | Executives & movement, Priorities & opportunities |
 
 **Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
@@ -14,10 +14,10 @@
 
 | Placeholder | Example |
 |---|---|
-| `[Company]` | target.com |
-| `[Business function or Workload]` | IT, or Artificial Intelligence & Data Science |
-| `[Region]` | United States of America (optional) |
-| `[What I sell]` | enterprise AI platform and services |
+| `[Company]` | costco.com |
+| `[Business function or workload]` | IT, or Artificial Intelligence & Data Science |
+| `[Region (optional)]` | United States of America |
+| `[What I sell]` | application modernisation and cloud migration services |
 
 ## 2. Copy the detailed prompt
 
@@ -27,45 +27,52 @@ Copy it with the button in the box's top-right corner, replace the `[bracketed]`
 Act as my sales stakeholder analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
-- Company: [website, e.g. target.com]
-- Business function or Workload: [e.g. IT, or Artificial Intelligence & Data Science]
-- Region: [optional, e.g. United States of America]
-- What I sell: [one line, e.g. enterprise AI platform and services — skip if you ran the start-here prompt]
+- Company: [website, e.g. costco.com]
+- Business function or workload: [e.g. IT, or Artificial Intelligence & Data Science]
+- Region (optional): [e.g. United States of America]
+- What I sell: [one line, e.g. application modernisation and cloud migration services — skip if you ran the start-here prompt]
+
+CONTEXT (why this matters)
+One contact is a single point of failure. A committee map tells you who to open with, who signs, and who might block, so you can multi-thread before the first proposal.
 
 STEPS
 1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
 2. Pull key executives for the function or workload, 10 per page, up to 3 pages, with region only if I gave one.
-3. If a workload returns fewer than 5 people, add the 2 closest workloads and say which. Drop clear title–function mismatches.
-4. Pull priorities for the same function or workload to match leaders to initiatives.
+3. If a workload returns fewer than 5 people, add the 2 closest workloads and say which. Drop clear title–function mismatches and flag people at subsidiaries or acquired brands.
+4. If no economic buyer (C-level, EVP, "Head of") appears, search once more without the function filter for C-level titles (Chief, EVP, CIO), keep those whose titles fit, and say what you found.
+5. Pull priorities for the same function or workload to match leaders to initiatives.
+6. Pull the most important news item from the last 90 days where [Company] is the actor, for the next step.
 
 OUTPUT
 - Bottom line: 2 sentences — the answer and what it means for [What I sell].
-- One line: people found, pages checked, people kept.
-- "Buying committee": Rank | Name | Full title | Unit or brand (flag subsidiaries) | Location | Budget control | Likely role | Linked priority + quarter | LinkedIn. Up to 12, ranked by role, then budget control, then title.
+- Recommended next step in two parts, each with one dated fact: "Entry point" (the likely champion by name and title, and how to open) and "Sponsor to reach later" (the likely economic buyer by name and title, and what you need first). If either is missing, say so.
+- One line: people found, pages checked, people kept, subsidiaries flagged, and whether the step-4 widening ran.
+- "Buying committee": Rank | Name | Full title and unit (flag subsidiaries) | Likely role | Linked priority + quarter. Up to 10, ranked by role, then budget control, then title.
 - Likely roles: Economic buyer, Technical buyer, Champion candidate, Influencer, Potential blocker (e.g. incumbent-tool owner, security, procurement).
 - "Roles with no clear person": the titles to look for.
-- Recommended next step in two parts, each with one dated fact: "Entry point" (the likely champion to open with, and how) and "Sponsor to reach later" (the likely economic buyer, and what you need first).
 - Gaps: what Draup didn't have — worth asking in discovery.
+- Detail: Name | Location | Budget control | Time in role | LinkedIn; anyone beyond the top 10.
 
 RULES
 - Economic buyer and champion are candidates, never confirmed.
+- Rank the parent company's own leaders above subsidiary leaders unless the subsidiary is where [What I sell] lands.
 
 STANDARD RULES (leave as is)
-- Pull company lists 10 rows at a time and priorities 10 at a time; show the top results first and offer to continue.
-- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
 - If an input still shows its bracketed example, use my saved context or ask me before starting.
 - Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
-- Use each person's full profile title, not the seniority label. In banking and consulting VP and SVP are mid-level; economic buyers are MD, EVP, "Head of" or C-level (if none appears, say so in Gaps).
+- If a step comes back empty or odd, say so and try one fallback; never return a blank template.
+- Quarter and year labels follow the company's fiscal calendar and can run ahead of the calendar year; say so when they do.
+- People: full profile title, not the seniority label; check it fits the function. In banking and consulting VP and SVP are mid-level. If several share a title, list them. Professional information only.
 - If executives in Europe or the UK return none, rerun without the location and say profiles there may be restricted.
-- Professional information only (name, title, employer, Draup's profile link). No personal contact details; don't infer personal details or past buying relationships.
-- Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+- News: [Company] must be the actor. Drop noise (outages, stock chatter, charity, awards, political commentary, look-alikes, re-dated stories), but keep any item that bears directly on What I sell, even if it's normally noise. If sources conflict on a name or number, say so and don't repeat either as fact. Treat single-source figures as unverified.
+- Phone-first: Bottom line and Recommended next step first; at most 2 tables up front (5 columns and 10 rows max); reference tables under "Detail" at the end. Keep to about 450 words including tables, then offer to continue.
 ```
 
 <details>
 <summary><b>In a hurry? Quick version</b></summary>
 
 ```text
-Map the buying committee at [Company] for [Business function or Workload]: up to 12 people with full title, unit, location, budget control and likely role (economic buyer, technical buyer, champion, influencer, potential blocker), plus an entry point and a sponsor.
+Buying committee at [Company] for [Business function or workload]: entry point and sponsor by name first, then up to 10 people with full title, unit (flag subsidiaries), likely role and linked priority. No economic buyer? Widen once to C-level.
 ```
 
 </details>
@@ -89,18 +96,19 @@ Do any of them have past companies that are our customers?
 ## Tips for better results
 
 - Use a workload (e.g. Cybersecurity) when your offer is narrow; use a function (e.g. IT) for a broad map.
+- Many top leaders carry no function tag in Draup, which is why the prompt widens once to C-level titles before saying there's no economic buyer.
 - Opening cold with the economic buyer often fails. Start with the entry point and earn the sponsor meeting.
 
 ## Related prompts
 
-- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive and two openers tied to the account's current priorities.
-- [Warm paths among current leaders](../../prompts/02-buyers-and-stakeholders/warm-paths-current-leaders.md): Senior leaders at the account who used to work at your customers, partners or your own company, so you can ask for a warm intro.
-- [Pre-fill MEDDPICC from outside-in data](../../prompts/02-buyers-and-stakeholders/meddpicc-prefill.md): A MEDDPICC sheet pre-filled with what Draup can show (metrics, buyer candidates, pain, competition) and clear 'must discover' flags for the rest.
+- [Executive profile and openers](../../prompts/02-buyers-and-stakeholders/executive-profile.md): A one-screen profile of a named executive, two openers tied to the account's current priorities, and a dated reason to reach out now.
+- [Warm paths among current leaders](../../prompts/02-buyers-and-stakeholders/warm-paths-current-leaders.md): Senior leaders at the account who used to work at your customers, partners or your own company, who on your side to ask for the intro, and why now.
+- [Pre-fill MEDDPICC from outside-in data](../../prompts/02-buyers-and-stakeholders/meddpicc-prefill.md): A MEDDPICC sheet (the deal-qualification checklist) pre-filled with what Draup can show — metrics, buyer candidates, pain, competition rated Red/Amber/Green — and clear 'must discover' flags for the rest.
 
 <details>
 <summary>Under the hood: Draup tools this prompt typically uses</summary>
 
-`get_account_id`, `accounts_executives_key_executives_v3`, `get_account_priorities_v3`
+`get_account_id`, `accounts_executives_key_executives_v3`, `get_account_priorities_v3`, `get_top_signals`
 
 Status: **tested live**. Prompt id: `people-buying-committee`.
 
@@ -108,4 +116,4 @@ Status: **tested live**. Prompt id: `people-buying-committee`.
 
 ---
 
-[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [Use as a skill](../../guides/use-as-a-skill.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

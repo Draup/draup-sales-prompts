@@ -9,14 +9,17 @@
 <section>
   <h2>Set up in 3 steps</h2>
   <ol class="steps3">
-    <li><b>Connect Draup.</b> <b>Claude:</b> open <i>claude.ai/directory/draup-for-sales</i> (or Settings → Connectors → Browse connectors), click Connect and sign in with your Draup account. <b>ChatGPT:</b> open Plugins, search “Draup for Sales”, add it and sign in. Other MCP clients: see the Connect guide on GitHub. It is read-only.</li>
+    <li><b>Connect Draup.</b> <b>Claude:</b> open <i>claude.ai/directory/draup-for-sales</i> (or Settings → Connectors → Browse connectors), click Connect and sign in with your Draup account. <b>ChatGPT:</b> open Plugins, search “Draup for Sales”, add it and sign in. <b>Microsoft 365 Copilot or Teams:</b> get the Draup for Sales agent from Microsoft Marketplace (your admin may approve it). Other MCP clients: see the Connect guide on GitHub. It is read-only.</li>
     <li><b>Tell your AI about you.</b> Paste the start-here prompt (next page) into a new chat, fill in your details and send it. For a permanent setup, paste it into a Claude or ChatGPT Project’s instructions.</li>
     <li><b>Run a prompt.</b> Pick one from this guide or the catalogue, replace the <mark>[bracketed]</mark> parts and send. Then use the follow-ups to go deeper in the same chat.</li>
   </ol>
+  <div class="box accent" style="margin:2mm 0 4mm"><h3>Tip: add the whole library as a skill</h3><p style="margin:0">Let your AI pick the right prompt for you. <b>Claude:</b> download the skill zip from the GitHub page and upload it under Customize → Skills. <b>Claude Code:</b> <code>/plugin marketplace add Draup/draup-sales-prompts</code>, then <code>/plugin install draup-sales@draup-sales-prompts</code>. <b>ChatGPT:</b> upload the one-file library to a Project. Full steps: github.com/Draup/draup-sales-prompts → guides/use-as-a-skill.md</p></div>
+  <h2>Pick your start by role</h2>
+  {{ROLE_START}}
 </section>
 <section class="break">
   <h2>Start here: tell your AI about you</h2>
-  <p class="desc">Paste this once at the start of a chat. Every later prompt then knows what you sell, your territory and your competitors.</p>
+  <p class="desc">Paste this once at the start of a chat. Every later prompt then knows what you sell, your territory and your competitors. Tip: copy it from the website (draup.github.io/draup-sales-prompts) so line breaks stay clean.</p>
   {{START_PROMPT}}
 </section>
 <section class="break">
@@ -35,6 +38,8 @@
     <tr><td>Keep going in the same chat with follow-ups</td><td>Claude reuses what it already found</td></tr>
     <tr><td>Save your solution offering in your Draup profile</td><td>Unlocks Draup opportunities tailored to what you sell</td></tr>
   </table>
+  <h3>Before you trust a number</h3>
+  {{TRUST}}
   <h3>Reading the answers</h3>
   <ul>
     <li><b>Financials</b> are annual, in the company's reporting currency and fiscal year. Ask for USD when comparing.</li>
