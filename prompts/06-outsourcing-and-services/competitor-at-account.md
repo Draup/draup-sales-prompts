@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # A competitor's footprint at an account
 
-**How deep a rival services firm is at the account, how it delivers, and the workloads where it is weakest: your wedge.**
+> **How deep a rival services firm is at the account, how it delivers, and the workloads where it is weakest: your wedge.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You are planning a displacement or a second-vendor play at an account a competitor already serves. | Services, SI & Staffing Seller, Account Executive, Partnerships & Alliances | Services sellers | 2–4 min | Outsourcing deals |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -18,10 +20,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my competitive-intelligence analyst for IT services deals. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my competitive-intelligence analyst for IT services deals. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Company: [Website, e.g. pfizer.com]
@@ -58,11 +60,14 @@ STANDARD RULES (leave as is)
 - Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 How big is [Competitor] at [Company] in Draup? Engagements, relationship tier, workloads and delivery locations, its rank among the account's top providers, and 3 workloads where it is thinnest.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -100,4 +105,6 @@ Status: **tested live**. Prompt id: `services-competitor-at-account`.
 
 </details>
 
-[Back to Outsourcing and services deals](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Outsourcing and services deals](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

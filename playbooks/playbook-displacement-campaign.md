@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Win accounts from a services competitor
 
-**Goal:** Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
+> **Goal:** Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
 
-**For:** Services, SI & Staffing Seller, Account Executive, SDR / BDR, Marketing & ABM · **Time:** 45–60 min
+**For:** Services, SI & Staffing Seller, Account Executive, SDR / BDR, Marketing & ABM · **Time:** 45–60 min · **Steps:** 5
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Competitor's customers in my vertical
 
@@ -80,4 +82,6 @@ For each of [Accounts] (up to 5), find one deals, expansion, executive or M&A si
 
 A short list of displacement targets, each with the wedge workload, the reason to change, a peer proof line and a ready-to-send opener.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

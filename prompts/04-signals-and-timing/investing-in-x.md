@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Are they really investing in X?
 
-**A Yes / Early / No verdict on whether hiring, headcount and stated priorities back up a technology theme, with proof postings and talking points.**
+> **A Yes / Early / No verdict on whether hiring, headcount and stated priorities back up a technology theme, with proof postings and talking points.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | Before you claim an account is "investing in GenAI" (or SAP, or cloud) in a pitch or email. | Account Executive, Presales & Solutions, SDR / BDR | Everyone | 2–4 min | Hiring & job postings, Talent flow & locations, Priorities & opportunities |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -18,10 +20,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my investment-signals analyst. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my investment-signals analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Company: [website, e.g. jpmorganchase.com]
@@ -61,11 +63,14 @@ STANDARD RULES (leave as is)
 - Keep to about 330 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Is [Company] really investing in [Technology]? Show related job-ad skills (last 5 full months vs the 5 before), 3 proof postings, the matching job family's headcount trend and stated priorities, then a Yes / Early / No verdict.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -103,4 +108,6 @@ Status: **tested live**. Prompt id: `signals-investing-in-x`.
 
 </details>
 
-[Back to Signals and timing](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Signals and timing](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

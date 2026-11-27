@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # What's worth acting on now
 
-**Up to 5 real triggers from the last 90 days, each tied to a stated priority, a likely owner and a suggested action, with the noise stripped out.**
+> **Up to 5 real triggers from the last 90 days, each tied to a stated priority, a likely owner and a suggested action, with the noise stripped out.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | Before outreach, at the start of an account cycle, or when an account has gone quiet. | SDR / BDR, Account Executive, Account & Customer Success Manager | Everyone | 2–4 min | News signals, Priorities & opportunities |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -17,10 +19,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my sales-trigger analyst. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my sales-trigger analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Company: [website, e.g. jpmorganchase.com]
@@ -54,11 +56,14 @@ STANDARD RULES (leave as is)
 - Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 What are the real triggers at [Company] in the last 90 days? Skip outages, stock chatter, charity and passing mentions. Up to 5, each with date, source, linked priority, likely owner and why it matters for [What I sell].
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -96,4 +101,6 @@ Status: **tested live**. Prompt id: `signals-whats-actionable`.
 
 </details>
 
-[Back to Signals and timing](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Signals and timing](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Is this inbound account worth it?
 
-**A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan.**
+> **A fast pursue / nurture / disqualify verdict on an inbound or referred account, based on your must-haves, with urgency from recent events, a read on the requester and a reply plan.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | A lead, demo request or referral lands and you need to decide in minutes whether it deserves an AE's time. | SDR / BDR, Account Executive, Marketing & ABM | Everyone | 1–2 min | Company directory, Company & financials, News signals, Hiring & job postings |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -21,10 +23,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my sales development analyst qualifying inbound accounts. Use the Draup for Sales connector for every fact.
+Act as my sales development analyst qualifying inbound accounts. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Company: [Website, e.g. fivebelow.com]
@@ -61,11 +63,14 @@ STANDARD RULES (leave as is)
 - Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Qualify the inbound from [Requester title] at [Company], who asked for [What they asked for], against my must-haves ([My must-haves]). Pursue if all are met; give urgency from 90-day news, [Business function] hiring and a reply plan.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -103,4 +108,6 @@ Status: **tested live**. Prompt id: `prospect-inbound-qualification`.
 
 </details>
 
-[Back to Prospecting and target lists](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Is their budget growing or shrinking?
 
-**A verdict on whether the account's budget is growing, holding or shrinking, the IT spend split, and the deal size and pitch that fit.**
+> **A verdict on whether the account's budget is growing, holding or shrinking, the IT spend split, and the deal size and pitch that fit.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | Before you set deal size or pick a value story, or when a champion says 'budgets are tight'. | Account Executive, Account & Customer Success Manager, Sales Leader & RevOps, Services, SI & Staffing Seller | Everyone | 2–4 min | Company & financials, News signals |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -17,10 +19,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my sales finance analyst. Use the Draup for Sales connector for every fact.
+Act as my sales finance analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Company: [website, e.g. unilever.com]
@@ -56,11 +58,14 @@ STANDARD RULES (leave as is)
 - Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Is [Company]'s budget growing, holding or shrinking? 3-year revenue, EBITDA, IT and R&D spend plus forecast, the IT spend split, a verdict with evidence, deal-size implication and pitch for [What I sell].
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -98,4 +103,6 @@ Status: **tested live**. Prompt id: `research-budget-posture`.
 
 </details>
 
-[Back to Account research](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

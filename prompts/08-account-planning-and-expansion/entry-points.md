@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Entry points and whitespace
 
-**The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner.**
+> **The five best ways into the account for what you sell, each with dated evidence, incumbents and the likely owner.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You know the account but need a concrete first or next deal to work on. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Services, SI & Staffing Seller | Everyone | 2–4 min | Priorities & opportunities, Executives & movement |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -18,10 +20,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my pursuit strategist. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my pursuit strategist. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Company: [Website, e.g. bmw.com]
@@ -56,11 +58,14 @@ STANDARD RULES (leave as is)
 - Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Find the top 5 entry points at [Company] for [What I sell] from Draup's opportunities in [Business function or Workload]: initiative, dated evidence, incumbent tech and providers, and the executive who likely owns it.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -98,4 +103,6 @@ Status: **tested live**. Prompt id: `plan-entry-points`.
 
 </details>
 
-[Back to Account planning and expansion](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # AI readiness vs peers
 
-**A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers.**
+> **A deep read on the account's AI hiring, priorities, new tools and outsourced AI work, then its AI hiring compared with up to 4 close peers.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You sell AI, data or automation and need a maturity read or a peer comparison. | Account Executive, Presales & Solutions, Services, SI & Staffing Seller, Marketing & ABM | Everyone | 4–6 min | Hiring & job postings, Priorities & opportunities, Tech stack, Outsourcing deals, Company directory |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -18,10 +20,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my AI market analyst. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my AI market analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Company: [Website, e.g. pfizer.com]
@@ -57,11 +59,14 @@ STANDARD RULES (leave as is)
 - Keep to about 400 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Read [Company]'s AI readiness in Draup: AI postings and trend, AI priorities, AI tools newly detected and outsourced AI work. Then compare its AI hiring per 1,000 employees with up to 4 peers.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -99,4 +104,6 @@ Status: **tested live**. Prompt id: `plan-ai-readiness`.
 
 </details>
 
-[Back to Account planning and expansion](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Account planning and expansion](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Pick a co-sell partner
 
-**A shortlist of service partners already delivering your workload at the account and experienced with your technology, with the one to call first.**
+> **A shortlist of service partners already delivering your workload at the account and experienced with your technology, with the one to call first.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You sell software and want a GSI or SI partner (global or regional systems integrator) to open or accelerate a deal. | Partnerships & Alliances, Account Executive, Presales & Solutions | Software sellers | 2–4 min | Outsourcing deals, Tech stack |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -20,10 +22,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my partner and alliances manager. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my partner and alliances manager. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Company: [Website, e.g. pfizer.com]
@@ -62,11 +64,14 @@ STANDARD RULES (leave as is)
 - Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Which service providers deliver [Workload] at [Company] in Draup, how entrenched are they, and which have [Technology] experience in its industry? Rank them, putting our current partners first, and pick the one to call first.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -104,4 +109,6 @@ Status: **tested live**. Prompt id: `services-cosell-partner`.
 
 </details>
 
-[Back to Outsourcing and services deals](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Outsourcing and services deals](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

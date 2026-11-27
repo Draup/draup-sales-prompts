@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Prompts for Marketing & ABM
 
 Pick target accounts and write messages tied to what each account is doing.
 
 34 prompts, grouped by sales job.
 
-**First:** run [Tell Claude about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
+**First:** [connect Draup for Sales](../guides/connect.md), then run [Tell your AI about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
 
 ## Account research
 
@@ -90,8 +92,12 @@ Pick target accounts and write messages tied to what each account is doing.
 
 ## Playbooks for you
 
-- [Win accounts from a services competitor](../playbooks/playbook-displacement-campaign.md): Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
-- [Territory and list building](../playbooks/playbook-territory-list.md): Turn an ICP into a sized, prioritised and tiered account list your team can work this quarter.
-- [Enter a new industry](../playbooks/playbook-new-industry.md): Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.
+- [**Win accounts from a services competitor**](../playbooks/playbook-displacement-campaign.md): Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
+- [**Territory and list building**](../playbooks/playbook-territory-list.md): Turn an ICP into a sized, prioritised and tiered account list your team can work this quarter.
+- [**Enter a new industry**](../playbooks/playbook-new-industry.md): Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.
 
-[Back to the library](../README.md)
+Prefer paper? [Download the Marketing & ABM cheat sheet (PDF)](../pdf/roles/marketing-abm.pdf).
+
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

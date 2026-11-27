@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Where a vertical's teams sit
 
-**The metros where an industry's IT and R&D teams are concentrated, with hubs that host both: where its delivery and engineering work happens.**
+> **The metros where an industry's IT and R&D teams are concentrated, with hubs that host both: where its delivery and engineering work happens.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You are choosing where to hold events, recruit or place delivery capacity for an industry. | Sales Leader & RevOps, Marketing & ABM, Services, SI & Staffing Seller | Services sellers | 1–2 min | Industry ecosystem |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -18,10 +20,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my market and location analyst. Use the Draup for Sales connector for every fact.
+Act as my market and location analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [Industry, e.g. Banking & Financial Services]
@@ -56,11 +58,14 @@ STANDARD RULES (leave as is)
 - Keep to about 250 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Rank the top 10 metros for [Vertical] IT teams and the top 10 for R&D teams by Draup's workforce-strength index, flag metros on both lists, and say where to focus for [What I sell].
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -98,4 +103,6 @@ Status: **tested live**. Prompt id: `market-talent-hubs`.
 
 </details>
 
-[Back to Industry and market intelligence](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Industry and market intelligence](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

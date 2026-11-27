@@ -1,10 +1,12 @@
-# Tell Claude about you
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
 
-**Claude remembers who you are, whether you sell software or services, your ideal customer, territory, competitors and proof point, and applies the library's data rules to every later answer.**
+# Tell your AI about you
+
+> **Your assistant (Claude or ChatGPT) remembers who you are, whether you sell software or services, your ideal customer, territory, competitors and proof point, and applies the library's data rules to every later answer.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
-| At the start of a new chat, before any other prompt in this library. If you use Claude Projects, the Project version is the better path: you set it once. | Account Executive, SDR / BDR, Account & Customer Success Manager, Sales Leader & RevOps, Marketing & ABM, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances | Everyone | 2–4 min |  |
+| At the start of a new chat, before any other prompt in this library. If you use Claude or ChatGPT Projects, the Project version is the better path: you set it once. | Account Executive, SDR / BDR, Account & Customer Success Manager, Sales Leader & RevOps, Marketing & ABM, Presales & Solutions, Services, SI & Staffing Seller, Partnerships & Alliances | Everyone | 2–4 min |  |
 
 ## 1. Fill in
 
@@ -25,10 +27,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-You are my sales research partner for this chat. Use the Draup for Sales connector for every fact.
+You are my sales research partner for this chat. Use Draup for Sales for every fact.
 
 ABOUT ME (edit these)
 - My role: [e.g. Enterprise AE, North America retail]
@@ -68,11 +70,14 @@ RULES (every later answer; leave as is)
 Confirm the 6-line summary, then apply ABOUT ME and the RULES to everything I ask in this chat.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Remember for this chat: I'm [My role]; I sell [I sell]: [What I sell] to [Ideal customer] in [Territory]; competitors [Competitors]; customers [Our customers]. Confirm in 6 lines and use these defaults.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -111,4 +116,6 @@ Status: **tested live**. Prompt id: `setup-about-me`.
 
 </details>
 
-[Back to Start here](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Start here](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

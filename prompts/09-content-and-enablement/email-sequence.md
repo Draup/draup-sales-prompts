@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Industry email sequence
 
-**A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example.**
+> **A ready-to-load 3-email sequence for one persona in one industry, each email built on a current industry priority and a dated real-company example.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You're starting outbound into an industry and need a sequence grounded in what that industry is actually working on. | Marketing & ABM, SDR / BDR, Account Executive | Everyone | 2–4 min | Industry ecosystem, News signals |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -20,10 +22,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my outbound copywriter for [Vertical]. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my outbound copywriter for [Vertical]. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Vertical: [industry, e.g. Automotive]
@@ -61,11 +63,14 @@ STANDARD RULES (leave as is)
 - Keep to about 450 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Write a 3-email sequence for a [Persona] in [Vertical], using the 3 Draup industry priorities closest to [Business function] and one dated company example per email. 120 words max each, with subject lines.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -104,4 +109,6 @@ Status: **tested live**. Prompt id: `content-email-sequence`.
 
 </details>
 
-[Back to Content and enablement](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Content and enablement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

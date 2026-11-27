@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Prompts for Partnerships & Alliances
 
 Find co-sell partners already embedded in your target accounts.
 
 23 prompts, grouped by sales job.
 
-**First:** run [Tell Claude about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
+**First:** [connect Draup for Sales](../guides/connect.md), then run [Tell your AI about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
 
 ## Account research
 
@@ -74,6 +76,10 @@ Find co-sell partners already embedded in your target accounts.
 
 ## Playbooks for you
 
-- [Partner co-sell](../playbooks/playbook-partner-cosell.md): Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
+- [**Partner co-sell**](../playbooks/playbook-partner-cosell.md): Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
 
-[Back to the library](../README.md)
+Prefer paper? [Download the Partnerships & Alliances cheat sheet (PDF)](../pdf/roles/partnerships-alliances.pdf).
+
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

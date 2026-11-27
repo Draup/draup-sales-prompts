@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Pre-fill MEDDPICC from outside-in data
 
-**A MEDDPICC sheet pre-filled with what Draup can show (metrics, buyer candidates, pain, competition) and clear 'must discover' flags for the rest.**
+> **A MEDDPICC sheet pre-filled with what Draup can show (metrics, buyer candidates, pain, competition) and clear 'must discover' flags for the rest.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | After the first meeting, or before a deal review, to see what you know and what you still have to find out. | Account Executive, Account & Customer Success Manager, Sales Leader & RevOps, Presales & Solutions | Everyone | 4–6 min | Company & financials, Priorities & opportunities, Executives & movement, Tech stack, Outsourcing deals |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -19,10 +21,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my deal-qualification analyst. Use the Draup for Sales connector for every fact.
+Act as my deal-qualification analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Company: [website, e.g. target.com]
@@ -60,11 +62,14 @@ STANDARD RULES (leave as is)
 - Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Pre-fill MEDDPICC for [What I sell] at [Company] in [Business function]: metrics, economic buyer candidates, pain, competition (whole-stack check for [Competitor]). Mark decision criteria, process, paper process and champion as hypotheses or must-discover.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -103,4 +108,6 @@ Status: **tested live**. Prompt id: `people-meddpicc-prefill`.
 
 </details>
 
-[Back to Buyers and stakeholders](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

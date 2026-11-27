@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # "How does Draup know this?"
 
-**A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link.**
+> **A plain-English, shareable answer on how Draup builds a number (IT spend, outsourcing size, talent flow and so on), with the help-centre link.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | A prospect or your own exec asks where a Draup number comes from and how much to trust it. | Presales & Solutions, Account Executive, Account & Customer Success Manager, Marketing & ABM | Everyone | 1–2 min |  |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -17,7 +19,7 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
 Act as my presales engineer. Answer only from Draup's own help-centre content, through the Draup for Sales connector. Don't use outside knowledge or guess at methodology, and label anything that isn't from the help centre.
@@ -50,11 +52,14 @@ STANDARD RULES (leave as is)
 - Keep to about 150 words plus the links. Answer one metric at a time, then offer the next.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 In 4–5 plain sentences, explain how Draup works out [Metric or question] for [Audience], using only the Draup help centre, with the article link and one line on how to present the number.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -91,4 +96,6 @@ Status: **tested live**. Prompt id: `content-how-draup-knows`.
 
 </details>
 
-[Back to Content and enablement](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Content and enablement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -5,14 +5,14 @@ Creative Commons Attribution 4.0 International License (see LICENSE).
 Code (the /scripts and /templates folders, and the website code in /docs) is
 licensed under the MIT License (see LICENSE-CODE).
 
-"Draup", "Draup for Sales" and related names and logos are trademarks of their
-owner. These licenses do not grant any right to use them except as needed to
+"Draup", "Draup for Sales" and related names and logos are trademarks of
+Draup, Inc. These licenses do not grant any right to use them except as needed to
 describe the origin of this work. Using these prompts requires your own access
 to Claude and to Draup; the data they return is governed by your Draup
 subscription terms, not by this repository's licenses.
 
-"Claude" is a trademark of Anthropic. This project is not affiliated with or
-endorsed by Anthropic.
+"Claude" is a trademark of Anthropic and "ChatGPT" is a trademark of OpenAI.
+This project is not affiliated with or endorsed by Anthropic or OpenAI.
 
 Company names that appear as examples are used for illustration only. Names
 used for "your" firm, customers and partners (such as Northwind, Contoso and

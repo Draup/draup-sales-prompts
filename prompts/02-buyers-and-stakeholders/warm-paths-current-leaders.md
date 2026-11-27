@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Warm paths among current leaders
 
-**Senior leaders at the account who used to work at your customers, partners or your own company, so you can ask for a warm intro.**
+> **Senior leaders at the account who used to work at your customers, partners or your own company, so you can ask for a warm intro.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | Before cold outreach to a senior buyer, or when building an intro plan for a strategic account. | Account Executive, SDR / BDR, Account & Customer Success Manager, Partnerships & Alliances | Everyone | 2–4 min | Executives & movement |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -21,10 +23,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my relationship-mapping analyst. Use the Draup for Sales connector for every fact.
+Act as my relationship-mapping analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Company: [website, e.g. target.com]
@@ -61,11 +63,14 @@ STANDARD RULES (leave as is)
 - Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Which senior [Business function] leaders at [Company] previously worked at [Our customers], [My company] or [Partners]? Table: name, full title, matched past company, match type, years at [Company], budget control, LinkedIn.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -103,4 +108,6 @@ Status: **tested live**. Prompt id: `people-warm-paths-current-leaders`.
 
 </details>
 
-[Back to Buyers and stakeholders](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Buyers and stakeholders](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Existing customer: account plan → risk → QBR
 
-**Goal:** Build or refresh the plan for a key customer, turn it into concrete expansion plays, check it for risk, and walk into the QBR with a point of view and clear asks.
+> **Goal:** Build or refresh the plan for a key customer, turn it into concrete expansion plays, check it for risk, and walk into the QBR with a point of view and clear asks.
 
-**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps · **Time:** 45–60 min
+**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps · **Time:** 45–60 min · **Steps:** 4
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Draft an account plan
 
@@ -66,4 +68,6 @@ Prep my QBR with [Company] for [Review period]: annual financials, new prioritie
 
 An account plan with expansion plays, a RAG risk view with owners, and a QBR brief with talking points and 3 asks.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

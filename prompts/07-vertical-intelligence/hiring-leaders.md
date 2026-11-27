@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Top hiring companies in a vertical
 
-**The real end employers posting the most jobs in an industry, with outliers and recruiters removed, hiring intensity shown and who to call.**
+> **The real end employers posting the most jobs in an industry, with outliers and recruiters removed, hiring intensity shown and who to call.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You want the most active companies in a vertical this year: active hiring often means active budgets. | SDR / BDR, Account Executive, Services, SI & Staffing Seller, Sales Leader & RevOps | Everyone | 2–4 min | Industry ecosystem, Hiring & job postings |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -17,10 +19,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my market research analyst. Use the Draup for Sales connector for every fact.
+Act as my market research analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [Industry, e.g. Life Sciences]
@@ -58,11 +60,14 @@ STANDARD RULES (leave as is)
 - Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Show the top 20 [Vertical] companies by job postings after removing staffing firms, recruiters and outliers. Add workforce, postings per 1,000 staff and who to call, and name 5 hot spots for [What I sell].
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -100,4 +105,6 @@ Status: **tested live**. Prompt id: `market-hiring-leaders`.
 
 </details>
 
-[Back to Industry and market intelligence](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Industry and market intelligence](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

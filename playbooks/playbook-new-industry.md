@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Enter a new industry
 
-**Goal:** Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.
+> **Goal:** Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.
 
-**For:** Marketing & ABM, Sales Leader & RevOps, SDR / BDR, Account Executive · **Time:** 45–60 min
+**For:** Marketing & ABM, Sales Leader & RevOps, SDR / BDR, Account Executive · **Time:** 45–60 min · **Steps:** 5
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. One-page vertical market snapshot
 
@@ -80,4 +82,6 @@ Write a 3-email sequence for a [Persona] in [Vertical], using the 3 Draup indust
 
 An industry brief, the competitors to expect, a first target list, a one-line point of view and a ready-to-load email sequence.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

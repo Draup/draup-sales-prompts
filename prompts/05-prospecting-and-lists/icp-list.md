@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Build and size an ICP list
 
-**The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5.**
+> **The true size of your ideal-customer list, size bands, and the top 25 accounts with money, providers, hiring, who to call and a why-now for the best 5.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You are planning a territory, a campaign or next quarter's target list. | SDR / BDR, Account Executive, Sales Leader & RevOps, Marketing & ABM | Everyone | 4–6 min | Company directory, Company & financials, News signals |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -21,10 +23,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my sales operations analyst building a target account list. Use the Draup for Sales connector for every fact.
+Act as my sales operations analyst building a target account list. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [Industry, e.g. Banking & Financial Services]
@@ -63,11 +65,14 @@ STANDARD RULES (leave as is)
 - Keep to about 450 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Count every company with primary vertical [Vertical], HQ in [Country], [Minimum employees]+ staff (running [Technology] if given). Show the top 25 by revenue with providers, 90-day postings and who to call, plus a why-now for the best 5.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -105,4 +110,6 @@ Status: **tested live**. Prompt id: `prospect-icp-list`.
 
 </details>
 
-[Back to Prospecting and target lists](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Prospecting and target lists](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

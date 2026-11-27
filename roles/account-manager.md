@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Prompts for Account & Customer Success Manager
 
 Grow and protect existing accounts: risk checks, expansion, QBRs.
 
 33 prompts, grouped by sales job.
 
-**First:** run [Tell Claude about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
+**First:** [connect Draup for Sales](../guides/connect.md), then run [Tell your AI about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
 
 ## Account research
 
@@ -74,9 +76,13 @@ Grow and protect existing accounts: risk checks, expansion, QBRs.
 
 ## Playbooks for you
 
-- [Weekly signal routine](../playbooks/playbook-weekly-signals.md): Spend about half an hour each Monday finding which accounts and industry moves deserve action this week, and send the first touches.
-- [Existing customer: account plan → risk → QBR](../playbooks/playbook-account-plan-qbr.md): Build or refresh the plan for a key customer, turn it into concrete expansion plays, check it for risk, and walk into the QBR with a point of view and clear asks.
-- [Expand an existing customer](../playbooks/playbook-expand-customer.md): Find where an existing customer is growing, pick the best way in for your next deal, map the people, and open with a timely message.
-- [Renewal defence](../playbooks/playbook-renewal-defence.md): Spot what has changed at a customer ahead of renewal, rate the risk, rebuild relationships with new leaders, and walk into the review with proof of value.
+- [**Weekly signal routine**](../playbooks/playbook-weekly-signals.md): Spend about half an hour each Monday finding which accounts and industry moves deserve action this week, and send the first touches.
+- [**Existing customer: account plan → risk → QBR**](../playbooks/playbook-account-plan-qbr.md): Build or refresh the plan for a key customer, turn it into concrete expansion plays, check it for risk, and walk into the QBR with a point of view and clear asks.
+- [**Expand an existing customer**](../playbooks/playbook-expand-customer.md): Find where an existing customer is growing, pick the best way in for your next deal, map the people, and open with a timely message.
+- [**Renewal defence**](../playbooks/playbook-renewal-defence.md): Spot what has changed at a customer ahead of renewal, rate the risk, rebuild relationships with new leaders, and walk into the review with proof of value.
 
-[Back to the library](../README.md)
+Prefer paper? [Download the Account & Customer Success Manager cheat sheet (PDF)](../pdf/roles/account-manager.pdf).
+
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

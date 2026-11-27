@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Prompts for Services, SI & Staffing Seller
 
 Map outsourcing incumbents, share of wallet, GCCs and displacement wedges.
 
 46 prompts, grouped by sales job.
 
-**First:** run [Tell Claude about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
+**First:** [connect Draup for Sales](../guides/connect.md), then run [Tell your AI about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
 
 ## Account research
 
@@ -102,8 +104,12 @@ Map outsourcing incumbents, share of wallet, GCCs and displacement wedges.
 
 ## Playbooks for you
 
-- [Win accounts from a services competitor](../playbooks/playbook-displacement-campaign.md): Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
-- [Global capability centre (GCC) & outsourcing pursuit](../playbooks/playbook-gcc-services-pursuit.md): Size an account's outsourcing and captive-centre (GCC) footprint, read its sourcing intent, check the main incumbent, and build a pursuit brief for the executive sponsor.
-- [Partner co-sell](../playbooks/playbook-partner-cosell.md): Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
+- [**Win accounts from a services competitor**](../playbooks/playbook-displacement-campaign.md): Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
+- [**Global capability centre (GCC) & outsourcing pursuit**](../playbooks/playbook-gcc-services-pursuit.md): Size an account's outsourcing and captive-centre (GCC) footprint, read its sourcing intent, check the main incumbent, and build a pursuit brief for the executive sponsor.
+- [**Partner co-sell**](../playbooks/playbook-partner-cosell.md): Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
 
-[Back to the library](../README.md)
+Prefer paper? [Download the Services, SI & Staffing Seller cheat sheet (PDF)](../pdf/roles/services-seller.pdf).
+
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

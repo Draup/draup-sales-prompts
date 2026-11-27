@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Partner co-sell
 
-**Goal:** Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
+> **Goal:** Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.
 
-**For:** Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller · **Time:** 35–45 min
+**For:** Partnerships & Alliances, Account Executive, Services, SI & Staffing Seller · **Time:** 35–45 min · **Steps:** 4
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Who to partner with vs replace, by priority
 
@@ -66,4 +68,6 @@ For the first 5 of [Accounts], write a 2-sentence opener to a [Persona] tied to 
 
 A co-sell pick with evidence (where the partner is embedded and how it overlaps with your list) and joint openers for the shared target accounts.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

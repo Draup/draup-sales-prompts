@@ -1,6 +1,8 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Employer-brand gaps for an RPO pitch
 
-**How a company scores as an employer against its hiring rivals, its three weakest areas from employee reviews, and RPO or employer-branding angles.**
+> **How a company scores as an employer against its hiring rivals, its three weakest areas from employee reviews, and RPO or employer-branding angles.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
@@ -8,7 +10,7 @@
 
 > **Preview.** This prompt uses the separate **Draup for Talent** connector (pay, talent supply, hiring difficulty). It follows the documented data and was not live-tested for this release, so check results carefully.
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -21,7 +23,7 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
 Act as my talent-acquisition services strategist. Use the Draup for Talent connector for employer-value scores, and the Draup for Sales connector for company lookups. Don't use outside knowledge unless I ask, and label it if you do.
@@ -59,11 +61,14 @@ STANDARD RULES (leave as is)
 - Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Compare [Company]'s Draup employer-value scores with [Hiring rivals]: overall index, reviews analysed, pillar scores, the 3 weakest pillars with review themes, and RPO angles for [What I sell].
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -100,4 +105,6 @@ Status: **documented, not live-tested**. Prompt id: `talent-employer-brand`.
 
 </details>
 
-[Back to Talent cost and location](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Talent cost and location](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

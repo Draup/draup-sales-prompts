@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Expand an existing customer
 
-**Goal:** Find where an existing customer is growing, pick the best way in for your next deal, map the people, and open with a timely message.
+> **Goal:** Find where an existing customer is growing, pick the best way in for your next deal, map the people, and open with a timely message.
 
-**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps · **Time:** 40–50 min
+**For:** Account & Customer Success Manager, Account Executive, Sales Leader & RevOps · **Time:** 40–50 min · **Steps:** 5
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Where they're building teams
 
@@ -80,4 +82,6 @@ For each of [Accounts] (up to 5), find one deals, expansion, executive or M&A si
 
 One expansion play with the evidence, the people to reach in order, the incumbents to work with or around, and a ready-to-send opener.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

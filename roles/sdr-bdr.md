@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Prompts for SDR / BDR
 
 Find who to contact and why now, then write outreach that references real facts.
 
 37 prompts, grouped by sales job.
 
-**First:** run [Tell Claude about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
+**First:** [connect Draup for Sales](../guides/connect.md), then run [Tell your AI about you](../prompts/00-start-here/about-me.md) once per chat so every answer is tailored to what you sell.
 
 ## Account research
 
@@ -93,10 +95,14 @@ Find who to contact and why now, then write outreach that references real facts.
 
 ## Playbooks for you
 
-- [First meeting in 30 minutes](../playbooks/playbook-first-meeting.md): Walk into a first meeting knowing the account, the people in the room and the questions that will earn a second meeting.
-- [Win accounts from a services competitor](../playbooks/playbook-displacement-campaign.md): Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
-- [Weekly signal routine](../playbooks/playbook-weekly-signals.md): Spend about half an hour each Monday finding which accounts and industry moves deserve action this week, and send the first touches.
-- [Territory and list building](../playbooks/playbook-territory-list.md): Turn an ICP into a sized, prioritised and tiered account list your team can work this quarter.
-- [Enter a new industry](../playbooks/playbook-new-industry.md): Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.
+- [**First meeting in 30 minutes**](../playbooks/playbook-first-meeting.md): Walk into a first meeting knowing the account, the people in the room and the questions that will earn a second meeting.
+- [**Win accounts from a services competitor**](../playbooks/playbook-displacement-campaign.md): Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.
+- [**Weekly signal routine**](../playbooks/playbook-weekly-signals.md): Spend about half an hour each Monday finding which accounts and industry moves deserve action this week, and send the first touches.
+- [**Territory and list building**](../playbooks/playbook-territory-list.md): Turn an ICP into a sized, prioritised and tiered account list your team can work this quarter.
+- [**Enter a new industry**](../playbooks/playbook-new-industry.md): Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.
 
-[Back to the library](../README.md)
+Prefer paper? [Download the SDR / BDR cheat sheet (PDF)](../pdf/roles/sdr-bdr.pdf).
+
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Global capability centre (GCC) & outsourcing pursuit
 
-**Goal:** Size an account's outsourcing and captive-centre (GCC) footprint, read its sourcing intent, check the main incumbent, and build a pursuit brief for the executive sponsor.
+> **Goal:** Size an account's outsourcing and captive-centre (GCC) footprint, read its sourcing intent, check the main incumbent, and build a pursuit brief for the executive sponsor.
 
-**For:** Services, SI & Staffing Seller, Sales Leader & RevOps, Presales & Solutions · **Time:** 55–70 min
+**For:** Services, SI & Staffing Seller, Sales Leader & RevOps, Presales & Solutions · **Time:** 55–70 min · **Steps:** 5
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Outsourcing footprint and incumbents
 
@@ -80,4 +82,6 @@ Build a CXO pursuit brief for [Company]'s [Business function] leader: money cont
 
 A CXO pursuit brief: outsourcing and GCC picture, sourcing intent by workload, the incumbent's weak spots, the lead offer, buyers, a go/no-go call and a 90-day plan.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

@@ -38,6 +38,11 @@ a{color:var(--accent)}
 .btn{display:inline-flex;align-items:center;gap:6px;font:600 14px var(--f-body);padding:10px 16px;border-radius:9px;text-decoration:none;border:1px solid transparent;cursor:pointer}
 .btn.primary{background:#40b5b0;color:#04201f}
 .btn.ghost{border-color:rgba(233,244,244,.35);color:var(--deep-ink);background:transparent}
+.btn.small{font-size:13px;padding:7px 12px}
+.btn.claude{background:#d97757;color:#fff}
+.btn.gpt{background:#10a37f;color:#fff}
+.step .connect{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 6px}
+.step .minor{font-size:13px}
 .hero .stats{display:flex;flex-wrap:wrap;gap:8px 30px;margin-top:28px;font-variant-numeric:tabular-nums}
 .hero .stats b{display:block;font:800 24px/1.1 var(--f-display)}
 .hero .stats span{font-size:12.5px;opacity:.75}
@@ -115,12 +120,13 @@ footer{padding-block:36px 56px;color:var(--muted);font-size:13px}
 <body>
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow">Draup for Sales · Claude prompt library</div>
+    <div class="eyebrow">Draup for Sales · Prompts for Claude &amp; ChatGPT</div>
     <h1>Ask Draup the questions that move deals</h1>
     <p class="lede" id="tagline"></p>
     <div class="cta">
       <a class="btn primary" href="#library">Browse the prompts</a>
-      <a class="btn ghost" href="#start">Start in 3 steps</a>
+      <a class="btn ghost" id="heroClaude" href="#">Add to Claude</a>
+      <a class="btn ghost" id="heroGpt" href="#">Add to ChatGPT</a>
       <a class="btn ghost" id="repoLink" href="#">View on GitHub</a>
     </div>
     <div class="stats" id="stats"></div>
@@ -133,8 +139,8 @@ footer{padding-block:36px 56px;color:var(--muted);font-size:13px}
     <h2>Start in 3 steps</h2>
     <p class="sub">About five minutes, once.</p>
     <div class="steps">
-      <div class="step"><h3>Connect Draup in Claude</h3><p>In Claude, open Settings, then Connectors. Add <b>Draup for Sales</b> and sign in with your Draup account. It's read-only.</p></div>
-      <div class="step"><h3>Tell Claude about you</h3><p>Paste the <button class="copy" data-start style="margin-top:4px">Copy the start-here prompt</button> into a new chat with your role, offering, territory and competitors.</p></div>
+      <div class="step"><h3>Connect Draup to your AI</h3><p>Add <b>Draup for Sales</b> and sign in with your Draup account. It's read-only.</p><p class="connect"><a class="btn small claude" id="lnkClaude" href="#">Add to Claude</a> <a class="btn small gpt" id="lnkGpt" href="#">Add to ChatGPT</a></p><p class="minor">Using Claude Code, Cursor, VS Code or your own agent? <a id="lnkCustom" href="#">Custom MCP setup</a></p></div>
+      <div class="step"><h3>Tell your AI about you</h3><p>Paste the <button class="copy" data-start style="margin-top:4px">Copy the start-here prompt</button> into a new chat with your role, offering, territory and competitors.</p></div>
       <div class="step"><h3>Pick a prompt and fill the brackets</h3><p>Copy the detailed prompt, replace the highlighted <code style="background:var(--mark);color:var(--mark-ink);padding:0 4px;border-radius:4px">[parts]</code> and send. Use the follow-ups to go deeper.</p></div>
     </div>
   </section>
@@ -192,6 +198,10 @@ const save=()=>{try{localStorage.setItem("dsp-filters",JSON.stringify({role,cat,
 
 $("#tagline").textContent = M.tagline;
 $("#repoLink").href = M.repo;
+const LK = M.links||{};
+["lnkClaude","heroClaude"].forEach(id=>{const a=document.getElementById(id); if(a) a.href=LK.claude;});
+["lnkGpt","heroGpt"].forEach(id=>{const a=document.getElementById(id); if(a) a.href=LK.chatgpt;});
+{const a=document.getElementById("lnkCustom"); if(a) a.href=M.repo.replace(/\/$/,"")+"/blob/main/guides/connect.md#option-3-any-mcp-client-custom-connector";}
 $("#stats").innerHTML = [[P.length,"detailed prompts"],[PB.length,"playbooks"],[Object.keys(M.roles).length,"sales roles"],[P.filter(p=>p.status==="tested").length,"tested on live data"]].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("");
 
 const feat = (M.featured&&M.featured.length?M.featured.map(id=>P.find(p=>p.id===id)).filter(Boolean):M.categories.filter(c=>c.id!=="setup").map(c=>P.find(p=>p.category===c.id)).filter(Boolean)).slice(0,8);
@@ -235,7 +245,7 @@ function render(){
 $("#pbs").innerHTML = PB.map(pb=>`<div class="pb"><h3>${esc(pb.title)}</h3><p>${esc(pb.goal)}</p><ol>${pb.steps.map(s=>{const p=P.find(x=>x.id===s.prompt_id);return p?`<li><button data-go="${p.id}">${esc(p.title)}</button></li>`:""}).join("")}</ol><p style="margin-top:8px">${esc(pb.time||"")} · ${pb.for.map(roleName).map(esc).join(", ")}</p></div>`).join("");
 const pdf = (f,t,d)=>`<a class="dl" href="${raw}/raw/main/pdf/${f}"><b>${t}</b><span>${d}</span></a>`;
 $("#dls").innerHTML = pdf("draup-sales-prompts-quick-start.pdf","Quick-start guide","Setup, the start-here prompt and the 12 most useful quick prompts.") + pdf("draup-sales-prompts-catalogue.pdf","Full prompt catalogue","Every prompt in full, with inputs, follow-ups and tips.") + pdf("draup-sales-prompts-playbooks.pdf","Playbooks","Step-by-step workflows for common sales jobs.") + `<a class="dl" href="${raw}/tree/main/pdf/roles"><b>Role cheat sheets</b><span>The quick prompts for each of the 8 roles, as PDFs.</span></a>`;
-$("#foot").innerHTML = `Version ${esc(M.version)} · updated ${esc(M.updated)} · Prompts and guides licensed <a href="${raw}/blob/main/LICENSE">CC BY 4.0</a>. "Draup" is a trademark of its owner. <a href="${raw}">Source and contributions on GitHub</a>.`;
+$("#foot").innerHTML = `Need help connecting? <a href="${raw}/blob/main/guides/connect.md">Connect guide</a> · ${esc(LK.support||"")}<br>Version ${esc(M.version)} · updated ${esc(M.updated)} · Prompts and guides licensed <a href="${raw}/blob/main/LICENSE">CC BY 4.0</a>. "Draup" is a trademark of Draup, Inc. <a href="${raw}">Source and contributions on GitHub</a>.`;
 
 function flash(b, label){ const t=b.textContent; b.textContent=label; b.classList.add("done"); setTimeout(()=>{b.textContent=t;b.classList.remove("done")},1500); }
 function copyText(text, b){

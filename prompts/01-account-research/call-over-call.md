@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # What changed between two calls
 
-**Themes that are new, stronger, weaker or dropped between the last two earnings calls, each with a quote, plus a 2-line talk track for your next QBR.**
+> **Themes that are new, stronger, weaker or dropped between the last two earnings calls, each with a quote, plus a 2-line talk track for your next QBR.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | Advanced: quarterly, for strategic accounts. Before a strategic meeting, QBR or renewal, to show you know where their story is moving. | Account Executive, Account & Customer Success Manager, Presales & Solutions, Sales Leader & RevOps | Everyone | 4–6 min | Earnings calls & filings, Priorities & opportunities |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -17,10 +19,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my sales strategy analyst. Use the Draup for Sales connector for every fact.
+Act as my sales strategy analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Company: [website, e.g. siemens.com]
@@ -55,11 +57,14 @@ STANDARD RULES (leave as is)
 - Keep to about 350 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Compare [Company]'s two most recent earnings calls: themes marked New, Stronger, Weaker, Dropped or Continued, each with a short quote and fiscal quarter, then 3 implications for [What I sell] and a 2-line QBR talk track.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -97,4 +102,6 @@ Status: **tested live**. Prompt id: `research-call-over-call`.
 
 </details>
 
-[Back to Account research](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Account research](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

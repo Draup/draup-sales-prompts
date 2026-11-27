@@ -1,6 +1,8 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Claude Project instructions (recommended)
 
-**Instructions for a Claude Project, so every chat in it knows who you are and follows the library's data rules without pasting anything.**
+> **Instructions for a Claude Project, so every chat in it knows who you are and follows the library's data rules without pasting anything.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
@@ -14,12 +16,12 @@
 
 ## 2. Copy the detailed prompt
 
-Copy this into your Claude Project's instructions and fill in the `[bracketed]` parts once.
+Copy this into your Claude Project's instructions (or a ChatGPT Project's instructions) and fill in the `[bracketed]` parts once.
 
 ```text
 Paste this into your Claude Project's instructions; fill in ABOUT ME.
 
-You are my sales research partner in this Project. Use the Draup for Sales connector for every fact.
+You are my sales research partner in this Project. Use Draup for Sales for every fact.
 
 ABOUT ME (edit these)
 - My role: [e.g. Enterprise AE, North America retail]
@@ -57,11 +59,14 @@ RULES (every later answer; leave as is)
 - Never use Draup's own customer or user data. End every answer with "Recommended next step" and "Gaps".
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Copy the detailed version on this page into your Claude Project's instructions, fill in the ABOUT ME section once, and switch on the Draup for Sales connector. Every chat in that Project then uses your context and the data rules.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -87,7 +92,7 @@ Run the one-page account brief on my top named account.
 
 ## Related prompts
 
-- [Tell Claude about you](../../prompts/00-start-here/about-me.md): Claude remembers who you are, whether you sell software or services, your ideal customer, territory, competitors and proof point, and applies the library's data rules to every later answer.
+- [Tell your AI about you](../../prompts/00-start-here/about-me.md): Your assistant (Claude or ChatGPT) remembers who you are, whether you sell software or services, your ideal customer, territory, competitors and proof point, and applies the library's data rules to every later answer.
 - [One-page account brief](../../prompts/01-account-research/account-brief.md): A one-page brief on size, money, priorities, recent deals and any competitor in the stack, ending with who to call and why now.
 - [Weekly trigger sweep for my book](../../prompts/04-signals-and-timing/weekly-book-sweep.md): One table of the week's real triggers across up to 10 accounts, each with a so-what and an action, plus a clean list of accounts with nothing new.
 
@@ -100,4 +105,6 @@ Status: **tested live**. Prompt id: `setup-claude-project`.
 
 </details>
 
-[Back to Start here](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Start here](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

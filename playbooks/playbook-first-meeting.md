@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # First meeting in 30 minutes
 
-**Goal:** Walk into a first meeting knowing the account, the people in the room and the questions that will earn a second meeting.
+> **Goal:** Walk into a first meeting knowing the account, the people in the room and the questions that will earn a second meeting.
 
-**For:** Account Executive, SDR / BDR, Presales & Solutions · **Time:** 25–35 min
+**For:** Account Executive, SDR / BDR, Presales & Solutions · **Time:** 25–35 min · **Steps:** 4
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. 10-minute pre-call snapshot
 
@@ -66,4 +68,6 @@ Build an internal Draup battlecard on software rival [Competitor]: top 5 product
 
 A one-page meeting brief: account snapshot, who's who, an opening line, your discovery questions with the evidence behind each, and (if a rival is in play) the objection to expect.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)

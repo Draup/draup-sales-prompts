@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # One-page vertical market snapshot
 
-**A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom.**
+> **A one-page view of an industry: revenue and spend, top priorities with likely owners, technologies gaining ground, and who outsources what to whom.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | You are entering a vertical, building a territory plan, or need industry context for a pitch. | Sales Leader & RevOps, Marketing & ABM, Account Executive, Services, SI & Staffing Seller | Everyone | 4–6 min | Industry ecosystem |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -17,10 +19,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my industry analyst. Use the Draup for Sales connector for every fact.
+Act as my industry analyst. Use Draup for Sales for every fact.
 
 INPUTS (edit these)
 - Vertical: [Industry, e.g. Retail]
@@ -58,11 +60,14 @@ STANDARD RULES (leave as is)
 - Keep to about 450 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 Give me a one-page Draup snapshot of [Vertical]: revenue, IT and R&D spend with growth, the 5 priorities most relevant to [What I sell], 5 vertical-specific growing technologies, top vendors (no agencies or staffing), top outsourcers and workloads.
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -100,4 +105,6 @@ Status: **tested live**. Prompt id: `market-vertical-snapshot`.
 
 </details>
 
-[Back to Industry and market intelligence](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Industry and market intelligence](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

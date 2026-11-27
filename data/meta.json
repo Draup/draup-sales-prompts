@@ -1,7 +1,7 @@
 {
  "title": "Draup Sales Prompt Library",
- "tagline": "Ready-to-use Claude prompts that turn Draup's sales intelligence into account briefs, buyer maps, target lists and outreach.",
- "version": "1.0.0",
+ "tagline": "Ready-to-use prompts for Claude and ChatGPT that turn Draup's sales intelligence into account briefs, buyer maps, target lists and outreach.",
+ "version": "1.1.0",
  "updated": "2026-11-27",
  "repo": "https://github.com/Draup/draup-sales-prompts",
  "pages": "https://draup.github.io/draup-sales-prompts/",
@@ -194,5 +194,14 @@
   "software": "Software sellers",
   "services": "Services sellers",
   "both": "Everyone"
+ },
+ "links": {
+  "claude": "https://claude.ai/directory/draup-for-sales",
+  "chatgpt": "https://chatgpt.com/plugins/plugin_asdk_app_6ad0b735a0d88191b98c333a6fe40ce7",
+  "mcp_docs": "https://draup.com/sales/data/model-context-protocol",
+  "mcp_url": "https://mcp.draup.com/mcp/sales",
+  "mcp_url_token": "https://mcp.draup.com/mcp?product-id=3",
+  "support": "support@draup.com",
+  "draup": "https://draup.com"
  }
 }

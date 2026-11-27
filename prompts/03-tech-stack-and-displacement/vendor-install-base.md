@@ -1,12 +1,14 @@
+[Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)
+
 # Size a vendor's install base
 
-**What a vendor sells and how many companies use each product, so you can size an attach, co-sell or competitive-replacement motion.**
+> **What a vendor sells and how many companies use each product, so you can size an attach, co-sell or competitive-replacement motion.**
 
 | Use it when | Best for | Seller type | Time | Draup data |
 |---|---|---|---|---|
 | Planning a partner motion, sizing a competitor's footprint, or picking which product to build a campaign around. | Partnerships & Alliances, Marketing & ABM, Presales & Solutions | Everyone | 1–2 min | Tech stack |
 
-> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+**Before you start:** [connect Draup for Sales](../../guides/connect.md) in Claude or ChatGPT, and run [Tell your AI about you](../../prompts/00-start-here/about-me.md) once in the chat so *What I sell*, territory and competitors fill in automatically.
 
 ## 1. Fill in
 
@@ -17,10 +19,10 @@
 
 ## 2. Copy the detailed prompt
 
-Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+Copy it with the button in the box's top-right corner, replace the `[bracketed]` parts, and paste into Claude or ChatGPT with Draup for Sales switched on.
 
 ```text
-Act as my partner and market-sizing analyst. Use the Draup for Sales connector for every fact. Don't use outside knowledge unless I ask, and label it if you do.
+Act as my partner and market-sizing analyst. Use Draup for Sales for every fact. Don't use outside knowledge unless I ask, and label it if you do.
 
 INPUTS (edit these)
 - Vendor: [website of the vendor to size, partner or competitor, e.g. servicenow.com]
@@ -53,11 +55,14 @@ STANDARD RULES (leave as is)
 - Keep to about 250 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
 ```
 
-## In a hurry? Quick version
+<details>
+<summary><b>In a hurry? Quick version</b></summary>
 
 ```text
 What products does [Vendor] build, and how many companies in Draup use each one? Table sorted by install base, with an attach, co-sell or replace angle for [What I sell].
 ```
+
+</details>
 
 ## 3. Keep going: follow-up prompts
 
@@ -95,4 +100,6 @@ Status: **tested live**. Prompt id: `tech-vendor-install-base`.
 
 </details>
 
-[Back to Tech stack and displacement](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)
+---
+
+[Back to Tech stack and displacement](README.md) · [Home](../../README.md) · [Connect Draup](../../guides/connect.md) · [All prompts](../../README.md#find-prompts-by-sales-job) · [Playbooks](../../playbooks/README.md) · [Glossary](../../guides/glossary.md)

@@ -1,10 +1,12 @@
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
+
 # Territory and list building
 
-**Goal:** Turn an ICP into a sized, prioritised and tiered account list your team can work this quarter.
+> **Goal:** Turn an ICP into a sized, prioritised and tiered account list your team can work this quarter.
 
-**For:** Sales Leader & RevOps, SDR / BDR, Account Executive, Marketing & ABM · **Time:** 40–50 min
+**For:** Sales Leader & RevOps, SDR / BDR, Account Executive, Marketing & ABM · **Time:** 40–50 min · **Steps:** 4
 
-**Step 0.** Run [Tell Claude about you](../prompts/00-start-here/about-me.md) so Claude knows what you sell.
+**Step 0.** [Connect Draup for Sales](../guides/connect.md) and run [Tell your AI about you](../prompts/00-start-here/about-me.md) so your assistant knows what you sell. Then run the steps below in the same chat.
 
 ## Step 1. Build and size an ICP list
 
@@ -66,4 +68,6 @@ For the first 5 of [Accounts], write a 2-sentence opener to a [Persona] tied to 
 
 A tiered territory list with the scoring shown, plus ready-to-send openers for the top-tier accounts.
 
-[All playbooks](README.md) · [Back to the library](../README.md)
+---
+
+[Home](../README.md) · [Connect Draup](../guides/connect.md) · [All prompts](../README.md#find-prompts-by-sales-job) · [Playbooks](../playbooks/README.md) · [Glossary](../guides/glossary.md)
