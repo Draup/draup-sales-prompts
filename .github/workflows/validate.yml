@@ -1,0 +1,23 @@
+name: Validate prompts
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate data
+        run: python3 scripts/build.py --check
+      - name: Check generated files are up to date
+        run: |
+          python3 scripts/build.py
+          if [ -n "$(git status --porcelain -- README.md prompts roles playbooks guides docs data/prompts.csv)" ]; then
+            git status --porcelain
+            echo "Generated files are out of date. Run python3 scripts/build.py and commit the result."
+            exit 1
+          fi

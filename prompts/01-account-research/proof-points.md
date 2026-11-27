@@ -1,0 +1,100 @@
+# Their leaders' own words on [Topic]
+
+**Up to six verbatim quotes from leadership on your topic, with speaker, fiscal quarter and call date, or the annual-filing sections to read when there's no call.**
+
+| Use it when | Best for | Seller type | Time | Draup data |
+|---|---|---|---|---|
+| You want to open with the customer's own words rather than your claims. | Account Executive, Presales & Solutions, Marketing & ABM, Account & Customer Success Manager | Everyone | 2–4 min | Earnings calls & filings |
+
+> **Tip:** run [Tell Claude about you](../../prompts/00-start-here/about-me.md) once in the chat first. Claude will then fill in *What I sell*, territory and competitors for you.
+
+## 1. Fill in
+
+| Placeholder | Example |
+|---|---|
+| `[Company]` | target.com |
+| `[Topic]` | AI, supply chain, technology investment |
+| `[What I sell]` | AI-driven demand forecasting software |
+
+## 2. Copy the detailed prompt
+
+Replace the `[bracketed]` parts, then paste into Claude with the Draup for Sales connector switched on.
+
+```text
+Act as my sales research analyst. Use the Draup for Sales connector for every fact.
+
+INPUTS (edit these)
+- Company: [website, e.g. target.com]
+- Topic: [e.g. AI, supply chain, technology investment]
+- What I sell: [one line, e.g. AI-driven demand forecasting software — skip if you ran the start-here prompt]
+
+STEPS
+1. Find [Company] by website and confirm it is the parent, not a subsidiary, brand or sister company; if unsure, ask me. Use Draup's exact name from then on.
+2. List the earnings-call transcripts, newest first, and open the most recent. Note each speaker's title from the introductions, and whether it is an analyst or a press call.
+3. Find every passage where an executive talks about [Topic], preferring the CEO and CFO. If [Topic] isn't there, say so and repeat on the previous call.
+4. Fallback: if there are no transcripts, or neither call mentions [Topic], pull the annual filings Draup holds for the last 5 years (US SEC filers only).
+
+OUTPUT
+- Bottom line: 2 sentences — the answer and what it means for [What I sell].
+- Header: call date, the company's own name for the period with Draup's label in brackets, call type.
+- "Quotes": # | Speaker | Title | Verbatim quote (40 words or fewer) | What it signals. Up to 6, strongest first.
+- "How to use this with [What I sell]": 2 bullets, each pairing a quote with a talking point.
+- Fallback only, "Filings to read": Fiscal year | Type | Filed date | Link; then up to 4 sections for [What I sell] (e.g. Risk Factors, Management's Discussion and Analysis, Business, Properties), one line each on what to look for.
+- Recommended next step: who to contact (title or name), what to do (call, email, intro, meeting) and why now (one dated fact).
+- Gaps: what Draup didn't have — worth asking in discovery.
+
+RULES
+- Quote word for word; trim with an ellipsis, never paraphrase inside quotation marks. Executives only, not analysts.
+- Don't summarise or quote a filing you haven't opened. Non-US companies usually have none; that's expected.
+- Read only what you need; reproduce nothing beyond the quotes.
+- Draup's quarter label follows the fiscal year and can run ahead of the company's own wording; show both.
+
+STANDARD RULES (leave as is)
+- If an input still shows its bracketed example, use my saved context or ask me before starting.
+- Date every number and fact. If Draup has no data, write "Not in Draup"; never fill gaps from memory.
+- Keep to about 300 words plus tables. Show the top results first, then offer to continue rather than pulling everything.
+```
+
+## In a hurry? Quick version
+
+```text
+Quote [Company]'s leaders on [Topic] from the latest earnings call: up to 6 verbatim quotes with speaker, title, fiscal quarter and call date. If there's no call, list annual filings and sections to read.
+```
+
+## 3. Keep going: follow-up prompts
+
+Paste these into the same chat after the first answer.
+
+```text
+Do the same for the previous call. Has the tone on [Topic] changed?
+```
+
+```text
+Pull every number they stated in this call into a table.
+```
+
+```text
+Write a 3-line email opener using the strongest quote.
+```
+
+## Tips for better results
+
+- Quarters follow the company's fiscal year, which can run a year ahead of the calendar. The prompt shows both labels.
+- For US-listed companies, the filing fallback points you to risk-factor language you can cite.
+
+## Related prompts
+
+- [Numbers from the latest call](../../prompts/01-account-research/numbers-from-the-call.md): Every number management stated on the latest earnings call (guidance, targets, KPIs, investment plans) in one table, with the three that matter for your deal and the question each opens.
+- [What changed between two calls](../../prompts/01-account-research/call-over-call.md): Themes that are new, stronger, weaker or dropped between the last two earnings calls, each with a quote, plus a 2-line talk track for your next QBR.
+- [Account SWOT, outside-in](../../prompts/01-account-research/swot.md): A SWOT of the account built only from dated Draup evidence, ending with where your offer fits and who to take it to.
+
+<details>
+<summary>Under the hood: Draup tools this prompt typically uses</summary>
+
+`get_account_id`, `get_account_transcripts`, `account_transcripts_v3`, `accounts_get_account_annual_reports_v3`
+
+Status: **tested live**. Prompt id: `research-proof-points`.
+
+</details>
+
+[Back to Account research](README.md) · [All prompts](../../README.md#find-prompts-by-sales-job)

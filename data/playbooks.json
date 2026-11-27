@@ -1,0 +1,366 @@
+[
+ {
+  "id": "playbook-first-meeting",
+  "title": "First meeting in 30 minutes",
+  "for": [
+   "AE",
+   "SDR",
+   "SE"
+  ],
+  "goal": "Walk into a first meeting knowing the account, the people in the room and the questions that will earn a second meeting.",
+  "time": "25–35 min",
+  "steps": [
+   {
+    "prompt_id": "research-precall-snapshot",
+    "why": "Gives you the 10-minute picture: size, money, current priorities and what just changed.",
+    "what_to_look_for": "One priority and one recent change you can mention in the first two minutes. Check it's the parent company, not a subsidiary."
+   },
+   {
+    "prompt_id": "people-buying-committee",
+    "why": "Shows who owns the problem and the budget in the function you sell into, including a potential blocker.",
+    "what_to_look_for": "Your entry point (likely champion), the sponsor to reach later (economic buyer) and any potential blocker. Go by full titles, not seniority labels. If profiles in Europe or the UK come back empty, ask about the team in the meeting."
+   },
+   {
+    "prompt_id": "people-discovery-questions",
+    "why": "Turns the snapshot into hypothesis-led questions, each tied to a cited fact.",
+    "what_to_look_for": "Pick the 3 questions you'll definitely ask, and the one that tests whether the priority has budget this year."
+   },
+   {
+    "prompt_id": "content-battlecard-product",
+    "why": "Optional: run it when a known rival is in the deal. Selling services? Use “Battlecard: rival services firm” instead.",
+    "what_to_look_for": "The objection their rep will raise and one trap question you can work into discovery."
+   }
+  ],
+  "finish": "A one-page meeting brief: account snapshot, who's who, an opening line, your discovery questions with the evidence behind each, and (if a rival is in play) the objection to expect."
+ },
+ {
+  "id": "playbook-displacement-campaign",
+  "title": "Win accounts from a services competitor",
+  "for": [
+   "SVC",
+   "AE",
+   "SDR",
+   "MKT"
+  ],
+  "goal": "Find accounts where a rival services firm is the incumbent, pick the ones where it's weakest, and open with peer proof and a timely, evidence-based message.",
+  "time": "45–60 min",
+  "steps": [
+   {
+    "prompt_id": "services-competitor-customers",
+    "why": "Lists the accounts where the rival delivers the workload you want to win.",
+    "what_to_look_for": "Accounts in your territory where the rival's footprint is small. Those are usually easier to unseat than its strategic accounts."
+   },
+   {
+    "prompt_id": "services-competitor-at-account",
+    "why": "Shows, for each shortlisted account, how deep the rival is and where it's thin.",
+    "what_to_look_for": "Wedge workloads where the rival has few engagements (3 or fewer is an editable default) and that match what you sell. Ignore catch-all workloads such as Project/Programs Management. Drop accounts where the rival is #1 across the board."
+   },
+   {
+    "prompt_id": "tech-priority-stack-incumbent-map",
+    "why": "Shows who's already working each of the account's stated priorities.",
+    "what_to_look_for": "A priority the incumbent doesn't cover, or covers with dated tools: that's your reason to change."
+   },
+   {
+    "prompt_id": "services-peer-deals",
+    "why": "Finds recent outsourcing engagements at the account's peers in your workload, for social proof.",
+    "what_to_look_for": "One peer move you can cite in the opener. Present it as a public industry move, not as your own customer."
+   },
+   {
+    "prompt_id": "signals-signal-to-email",
+    "why": "Times the outreach to something that just happened and writes the opener, 5 accounts per run.",
+    "what_to_look_for": "A signal from the last 60 days tied to the wedge priority. If there's none, park the account and revisit next month."
+   }
+  ],
+  "finish": "A short list of displacement targets, each with the wedge workload, the reason to change, a peer proof line and a ready-to-send opener."
+ },
+ {
+  "id": "playbook-weekly-signals",
+  "title": "Weekly signal routine",
+  "for": [
+   "AE",
+   "AM",
+   "SDR",
+   "LEAD"
+  ],
+  "goal": "Spend about half an hour each Monday finding which accounts and industry moves deserve action this week, and send the first touches.",
+  "time": "20–30 min weekly",
+  "steps": [
+   {
+    "prompt_id": "signals-weekly-book-sweep",
+    "why": "Scans up to 10 named accounts for real triggers and drops the noise.",
+    "what_to_look_for": "Accounts with a leadership change, new site, deal, acquisition, funding or layoff in the last 7–14 days. Ignore outages, stock chatter and look-alike names."
+   },
+   {
+    "prompt_id": "signals-vertical-digest",
+    "why": "Shows what moved across your industry, including companies not yet on your list.",
+    "what_to_look_for": "Peer moves you can use as social proof, and any new company worth adding to your book."
+   },
+   {
+    "prompt_id": "signals-change-log",
+    "why": "For the 2–3 hottest accounts, lists everything material that changed since your last touch.",
+    "what_to_look_for": "What's different since you last spoke: new people, new tools, hiring shifts. That's your reason to call."
+   },
+   {
+    "prompt_id": "signals-signal-to-email",
+    "why": "Turns the week's best triggers into sourced openers, so the routine ends in a sent touch, not a list.",
+    "what_to_look_for": "Strong rows (signal linked to a priority) go out today; the rest get a call or wait for a better hook."
+   }
+  ],
+  "finish": "3–5 accounts to contact this week, each with the trigger, its date, the angle and a ready-to-send opener."
+ },
+ {
+  "id": "playbook-account-plan-qbr",
+  "title": "Existing customer: account plan → risk → QBR",
+  "for": [
+   "AM",
+   "AE",
+   "LEAD"
+  ],
+  "goal": "Build or refresh the plan for a key customer, turn it into concrete expansion plays, check it for risk, and walk into the QBR with a point of view and clear asks.",
+  "time": "45–60 min",
+  "steps": [
+   {
+    "prompt_id": "plan-account-plan",
+    "why": "Lays out priorities, buyers, installed tech, providers and an optional SWOT.",
+    "what_to_look_for": "The 2–3 growth areas with the strongest evidence. Mark any section Draup couldn't fill as a discovery item for the QBR."
+   },
+   {
+    "prompt_id": "plan-entry-points",
+    "why": "Turns the plan into the five best ways in for what you sell, each with evidence, incumbents and the likely owner.",
+    "what_to_look_for": "One or two entry points you can name as an expansion ask in the QBR."
+   },
+   {
+    "prompt_id": "plan-risk-check",
+    "why": "Rates renewal and relationship risk Red/Amber/Green with dated evidence, including your sponsor.",
+    "what_to_look_for": "Any Red row, especially exits in your sponsor's function or layoffs. A newly detected competitor tool is Amber: verify it before treating it as a threat. Each Red or Amber row needs an owner before the QBR."
+   },
+   {
+    "prompt_id": "plan-qbr-prep",
+    "why": "Combines the outcomes you delivered with what changed at the customer, and produces talking points and 3 asks.",
+    "what_to_look_for": "Talking points that link their newest priority to value you've delivered, and the 3 asks (expansion, reference, executive sponsor)."
+   }
+  ],
+  "finish": "An account plan with expansion plays, a RAG risk view with owners, and a QBR brief with talking points and 3 asks."
+ },
+ {
+  "id": "playbook-gcc-services-pursuit",
+  "title": "Global capability centre (GCC) & outsourcing pursuit",
+  "for": [
+   "SVC",
+   "LEAD",
+   "SE"
+  ],
+  "goal": "Size an account's outsourcing and captive-centre (GCC) footprint, read its sourcing intent, check the main incumbent, and build a pursuit brief for the executive sponsor.",
+  "time": "55–70 min",
+  "steps": [
+   {
+    "prompt_id": "services-outsourcing-footprint",
+    "why": "Shows who the account outsources to, for which workloads, and how concentrated it is.",
+    "what_to_look_for": "Workloads with many small providers (a consolidation play) or one dominant incumbent (a displacement or second-vendor play). Ignore catch-all workloads."
+   },
+   {
+    "prompt_id": "services-gcc-opportunity",
+    "why": "Maps the account's company-owned offshore centres: where, how big, which functions and whether they're growing.",
+    "what_to_look_for": "Whether the GCC footprint is expanding, flat or shrinking, and which functions sit there. That points to optimisation, centre-of-excellence expansion or a build-operate-transfer play. Treat site headcount as indicative."
+   },
+   {
+    "prompt_id": "services-reinsourcing-risk",
+    "why": "Checks whether the account is building in-house what it used to outsource.",
+    "what_to_look_for": "Outsourced workloads where the account is now hiring heavily or opening sites. Position augmentation or transition support there, not pure outsourcing."
+   },
+   {
+    "prompt_id": "services-competitor-at-account",
+    "why": "Shows how deep the #1 incumbent is and where it's thin.",
+    "what_to_look_for": "The wedge workloads you'll lead with, and the incumbent's strongest areas to avoid."
+   },
+   {
+    "prompt_id": "plan-cxo-pursuit-brief",
+    "why": "Pulls it together into a go/no-go brief for the executive pursuit.",
+    "what_to_look_for": "The top 3 workloads to lead with, the named buyer for each, and a 90-day plan you can commit to."
+   }
+  ],
+  "finish": "A CXO pursuit brief: outsourcing and GCC picture, sourcing intent by workload, the incumbent's weak spots, the lead offer, buyers, a go/no-go call and a 90-day plan."
+ },
+ {
+  "id": "playbook-partner-cosell",
+  "title": "Partner co-sell",
+  "for": [
+   "PTN",
+   "AE",
+   "SVC"
+  ],
+  "goal": "Find where partners are already embedded at a target account, pick the right one to co-sell with, and open jointly.",
+  "time": "35–45 min",
+  "steps": [
+   {
+    "prompt_id": "services-partner-map",
+    "why": "Shows which providers and vendors are already linked to each priority at the account, and whether each is a partner, a competitor or an opening.",
+    "what_to_look_for": "Providers already working the priority next to yours. They have access and credibility."
+   },
+   {
+    "prompt_id": "services-cosell-partner",
+    "why": "Shortlists the partners already delivering your workload at the account and skilled in your technology, with the one to call first.",
+    "what_to_look_for": "Your existing partners ranked first, then the one with the deepest footprint in your workload. That's your co-sell pick."
+   },
+   {
+    "prompt_id": "services-competitor-profile",
+    "why": "Profiles the partner you picked: top customers, industries, workloads and delivery hubs.",
+    "what_to_look_for": "Overlap with your target list and industry, and delivery locations near the account's sites. That's the evidence for your co-sell ask to the partner."
+   },
+   {
+    "prompt_id": "content-abm-messages",
+    "why": "Writes joint first-touch messages for the shared accounts, using the Co-sell partner input, 5 accounts per pass.",
+    "what_to_look_for": "Messages that pair the account's priority with a recent signal and read as coming from both firms, ready for both teams to send."
+   }
+  ],
+  "finish": "A co-sell pick with evidence (where the partner is embedded and how it overlaps with your list) and joint openers for the shared target accounts."
+ },
+ {
+  "id": "playbook-territory-list",
+  "title": "Territory and list building",
+  "for": [
+   "LEAD",
+   "SDR",
+   "AE",
+   "MKT"
+  ],
+  "goal": "Turn an ICP into a sized, prioritised and tiered account list your team can work this quarter.",
+  "time": "40–50 min",
+  "steps": [
+   {
+    "prompt_id": "prospect-icp-list",
+    "why": "Builds and counts the list from industry, location, size and technology.",
+    "what_to_look_for": "A list sized realistically for your team's capacity. Check companies are in the right primary industry and flag any that look inactive."
+   },
+   {
+    "prompt_id": "prospect-revenue-growth-screen",
+    "why": "Finds the fastest revenue growers in the segment, with acquisition-driven jumps flagged.",
+    "what_to_look_for": "Organic growers to move up the list; growth that comes from an acquisition needs a different story."
+   },
+   {
+    "prompt_id": "plan-propensity-tiering",
+    "why": "Scores up to 25 accounts on an editable Fit + Timing rubric and splits them into tiers.",
+    "what_to_look_for": "That the rubric weights match how you actually win. Adjust them, re-run, and agree the top tier with the team."
+   },
+   {
+    "prompt_id": "content-abm-messages",
+    "why": "Gives the top-tier accounts a personalised first touch, 5 accounts per pass.",
+    "what_to_look_for": "Strong rows (signal linked to priority) go to SDRs this week; Weak rows go to a nurture track."
+   }
+  ],
+  "finish": "A tiered territory list with the scoring shown, plus ready-to-send openers for the top-tier accounts."
+ },
+ {
+  "id": "playbook-new-industry",
+  "title": "Enter a new industry",
+  "for": [
+   "MKT",
+   "LEAD",
+   "SDR",
+   "AE"
+  ],
+  "goal": "Learn a new industry fast, see who wins there, build a first account list, and launch outbound with a point of view.",
+  "time": "45–60 min",
+  "steps": [
+   {
+    "prompt_id": "market-vertical-snapshot",
+    "why": "Gives a one-page view of the industry: spend and growth, top priorities, technologies gaining ground and who outsources what.",
+    "what_to_look_for": "The 2–3 priorities closest to what you sell. If the industry returns zeros, Claude tries the parent industry; check which one it used."
+   },
+   {
+    "prompt_id": "market-vendor-league",
+    "why": "Shows who really wins outsourcing work in the industry, plus the top workloads and buyers.",
+    "what_to_look_for": "The firms you'll meet most often, and buyers that use many providers: often the easiest way in."
+   },
+   {
+    "prompt_id": "prospect-icp-list",
+    "why": "Builds and sizes the target list in the industry from location, size and technology.",
+    "what_to_look_for": "A first list of 25 accounts in the right primary industry, sized for your team."
+   },
+   {
+    "prompt_id": "market-industry-pov",
+    "why": "Turns the industry's priorities into a point of view with company examples.",
+    "what_to_look_for": "One sentence you'd say to any executive in the industry, backed by a dated company example."
+   },
+   {
+    "prompt_id": "content-email-sequence",
+    "why": "Writes a 3-email sequence for your main persona, built on those priorities.",
+    "what_to_look_for": "Emails that open with a real, dated industry move and never present it as your customer."
+   }
+  ],
+  "finish": "An industry brief, the competitors to expect, a first target list, a one-line point of view and a ready-to-load email sequence."
+ },
+ {
+  "id": "playbook-expand-customer",
+  "title": "Expand an existing customer",
+  "for": [
+   "AM",
+   "AE",
+   "LEAD"
+  ],
+  "goal": "Find where an existing customer is growing, pick the best way in for your next deal, map the people, and open with a timely message.",
+  "time": "40–50 min",
+  "steps": [
+   {
+    "prompt_id": "plan-expansion-footprint",
+    "why": "Shows the metros where the customer is adding people in one function, with new sites called out.",
+    "what_to_look_for": "Locations or functions growing fastest. New sites are inferred from postings, so confirm them in conversation."
+   },
+   {
+    "prompt_id": "plan-entry-points",
+    "why": "Ranks the five best ways in for what you sell, each with evidence, incumbents and the likely owner.",
+    "what_to_look_for": "The entry point with the strongest evidence and the fewest incumbents. That's your next deal."
+   },
+   {
+    "prompt_id": "people-buying-committee",
+    "why": "Maps who buys, influences or could block in that function.",
+    "what_to_look_for": "The entry point (likely champion), the sponsor to reach later (economic buyer) and any potential blocker."
+   },
+   {
+    "prompt_id": "tech-priority-stack-incumbent-map",
+    "why": "Shows who's already working each priority, labelled co-sell or displace for what you sell.",
+    "what_to_look_for": "A priority with no incumbent (greenfield) or one where you can co-sell with a provider already there."
+   },
+   {
+    "prompt_id": "signals-signal-to-email",
+    "why": "Writes a sourced opener for the entry-point owner, tied to a recent signal.",
+    "what_to_look_for": "A signal from the last 60 days that links to the entry point. If there's none, lead with the priority and a proof point."
+   }
+  ],
+  "finish": "One expansion play with the evidence, the people to reach in order, the incumbents to work with or around, and a ready-to-send opener."
+ },
+ {
+  "id": "playbook-renewal-defence",
+  "title": "Renewal defence",
+  "for": [
+   "AM",
+   "LEAD",
+   "AE"
+  ],
+  "goal": "Spot what has changed at a customer ahead of renewal, rate the risk, rebuild relationships with new leaders, and walk into the review with proof of value.",
+  "time": "40–50 min",
+  "steps": [
+   {
+    "prompt_id": "signals-change-log",
+    "why": "Lists everything material that changed at the customer since a date you choose (up to 12 months back).",
+    "what_to_look_for": "New leaders, new tools, hiring shifts or restructuring in the areas you serve."
+   },
+   {
+    "prompt_id": "plan-risk-check",
+    "why": "Rates renewal and relationship risk Red/Amber/Green with dated evidence, including your sponsor.",
+    "what_to_look_for": "Any Red row, and whether your sponsor is still in role. A newly detected competitor tool is Amber until you verify it."
+   },
+   {
+    "prompt_id": "people-new-leaders-warm-paths",
+    "why": "Shows leaders who joined or were promoted in your area in the last 6 months and where they came from.",
+    "what_to_look_for": "New decision-makers you haven't met yet. Plan an introduction before the renewal conversation starts."
+   },
+   {
+    "prompt_id": "plan-qbr-prep",
+    "why": "Combines the outcomes you delivered with what changed, into talking points and 3 asks.",
+    "what_to_look_for": "Proof of value tied to their newest priority, and the asks that lock in the renewal (executive sponsor, reference, expansion)."
+   }
+  ],
+  "finish": "A dated change log, a RAG risk view with owners, a plan to meet new leaders, and a value-led review brief with 3 asks."
+ }
+]

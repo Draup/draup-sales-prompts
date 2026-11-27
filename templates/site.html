@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Draup Sales Prompt Library</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Ready-to-use Claude prompts that turn Draup's sales intelligence into account briefs, buyer maps, target lists and outreach.">
+<style>
+/* Layout: hero + 3-step start + featured strip, then a sticky filter rail over one reading column of prompt cards; playbooks and downloads close the page. */
+:root{
+  --bg:#f4f6f8; --surface:#fff; --ink:#142032; --muted:#566275; --line:#dce2ea;
+  --accent:#0b7476; --accent-ink:#fff; --accent-soft:#e0f0f0; --deep:#0e2a3a; --deep-ink:#e9f4f4;
+  --mark:#fff0c2; --mark-ink:#6b4a00; --warn:#a9501c; --warn-soft:#fbe9dc;
+  --f-display:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; --f-body:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif; --f-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e131a; --surface:#161d27; --ink:#e5eaf1; --muted:#9aa6b7; --line:#283241;
+  --accent:#40b5b0; --accent-ink:#04201f; --accent-soft:#153233; --deep:#0b2230; --deep-ink:#e1f0f0;
+  --mark:#3b3116; --mark-ink:#f3d27c; --warn:#ef9a62; --warn-soft:#3a2416; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e131a; --surface:#161d27; --ink:#e5eaf1; --muted:#9aa6b7; --line:#283241;
+  --accent:#40b5b0; --accent-ink:#04201f; --accent-soft:#153233; --deep:#0b2230; --deep-ink:#e1f0f0;
+  --mark:#3b3116; --mark-ink:#f3d27c; --warn:#ef9a62; --warn-soft:#3a2416; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--f-body)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);margin:0;text-wrap:balance}
+a{color:var(--accent)}
+.hero{background:var(--deep);color:var(--deep-ink);margin-top:calc(-1 * env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 44px);padding-bottom:40px}
+.hero .eyebrow{font:700 12px/1 var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:#7fd6d2}
+.hero h1{font-size:clamp(30px,5vw,48px);font-weight:800;letter-spacing:-.02em;margin-top:12px;max-width:18ch}
+.hero p.lede{font-size:17px;max-width:62ch;opacity:.86;margin:14px 0 0}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.btn{display:inline-flex;align-items:center;gap:6px;font:600 14px var(--f-body);padding:10px 16px;border-radius:9px;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn.primary{background:#40b5b0;color:#04201f}
+.btn.ghost{border-color:rgba(233,244,244,.35);color:var(--deep-ink);background:transparent}
+.hero .stats{display:flex;flex-wrap:wrap;gap:8px 30px;margin-top:28px;font-variant-numeric:tabular-nums}
+.hero .stats b{display:block;font:800 24px/1.1 var(--f-display)}
+.hero .stats span{font-size:12.5px;opacity:.75}
+section.block{padding-block:30px 6px}
+h2{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:6px 0 16px;max-width:70ch}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;counter-reset:s}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;counter-increment:s}
+.step::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:800 14px var(--f-display);margin-bottom:8px}
+.step h3{font-size:15.5px;margin-bottom:4px}
+.step p{margin:0;color:var(--muted);font-size:14px}
+.featured{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.feat{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-align:left;cursor:pointer;font:inherit;color:inherit}
+.feat:hover{border-color:var(--accent)}
+.feat .cat{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.feat .ttl{display:block;font:700 15px var(--f-display);margin:4px 0}
+.feat .out{display:block;color:var(--muted);font-size:13.5px}.feat .cat{display:block}
+.rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding-block:12px;margin-top:26px}
+.rail .row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.rail .row+.row{margin-top:8px}
+.lbl{font-size:12px;color:var(--muted);min-width:40px}
+#q{flex:1 1 260px;min-width:0;font:inherit;padding:9px 12px;border:1px solid var(--line);border-radius:9px;background:var(--surface);color:var(--ink)}
+.count{font-size:13px;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.chip{font:500 12.5px/1 var(--f-body);padding:7px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.catsec{padding-top:26px}
+.catsec h2{display:flex;gap:10px;align-items:baseline}
+.catsec h2 small{font:500 13px var(--f-body);color:var(--muted)}
+.catsec .why{color:var(--muted);margin:4px 0 12px;font-size:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;scroll-margin-top:260px}
+.card+.card{margin-top:10px}
+.card .top{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.card h3{font-size:16px}
+.card .head{min-width:0;flex:1 1 320px}
+.card .outcome{margin:4px 0 8px;font-size:14.5px;min-width:0}
+.card .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.tag{font-size:11.5px;padding:3px 8px;border-radius:999px;background:var(--accent-soft);color:var(--ink)}
+.tag.role{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.tag.warn{background:var(--warn-soft);color:var(--warn)}
+.tag.time{background:transparent;color:var(--muted);padding-left:0}
+.actions{display:flex;gap:6px;flex-wrap:wrap}
+.copy{font:600 12.5px var(--f-body);padding:8px 12px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;white-space:nowrap}
+.copy.main{background:var(--accent);color:var(--accent-ink)}
+.copy.done{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+details{margin-top:10px;border-top:1px solid var(--line);padding-top:8px}
+summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--accent)}
+.when{font-size:13.5px;color:var(--muted);margin:8px 0}
+pre{white-space:pre-wrap;word-break:break-word;font:12.5px/1.55 var(--f-mono);background:var(--bg);border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin:8px 0;max-width:100%;overflow-x:auto}
+pre mark{background:var(--mark);color:var(--mark-ink);border-radius:3px;padding:0 2px}
+.inputs{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:13.5px;margin:6px 0}
+.inputs code{font-family:var(--f-mono);font-size:12.5px;background:var(--mark);color:var(--mark-ink);padding:1px 5px;border-radius:4px}
+.fu{display:flex;gap:8px;align-items:flex-start;margin:6px 0}
+.fu pre{flex:1;margin:0;min-width:0}
+.tips{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+.tools{font:11.5px/1.5 var(--f-mono);color:var(--muted);overflow-wrap:anywhere}
+.empty{padding:40px 0;color:var(--muted);text-align:center}
+.pbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.pb{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.pb h3{font-size:16px}
+.pb p{margin:4px 0 8px;color:var(--muted);font-size:14px}
+.pb ol{margin:0;padding-left:20px;font-size:14px}
+.pb ol button{font:inherit;color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-align:left;text-decoration:underline;text-underline-offset:2px}
+.downloads{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.dl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;text-decoration:none;color:inherit}
+.dl b{display:block;font-family:var(--f-display);font-size:15px;color:var(--accent)}
+.dl span{font-size:13.5px;color:var(--muted)}
+footer{padding-block:36px 56px;color:var(--muted);font-size:13px}
+@media (max-width:720px){.rail{position:static}.chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px}.card{scroll-margin-top:16px}}
+@media (max-width:560px){.card .top{flex-direction:column}.card .head{flex:none}.inputs{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Draup for Sales · Claude prompt library</div>
+    <h1>Ask Draup the questions that move deals</h1>
+    <p class="lede" id="tagline"></p>
+    <div class="cta">
+      <a class="btn primary" href="#library">Browse the prompts</a>
+      <a class="btn ghost" href="#start">Start in 3 steps</a>
+      <a class="btn ghost" id="repoLink" href="#">View on GitHub</a>
+    </div>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+  <section class="block" id="start">
+    <h2>Start in 3 steps</h2>
+    <p class="sub">About five minutes, once.</p>
+    <div class="steps">
+      <div class="step"><h3>Connect Draup in Claude</h3><p>In Claude, open Settings, then Connectors. Add <b>Draup for Sales</b> and sign in with your Draup account. It's read-only.</p></div>
+      <div class="step"><h3>Tell Claude about you</h3><p>Paste the <button class="copy" data-start style="margin-top:4px">Copy the start-here prompt</button> into a new chat with your role, offering, territory and competitors.</p></div>
+      <div class="step"><h3>Pick a prompt and fill the brackets</h3><p>Copy the detailed prompt, replace the highlighted <code style="background:var(--mark);color:var(--mark-ink);padding:0 4px;border-radius:4px">[parts]</code> and send. Use the follow-ups to go deeper.</p></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Popular starting points</h2>
+    <p class="sub">Click one to jump to it in the library.</p>
+    <div class="featured" id="featured"></div>
+  </section>
+</div>
+
+<div class="rail" role="search" id="library">
+  <div class="wrap">
+    <div class="row">
+      <input id="q" type="search" placeholder="Search: tech stack, layoffs, buying committee, GCC, competitor…" aria-label="Search prompts">
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <div class="row"><span class="lbl" id="l-role">Role</span><div class="chips" id="roles" role="group" aria-labelledby="l-role"></div></div>
+    <div class="row"><span class="lbl" id="l-job">Job</span><div class="chips" id="cats" role="group" aria-labelledby="l-job"></div></div>
+    <div class="row"><span class="lbl" id="l-sell">I sell</span><div class="chips" id="sellers" role="group" aria-labelledby="l-sell"></div></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div id="list"></div>
+
+  <section class="block" id="playbooks">
+    <h2>Playbooks</h2>
+    <p class="sub">Complete workflows. Run the steps in one chat so each answer builds on the last.</p>
+    <div class="pbs" id="pbs"></div>
+  </section>
+
+  <section class="block" id="downloads">
+    <h2>Download the guides</h2>
+    <p class="sub">Printable PDFs for sharing and offline reading.</p>
+    <div class="downloads" id="dls"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+const {meta:M, prompts:P, playbooks:PB} = DATA;
+const CAT = Object.fromEntries(M.categories.map(c=>[c.id,c]));
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hl = s=>esc(s).replace(/\[([^\]\n]+)\]/g,'<mark>[$1]</mark>');
+const roleName = r=>M.roles[r]?.name||r;
+const raw = M.repo.replace(/\/$/,"");
+let role=null, cat=null, seller=null;
+try{const s=JSON.parse(localStorage.getItem("dsp-filters")||"{}");role=s.role||null;cat=s.cat||null;seller=s.seller||null}catch(e){}
+const save=()=>{try{localStorage.setItem("dsp-filters",JSON.stringify({role,cat,seller}))}catch(e){}};
+
+$("#tagline").textContent = M.tagline;
+$("#repoLink").href = M.repo;
+$("#stats").innerHTML = [[P.length,"detailed prompts"],[PB.length,"playbooks"],[Object.keys(M.roles).length,"sales roles"],[P.filter(p=>p.status==="tested").length,"tested on live data"]].map(([b,s])=>`<div><b>${b}</b><span>${s}</span></div>`).join("");
+
+const feat = (M.featured&&M.featured.length?M.featured.map(id=>P.find(p=>p.id===id)).filter(Boolean):M.categories.filter(c=>c.id!=="setup").map(c=>P.find(p=>p.category===c.id)).filter(Boolean)).slice(0,8);
+$("#featured").innerHTML = feat.map(p=>`<button class="feat" data-go="${p.id}"><span class="cat">${esc(CAT[p.category].short)}</span><span class="ttl">${esc(p.title)}</span><span class="out">${esc(p.outcome)}</span></button>`).join("");
+
+function chipRow(el, items, cur, pick){
+  el.innerHTML = `<button class="chip" data-v="" aria-pressed="${!cur}">All</button>` + items.map(([v,l])=>`<button class="chip" data-v="${v}" aria-pressed="${cur===v}">${esc(l)}</button>`).join("");
+  el.onclick = e=>{const b=e.target.closest(".chip"); if(b) pick(b.dataset.v||null)};
+}
+function chips(){
+  chipRow($("#roles"), Object.entries(M.roles).map(([k,v])=>[k,v.name]), role, v=>{role=v;save();chips();render()});
+  chipRow($("#sellers"), [["software","Software"],["services","Services"]], seller, v=>{seller=v;save();chips();render()});
+  chipRow($("#cats"), M.categories.filter(c=>P.some(p=>p.category===c.id)).map(c=>[c.id,c.short]), cat, v=>{cat=v;save();chips();render()});
+}
+function card(p){
+  const i = P.indexOf(p);
+  return `<article class="card" id="p-${p.id}">
+   <div class="top"><div class="head"><h3>${esc(p.title)}</h3><p class="outcome">${esc(p.outcome)}</p></div>
+   <div class="actions"><button class="copy main" data-copy="prompt" data-i="${i}" aria-label="Copy detailed prompt: ${esc(p.title)}">Copy detailed prompt</button><button class="copy" data-copy="quick" data-i="${i}">Copy quick version</button></div></div>
+   <div class="meta">${p.status==="schema-only"?'<span class="tag warn">Needs Draup for Talent</span>':""}<span class="tag time">${esc(p.time)}</span>${p.data.map(d=>`<span class="tag">${esc(M.data[d].name)}</span>`).join("")}${p.roles.map(r=>`<span class="tag role">${esc(roleName(r))}</span>`).join("")}</div>
+   <details><summary>Open the prompt, inputs and follow-ups</summary>
+     <p class="when"><b>Use it when:</b> ${esc(p.when)}</p>
+     ${p.inputs.length?`<div class="inputs">${p.inputs.map(x=>`<code>[${esc(x.name)}]</code><span>e.g. ${esc(x.example)}</span>`).join("")}</div>`:""}
+     <pre>${hl(p.prompt)}</pre>
+     ${p.followups.length?`<p class="when"><b>Follow-ups</b> (paste into the same chat):</p>${p.followups.map((f,j)=>`<div class="fu"><pre>${hl(f)}</pre><button class="copy" data-copy="fu" data-i="${i}" data-j="${j}" aria-label="Copy follow-up ${j+1}">Copy</button></div>`).join("")}`:""}
+     ${p.tips.length?`<p class="when" style="margin-bottom:0"><b>Tips</b></p><ul class="tips">${p.tips.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>`:""}
+     <p class="tools">Under the hood: ${p.tools.map(esc).join(" · ")}</p>
+   </details></article>`;
+}
+function render(){
+  const q = $("#q").value.trim().toLowerCase();
+  const ok = p=>(!role||p.roles.includes(role))&&(!seller||!p.seller||p.seller==="both"||p.seller===seller)&&(!cat||p.category===cat)&&(!q||[p.title,p.outcome,p.when,p.quick,p.prompt,p.tips.join(" "),p.data.map(d=>M.data[d].name).join(" ")].join(" ").toLowerCase().includes(q));
+  const shown = P.filter(ok);
+  $("#count").textContent = `Showing ${shown.length} of ${P.length}`;
+  if(!shown.length){ $("#list").innerHTML = `<p class="empty">No prompts match. Clear the search or choose "All".</p>`; return; }
+  $("#list").innerHTML = M.categories.map(c=>{
+    const items = shown.filter(p=>p.category===c.id); if(!items.length) return "";
+    return `<section class="catsec" id="cat-${c.id}"><h2>${esc(c.name)} <small>${items.length}</small></h2><p class="why">${esc(c.desc)}</p>${items.map(card).join("")}</section>`;
+  }).join("");
+}
+$("#pbs").innerHTML = PB.map(pb=>`<div class="pb"><h3>${esc(pb.title)}</h3><p>${esc(pb.goal)}</p><ol>${pb.steps.map(s=>{const p=P.find(x=>x.id===s.prompt_id);return p?`<li><button data-go="${p.id}">${esc(p.title)}</button></li>`:""}).join("")}</ol><p style="margin-top:8px">${esc(pb.time||"")} · ${pb.for.map(roleName).map(esc).join(", ")}</p></div>`).join("");
+const pdf = (f,t,d)=>`<a class="dl" href="${raw}/raw/main/pdf/${f}"><b>${t}</b><span>${d}</span></a>`;
+$("#dls").innerHTML = pdf("draup-sales-prompts-quick-start.pdf","Quick-start guide","Setup, the start-here prompt and the 12 most useful quick prompts.") + pdf("draup-sales-prompts-catalogue.pdf","Full prompt catalogue","Every prompt in full, with inputs, follow-ups and tips.") + pdf("draup-sales-prompts-playbooks.pdf","Playbooks","Step-by-step workflows for common sales jobs.") + `<a class="dl" href="${raw}/tree/main/pdf/roles"><b>Role cheat sheets</b><span>The quick prompts for each of the 8 roles, as PDFs.</span></a>`;
+$("#foot").innerHTML = `Version ${esc(M.version)} · updated ${esc(M.updated)} · Prompts and guides licensed <a href="${raw}/blob/main/LICENSE">CC BY 4.0</a>. "Draup" is a trademark of its owner. <a href="${raw}">Source and contributions on GitHub</a>.`;
+
+function flash(b, label){ const t=b.textContent; b.textContent=label; b.classList.add("done"); setTimeout(()=>{b.textContent=t;b.classList.remove("done")},1500); }
+function copyText(text, b){
+  const fallback=()=>{ const ta=document.createElement("textarea"); ta.value=text; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); let ok=false; try{ok=document.execCommand("copy")}catch(e){} ta.remove(); flash(b, ok?"Copied":"Press ⌘C / Ctrl+C"); };
+  try{ navigator.clipboard.writeText(text).then(()=>flash(b,"Copied"), fallback); }catch(e){ fallback(); }
+}
+document.addEventListener("click", e=>{
+  const c = e.target.closest("[data-copy]");
+  if(c){ const p=P[+c.dataset.i]; copyText(c.dataset.copy==="fu"?p.followups[+c.dataset.j]:p[c.dataset.copy], c); return; }
+  const s = e.target.closest("[data-start]");
+  if(s){ const p=P.find(x=>x.id==="setup-about-me"); if(p) copyText(p.prompt, s); return; }
+  const g = e.target.closest("[data-go]");
+  if(g){ role=null; cat=null; seller=null; $("#q").value=""; save(); chips(); render(); const el=document.getElementById("p-"+g.dataset.go); if(el){ el.querySelector("details").open=true; el.scrollIntoView({behavior:"smooth",block:"start"}); } }
+});
+$("#q").addEventListener("input", render);
+chips(); render();
+</script>
+</body>
+</html>

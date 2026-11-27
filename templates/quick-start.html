@@ -1,0 +1,46 @@
+<section>
+  <h2>What this is</h2>
+  <p>A library of ready-made prompts for Claude. With the <b>Draup for Sales</b> connector switched on, Claude pulls live Draup data and turns it into account briefs, buyer maps, target lists, signal alerts and outreach drafts. You fill in a few blanks, and it does the research.</p>
+  <div class="qs-grid">
+    <div class="box accent"><h3>Good for</h3><ul><li>Preparing for meetings in minutes</li><li>Finding the right buyers and a warm way in</li><li>Knowing <i>why now</i> before you reach out</li><li>Building and sizing target lists</li><li>Mapping incumbent vendors and competitors</li><li>Account plans, risk checks and QBR prep</li></ul></div>
+    <div class="box"><h3>What you need</h3><ul><li>A Claude account (claude.ai or the Claude desktop app)</li><li>A Draup account with Draup for Sales access</li><li>About two minutes to connect the two</li></ul></div>
+  </div>
+</section>
+<section>
+  <h2>Set up in 3 steps</h2>
+  <ol class="steps3">
+    <li><b>Connect Draup.</b> In Claude, go to <i>Settings → Connectors</i>, find <b>Draup for Sales</b>, click Connect and sign in with your Draup account. The connector is read-only.</li>
+    <li><b>Tell Claude about you.</b> Paste the start-here prompt (next page) into a new chat, fill in your details and send it. For a permanent setup, create a Claude Project and paste it into the Project instructions.</li>
+    <li><b>Run a prompt.</b> Pick one from this guide or the catalogue, replace the <mark>[bracketed]</mark> parts and send. Then use the follow-ups to go deeper in the same chat.</li>
+  </ol>
+</section>
+<section class="break">
+  <h2>Start here: tell Claude about you</h2>
+  <p class="desc">Paste this once at the start of a chat. Every later prompt then knows what you sell, your territory and your competitors.</p>
+  {{START_PROMPT}}
+</section>
+<section class="break">
+  <h2>12 prompts to try first</h2>
+  <p class="desc">These are the quick versions. The detailed versions, which give the best results, are in the full catalogue and on the website.</p>
+  <div class="sheet">{{TOP_PROMPTS}}</div>
+</section>
+<section class="break">
+  <h2>Tips for great answers</h2>
+  <table>
+    <tr><th>Do this</th><th>Why</th></tr>
+    <tr><td>Use the company website (siemens.com) rather than the name</td><td>Matches the right company first time, not a subsidiary or a look-alike</td></tr>
+    <tr><td>Name a business function or workload ("IT", "Supply Chain", "AI &amp; Data Science")</td><td>Big companies have thousands of records; narrowing gives sharper answers</td></tr>
+    <tr><td>Ask for top N, a time window and dates</td><td>Keeps answers short and shows you how fresh each fact is</td></tr>
+    <tr><td>Use the detailed prompt for anything you will share</td><td>It carries the guardrails: dated facts, "Not in Draup" instead of guesses</td></tr>
+    <tr><td>Keep going in the same chat with follow-ups</td><td>Claude reuses what it already found</td></tr>
+    <tr><td>Save your solution offering in your Draup profile</td><td>Unlocks Draup opportunities tailored to what you sell</td></tr>
+  </table>
+  <h3>Reading the answers</h3>
+  <ul>
+    <li><b>Financials</b> are annual, in the company's reporting currency and fiscal year. Ask for USD when comparing.</li>
+    <li><b>Outsourced headcount</b> is a Draup estimate, not a reported figure.</li>
+    <li><b>Executive and news data</b> is a starting point. Check names and titles before you send anything.</li>
+    <li><b>"Not in Draup"</b> means no data was found, which is not the same as "doesn't exist".</li>
+  </ul>
+  <p>Full library, playbooks and role cheat sheets: <b>github.com/Draup/draup-sales-prompts</b></p>
+</section>
