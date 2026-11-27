@@ -69,6 +69,8 @@ a{color:var(--brand)}
 .btn{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--f-body);padding:11px 16px;border-radius:10px;text-decoration:none;border:1px solid transparent;cursor:pointer;line-height:1}
 .btn.claude{background:var(--claude);color:#fff}
 .btn.gpt{background:var(--gpt);color:#fff}
+.btn.teams{background:#4b53bc;color:#fff}
+.btn .ico + .ico{margin-left:-4px}
 .btn.light{background:#fff;color:#0e1a2b}
 .btn.ghost{border-color:rgba(234,242,255,.35);color:var(--hero-ink);background:transparent}
 .btn.brand{background:var(--brand);color:var(--brand-ink)}
@@ -235,13 +237,14 @@ footer p{opacity:.85;margin:10px 0 0;max-width:72ch}
       <div class="cta">
         <a class="btn claude" id="heroClaude" href="#"><span class="ico">{{SVG_CLAUDE}}</span>Add to Claude</a>
         <a class="btn gpt" id="heroGpt" href="#"><span class="ico">{{SVG_OPENAI}}</span>Add to ChatGPT</a>
+        <a class="btn teams" id="heroTeams" href="#"><span class="ico">{{SVG_TEAMS}}</span><span class="ico">{{SVG_COPILOT}}</span>Teams &amp; Copilot</a>
         <a class="btn light" href="#library">Browse the prompts</a>
         <a class="btn ghost" id="heroGit" href="#"><span class="ico">{{SVG_GITHUB}}</span>GitHub</a>
       </div>
       <div class="works">Works with
         <span class="chipx"><span class="ico">{{SVG_CLAUDE}}</span>Claude</span>
         <span class="chipx"><span class="ico">{{SVG_OPENAI}}</span>ChatGPT</span>
-        <a class="chipx" id="worksTeams" href="#" style="color:inherit;text-decoration:none">Microsoft 365 Copilot &amp; Teams</a>
+        <a class="chipx" id="worksTeams" href="#" style="color:inherit;text-decoration:none"><span class="ico">{{SVG_TEAMS}}</span>Microsoft 365 Copilot &amp; Teams</a>
         <span class="chipx">Any MCP client</span>
       </div>
     </div>
@@ -255,8 +258,8 @@ footer p{opacity:.85;margin:10px 0 0;max-width:72ch}
     <div class="sec-head"><div><h2>Start in 3 steps</h2><p class="sub">About five minutes, once. You need a Draup account with Draup for Sales access.</p></div></div>
     <div class="steps">
       <div class="step"><h3>Connect Draup to your AI</h3><p>Add <b>Draup for Sales</b> and sign in with your Draup account. It's read-only.</p>
-        <div class="row"><a class="btn claude small" id="lnkClaude" href="#"><span class="ico">{{SVG_CLAUDE}}</span>Add to Claude</a><a class="btn gpt small" id="lnkGpt" href="#"><span class="ico">{{SVG_OPENAI}}</span>Add to ChatGPT</a></div>
-        <p class="minor">Microsoft 365 Copilot or Teams? <a id="lnkTeams" href="#">Get the Draup for Sales agent</a>. Claude Code, Cursor or your own agent? <a id="lnkCustom" href="#">Custom MCP setup</a></p></div>
+        <div class="row"><a class="btn claude small" id="lnkClaude" href="#"><span class="ico">{{SVG_CLAUDE}}</span>Add to Claude</a><a class="btn gpt small" id="lnkGpt" href="#"><span class="ico">{{SVG_OPENAI}}</span>Add to ChatGPT</a><a class="btn teams small" id="lnkTeams" href="#"><span class="ico">{{SVG_TEAMS}}</span><span class="ico">{{SVG_COPILOT}}</span>Teams &amp; Copilot</a></div>
+        <p class="minor">Claude Code, Cursor or your own agent? <a id="lnkCustom" href="#">Custom MCP setup</a></p></div>
       <div class="step"><h3>Tell your AI about you</h3><p>Paste the start-here prompt into a new chat with your role, offering, territory and competitors. Every later prompt fills itself in.</p>
         <div class="row"><button class="copy main" data-start>Copy the start-here prompt</button></div></div>
       <div class="step"><h3>Pick a prompt and fill the brackets</h3><p>Copy a detailed prompt, replace the highlighted <code style="background:var(--mark);color:var(--mark-ink);padding:0 4px;border-radius:4px">[parts]</code> and send. Every answer ends with who to contact, what to do and why now.</p></div>
@@ -366,7 +369,7 @@ const setHref=(id,h)=>{const a=document.getElementById(id); if(a&&h) a.href=h;};
 ["heroGpt","lnkGpt"].forEach(id=>setHref(id,LK.chatgpt));
 ["navGit","heroGit","footGit"].forEach(id=>setHref(id,raw));
 setHref("lnkCustom", blob("guides/connect.md#option-3-any-mcp-client-custom-connector"));
-["lnkTeams","worksTeams"].forEach(id=>setHref(id, LK.teams));
+["lnkTeams","worksTeams","heroTeams"].forEach(id=>setHref(id, LK.teams));
 setHref("skZip", LK.skill_zip); setHref("skAll", LK.all_md); setHref("skGuide", blob("guides/use-as-a-skill.md#chatgpt-project-or-custom-gpt"));
 { const line = `Use the Draup Sales Prompt Library at ${LK.llms} for my request: pick the matching prompt, fill in its inputs, and follow its steps, output format and rules exactly, using Draup for Sales data.`; $("#llmsLine").textContent=line; $("#copyLlms").dataset.copyText=line; }
 setHref("hConnect", blob("guides/connect.md#troubleshooting"));

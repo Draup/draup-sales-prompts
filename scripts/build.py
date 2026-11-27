@@ -236,7 +236,7 @@ def playbook_pages():
 
 # ---------- landing page ----------
 def badge(label, msg, color, url=None, logo=None):
-    q = lambda s: s.replace("-", "--").replace("_", "__").replace(" ", "%20")
+    q = lambda s: s.replace("-", "--").replace("_", "__").replace(" ", "%20").replace("&", "%26")
     img = f"https://img.shields.io/badge/{q(label)}-{q(msg)}-{color}" + (f"?logo={logo}" if logo else "")
     tag = f'<img src="{img}" alt="{label}: {msg}">'
     return f'<a href="{url}">{tag}</a>' if url else tag
@@ -249,11 +249,12 @@ def readme():
     L += ['<p align="center">' + " ".join([
         badge("Claude", "Draup for Sales connector", "D97757", LK.get("claude"), "claude"),
         badge("ChatGPT", "Draup for Sales plugin", "10A37F", LK.get("chatgpt"), "openai"),
+        badge("Microsoft 365 Copilot & Teams", "Draup for Sales agent", "4B53BC", LK.get("teams")),
         badge("prompts", str(n), "0b7476"), badge("playbooks", str(len(PLAYBOOKS)), "0b7476"),
         badge("license", "CC BY 4.0", "555", "LICENSE")]) + "</p>", ""]
     L += [f'<p align="center"><b>{META["tagline"]}</b></p>', ""]
     L += ['<p align="center">' + " · ".join([
-        f'<a href="{LK.get("claude")}"><b>Add to Claude</b></a>', f'<a href="{LK.get("chatgpt")}"><b>Add to ChatGPT</b></a>', f'<a href="{LK.get("teams")}">Microsoft Teams &amp; Copilot</a>', '<a href="guides/use-as-a-skill.md">Use as a skill</a>',
+        f'<a href="{LK.get("claude")}"><b>Add to Claude</b></a>', f'<a href="{LK.get("chatgpt")}"><b>Add to ChatGPT</b></a>', f'<a href="{LK.get("teams")}"><b>Add to Teams &amp; Copilot</b></a>', '<a href="guides/use-as-a-skill.md">Use as a skill</a>',
         '<a href="guides/connect.md#option-3-any-mcp-client-custom-connector">Other MCP clients</a>',
         f'<a href="{META["pages"]}">Interactive library</a>', '<a href="#download-the-guides">PDF guides</a>']) + "</p>", ""]
     L += ["## Start in 3 steps", "",
@@ -355,12 +356,17 @@ def export_csv():
 
 def site():
     tpl = (ROOT / "templates" / "site.html").read_text(encoding="utf-8")
-    for key, fname in (("SVG_DRAUP", "draup-logo.svg"), ("SVG_CLAUDE", "claude.svg"), ("SVG_OPENAI", "openai.svg"), ("SVG_GITHUB", "github.svg")):
-        svg = (ROOT / "assets" / fname).read_text(encoding="utf-8")
+    for key, fname in (("SVG_DRAUP", "draup-logo.svg"), ("SVG_CLAUDE", "claude.svg"), ("SVG_OPENAI", "openai.svg"), ("SVG_GITHUB", "github.svg"), ("SVG_TEAMS", "teams.svg"), ("SVG_COPILOT", "copilot.svg")):
+        f = ROOT / "assets" / fname
+        if not f.exists():
+            tpl = tpl.replace("{{" + key + "}}", "")
+            continue
+        svg = f.read_text(encoding="utf-8")
         svg = re.sub(r"<title>.*?</title>", "", svg)
         if key != "SVG_DRAUP":
             svg = svg.replace("<svg ", '<svg aria-hidden="true" focusable="false" ', 1).replace('role="img" ', "")
         tpl = tpl.replace("{{" + key + "}}", svg)
+    tpl = tpl.replace('<span class="ico"></span>', "")
     payload = {"meta": META, "prompts": PROMPTS, "playbooks": PLAYBOOKS}
     js = json.dumps(payload, ensure_ascii=False).replace("</", "<\\/")
     write("docs/index.html", tpl.replace("/*__DATA__*/null", js))
