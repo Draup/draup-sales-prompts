@@ -154,6 +154,7 @@ Printable PDFs for sharing and offline reading:
 | [**Quick-start guide**](pdf/draup-sales-prompts-quick-start.pdf) | How to connect, the start-here prompt, the 12 most useful quick prompts, and tips. |
 | [**Full prompt catalogue**](pdf/draup-sales-prompts-catalogue.pdf) | Every prompt in full, with inputs, follow-ups and tips. |
 | [**Playbooks**](pdf/draup-sales-prompts-playbooks.pdf) | Step-by-step workflows for common sales jobs. |
+| [**Brief for your IT team**](pdf/draup-for-sales-connector-it-brief.pdf) | One page to share when IT blocks external connectors: what the connector can reach, the reviews it has passed and the controls admins keep. Also for [Draup for Talent](pdf/draup-for-talent-connector-it-brief.pdf). |
 | **Role cheat sheets** | Each role's top 5, then all its quick prompts: [Account Executive](pdf/roles/account-executive.pdf) · [SDR / BDR](pdf/roles/sdr-bdr.pdf) · [Account & Customer Success Manager](pdf/roles/account-manager.pdf) · [Sales Leader & RevOps](pdf/roles/sales-leader-revops.pdf) · [Marketing & ABM](pdf/roles/marketing-abm.pdf) · [Presales & Solutions](pdf/roles/presales-solutions.pdf) · [Services, SI & Staffing Seller](pdf/roles/services-seller.pdf) · [Partnerships & Alliances](pdf/roles/partnerships-alliances.pdf) |
 | [**Skill for Claude (zip)**](dist/draup-sales-prompts-skill.zip) · [**One-file library**](dist/draup-sales-prompts-all.md) | Use the whole library as a skill in Claude, ChatGPT or any AI. |
 

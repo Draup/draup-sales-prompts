@@ -130,6 +130,7 @@ Your assistant should look Microsoft up in Draup and answer with dated facts. If
 | The assistant answers without using Draup | Check that Draup for Sales is switched on in the chat's tools menu, then add "use Draup for Sales for this". |
 | "Authentication failed", a 401 error, or the connection drops | Disconnect and reconnect Draup for Sales in your settings, then sign in again. |
 | You can't find Draup for Sales in the directory | Your organisation may need an admin to enable it. Or add it as a custom connector (Option 3). |
+| Your IT team blocks external connectors | Share the one-page [brief for IT and security teams](for-it-teams.md) ([PDF](../pdf/draup-for-sales-connector-it-brief.pdf)). It covers what the connector can reach, the reviews it has passed and the controls admins keep. |
 | Some data is missing | You see only what your Draup subscription includes. Ask your Draup account team about access. |
 | A coding tool won't connect | Check the token is current and the settings file's format matches your tool. Restart the tool after editing. |
 
